@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>모두투어 여행 예약확인서</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #eae6e0;
+    font-family: 'Malgun Gothic', '맑은 고딕', 'Nanum Gothic', sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    min-height: 100vh;
+  }
+
+  .document {
+    background: #fff;
+    width: 700px;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 10px 50px rgba(0,0,0,0.13), 0 2px 10px rgba(0,0,0,0.07);
+  }
+
+  /* HEADER */
+  .header {
+    background: #14355e;
+    padding: 32px 40px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -25px; right: 100px;
+    width: 110px; height: 110px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .header-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .modetour-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #e8971e;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 5px 11px;
+    border-radius: 3px;
+  }
+  .header h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.5px;
+    margin-bottom: 5px;
+  }
+  .header .subtitle {
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 400;
+  }
+  .plane-deco {
+    position: absolute;
+    right: 38px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 56px;
+    opacity: 0.1;
+  }
+
+  /* ALERT BANNER */
+  .alert-banner {
+    background: #fff8ed;
+    border-left: 4px solid #e8971e;
+    padding: 13px 40px;
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+  }
+  .alert-banner p {
+    font-size: 12.5px;
+    color: #7a4d00;
+    line-height: 1.65;
+    font-weight: 400;
+  }
+  .alert-banner p strong { font-weight: 700; }
+
+  /* BODY */
+  .body { padding: 0 40px 40px; }
+
+  /* SECTION */
+  .section { margin-top: 28px; }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 13px;
+    padding-bottom: 9px;
+    border-bottom: 1.5px solid #eae6e0;
+  }
+  .section-icon {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .ic-blue   { background: #ddeaf8; }
+  .ic-orange { background: #fde8c8; }
+  .ic-green  { background: #d8f3e3; }
+  .ic-red    { background: #fde0e0; }
+  .ic-teal   { background: #d0f0f0; }
+  .section-title {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #14355e;
+    letter-spacing: -0.2px;
+  }
+
+  /* INFO GRID */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .info-card {
+    background: #f7f4f0;
+    border: 1px solid #e5e0d8;
+    border-radius: 5px;
+    padding: 12px 14px;
+  }
+  .info-card.full { grid-column: 1 / -1; }
+  .info-card .lbl {
+    font-size: 10px;
+    color: #999;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .info-card .val {
+    font-size: 13px;
+    color: #222;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+  .info-card .val.small { font-size: 12px; font-weight: 400; }
+  .info-card .val a { color: #1a60b0; text-decoration: none; font-size: 11.5px; font-weight: 400; }
+
+  /* PAYMENT BOX */
+  .pay-box {
+    background: #14355e;
+    border-radius: 7px;
+    padding: 18px 20px;
+    display: grid;
+    grid-template-columns: 1fr 16px 1fr;
+    gap: 0;
+    align-items: center;
+  }
+  .pay-item .p-lbl {
+    font-size: 10px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    display: flex; align-items: center; gap: 5px;
+  }
+  .dot { width: 6px; height: 6px; border-radius: 50%; }
+  .dot-yellow { background: #e8971e; }
+  .dot-red    { background: #e85050; }
+  .pay-item .p-amount {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.5px;
+  }
+  .pay-item .p-deadline {
+    font-size: 11px;
+    color: rgba(255,255,255,0.55);
+    margin-top: 3px;
+  }
+  .pay-item .p-deadline strong { color: #ffb84d; }
+  .pay-divider {
+    width: 1px;
+    height: 48px;
+    background: rgba(255,255,255,0.15);
+    margin: 0 auto;
+  }
+
+  /* PAYMENT METHOD */
+  .method-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .method-card {
+    border: 1px solid #e5e0d8;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .method-card .mc-head {
+    background: #f0ece5;
+    padding: 8px 13px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #333;
+  }
+  .method-card .mc-body {
+    padding: 11px 13px;
+    font-size: 12px;
+    color: #444;
+    line-height: 1.75;
+    background: #fff;
+  }
+  .method-card .mc-body .account {
+    font-size: 13px;
+    font-weight: 700;
+    color: #14355e;
+  }
+  .method-card .mc-body .warn {
+    color: #c03000;
+    font-weight: 700;
+  }
+  .method-full {
+    border: 1px solid #e5e0d8;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+  .method-full .mf-head {
+    background: #f0ece5;
+    padding: 8px 13px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #333;
+  }
+  .method-full .mf-body {
+    padding: 12px 14px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .pay-guide .pg-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #555;
+    margin-bottom: 5px;
+  }
+  .pay-guide ol {
+    margin: 0;
+    padding-left: 16px;
+  }
+  .pay-guide ol li {
+    font-size: 11.5px;
+    color: #444;
+    line-height: 1.75;
+  }
+  .pay-guide ol li strong { color: #14355e; }
+  .red-note {
+    background: #fff0f0;
+    border: 1px solid #f5b8b8;
+    border-radius: 5px;
+    padding: 9px 12px;
+    font-size: 12px;
+    color: #a00;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 10px;
+    line-height: 1.6;
+  }
+
+  /* CANCEL TABLE */
+  .cancel-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    border-radius: 5px;
+  }
+  .cancel-table thead tr { background: #14355e; }
+  .cancel-table thead th {
+    padding: 10px 14px;
+    color: #fff;
+    text-align: left;
+    font-size: 11.5px;
+    font-weight: 700;
+  }
+  .cancel-table tbody tr { border-bottom: 1px solid #ece8e0; }
+  .cancel-table tbody tr:last-child { border-bottom: none; }
+  .cancel-table tbody tr:nth-child(even) { background: #faf8f5; }
+  .cancel-table tbody td { padding: 10px 14px; color: #333; }
+  .badge {
+    display: inline-block;
+    padding: 3px 9px;
+    border-radius: 20px;
+    font-size: 11.5px;
+    font-weight: 700;
+  }
+  .b-green  { background: #d8f3e3; color: #1a6635; }
+  .b-yellow { background: #fff3cd; color: #7a5a00; }
+  .b-orange { background: #fde0c0; color: #903000; }
+  .b-red    { background: #fde0e0; color: #900; }
+  .b-dark   { background: #ede0fd; color: #5a0a90; }
+
+  /* STEPS */
+  .steps { display: flex; flex-direction: column; gap: 7px; }
+  .step {
+    display: flex; gap: 11px; align-items: flex-start;
+    padding: 10px 13px;
+    background: #f7f4f0;
+    border: 1px solid #e5e0d8;
+    border-radius: 5px;
+  }
+  .step-num {
+    width: 20px; height: 20px;
+    background: #14355e; color: #fff;
+    border-radius: 50%;
+    font-size: 10px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .step-text { font-size: 12.5px; color: #333; line-height: 1.7; }
+  .step-text strong { color: #14355e; }
+  .step-text .em { color: #c03000; font-weight: 700; }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #14355e 0%, #0a2040 100%);
+    border-radius: 7px;
+    padding: 18px 22px;
+    color: #fff;
+  }
+  .highlight-box .hb-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #ffb84d;
+    margin-bottom: 8px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .highlight-box p {
+    font-size: 12.5px;
+    line-height: 1.85;
+    color: rgba(255,255,255,0.85);
+  }
+  .highlight-box strong { color: #fff; }
+
+  /* CALL BOX */
+  .call-box {
+    background: #f7f4f0;
+    border: 1px solid #e5e0d8;
+    border-radius: 7px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .call-time { text-align: center; flex-shrink: 0; }
+  .call-time .ct-lbl {
+    font-size: 9.5px; color: #aaa; font-weight: 700;
+    letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 3px;
+  }
+  .call-time .ct-val {
+    font-size: 19px; font-weight: 700; color: #14355e; line-height: 1.2;
+  }
+  .call-vdiv { width: 1px; height: 46px; background: #d8d0c8; flex-shrink: 0; }
+  .call-info { flex: 1; }
+  .call-info .ci-row { font-size: 12.5px; color: #555; line-height: 1.8; }
+  .call-info .ci-row strong { color: #222; }
+
+  /* WARNING NOTE */
+  .warning-note {
+    background: #fff8f0;
+    border: 1px solid #f5c98a;
+    border-radius: 6px;
+    padding: 12px 15px;
+    font-size: 12.5px;
+    color: #7a4000;
+    line-height: 1.75;
+  }
+  .warning-note strong { color: #a05000; }
+
+  /* AGENCY NOTE */
+  .agency-note {
+    background: #f7f4f0;
+    border: 1px solid #e5e0d8;
+    border-radius: 6px;
+    padding: 14px 16px;
+    font-size: 12.5px;
+    color: #555;
+    line-height: 1.85;
+  }
+  .agency-note a { color: #1a60b0; font-weight: 700; }
+  .agency-note .em-red { color: #a04000; font-weight: 700; }
+
+  /* SHARE NOTE */
+  .share-note {
+    background: #eef4fb;
+    border: 1px solid #b8d0ef;
+    border-radius: 5px;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: #1a4070;
+    line-height: 1.7;
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, #ddd 20%, #ddd 80%, transparent);
+    margin: 26px 0 0;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: #14355e;
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer .brand { font-size: 13px; font-weight: 700; color: #e8971e; }
+  .footer .contact { font-size: 12px; color: rgba(255,255,255,0.55); }
+  .footer .contact strong { color: rgba(255,255,255,0.85); }
+</style>
+</head>
+<body>
+<div class="document">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <span class="modetour-badge">🌐 MODETOUR</span>
+    </div>
+    <h1>모두투어 여행 예약확인서</h1>
+    <p class="subtitle">이경진 실장 · ☎ 1544-5714 · 여행 출발 35일 전</p>
+    <div class="plane-deco">✈</div>
+  </div>
+
+  <!-- ALERT BANNER -->
+  <div class="alert-banner">
+    <span>⚠️</span>
+    <p>인터넷에서 예약·결제 취소 및 변경은 <strong>불가</strong>합니다.<br>
+    취소·변경 또는 여행자 정보 수정이 필요하시면 <strong>반드시 예약 담당자에게 직접 연락</strong>해 주세요.</p>
+  </div>
+
+  <div class="body">
+
+    <!-- 예약 정보 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon ic-blue">📋</div>
+        <span class="section-title">예약 정보</span>
+      </div>
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="lbl">예약번호</div>
+          <div class="val">71797935</div>
+        </div>
+        <div class="info-card">
+          <div class="lbl">예약인원</div>
+          <div class="val">2명 (2인1실 1방)</div>
+        </div>
+        <div class="info-card full">
+          <div class="lbl">베드 타입</div>
+          <div class="val small">더블베드 1개 또는 싱글베드 2개 중 랜덤 배정</div>
+        </div>
+        <div class="info-card full">
+          <div class="lbl">예약 상품 링크</div>
+          <div class="val">
+            <a href="https://www.modetour.com/package/104958024?MLoc=99&Pnum=104958024&ANO=1772510&sno=C2181215&thru=crs" target="_blank">
+              🔗 www.modetour.com (클릭하여 상품 확인)
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 여행 일정 & 항공 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon ic-teal">✈️</div>
+        <span class="section-title">여행 일정 및 항공</span>
+      </div>
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="lbl">한국 출발</div>
+          <div class="val">2026. 05. 27 (수)<br><span style="font-size:12px;font-weight:400;">오후 13:50</span></div>
+        </div>
+        <div class="info-card">
+          <div class="lbl">한국 도착</div>
+          <div class="val">2026. 05. 31 (일)<br><span style="font-size:12px;font-weight:400;">저녁 20:00</span></div>
+        </div>
+        <div class="info-card full">
+          <div class="lbl">이용 항공</div>
+          <div class="val small">
+            이스타항공 ZE853편 · 인천공항 1터미널<br>
+            기내식 없음 · 좌석 미지정<br>
+            위탁수하물 1인 15kg · 기내수하물 1인 10kg
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:8px; background:#fff8ed; border:1px solid #f5c98a; border-radius:5px; padding:10px 13px; font-size:12px; color:#7a4000; line-height:1.65;">
+        ⚠️ <strong>불포함 사항:</strong> 현지에서 사용하는 개인경비 등
+      </div>
+    </div>
+
+    <!-- 여행 상품가 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon ic-orange">💰</div>
+        <span class="section-title">여행 상품가</span>
+      </div>
+      <div class="info-grid" style="margin-bottom:10px;">
+        <div class="info-card">
+          <div class="lbl">성인 1인</div>
+          <div class="val">1,049,000원</div>
+          <div style="font-size:11px; color:#888; margin-top:3px;">4월 유류 114,700원 포함 (변동가)</div>
+        </div>
+        <div class="info-card" style="border:1.5px solid #e8971e;">
+          <div class="lbl">최종 합계 (2명)</div>
+          <div class="val" style="color:#c05000; font-size:17px;">2,098,000원</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 결제 안내 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon ic-orange">💳</div>
+        <span class="section-title">결제 안내</span>
+      </div>
+      <div class="pay-box" style="margin-bottom:12px;">
+        <div class="pay-item">
+          <div class="p-lbl"><span class="dot dot-yellow"></span>예약금</div>
+          <div class="p-amount">400,000원</div>
+          <div class="p-deadline">결제 기한 <strong>2026.04.23</strong>까지</div>
+        </div>
+        <div class="pay-divider"></div>
+        <div class="pay-item">
+          <div class="p-lbl"><span class="dot dot-red"></span>결제 잔금</div>
+          <div class="p-amount">1,698,000원</div>
+          <div class="p-deadline">결제 기한 <strong>2026.04.30</strong>까지</div>
+        </div>
+      </div>
+
+      <div class="method-tabs">
+        <div class="method-card">
+          <div class="mc-head">🏦 현금 결제</div>
+          <div class="mc-body">
+            <div class="account">신한은행 562-173-91564849<br>예금주: 모두투어네트워크</div>
+            <div style="margin-top:7px;" class="warn">★ 현금영수증 요청 필수 ★</div>
+          </div>
+        </div>
+        <div class="method-card">
+          <div class="mc-head">📞 카드 결제 ① 유선</div>
+          <div class="mc-body">
+            카드 정보를 <strong>유선으로</strong> 담당자에게 직접 불러주세요.
+          </div>
+        </div>
+      </div>
+
+      <div class="method-full">
+        <div class="mf-head">🖥 카드 결제 ② 직접 결제 (모바일 / PC)</div>
+        <div class="mf-body">
+          <div class="pay-guide">
+            <div class="pg-label">📱 모바일 — 비회원</div>
+            <ol>
+              <li>www.modetour.com 접속</li>
+              <li>좌측 하단 <strong>메뉴(☰)</strong> 클릭</li>
+              <li>고객서비스 → 비회원예약확인</li>
+              <li>예약번호 <strong>71797935</strong> + 생년월일 입력</li>
+              <li>예약내역 → 결제하기 → 금액 수정 후 결제</li>
+            </ol>
+          </div>
+          <div class="pay-guide">
+            <div class="pg-label">💻 PC — 비회원</div>
+            <ol>
+              <li>www.modetour.com 접속</li>
+              <li>우측 상단 <strong>예약내역</strong> 클릭</li>
+              <li>비회원 예약내역 → 예약확인/결제</li>
+              <li>예약번호 <strong>71797935</strong> + 생년월일 입력</li>
+              <li>예약내역 → 결제하기 → 금액 수정 후 결제</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="red-note">
+        🔴 예약금 결제 시 — 결제 금액 옆 회색 X 버튼을 눌러 금액을 직접 수정 후 결제해 주세요 🔴
+      </div>
+      <div style="margin-top:8px; background:#f0f5fb; border:1px solid #b8d0ef; border-radius:5px; padding:9px 13px; font-size:11.5px; color:#1a4070; line-height:1.65;">
+        💡 <strong>회원가입 결제</strong> 시 가입 완료 후 담당자에게 알려주셔야 결제 진행이 가능합니다.
+      </div>
+    </div>
+
+    <!-- 취소료 규정 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon ic-red">🚫</div>
+        <span class="section-title">취소료 규정 (제16조)</span>
+      </div>
+      <table class="cancel-table">
+        <thead>
+          <tr>
+            <th>취소 통보 시점</th>
+            <th>환불 / 배상 기준</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>출발 <strong>30일 전</strong>까지</td>
+            <td><span class="badge b-green">계약금 전액 환급</span></td>
+          </tr>
+          <tr>
+            <td>출발 <strong>20~29일 전</strong></td>
+            <td><span class="badge b-yellow">여행 요금의 10% 배상</span></td>
+          </tr>
+          <tr>
+            <td>출발 <strong>10~19일 전</strong></td>
+            <td><span class="badge b-yellow">여행 요금의 15% 배상</span></td>
+          </tr>
+          <tr>
+            <td>출발 <strong>8~9일 전</strong></td>
+            <td><span class="badge b-orange">여행 요금의 20% 배상</span></td>
+          </tr>
+          <tr>
+            <td>출발 <strong>1~7일 전</strong></td>
+            <td><span class="badge b-red">여행 요금의 30% 배상</span></td>
+          </tr>
+          <tr style="background:#fff5f5;">
+            <td>출발 <strong>당일</strong></td>
+            <td><span class="badge b-dark">여행 요금의 50% 배상</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size:11px; color:#aaa; margin-top:7px; line-height:1.6;">
+        ※ 공정거래위원회 고시 제2014-4호 소비자분쟁해결기준 적용 (2014.03.21 이후 예약자)
+      </p>
+    </div>
+
+    <!-- 취소 접수 안내 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon ic-orange">📌</div>
+        <span class="section-title">취소 접수 안내</span>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text">취소는 <strong>업무 시간 내</strong> 접수분만 당일로 처리됩니다.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-text">취소 수수료 발생일은 <strong>영업일 기준</strong>입니다. (주말·공휴일 제외)</div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-text">업무 시간 <span class="em">이후 접수</span>는 <strong>다음 영업일</strong> 접수로 처리됩니다.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-text">
+            <span class="em">⚠ 토·일·월 출발 상품</span>은 <strong>금요일 업무 종료 이후 취소 시 당일 취소로 간주</strong>됩니다.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 출발 전 안내 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon ic-green">✅</div>
+        <span class="section-title">출발 전 안내</span>
+      </div>
+      <div class="highlight-box">
+        <div class="hb-title">✈ 결제 완납 + 여권 사진 등록을 완료하셨다면</div>
+        <p>
+          고객님께서 <strong>별도로 하실 일은 없습니다.</strong><br>
+          이슈 사항이 없는 이상 연락이 없는 것이 정상이며 여행에 문제가 있는 것이 아닙니다.<br>
+          <strong>출발 3~4일 전</strong>에 상세 안내사항을 정리해서 보내드릴 예정입니다.<br>
+          문의 사항이 있으시면 언제든지 연락 주세요 😊
+        </p>
+      </div>
+      <div class="share-note" style="margin-top:10px;">
+        📢 여행 관련 안내는 <strong>여행 대표자 1인</strong>에게만 발송됩니다. 일행이 있으시면 공유 부탁드립니다.
+      </div>
+    </div>
+
+    <!-- 군미필자 안내 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon ic-red">🪖</div>
+        <span class="section-title">군미필자 안내 (25세 이상 남성)</span>
+      </div>
+      <div class="warning-note">
+        25세 이상 남성 중 <strong>군 미필자</strong>는 출국 전 <strong>병무청에서 여행 허가 여부를 반드시 확인</strong>하고 담당자에게 알려주세요.<br>
+        여권 소지 여부와 관계없이 출국이 불가할 수 있으며,<br>
+        <strong>미확인으로 인한 출국 불가에 대해 여행사는 책임지지 않습니다.</strong>
+      </div>
+    </div>
+
+    <!-- 상담 시간 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon ic-teal">📞</div>
+        <span class="section-title">전화 / 카카오톡 상담 시간</span>
+      </div>
+      <div class="call-box">
+        <div class="call-time">
+          <div class="ct-lbl">평일</div>
+          <div class="ct-val">09:00<br>~ 18:00</div>
+        </div>
+        <div class="call-vdiv"></div>
+        <div class="call-info">
+          <div class="ci-row">🗓 <strong>월요일 ~ 금요일</strong> 상담 가능</div>
+          <div class="ci-row">🚫 <strong>주말 및 공휴일</strong> 휴무</div>
+          <div class="ci-row" style="font-size:11.5px; color:#999; margin-top:3px;">업무 시간 이후 문의는 다음 영업일 내 답변드립니다.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 여행사 소개 -->
+    <div class="section">
+      <div class="agency-note">
+        📌 본 상품은 <strong>모두투어 본사</strong>에서 제작한 상품을 전국 대리점에서 판매 대행합니다.<br>
+        저희는 모두투어 베스트 파트너, <strong>투어콕 대리점</strong>입니다.<br>
+        다양한 여행 상품은 <a href="http://www.modetourgo.com" target="_blank">www.modetourgo.com</a> 에서 확인하세요.<br>
+        <span class="em-red">※ 예약·상담은 반드시 위 사이트를 통해 진행해 주세요.</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span class="brand">모두투어 · 투어콕 대리점</span>
+    <span class="contact"><strong>☎ 1544-5714</strong> &nbsp;|&nbsp; www.modetourgo.com</span>
+  </div>
+
+</div>
+</body>
+</html>
