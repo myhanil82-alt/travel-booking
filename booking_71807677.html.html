@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>모두투어 여행 예약확인서</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue-deep: #003087;
+    --blue-mid: #0056b3;
+    --blue-bright: #0077cc;
+    --blue-light: #e8f2ff;
+    --blue-pale: #f0f6ff;
+    --accent: #ff6600;
+    --text-dark: #1a1a2e;
+    --text-mid: #3a3a5c;
+    --text-light: #6b7280;
+    --white: #ffffff;
+    --border: #d0e4f7;
+    --red: #e53e3e;
+    --green: #2f855a;
+    --yellow: #d97706;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: #e8f0fa;
+    color: var(--text-dark);
+    min-height: 100vh;
+    padding: 24px 16px;
+  }
+
+  .page-wrapper { max-width: 720px; margin: 0 auto; }
+
+  /* ── HEADER ── */
+  .header {
+    background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue-mid) 60%, var(--blue-bright) 100%);
+    border-radius: 16px 16px 0 0;
+    padding: 28px 32px 22px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content:''; position:absolute; top:-50px; right:-50px;
+    width:200px; height:200px; border-radius:50%;
+    background:rgba(255,255,255,0.06);
+  }
+
+  .header-top {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 18px;
+  }
+  .brand { display:flex; align-items:center; gap:12px; }
+  .brand-logo {
+    width:48px; height:48px; background:white; border-radius:10px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:20px; font-weight:800; color:var(--blue-deep);
+    box-shadow:0 4px 14px rgba(0,0,0,0.2);
+  }
+  .brand-info h1 { font-size:17px; font-weight:700; color:white; }
+  .brand-info p  { font-size:12px; color:rgba(255,255,255,0.7); margin-top:2px; }
+  .doc-badge {
+    background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3);
+    border-radius:8px; padding:8px 16px; text-align:right;
+  }
+  .doc-badge .label { font-size:11px; color:rgba(255,255,255,0.7); letter-spacing:1px; }
+  .doc-badge .value { font-size:20px; font-weight:800; color:white; letter-spacing:1px; }
+  .header-title { text-align:center; padding:10px 0 4px; }
+  .header-title h2 { font-size:26px; font-weight:800; color:white; letter-spacing:4px; }
+  .header-title .subtitle { font-size:12px; color:rgba(255,255,255,0.6); margin-top:5px; letter-spacing:0.5px; }
+
+  /* ── ALERT BAR ── */
+  .alert-bar {
+    background:#fff3f3; border-top:3px solid var(--red);
+    padding:14px 32px;
+    display:flex; align-items:flex-start; gap:10px;
+    font-size:14px; color:#7b2020; line-height:1.7;
+  }
+  .alert-bar .icon { font-size:18px; flex-shrink:0; margin-top:2px; }
+  .alert-bar strong { color:var(--red); font-weight:700; }
+
+  /* ── BODY ── */
+  .body { background:white; }
+
+  /* ── SECTION ── */
+  .section { padding:24px 32px; border-bottom:1px solid #f0f4f8; }
+  .section:last-child { border-bottom:none; }
+  .section-header { display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+  .section-icon {
+    width:32px; height:32px; border-radius:8px; background:var(--blue-light);
+    display:flex; align-items:center; justify-content:center; font-size:15px;
+  }
+  .section-title { font-size:14px; font-weight:700; color:var(--blue-deep); letter-spacing:0.5px; text-transform:uppercase; }
+
+  /* ── INFO GRID ── */
+  .info-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
+  .info-grid.three { grid-template-columns:repeat(3,1fr); }
+  .info-card {
+    background:var(--blue-pale); border:1px solid var(--border); border-radius:10px; padding:13px 16px;
+  }
+  .info-label { font-size:11px; font-weight:600; color:var(--text-light); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:4px; }
+  .info-value { font-size:14px; font-weight:600; color:var(--text-dark); line-height:1.5; }
+  .info-value.big { font-size:20px; font-weight:800; color:var(--blue-deep); }
+
+  /* 상품 링크 카드 */
+  .product-link-card {
+    background:var(--blue-light); border:2px solid var(--blue-bright); border-radius:12px;
+    padding:18px 20px; margin-bottom:12px;
+    display:flex; align-items:center; gap:14px;
+  }
+  .product-link-card .link-icon { font-size:28px; flex-shrink:0; }
+  .product-link-card .link-label { font-size:12px; font-weight:600; color:var(--text-light); letter-spacing:0.5px; margin-bottom:4px; }
+  .product-link-card a { font-size:19px; font-weight:700; color:var(--blue-bright); text-decoration:none; line-height:1.4; }
+  .product-link-card a:hover { text-decoration:underline; }
+
+  /* ── FLIGHT TABLE ── */
+  .flight-table { width:100%; border-collapse:collapse; border-radius:10px; overflow:hidden; border:1px solid var(--border); margin-bottom:12px; }
+  .flight-table th { background:var(--blue-deep); color:white; padding:12px 18px; text-align:left; font-weight:600; font-size:14px; width:36%; }
+  .flight-table td { padding:14px 18px; border-bottom:1px solid #f0f4f8; color:var(--text-dark); font-weight:500; font-size:15px; line-height:1.6; }
+  .flight-table tr:last-child td { border-bottom:none; }
+  .flight-table tr:nth-child(even) td { background:var(--blue-pale); }
+
+  .tag-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+  .tag { background:var(--blue-light); border:1px solid var(--border); border-radius:20px; padding:6px 14px; font-size:13px; font-weight:600; color:var(--blue-deep); }
+
+  /* ── PAYMENT SUMMARY ── */
+  .payment-summary {
+    background:linear-gradient(135deg, var(--blue-deep), var(--blue-mid));
+    border-radius:12px; padding:22px 26px; color:white; margin-bottom:14px;
+  }
+  .payment-summary .row { display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.1); }
+  .payment-summary .row:last-child { border-bottom:none; }
+  .payment-summary .lbl { font-size:13px; color:rgba(255,255,255,0.75); }
+  .payment-summary .amt { font-size:15px; font-weight:700; color:white; display:flex; align-items:center; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
+  .payment-summary .lbl-total { font-size:14px; color:rgba(255,255,255,0.9); font-weight:600; }
+  .payment-summary .total { font-size:22px; font-weight:800; color:white; }
+
+  /* 유류 강조 배지 */
+  .surcharge-badge {
+    display:inline-flex; align-items:center; gap:5px;
+    background:linear-gradient(90deg,#d97706,#f59e0b);
+    color:white; border-radius:6px; padding:3px 10px;
+    font-size:12px; font-weight:700; letter-spacing:0.3px; white-space:nowrap;
+  }
+
+  /* 결제 카드 */
+  .pay-cards { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px; }
+  .pay-card { border-radius:12px; padding:16px 18px; }
+  .pay-card.done  { background:linear-gradient(135deg,#f0fff4,#e6ffed); border:1.5px solid #68d391; }
+  .pay-card.pending { background:linear-gradient(135deg,#fff5f5,#ffe5e5); border:1.5px solid #fc8181; }
+  .pay-card .pc-label { font-size:12px; font-weight:700; letter-spacing:0.5px; margin-bottom:6px; display:flex; align-items:center; gap:5px; }
+  .pay-card.done .pc-label   { color:var(--green); }
+  .pay-card.pending .pc-label { color:var(--red); }
+  .pay-card .pc-done-badge { display:inline-block; background:var(--green); color:white; font-size:14px; font-weight:700; border-radius:4px; padding:2px 10px; margin-bottom:6px; }
+  .pay-card .pc-amount { font-size:22px; font-weight:800; margin-bottom:4px; }
+  .pay-card.done .pc-amount   { color:var(--green); }
+  .pay-card.pending .pc-amount { color:var(--red); }
+  .pay-card .pc-sub { font-size:14px; color:var(--text-mid); line-height:1.7; }
+
+  /* 결제 방법 */
+  .pay-method { background:var(--blue-pale); border:1px solid var(--border); border-radius:10px; padding:16px 20px; margin-bottom:10px; }
+  .pay-method .pm-title { font-size:16px; font-weight:700; color:var(--blue-deep); margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+  .pay-method .pm-body { font-size:15px; color:var(--text-mid); line-height:1.8; }
+  .pay-method .pm-body strong { color:var(--text-dark); }
+  .pay-method .pm-body .acct {
+    font-size:17px; font-weight:700; color:var(--blue-deep);
+    background:white; border:1px solid var(--border); border-radius:8px;
+    padding:10px 16px; margin:8px 0; display:inline-block; letter-spacing:0.5px; line-height:1.7;
+  }
+  .red-notice {
+    background:#fff5f5; border:1.5px solid #feb2b2; border-radius:8px;
+    padding:10px 14px; margin-top:10px; font-size:14px;
+    color:var(--red); font-weight:600; line-height:1.6;
+  }
+  .card-notice {
+    background:#fffbeb; border:1.5px solid #fcd34d; border-radius:8px;
+    padding:10px 14px; margin-top:10px; font-size:14px; color:#78350f; font-weight:600;
+  }
+
+  .steps { margin:8px 0 0; }
+  .steps ol { padding-left:20px; }
+  .steps ol li { font-size:15px; color:var(--text-mid); padding:3px 0; line-height:1.7; }
+  .steps ol li strong { color:var(--text-dark); }
+
+  /* ── CANCEL TABLE ── */
+  .cancel-table { width:100%; border-collapse:collapse; font-size:14px; }
+  .cancel-table th { background:var(--blue-deep); color:white; padding:10px 14px; font-weight:600; text-align:left; }
+  .cancel-table th:first-child { border-radius:8px 0 0 0; }
+  .cancel-table th:last-child  { border-radius:0 8px 0 0; }
+  .cancel-table td { padding:10px 14px; border-bottom:1px solid #f0f4f8; color:var(--text-mid); font-size:14px; }
+  .cancel-table tr:last-child td { border-bottom:none; }
+  .cancel-table tr:nth-child(even) td { background:var(--blue-pale); }
+  .cancel-table .pct  { font-weight:700; color:var(--red); text-align:right; }
+  .cancel-table .safe { font-weight:700; color:var(--green); text-align:right; }
+
+  /* ── NOTICE BOXES ── */
+  .notice-box { border-radius:10px; padding:13px 16px; margin-bottom:10px; font-size:14px; line-height:1.7; display:flex; gap:10px; align-items:flex-start; }
+  .notice-box.red    { background:#fff5f5; border-left:3px solid var(--red);    color:#742a2a; }
+  .notice-box.blue   { background:var(--blue-pale); border-left:3px solid var(--blue-bright); color:var(--text-mid); }
+  .notice-box.yellow { background:#fffbeb; border-left:3px solid #d97706; color:#78350f; }
+
+  /* ── CANCEL STEPS ── */
+  .cancel-step { display:flex; gap:14px; align-items:flex-start; padding:12px 18px; border-bottom:1px solid #f0f4f8; font-size:14px; color:var(--text-mid); }
+  .cancel-step:last-child { border-bottom:none; }
+  .cs-num { width:26px; height:26px; border-radius:50%; background:var(--blue-deep); color:white; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; flex-shrink:0; margin-top:1px; }
+  .cs-num.warn { background:var(--red); }
+
+  /* ── DEPART BOX ── */
+  .depart-box { background:var(--blue-pale); border:1px solid var(--border); border-radius:10px; padding:18px 20px; margin-bottom:10px; }
+  .depart-box .title { font-size:14px; font-weight:700; color:var(--blue-deep); margin-bottom:8px; display:flex; align-items:center; gap:6px; }
+  .depart-box .body  { font-size:14px; color:var(--text-mid); line-height:1.9; }
+  .depart-box .highlight-date { font-size:16px; font-weight:700; color:var(--accent); display:inline; }
+
+  /* ── BRAND CARD ── */
+  .brand-card {
+    background:linear-gradient(135deg,var(--blue-light),#dbeeff);
+    border:2px solid var(--blue-bright); border-radius:14px;
+    padding:20px 24px; margin:0 32px 24px;
+  }
+  .brand-card .bc-title { font-size:16px; font-weight:700; color:var(--blue-deep); margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+  .brand-card .bc-body  { font-size:15px; color:var(--text-mid); line-height:2.0; }
+  .brand-card .bc-body a { color:var(--blue-bright); font-weight:700; text-decoration:none; }
+  .brand-card .bc-notice { margin-top:10px; font-size:14px; color:var(--text-light); background:white; border-radius:6px; padding:8px 14px; border-left:3px solid var(--blue-bright); line-height:1.7; }
+
+  /* ── CONTACT FOOTER ── */
+  .contact-footer { background:linear-gradient(135deg,var(--blue-deep),#001f5e); border-radius:0 0 16px 16px; padding:26px 32px; color:white; }
+  .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:18px; }
+  .contact-item .label { font-size:11px; color:rgba(255,255,255,0.5); letter-spacing:1px; text-transform:uppercase; margin-bottom:3px; }
+  .contact-item .value { font-size:15px; font-weight:600; color:white; }
+  .contact-item .value a { color:#93c5fd; text-decoration:none; }
+  .hours { background:rgba(255,255,255,0.08); border-radius:8px; padding:12px 16px; font-size:13px; color:rgba(255,255,255,0.65); text-align:center; line-height:1.9; }
+  .hours strong { color:rgba(255,255,255,0.9); font-weight:600; }
+
+  @media (max-width: 560px) {
+    .header { padding:20px 18px 16px; }
+    .alert-bar { padding:12px 18px; }
+    .section { padding:20px 18px; }
+    .info-grid.three { grid-template-columns:repeat(2,1fr); }
+    .pay-cards { grid-template-columns:1fr; }
+    .contact-grid { grid-template-columns:1fr; }
+    .brand-card { margin:0 18px 20px; }
+    .header-title h2 { font-size:20px; letter-spacing:2px; }
+  }
+  @media print { body { background:white; padding:0; } .page-wrapper { max-width:100%; } }
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- ══ HEADER ══ -->
+  <div class="header">
+    <div class="header-top">
+      <div class="brand">
+        <div class="brand-logo">M</div>
+        <div class="brand-info">
+          <h1>🌐 MODETOUR</h1>
+          <p>이경진 실장 · ☎ 1544-5714 · 여행 출발 21일 전</p>
+        </div>
+      </div>
+      <div class="doc-badge">
+        <div class="label">예약번호</div>
+        <div class="value">71807677</div>
+      </div>
+    </div>
+    <div class="header-title">
+      <h2>모두투어 여행 예약확인서</h2>
+      <p class="subtitle">특별약관 적용상품</p>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- ══ 인터넷 취소 불가 경고 ══ -->
+    <div class="alert-bar">
+      <span class="icon">⚠️</span>
+      <span>
+        인터넷에서 예약·결제 취소 및 변경은 <strong>불가</strong>합니다.<br>
+        취소·변경 또는 여행자 정보 수정이 필요하시면 <strong>반드시 예약 담당자에게 직접 연락</strong>해 주세요.
+      </span>
+    </div>
+
+    <!-- ══ 예약 정보 ══ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">📋</div>
+        <span class="section-title">예약 정보</span>
+      </div>
+
+      <div class="product-link-card">
+        <div class="link-icon">🔗</div>
+        <div>
+          <div class="link-label">예약 상품 링크</div>
+          <a href="https://www.modetour.com/package/105253582?MLoc=99&Pnum=105253582&ANO=1772510&sno=C2181215&thru=crs" target="_blank">
+            www.modetour.com (클릭하여 상품 확인)
+          </a>
+        </div>
+      </div>
+
+      <div class="info-grid three">
+        <div class="info-card">
+          <div class="info-label">예약번호</div>
+          <div class="info-value big">71807677</div>
+        </div>
+        <div class="info-card">
+          <div class="info-label">예약 인원</div>
+          <div class="info-value big">4 명</div>
+        </div>
+        <div class="info-card">
+          <div class="info-label">객실 구성</div>
+          <div class="info-value">2인1실 × 2방</div>
+        </div>
+      </div>
+      <div style="margin-top:10px;">
+        <div class="notice-box blue">
+          <span>🛏️</span>
+          <span><strong>베드 타입:</strong> 더블베드 1개 또는 싱글베드 2개 중 랜덤 배정</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ 여행 일정 및 항공 ══ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">✈️</div>
+        <span class="section-title">여행 일정 및 항공</span>
+      </div>
+
+      <table class="flight-table">
+        <tr>
+          <th>한국 출발</th>
+          <td><strong>2026. 05. 12 (화)</strong><br>오전 11시 10분</td>
+        </tr>
+        <tr>
+          <th>한국 도착</th>
+          <td><strong>2026. 05. 15 (금)</strong><br>오후 16시 25분</td>
+        </tr>
+        <tr>
+          <th>이용 항공</th>
+          <td>진에어 LJ385편 · 인천공항 2터미널</td>
+        </tr>
+      </table>
+
+      <div class="tag-row">
+        <div class="tag">🍽️ 기내식 없음</div>
+        <div class="tag">💺 좌석 미지정</div>
+        <div class="tag">🧳 위탁수하물 1인 15kg</div>
+        <div class="tag">👜 기내수하물 1인 10kg</div>
+      </div>
+
+      <div style="margin-top:12px;">
+        <div class="notice-box yellow">
+          <span>⚠️</span>
+          <span><strong>불포함 사항:</strong> 전 일정 가이드 &amp; 기사 경비 <strong>1인 4,000엔</strong> 현지 직접 지불 (성인·아동 동일 / 유아 제외)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ 여행 상품가 ══ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">💰</div>
+        <span class="section-title">여행 상품가</span>
+      </div>
+
+      <div class="payment-summary">
+        <div class="row">
+          <span class="lbl">성인 1인 여행요금</span>
+          <span class="amt">
+            1,599,900원
+            <span class="surcharge-badge">🔒 유류할증료 고정</span>
+          </span>
+        </div>
+        <div class="row">
+          <span class="lbl">예약 인원</span>
+          <span class="amt">× 4 명</span>
+        </div>
+        <div class="row" style="padding-top:14px; margin-top:4px; border-top:1px solid rgba(255,255,255,0.25) !important;">
+          <span class="lbl-total">최종 합계 (4명)</span>
+          <span class="total">6,399,600 원</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ 결제 안내 ══ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">💳</div>
+        <span class="section-title">결제 안내</span>
+      </div>
+
+      <div class="pay-cards">
+        <div class="pay-card done">
+          <div class="pc-label">✅ 예약금</div>
+          <div class="pc-done-badge">결제 완료</div>
+          <div class="pc-amount">1인 800,000원</div>
+          <div class="pc-sub">4명 합계 <strong>3,200,000원</strong><br>결제일 2026. 04. 22</div>
+        </div>
+        <div class="pay-card pending">
+          <div class="pc-label">⏳ 결제 잔금</div>
+          <div class="pc-amount">1인 799,900원</div>
+          <div class="pc-sub">4명 합계 <strong>3,199,600원</strong><br>결제 기한 <strong style="color:var(--red);">2026.04.28 오후 17시</strong></div>
+        </div>
+      </div>
+
+      <!-- 현금 결제 -->
+      <div class="pay-method">
+        <div class="pm-title">🏦 현금 결제</div>
+        <div class="pm-body">
+          <div class="acct">신한은행 562-173-91577470&nbsp;&nbsp;|&nbsp;&nbsp;예금주: 모두투어네트워크</div>
+          <div class="red-notice">★ 현금영수증 요청 필수 ★</div>
+        </div>
+      </div>
+
+      <!-- 카드 유선 -->
+      <div class="pay-method">
+        <div class="pm-title">📞 카드 결제 ① 유선</div>
+        <div class="pm-body">카드 정보를 <strong>유선으로</strong> 담당자에게 직접 불러주세요.</div>
+      </div>
+
+      <!-- 카드 직접 -->
+      <div class="pay-method">
+        <div class="pm-title">🖥️ 카드 결제 ② 직접 결제 (모바일 / PC)</div>
+        <div class="pm-body">
+          <strong>📱 모바일 — 비회원</strong>
+          <div class="steps"><ol>
+            <li>www.modetour.com 접속</li>
+            <li>좌측 하단 <strong>메뉴(☰)</strong> 클릭</li>
+            <li>고객서비스 → 비회원예약확인</li>
+            <li>예약번호 <strong>71807677</strong> + 생년월일 입력</li>
+            <li>예약내역 → 결제하기 → 금액 수정 후 결제</li>
+          </ol></div>
+
+          <strong style="display:block; margin-top:14px;">💻 PC — 비회원</strong>
+          <div class="steps"><ol>
+            <li>www.modetour.com 접속</li>
+            <li>우측 상단 <strong>예약내역</strong> 클릭</li>
+            <li>비회원 예약내역 → 예약확인/결제</li>
+            <li>예약번호 <strong>71807677</strong> + 생년월일 입력</li>
+            <li>예약내역 → 결제하기 → 금액 수정 후 결제</li>
+          </ol></div>
+
+          <div class="red-notice" style="margin-top:14px;">
+            🔴 예약금 결제 시 — 결제 금액 옆 회색 X 버튼을 눌러 금액을 직접 수정 후 결제해 주세요 🔴
+          </div>
+          <div class="card-notice" style="margin-top:10px;">
+            💡 <strong>회원가입 결제</strong> 시 가입 완료 후 담당자에게 알려주셔야 결제 진행이 가능합니다.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ 취소료 규정 ══ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">🚫</div>
+        <span class="section-title">취소료 규정 (특별약관)</span>
+      </div>
+
+      <div style="overflow:hidden; border-radius:8px; border:1px solid var(--border); margin-bottom:14px;">
+        <table class="cancel-table">
+          <thead><tr>
+            <th>취소 통보 시점</th>
+            <th style="text-align:right; color:white;">환불 / 배상 기준</th>
+          </tr></thead>
+          <tbody>
+            <tr><td>출발 <strong>30일 전</strong>까지 (~ D-30)</td><td class="safe">계약금 전액 환급</td></tr>
+            <tr><td>출발 <strong>20~29일 전</strong></td><td class="pct">여행 요금의 30%</td></tr>
+            <tr><td>출발 <strong>14~19일 전</strong></td><td class="pct">여행 요금의 50%</td></tr>
+            <tr><td>출발 <strong>8~13일 전</strong></td><td class="pct">여행 요금의 70%</td></tr>
+            <tr><td>출발 <strong>1~7일 전</strong></td><td class="pct">여행 요금의 80%</td></tr>
+            <tr><td>출발 <strong>당일</strong></td><td class="pct">여행 요금의 100%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="notice-box blue">
+        <span>ℹ️</span>
+        <span>해당 국가 입국 불허 또는 항공사 비운항으로 여행 불가 시, 여행자·여행사 간 상호 면책 적용됩니다.</span>
+      </div>
+      <div class="notice-box blue">
+        <span>✈️</span>
+        <span>진에어 LJ385편은 국토부 인허가 조건으로 진행되며, 공항·항공사 사정에 따라 시간대·편명 변경 또는 취소될 수 있습니다. 취소 시 개별 안내됩니다.</span>
+      </div>
+    </div>
+
+    <!-- ══ 취소 접수 안내 ══ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">📌</div>
+        <span class="section-title">취소 접수 안내</span>
+      </div>
+      <div style="background:var(--blue-pale); border:1px solid var(--border); border-radius:10px; overflow:hidden;">
+        <div class="cancel-step"><div class="cs-num">1</div><span>취소는 <strong>업무 시간 내</strong> 접수분만 당일로 처리됩니다.</span></div>
+        <div class="cancel-step"><div class="cs-num">2</div><span>취소 수수료 발생일은 <strong>영업일 기준</strong>입니다. (주말·공휴일 제외)</span></div>
+        <div class="cancel-step"><div class="cs-num">3</div><span>업무 시간 이후 접수는 <strong>다음 영업일</strong> 접수로 처리됩니다.</span></div>
+        <div class="cancel-step" style="border-bottom:none;">
+          <div class="cs-num warn">⚠</div>
+          <span style="color:var(--red); font-weight:600;">토·일·월 출발 상품은 <strong>금요일 업무 종료 이후 취소 시 당일 취소로 간주</strong>됩니다.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ 출발 전 안내 ══ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">✅</div>
+        <span class="section-title">출발 전 안내</span>
+      </div>
+
+      <div class="depart-box">
+        <div class="title">✈️ 결제 완납 + 여권 사진 등록을 완료하셨다면</div>
+        <div class="body">
+          고객님께서 <strong>별도로 하실 일은 없습니다.</strong><br>
+          이슈 사항이 없는 이상 연락이 없는 것이 정상이며 여행에 문제가 있는 것이 아닙니다.<br>
+          <span class="highlight-date">출발 3~4일 전</span>에 상세 안내사항을 정리해서 보내드릴 예정이오니 문의 사항이 있으시면 언제든지 연락 주세요 😊
+        </div>
+      </div>
+
+      <div class="notice-box blue">
+        <span>📢</span>
+        <span>여행 관련 안내는 <strong>여행 대표자 1인</strong>에게만 발송됩니다. 일행이 있으시면 공유 부탁드립니다.</span>
+      </div>
+    </div>
+
+    <!-- ══ 군미필자 안내 ══ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">🪖</div>
+        <span class="section-title">군미필자 안내 (25세 이상 남성)</span>
+      </div>
+      <div class="notice-box red">
+        <span>🚨</span>
+        <div>
+          25세 이상 남성 중 <strong>군 미필자</strong>는 출국 전 <strong>병무청에서 여행 허가 여부를 반드시 확인</strong>하고 담당자에게 알려주세요.<br>
+          여권 소지 여부와 관계없이 출국이 불가할 수 있으며, <strong>미확인으로 인한 출국 불가에 대해 여행사는 책임지지 않습니다.</strong>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end .body -->
+
+  <!-- ══ 브랜드 안내 카드 ══ -->
+  <div style="background:white; padding:8px 0 8px;">
+    <div class="brand-card">
+      <div class="bc-title">📌 투어콕 대리점 안내</div>
+      <div class="bc-body">
+        본 상품은 <strong>모두투어 본사</strong>에서 제작한 상품을 전국 대리점에서 판매 대행합니다.<br>
+        저희는 모두투어 베스트 파트너, <strong>투어콕 대리점</strong>입니다.<br>
+        다양한 여행 상품은 <a href="https://www.modetourgo.com" target="_blank">www.modetourgo.com</a> 에서 확인하세요.
+        <div class="bc-notice">※ 예약·상담은 반드시 위 사이트를 통해 진행해 주세요.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ CONTACT FOOTER ══ -->
+  <div class="contact-footer">
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="label">전화 / 카카오톡 상담</div>
+        <div class="value">☎ 1544-5714</div>
+      </div>
+      <div class="contact-item">
+        <div class="label">예약 사이트</div>
+        <div class="value"><a href="https://www.modetourgo.com" target="_blank">www.modetourgo.com</a></div>
+      </div>
+    </div>
+    <div class="hours">
+      <strong>상담 가능 시간</strong><br>
+      평일 오전 9시 ~ 오후 6시 &nbsp;|&nbsp; 🚫 주말 및 공휴일 휴무<br>
+      업무 시간 이후 문의는 다음 영업일 내 답변드립니다.
+    </div>
+  </div>
+
+</div><!-- end .page-wrapper -->
+</body>
+</html>
