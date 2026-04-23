@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>여행 확정 안내 | 상해 패키지</title>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #4a7c5e;
+    --forest-light: #eaf4ef;
+    --green: #5a9472;
+    --green-mid: #7ab892;
+    --mint: #e8f7ef;
+    --stone: #8a9e90;
+    --gold: #b8966e;
+    --gold-light: #f7f0e6;
+    --amber: #c8820a;
+    --amber-light: #fdf5e4;
+    --red: #c0392b;
+    --red-light: #fdf0ef;
+    --blue: #2a6da8;
+    --sky: #e6f4fb;
+    --cream: #f4f9f6;
+    --warm-white: #fdfffe;
+    --charcoal: #2a3830;
+    --medium: #4a6254;
+    --muted: #8aaa94;
+    --border: #cce0d4;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Nanum Gothic', '맑은 고딕', 'Malgun Gothic', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    line-height: 1.7;
+  }
+  .main { max-width: 700px; margin: 0 auto; }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    background: linear-gradient(155deg, #6a9e80 0%, #8abea0 50%, #7ab8a8 100%);
+    padding: 3.5rem 2rem 3rem;
+    text-align: center;
+    overflow: visible;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 40px;
+    background: var(--cream);
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px; padding: 4px 16px;
+    font-size: 11px; letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.9); margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+  .hero-title {
+    font-size: clamp(22px, 4vw, 32px);
+    font-weight: 800; color: #fff; line-height: 1.4; margin-bottom: 0.4rem;
+  }
+  .hero-title em { color: #a8f0c8; font-style: normal; }
+  .hero-sub { font-size: 13.5px; color: rgba(255,255,255,0.75); margin-bottom: 1.25rem; }
+  .hero-names { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 1.25rem; }
+  .agent-wrap { display: flex; flex-direction: column; align-items: center; gap: 8px; padding-bottom: 1rem; }
+  .agent-name {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 30px; padding: 7px 18px; font-size: 13px; color: #fff; font-weight: 700;
+  }
+  .agent-contacts { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .agent-contacts a {
+    display: inline-flex; align-items: center; gap: 6px;
+    border-radius: 30px; padding: 6px 14px;
+    font-size: 12.5px; text-decoration: none; font-weight: 700;
+  }
+  .contact-phone { background: rgba(255,255,255,0.92); color: #3a6a50; }
+  .contact-kakao { background: #FEE500; color: #3a1d00; }
+
+  /* FLIGHT BANNER */
+  .flight-banner {
+    background: #5a8a72;
+    padding: 1.5rem 1.75rem;
+    border-bottom: 3px solid var(--green-mid);
+  }
+  .flight-banner-title {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: #a8f0c8; font-weight: 700; margin-bottom: 0.75rem;
+  }
+  .flight-row {
+    display: flex; align-items: center;
+    background: rgba(255,255,255,0.07);
+    border-radius: 10px; padding: 12px 16px; margin-bottom: 8px;
+  }
+  .flight-row:last-child { margin-bottom: 0; }
+  .flight-label { font-size: 11px; font-weight: 700; color: #a8f0c8; min-width: 40px; }
+  .flight-port { flex: 1; text-align: center; }
+  .flight-port-name { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.7); }
+  .flight-port-time { font-size: 20px; font-weight: 800; color: #fff; line-height: 1.2; }
+  .flight-port-date { font-size: 11px; color: rgba(255,255,255,0.55); }
+  .flight-arrow { flex: 0 0 36px; text-align: center; color: #a8f0c8; font-size: 18px; }
+  .flight-meta {
+    display: flex; gap: 16px; justify-content: center;
+    margin-top: 10px; flex-wrap: wrap;
+  }
+  .flight-meta-item {
+    font-size: 12px; color: rgba(255,255,255,0.6); text-align: center;
+  }
+  .flight-meta-item strong { color: #a8f0c8; font-weight: 700; display: block; font-size: 13px; }
+
+  /* MEETING BANNER */
+  .meeting-banner {
+    background: var(--amber-light);
+    border-bottom: 3px solid var(--amber);
+    padding: 1.25rem 1.75rem;
+  }
+  .meeting-banner-title {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--amber); font-weight: 700; margin-bottom: 0.75rem;
+  }
+  .meeting-info {
+    display: flex; gap: 16px; margin-bottom: 10px; flex-wrap: wrap;
+  }
+  .meeting-info-item {
+    background: #fff; border: 1px solid #e0c890;
+    border-radius: 8px; padding: 8px 14px; font-size: 13px;
+  }
+  .meeting-info-item strong { color: var(--amber); font-weight: 800; display: block; font-size: 12px; margin-bottom: 2px; }
+
+  /* SECTION */
+  .section {
+    background: var(--warm-white);
+    border-bottom: 1px solid var(--border);
+    padding: 1.75rem;
+  }
+  .section:nth-child(even) { background: var(--cream); }
+  .section-eyebrow {
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--green); font-weight: 700; margin-bottom: 0.3rem;
+  }
+  .section-heading {
+    font-size: 18px; font-weight: 800; color: var(--charcoal);
+    margin-bottom: 1.1rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-heading::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* INFO CARD */
+  .info-card { background: var(--warm-white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .info-row {
+    display: flex; gap: 1rem; padding: 11px 15px;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start; font-size: 14px;
+  }
+  .info-row:last-child { border-bottom: none; }
+  .info-key { min-width: 92px; font-size: 13px; font-weight: 700; color: var(--medium); padding-top: 2px; }
+  .info-val { flex: 1; color: var(--charcoal); line-height: 1.65; font-size: 13.5px; }
+  .info-val strong { color: var(--forest); font-weight: 700; }
+
+  /* ALERTS */
+  .alert { border-radius: 8px; padding: 10px 14px; font-size: 13px; line-height: 1.65; margin-top: 8px; }
+  .alert-red { background: var(--red-light); border-left: 3px solid var(--red); color: #7a2020; }
+  .alert-amber { background: var(--amber-light); border-left: 3px solid var(--amber); color: #7a4a00; }
+  .alert-green { background: var(--forest-light); border-left: 3px solid var(--green); color: #1a4a2e; }
+  .alert-blue { background: var(--sky); border-left: 3px solid var(--blue); color: #1a3060; }
+
+  /* LINK PILL */
+  a.link-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--forest-light); border: 1px solid #90c8a8;
+    border-radius: 20px; padding: 5px 14px;
+    font-size: 12.5px; color: var(--forest); text-decoration: none;
+    margin-top: 6px; font-weight: 700;
+  }
+
+  /* CHECKLIST */
+  .checklist { list-style: none; padding: 0; }
+  .checklist li {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 8px 0; border-bottom: 1px solid var(--border);
+    font-size: 13.5px; line-height: 1.6;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .check-num {
+    min-width: 22px; height: 22px;
+    background: var(--forest-light); color: var(--forest);
+    border-radius: 50%; font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 2px;
+  }
+
+  /* QA */
+  .qa-item { padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .qa-item:last-child { border-bottom: none; }
+  .qa-q { font-size: 13.5px; font-weight: 700; color: var(--forest); margin-bottom: 4px; }
+  .qa-a { font-size: 13px; color: var(--charcoal); line-height: 1.65; }
+
+  /* DATA GRID */
+  .data-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .data-card { background: var(--warm-white); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
+  .data-card-title { font-size: 13px; font-weight: 800; color: var(--forest); margin-bottom: 6px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+  .data-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 4px; margin-top: 6px; }
+  .data-pro { font-size: 12px; color: #2a6da8; margin-bottom: 2px; }
+  .data-con { font-size: 12px; color: #c0392b; margin-bottom: 2px; }
+
+  /* IMG */
+  .section-img { width: 100%; border-radius: 10px; border: 1px solid var(--border); display: block; }
+
+  /* FOOTER */
+  .footer { background: #5a8a72; color: #a8c8b0; padding: 2.5rem 2rem; text-align: center; }
+  .footer-title { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 0.5rem; }
+  .footer-sub { font-size: 13px; color: #6a9878; line-height: 1.8; margin-bottom: 1.25rem; }
+  .footer-name { font-size: 14px; font-weight: 700; color: #c0d8c8; margin-bottom: 10px; }
+  .footer-contacts { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .footer-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    border-radius: 30px; padding: 10px 22px;
+    font-size: 14px; text-decoration: none; font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .footer-btn-phone {
+    background: transparent;
+    border: 1.5px solid rgba(255,255,255,0.5);
+    color: #fff;
+  }
+  .footer-btn-kakao {
+    background: #FEE500;
+    border: 1.5px solid #FEE500;
+    color: #3a1d00;
+  }
+  .footer-btn-icon {
+    font-size: 16px;
+  }
+
+  @media (max-width: 500px) {
+    .section { padding: 1.4rem 1.2rem; }
+    .data-grid { grid-template-columns: 1fr; }
+    .meeting-info { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<div class="main">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-tag">✦ Travel Confirmation ✦</div>
+    <div class="hero-title"><em>장가계</em> 패키지 여행<br>출발 전 안내입니다</div>
+    <div class="hero-sub">2026년 4월 29일 출발 | 인천국제공항</div>
+    <div class="agent-wrap">
+      <div class="agent-name">모두투어 이경진 실장</div>
+      <div class="agent-contacts">
+        <a class="contact-phone" href="tel:15445714">📞 1544-5714</a>
+        <a class="contact-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡 상담</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLIGHT BANNER -->
+  <div class="flight-banner">
+    <div class="flight-banner-title">✈️ 항공 일정 — 중국남방항공 (China Southern)</div>
+    <div class="flight-row">
+      <div class="flight-label">가는 편</div>
+      <div class="flight-port">
+        <div class="flight-port-name">인천 (ICN) T1</div>
+        <div class="flight-port-time">12:35</div>
+        <div class="flight-port-date">4월 29일 (수)</div>
+      </div>
+      <div class="flight-arrow">→</div>
+      <div class="flight-port">
+        <div class="flight-port-name">상해 푸동 (PVG)</div>
+        <div class="flight-port-time">13:45</div>
+        <div class="flight-port-date">4월 29일 (수)</div>
+      </div>
+    </div>
+    <div class="flight-row">
+      <div class="flight-label">오는 편</div>
+      <div class="flight-port">
+        <div class="flight-port-name">상해 푸동 (PVG)</div>
+        <div class="flight-port-time">16:50</div>
+        <div class="flight-port-date">5월 2일 (토)</div>
+      </div>
+      <div class="flight-arrow">→</div>
+      <div class="flight-port">
+        <div class="flight-port-name">인천 (ICN) T1</div>
+        <div class="flight-port-time">20:05</div>
+        <div class="flight-port-date">5월 2일 (토)</div>
+      </div>
+    </div>
+    <div class="flight-meta">
+      <div class="flight-meta-item"><strong>CZ314 / CZ369</strong>편명</div>
+      <div class="flight-meta-item"><strong>기내식 없음</strong>식사</div>
+      <div class="flight-meta-item"><strong>좌석 미지정</strong>좌석</div>
+      <div class="flight-meta-item"><strong>위탁 15kg / 기내 10kg</strong>수하물</div>
+    </div>
+  </div>
+
+  <!-- MEETING BANNER -->
+  <div class="meeting-banner">
+    <div class="meeting-banner-title">📍 미팅 장소 안내</div>
+    <div class="meeting-info">
+      <div class="meeting-info-item"><strong>일시</strong>2026년 4월 29일 09:15</div>
+      <div class="meeting-info-item"><strong>장소</strong>인천국제공항 1터미널 3층 출국장 동편 A카운터 옆 창측<br>여행사 카운터 1~3번 테이블 모두투어</div>
+    </div>
+    <div class="alert alert-amber" style="margin-top:0;">
+      📋 일정표와 항공권은 현장에서 직접 전달해드립니다.<br>시간에 맞춰 <strong>인천공항에 도착해 주세요!</strong>
+    </div>
+    
+  </div>
+
+  <!-- 1. 일정표 & 중국 입국신고서 -->
+  <div class="section">
+    <div class="section-eyebrow">01</div>
+    <div class="section-heading">일정표 · 입국신고서</div>
+    <div class="info-card">
+      <div class="info-row">
+        <div class="info-key">확정 일정표</div>
+        <div class="info-val">
+          <a class="link-pill" href="https://www.modetour.com/package/104902587?MLoc=99&Pnum=104902587&ANO=1772510&sno=C2181215&thru=crs" target="_blank">📋 모두투어 확정 일정표 →</a>
+        </div>
+      </div>
+      <div class="info-row" style="background:#fff8f0;">
+        <div class="info-key" style="color:var(--red);">중국 입국<br>신고서</div>
+        <div class="info-val">
+          <div class="alert alert-red" style="margin-top:0;">
+            ⚠️ <strong>의무 작성 — 출발 72시간 전부터 작성 가능</strong>
+          </div>
+          <a class="link-pill" style="background:#fdf0ef; border-color:#e08080; color:var(--red);" href="https://s.nia.gov.cn/ArrivalCardFillingPC/entry-registation-home" target="_blank">🌐 입국신고서 작성 사이트 →</a>
+          <a class="link-pill" style="margin-left:6px;" href="https://blog.naver.com/challiya/224156792806" target="_blank">📖 작성 참고 블로그 →</a>
+          <div class="alert alert-amber" style="margin-top:8px;">
+            <strong>작성 시 참고 정보</strong><br>
+            중국 도착 도시 → <strong>SHANG HAI</strong><br>
+            현지 주소 → <strong>No. 1188, South Sixth Road, Pudong New Area, Shanghai</strong><br>
+            초청인 → <strong>TIAN PING</strong> · 연락처 → <strong>138-1751-8844</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 자주 묻는 질문 -->
+  <div class="section">
+    <div class="section-eyebrow">02</div>
+    <div class="section-heading">자주 묻는 질문</div>
+    <div class="info-card" style="padding: 4px 16px;">
+      <div class="qa-item">
+        <div class="qa-q">Q. 한국과 시차가 있나요?</div>
+        <div class="qa-a">중국은 한국보다 <strong>1시간 느립니다.</strong></div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">Q. 전압은 어떻게 되나요?</div>
+        <div class="qa-a"><strong>220V</strong> — 한국 전자기기 모두 사용 가능합니다.</div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">Q. 환전은 얼마나 해야 하나요?</div>
+        <div class="qa-a">
+          노팁 · 노옵션 상품이라 <strong>굳이 큰 돈이 필요치 않습니다</strong><br>
+          중국돈(위안화)으로 <strong>우리나라 돈 10만원 정도</strong> 환전해서 사용하시면 됩니다
+        </div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">Q. 날씨·옷차림은?</div>
+        <div class="qa-a">
+          한국과 비슷한 날씨 — <strong>겹겹이 입을 수 있게</strong> 준비<br>
+          출발 전 날씨 검색 권장 · <strong>발 편한 운동화 필수!</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. 준비물 -->
+  <div class="section">
+    <div class="section-eyebrow">03</div>
+    <div class="section-heading">준비물 체크리스트</div>
+    <ul class="checklist">
+      <li><div class="check-num">1</div><span>발 편한 운동화 (필수)</span></li>
+      <li><div class="check-num">2</div><span>여벌 옷 (겹겹이 입을 수 있게)</span></li>
+      <li><div class="check-num">3</div><span>카메라 또는 휴대폰·충전기</span></li>
+      <li><div class="check-num">4</div><span>비상약 (지사제·소화제·감기약·해열제)</span></li>
+      <li><div class="check-num">5</div><span>현지식이 걱정되신다면 — 진공포장 볶음김치, 튜브형 볶음고추장, 김 등</span></li>
+      <li><div class="check-num">6</div><span>차량 이동 시 사탕·껌 몇 개</span></li>
+      <li><div class="check-num">7</div><span>커피믹스 (아침 투어 전 기분 전환용 ☕)</span></li>
+    </ul>
+  </div>
+
+  <!-- 4. 데이터 요금제 -->
+  <div class="section">
+    <div class="section-eyebrow">04</div>
+    <div class="section-heading">핸드폰 데이터 안내</div>
+    <div class="data-grid">
+      <div class="data-card">
+        <div class="data-card-title">📱 eSIM</div>
+        <div class="data-label">장점</div>
+        <div class="data-pro">✔ 로밍보다 저렴</div>
+        <div class="data-pro">✔ 한국 전화·문자·카톡 가능</div>
+        <div class="data-pro">✔ 유심 교체 불필요</div>
+        <div class="data-label">단점</div>
+        <div class="data-con">✘ QR 분실 시 재구매 필요</div>
+        <div class="data-con">✘ 지원 기기 제한</div>
+      </div>
+      <div class="data-card">
+        <div class="data-card-title">💳 선불 유심</div>
+        <div class="data-label">장점</div>
+        <div class="data-pro">✔ 저렴한 가격</div>
+        <div class="data-pro">✔ 현지 통화·문자 가능</div>
+        <div class="data-label">단점</div>
+        <div class="data-con">✘ 한국 번호 문자 수신 불가</div>
+      </div>
+      <div class="data-card">
+        <div class="data-card-title">📶 포켓 와이파이</div>
+        <div class="data-label">장점</div>
+        <div class="data-pro">✔ 여러 명 동시 사용</div>
+        <div class="data-pro">✔ 다양한 기기 사용 가능</div>
+        <div class="data-label">단점</div>
+        <div class="data-con">✘ 단말기 항상 소지·충전</div>
+        <div class="data-con">✘ 장기간 사용 시 비용 증가</div>
+      </div>
+      <div class="data-card">
+        <div class="data-card-title">🌐 로밍</div>
+        <div class="data-label">장점</div>
+        <div class="data-pro">✔ 한국 번호 문자·통화 가능</div>
+        <div class="data-label">단점</div>
+        <div class="data-con">✘ 가장 비쌈</div>
+        <div class="data-con">✘ 국가별 수신 환경 상이</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-title">🏙️ 즐거운 상해 여행 되세요!</div>
+    <div class="footer-sub">궁금하신 사항은 언제든지 문의 주세요.<br>감사합니다.</div>
+    <div class="footer-name">모두투어 이경진 실장</div>
+    <div class="footer-contacts">
+      <a class="footer-btn footer-btn-phone" href="tel:15445714">
+        <span class="footer-btn-icon">📞</span> 1544-5714
+      </a>
+      <a class="footer-btn footer-btn-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">
+        <span class="footer-btn-icon">💬</span> 카카오톡 상담
+      </a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
