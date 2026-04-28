@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>여행 확정 안내 | 제주도 패키지</title>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --c1: #4ec8c0;
+    --c2: #38b0c8;
+    --c3: #5ad0e8;
+    --accent: #f9c430;
+    --accent2: #ff8c5a;
+    --soft: #e8f9fb;
+    --cream: #f4fcfe;
+    --white: #ffffff;
+    --charcoal: #1e3040;
+    --medium: #3a5a6a;
+    --muted: #7aaab8;
+    --border: #c8e8f0;
+    --red: #e05050;
+    --red-bg: #fff0f0;
+    --amber: #d08010;
+    --amber-bg: #fef6e4;
+    --green: #2a9060;
+    --green-bg: #e8f8f0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nanum Gothic', '맑은 고딕', 'Malgun Gothic', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    line-height: 1.7;
+  }
+
+  .main { max-width: 700px; margin: 0 auto; }
+
+  /* ══ HERO ══ */
+  .hero {
+    position: relative;
+    background: linear-gradient(175deg,
+      #38b8d0 0%,
+      #48c8d8 25%,
+      #5ad5e0 50%,
+      #a8e8f0 75%,
+      #d8f4f8 100%
+    );
+    padding: 3rem 2rem 4.5rem;
+    text-align: center;
+    overflow: hidden;
+  }
+  /* 물결 장식 */
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0; right: 0;
+    height: 60px;
+    background: var(--cream);
+    clip-path: ellipse(60% 100% at 50% 100%);
+  }
+  /* 배경 원형 장식 */
+  .hero-blob1 {
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.18);
+  }
+  .hero-blob2 {
+    position: absolute;
+    bottom: 20px; left: -30px;
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+  }
+  .hero-content { position: relative; z-index: 2; }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.3);
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 20px; padding: 4px 16px;
+    font-size: 11px; letter-spacing: 0.22em;
+    color: rgba(255,255,255,0.95);
+    margin-bottom: 0.9rem; text-transform: uppercase;
+  }
+  .hero-title {
+    font-size: clamp(26px, 5vw, 38px);
+    font-weight: 800; color: #fff;
+    line-height: 1.3; margin-bottom: 0.3rem;
+    text-shadow: 0 2px 12px rgba(30,80,100,0.18);
+  }
+  .hero-title em { color: var(--accent); font-style: normal; }
+  .hero-sub {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 1.4rem;
+  }
+  .agent-wrap { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .agent-name {
+    display: inline-flex; align-items: center;
+    background: rgba(255,255,255,0.25);
+    border: 1px solid rgba(255,255,255,0.45);
+    backdrop-filter: blur(4px);
+    border-radius: 30px; padding: 7px 20px;
+    font-size: 13px; color: #fff; font-weight: 700;
+  }
+  .agent-contacts { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .agent-contacts a {
+    display: inline-flex; align-items: center; gap: 6px;
+    border-radius: 30px; padding: 7px 16px;
+    font-size: 12.5px; text-decoration: none; font-weight: 700;
+  }
+  .contact-phone {
+    background: rgba(255,255,255,0.92);
+    color: #2a7a90;
+    box-shadow: 0 2px 8px rgba(30,80,100,0.15);
+  }
+  .contact-kakao {
+    background: #FEE500; color: #3a1d00;
+    box-shadow: 0 2px 8px rgba(200,160,0,0.25);
+  }
+
+  /* ══ FLIGHT BANNER ══ */
+  .flight-banner {
+    background: linear-gradient(135deg, #7acce0 0%, #90d8ec 100%);
+    padding: 0.75rem 1.5rem;
+    position: relative; overflow: hidden;
+  }
+  .flight-banner::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--c3), var(--accent));
+  }
+  .flight-banner-title {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(255,255,255,0.7); font-weight: 700; margin-bottom: 0.5rem;
+  }
+  .flight-row {
+    display: flex; align-items: center;
+    background: rgba(255,255,255,0.12);
+    border-radius: 8px; padding: 6px 12px; margin-bottom: 5px;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .flight-row:last-of-type { margin-bottom: 0; }
+  .flight-label {
+    font-size: 11px; font-weight: 700;
+    color: #fff; min-width: 44px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 6px; padding: 3px 6px; text-align: center;
+  }
+  .flight-port { flex: 1; text-align: center; }
+  .flight-port-name { font-size: 10.5px; font-weight: 700; color: rgba(255,255,255,0.65); }
+  .flight-port-time { font-size: 15px; font-weight: 800; color: #fff; line-height: 1.2; }
+  .flight-port-date { font-size: 10px; color: rgba(255,255,255,0.5); }
+  .flight-arrow { flex: 0 0 36px; text-align: center; color: #fff; font-size: 16px; font-weight: 800; }
+  .flight-meta {
+    display: flex; gap: 0; justify-content: center;
+    margin-top: 6px; flex-wrap: wrap;
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px; padding: 6px 0;
+  }
+  .flight-meta-item {
+    flex: 1; min-width: 80px;
+    font-size: 10.5px; color: rgba(255,255,255,0.6);
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.15);
+    padding: 1px 6px;
+  }
+  .flight-meta-item:last-child { border-right: none; }
+  .flight-meta-item strong {
+    color: #fff; font-weight: 700;
+    display: block; font-size: 11.5px; margin-bottom: 0;
+  }
+
+  /* ══ SECTIONS ══ */
+  .section {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 1.75rem;
+    position: relative; overflow: hidden;
+  }
+  .section:nth-child(even) { background: var(--cream); }
+  .section::before {
+    content: '';
+    position: absolute;
+    bottom: -20px; right: -20px;
+    width: 160px; height: 160px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg opacity='0.13'%3E%3C!-- 꽃1 중앙 --%3E%3Ccircle cx='100' cy='100' r='10' fill='%23e8c830'/%3E%3Cellipse cx='100' cy='72' rx='9' ry='16' fill='%23f0d840' rx='9'/%3E%3Cellipse cx='100' cy='128' rx='9' ry='16' fill='%23f0d840'/%3E%3Cellipse cx='72' cy='100' rx='16' ry='9' fill='%23f0d840'/%3E%3Cellipse cx='128' cy='100' rx='16' ry='9' fill='%23f0d840'/%3E%3Cellipse cx='81' cy='81' rx='9' ry='16' transform='rotate(45 81 81)' fill='%23f0d840'/%3E%3Cellipse cx='119' cy='81' rx='9' ry='16' transform='rotate(-45 119 81)' fill='%23f0d840'/%3E%3Cellipse cx='81' cy='119' rx='9' ry='16' transform='rotate(-45 81 119)' fill='%23f0d840'/%3E%3Cellipse cx='119' cy='119' rx='9' ry='16' transform='rotate(45 119 119)' fill='%23f0d840'/%3E%3C!-- 꽃2 우상단 --%3E%3Ccircle cx='160' cy='44' r='7' fill='%23e8c830'/%3E%3Cellipse cx='160' cy='26' rx='6' ry='11' fill='%23f0d840'/%3E%3Cellipse cx='160' cy='62' rx='6' ry='11' fill='%23f0d840'/%3E%3Cellipse cx='142' cy='44' rx='11' ry='6' fill='%23f0d840'/%3E%3Cellipse cx='178' cy='44' rx='11' ry='6' fill='%23f0d840'/%3E%3Cellipse cx='147' cy='31' rx='6' ry='11' transform='rotate(45 147 31)' fill='%23f0d840'/%3E%3Cellipse cx='173' cy='31' rx='6' ry='11' transform='rotate(-45 173 31)' fill='%23f0d840'/%3E%3Cellipse cx='147' cy='57' rx='6' ry='11' transform='rotate(-45 147 57)' fill='%23f0d840'/%3E%3Cellipse cx='173' cy='57' rx='6' ry='11' transform='rotate(45 173 57)' fill='%23f0d840'/%3E%3C!-- 줄기 --%3E%3Cline x1='100' y1='155' x2='95' y2='195' stroke='%2368a050' stroke-width='3' stroke-linecap='round'/%3E%3Cline x1='160' y1='65' x2='155' y2='195' stroke='%2368a050' stroke-width='3' stroke-linecap='round'/%3E%3C!-- 잎 --%3E%3Cellipse cx='88' cy='175' rx='14' ry='7' transform='rotate(-30 88 175)' fill='%2368a050'/%3E%3Cellipse cx='148' cy='150' rx='12' ry='6' transform='rotate(30 148 150)' fill='%2368a050'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    opacity: 0.55;
+    pointer-events: none;
+  }
+  .section:nth-child(even)::before {
+    right: auto; left: -20px;
+    transform: scaleX(-1);
+  }
+  .section > * { position: relative; z-index: 1; }
+
+  .section-eyebrow {
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--c2); font-weight: 700; margin-bottom: 0.3rem;
+  }
+  .section-heading {
+    font-size: 18px; font-weight: 800; color: var(--charcoal);
+    margin-bottom: 1.1rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-heading::after {
+    content: ''; flex: 1; height: 1.5px;
+    background: linear-gradient(to right, var(--border), transparent);
+  }
+
+  /* ══ INFO CARD ══ */
+  .info-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 14px; overflow: hidden;
+    box-shadow: 0 2px 12px rgba(60,160,180,0.07);
+  }
+  .info-row {
+    display: flex; gap: 1rem; padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .info-row:last-child { border-bottom: none; }
+  .info-key {
+    min-width: 92px; font-size: 13px; font-weight: 700;
+    color: var(--medium); padding-top: 2px;
+  }
+  .info-val { flex: 1; color: var(--charcoal); line-height: 1.65; font-size: 13.5px; }
+  .info-val strong { color: #2a8aaa; font-weight: 700; }
+
+  /* ══ ALERTS ══ */
+  .alert { border-radius: 8px; padding: 10px 14px; font-size: 13px; line-height: 1.65; margin-top: 8px; }
+  .alert-red { background: var(--red-bg); border-left: 3px solid var(--red); color: #7a2020; }
+  .alert-amber { background: var(--amber-bg); border-left: 3px solid var(--amber); color: #7a4a00; }
+  .alert-blue { background: var(--soft); border-left: 3px solid var(--c2); color: #1a4a5a; }
+  .alert-green { background: var(--green-bg); border-left: 3px solid var(--green); color: #1a4a2e; }
+
+  /* ══ LINK PILL ══ */
+  a.link-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: linear-gradient(135deg, var(--c2), var(--c3));
+    border-radius: 22px; padding: 8px 18px;
+    font-size: 13px; color: #fff; text-decoration: none;
+    margin-top: 6px; font-weight: 700;
+    box-shadow: 0 3px 10px rgba(60,160,190,0.3);
+  }
+
+  /* ══ CHECKLIST ══ */
+  .checklist { list-style: none; padding: 0; }
+  .checklist li {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 9px 0; border-bottom: 1px solid var(--border);
+    font-size: 13.5px; line-height: 1.6;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .check-num {
+    min-width: 24px; height: 24px;
+    background: linear-gradient(135deg, var(--c2), var(--c3));
+    color: #fff; border-radius: 50%;
+    font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
+    box-shadow: 0 2px 6px rgba(60,160,190,0.25);
+  }
+
+  /* ══ FOOTER ══ */
+  .footer {
+    background: linear-gradient(160deg, #2a9ab0 0%, #38b8d0 60%, #a8e8f0 100%);
+    padding: 2.5rem 2rem; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .footer::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+  }
+  .footer-content { position: relative; z-index: 1; }
+  .footer-title {
+    font-size: 22px; font-weight: 800; color: #fff;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 10px rgba(30,80,100,0.2);
+  }
+  .footer-sub { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 1.4rem; }
+  .footer-name {
+    font-size: 14px; font-weight: 700;
+    color: rgba(255,255,255,0.9); margin-bottom: 12px;
+  }
+  .footer-contacts { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .footer-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    border-radius: 30px; padding: 10px 22px;
+    font-size: 14px; text-decoration: none; font-weight: 700;
+  }
+  .footer-btn-phone {
+    background: rgba(255,255,255,0.22);
+    border: 1.5px solid rgba(255,255,255,0.5);
+    color: #fff;
+    backdrop-filter: blur(4px);
+  }
+  .footer-btn-kakao {
+    background: #FEE500; border: 1.5px solid #FEE500; color: #3a1d00;
+    box-shadow: 0 3px 10px rgba(200,160,0,0.3);
+  }
+
+  @media (max-width: 500px) {
+    .section { padding: 1.4rem 1.2rem; }
+    .flight-meta-item { min-width: 80px; }
+  }
+</style>
+</head>
+<body>
+<div class="main">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-blob1"></div>
+    <div class="hero-blob2"></div>
+    <div class="hero-content">
+      <div class="hero-tag">✦ Travel Confirmation ✦</div>
+      <div class="hero-title">설레는 <em>제주도</em> 여행<br>출발 전 안내입니다</div>
+      <div class="hero-sub">2026년 5월 1일 출발 | 김포공항</div>
+      <div class="agent-wrap">
+        <div class="agent-name">모두투어 이경진 실장</div>
+        <div class="agent-contacts">
+          <a class="contact-phone" href="tel:15445714">📞 1544-5714</a>
+          <a class="contact-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡 상담</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. 일정표 -->
+  <div class="section">
+    <div class="section-eyebrow">01</div>
+    <div class="section-heading">여행 일정표</div>
+    <div class="info-card">
+      <div class="info-row">
+        <div class="info-key">확정 일정표</div>
+        <div class="info-val">
+          <span style="font-size:13px; color:var(--muted); margin-bottom:6px; display:block;">아래 버튼을 눌러주세요</span>
+          <a class="link-pill" href="https://www.modetour.com/package/105977701?MLoc=99&Pnum=105977701&ANO=1772510&sno=C2181215&thru=crs" target="_blank">모두투어 확정 일정표 확인 ✔</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLIGHT BANNER -->
+  <div class="flight-banner">
+    <div class="flight-banner-title">✈️ 항공 일정 — 이스타항공 (Eastar Jet)</div>
+    <div class="flight-row">
+      <div class="flight-label">가는 편</div>
+      <div class="flight-port">
+        <div class="flight-port-name">김포 (GMP)</div>
+        <div class="flight-port-time">13:45</div>
+        <div class="flight-port-date">5월 1일 (금)</div>
+      </div>
+      <div class="flight-arrow">→</div>
+      <div class="flight-port">
+        <div class="flight-port-name">제주 (CJU)</div>
+        <div class="flight-port-time">15:00</div>
+        <div class="flight-port-date">5월 1일 (금)</div>
+      </div>
+    </div>
+    <div class="flight-row">
+      <div class="flight-label">오는 편</div>
+      <div class="flight-port">
+        <div class="flight-port-name">제주 (CJU)</div>
+        <div class="flight-port-time">20:25</div>
+        <div class="flight-port-date">5월 3일 (일)</div>
+      </div>
+      <div class="flight-arrow">→</div>
+      <div class="flight-port">
+        <div class="flight-port-name">김포 (GMP)</div>
+        <div class="flight-port-time">21:40</div>
+        <div class="flight-port-date">5월 3일 (일)</div>
+      </div>
+    </div>
+    <div class="flight-meta">
+      <div class="flight-meta-item"><strong>ZE217 / ZE230</strong>편명</div>
+      <div class="flight-meta-item"><strong>Q53TPS</strong>예약번호</div>
+      <div class="flight-meta-item"><strong>위탁 15kg / 기내 10kg</strong>수하물</div>
+    </div>
+  </div>
+
+  <!-- 2. 탑승 안내 -->
+  <div class="section">
+    <div class="section-eyebrow">02</div>
+    <div class="section-heading">탑승 안내</div>
+    <div class="info-card">
+      <div class="info-row">
+        <div class="info-key">공항 도착</div>
+        <div class="info-val">
+          출발 <strong>1시간 30분 ~ 2시간 전</strong> 도착 후 수속 진행
+          <div class="alert alert-red" style="margin-top:8px;">
+            🚨 출발 50분 전 수속 마감 — 마감 후 탑승 불가
+          </div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-key">신분증</div>
+        <div class="info-val">
+          <div class="alert alert-red" style="margin-top:0;">
+            🪪 <strong>실물 신분증 필수 지참</strong> (사진 부착 신분증 또는 복지카드)<br>
+            소아·유아 동반 시 → <strong>주민등록등본 필수</strong><br>
+            신분증 미지참 시 탑승 불가
+          </div>
+        </div>
+      </div>
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">항공권 수령</div>
+        <div class="info-val">
+          각 항공사 <strong>키오스크(자동발권기)</strong> 또는 웹/모바일 사전 체크인으로 개별 수속
+          <div class="alert alert-blue" style="margin-top:8px;">
+            💡 수하물 소지 시 체크인 후 수하물 전용 카운터에 위탁<br>
+            카운터 수속 시 별도 수수료가 발생할 수 있습니다
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. 제주 미팅 안내 -->
+  <div class="section">
+    <div class="section-eyebrow">03</div>
+    <div class="section-heading">제주공항 미팅 안내</div>
+    <div class="info-card">
+      <div class="info-row">
+        <div class="info-key">미팅 장소</div>
+        <div class="info-val">
+          제주공항 <strong>2번 GATE 앞</strong><br>
+          모두투어 미팅보드 앞
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-key">가이드 연락처</div>
+        <div class="info-val">출발 1일 전 별도 안내드립니다</div>
+      </div>
+      <div class="info-row">
+        <div class="info-key">현지 비상연락처</div>
+        <div class="info-val"><strong>010-2287-5187</strong></div>
+      </div>
+      <div class="info-row">
+        <div class="info-key">행사 인원·차량</div>
+        <div class="info-val">출발 1일 전 별도 안내드립니다</div>
+      </div>
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">안내</div>
+        <div class="info-val">
+          <div class="alert alert-amber" style="margin-top:0;">
+            ⚠️ 연합상품으로 제주공항 미팅 시 대기 시간이 발생할 수 있습니다. 양해 부탁드립니다.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. 불포함 사항 -->
+  <div class="section">
+    <div class="section-eyebrow">04</div>
+    <div class="section-heading">불포함 사항</div>
+    <ul class="checklist">
+      <li><div class="check-num">①</div><span>가이드 경비 <strong>1인 30,000원</strong> (성인·소아 동일) — 현지 지불</span></li>
+      <li><div class="check-num">②</div><span>1일차 석식</span></li>
+      <li><div class="check-num">③</div><span>개인 여행경비 및 개인 세면도구</span></li>
+      <li><div class="check-num">④</div><span>국내여행자 보험</span></li>
+    </ul>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-content">
+      <div class="footer-title">🌊 즐거운 제주도 여행 되세요!</div>
+      <div class="footer-sub">궁금하신 사항은 언제든지 문의 주세요.<br>감사합니다.</div>
+      <div class="footer-name">모두투어 이경진 실장</div>
+      <div class="footer-contacts">
+        <a class="footer-btn footer-btn-phone" href="tel:15445714">📞 1544-5714</a>
+        <a class="footer-btn footer-btn-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡 상담</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
