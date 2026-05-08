@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>여행 확정 안내 | 도야마·알펜루트</title>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --snow: #2a7aaa;
+    --snow-light: #e4f2fb;
+    --alpine: #3a6a9a;
+    --pine: #2a6a4a;
+    --pine-light: #e4f4ec;
+    --gold: #c87800;
+    --gold-light: #fff8e0;
+    --red: #c03020;
+    --red-light: #fdeeed;
+    --amber: #c06000;
+    --amber-light: #fff4e0;
+    --cream: #f4f8fc;
+    --warm-white: #ffffff;
+    --charcoal: #1a2030;
+    --medium: #3a5068;
+    --muted: #7a90a8;
+    --border: #c8dce8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Nanum Gothic", "맑은 고딕", "Malgun Gothic", sans-serif;
+    background: var(--cream); color: var(--charcoal); line-height: 1.8;
+    font-size: 17px;
+  }
+  .main { max-width: 700px; margin: 0 auto; }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    background: linear-gradient(160deg, #0a2a4a 0%, #1a4a7a 40%, #2a7aaa 75%, #5aaad8 100%);
+    padding: 3.5rem 2rem 3.5rem; text-align: center; overflow: hidden;
+  }
+  .hero::after {
+    content: ""; position: absolute; bottom: -2px; left: 0; right: 0; height: 50px;
+    background: var(--cream); clip-path: ellipse(60% 100% at 50% 100%);
+  }
+  .hero-blob { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.08); }
+  .hero-content { position: relative; z-index: 2; }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.13); border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px; padding: 5px 18px;
+    font-size: 13px; letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.92); margin-bottom: 0.9rem; text-transform: uppercase;
+  }
+  .hero-title {
+    font-size: clamp(26px, 5vw, 38px); font-weight: 800; color: #fff;
+    line-height: 1.35; margin-bottom: 0.3rem; text-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  }
+  .hero-title em { color: #a8e8ff; font-style: normal; }
+  .hero-names { font-size: 18px; font-weight: 700; color: rgba(255,255,255,0.92); margin-bottom: 0.3rem; }
+  .hero-sub { font-size: 15px; color: rgba(255,255,255,0.75); margin-bottom: 1.4rem; }
+  .agent-wrap { display: flex; flex-direction: column; align-items: center; gap: 9px; }
+  .agent-name {
+    display: inline-flex; align-items: center;
+    background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 30px; padding: 8px 22px; font-size: 15px; color: #fff; font-weight: 700;
+  }
+  .agent-contacts { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .agent-contacts a {
+    display: inline-flex; align-items: center; gap: 7px;
+    border-radius: 30px; padding: 8px 18px; font-size: 14px; text-decoration: none; font-weight: 700;
+  }
+  .contact-phone { background: rgba(255,255,255,0.92); color: #0a2a4a; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+  .contact-kakao { background: #FEE500; color: #3a1d00; }
+
+  /* FLIGHT */
+  .flight-banner {
+    background: linear-gradient(135deg, #eef6ff 0%, #ddeeff 50%, #d0e8ff 100%);
+    padding: 1.1rem 1.75rem 1.2rem; border-bottom: 3px solid #80b8e8;
+  }
+  .flight-banner-title { font-size: 15px; font-weight: 800; color: #0a2a4a; margin-bottom: 0.7rem; }
+  .flight-row {
+    display: flex; align-items: center;
+    background: rgba(255,255,255,0.78); border-radius: 10px; padding: 8px 14px; margin-bottom: 7px;
+    border: 1px solid rgba(80,150,220,0.35);
+  }
+  .flight-row:last-of-type { margin-bottom: 0; }
+  .flight-label { font-size: 13px; font-weight: 800; color: #0a2a4a; min-width: 52px; background: rgba(26,74,122,0.1); border-radius: 6px; padding: 4px 7px; text-align: center; }
+  .flight-port { flex: 1; text-align: center; }
+  .flight-port-name { font-size: 13px; font-weight: 700; color: #2a4a70; }
+  .flight-port-time { font-size: 22px; font-weight: 800; color: #0a1830; line-height: 1.2; }
+  .flight-port-date { font-size: 12px; color: #4a6a90; }
+  .flight-arrow { flex: 0 0 36px; text-align: center; color: #2a7aaa; font-size: 18px; font-weight: 800; }
+  .flight-meta {
+    display: flex; gap: 0; justify-content: center; margin-top: 9px; flex-wrap: wrap;
+    background: rgba(255,255,255,0.65); border-radius: 9px; padding: 8px 0;
+    border: 1px solid rgba(80,150,220,0.25);
+  }
+  .flight-meta-item { flex: 1; min-width: 85px; font-size: 12.5px; color: #3a5a80; text-align: center; border-right: 1px solid rgba(80,150,220,0.2); padding: 2px 6px; }
+  .flight-meta-item:last-child { border-right: none; }
+  .flight-meta-item strong { color: #0a1830; font-weight: 800; display: block; font-size: 14px; }
+
+  /* MEETING BOX */
+  .meeting-box {
+    background: linear-gradient(135deg, #fff8e0, #fef3cc);
+    padding: 1.3rem 1.75rem; border-bottom: 3px solid #e8c060;
+  }
+  .meeting-box-title { font-size: 15px; font-weight: 800; color: #7a4800; margin-bottom: 0.8rem; }
+  .meeting-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+  .meeting-info-card { background: rgba(255,255,255,0.85); border-radius: 10px; padding: 12px 14px; border: 1px solid rgba(220,180,60,0.4); }
+  .meeting-info-label { font-size: 12px; font-weight: 700; color: #9a6820; margin-bottom: 5px; }
+  .meeting-info-val { font-size: 16px; font-weight: 800; color: #4a2800; line-height: 1.5; }
+  .meeting-info-sub { font-size: 13px; color: #8a6030; margin-top: 4px; }
+
+  /* WEATHER */
+  .weather-bar {
+    background: linear-gradient(160deg, #e8f4ff 0%, #d8f0f8 50%, #e8f8e0 100%);
+    padding: 1.1rem 1.75rem; border-bottom: 3px solid #80c8c0;
+  }
+  .weather-title { font-size: 15px; font-weight: 800; color: #1a3a50; margin-bottom: 0.7rem; }
+  .weather-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 8px; }
+  .weather-day { background: rgba(255,255,255,0.8); border-radius: 10px; padding: 10px 8px; text-align: center; border: 1px solid rgba(80,180,180,0.4); }
+  .weather-day-date { font-size: 12px; font-weight: 700; color: #2a5868; margin-bottom: 4px; }
+  .weather-day-icon { font-size: 24px; margin-bottom: 4px; }
+  .weather-day-temp { font-size: 15px; font-weight: 800; color: #0a2030; }
+  .weather-day-desc { font-size: 12px; color: #3a6878; margin-top: 3px; }
+
+  /* ALPINE WARNING */
+  .alpine-warning {
+    background: linear-gradient(135deg, #e8f0ff 0%, #d8e8ff 100%);
+    border: 2px solid #80a8e0; border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 10px;
+  }
+  .alpine-warning-title { font-size: 15px; font-weight: 800; color: #1a3a7a; margin-bottom: 8px; }
+  .alpine-warning-item { display: flex; gap: 8px; font-size: 14px; color: #1a2a50; line-height: 1.7; margin-bottom: 5px; }
+  .alpine-warning-item:last-child { margin-bottom: 0; }
+
+  /* SECTION */
+  .section { background: var(--warm-white); border-bottom: 1px solid var(--border); padding: 1.75rem; }
+  .section:nth-child(even) { background: var(--cream); }
+  .section-eyebrow { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--snow); font-weight: 700; margin-bottom: 0.3rem; }
+  .section-heading { font-size: 22px; font-weight: 800; color: var(--charcoal); margin-bottom: 1.1rem; display: flex; align-items: center; gap: 10px; }
+  .section-heading::after { content: ""; flex: 1; height: 1.5px; background: linear-gradient(to right, var(--border), transparent); }
+
+  /* INFO CARD */
+  .info-card { background: var(--warm-white); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; box-shadow: 0 2px 10px rgba(42,122,170,0.07); }
+  .info-row { display: flex; gap: 1rem; padding: 13px 17px; border-bottom: 1px solid var(--border); align-items: flex-start; }
+  .info-row:last-child { border-bottom: none; }
+  .info-key { min-width: 100px; font-size: 15px; font-weight: 700; color: var(--medium); padding-top: 2px; }
+  .info-val { flex: 1; color: var(--charcoal); line-height: 1.7; font-size: 15px; }
+  .info-val strong { color: var(--snow); font-weight: 700; }
+
+  /* ALERTS */
+  .alert { border-radius: 9px; padding: 11px 15px; font-size: 14px; line-height: 1.7; margin-top: 9px; }
+  .alert-red { background: var(--red-light); border-left: 4px solid var(--red); color: #7a1010; }
+  .alert-amber { background: var(--amber-light); border-left: 4px solid var(--amber); color: #7a3800; }
+  .alert-blue { background: var(--snow-light); border-left: 4px solid var(--snow); color: #0a2a4a; }
+  .alert-green { background: var(--pine-light); border-left: 4px solid var(--pine); color: #0a3020; }
+  .alert-gold { background: var(--gold-light); border-left: 4px solid var(--gold); color: #7a4800; }
+
+  /* LINK PILL */
+  a.link-pill {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: linear-gradient(135deg, var(--snow), #3a9aca);
+    border-radius: 24px; padding: 9px 20px;
+    font-size: 14px; color: #fff; text-decoration: none;
+    margin-top: 7px; font-weight: 700; box-shadow: 0 3px 10px rgba(42,122,170,0.25);
+  }
+
+  /* GUIDE GRID */
+  .guide-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1rem; }
+  .guide-item { background: var(--snow-light); border-radius: 10px; padding: 11px 15px; border: 1px solid #b0d4ec; }
+  .guide-item-label { font-size: 12px; color: var(--muted); font-weight: 700; margin-bottom: 3px; }
+  .guide-item-val { font-size: 15px; font-weight: 800; color: var(--snow); }
+
+  /* HOTEL */
+  .hotel-item { display: flex; gap: 12px; align-items: flex-start; padding: 11px 0; border-bottom: 1px solid var(--border); }
+  .hotel-item:last-child { border-bottom: none; }
+  .hotel-night { min-width: 46px; height: 46px; background: linear-gradient(135deg, var(--snow), #3a9aca); color: #fff; border-radius: 10px; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; text-align: center; line-height: 1.3; }
+  .hotel-name { font-size: 15px; font-weight: 700; color: var(--charcoal); }
+  .hotel-sub { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+  /* CHECKLIST */
+  .checklist { list-style: none; padding: 0; }
+  .checklist li { display: flex; align-items: flex-start; gap: 11px; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 15px; line-height: 1.7; }
+  .checklist li:last-child { border-bottom: none; }
+  .check-num { min-width: 26px; height: 26px; background: linear-gradient(135deg, var(--snow), #3a9aca); color: #fff; border-radius: 50%; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  .check-cat { font-size: 12px; font-weight: 800; color: var(--snow); background: var(--snow-light); border-radius: 6px; padding: 1px 8px; margin-right: 4px; white-space: nowrap; }
+
+  /* FOOTER */
+  .footer { background: linear-gradient(160deg, #0a2a4a 0%, #1a4a7a 60%, #2a7aaa 100%); padding: 2.5rem 2rem; text-align: center; position: relative; overflow: hidden; }
+  .footer::before { content: ""; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; border-radius: 50%; background: rgba(255,255,255,0.06); }
+  .footer-content { position: relative; z-index: 1; }
+  .footer-title { font-size: 23px; font-weight: 800; color: #fff; margin-bottom: 0.5rem; }
+  .footer-sub { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.8; margin-bottom: 1.4rem; }
+  .footer-name { font-size: 16px; font-weight: 700; color: rgba(255,255,255,0.9); margin-bottom: 12px; }
+  .footer-contacts { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .footer-btn { display: inline-flex; align-items: center; gap: 8px; border-radius: 30px; padding: 11px 24px; font-size: 15px; text-decoration: none; font-weight: 700; }
+  .footer-btn-phone { background: rgba(255,255,255,0.18); border: 1.5px solid rgba(255,255,255,0.45); color: #fff; }
+  .footer-btn-kakao { background: #FEE500; border: 1.5px solid #FEE500; color: #3a1d00; }
+
+  @media (max-width: 500px) {
+    .section { padding: 1.4rem 1.2rem; }
+    .guide-grid { grid-template-columns: 1fr; }
+    .meeting-info-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="main">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-blob" style="width:220px;height:220px;top:-70px;right:-60px;"></div>
+    <div class="hero-blob" style="width:150px;height:150px;bottom:20px;left:-40px;"></div>
+    <div class="hero-content">
+      <div class="hero-tag">✦ Travel Confirmation ✦</div>
+      <div class="hero-title">🏔️ <em>도야마·알펜루트</em> 여행<br>출발 전 안내입니다</div>
+      <div class="hero-names">곽성환님 외 3명</div>
+      <div class="hero-sub">2026년 5월 12일 출발 | 인천국제공항 · 3박 4일</div>
+      <div class="agent-wrap">
+        <div class="agent-name">모두투어 이경진 실장</div>
+        <div class="agent-contacts">
+          <a class="contact-phone" href="tel:15445714">📞 1544-5714</a>
+          <a class="contact-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡 상담</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLIGHT -->
+  <div class="flight-banner">
+    <div class="flight-banner-title">✈️ 항공 일정 — 진에어 (Jin Air)</div>
+    <div class="flight-row">
+      <div class="flight-label">가는 편</div>
+      <div class="flight-port">
+        <div class="flight-port-name">인천 (ICN)</div>
+        <div class="flight-port-time">11:10</div>
+        <div class="flight-port-date">5월 12일 (화)</div>
+      </div>
+      <div class="flight-arrow">→</div>
+      <div class="flight-port">
+        <div class="flight-port-name">도야마 (TOY)</div>
+        <div class="flight-port-time">13:00</div>
+        <div class="flight-port-date">5월 12일 (화)</div>
+      </div>
+    </div>
+    <div class="flight-row">
+      <div class="flight-label">오는 편</div>
+      <div class="flight-port">
+        <div class="flight-port-name">도야마 (TOY)</div>
+        <div class="flight-port-time">14:00</div>
+        <div class="flight-port-date">5월 15일 (금)</div>
+      </div>
+      <div class="flight-arrow">→</div>
+      <div class="flight-port">
+        <div class="flight-port-name">인천 (ICN)</div>
+        <div class="flight-port-time">16:25</div>
+        <div class="flight-port-date">5월 15일 (금)</div>
+      </div>
+    </div>
+    <div class="flight-meta">
+      <div class="flight-meta-item"><strong>LJ385 / LJ386</strong>편명</div>
+      <div class="flight-meta-item"><strong>3박 4일</strong>일정</div>
+      <div class="flight-meta-item"><strong>기내식 없음</strong>식사</div>
+    </div>
+  </div>
+
+  <!-- MEETING BOX -->
+  <div class="meeting-box">
+    <div class="meeting-box-title">📍 인천공항 미팅 안내</div>
+    <div class="meeting-info-grid">
+      <div class="meeting-info-card">
+        <div class="meeting-info-label">📅 미팅 일시</div>
+        <div class="meeting-info-val">2026년 5월 12일<br>오전 8:10</div>
+        <div class="meeting-info-sub">일정표 참조</div>
+      </div>
+      <div class="meeting-info-card">
+        <div class="meeting-info-label">📍 미팅 장소</div>
+        <div class="meeting-info-val">인천국제공항<br><strong>제2터미널 3층 출국장</strong></div>
+        <div class="meeting-info-sub">가이드 별도 연락 예정</div>
+      </div>
+    </div>
+    <div style="background:rgba(255,255,255,0.82);border-radius:10px;padding:11px 14px;border:1px solid rgba(220,180,60,0.4);font-size:14px;color:#4a2800;line-height:1.7;">
+      💡 공항 도착 후 별도 미팅 없이 바로 출국 수속 진행 가능<br>
+      <span style="font-size:13px;color:#8a6030;">인천국제공항 제2터미널 개별수속 (출발 최소 3시간 전까지)</span>
+    </div>
+  </div>
+
+  <!-- WEATHER -->
+  <div class="weather-bar">
+    <div class="weather-title">🌤️ 현지 날씨 — 도야마 평지 vs 알펜루트 산상</div>
+    <div class="weather-grid">
+      <div class="weather-day">
+        <div class="weather-day-date">도야마 평지 (5월)</div>
+        <div class="weather-day-icon">☀️</div>
+        <div class="weather-day-temp">18~24°C</div>
+        <div class="weather-day-desc">맑고 쾌청 · 초여름</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-date">알펜루트 산상 (무로도)</div>
+        <div class="weather-day-icon">🌨️</div>
+        <div class="weather-day-temp">0~5°C</div>
+        <div class="weather-day-desc">한겨울 날씨 · 방한 필수!</div>
+      </div>
+    </div>
+    <div style="background:rgba(255,255,255,0.75);border-radius:8px;padding:8px 12px;font-size:14px;color:#1a3a60;font-weight:700;border:1px solid rgba(80,180,200,0.35);">
+      ❄️ 산 위는 지상보다 기온이 <strong>약 10~20°C 낮습니다!</strong> 평지 옷차림과 산악 방한복을 따로 준비해 주세요.
+    </div>
+  </div>
+
+  <!-- 1. 일정표 -->
+  <div class="section">
+    <div class="section-eyebrow">01</div>
+    <div class="section-heading">여행 일정표</div>
+    <div class="info-card">
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">확정 일정표</div>
+        <div class="info-val">
+          <span style="font-size:14px;color:var(--muted);display:block;margin-bottom:7px;">아래 버튼을 눌러주세요</span>
+          <a class="link-pill" href="https://www.modetour.com/package/105253582?MLoc=99&Pnum=105253582&ANO=1772510&sno=C2181215&thru=crs" target="_blank">모두투어 확정 일정표 확인 ✔</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 투숙 호텔 -->
+  <div class="section">
+    <div class="section-eyebrow">02</div>
+    <div class="section-heading">투숙 호텔</div>
+    <div class="info-card" style="padding:12px 17px;">
+      <div class="hotel-item">
+        <div class="hotel-night">1박</div>
+        <div>
+          <div class="hotel-name">하쿠바 모미노키 호텔</div>
+          <div class="hotel-sub">Hakuba Mominoki Hotel · 하쿠바</div>
+        </div>
+      </div>
+      <div class="hotel-item">
+        <div class="hotel-night">2박</div>
+        <div>
+          <div class="hotel-name">머큐어 도야마 토나미 리조트&스파</div>
+          <div class="hotel-sub">Mercure Toyama Tonami Resort & Spa · 도야마</div>
+        </div>
+      </div>
+      <div class="hotel-item">
+        <div class="hotel-night">3박</div>
+        <div>
+          <div class="hotel-name">오에도 온천 이야기 나가야마</div>
+          <div class="hotel-sub">Oedo Onsen Monogatari Nagayama · 온천 료칸</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. 행사 정보 -->
+  <div class="section">
+    <div class="section-eyebrow">03</div>
+    <div class="section-heading">현지 행사 정보</div>
+    <div class="guide-grid">
+      <div class="guide-item">
+        <div class="guide-item-label">가이드</div>
+        <div class="guide-item-val">부용식 (남)</div>
+      </div>
+      <div class="guide-item">
+        <div class="guide-item-label">가이드 연락처</div>
+        <div class="guide-item-val">010-6700-2755</div>
+      </div>
+      <div class="guide-item">
+        <div class="guide-item-label">행사 인원</div>
+        <div class="guide-item-val">41명 + TG 1명</div>
+      </div>
+      <div class="guide-item">
+        <div class="guide-item-label">행사 차량</div>
+        <div class="guide-item-val">대형버스</div>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">불포함 경비</div>
+        <div class="info-val">
+          기사·가이드 경비 <strong>1인당 ¥4,000</strong> — 현지 지불<br>
+          <span style="font-size:13px;color:var(--muted);">인펀트(2세 미만) 제외</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. 알펜루트 안내 -->
+  <div class="section">
+    <div class="section-eyebrow">04</div>
+    <div class="section-heading">⛰️ 알펜루트 안내사항</div>
+
+    <div class="alpine-warning">
+      <div class="alpine-warning-title">🏔️ 4~6월 알펜루트 추천 복장</div>
+      <div class="alpine-warning-item">🧥 <span>해발 3,000m급 산악지대 — 지상보다 기온이 <strong>약 5~10°C 낮습니다</strong> (4~6월 평균 최저기온 약 -4~3°C)</span></div>
+      <div class="alpine-warning-item">🧤 <span><strong>손난로, 목도리, 털모자, 넥워머, 패딩점퍼, 긴팔셔츠</strong> 등 방한 복장 착용 권장</span></div>
+      <div class="alpine-warning-item">👟 <span><strong>방수 트레킹화 또는 하이컷 신발</strong> — 눈길 걷기 있음, 미끄럼 방지 필수</span></div>
+      <div class="alpine-warning-item">🕶️ <span><strong>선글라스 필수</strong> — 눈의 반사로 자외선이 매우 강함</span></div>
+      <div class="alpine-warning-item">👕 <span>입고 벗기 쉬운 레이어드 스타일 추천 (걷다 보면 체온 상승)</span></div>
+      <div style="margin-top:8px;"><a href="http://www.alpen-route.com/kr/about/climate.html" target="_blank" style="color:#2a7aaa;font-size:13px;font-weight:700;">→ 알펜루트 공식 날씨·복장 안내 (한국어)</a></div>
+    </div>
+
+    <div class="alert alert-red" style="margin-top:0;">
+      🚨 <strong>고산반응 주의 (해발 2,500m 구간)</strong><br>
+      두통·어지럼증·구토 등이 나타날 수 있습니다.<br>
+      • 뛰거나 심하게 활동 금지 — 평소보다 천천히 움직이세요<br>
+      • <strong>어린이, 고혈압·심장질환</strong> 있는 분은 특히 주의<br>
+      • 무로도 전 구역 <strong>금연</strong> 구역 · 음주 삼가
+    </div>
+  </div>
+
+  <!-- 5. 환전 -->
+  <div class="section">
+    <div class="section-eyebrow">05</div>
+    <div class="section-heading">환전 안내</div>
+    <div class="info-card">
+      <div class="info-row">
+        <div class="info-key">엔화 (JPY)</div>
+        <div class="info-val">
+          <strong>엔화(¥)</strong>로 환전해 가시기 바랍니다<br>
+          <span style="font-size:13px;color:var(--muted);">가이드·기사 경비 ¥4,000/인 등 현금 필요</span>
+        </div>
+      </div>
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">신용카드</div>
+        <div class="info-val">신용카드도 함께 준비해 주세요</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. 준비물 -->
+  <div class="section">
+    <div class="section-eyebrow">06</div>
+    <div class="section-heading">준비물 체크리스트</div>
+    <div class="alert alert-gold" style="margin-bottom:1rem;margin-top:0;">
+      ⚡ 전압 110V — <strong>멀티플러그(변환 어댑터) 필수!</strong> 한국 220V 전자기기 직접 사용 불가
+    </div>
+    <ul class="checklist">
+      <!-- 방한 -->
+      <li><div class="check-num">1</div><span><span class="check-cat">방한</span><strong>패딩점퍼 또는 두꺼운 방한복</strong> — 산 위 기온 0°C 이하 가능</span></li>
+      <li><div class="check-num">2</div><span><span class="check-cat">방한</span><strong>장갑, 털모자, 목도리, 넥워머</strong> — 알펜루트 필수!</span></li>
+      <li><div class="check-num">3</div><span><span class="check-cat">방한</span><strong>손난로</strong> — 1~2개 챙겨두시면 매우 유용합니다</span></li>
+      <li><div class="check-num">4</div><span><span class="check-cat">방한</span>얇은 티셔츠·긴팔 레이어드 의류 (평지용)</span></li>
+      <!-- 신발 -->
+      <li><div class="check-num">5</div><span><span class="check-cat">신발</span><strong>방수 트레킹화 또는 하이컷 운동화</strong> — 눈길·얼음길 미끄럼 방지 필수</span></li>
+      <!-- 햇빛 -->
+      <li><div class="check-num">6</div><span><span class="check-cat">햇빛</span><strong>선글라스 필수</strong> — 눈 반사 자외선 매우 강함 ☀️</span></li>
+      <li><div class="check-num">7</div><span><span class="check-cat">햇빛</span>선크림 (자외선 차단)</span></li>
+      <!-- 건강 -->
+      <li><div class="check-num">8</div><span><span class="check-cat">건강</span><strong>개인 복용약 및 상비약</strong> (감기약, 소화제, 두통약, 멀미약 등)</span></li>
+      <li><div class="check-num">9</div><span><span class="check-cat">건강</span><strong>고산병 대비약</strong> — 두통약·산소캔 등 (약국에서 미리 구매 권장)</span></li>
+      <!-- 전자기기 -->
+      <li><div class="check-num">10</div><span><span class="check-cat">전자기기</span><strong>멀티플러그 (110V 변환 어댑터)</strong> — 필수!</span></li>
+      <li><div class="check-num">11</div><span><span class="check-cat">전자기기</span>핸드폰 충전기, 보조배터리 (산 위에서 핸드폰 배터리 빨리 소모됨)</span></li>
+      <li><div class="check-num">12</div><span><span class="check-cat">전자기기</span>카메라 (설벽·운해 절경 촬영 추천)</span></li>
+      <!-- 기타 -->
+      <li><div class="check-num">13</div><span><span class="check-cat">기타</span>개인 세면도구 및 화장품</span></li>
+      <li><div class="check-num">14</div><span><span class="check-cat">기타</span>우산 또는 접이식 우비 (갑작스러운 소나기 대비)</span></li>
+      <li><div class="check-num">15</div><span><span class="check-cat">기타</span><strong>소형 배낭</strong> — 알펜루트 이동 시 가볍게 들고 다닐 가방</span></li>
+      <li><div class="check-num">16</div><span><span class="check-cat">기타</span>현금 지갑 — 일부 시설 현금만 사용 가능</span></li>
+    </ul>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-content">
+      <div class="footer-title">🏔️ 즐거운 알펜루트 여행 되세요!</div>
+      <div class="footer-sub">궁금하신 사항은 언제든지 문의 주세요.<br>감사합니다.</div>
+      <div class="footer-name">모두투어 이경진 실장</div>
+      <div class="footer-contacts">
+        <a class="footer-btn footer-btn-phone" href="tel:15445714">📞 1544-5714</a>
+        <a class="footer-btn footer-btn-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡 상담</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
