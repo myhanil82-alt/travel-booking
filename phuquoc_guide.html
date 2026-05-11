@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>여행 확정 안내 | 푸꾸옥 패키지</title>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sea: #0a8a7a;
+    --sea-light: #e0f8f4;
+    --teal: #0a7aaa;
+    --teal-light: #e0f2fb;
+    --coral: #e05a30;
+    --coral-light: #fdeee8;
+    --gold: #c87800;
+    --gold-light: #fff8e0;
+    --red: #c03020;
+    --red-light: #fdeeed;
+    --amber: #c06000;
+    --amber-light: #fff4e0;
+    --green: #2a8050;
+    --green-light: #e4f8ee;
+    --cream: #f4fbfa;
+    --warm-white: #ffffff;
+    --charcoal: #1a2828;
+    --medium: #3a5858;
+    --muted: #7a9898;
+    --border: #b8dcd8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Nanum Gothic", "맑은 고딕", "Malgun Gothic", sans-serif;
+    background: var(--cream); color: var(--charcoal); line-height: 1.7;
+  }
+  .main { max-width: 700px; margin: 0 auto; }
+
+  .hero {
+    position: relative;
+    background: linear-gradient(160deg, #054a3a 0%, #0a7a6a 40%, #0a9a8a 75%, #2abaa8 100%);
+    padding: 3.5rem 2rem 3.5rem; text-align: center; overflow: hidden;
+  }
+  .hero::after {
+    content: ""; position: absolute; bottom: -2px; left: 0; right: 0; height: 50px;
+    background: var(--cream); clip-path: ellipse(60% 100% at 50% 100%);
+  }
+  .hero-blob { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.08); }
+  .hero-content { position: relative; z-index: 2; }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.13); border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px; padding: 4px 16px;
+    font-size: 11px; letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.92); margin-bottom: 0.9rem; text-transform: uppercase;
+  }
+  .hero-title {
+    font-size: clamp(24px, 5vw, 34px); font-weight: 800; color: #fff;
+    line-height: 1.35; margin-bottom: 0.3rem; text-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  }
+  .hero-title em { color: #a8ffd8; font-style: normal; }
+  .hero-names { font-size: 16px; font-weight: 700; color: rgba(255,255,255,0.9); margin-bottom: 0.3rem; }
+  .hero-sub { font-size: 13px; color: rgba(255,255,255,0.72); margin-bottom: 1.4rem; }
+  .agent-wrap { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .agent-name {
+    display: inline-flex; align-items: center;
+    background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 30px; padding: 7px 20px; font-size: 13px; color: #fff; font-weight: 700;
+  }
+  .agent-contacts { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .agent-contacts a {
+    display: inline-flex; align-items: center; gap: 6px;
+    border-radius: 30px; padding: 7px 16px; font-size: 12.5px; text-decoration: none; font-weight: 700;
+  }
+  .contact-phone { background: rgba(255,255,255,0.92); color: #054a3a; box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+  .contact-kakao { background: #FEE500; color: #3a1d00; }
+
+  /* 수하물 배너 */
+  .baggage-banner {
+    background: linear-gradient(135deg, #e8fff8 0%, #d0f8f0 50%, #c8f0ff 100%);
+    padding: 1rem 1.75rem; border-bottom: 3px solid #60c8b8;
+  }
+  .baggage-title { font-size: 13px; font-weight: 800; color: #054a3a; margin-bottom: 0.7rem; }
+  .baggage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .baggage-item {
+    background: rgba(255,255,255,0.78); border-radius: 10px; padding: 10px 13px;
+    border: 1px solid rgba(60,180,160,0.35);
+  }
+  .baggage-label { font-size: 11px; font-weight: 700; color: #3a7068; margin-bottom: 4px; }
+  .baggage-val { font-size: 14px; font-weight: 800; color: #0a2820; line-height: 1.5; }
+  .baggage-sub { font-size: 11.5px; color: #5a8878; margin-top: 3px; line-height: 1.5; }
+
+  /* WEATHER */
+  .weather-bar {
+    background: linear-gradient(160deg, #fff8d0 0%, #d0f8ee 50%, #b8f8f0 100%);
+    padding: 1rem 1.75rem; border-bottom: 3px solid #60d0b8;
+  }
+  .weather-title { font-size: 13px; font-weight: 800; color: #054a3a; margin-bottom: 0.7rem; }
+  .weather-note { background: rgba(255,255,255,0.7); border-radius: 8px; padding: 8px 13px; font-size: 12.5px; color: #054a3a; font-weight: 700; border: 1px solid rgba(60,180,160,0.35); }
+  .weather-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 8px; }
+  .weather-day { background: rgba(255,255,255,0.78); border-radius: 10px; padding: 8px 6px; text-align: center; border: 1px solid rgba(60,180,160,0.4); }
+  .weather-day-label { font-size: 11px; font-weight: 700; color: #2a6858; margin-bottom: 3px; }
+  .weather-day-icon { font-size: 22px; margin-bottom: 3px; }
+  .weather-day-temp { font-size: 14px; font-weight: 800; color: #1a2820; }
+  .weather-day-desc { font-size: 10.5px; color: #3a6858; margin-top: 2px; }
+
+  /* SECTIONS */
+  .section { background: var(--warm-white); border-bottom: 1px solid var(--border); padding: 1.75rem; }
+  .section:nth-child(even) { background: var(--cream); }
+  .section-eyebrow { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sea); font-weight: 700; margin-bottom: 0.3rem; }
+  .section-heading { font-size: 20px; font-weight: 800; color: var(--charcoal); margin-bottom: 1.1rem; display: flex; align-items: center; gap: 10px; }
+  .section-heading::after { content: ""; flex: 1; height: 1.5px; background: linear-gradient(to right, var(--border), transparent); }
+
+  .info-card { background: var(--warm-white); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; box-shadow: 0 2px 10px rgba(10,138,122,0.07); }
+  .info-row { display: flex; gap: 1rem; padding: 12px 16px; border-bottom: 1px solid var(--border); align-items: flex-start; }
+  .info-row:last-child { border-bottom: none; }
+  .info-key { min-width: 96px; font-size: 14px; font-weight: 700; color: var(--medium); padding-top: 2px; }
+  .info-val { flex: 1; color: var(--charcoal); line-height: 1.65; font-size: 14px; }
+  .info-val strong { color: var(--sea); font-weight: 700; }
+
+  .alert { border-radius: 8px; padding: 10px 14px; font-size: 13px; line-height: 1.65; margin-top: 8px; }
+  .alert-red { background: var(--red-light); border-left: 3px solid var(--red); color: #7a1010; }
+  .alert-amber { background: var(--amber-light); border-left: 3px solid var(--amber); color: #7a3800; }
+  .alert-teal { background: var(--teal-light); border-left: 3px solid var(--teal); color: #0a2a3a; }
+  .alert-green { background: var(--green-light); border-left: 3px solid var(--green); color: #0a3820; }
+  .alert-gold { background: var(--gold-light); border-left: 3px solid var(--gold); color: #7a4800; }
+  .alert-sea { background: var(--sea-light); border-left: 3px solid var(--sea); color: #054a3a; }
+
+  a.link-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: linear-gradient(135deg, var(--sea), #2aaa98);
+    border-radius: 22px; padding: 8px 18px;
+    font-size: 13px; color: #fff; text-decoration: none;
+    margin-top: 6px; font-weight: 700; box-shadow: 0 3px 10px rgba(10,138,122,0.25);
+  }
+
+  .guide-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1rem; }
+  .guide-item { background: var(--sea-light); border-radius: 10px; padding: 10px 14px; border: 1px solid #90d8d0; }
+  .guide-item-label { font-size: 11px; color: var(--muted); font-weight: 700; margin-bottom: 2px; }
+  .guide-item-val { font-size: 13.5px; font-weight: 800; color: var(--sea); }
+
+  /* 체크인 유의사항 */
+  .checkin-list { list-style: none; padding: 0; }
+  .checkin-list li {
+    display: flex; gap: 10px; padding: 9px 0;
+    border-bottom: 1px solid var(--border); font-size: 13.5px; line-height: 1.65;
+  }
+  .checkin-list li:last-child { border-bottom: none; }
+  .checkin-num {
+    min-width: 22px; height: 22px; background: linear-gradient(135deg, var(--sea), #2aaa98);
+    color: #fff; border-radius: 50%; font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
+  }
+
+  /* 준비물 */
+  .checklist { list-style: none; padding: 0; }
+  .checklist li { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; line-height: 1.6; }
+  .checklist li:last-child { border-bottom: none; }
+  .check-num { min-width: 22px; height: 22px; background: linear-gradient(135deg, var(--sea), #2aaa98); color: #fff; border-radius: 50%; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  .check-cat { font-size: 11px; font-weight: 800; color: var(--sea); background: var(--sea-light); border-radius: 5px; padding: 1px 7px; margin-right: 4px; white-space: nowrap; }
+
+  .footer { background: linear-gradient(160deg, #054a3a 0%, #0a7a6a 60%, #0a9a8a 100%); padding: 2.5rem 2rem; text-align: center; position: relative; overflow: hidden; }
+  .footer::before { content: ""; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; border-radius: 50%; background: rgba(255,255,255,0.06); }
+  .footer-content { position: relative; z-index: 1; }
+  .footer-title { font-size: 21px; font-weight: 800; color: #fff; margin-bottom: 0.5rem; }
+  .footer-sub { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.8; margin-bottom: 1.4rem; }
+  .footer-name { font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.9); margin-bottom: 12px; }
+  .footer-contacts { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .footer-btn { display: inline-flex; align-items: center; gap: 8px; border-radius: 30px; padding: 10px 22px; font-size: 14px; text-decoration: none; font-weight: 700; }
+  .footer-btn-phone { background: rgba(255,255,255,0.18); border: 1.5px solid rgba(255,255,255,0.45); color: #fff; }
+  .footer-btn-kakao { background: #FEE500; border: 1.5px solid #FEE500; color: #3a1d00; }
+
+  @media (max-width: 500px) {
+    .section { padding: 1.4rem 1.2rem; }
+    .guide-grid { grid-template-columns: 1fr; }
+    .baggage-grid { grid-template-columns: 1fr; }
+    .weather-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="main">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-blob" style="width:220px;height:220px;top:-70px;right:-60px;"></div>
+    <div class="hero-blob" style="width:150px;height:150px;bottom:20px;left:-40px;"></div>
+    <div class="hero-content">
+      <div class="hero-tag">✦ Travel Confirmation ✦</div>
+      <div class="hero-title">🌴 <em>푸꾸옥</em> 여행<br>출발 전 안내입니다</div>
+      <div class="hero-names">김도현님 가족</div>
+      <div class="hero-sub">인천국제공항 출발 · 4박 6일</div>
+      <div class="agent-wrap">
+        <div class="agent-name">모두투어 이경진 실장</div>
+        <div class="agent-contacts">
+          <a class="contact-phone" href="tel:15445714">📞 1544-5714</a>
+          <a class="contact-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡 상담</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 수하물 배너 -->
+  <div class="baggage-banner">
+    <div class="baggage-title">🧳 수하물 안내</div>
+    <div class="baggage-grid">
+      <div class="baggage-item">
+        <div class="baggage-label">위탁 수하물</div>
+        <div class="baggage-val">성인·소아 (만 2세 이상)<br>15kg · 1개</div>
+        <div class="baggage-sub">가로+세로+높이 합 203cm 이내<br>※ 초과 시 위탁 거절 가능</div>
+      </div>
+      <div class="baggage-item">
+        <div class="baggage-label">기내 수하물</div>
+        <div class="baggage-val">10kg · 1개</div>
+        <div class="baggage-sub">3면 합 115cm 이내<br>가로 55 · 세로 40 · 높이 20cm 이하</div>
+      </div>
+    </div>
+
+    <div class="alert alert-red" style="margin-top:8px;">
+      🚭 <strong>베트남 전자담배 반입 절대 금지!</strong> — 적발 시 현지 법률에 따라 처벌받을 수 있습니다.
+    </div>
+  </div>
+
+  <!-- WEATHER -->
+  <div class="weather-bar">
+    <div class="weather-title">🌤️ 현지 날씨 — 푸꾸옥 (5월 우기 시작)</div>
+    <div class="weather-grid">
+      <div class="weather-day">
+        <div class="weather-day-label">오전</div>
+        <div class="weather-day-icon">☀️</div>
+        <div class="weather-day-temp">30~32°C</div>
+        <div class="weather-day-desc">맑고 무더움</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-label">오후</div>
+        <div class="weather-day-icon">🌦️</div>
+        <div class="weather-day-temp">30~32°C</div>
+        <div class="weather-day-desc">스콜 가능</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-label">체감온도</div>
+        <div class="weather-day-icon">🥵</div>
+        <div class="weather-day-temp">35~40°C</div>
+        <div class="weather-day-desc">자외선 매우 강함</div>
+      </div>
+    </div>
+    <div class="weather-note">☂️ 5월은 우기 시작 — 오후에 스콜성 소나기가 갑자기 내렸다가 금방 그칩니다. 우산/우비 챙기세요!</div>
+  </div>
+
+  <!-- 1. 일정표 -->
+  <div class="section">
+    <div class="section-eyebrow">01</div>
+    <div class="section-heading">여행 일정표</div>
+    <div class="info-card">
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">확정 일정표</div>
+        <div class="info-val">
+          <span style="font-size:13px;color:var(--muted);display:block;margin-bottom:6px;">아래 버튼을 눌러주세요</span>
+          <a class="link-pill" href="https://www.modetour.com/package/104946417?MLoc=99&Pnum=104946417&ANO=4547682&sno=C2181215&thru=crs" target="_blank">모두투어 확정 일정표 확인 ✔</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 공항 안내 -->
+  <div class="section">
+    <div class="section-eyebrow">02</div>
+    <div class="section-heading">공항 탑승 안내</div>
+    <div class="alert alert-teal" style="margin-bottom:1rem;margin-top:0;">
+      📢 <strong>인천공항 미팅 없습니다.</strong><br>
+      해당 항공사 카운터로 직접 가셔서 개별 티켓팅 후 출발입니다.
+    </div>
+    <div class="info-card">
+      <div class="info-row">
+        <div class="info-key">항공편</div>
+        <div class="info-val">
+          <strong>파라타항공 WE207편</strong><br>
+          <span style="font-size:12.5px;color:var(--muted);">인천 → 푸꾸옥 (PQC) · 19:50 출발</span>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-key">체크인 카운터</div>
+        <div class="info-val">
+          인천공항 <strong>1터미널 (T1)</strong><br>
+          <div style="display:inline-flex;align-items:center;gap:8px;margin-top:6px;background:var(--sea-light);border-radius:8px;padding:7px 14px;border:1px solid #90d8d0;">
+            <span style="font-size:18px;">🛫</span>
+            <div>
+              <div style="font-size:15px;font-weight:800;color:var(--sea);">B21 ~ B32 카운터</div>
+              <div style="font-size:12px;color:var(--muted);">WE207 / 파라타항공</div>
+            </div>
+          </div>
+          <div style="font-size:12px;color:var(--muted);margin-top:5px;">※ 당일 전광판에서 재확인 필수</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-key">도착 시간</div>
+        <div class="info-val">출발 <strong>2~3시간 전</strong> 공항 도착 권장<br>
+        <span style="font-size:12.5px;color:var(--muted);">(출발 19:50 → 16:50~17:50 도착 권장)</span></div>
+      </div>
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">기내식</div>
+        <div class="info-val"><strong style="color:var(--red);">기내식 제공 없음</strong> — 기내 간식·음료 별도 준비 권장</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. 현지 행사 정보 -->
+  <div class="section">
+    <div class="section-eyebrow">03</div>
+    <div class="section-heading">현지 행사 정보</div>
+    <div class="alert alert-green" style="margin-bottom:1rem;margin-top:0;">
+      📍 <strong>공항 청사 외부</strong>에서 고객님 성함이 적힌 <strong>모두투어</strong> 피켓으로 미팅
+    </div>
+    <div class="guide-grid">
+      <div class="guide-item">
+        <div class="guide-item-label">투숙 호텔</div>
+        <div class="guide-item-val">베스트웨스턴<br>2베드 빌라 1채</div>
+      </div>
+      <div class="guide-item">
+        <div class="guide-item-label">컨펌 번호</div>
+        <div class="guide-item-val">V142982</div>
+      </div>
+      <div class="guide-item">
+        <div class="guide-item-label">미팅 차량</div>
+        <div class="guide-item-val">16인승</div>
+      </div>
+      <div class="guide-item">
+        <div class="guide-item-label">불포함 경비</div>
+        <div class="guide-item-val">개인경비·매너팁</div>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-row">
+        <div class="info-key">현지 연락처①</div>
+        <div class="info-val">류승준 — <strong>039-876-1344</strong></div>
+      </div>
+      <div class="info-row">
+        <div class="info-key">현지 연락처②</div>
+        <div class="info-val">투이 — <strong>076-504-3532</strong></div>
+      </div>
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">카카오톡</div>
+        <div class="info-val"><strong>MODETOURPQ</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. 환전 안내 -->
+  <div class="section">
+    <div class="section-eyebrow">04</div>
+    <div class="section-heading">환전 안내 💵</div>
+    <div class="info-card">
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">베트남 동 (VND)</div>
+        <div class="info-val">
+          <strong>한국에서 미리 환전</strong>해 가시는 것을 추천드립니다<br>
+          <span style="font-size:12.5px;color:var(--muted);">50만동 · 20만동 · 10만동 소액권으로 준비</span>
+          <div class="alert alert-gold" style="margin-top:8px;">
+            💡 한국에서 환전이 어려우실 경우 현지 공항 또는 환전소에서 환전 가능합니다.<br>
+            현지 환전소 환율이 공항보다 유리한 경우가 많아요.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. 호텔 체크인 유의사항 -->
+  <div class="section">
+    <div class="section-eyebrow">05</div>
+    <div class="section-heading">호텔 체크인 유의사항</div>
+    <ul class="checkin-list">
+      <li><div class="checkin-num">2</div><span>프론트에서 <strong>여권으로 체크인</strong> — 일부 호텔은 체크아웃 시까지 여권 보관 가능</span></li>
+      <li><div class="checkin-num">3</div><span>체크인 시 <strong>보증금(Deposit)</strong>을 위한 신용카드 또는 현금 요구 가능 — 체크아웃 시 미사용분 자동 환불</span></li>
+      <li><div class="checkin-num">4</div><span>객실 층수·베드 타입은 체크인 시 확정 — 사전 요청은 보장되지 않으니 현장에서 직접 요청</span></li>
+      <li><div class="checkin-num">5</div><span>체크아웃은 일반적으로 <strong>오후 12시</strong> — 이후 추가 비용 발생 가능</span></li>
+    </ul>
+  </div>
+
+  <!-- 6. 준비물 -->
+  <div class="section">
+    <div class="section-eyebrow">06</div>
+    <div class="section-heading">준비물 체크리스트 🌴</div>
+    <ul class="checklist">
+      <!-- 더위 대비 -->
+      <li><div class="check-num">1</div><span><span class="check-cat">더위</span><strong>넥쿨러</strong> — 한낮 체감온도 35~40°C, 강력 추천!</span></li>
+      <li><div class="check-num">2</div><span><span class="check-cat">더위</span><strong>아이스 텀블러</strong> — 조식 시 얼음 채워두면 하루 종일 시원하게 음료 즐길 수 있어요 🧊</span></li>
+      <li><div class="check-num">3</div><span><span class="check-cat">더위</span><strong>쿨링 수건·쿨링 스프레이</strong> — 즉각 체온 낮추기 필수템</span></li>
+      <li><div class="check-num">4</div><span><span class="check-cat">더위</span><strong>쿨링 토시·손목 쿨링밴드</strong> — 야외 이동 시 UV 차단 겸 쿨링</span></li>
+      <li><div class="check-num">5</div><span><span class="check-cat">더위</span>한여름 옷차림 (린넨·통풍 잘 되는 소재)</span></li>
+      <!-- 햇빛 -->
+      <li><div class="check-num">6</div><span><span class="check-cat">햇빛</span><strong>선크림 (SPF 50+ 이상)</strong> — 자외선 지수 매우 높음 ☀️</span></li>
+      <li><div class="check-num">7</div><span><span class="check-cat">햇빛</span><strong>선글라스 · 챙 넓은 모자</strong> — 필수</span></li>
+      <!-- 우비 -->
+      <li><div class="check-num">8</div><span><span class="check-cat">우기</span><strong>우산 또는 경량 우비</strong> — 오후 스콜 대비</span></li>
+      <li><div class="check-num">9</div><span><span class="check-cat">우기</span>샌들·슬리퍼 (빗길 젖어도 되는 것)</span></li>
+      <!-- 물놀이 -->
+      <li><div class="check-num">10</div><span><span class="check-cat">물놀이</span>수영복 · 래쉬가드 (자외선 차단)</span></li>
+      <li><div class="check-num">11</div><span><span class="check-cat">물놀이</span>방수 파우치 · 핸드폰 방수 케이스</span></li>
+      <li><div class="check-num">12</div><span><span class="check-cat">물놀이</span>알로에 젤 (선번 진정 케어)</span></li>
+      <!-- 건강 -->
+      <li><div class="check-num">13</div><span><span class="check-cat">건강</span>개인 복용약 및 상비약 (지사제·소화제·감기약·해열제)</span></li>
+      <li><div class="check-num">14</div><span><span class="check-cat">건강</span>모기 기피제 — 열대 지역 모기 주의 🦟</span></li>
+      <!-- 기타 -->
+      <li><div class="check-num">15</div><span><span class="check-cat">기타</span>개인 세면도구 · 샴푸 (수질이 다를 수 있음)</span></li>
+      <li><div class="check-num">16</div><span><span class="check-cat">기타</span>핸드폰 충전기 · 보조배터리 · 멀티어댑터</span></li>
+      <li><div class="check-num">18</div><span><span class="check-cat">기타</span>신용카드 (Visa/Mastercard) — 리조트·마트 대부분 사용 가능</span></li>
+    </ul>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-content">
+      <div class="footer-title">🌴 즐거운 푸꾸옥 여행 되세요!</div>
+      <div class="footer-sub">궁금하신 사항은 언제든지 문의 주세요.<br>감사합니다.</div>
+      <div class="footer-name">모두투어 이경진 실장</div>
+      <div class="footer-contacts">
+        <a class="footer-btn footer-btn-phone" href="tel:15445714">📞 1544-5714</a>
+        <a class="footer-btn footer-btn-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡 상담</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
