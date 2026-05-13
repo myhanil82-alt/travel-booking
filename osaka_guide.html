@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>여행 확정 안내 | 오사카 단체패키지</title>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sea: #b02020;
+    --sea-light: #fdeeed;
+    --teal: #8a3000;
+    --teal-light: #fff4e0;
+    --coral: #e05a30;
+    --coral-light: #fdeee8;
+    --gold: #b07000;
+    --gold-light: #fff8e0;
+    --red: #c03020;
+    --red-light: #fdeeed;
+    --amber: #c06000;
+    --amber-light: #fff4e0;
+    --green: #2a6040;
+    --green-light: #e4f8ee;
+    --cream: #fdf6f6;
+    --warm-white: #ffffff;
+    --charcoal: #1a1818;
+    --medium: #5a3838;
+    --muted: #9a7878;
+    --border: #e8d0d0;
+    --purple: #6a3080;
+    --purple-light: #f4eeff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Nanum Gothic", "맑은 고딕", "Malgun Gothic", sans-serif;
+    background: var(--cream); color: var(--charcoal); line-height: 1.7;
+  }
+  .main { max-width: 700px; margin: 0 auto; }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    background: linear-gradient(160deg, #6a0a0a 0%, #b01818 40%, #d03030 75%, #e85050 100%);
+    padding: 3.5rem 2rem 3.5rem; text-align: center; overflow: hidden;
+  }
+  .hero::after {
+    content: ""; position: absolute; bottom: -2px; left: 0; right: 0; height: 50px;
+    background: var(--cream); clip-path: ellipse(60% 100% at 50% 100%);
+  }
+  .hero-blob { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.08); }
+  .hero-content { position: relative; z-index: 2; }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.13); border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px; padding: 4px 16px;
+    font-size: 11px; letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.92); margin-bottom: 0.9rem; text-transform: uppercase;
+  }
+  .hero-title {
+    font-size: clamp(24px, 5vw, 34px); font-weight: 800; color: #fff;
+    line-height: 1.35; margin-bottom: 0.3rem; text-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  }
+  .hero-title em { color: #ffd0a8; font-style: normal; }
+  .hero-names { font-size: 16px; font-weight: 700; color: rgba(255,255,255,0.9); margin-bottom: 0.3rem; }
+  .hero-sub { font-size: 13px; color: rgba(255,255,255,0.72); margin-bottom: 1.4rem; }
+  .agent-wrap { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .agent-name {
+    display: inline-flex; align-items: center;
+    background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 30px; padding: 7px 20px; font-size: 13px; color: #fff; font-weight: 700;
+  }
+  .agent-contacts { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .agent-contacts a {
+    display: inline-flex; align-items: center; gap: 6px;
+    border-radius: 30px; padding: 7px 16px; font-size: 12.5px; text-decoration: none; font-weight: 700;
+  }
+  .contact-phone { background: rgba(255,255,255,0.92); color: #6a0a0a; box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+  .contact-kakao { background: #FEE500; color: #3a1d00; }
+
+  /* 미팅 배너 */
+  .meeting-banner {
+    background: linear-gradient(135deg, #fff0e0 0%, #fde8d8 50%, #ffd8c8 100%);
+    padding: 1rem 1.75rem; border-bottom: 3px solid #e07848;
+  }
+  .meeting-banner-title { font-size: 13px; font-weight: 800; color: #7a2000; margin-bottom: 0.7rem; }
+  .meeting-point-box {
+    background: rgba(255,255,255,0.78); border-radius: 12px; padding: 14px 18px;
+    border: 1px solid rgba(220,100,60,0.35);
+    display: flex; align-items: flex-start; gap: 14px;
+  }
+  .meeting-point-icon { font-size: 32px; flex-shrink: 0; }
+  .meeting-point-label { font-size: 11px; font-weight: 700; color: #c05030; margin-bottom: 4px; }
+  .meeting-point-val { font-size: 15px; font-weight: 800; color: #3a1000; line-height: 1.55; }
+  .meeting-point-sub { font-size: 12px; color: #7a4030; margin-top: 5px; line-height: 1.6; }
+  .meeting-time-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: #c03020; color: #fff;
+    border-radius: 20px; padding: 5px 14px;
+    font-size: 13px; font-weight: 800; margin-top: 8px;
+  }
+
+  /* 항공 배너 */
+  .flight-banner {
+    background: linear-gradient(135deg, #f0eeff 0%, #e8e0ff 50%, #e0d8ff 100%);
+    padding: 1rem 1.75rem; border-bottom: 3px solid #9070d0;
+  }
+  .flight-banner-title { font-size: 13px; font-weight: 800; color: #3a1070; margin-bottom: 0.7rem; }
+  .flight-card {
+    background: rgba(255,255,255,0.8); border-radius: 12px; overflow: hidden;
+    border: 1px solid rgba(140,100,200,0.35); margin-bottom: 10px;
+  }
+  .flight-card:last-child { margin-bottom: 0; }
+  .flight-card-header {
+    padding: 8px 14px;
+    font-size: 11px; font-weight: 800; letter-spacing: 0.1em;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .flight-card-header.go { background: linear-gradient(135deg, #7040b0, #9060d0); color: #fff; }
+  .flight-card-header.back { background: linear-gradient(135deg, #2a6040, #3a8060); color: #fff; }
+  .flight-card-body { padding: 12px 16px; }
+  .flight-route {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .flight-city { text-align: center; flex: 1; }
+  .flight-city-code { font-size: 22px; font-weight: 800; color: #2a1040; }
+  .flight-city-time { font-size: 16px; font-weight: 800; color: #3a1070; margin-top: 2px; }
+  .flight-city-name { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .flight-arrow-wrap { flex: 0 0 80px; text-align: center; }
+  .flight-arrow { font-size: 20px; color: #9060d0; }
+  .flight-arrow-label { font-size: 10px; color: var(--muted); margin-top: 2px; }
+  .flight-meta-row {
+    display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap;
+  }
+  .flight-meta-chip {
+    background: #f0eeff; border: 1px solid #c8b0f0;
+    border-radius: 20px; padding: 3px 10px;
+    font-size: 11px; font-weight: 700; color: #5a30a0;
+  }
+
+  /* WEATHER */
+  .weather-bar {
+    background: linear-gradient(160deg, #fff8d0 0%, #ffeedd 50%, #ffeecc 100%);
+    padding: 1rem 1.75rem; border-bottom: 3px solid #e0a848;
+  }
+  .weather-title { font-size: 13px; font-weight: 800; color: #6a3000; margin-bottom: 0.7rem; }
+  .weather-note { background: rgba(255,255,255,0.7); border-radius: 8px; padding: 8px 13px; font-size: 12.5px; color: #6a3000; font-weight: 700; border: 1px solid rgba(200,140,60,0.35); }
+  .weather-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 8px; }
+  .weather-day { background: rgba(255,255,255,0.78); border-radius: 10px; padding: 8px 6px; text-align: center; border: 1px solid rgba(200,140,60,0.4); }
+  .weather-day-label { font-size: 11px; font-weight: 700; color: #7a4020; margin-bottom: 3px; }
+  .weather-day-icon { font-size: 22px; margin-bottom: 3px; }
+  .weather-day-temp { font-size: 14px; font-weight: 800; color: #1a1010; }
+  .weather-day-desc { font-size: 10.5px; color: #7a5030; margin-top: 2px; }
+
+  /* SECTIONS */
+  .section { background: var(--warm-white); border-bottom: 1px solid var(--border); padding: 1.75rem; }
+  .section:nth-child(even) { background: var(--cream); }
+  .section-eyebrow { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sea); font-weight: 700; margin-bottom: 0.3rem; }
+  .section-heading { font-size: 20px; font-weight: 800; color: var(--charcoal); margin-bottom: 1.1rem; display: flex; align-items: center; gap: 10px; }
+  .section-heading::after { content: ""; flex: 1; height: 1.5px; background: linear-gradient(to right, var(--border), transparent); }
+
+  .info-card { background: var(--warm-white); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; box-shadow: 0 2px 10px rgba(176,32,32,0.07); }
+  .info-row { display: flex; gap: 1rem; padding: 12px 16px; border-bottom: 1px solid var(--border); align-items: flex-start; }
+  .info-row:last-child { border-bottom: none; }
+  .info-key { min-width: 96px; font-size: 14px; font-weight: 700; color: var(--medium); padding-top: 2px; }
+  .info-val { flex: 1; color: var(--charcoal); line-height: 1.65; font-size: 14px; }
+  .info-val strong { color: var(--sea); font-weight: 700; }
+
+  .alert { border-radius: 8px; padding: 10px 14px; font-size: 13px; line-height: 1.65; margin-top: 8px; }
+  .alert-red { background: var(--red-light); border-left: 3px solid var(--red); color: #7a1010; }
+  .alert-amber { background: var(--amber-light); border-left: 3px solid var(--amber); color: #7a3800; }
+  .alert-teal { background: var(--teal-light); border-left: 3px solid var(--teal); color: #4a2000; }
+  .alert-green { background: var(--green-light); border-left: 3px solid var(--green); color: #0a3820; }
+  .alert-gold { background: var(--gold-light); border-left: 3px solid var(--gold); color: #7a4800; }
+  .alert-sea { background: var(--sea-light); border-left: 3px solid var(--sea); color: #6a0a0a; }
+  .alert-purple { background: var(--purple-light); border-left: 3px solid var(--purple); color: #3a1060; }
+
+  a.link-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: linear-gradient(135deg, var(--sea), #d84040);
+    border-radius: 22px; padding: 8px 18px;
+    font-size: 13px; color: #fff; text-decoration: none;
+    margin-top: 6px; font-weight: 700; box-shadow: 0 3px 10px rgba(176,32,32,0.25);
+  }
+
+  .guide-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1rem; }
+  .guide-item { background: var(--sea-light); border-radius: 10px; padding: 10px 14px; border: 1px solid #e8b0b0; }
+  .guide-item-label { font-size: 11px; color: var(--muted); font-weight: 700; margin-bottom: 2px; }
+  .guide-item-val { font-size: 13.5px; font-weight: 800; color: var(--sea); }
+
+  /* 체크인 유의사항 */
+  .checkin-list { list-style: none; padding: 0; }
+  .checkin-list li {
+    display: flex; gap: 10px; padding: 9px 0;
+    border-bottom: 1px solid var(--border); font-size: 13.5px; line-height: 1.65;
+  }
+  .checkin-list li:last-child { border-bottom: none; }
+  .checkin-num {
+    min-width: 22px; height: 22px; background: linear-gradient(135deg, var(--sea), #d84040);
+    color: #fff; border-radius: 50%; font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
+  }
+
+  /* 준비물 */
+  .checklist { list-style: none; padding: 0; }
+  .checklist li { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; line-height: 1.6; }
+  .checklist li:last-child { border-bottom: none; }
+  .check-num { min-width: 22px; height: 22px; background: linear-gradient(135deg, var(--sea), #d84040); color: #fff; border-radius: 50%; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  .check-cat { font-size: 11px; font-weight: 800; color: var(--sea); background: var(--sea-light); border-radius: 5px; padding: 1px 7px; margin-right: 4px; white-space: nowrap; }
+
+  .footer { background: linear-gradient(160deg, #6a0a0a 0%, #b01818 60%, #d03030 100%); padding: 2.5rem 2rem; text-align: center; position: relative; overflow: hidden; }
+  .footer::before { content: ""; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; border-radius: 50%; background: rgba(255,255,255,0.06); }
+  .footer-content { position: relative; z-index: 1; }
+  .footer-title { font-size: 21px; font-weight: 800; color: #fff; margin-bottom: 0.5rem; }
+  .footer-sub { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.8; margin-bottom: 1.4rem; }
+  .footer-name { font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.9); margin-bottom: 12px; }
+  .footer-contacts { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .footer-btn { display: inline-flex; align-items: center; gap: 8px; border-radius: 30px; padding: 10px 22px; font-size: 14px; text-decoration: none; font-weight: 700; }
+  .footer-btn-phone { background: rgba(255,255,255,0.18); border: 1.5px solid rgba(255,255,255,0.45); color: #fff; }
+  .footer-btn-kakao { background: #FEE500; border: 1.5px solid #FEE500; color: #3a1d00; }
+
+  @media (max-width: 500px) {
+    .section { padding: 1.4rem 1.2rem; }
+    .guide-grid { grid-template-columns: 1fr; }
+    .weather-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="main">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-blob" style="width:220px;height:220px;top:-70px;right:-60px;"></div>
+    <div class="hero-blob" style="width:150px;height:150px;bottom:20px;left:-40px;"></div>
+    <div class="hero-content">
+      <div class="hero-tag">✦ Travel Confirmation ✦</div>
+      <div class="hero-title">🌸 <em>오사카</em> 단체여행<br>출발 전 안내입니다</div>
+      <div class="hero-names">양진일님 팀</div>
+      <div class="hero-sub">김해국제공항 출발 · 2박 3일 · 24명</div>
+      <div class="agent-wrap">
+        <div class="agent-name">모두투어 이경진 실장</div>
+        <div class="agent-contacts">
+          <a class="contact-phone" href="tel:15445714">📞 1544-5714</a>
+          <a class="contact-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡 상담</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 미팅 배너 -->
+  <div class="meeting-banner">
+    <div class="meeting-banner-title">📍 출발 미팅 안내</div>
+    <div class="meeting-point-box">
+      <div class="meeting-point-icon">🏢</div>
+      <div>
+        <div class="meeting-point-label">MEETING POINT</div>
+        <div class="meeting-point-val">김해국제공항 국제선 3층<br>오른쪽 "모두투어" 안내판 앞</div>
+        <div class="meeting-point-sub">
+          출발 <strong>2~3시간 전</strong> 공항 도착 권장<br>
+          수속 마감 후에는 탑승이 불가합니다
+        </div>
+        <div class="meeting-time-badge">⏰ 미팅 시간 : 2026.05.15(금) 오전 05:30</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 항공 배너 -->
+  <div class="flight-banner">
+    <div class="flight-banner-title">✈️ 항공 일정 — 제주항공</div>
+
+    <!-- 가는 편 -->
+    <div class="flight-card">
+      <div class="flight-card-header go">
+        ✈ 가는 편 &nbsp;·&nbsp; 7C1351
+      </div>
+      <div class="flight-card-body">
+        <div class="flight-route">
+          <div class="flight-city">
+            <div class="flight-city-code">PUS</div>
+            <div class="flight-city-time">08:05</div>
+            <div class="flight-city-name">부산 (김해)</div>
+          </div>
+          <div class="flight-arrow-wrap">
+            <div class="flight-arrow">→</div>
+            <div class="flight-arrow-label">2026.05.15(금)</div>
+          </div>
+          <div class="flight-city">
+            <div class="flight-city-code">KIX</div>
+            <div class="flight-city-time">09:35</div>
+            <div class="flight-city-name">오사카 (간사이)</div>
+          </div>
+        </div>
+        <div class="flight-meta-row">
+          <span class="flight-meta-chip">제주항공</span>
+          <span class="flight-meta-chip">편명 7C1351</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 오는 편 -->
+    <div class="flight-card">
+      <div class="flight-card-header back">
+        ✈ 오는 편 &nbsp;·&nbsp; 7C1354
+      </div>
+      <div class="flight-card-body">
+        <div class="flight-route">
+          <div class="flight-city">
+            <div class="flight-city-code">KIX</div>
+            <div class="flight-city-time">19:00</div>
+            <div class="flight-city-name">오사카 (간사이)</div>
+          </div>
+          <div class="flight-arrow-wrap">
+            <div class="flight-arrow">→</div>
+            <div class="flight-arrow-label">2026.05.17(일)</div>
+          </div>
+          <div class="flight-city">
+            <div class="flight-city-code">PUS</div>
+            <div class="flight-city-time">20:35</div>
+            <div class="flight-city-name">부산 (김해)</div>
+          </div>
+        </div>
+        <div class="flight-meta-row">
+          <span class="flight-meta-chip">제주항공</span>
+          <span class="flight-meta-chip">편명 7C1354</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEATHER -->
+  <div class="weather-bar">
+    <div class="weather-title">🌤️ 현지 날씨 — 오사카 (5월 중순)</div>
+    <div class="weather-grid">
+      <div class="weather-day">
+        <div class="weather-day-label">5/15 (금)</div>
+        <div class="weather-day-icon">⛅</div>
+        <div class="weather-day-temp">17~25°C</div>
+        <div class="weather-day-desc">맑고 따뜻</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-label">5/16 (토)</div>
+        <div class="weather-day-icon">🌤️</div>
+        <div class="weather-day-temp">18~26°C</div>
+        <div class="weather-day-desc">대체로 맑음</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-label">5/17 (일)</div>
+        <div class="weather-day-icon">🌦️</div>
+        <div class="weather-day-temp">17~24°C</div>
+        <div class="weather-day-desc">가끔 소나기</div>
+      </div>
+    </div>
+    <div class="weather-note">☂️ 5월 오사카는 초여름의 쾌적한 날씨이지만 저녁에 서늘할 수 있어요. 얇은 겉옷과 접이식 우산을 꼭 챙겨 주세요!</div>
+  </div>
+
+  <!-- 1. 일정표 -->
+  <div class="section">
+    <div class="section-eyebrow">01</div>
+    <div class="section-heading">여행 일정표</div>
+    <div class="info-card">
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">확정 일정표</div>
+        <div class="info-val">
+          <span style="font-size:13px;color:var(--muted);display:block;margin-bottom:6px;">아래 버튼을 눌러주세요</span>
+          <a class="link-pill" href="https://www.modetour.com/package/103453780?MLoc=99&Pnum=103453780&ANO=1772510&sno=C2181215&thru=crs" target="_blank">모두투어 확정 일정표 확인 ✔</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 현지 행사 정보 -->
+  <div class="section">
+    <div class="section-eyebrow">02</div>
+    <div class="section-heading">현지 행사 정보</div>
+    <div class="alert alert-green" style="margin-bottom:1rem;margin-top:0;">
+      📍 현지 공항에서 <strong>모두투어</strong> 피켓을 들고 있는 가이드와 미팅합니다
+    </div>
+    <div class="guide-grid">
+      <div class="guide-item">
+        <div class="guide-item-label">담당 가이드</div>
+        <div class="guide-item-val">하경옥</div>
+      </div>
+      <div class="guide-item">
+        <div class="guide-item-label">가이드 연락처</div>
+        <div class="guide-item-val">010-3592-5596</div>
+      </div>
+      <div class="guide-item">
+        <div class="guide-item-label">행사 인원</div>
+        <div class="guide-item-val">24명</div>
+      </div>
+      <div class="guide-item">
+        <div class="guide-item-label">행사 차량</div>
+        <div class="guide-item-val">27인승</div>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">투숙 호텔</div>
+        <div class="info-val"><strong>사라사 신오사카 호텔</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. 현지 지불 비용 -->
+  <div class="section">
+    <div class="section-eyebrow">03</div>
+    <div class="section-heading">현지 지불 비용 (불포함)</div>
+    <div class="info-card">
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">가이드/기사 경비</div>
+        <div class="info-val">
+          <strong>1인 3,000엔</strong> (아동 동일)<br>
+          <span style="font-size:12.5px;color:var(--muted);">현지에서 엔화 현금으로 직접 지불</span>
+          <div class="alert alert-amber" style="margin-top:8px;">
+            ⚠️ 엔화 현금으로만 지불 가능하니 반드시 출발 전 환전해 주세요!
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-sea" style="margin-top:10px;">
+      🍽️ <strong>도착 당일(5/15) 저녁 석식은 불포함</strong>입니다.<br>
+      오사카는 먹방의 도시! 도톤보리·신사이바시 등 근처 유명 맛집을 자유롭게 탐방해 보세요 😊<br>
+      <span style="font-size:12px;">구글맵에서 "도톤보리 맛집", "오사카 라멘", "타코야키" 등으로 검색해 보세요.</span>
+    </div>
+  </div>
+
+  <!-- 4. 환전 안내 -->
+  <div class="section">
+    <div class="section-eyebrow">04</div>
+    <div class="section-heading">환전 안내 💴</div>
+    <div class="info-card">
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">일본 엔 (¥)</div>
+        <div class="info-val">
+          <strong>엔화(¥)로 환전</strong>해 가시면 됩니다<br>
+          <span style="font-size:12.5px;color:var(--muted);">현지 신용카드(Visa/Master) 사용 가능</span>
+          <div class="alert alert-gold" style="margin-top:8px;">
+            💡 가이드/기사 경비 <strong>3,000엔</strong>은 반드시 <strong>엔화 현금</strong>으로 준비해 주세요.<br>
+            쇼핑·간식·소소한 지출을 위한 여유 현금도 추천드려요.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. 준비물 -->
+  <div class="section">
+    <div class="section-eyebrow">05</div>
+    <div class="section-heading">준비물 체크리스트 🎒</div>
+    <ul class="checklist">
+      <li><div class="check-num">1</div><span><span class="check-cat">필수</span><strong>여권</strong> — 유효기간 6개월 이상 남아있는지 반드시 확인!</span></li>
+      <li><div class="check-num">2</div><span><span class="check-cat">필수</span><strong>항공권 E-티켓 출력 또는 캡처</strong></span></li>
+      <li><div class="check-num">3</div><span><span class="check-cat">전기</span><strong>멀티플러그 (돼지코 · A타입)</strong> — 일본은 110V 사용</span></li>
+      <li><div class="check-num">4</div><span><span class="check-cat">전기</span><strong>보조배터리 · 충전기</strong></span></li>
+      <li><div class="check-num">5</div><span><span class="check-cat">날씨</span><strong>얇은 가디건 또는 바람막이</strong> — 낮엔 반팔, 저녁엔 서늘해요</span></li>
+      <li><div class="check-num">6</div><span><span class="check-cat">날씨</span>반팔 · 긴팔 혼용 (레이어드 추천)</span></li>
+      <li><div class="check-num">7</div><span><span class="check-cat">날씨</span><strong>접이식 우산</strong> — 5월 소나기 대비</span></li>
+      <li><div class="check-num">8</div><span><span class="check-cat">날씨</span><strong>선크림 (SPF 50+)</strong> — 5월 자외선 강함 ☀️</span></li>
+      <li><div class="check-num">9</div><span><span class="check-cat">날씨</span>선글라스</span></li>
+      <li><div class="check-num">10</div><span><span class="check-cat">복장</span><strong>편한 운동화</strong> — 도보 관광 多, 힐·구두 비추천</span></li>
+      <li><div class="check-num">11</div><span><span class="check-cat">건강</span>개인 복용약 및 상비약 (소화제·진통제·감기약·지사제)</span></li>
+      <li><div class="check-num">12</div><span><span class="check-cat">건강</span>멀미약 (비행기·버스 이동 시)</span></li>
+      <li><div class="check-num">13</div><span><span class="check-cat">기타</span>개인 세면도구 · 화장품</span></li>
+      <li><div class="check-num">14</div><span><span class="check-cat">기타</span><strong>신용카드</strong> (Visa/Mastercard) — 쇼핑·식당 대부분 사용 가능</span></li>
+      <li><div class="check-num">15</div><span><span class="check-cat">기타</span><strong>엔화 현금</strong> — 가이드 경비·전통시장·소규모 가게 결제용</span></li>
+      <li><div class="check-num">16</div><span><span class="check-cat">기타</span>에코백 또는 여분 쇼핑백 (쇼핑 대비)</span></li>
+    </ul>
+    <div class="alert alert-purple" style="margin-top:12px;">
+      ⚡ <strong>전압 주의!</strong> 일본은 110V를 사용합니다. 스마트폰 충전기·노트북은 대부분 100~240V 자동 인식이지만, <strong>플러그 모양(A타입)은 별도 어댑터</strong>가 필요합니다. 한국에서 미리 준비해 주세요.
+    </div>
+  </div>
+
+  <!-- 6. 유의사항 -->
+  <div class="section">
+    <div class="section-eyebrow">06</div>
+    <div class="section-heading">유의사항</div>
+    <ul class="checkin-list">
+      <li><div class="checkin-num">1</div><span>미팅 시간 <strong>오전 05:30</strong>까지 김해공항 국제선 3층 모두투어 안내판 앞으로 와 주세요.</span></li>
+      <li><div class="checkin-num">2</div><span>여권 유효기간을 꼭 확인해 주세요. <strong>잔여 유효기간 6개월 이상</strong> 필수입니다.</span></li>
+      <li><div class="checkin-num">3</div><span>본 안내문은 대표자 한 분께 전달됩니다. <strong>일행 모두에게 공유</strong> 부탁드립니다.</span></li>
+      <li><div class="checkin-num">4</div><span>개인 사정으로 인한 일정 변경·취소는 상품 약관에 따라 위약금이 발생할 수 있습니다.</span></li>
+      <li><div class="checkin-num">5</div><span>현지 사정에 따라 일부 일정이 변경될 수 있으며, 변경 시 <strong>가이드 안내</strong>에 따라 주세요.</span></li>
+    </ul>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-content">
+      <div class="footer-title">🌸 즐거운 오사카 여행 되세요!</div>
+      <div class="footer-sub">궁금하신 사항은 언제든지 문의 주세요.<br>감사합니다.</div>
+      <div class="footer-name">모두투어 이경진 실장</div>
+      <div class="footer-contacts">
+        <a class="footer-btn footer-btn-phone" href="tel:15445714">📞 1544-5714</a>
+        <a class="footer-btn footer-btn-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡 상담</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
