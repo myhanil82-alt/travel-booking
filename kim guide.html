@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>여행 확정 안내 | 장가계 패키지 — 김홍란님팀</title>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ke-blue: #003876;
+    --ke-blue-light: #e8f0fb;
+    --ke-red: #c0001a;
+    --ke-red-light: #fdeef0;
+    --teal: #1a7a6a;
+    --teal-light: #e4f6f2;
+    --gold: #b87800;
+    --gold-light: #fff8e0;
+    --amber: #c06000;
+    --amber-light: #fff4e0;
+    --green: #1a7a3a;
+    --green-light: #e4f6ea;
+    --cream: #f5f8fd;
+    --warm-white: #ffffff;
+    --charcoal: #1a2030;
+    --medium: #3a4a60;
+    --muted: #7a8898;
+    --border: #d0dce8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Nanum Gothic", "맑은 고딕", "Malgun Gothic", sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    line-height: 1.7;
+  }
+  .main { max-width: 700px; margin: 0 auto; }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    background: linear-gradient(160deg, #001a40 0%, #003876 40%, #0058b0 75%, #0078d0 100%);
+    padding: 3.5rem 2rem 3.5rem;
+    text-align: center; overflow: hidden;
+  }
+  .hero::after {
+    content: ""; position: absolute; bottom: -2px; left: 0; right: 0; height: 50px;
+    background: var(--cream); clip-path: ellipse(60% 100% at 50% 100%);
+  }
+  .hero-blob { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.07); }
+  .hero-content { position: relative; z-index: 2; }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px; padding: 4px 16px;
+    font-size: 11px; letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.9); margin-bottom: 0.9rem; text-transform: uppercase;
+  }
+  .hero-title {
+    font-size: clamp(24px, 5vw, 34px);
+    font-weight: 800; color: #fff; line-height: 1.35; margin-bottom: 0.3rem;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  }
+  .hero-title em { color: #a8d8ff; font-style: normal; }
+  .hero-names { font-size: 16px; font-weight: 700; color: rgba(255,255,255,0.9); margin-bottom: 0.3rem; }
+  .hero-sub { font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 1.4rem; }
+  .agent-wrap { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .agent-name {
+    display: inline-flex; align-items: center;
+    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 30px; padding: 7px 20px; font-size: 13px; color: #fff; font-weight: 700;
+  }
+  .agent-contacts { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .agent-contacts a {
+    display: inline-flex; align-items: center; gap: 6px;
+    border-radius: 30px; padding: 7px 16px;
+    font-size: 12.5px; text-decoration: none; font-weight: 700;
+  }
+  .contact-phone { background: rgba(255,255,255,0.92); color: #001a40; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+  .contact-kakao { background: #FEE500; color: #3a1d00; box-shadow: 0 2px 8px rgba(200,160,0,0.25); }
+
+  /* FLIGHT BANNER */
+  .flight-banner {
+    background: linear-gradient(135deg, #eef4ff 0%, #dce8ff 50%, #d0e0ff 100%);
+    padding: 1rem 1.75rem 1.1rem;
+    border-bottom: 3px solid #8ab0e8;
+  }
+  .flight-banner-title { font-size: 13px; font-weight: 800; color: #003876; margin-bottom: 0.6rem; }
+  .flight-row {
+    display: flex; align-items: center;
+    background: rgba(255,255,255,0.75);
+    border-radius: 8px; padding: 7px 12px; margin-bottom: 6px;
+    border: 1px solid rgba(100,150,220,0.35);
+  }
+  .flight-row:last-of-type { margin-bottom: 0; }
+  .flight-label {
+    font-size: 12px; font-weight: 800; color: #003876;
+    min-width: 48px; background: rgba(0,56,118,0.1);
+    border-radius: 6px; padding: 3px 6px; text-align: center;
+  }
+  .flight-port { flex: 1; text-align: center; }
+  .flight-port-name { font-size: 12px; font-weight: 700; color: #3a5a80; }
+  .flight-port-time { font-size: 20px; font-weight: 800; color: #001a40; line-height: 1.2; }
+  .flight-port-date { font-size: 11px; color: #5a7a98; }
+  .flight-arrow { flex: 0 0 36px; text-align: center; color: #003876; font-size: 16px; font-weight: 800; }
+  .flight-meta {
+    display: flex; gap: 0; justify-content: center;
+    margin-top: 8px; flex-wrap: wrap;
+    background: rgba(255,255,255,0.6);
+    border-radius: 8px; padding: 7px 0;
+    border: 1px solid rgba(100,150,220,0.25);
+  }
+  .flight-meta-item {
+    flex: 1; min-width: 80px; font-size: 11.5px; color: #4a6a88;
+    text-align: center; border-right: 1px solid rgba(100,150,220,0.2); padding: 2px 6px;
+  }
+  .flight-meta-item:last-child { border-right: none; }
+  .flight-meta-item strong { color: #001a40; font-weight: 800; display: block; font-size: 13px; }
+
+  /* WEATHER */
+  .weather-bar {
+    background: linear-gradient(160deg, #f0f8ff 0%, #e0f4f0 50%, #e8f8e0 100%);
+    padding: 1rem 1.75rem;
+    border-bottom: 3px solid #8ad0c0;
+  }
+  .weather-title { font-size: 13px; font-weight: 800; color: #1a4a38; margin-bottom: 0.7rem; }
+  .weather-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; }
+  .weather-day {
+    background: rgba(255,255,255,0.75); border-radius: 10px; padding: 7px 5px;
+    text-align: center; border: 1px solid rgba(100,190,170,0.4);
+  }
+  .weather-day-date { font-size: 10px; font-weight: 700; color: #3a6858; margin-bottom: 3px; }
+  .weather-day-icon { font-size: 20px; margin-bottom: 3px; }
+  .weather-day-temp { font-size: 12.5px; font-weight: 800; color: #1a2a20; }
+  .weather-day-desc { font-size: 9.5px; color: #4a6858; margin-top: 2px; }
+  .weather-note {
+    margin-top: 8px; background: rgba(255,255,255,0.7);
+    border-radius: 6px; padding: 7px 12px;
+    font-size: 12.5px; color: #1a4838; font-weight: 700;
+    border: 1px solid rgba(100,190,170,0.35);
+  }
+
+  /* SECTIONS */
+  .section {
+    background: var(--warm-white); border-bottom: 1px solid var(--border); padding: 1.75rem;
+  }
+  .section:nth-child(even) { background: var(--cream); }
+  .section-eyebrow {
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ke-blue); font-weight: 700; margin-bottom: 0.3rem;
+  }
+  .section-heading {
+    font-size: 20px; font-weight: 800; color: var(--charcoal);
+    margin-bottom: 1.1rem; display: flex; align-items: center; gap: 10px;
+  }
+  .section-heading::after {
+    content: ""; flex: 1; height: 1.5px;
+    background: linear-gradient(to right, var(--border), transparent);
+  }
+
+  /* INFO CARD */
+  .info-card {
+    background: var(--warm-white); border: 1px solid var(--border);
+    border-radius: 14px; overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,56,118,0.06);
+  }
+  .info-row {
+    display: flex; gap: 1rem; padding: 12px 16px;
+    border-bottom: 1px solid var(--border); align-items: flex-start;
+  }
+  .info-row:last-child { border-bottom: none; }
+  .info-key { min-width: 96px; font-size: 14px; font-weight: 700; color: var(--medium); padding-top: 2px; }
+  .info-val { flex: 1; color: var(--charcoal); line-height: 1.65; font-size: 14px; }
+  .info-val strong { color: var(--ke-blue); font-weight: 700; }
+
+  /* ALERTS */
+  .alert { border-radius: 8px; padding: 10px 14px; font-size: 13px; line-height: 1.65; margin-top: 8px; }
+  .alert-red { background: var(--ke-red-light); border-left: 3px solid var(--ke-red); color: #7a0010; }
+  .alert-amber { background: var(--amber-light); border-left: 3px solid var(--amber); color: #7a3800; }
+  .alert-blue { background: var(--ke-blue-light); border-left: 3px solid var(--ke-blue); color: #001a40; }
+  .alert-green { background: var(--green-light); border-left: 3px solid var(--green); color: #0d4020; }
+
+  /* LINK PILL */
+  a.link-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: linear-gradient(135deg, var(--ke-blue), #0058b0);
+    border-radius: 22px; padding: 8px 18px;
+    font-size: 13px; color: #fff; text-decoration: none;
+    margin-top: 6px; font-weight: 700;
+    box-shadow: 0 3px 10px rgba(0,56,118,0.25);
+  }
+
+  /* PROCESS STEPS */
+  .process-wrap { display: flex; flex-direction: column; gap: 0; }
+  .process-step {
+    display: flex; align-items: flex-start; gap: 12px;
+    background: var(--warm-white); border: 1px solid var(--border);
+    border-radius: 10px; padding: 10px 14px;
+  }
+  .process-num {
+    min-width: 28px; height: 28px;
+    background: linear-gradient(135deg, var(--ke-blue), #0058b0);
+    color: #fff; border-radius: 50%;
+    font-size: 13px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,56,118,0.25);
+  }
+  .process-title { font-size: 14px; font-weight: 700; color: var(--charcoal); }
+  .process-desc { font-size: 12.5px; color: var(--muted); margin-top: 1px; }
+  .process-arrow { text-align: center; color: var(--ke-blue); font-size: 18px; line-height: 1; margin: 3px 0 3px 14px; }
+
+  /* GUIDE GRID */
+  .guide-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1rem; }
+  .guide-item {
+    background: var(--ke-blue-light); border-radius: 10px; padding: 10px 14px;
+    border: 1px solid #b8d0ee;
+  }
+  .guide-item-label { font-size: 11px; color: var(--muted); font-weight: 700; margin-bottom: 2px; }
+  .guide-item-val { font-size: 13.5px; font-weight: 800; color: var(--ke-blue); }
+
+  /* HOTEL */
+  .hotel-item {
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 10px 0; border-bottom: 1px solid var(--border);
+  }
+  .hotel-item:last-child { border-bottom: none; }
+  .hotel-night {
+    min-width: 44px; height: 44px;
+    background: linear-gradient(135deg, var(--ke-blue), #0058b0);
+    color: #fff; border-radius: 10px;
+    font-size: 12px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; text-align: center; line-height: 1.3;
+  }
+  .hotel-name { font-size: 14px; font-weight: 700; color: var(--charcoal); }
+  .hotel-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+  /* BOARDING PASS */
+  .boarding-img { width: 100%; border-radius: 10px; border: 1px solid var(--border); display: block; margin-bottom: 10px; }
+  .boarding-label { font-size: 13px; font-weight: 700; color: var(--muted); margin: 12px 0 5px; }
+
+  /* CHECKLIST */
+  .checklist { list-style: none; padding: 0; }
+  .checklist li {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 8px 0; border-bottom: 1px solid var(--border);
+    font-size: 14px; line-height: 1.6;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .check-num {
+    min-width: 22px; height: 22px;
+    background: linear-gradient(135deg, var(--ke-blue), #0058b0);
+    color: #fff; border-radius: 50%; font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 2px;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: linear-gradient(160deg, #001a40 0%, #003876 60%, #0058b0 100%);
+    padding: 2.5rem 2rem; text-align: center; position: relative; overflow: hidden;
+  }
+  .footer::before {
+    content: ""; position: absolute; top: -60px; right: -60px;
+    width: 200px; height: 200px; border-radius: 50%; background: rgba(255,255,255,0.06);
+  }
+  .footer-content { position: relative; z-index: 1; }
+  .footer-title { font-size: 21px; font-weight: 800; color: #fff; margin-bottom: 0.5rem; }
+  .footer-sub { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.8; margin-bottom: 1.4rem; }
+  .footer-name { font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.9); margin-bottom: 12px; }
+  .footer-contacts { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .footer-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    border-radius: 30px; padding: 10px 22px;
+    font-size: 14px; text-decoration: none; font-weight: 700;
+  }
+  .footer-btn-phone { background: rgba(255,255,255,0.15); border: 1.5px solid rgba(255,255,255,0.4); color: #fff; }
+  .footer-btn-kakao { background: #FEE500; border: 1.5px solid #FEE500; color: #3a1d00; box-shadow: 0 3px 10px rgba(200,160,0,0.3); }
+
+  @media (max-width: 500px) {
+    .section { padding: 1.4rem 1.2rem; }
+    .weather-grid { grid-template-columns: repeat(3, 1fr); }
+    .guide-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="main">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-blob" style="width:200px;height:200px;top:-60px;right:-50px;"></div>
+    <div class="hero-blob" style="width:140px;height:140px;bottom:20px;left:-40px;"></div>
+    <div class="hero-content">
+      <div class="hero-tag">✦ Travel Confirmation ✦</div>
+      <div class="hero-title">설레는 <em>장가계</em> 여행<br>출발 전 안내입니다</div>
+      <div class="hero-names">김홍란님 일행</div>
+      <div class="hero-sub">2026년 5월 22일 출발 | 인천공항 1터미널</div>
+      <div class="agent-wrap">
+        <div class="agent-name">모두투어 이경진 실장</div>
+        <div class="agent-contacts">
+          <a class="contact-phone" href="tel:15445714">📞 1544-5714</a>
+          <a class="contact-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡 상담</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLIGHT BANNER -->
+  <div class="flight-banner">
+    <div class="flight-banner-title">✈️ 항공 일정 — 사천항공 (Sichuan Airlines)</div>
+    <div class="flight-row">
+      <div class="flight-label">가는 편</div>
+      <div class="flight-port">
+        <div class="flight-port-name">인천 (ICN) T1</div>
+        <div class="flight-port-time">21:50</div>
+        <div class="flight-port-date">5월 22일 (금)</div>
+      </div>
+      <div class="flight-arrow">→</div>
+      <div class="flight-port">
+        <div class="flight-port-name">장가계 (ZHY)</div>
+        <div class="flight-port-time">23:55</div>
+        <div class="flight-port-date">5월 22일 (금)</div>
+      </div>
+    </div>
+    <div class="flight-row">
+      <div class="flight-label">오는 편</div>
+      <div class="flight-port">
+        <div class="flight-port-name">장가계 (ZHY)</div>
+        <div class="flight-port-time">16:20</div>
+        <div class="flight-port-date">5월 26일 (화)</div>
+      </div>
+      <div class="flight-arrow">→</div>
+      <div class="flight-port">
+        <div class="flight-port-name">인천 (ICN)</div>
+        <div class="flight-port-time">20:30</div>
+        <div class="flight-port-date">5월 26일 (화)</div>
+      </div>
+    </div>
+    <div class="flight-meta">
+      <div class="flight-meta-item"><strong>3U3708 / 3U3707</strong>편명</div>
+      <div class="flight-meta-item"><strong>T1 탑승구</strong>당일 전광판 확인</div>
+      <div class="flight-meta-item"><strong>출발 2시간 전</strong>공항 도착 권장</div>
+    </div>
+  </div>
+
+  <!-- WEATHER -->
+  <div class="weather-bar">
+    <div class="weather-title">🌤️ 현지 날씨 예보 — 장가계 (5/22 ~ 5/26)</div>
+    <div class="weather-grid">
+      <div class="weather-day">
+        <div class="weather-day-date">5/22 (금)</div>
+        <div class="weather-day-icon">🌦️</div>
+        <div class="weather-day-temp">18~26°C</div>
+        <div class="weather-day-desc">소나기</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-date">5/23 (토)</div>
+        <div class="weather-day-icon">⛅</div>
+        <div class="weather-day-temp">19~27°C</div>
+        <div class="weather-day-desc">구름 많음</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-date">5/24 (일)</div>
+        <div class="weather-day-icon">🌫️</div>
+        <div class="weather-day-temp">18~25°C</div>
+        <div class="weather-day-desc">안개·흐림</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-date">5/25 (월)</div>
+        <div class="weather-day-icon">🌦️</div>
+        <div class="weather-day-temp">19~27°C</div>
+        <div class="weather-day-desc">소나기</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-date">5/26 (화)</div>
+        <div class="weather-day-icon">⛅</div>
+        <div class="weather-day-temp">18~25°C</div>
+        <div class="weather-day-desc">구름 조금</div>
+      </div>
+    </div>
+    <div class="weather-note">🌧️ 5월 장가계는 우기 시작 — 소나기·안개가 잦습니다. 비 온 뒤 신비로운 구름 산 풍경은 덤! 우산/우비 필수 챙기세요.</div>
+  </div>
+
+  <!-- 1. 일정표 -->
+  <div class="section">
+    <div class="section-eyebrow">01</div>
+    <div class="section-heading">여행 일정표</div>
+    <div class="info-card">
+      <div class="info-row">
+        <div class="info-key">확정 일정표</div>
+        <div class="info-val">
+          <span style="font-size:13px;color:var(--muted);display:block;margin-bottom:6px;">아래 버튼을 눌러주세요</span>
+          <a class="link-pill" href="https://www.modetour.com/package/103292004?MLoc=99&Pnum=103292004&ANO=1772510&sno=C2181215&thru=crs" target="_blank">모두투어 확정 일정표 확인 ✔</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 공항 수속 -->
+  <div class="section">
+    <div class="section-eyebrow">02</div>
+    <div class="section-heading">공항 탑승 안내</div>
+    <div class="info-card" style="margin-bottom:1rem;">
+      <div class="info-row">
+        <div class="info-key">체크인 카운터</div>
+        <div class="info-val">
+          인천공항 <strong>1터미널 사천항공 카운터</strong><br>
+          <span style="font-size:12.5px;color:var(--muted);">※ 당일 전광판에서 재확인 필수</span>
+        </div>
+      </div>
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">탑승 안내</div>
+        <div class="info-val">
+          <strong>출발 3시간 전</strong>까지 공항 도착 권장 (21:50 출발 → 18:50 도착 권장)
+          <div class="alert alert-blue" style="margin-top:6px;">
+            ✈️ 편명 <strong>3U3708</strong> · 출발 <strong>21:50</strong> · 탑승구는 당일 전광판 확인
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="process-wrap">
+      <div class="process-step">
+        <div class="process-num">1</div>
+        <div>
+          <div class="process-title">인천공항 1터미널 도착</div>
+          <div class="process-desc">출발 3시간 전 (출발 21:50 → 18:50 도착 권장)</div>
+        </div>
+      </div>
+      <div class="process-arrow">↓</div>
+      <div class="process-step">
+        <div class="process-num">2</div>
+        <div>
+          <div class="process-title">사천항공 카운터 이동 — 탑승 수속 및 짐 수속</div>
+          <div class="process-desc">여권 지참 → 탑승권 발급 + 수하물 위탁</div>
+        </div>
+      </div>
+      <div class="process-arrow">↓</div>
+      <div class="process-step">
+        <div class="process-num">3</div>
+        <div>
+          <div class="process-title">보안검색대 통과</div>
+          <div class="process-desc">여권 및 탑승권 준비</div>
+        </div>
+      </div>
+      <div class="process-arrow">↓</div>
+      <div class="process-step">
+        <div class="process-num">4</div>
+        <div>
+          <div class="process-title">면세점 관광 후 탑승구로 이동</div>
+          <div class="process-desc">출발 시간 30분 전까지 탑승구 도착</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 미팅 서비스 -->
+    <div style="margin-top:1.2rem; background:linear-gradient(135deg,#eef4ff 0%,#dce8ff 100%); border-radius:14px; border:1.5px solid #8ab0e8; overflow:hidden;">
+      <div style="background:linear-gradient(90deg,#003876,#0058b0); padding:10px 16px; display:flex; align-items:center; gap:8px;">
+        <span style="font-size:16px;">📍</span>
+        <span style="font-size:13px; font-weight:800; color:#fff; letter-spacing:0.05em;">미팅 서비스 안내</span>
+        <span style="margin-left:auto; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.35); border-radius:20px; padding:2px 10px; font-size:10.5px; color:rgba(255,255,255,0.9); font-weight:700;">사전신청 고객 해당</span>
+      </div>
+      <div style="padding:14px 16px;">
+        <!-- 일시 -->
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+          <div style="min-width:28px; height:28px; background:linear-gradient(135deg,#003876,#0058b0); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0;">🕕</div>
+          <div>
+            <div style="font-size:11px; color:#5a7a98; font-weight:700;">미팅 일시</div>
+            <div style="font-size:14px; font-weight:800; color:#001a40;">2026년 5월 22일 (금) &nbsp;18:50</div>
+          </div>
+        </div>
+        <!-- 장소 -->
+        <div style="background:rgba(255,255,255,0.75); border-radius:10px; border:1px solid rgba(100,150,220,0.35); padding:12px 14px;">
+          <div style="font-size:12px; font-weight:800; color:#003876; margin-bottom:8px;">📍 인천국제공항 1터미널 3층 출국장</div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <div style="flex:1; min-width:140px; background:#e8f0fb; border-radius:8px; padding:8px 12px; border-left:3px solid #003876;">
+              <div style="font-size:10px; color:#5a7a98; font-weight:700; margin-bottom:3px;">서편 미팅 장소</div>
+              <div style="font-size:13px; font-weight:800; color:#001a40;">14번 출구 앞</div>
+              <div style="font-size:11.5px; color:#3a5a80;">N카운터 옆 창측</div>
+            </div>
+            <div style="flex:1; min-width:140px; background:#e8f0fb; border-radius:8px; padding:8px 12px; border-left:3px solid #003876;">
+              <div style="font-size:10px; color:#5a7a98; font-weight:700; margin-bottom:3px;">여행사 카운터</div>
+              <div style="font-size:13px; font-weight:800; color:#001a40;">9~10번 테이블</div>
+              <div style="font-size:11.5px; color:#3a5a80;">모두투어</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:8px; font-size:12px; color:#3a5a80; line-height:1.6;">
+          ✈️ 미팅서비스를 신청하지 않으신 경우 <strong>별도 미팅 없이 바로 출국 수속</strong>을 진행하시면 됩니다.
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- 3. 중국 입국신고서 -->
+  <div class="section">
+    <div class="section-eyebrow">03</div>
+    <div class="section-heading">중국 온라인 입국신고서 <span style="font-size:14px;color:var(--ke-red);">의무</span></div>
+    <div class="alert alert-amber" style="margin-bottom:1rem; margin-top:0;">
+      ⚠️ <strong>가이드 및 호텔 정보는 현재 미확정</strong>입니다.<br>
+      출발 <strong>3일 전</strong>까지 모두투어 확정 일정표에 안내될 예정이니, 반드시 아래 일정표를 먼저 확인하신 후 입국신고서를 작성해 주세요.
+    </div>
+    <div class="info-card">
+      <div class="info-row">
+        <div class="info-key">일정표 확인</div>
+        <div class="info-val">
+          <span style="font-size:13px;color:var(--muted);display:block;margin-bottom:6px;">호텔명·도착 도시 등 모든 정보 확인 가능</span>
+          <a class="link-pill" href="https://www.modetour.com/package/103292004?MLoc=99&Pnum=103292004&ANO=1772510&sno=C2181215&thru=crs" target="_blank">📋 모두투어 확정 일정표 확인 →</a>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-key">작성 기간</div>
+        <div class="info-val">출발 <strong>72시간 전</strong>부터 작성 가능</div>
+      </div>
+      <div class="info-row">
+        <div class="info-key">작성 사이트</div>
+        <div class="info-val">
+          <a class="link-pill" href="https://s.nia.gov.cn/ArrivalCardFillingPC/entry-registation-home" target="_blank">🌐 중국 입국신고서 작성 →</a>
+        </div>
+      </div>
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">작성 참고정보</div>
+        <div class="info-val">
+          <div class="alert alert-blue" style="margin-top:0;">
+            📌 일정표 확인 후 <strong>도착 도시명</strong>과 <strong>호텔명</strong>을 그대로 입력해 주세요.<br>
+            <span style="font-size:12px;">(정보 확정 전 임의로 작성하지 마세요)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. 투숙 호텔 -->
+  <div class="section">
+    <div class="section-eyebrow">04</div>
+    <div class="section-heading">투숙 호텔</div>
+    <div class="alert alert-blue" style="margin-bottom:1rem; margin-top:0;">
+      🏨 투숙 호텔은 현재 확정 전입니다.<br>
+      출발 <strong>3일 전</strong> 모두투어 확정 일정표에서 확인하실 수 있습니다.
+    </div>
+  </div>
+
+  <!-- 5. 현지 행사 정보 -->
+  <div class="section">
+    <div class="section-eyebrow">05</div>
+    <div class="section-heading">현지 행사 정보</div>
+    <div class="alert alert-blue" style="margin-bottom:1rem; margin-top:0;">
+      🗺️ 가이드 정보 및 행사 세부 내용은 현재 미확정입니다.<br>
+      출발 <strong>3일 전</strong> 모두투어 확정 일정표에서 확인하실 수 있습니다.
+    </div>
+    <div class="info-card">
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">불포함 경비</div>
+        <div class="info-val">개인 경비 및 매너팁 (생수·음료수 등)</div>
+      </div>
+    </div>
+  </div>
+
+    <!-- 6. 환전 안내 -->
+  <div class="section">
+    <div class="section-eyebrow">06</div>
+    <div class="section-heading">환전 안내</div>
+    <div class="info-card">
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">환전 안내</div>
+        <div class="info-val">
+          <strong>노팁 · 노옵션</strong> 상품이므로 <strong>중국 돈(위안화)이 전혀 필요하지 않습니다</strong><br>
+          개인 간식·기념품 구입 원하시는 분만 <strong>한국 돈 (만원권)</strong> 소액 지참 — 현지에서 바꾸실 수 있습니다
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. 준비물 -->
+  <div class="section">
+    <div class="section-eyebrow">07</div>
+    <div class="section-heading">준비물 체크리스트</div>
+    <div class="alert alert-blue" style="margin-bottom:1rem;margin-top:0;">
+      ⚡ 전압 220V — 한국 전자기기 그대로 사용 가능합니다.
+    </div>
+    <ul class="checklist">
+      <li><div class="check-num">1</div><span>겹겹이 입을 수 있는 옷차림 (낮·밤 기온차 대비)</span></li>
+      <li><div class="check-num">2</div><span>☂️ <strong>우산 또는 우비</strong> — 소나기·안개 잦음</span></li>
+      <li><div class="check-num">3</div><span>발 편한 운동화 (산악 지형, 젖은 돌계단 대비)</span></li>
+      <li><div class="check-num">4</div><span>개인 상비약 및 복용약</span></li>
+      <li><div class="check-num">5</div><span>개인 세면도구</span></li>
+      <li><div class="check-num">6</div><span>드라이기 · 전자기기 충전기</span></li>
+      <li><div class="check-num">7</div><span>🧻 <strong>휴지 / 물티슈</strong> — 휴지 없는 화장실 있으니 필수!</span></li>
+      <li><div class="check-num">8</div><span>🍱 <strong>여행용 반찬</strong> (잘 밀봉된 것, 고기류 제외) — 식사 시 도움됩니다</span></li>
+    </ul>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-content">
+      <div class="footer-title">🏔️ 즐거운 장가계 여행 되세요!</div>
+      <div class="footer-sub">궁금하신 사항은 언제든지 문의 주세요.<br>감사합니다.</div>
+      <div class="footer-name">모두투어 이경진 실장</div>
+      <div class="footer-contacts">
+        <a class="footer-btn footer-btn-phone" href="tel:15445714">📞 1544-5714</a>
+        <a class="footer-btn footer-btn-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡 상담</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
