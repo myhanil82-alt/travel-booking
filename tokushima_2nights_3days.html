@@ -1,0 +1,366 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans)}
+.wrap{padding:1.5rem 0}
+.hero{background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:1.25rem 1.5rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.hero-icon{font-size:32px;color:#1D9E75}
+.hero-title{font-size:22px;font-weight:500;color:var(--color-text-primary)}
+.hero-sub{font-size:14px;color:var(--color-text-secondary);margin-top:4px}
+.tabs{display:flex;gap:8px;margin-bottom:1.25rem}
+.tab{padding:8px 18px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);font-size:14px;cursor:pointer;background:var(--color-background-primary);color:var(--color-text-secondary);transition:all .15s}
+.tab.active{background:var(--color-background-tertiary);color:var(--color-text-primary);font-weight:500;border-color:var(--color-border-primary)}
+.day-panel{display:none}
+.day-panel.show{display:block}
+.transport-box{background:#E1F5EE;border-radius:var(--border-radius-md);padding:1rem 1.25rem;margin-bottom:1.25rem;border:0.5px solid #9FE1CB}
+.transport-box h3{font-size:14px;font-weight:500;color:#085041;margin-bottom:6px}
+.transport-box p{font-size:13px;color:#0F6E56;line-height:1.7}
+.timeline{position:relative;padding-left:28px}
+.timeline::before{content:'';position:absolute;left:9px;top:8px;bottom:8px;width:1.5px;background:var(--color-border-secondary)}
+.tl-item{position:relative;margin-bottom:1.25rem}
+.tl-dot{position:absolute;left:-28px;top:4px;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;z-index:1}
+.dot-go{background:#B5D4F4;color:#0C447C}
+.dot-eat{background:#FAC775;color:#633806}
+.dot-see{background:#9FE1CB;color:#085041}
+.dot-tip{background:#F4C0D1;color:#72243E}
+.tl-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:.9rem 1.1rem}
+.tl-time{font-size:12px;color:var(--color-text-secondary);margin-bottom:4px}
+.tl-name{font-size:15px;font-weight:500;color:var(--color-text-primary);margin-bottom:5px}
+.tl-desc{font-size:13px;color:var(--color-text-secondary);line-height:1.65}
+.badge{display:inline-block;padding:2px 10px;border-radius:20px;font-size:11px;font-weight:500;margin-bottom:6px}
+.b-eat{background:#FAEEDA;color:#633806}
+.b-see{background:#E1F5EE;color:#085041}
+.b-move{background:#E6F1FB;color:#0C447C}
+.b-tip{background:#FBEAF0;color:#72243E}
+.tip-box{background:var(--color-background-secondary);border-left:3px solid #5DCAA5;border-radius:0 var(--border-radius-md) var(--border-radius-md) 0;padding:.75rem 1rem;margin-top:6px}
+.tip-box p{font-size:13px;color:var(--color-text-secondary);line-height:1.7}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:1.5rem}
+.info-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem}
+.info-card h4{font-size:13px;font-weight:500;color:var(--color-text-secondary);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.info-card ul{list-style:none;padding:0}
+.info-card li{font-size:13px;color:var(--color-text-primary);padding:3px 0;border-bottom:0.5px solid var(--color-border-tertiary);line-height:1.5}
+.info-card li:last-child{border-bottom:none}
+.section-title{font-size:16px;font-weight:500;color:var(--color-text-primary);margin:1.5rem 0 .75rem;display:flex;align-items:center;gap:8px}
+</style>
+
+<div class="wrap">
+<h2 class="sr-only">도쿠시마 2박 3일 자유여행 추천 일정</h2>
+
+<div class="hero">
+  <i class="ti ti-map-pin hero-icon" aria-hidden="true"></i>
+  <div>
+    <div class="hero-title">도쿠시마 2박 3일 자유여행</div>
+    <div class="hero-sub">아와오도리 · 오보케·코보케 · 나루토 소용돌이 · 히노미사키 해안</div>
+  </div>
+</div>
+
+<div class="tabs" role="tablist">
+  <button class="tab active" onclick="show('d0')" role="tab">🛫 이동 가이드</button>
+  <button class="tab" onclick="show('d1')" role="tab">Day 1</button>
+  <button class="tab" onclick="show('d2')" role="tab">Day 2</button>
+  <button class="tab" onclick="show('d3')" role="tab">Day 3</button>
+</div>
+
+<div id="d0" class="day-panel show">
+  <div class="section-title"><i class="ti ti-plane-departure" aria-hidden="true"></i>한국 → 도쿠시마 이동 방법</div>
+  <div class="tl-card" style="margin-bottom:1rem">
+    <div class="badge b-move">추천 루트 ①</div>
+    <div class="tl-name">인천 → 고베·오사카 → 도쿠시마</div>
+    <div class="tl-desc">
+      인천에서 간사이 국제공항(KIX) 또는 고베공항(UKB) 취항편 이용 → 고베항 페리(잔코쿠마루, 약 2시간) 또는 고속버스(고베·오사카 → 도쿠시마, 약 2~2.5시간)로 연결.<br><br>
+      <strong>가장 현실적인 루트:</strong> KIX 도착 → 리무진버스로 난바 또는 산노미야 이동 → 도쿠시마행 고속버스 (JR버스·도쿄버스 등, 약 2시간 30분, 편도 ¥2,000~3,000)
+    </div>
+  </div>
+  <div class="tl-card" style="margin-bottom:1rem">
+    <div class="badge b-move">추천 루트 ②</div>
+    <div class="tl-name">직항 / 고마쓰·도쿠시마 공항 이용</div>
+    <div class="tl-desc">도쿠시마 공항(TKS)은 국제선이 극히 제한적이라 국내 환승 필요. 오사카·도쿄에서 ANA·JAL 국내선 이용 시 약 55분. 한국 출발 기준 간사이 경유가 현실적.</div>
+  </div>
+
+  <div class="section-title"><i class="ti ti-car" aria-hidden="true"></i>도쿠시마 내 이동 수단</div>
+  <div class="transport-box">
+    <h3>렌터카 (강력 추천 ★★★)</h3>
+    <p>도쿠시마 시내 외 오보케·코보케 협곡, 이야 계곡, 히노미사키 등 주요 명소는 대중교통이 극히 불편하거나 하루 2~3편밖에 없음. 도쿠시마 역 또는 공항 렌터카 센터에서 픽업 권장. 국제운전면허증 필수. 네비는 일본어/영어 설정 가능, 한국카드 결제 OK.</p>
+  </div>
+  <div class="tl-card" style="margin-bottom:1rem">
+    <div class="badge b-move">버스 (시내)</div>
+    <div class="tl-name">시내버스 · 도쿠시마 버스</div>
+    <div class="tl-desc">나루토 방면은 도쿠시마역 → 나루토역 JR 무궁화호(약 35분, ¥490). 아와오도리 주변 시내 관광은 버스·도보 가능. 오보케·코보케는 JR 도사선 + 택시 or 렌터카 필수.</div>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h4><i class="ti ti-currency-yen" style="font-size:15px" aria-hidden="true"></i> 예산 가이드 (1인/3일)</h4>
+      <ul>
+        <li>교통 (항공+버스) ¥30,000~50,000</li>
+        <li>렌터카 2일 ¥8,000~15,000</li>
+        <li>숙박 2박 ¥15,000~30,000</li>
+        <li>식비 3일 ¥10,000~20,000</li>
+        <li>입장료 ¥3,000~5,000</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4><i class="ti ti-calendar" style="font-size:15px" aria-hidden="true"></i> 최적 여행 시기</h4>
+      <ul>
+        <li>🌸 봄 (3~5월) 신록·벚꽃</li>
+        <li>🎆 여름 (8월 12~15일) 아와오도리</li>
+        <li>🍂 가을 (10~11월) 단풍 최고</li>
+        <li>❌ 장마철 (6~7월) 비 많음</li>
+        <li>숙박은 아와오도리 기간 3개월 전 예약 필수</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="d1" class="day-panel">
+  <div class="transport-box">
+    <h3><i class="ti ti-map-route" style="font-size:14px" aria-hidden="true"></i> Day 1 이동 루트</h3>
+    <p>도쿠시마 도착 (공항/버스터미널) → 렌터카 픽업 → 나루토 소용돌이 → 도쿠시마 시내 체크인 → 아와오도리 체험</p>
+  </div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot dot-go"><i class="ti ti-plane-arrival" style="font-size:10px" aria-hidden="true"></i></div>
+      <div class="tl-card">
+        <div class="tl-time">09:00~10:00</div>
+        <div class="badge b-move">이동</div>
+        <div class="tl-name">도쿠시마 도착 + 렌터카 픽업</div>
+        <div class="tl-desc">도쿠시마 공항 또는 도쿠시마역 인근 렌터카 센터 (타임스·오릭스·닛산 렌터카 등) 픽업. 네비에 "鳴門公園" 입력.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot dot-see"></div>
+      <div class="tl-card">
+        <div class="tl-time">10:30~12:30</div>
+        <div class="badge b-see">관광</div>
+        <div class="tl-name">나루토 소용돌이 (鳴門の渦潮)</div>
+        <div class="tl-desc">세계 3대 조류 중 하나. 오나루토교 보도교 '우즈노미치(渦の道)' 유리 바닥에서 직접 내려다보는 체험 (입장료 ¥510). 만조·간조 전후 약 1시간이 최고 스팟. 사전에 조류 시간표 확인 필수 (naruto-kankou.com).
+        <div class="tip-box"><p>🕐 소용돌이 크기는 조류 시간에 따라 극적으로 달라짐. 관광청 앱 또는 홈페이지에서 당일 최적 시간 확인 후 방문 강력 권장.</p></div></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot dot-eat"></div>
+      <div class="tl-card">
+        <div class="tl-time">12:30~13:30</div>
+        <div class="badge b-eat">점심</div>
+        <div class="tl-name">うずの丘 大鳴門橋記念館 内 레스토랑 or 나루토 타이야키</div>
+        <div class="tl-desc">나루토 명물 나루토다이(도미)회 또는 나루토킨토키(고구마) 사용 디저트. 소용돌이 공원 내 식당가 이용 편리. 또는 근처 해산물 정식 식당 '魚増鮮魚店' (나루토 현지인 맛집, 해물덮밥 ¥1,200~).</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot dot-see"></div>
+      <div class="tl-card">
+        <div class="tl-time">14:00~16:00</div>
+        <div class="badge b-see">관광</div>
+        <div class="tl-name">오츠카 국제미술관 (大塚国際美術館)</div>
+        <div class="tl-desc">세계 명화 1,000점 이상을 실물 크기 도자기 복제로 전시. 시스티나 성당 천장화 복제가 압권. 관람 시간 최소 3시간 필요, 하루 종일도 가능. 입장료 ¥3,300 (사전 예약 권장). 나루토 소용돌이와 같은 날 묶기 최적.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot dot-go"></div>
+      <div class="tl-card">
+        <div class="tl-time">17:30</div>
+        <div class="badge b-move">이동</div>
+        <div class="tl-name">도쿠시마 시내 숙소 체크인</div>
+        <div class="tl-desc">나루토 → 도쿠시마 시내 차로 약 40분. 추천 숙소: 도쿠시마 그랜드호텔 / JR 호텔 클레멘트 도쿠시마 (역 바로 앞, 편리). 게스트하우스는 Mapp Tokushima 등.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot dot-eat"></div>
+      <div class="tl-card">
+        <div class="tl-time">18:30~20:00</div>
+        <div class="badge b-eat">저녁</div>
+        <div class="tl-name">아와오도리 회관 야시장 + 도쿠시마 라멘</div>
+        <div class="tl-desc">도쿠시마 라멘은 전국구 명물. 진한 돼지뼈+간장 계열, 날달걀 토핑이 특징.<br><br>
+        ▸ <strong>麺王 道後店</strong> — 현지인·관광객 모두 인정, 줄 서는 집<br>
+        ▸ <strong>いのたに 本店</strong> — 도쿠시마 라멘 원조 격, 관광객에게도 유명<br>
+        ▸ <strong>東大 본점</strong> — 24시간 영업, 깊은 맛의 라멘</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot dot-see"></div>
+      <div class="tl-card">
+        <div class="tl-time">20:00~21:30</div>
+        <div class="badge b-see">야간 관광</div>
+        <div class="tl-name">아와오도리 회관 (阿波おどり会館) 야간 공연</div>
+        <div class="tl-desc">1층~5층 건물로 아와오도리 상설 공연장. 매일 저녁 공연 (19:00, 20:00, 21:00 회차). 입장료 ¥800. 아와오도리 축제 기간이 아니어도 365일 공연 감상 가능. 관람 후 옥상 전망대에서 도쿠시마 야경도 추천.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="d2" class="day-panel">
+  <div class="transport-box">
+    <h3><i class="ti ti-map-route" style="font-size:14px" aria-hidden="true"></i> Day 2 이동 루트</h3>
+    <p>도쿠시마 시내 → 오보케·코보케 협곡 (렌터카, 약 1시간 20분) → 이야 계곡 → 가즈라바시 → 도쿠시마 귀환 or 이야 숙박</p>
+  </div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot dot-eat"></div>
+      <div class="tl-card">
+        <div class="tl-time">07:30~08:30</div>
+        <div class="badge b-eat">아침</div>
+        <div class="tl-name">숙소 조식 or 도쿠시마역 인근 카페</div>
+        <div class="tl-desc">오늘은 이동 거리가 길어 일찍 출발 권장. 도쿠시마역 지하 편의점이나 역 내 빵집에서 간단히 해결해도 OK.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot dot-go"></div>
+      <div class="tl-card">
+        <div class="tl-time">08:30~10:00</div>
+        <div class="badge b-move">이동</div>
+        <div class="tl-name">렌터카로 오보케 방면 출발</div>
+        <div class="tl-desc">도쿠시마 시내 → 국도32호 → 요시노가와 강변 드라이브 → 오보케 (大歩危) 약 1시간 20분. 강 따라 달리는 드라이브 코스 자체가 절경.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot dot-see"></div>
+      <div class="tl-card">
+        <div class="tl-time">10:00~11:30</div>
+        <div class="badge b-see">관광</div>
+        <div class="tl-name">오보케·코보케 협곡 (大歩危・小歩危)</div>
+        <div class="tl-desc">요시노가와 강이 만들어낸 V자 협곡. 유람선 탑승 (약 30분, ¥1,500) 으로 에메랄드빛 강 위에서 협곡 감상. 봄~가을 최고, 가을 단풍 시즌은 숨막히는 뷰. 유람선 선착장 주변 주차 무료.
+        <div class="tip-box"><p>🚤 유람선은 당일 현장 발권. 성수기 주말은 오전 중 매진될 수 있으므로 도착 즉시 티켓 구매 권장.</p></div></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot dot-eat"></div>
+      <div class="tl-card">
+        <div class="tl-time">11:30~13:00</div>
+        <div class="badge b-eat">점심</div>
+        <div class="tl-name">오보케역 인근 / 이야 소바</div>
+        <div class="tl-desc">이야 계곡 주변은 소바 명소. 산간 지역 특유의 메밀소바가 일품.<br><br>
+        ▸ <strong>祖谷そば 奥祖谷庵</strong> — 수제 이야 소바, 산촌 분위기<br>
+        ▸ <strong>レストラン大歩危峡まんなか</strong> — 협곡 뷰가 훤히 보이는 강변 레스토랑, 이야 소바+정식 세트</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot dot-see"></div>
+      <div class="tl-card">
+        <div class="tl-time">13:30~15:30</div>
+        <div class="badge b-see">관광</div>
+        <div class="tl-name">가즈라바시 덩굴다리 (祖谷のかずら橋)</div>
+        <div class="tl-desc">일본 3대 비경 중 하나. 산등나무로 만든 천연 현수교, 높이 14m 협곡 위를 도보로 건넘. 발밑이 뻥뻥 뚫려 스릴 만점. 입장료 ¥550. 주차장에서 다리까지 도보 5분.
+        <div class="tip-box"><p>👟 미끄럽고 발이 빠질 수 있는 틈 있음. 운동화·평소 신발 필수. 샌들·슬리퍼 불가.</p></div></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot dot-see"></div>
+      <div class="tl-card">
+        <div class="tl-time">15:30~17:00</div>
+        <div class="badge b-see">선택 관광</div>
+        <div class="tl-name">이야 온천 or 비와노타키 폭포</div>
+        <div class="tl-desc">
+        ▸ <strong>이야 온천 (祖谷温泉)</strong> — 계곡 절벽에 케이블카로 내려가는 노천탕, 경험 자체가 독특 (¥1,000~)<br>
+        ▸ <strong>비와노타키 (琵琶の滝)</strong> — 가즈라바시 근처 낙차 50m 폭포, 무료 관람, 도보 3분</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot dot-go"></div>
+      <div class="tl-card">
+        <div class="tl-time">17:30~19:00</div>
+        <div class="badge b-move">이동</div>
+        <div class="tl-name">도쿠시마 시내 귀환 or 이야 지역 숙박</div>
+        <div class="tl-desc">이야 → 도쿠시마 시내 약 1시간 30분~2시간. 여유 있다면 이야 계곡 내 료칸 1박 추천 (경험치 UP). 추천 료칸: <strong>祖谷温泉 (이야 온천 료칸)</strong>, <strong>ホテルかずら橋</strong></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot dot-eat"></div>
+      <div class="tl-card">
+        <div class="tl-time">19:30~21:00</div>
+        <div class="badge b-eat">저녁</div>
+        <div class="tl-name">도쿠시마 시내 이자카야 or 아와규(阿波牛)</div>
+        <div class="tl-desc">도쿠시마현 브랜드 소 '아와규' 는 꼭 먹어봐야 할 명물.<br><br>
+        ▸ <strong>焼肉 なかむら</strong> — 아와규 야키니쿠 현지 인기점<br>
+        ▸ <strong>阿波尾鶏 본점</strong> — 도쿠시마 브랜드 닭 '아와오도리' 전문점 (닭 이자카야)<br>
+        ▸ <strong>居酒屋 えびす</strong> — 도쿠시마 시내 해산물+아와술(酒) 이자카야</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="d3" class="day-panel">
+  <div class="transport-box">
+    <h3><i class="ti ti-map-route" style="font-size:14px" aria-hidden="true"></i> Day 3 이동 루트</h3>
+    <p>도쿠시마 시내 → 히노미사키 (렌터카, 약 40분) → 니시야마 코겐 → 도쿠시마 역/공항 렌터카 반납 → 귀국 이동</p>
+  </div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot dot-eat"></div>
+      <div class="tl-card">
+        <div class="tl-time">07:30~08:30</div>
+        <div class="badge b-eat">아침</div>
+        <div class="tl-name">도쿠시마 아침 + 아와오도리 회관 주변 카페</div>
+        <div class="tl-desc">마지막 날 아침은 여유롭게. 도쿠시마역 주변 모닝 카페 (<strong>珈琲館</strong> 등) 또는 편의점에서 간단히 해결하고 일찍 출발.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot dot-see"></div>
+      <div class="tl-card">
+        <div class="tl-time">09:00~11:00</div>
+        <div class="badge b-see">관광</div>
+        <div class="tl-name">히노미사키 (日の御碕) 해안 & 이마기레 해안</div>
+        <div class="tl-desc">도쿠시마 남쪽 태평양 절경 해안. 웅장한 단애절벽과 에메랄드빛 바다. 서핑 명소이기도 함. 아이즈미 해안, 이마기레 해안 드라이브 코스는 뷰가 압도적.
+        <div class="tip-box"><p>🌊 히노미사키 등대 주변 산책로는 30~40분이면 충분. 날씨 맑은 날 방문 시 기암절벽+태평양 뷰가 인생 사진 보장.</p></div></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot dot-see"></div>
+      <div class="tl-card">
+        <div class="tl-time">11:00~12:00</div>
+        <div class="badge b-see">관광</div>
+        <div class="tl-name">니시야마 고겐 (西山高原) or 아와 오도리 관련 쇼핑</div>
+        <div class="tl-desc">귀국 전 기념품 쇼핑: 도쿠시마역 앞 <strong>아미코 백화점</strong> 지하 식품관 또는 <strong>도쿠시마역 에키마르쉐</strong>. 추천 기념품: 나루토킨토키 과자·잼, 스다치(유자류) 드레싱, 아와라무네 술, 도쿠시마 라멘 패키지.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot dot-eat"></div>
+      <div class="tl-card">
+        <div class="tl-time">12:00~13:30</div>
+        <div class="badge b-eat">마지막 점심</div>
+        <div class="tl-name">스다치 요리 or 도쿠시마 B급 구루메</div>
+        <div class="tl-desc">▸ <strong>すだち麺 (스다치 라멘)</strong> — 스다치를 통째로 넣은 냉 라멘, 도쿠시마 독자 문화. 여름 한정이지만 일부 가게는 연중 제공.<br>
+        ▸ <strong>ぼっかけそば</strong> — 도쿠시마 향토 소바 요리<br>
+        ▸ <strong>도쿠시마 역 근처 정식 식당</strong> — 귀국 이동 전 든든하게</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot dot-go"></div>
+      <div class="tl-card">
+        <div class="tl-time">14:00~15:00</div>
+        <div class="badge b-move">이동</div>
+        <div class="tl-name">렌터카 반납 + 귀국 이동 출발</div>
+        <div class="tl-desc">공항 또는 도쿠시마역 렌터카 반납 → 도쿠시마 공항 (국내선) or 고속버스로 간사이 국제공항 이동 (약 2시간 30분). 간사이 버스 탑승 시 최소 3시간 전 출발 권장.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title"><i class="ti ti-star" aria-hidden="true"></i>꼭 사야 할 기념품</div>
+  <div class="info-grid">
+    <div class="info-card">
+      <h4>🍠 나루토킨토키 시리즈</h4>
+      <ul>
+        <li>나루토 고구마 품종 고급 스위트</li>
+        <li>과자·잼·아이스크림 다양</li>
+        <li>역 에키마르쉐·나루토 PA 등</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>🍋 스다치 제품</h4>
+      <ul>
+        <li>도쿠시마 특산 스다치 드레싱</li>
+        <li>스다치 폰즈·스다치 주스</li>
+        <li>냉면 소스로도 활용 가능</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+function show(id){
+  document.querySelectorAll('.day-panel').forEach(p=>p.classList.remove('show'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('show');
+  event.target.classList.add('active');
+}
+</script>
