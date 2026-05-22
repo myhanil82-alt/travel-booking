@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>태항산 여행 확정서</title>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sea: #5a3a1a;
+    --sea-light: #fdf0e4;
+    --teal: #6a4a10;
+    --teal-light: #fff4e0;
+    --gold: #b07000;
+    --gold-light: #fff8e0;
+    --red: #c03020;
+    --red-light: #fdeeed;
+    --amber: #c06000;
+    --amber-light: #fff4e0;
+    --green: #1a6b3a;
+    --green-light: #e4f8ee;
+    --cream: #fdf8f2;
+    --warm-white: #ffffff;
+    --charcoal: #1a1008;
+    --medium: #4a3018;
+    --muted: #9a8060;
+    --border: #e0c8a8;
+    --blue: #1a4a8a;
+    --blue-light: #e4eeff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Nanum Gothic", "맑은 고딕", "Malgun Gothic", sans-serif;
+    background: var(--cream); color: var(--charcoal); line-height: 1.7;
+    font-size: 16px;
+  }
+  .main { max-width: 700px; margin: 0 auto; }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    background: linear-gradient(160deg, #2a1800 0%, #6a3808 40%, #9a5810 75%, #c87828 100%);
+    padding: 3.5rem 2rem 4rem; text-align: center; overflow: hidden;
+  }
+  .hero::after {
+    content: ""; position: absolute; bottom: -2px; left: 0; right: 0; height: 50px;
+    background: var(--cream); clip-path: ellipse(60% 100% at 50% 100%);
+  }
+  .hero-blob { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.07); }
+  .hero-content { position: relative; z-index: 2; }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.13); border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px; padding: 5px 18px;
+    font-size: 13px; letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.92); margin-bottom: 0.9rem; text-transform: uppercase;
+  }
+  .hero-title {
+    font-size: clamp(26px, 5.5vw, 38px); font-weight: 800; color: #fff;
+    line-height: 1.35; margin-bottom: 0.3rem; text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+  .hero-title em { color: #ffe8a8; font-style: normal; }
+  .hero-names { font-size: 17px; font-weight: 700; color: rgba(255,255,255,0.9); margin-bottom: 0.3rem; }
+  .hero-sub { font-size: 15px; color: rgba(255,255,255,0.72); margin-bottom: 1.4rem; }
+  .agent-wrap { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .agent-name {
+    display: inline-flex; align-items: center;
+    background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 30px; padding: 8px 22px; font-size: 15px; color: #fff; font-weight: 700;
+  }
+  .agent-contacts { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .agent-contacts a {
+    display: inline-flex; align-items: center; gap: 6px;
+    border-radius: 30px; padding: 8px 18px; font-size: 14px; text-decoration: none; font-weight: 700;
+  }
+  .contact-phone { background: rgba(255,255,255,0.92); color: #2a1800; box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+  .contact-kakao { background: #FEE500; color: #3a1d00; }
+
+  /* 수속 안내 배너 */
+  .meeting-banner {
+    background: linear-gradient(135deg, #fff0e8 0%, #ffe4d0 50%, #ffd8bc 100%);
+    padding: 1.2rem 1.75rem; border-bottom: 3px solid #d08040;
+  }
+  .meeting-banner-title { font-size: 15px; font-weight: 800; color: #7a3800; margin-bottom: 0.8rem; }
+  .meeting-point-box {
+    background: rgba(255,255,255,0.88); border-radius: 14px; padding: 16px 20px;
+    border: 1px solid rgba(210,130,60,0.4);
+    display: flex; align-items: flex-start; gap: 16px;
+  }
+  .meeting-point-icon { font-size: 36px; flex-shrink: 0; }
+  .meeting-point-label { font-size: 13px; font-weight: 700; color: #b06020; margin-bottom: 5px; }
+  .meeting-point-val { font-size: 17px; font-weight: 800; color: #3a1800; line-height: 1.55; }
+  .meeting-point-sub { font-size: 14px; color: #7a4820; margin-top: 6px; line-height: 1.7; }
+  .meeting-time-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: #b05010; color: #fff;
+    border-radius: 20px; padding: 6px 16px;
+    font-size: 14px; font-weight: 800; margin-top: 10px;
+  }
+  .meeting-table-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: #6a3808; color: #fff;
+    border-radius: 20px; padding: 6px 16px;
+    font-size: 13px; font-weight: 700; margin-top: 7px; margin-left: 5px;
+  }
+
+  /* 항공 배너 */
+  .flight-banner {
+    background: linear-gradient(135deg, #e8f0ff 0%, #d8e8ff 50%, #c8e0ff 100%);
+    padding: 1.2rem 1.75rem; border-bottom: 3px solid #6090d0;
+  }
+  .flight-banner-title { font-size: 15px; font-weight: 800; color: #1a3a7a; margin-bottom: 0.8rem; }
+  .flight-card {
+    background: rgba(255,255,255,0.88); border-radius: 14px; overflow: hidden;
+    border: 1px solid rgba(80,130,200,0.35); margin-bottom: 10px;
+  }
+  .flight-card:last-child { margin-bottom: 0; }
+  .flight-card-header {
+    padding: 9px 16px; font-size: 13px; font-weight: 800; letter-spacing: 0.08em;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .flight-card-header.go   { background: linear-gradient(135deg, #1a4a8a, #2a6ab0); color: #fff; }
+  .flight-card-header.back { background: linear-gradient(135deg, #6a3808, #9a5810); color: #fff; }
+  .flight-card-body { padding: 14px 18px; }
+  .flight-route { display: flex; align-items: center; justify-content: space-between; }
+  .flight-city { text-align: center; flex: 1; }
+  .flight-city-code { font-size: 25px; font-weight: 800; color: #1a2040; }
+  .flight-city-time { font-size: 18px; font-weight: 800; color: #1a4a8a; margin-top: 2px; }
+  .flight-city-name { font-size: 13px; color: var(--muted); margin-top: 3px; }
+  .flight-arrow-wrap { flex: 0 0 84px; text-align: center; }
+  .flight-arrow { font-size: 22px; color: #4a80c0; }
+  .flight-arrow-label { font-size: 12px; color: var(--muted); margin-top: 2px; line-height: 1.4; }
+  .flight-meta-row { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+  .flight-meta-chip {
+    background: #e8f0ff; border: 1px solid #a0b8e0;
+    border-radius: 20px; padding: 4px 12px;
+    font-size: 12px; font-weight: 700; color: #2a4a8a;
+  }
+
+  /* 수하물 배너 */
+  .baggage-banner {
+    background: linear-gradient(135deg, #fdf0e4 0%, #f8e4d0 50%, #f4d8bc 100%);
+    padding: 1.2rem 1.75rem; border-bottom: 3px solid #c08040;
+  }
+  .baggage-title { font-size: 15px; font-weight: 800; color: #4a2808; margin-bottom: 0.8rem; }
+  .baggage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .baggage-item {
+    background: rgba(255,255,255,0.85); border-radius: 12px; padding: 12px 15px;
+    border: 1px solid rgba(180,120,60,0.3);
+  }
+  .baggage-label { font-size: 12px; font-weight: 700; color: #6a3808; margin-bottom: 5px; }
+  .baggage-val   { font-size: 16px; font-weight: 800; color: #1a1008; line-height: 1.5; }
+  .baggage-sub   { font-size: 13px; color: #7a5030; margin-top: 3px; line-height: 1.5; }
+
+  /* 날씨 배너 */
+  .weather-bar {
+    background: linear-gradient(160deg, #fff8d0 0%, #ffeebb 50%, #ffe0a0 100%);
+    padding: 1.2rem 1.75rem; border-bottom: 3px solid #d0a030;
+  }
+  .weather-title { font-size: 15px; font-weight: 800; color: #6a3800; margin-bottom: 0.8rem; }
+  .weather-note { background: rgba(255,255,255,0.78); border-radius: 10px; padding: 10px 15px; font-size: 14px; color: #6a3800; font-weight: 700; border: 1px solid rgba(200,140,40,0.35); }
+  .weather-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 10px; }
+  .weather-day { background: rgba(255,255,255,0.85); border-radius: 10px; padding: 10px 6px; text-align: center; border: 1px solid rgba(200,140,40,0.4); }
+  .weather-day-label { font-size: 12px; font-weight: 700; color: #7a4a10; margin-bottom: 3px; }
+  .weather-day-icon  { font-size: 24px; margin-bottom: 4px; }
+  .weather-day-temp  { font-size: 15px; font-weight: 800; color: #0a1000; }
+  .weather-day-desc  { font-size: 11px; color: #7a5020; margin-top: 3px; }
+
+  /* SECTIONS */
+  .section { background: var(--warm-white); border-bottom: 1px solid var(--border); padding: 1.9rem 1.75rem; }
+  .section:nth-child(even) { background: var(--cream); }
+  .section-eyebrow { font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sea); font-weight: 700; margin-bottom: 0.3rem; }
+  .section-heading { font-size: 22px; font-weight: 800; color: var(--charcoal); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 10px; }
+  .section-heading::after { content: ""; flex: 1; height: 1.5px; background: linear-gradient(to right, var(--border), transparent); }
+
+  .info-card { background: var(--warm-white); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; box-shadow: 0 2px 10px rgba(90,58,26,0.07); }
+  .info-row { display: flex; gap: 1rem; padding: 14px 18px; border-bottom: 1px solid var(--border); align-items: flex-start; }
+  .info-row:last-child { border-bottom: none; }
+  .info-key { min-width: 100px; font-size: 15px; font-weight: 700; color: var(--medium); padding-top: 2px; }
+  .info-val { flex: 1; color: var(--charcoal); line-height: 1.7; font-size: 15px; }
+  .info-val strong { color: var(--sea); font-weight: 700; }
+
+  .alert { border-radius: 10px; padding: 12px 16px; font-size: 14px; line-height: 1.7; margin-top: 8px; }
+  .alert-red    { background: var(--red-light);    border-left: 3px solid var(--red);    color: #7a1010; }
+  .alert-amber  { background: var(--amber-light);  border-left: 3px solid var(--amber);  color: #7a3800; }
+  .alert-green  { background: var(--green-light);  border-left: 3px solid var(--green);  color: #0a3820; }
+  .alert-gold   { background: var(--gold-light);   border-left: 3px solid var(--gold);   color: #7a4800; }
+  .alert-sea    { background: var(--sea-light);    border-left: 3px solid var(--sea);    color: #2a1800; }
+  .alert-blue   { background: var(--blue-light);   border-left: 3px solid var(--blue);   color: #0a1a4a; }
+
+  a.link-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: linear-gradient(135deg, #6a3808, #9a5810);
+    border-radius: 22px; padding: 9px 20px;
+    font-size: 14px; color: #fff; text-decoration: none;
+    margin-top: 6px; font-weight: 700; box-shadow: 0 3px 10px rgba(90,58,26,0.3);
+  }
+
+  .guide-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .guide-item { background: var(--sea-light); border-radius: 10px; padding: 12px 16px; border: 1px solid #d8b888; }
+  .guide-item-label { font-size: 12px; color: var(--muted); font-weight: 700; margin-bottom: 3px; }
+  .guide-item-val   { font-size: 15px; font-weight: 800; color: var(--sea); line-height: 1.5; }
+
+  /* 입국신고서 박스 */
+  .entry-card {
+    background: linear-gradient(135deg, #1a3a5a 0%, #2a5a8a 100%);
+    border-radius: 14px; padding: 16px 18px; margin-bottom: 10px;
+  }
+  .entry-card-title { font-size: 13px; font-weight: 800; color: rgba(255,255,255,0.65); letter-spacing: 1px; margin-bottom: 10px; }
+  .entry-row { display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1); align-items: flex-start; }
+  .entry-row:last-child { border-bottom: none; }
+  .entry-key { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.55); min-width: 130px; padding-top: 2px; }
+  .entry-val { font-size: 14px; font-weight: 700; color: #fff; line-height: 1.6; flex: 1; }
+  .entry-val em { color: #a8d8ff; font-style: normal; font-weight: 800; }
+
+  .checkin-list { list-style: none; padding: 0; }
+  .checkin-list li { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 15px; line-height: 1.7; }
+  .checkin-list li:last-child { border-bottom: none; }
+  .checkin-num {
+    min-width: 24px; height: 24px; background: linear-gradient(135deg, #6a3808, #9a5810);
+    color: #fff; border-radius: 50%; font-size: 12px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
+  }
+
+  .checklist { list-style: none; padding: 0; }
+  .checklist li { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 15px; line-height: 1.65; }
+  .checklist li:last-child { border-bottom: none; }
+  .check-num { min-width: 24px; height: 24px; background: linear-gradient(135deg, #6a3808, #9a5810); color: #fff; border-radius: 50%; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  .check-cat { font-size: 12px; font-weight: 800; color: var(--sea); background: var(--sea-light); border-radius: 5px; padding: 2px 8px; margin-right: 5px; white-space: nowrap; }
+
+  .footer { background: linear-gradient(160deg, #2a1800 0%, #6a3808 60%, #9a5810 100%); padding: 2.8rem 2rem; text-align: center; position: relative; overflow: hidden; }
+  .footer::before { content: ""; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .footer-content { position: relative; z-index: 1; }
+  .footer-title { font-size: 23px; font-weight: 800; color: #fff; margin-bottom: 0.5rem; }
+  .footer-sub   { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.8; margin-bottom: 1.4rem; }
+  .footer-name  { font-size: 16px; font-weight: 700; color: rgba(255,255,255,0.9); margin-bottom: 14px; }
+  .footer-contacts { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .footer-btn { display: inline-flex; align-items: center; gap: 8px; border-radius: 30px; padding: 11px 24px; font-size: 15px; text-decoration: none; font-weight: 700; }
+  .footer-btn-phone { background: rgba(255,255,255,0.18); border: 1.5px solid rgba(255,255,255,0.45); color: #fff; }
+  .footer-btn-kakao { background: #FEE500; border: 1.5px solid #FEE500; color: #3a1d00; }
+
+  @media (max-width: 520px) {
+    .section { padding: 1.5rem 1.2rem; }
+    .guide-grid { grid-template-columns: 1fr; }
+    .baggage-grid { grid-template-columns: 1fr; }
+    .weather-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="main">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-blob" style="width:240px;height:240px;top:-80px;right:-70px;"></div>
+    <div class="hero-blob" style="width:160px;height:160px;bottom:20px;left:-50px;"></div>
+    <div class="hero-content">
+      <div class="hero-tag">✦ Travel Confirmation ✦</div>
+      <div class="hero-title">⛰️ <em>태항산</em> 여행 확정서</div>
+      <div class="hero-names">황경연 · 유현영 · 구혜원 · 성희진님</div>
+      <div class="hero-sub">인천국제공항 출발 · 4박 5일</div>
+      <div class="agent-wrap">
+        <div class="agent-name">모두투어 이경진 실장</div>
+        <div class="agent-contacts">
+          <a class="contact-phone" href="tel:15445714">📞 1544-5714</a>
+          <a class="contact-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡 상담</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 항공사 수속 안내 배너 -->
+  <div class="meeting-banner">
+    <div class="meeting-banner-title">📍 공항 미팅 안내</div>
+    <div class="meeting-point-box">
+      <div class="meeting-point-icon">🏢</div>
+      <div>
+        <div class="meeting-point-label">미팅 장소</div>
+        <div class="meeting-point-val">인천국제공항 1터미널 3층 출국장<br>A카운터 1번출구 앞 창측</div>
+        <div class="meeting-point-sub">
+          인천국제공항 1터미널 개별수속 (출발 최소 3시간 전까지)
+        </div>
+        <div>
+          <div class="meeting-time-badge">⏰ 2026.05.27(수) 오전 10:50</div>
+          <div class="meeting-table-badge">🪧 여행사 카운터 1~3번 테이블 모두투어</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 항공 배너 -->
+  <div class="flight-banner">
+    <div class="flight-banner-title">✈️ 항공 일정 — 이스타항공</div>
+
+    <!-- 가는 편 -->
+    <div class="flight-card">
+      <div class="flight-card-header go">✈ 가는 편 &nbsp;·&nbsp; ZE853</div>
+      <div class="flight-card-body">
+        <div class="flight-route">
+          <div class="flight-city">
+            <div class="flight-city-code">ICN</div>
+            <div class="flight-city-time">13:50</div>
+            <div class="flight-city-name">인천 (T1)</div>
+          </div>
+          <div class="flight-arrow-wrap">
+            <div class="flight-arrow">→</div>
+            <div class="flight-arrow-label">2026.05.27(수)</div>
+          </div>
+          <div class="flight-city">
+            <div class="flight-city-code">CGO</div>
+            <div class="flight-city-time">15:55</div>
+            <div class="flight-city-name">정주 (정저우)</div>
+          </div>
+        </div>
+        <div class="flight-meta-row">
+          <span class="flight-meta-chip">이스타항공</span>
+          <span class="flight-meta-chip">편명 ZE853</span>
+          <span class="flight-meta-chip">기내식 없음</span>
+          <span class="flight-meta-chip">소요 약 2시간 5분</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 오는 편 -->
+    <div class="flight-card">
+      <div class="flight-card-header back">✈ 오는 편 &nbsp;·&nbsp; ZE854</div>
+      <div class="flight-card-body">
+        <div class="flight-route">
+          <div class="flight-city">
+            <div class="flight-city-code">CGO</div>
+            <div class="flight-city-time">16:55</div>
+            <div class="flight-city-name">정주 (정저우)</div>
+          </div>
+          <div class="flight-arrow-wrap">
+            <div class="flight-arrow">→</div>
+            <div class="flight-arrow-label">2026.05.31(일)</div>
+          </div>
+          <div class="flight-city">
+            <div class="flight-city-code">ICN</div>
+            <div class="flight-city-time">20:00</div>
+            <div class="flight-city-name">인천 (T1)</div>
+          </div>
+        </div>
+        <div class="flight-meta-row">
+          <span class="flight-meta-chip">이스타항공</span>
+          <span class="flight-meta-chip">편명 ZE854</span>
+          <span class="flight-meta-chip">기내식 없음</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 수하물 배너 -->
+  <div class="baggage-banner">
+    <div class="baggage-title">🧳 수하물 안내 — 이스타항공</div>
+    <div class="baggage-grid">
+      <div class="baggage-item">
+        <div class="baggage-label">위탁 수하물</div>
+        <div class="baggage-val">15kg · 1개</div>
+        <div class="baggage-sub">초과 시 추가 요금 발생</div>
+      </div>
+      <div class="baggage-item">
+        <div class="baggage-label">기내 수하물</div>
+        <div class="baggage-val">10kg · 1개</div>
+        <div class="baggage-sub">액체류 100ml 이하 · 보조배터리 기내 반입</div>
+      </div>
+    </div>
+    <div class="alert alert-amber" style="margin-top:10px;">
+      ✈️ 이스타항공은 기내식이 별도 유료 판매됩니다. 기내 간식을 미리 준비하시면 편리합니다.
+    </div>
+  </div>
+
+  <!-- 날씨 배너 -->
+  <div class="weather-bar">
+    <div class="weather-title">🌤️ 현지 날씨 — 태항산·정주 (5월 하순)</div>
+    <div class="weather-grid">
+      <div class="weather-day">
+        <div class="weather-day-label">5/27~5/28</div>
+        <div class="weather-day-icon">🌤️</div>
+        <div class="weather-day-temp">18~29°C</div>
+        <div class="weather-day-desc">맑고 따뜻</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-label">5/29~5/30</div>
+        <div class="weather-day-icon">⛅</div>
+        <div class="weather-day-temp">17~27°C</div>
+        <div class="weather-day-desc">구름 조금</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-label">5/31</div>
+        <div class="weather-day-icon">🌦️</div>
+        <div class="weather-day-temp">16~26°C</div>
+        <div class="weather-day-desc">소나기 가능</div>
+      </div>
+    </div>
+    <div class="weather-note">
+      🏔️ 태항산 절벽 관광지는 고지대로 평지보다 기온이 3~5°C 낮습니다. 낮엔 따뜻하지만 아침·저녁엔 쌀쌀할 수 있으니 얇은 겉옷을 꼭 챙겨 주세요. 절벽 산책로는 미끄럼 방지 신발을 권장합니다.
+    </div>
+  </div>
+
+  <!-- 01. 일정표 -->
+  <div class="section">
+    <div class="section-eyebrow">01</div>
+    <div class="section-heading">여행 일정표</div>
+    <div class="info-card">
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">확정 일정표</div>
+        <div class="info-val">
+          <span style="font-size:14px;color:var(--muted);display:block;margin-bottom:6px;">아래 버튼을 눌러주세요</span>
+          <a class="link-pill" href="https://www.modetour.com/package/104958024?MLoc=99&Pnum=104958024&ANO=1772510&sno=C2181215&thru=crs" target="_blank">모두투어 확정 일정표 확인 ✔</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02. 현지 행사 정보 -->
+  <div class="section">
+    <div class="section-eyebrow">02</div>
+    <div class="section-heading">현지 행사 정보</div>
+    <div class="alert alert-green" style="margin-bottom:1rem;margin-top:0;">
+      📍 현지 정주 공항에서 <strong>모두투어</strong> 피켓을 들고 있는 가이드와 미팅합니다
+    </div>
+    <div class="guide-grid">
+      <div class="guide-item">
+        <div class="guide-item-label">담당 가이드</div>
+        <div class="guide-item-val">박미화 (여)<br><span style="font-size:13px;font-weight:400;">PIAO MEIHUA</span></div>
+      </div>
+      <div class="guide-item">
+        <div class="guide-item-label">가이드 연락처</div>
+        <div class="guide-item-val">185-1877-7320</div>
+      </div>
+      <div class="guide-item">
+        <div class="guide-item-label">현지 비상연락처</div>
+        <div class="guide-item-val">139-3906-3343<br><span style="font-size:13px;font-weight:400;">원 실장님</span></div>
+      </div>
+      <div class="guide-item">
+        <div class="guide-item-label">행사 인원 / 차량</div>
+        <div class="guide-item-val">10명 / 19인승 리무진</div>
+      </div>
+      <div class="guide-item" style="grid-column: 1 / -1;">
+        <div class="guide-item-label">투숙 호텔</div>
+        <div class="guide-item-val">신향국제호텔 1박 &nbsp;|&nbsp; 홍기거 회의중심호텔 2박 &nbsp;|&nbsp; 빈하홀리데인호텔 1박</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03. 중국 온라인 입국신고서 -->
+  <div class="section">
+    <div class="section-eyebrow">03</div>
+    <div class="section-heading">중국 온라인 입국신고서</div>
+    <div class="alert alert-red" style="margin-top:0;margin-bottom:1rem;">
+      🚨 <strong>중국 입국 시 온라인 입국신고서 작성 필수!</strong><br>
+      출발 전 미리 작성해 주세요. 미작성 시 입국에 불이익이 생길 수 있습니다.
+    </div>
+    <div class="entry-card">
+      <div class="entry-card-title">✏️ 입국카드 작성 참고 정보 — 영문으로 기재</div>
+      <div class="entry-row">
+        <div class="entry-key">중국 도착 도시</div>
+        <div class="entry-val"><em>ZHENGZHOU</em></div>
+      </div>
+      <div class="entry-row">
+        <div class="entry-key">중국 내 주소</div>
+        <div class="entry-val"><em>No. 461 Jinsui Street</em></div>
+      </div>
+    </div>
+    <div class="alert alert-blue" style="margin-top:0;">
+      🖥️ <strong>작성 사이트</strong><br>
+      <a href="https://s.nia.gov.cn/ArrivalCardFillingPC/entry-registation-home" target="_blank" style="color:#1a4a8a;font-weight:700;word-break:break-all;">https://s.nia.gov.cn/ArrivalCardFillingPC/entry-registation-home</a>
+      <br><br>
+      📖 <strong>작성 참고 블로그</strong><br>
+      <a href="https://blog.naver.com/knowtip/224289163381" target="_blank" style="color:#1a4a8a;font-weight:700;">https://blog.naver.com/knowtip/224289163381</a>
+    </div>
+  </div>
+
+  <!-- 04. 환전 안내 -->
+  <div class="section">
+    <div class="section-eyebrow">04</div>
+    <div class="section-heading">환전 안내 💵</div>
+    <div class="info-card">
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">달러 ($)</div>
+        <div class="info-val">
+          <div class="alert alert-green" style="margin-top:0;">
+            ✅ <strong>노옵션 · 노팁 상품</strong>입니다!<br>
+            별도의 큰 금액 환전은 필요 없습니다 😊
+          </div>
+          <div class="alert alert-gold" style="margin-top:8px;">
+            💡 매너팁으로 <strong>$1짜리 지폐 10장 ($10)</strong>만 준비해 주시면 충분합니다.<br>
+            그 외 추가 환전은 따로 하실 필요 없습니다.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05. 준비물 -->
+  <div class="section">
+    <div class="section-eyebrow">05</div>
+    <div class="section-heading">준비물 체크리스트 🎒</div>
+    <div class="alert alert-sea" style="margin-bottom:1rem;margin-top:0;">
+      ⚡ 중국 전압은 <strong>220V</strong>로 한국과 동일합니다. 별도 변압기 불필요. 콘센트 모양에 따라 멀티 어댑터를 챙기시면 좋습니다.
+    </div>
+    <ul class="checklist">
+      <li><div class="check-num">1</div><span><span class="check-cat">필수</span><strong>여권</strong> — 유효기간 6개월 이상 반드시 확인!</span></li>
+      <li><div class="check-num">2</div><span><span class="check-cat">필수</span><strong>항공권 E-티켓 출력 또는 캡처 보관</strong></span></li>
+      <li><div class="check-num">3</div><span><span class="check-cat">날씨</span><strong>얇은 가디건 또는 바람막이</strong> — 태항산 고지대 아침·저녁 쌀쌀, 바람 강함</span></li>
+      <li><div class="check-num">4</div><span><span class="check-cat">날씨</span>반팔·긴팔 혼용 (레이어드 추천)</span></li>
+      <li><div class="check-num">5</div><span><span class="check-cat">날씨</span>접이식 우산 — 5월 소나기 대비</span></li>
+      <li><div class="check-num">6</div><span><span class="check-cat">날씨</span>선크림 (SPF 50+) — 야외 관광 많음 ☀️</span></li>
+      <li><div class="check-num">7</div><span><span class="check-cat">복장</span><strong>트레킹화 또는 미끄럼 방지 운동화</strong> — 태항산 절벽 산책로·계단 많음. 굽 있는 신발 비추천</span></li>
+      <li><div class="check-num">8</div><span><span class="check-cat">전기</span>보조배터리 · 충전기</span></li>
+      <li><div class="check-num">9</div><span><span class="check-cat">전기</span>멀티 어댑터 (C타입 콘센트 대비)</span></li>
+      <li><div class="check-num">10</div><span><span class="check-cat">건강</span>개인 복용약 및 상비약 (소화제·지사제·진통제·감기약)</span></li>
+      <li><div class="check-num">11</div><span><span class="check-cat">건강</span>멀미약 — 장거리 버스 이동 많음</span></li>
+      <li><div class="check-num">12</div><span><span class="check-cat">기타</span><strong>휴지 / 물티슈</strong> — 화장실에 휴지 없는 곳 있음. 필수!</span></li>
+      <li><div class="check-num">13</div><span><span class="check-cat">기타</span>개인 세면도구 · 화장품</span></li>
+      <li><div class="check-num">14</div><span><span class="check-cat">기타</span>에코백 또는 여분 가방</span></li>
+    </ul>
+  </div>
+
+  <!-- 06. 유의사항 -->
+  <div class="section">
+    <div class="section-eyebrow">06</div>
+    <div class="section-heading">유의사항</div>
+    <ul class="checkin-list">
+      <li><div class="checkin-num">1</div><span>인천국제공항 1터미널에 <strong>출발 최소 3시간 전</strong>까지 도착해 주세요.</span></li>
+      <li><div class="checkin-num">2</div><span>여권 유효기간을 꼭 확인해 주세요. <strong>잔여 유효기간 6개월 이상</strong> 필수입니다.</span></li>
+      <li><div class="checkin-num">3</div><span>중국 입국신고서는 출발 전 반드시 미리 작성해 주세요.</span></li>
+      <li><div class="checkin-num">4</div><span>본 안내문은 대표자 한 분께 전달됩니다. <strong>일행 모두에게 공유</strong> 부탁드립니다.</span></li>
+      <li><div class="checkin-num">5</div><span>현지 사정에 따라 일부 일정이 변경될 수 있으며, 변경 시 <strong>가이드 안내</strong>에 따라 주세요.</span></li>
+    </ul>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-content">
+      <div class="footer-title">⛰️ 즐거운 태항산 여행 되세요!</div>
+      <div class="footer-sub">궁금하신 사항은 언제든지 문의 주세요.<br>감사합니다.</div>
+      <div class="footer-name">모두투어 이경진 실장</div>
+      <div class="footer-contacts">
+        <a class="footer-btn footer-btn-phone" href="tel:15445714">📞 1544-5714</a>
+        <a class="footer-btn footer-btn-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡 상담</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
