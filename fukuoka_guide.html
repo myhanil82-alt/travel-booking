@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>후쿠오카 여행 확정서</title>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sea: #1a4a8a;
+    --sea-light: #e4eeff;
+    --gold: #b07000;
+    --gold-light: #fff8e0;
+    --red: #c03020;
+    --red-light: #fdeeed;
+    --amber: #c06000;
+    --amber-light: #fff4e0;
+    --green: #1a6b3a;
+    --green-light: #e4f8ee;
+    --cream: #f4f7fa;
+    --warm-white: #ffffff;
+    --charcoal: #1a202c;
+    --medium: #2d3748;
+    --muted: #718096;
+    --border: #e2e8f0;
+    --jeju-orange: #ff6000;
+    --jeju-light: #fff0e5;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Nanum Gothic", "맑은 고딕", "Malgun Gothic", sans-serif;
+    background: var(--cream); color: var(--charcoal); line-height: 1.7;
+    font-size: 16px;
+  }
+  .main { max-width: 700px; margin: 0 auto; background: #fff; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    background: linear-gradient(160deg, #102a45 0%, #1a4a8a 40%, #2b6cb0 75%, #4299e1 100%);
+    padding: 3.5rem 2rem 4rem; text-align: center; overflow: hidden;
+  }
+  .hero::after {
+    content: ""; position: absolute; bottom: -2px; left: 0; right: 0; height: 50px;
+    background: var(--cream); clip-path: ellipse(60% 100% at 50% 100%);
+  }
+  .hero-blob { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.06); }
+  .hero-content { position: relative; z-index: 2; }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.13); border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px; padding: 5px 18px;
+    font-size: 13px; letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.92); margin-bottom: 0.9rem; text-transform: uppercase;
+  }
+  .hero-title {
+    font-size: clamp(26px, 5.5vw, 38px); font-weight: 800; color: #fff;
+    line-height: 1.35; margin-bottom: 0.3rem; text-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  }
+  .hero-title em { color: #ebf8ff; font-style: normal; }
+  .hero-names { font-size: 18px; font-weight: 700; color: rgba(255,255,255,0.95); margin-bottom: 0.3rem; }
+  .hero-sub { font-size: 15px; color: rgba(255,255,255,0.75); margin-bottom: 1.4rem; }
+  .agent-wrap { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .agent-name {
+    display: inline-flex; align-items: center;
+    background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 30px; padding: 8px 22px; font-size: 15px; color: #fff; font-weight: 700;
+  }
+  .agent-contacts { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .agent-contacts a {
+    display: inline-flex; align-items: center; gap: 6px;
+    border-radius: 30px; padding: 8px 18px; font-size: 14px; text-decoration: none; font-weight: 700;
+  }
+  .contact-phone { background: rgba(255,255,255,0.92); color: #1a4a8a; box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+  .contact-kakao { background: #FEE500; color: #3a1d00; }
+
+  /* 카운터 안내 배너 */
+  .meeting-banner {
+    background: linear-gradient(135deg, var(--jeju-light) 0%, #ffe4d5 100%);
+    padding: 1.5rem 1.75rem; border-bottom: 3px solid var(--jeju-orange);
+  }
+  .meeting-banner-title { font-size: 16px; font-weight: 800; color: #b84000; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 6px; }
+  .meeting-point-box {
+    background: rgba(255,255,255,0.92); border-radius: 14px; padding: 18px 20px;
+    border: 1px solid rgba(255, 96, 0, 0.25);
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .meeting-info-flex { display: flex; align-items: flex-start; gap: 14px; }
+  .meeting-point-icon { font-size: 32px; flex-shrink: 0; }
+  .meeting-point-label { font-size: 13px; font-weight: 700; color: var(--jeju-orange); margin-bottom: 3px; }
+  .meeting-point-val { font-size: 17px; font-weight: 800; color: #2d3748; line-height: 1.5; }
+  .meeting-point-sub { font-size: 14px; color: #4a5568; line-height: 1.6; }
+  
+  /* 이미지 가이드 */
+  .image-container {
+    background: #f7fafc; border: 2px dashed #cbd5e0; border-radius: 10px;
+    padding: 2rem 1rem; text-align: center; color: var(--muted); margin-top: 8px;
+  }
+  .image-container span { display: block; font-size: 14px; margin-top: 5px; font-weight: bold; color: #4a5568; }
+
+  .link-pill-orange {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: linear-gradient(135deg, #ff6000, #ff8533);
+    border-radius: 22px; padding: 9px 20px;
+    font-size: 14px; color: #fff; text-decoration: none;
+    margin-top: 6px; font-weight: 700; box-shadow: 0 3px 10px rgba(255,96,0,0.25);
+    width: fit-content;
+  }
+
+  /* 항공 배너 */
+  .flight-banner {
+    background: linear-gradient(135deg, #fff5f0 0%, #ffe8db 100%);
+    padding: 1.2rem 1.75rem; border-bottom: 3px solid #ff8533;
+  }
+  .flight-banner-title { font-size: 15px; font-weight: 800; color: #c04800; margin-bottom: 0.8rem; }
+  .flight-card {
+    background: rgba(255,255,255,0.9); border-radius: 14px; overflow: hidden;
+    border: 1px solid rgba(255,96,0,0.2); margin-bottom: 10px;
+  }
+  .flight-card:last-child { margin-bottom: 0; }
+  .flight-card-header {
+    padding: 10px 16px; font-size: 13px; font-weight: 800; letter-spacing: 0.08em;
+    background: linear-gradient(135deg, #ff6000, #ff8533); color: #fff;
+  }
+  .flight-card-body { padding: 16px 18px; }
+  .flight-route { display: flex; align-items: center; justify-content: space-between; }
+  .flight-city { text-align: center; flex: 1; }
+  .flight-city-code { font-size: 26px; font-weight: 800; color: #1a202c; }
+  .flight-city-name { font-size: 13px; color: var(--muted); margin-top: 3px; }
+  .flight-arrow-wrap { flex: 0 0 84px; text-align: center; }
+  .flight-arrow { font-size: 22px; color: #ff8533; }
+  .flight-meta-row { display: flex; gap: 6px; margin-top: 12px; flex-wrap: wrap; }
+  .flight-meta-chip {
+    background: #fff0e5; border: 1px solid #ffd0b3;
+    border-radius: 20px; padding: 4px 12px;
+    font-size: 12px; font-weight: 700; color: #e65400;
+  }
+
+  /* 수하물 배너 */
+  .baggage-banner {
+    background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+    padding: 1.2rem 1.75rem; border-bottom: 3px solid #cbd5e0;
+  }
+  .baggage-title { font-size: 15px; font-weight: 800; color: #4a5568; margin-bottom: 0.8rem; }
+  .baggage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .baggage-item {
+    background: rgba(255,255,255,0.9); border-radius: 12px; padding: 12px 15px;
+    border: 1px solid #e2e8f0;
+  }
+  .baggage-label { font-size: 12px; font-weight: 700; color: #718096; margin-bottom: 5px; }
+  .baggage-val   { font-size: 16px; font-weight: 800; color: #1a202c; line-height: 1.5; }
+  .baggage-sub   { font-size: 13px; color: #4a5568; margin-top: 3px; }
+
+  /* 날씨 배너 */
+  .weather-bar {
+    background: linear-gradient(160deg, #e6fffa 0%, #b2f5ea 100%);
+    padding: 1.2rem 1.75rem; border-bottom: 3px solid #319795;
+  }
+  .weather-title { font-size: 15px; font-weight: 800; color: #234e52; margin-bottom: 0.8rem; }
+  .weather-note { background: rgba(255,255,255,0.85); border-radius: 10px; padding: 12px 15px; font-size: 14px; color: #234e52; font-weight: 700; border: 1px solid #b2f5ea; line-height: 1.6; }
+  .weather-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 10px; }
+  .weather-day { background: rgba(255,255,255,0.9); border-radius: 10px; padding: 10px 6px; text-align: center; border: 1px solid #b2f5ea; }
+  .weather-day-label { font-size: 12px; font-weight: 700; color: #285e61; margin-bottom: 3px; }
+  .weather-day-icon  { font-size: 24px; margin-bottom: 4px; }
+  .weather-day-temp  { font-size: 15px; font-weight: 800; color: #1a202c; }
+  .weather-day-desc  { font-size: 11px; color: #4a5568; margin-top: 3px; }
+
+  /* SECTIONS */
+  .section { background: var(--warm-white); border-bottom: 1px solid var(--border); padding: 1.9rem 1.75rem; }
+  .section:nth-child(even) { background: #f8fafc; }
+  .section-eyebrow { font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sea); font-weight: 700; margin-bottom: 0.3rem; }
+  .section-heading { font-size: 22px; font-weight: 800; color: var(--charcoal); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 10px; }
+  .section-heading::after { content: ""; flex: 1; height: 1.5px; background: linear-gradient(to right, var(--border), transparent); }
+
+  .info-card { background: var(--warm-white); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+  .info-row { display: flex; gap: 1rem; padding: 14px 18px; border-bottom: 1px solid var(--border); align-items: flex-start; }
+  .info-row:last-child { border-bottom: none; }
+  .info-key { min-width: 100px; font-size: 15px; font-weight: 700; color: var(--sea); padding-top: 2px; }
+  .info-val { flex: 1; color: var(--charcoal); line-height: 1.7; font-size: 15px; }
+  .info-val strong { color: #1a202c; font-weight: 700; }
+
+  .alert { border-radius: 10px; padding: 12px 16px; font-size: 14px; line-height: 1.7; margin-top: 8px; }
+  .alert-red    { background: var(--red-light);    border-left: 3px solid var(--red);    color: #7a1010; }
+  .alert-amber  { background: var(--amber-light);  border-left: 3px solid var(--amber);  color: #7a3800; }
+  .alert-green  { background: var(--green-light);  border-left: 3px solid var(--green);  color: #0a3820; }
+  .alert-blue   { background: var(--blue-light);   border-left: 3px solid var(--blue);   color: #0a1a4a; }
+
+  a.link-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: linear-gradient(135deg, #1a4a8a, #3182ce);
+    border-radius: 22px; padding: 9px 20px;
+    font-size: 14px; color: #fff; text-decoration: none;
+    margin-top: 6px; font-weight: 700; box-shadow: 0 3px 10px rgba(26,74,138,0.2);
+  }
+
+  .guide-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .guide-item { background: #edf2f7; border-radius: 10px; padding: 12px 16px; border: 1px solid #e2e8f0; }
+  .guide-item-label { font-size: 12px; color: var(--muted); font-weight: 700; margin-bottom: 3px; }
+  .guide-item-val   { font-size: 15px; font-weight: 800; color: #2d3748; line-height: 1.5; }
+
+  .checkin-list { list-style: none; padding: 0; }
+  .checkin-list li { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 15px; line-height: 1.7; }
+  .checkin-list li:last-child { border-bottom: none; }
+  .checkin-num {
+    min-width: 24px; height: 24px; background: linear-gradient(135deg, #1a4a8a, #3182ce);
+    color: #fff; border-radius: 50%; font-size: 12px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
+  }
+
+  .checklist { list-style: none; padding: 0; }
+  .checklist li { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 15px; line-height: 1.65; }
+  .checklist li:last-child { border-bottom: none; }
+  .check-num { min-width: 24px; height: 24px; background: linear-gradient(135deg, #1a4a8a, #4299e1); color: #fff; border-radius: 50%; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  .check-cat { font-size: 12px; font-weight: 800; color: var(--sea); background: var(--sea-light); border-radius: 5px; padding: 2px 8px; margin-right: 5px; white-space: nowrap; }
+
+  .footer { background: linear-gradient(160deg, #102a45 0%, #1a4a8a 60%, #2b6cb0 100%); padding: 2.8rem 2rem; text-align: center; position: relative; overflow: hidden; }
+  .footer::before { content: ""; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; border-radius: 50%; background: rgba(255,255,255,0.04); }
+  .footer-content { position: relative; z-index: 1; }
+  .footer-title { font-size: 23px; font-weight: 800; color: #fff; margin-bottom: 0.5rem; }
+  .footer-sub   { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 1.4rem; }
+  .footer-name  { font-size: 16px; font-weight: 700; color: rgba(255,255,255,0.95); margin-bottom: 14px; }
+  .footer-contacts { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .footer-btn { display: inline-flex; align-items: center; gap: 8px; border-radius: 30px; padding: 11px 24px; font-size: 15px; text-decoration: none; font-weight: 700; }
+  .footer-btn-phone { background: rgba(255,255,255,0.18); border: 1.5px solid rgba(255,255,255,0.45); color: #fff; }
+  .footer-btn-kakao { background: #FEE500; border: 1.5px solid #FEE500; color: #3a1d00; }
+
+  @media (max-width: 520px) {
+    .section { padding: 1.5rem 1.2rem; }
+    .guide-grid { grid-template-columns: 1fr; }
+    .baggage-grid { grid-template-columns: 1fr; }
+    .weather-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="main">
+
+  <div class="hero">
+    <div class="hero-blob" style="width:240px;height:240px;top:-80px;right:-70px;"></div>
+    <div class="hero-blob" style="width:160px;height:160px;bottom:20px;left:-50px;"></div>
+    <div class="hero-content">
+      <div class="hero-tag">✦ Travel Confirmation ✦</div>
+      <div class="hero-title">✈️ <em>후쿠오카</em> 자유여행 확정서</div>
+      <div class="hero-names">김민서님, 조기은님</div>
+      <div class="hero-sub">김해국제공항(부산) 출발 · 2박 3일 자유여행</div>
+      <div class="agent-wrap">
+        <div class="agent-name">모두투어 이경진 실장</div>
+        <div class="agent-contacts">
+          <a class="contact-phone" href="tel:15445714">📞 1544-5714</a>
+          <a class="contact-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡 상담</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="meeting-banner">
+    <div class="meeting-banner-title">📍 김해공항 탑승수속 안내</div>
+    <div class="meeting-point-box">
+      <div class="meeting-info-flex">
+        <div class="meeting-point-icon">🏢</div>
+        <div>
+          <div class="meeting-point-label">수속 위치</div>
+          <div class="meeting-point-val">김해국제공항 국제선 청사 2층 출국장</div>
+          <div class="meeting-point-sub" style="margin-top: 5px; font-weight: bold; color: var(--jeju-orange);">
+            ★ 제주항공 (JEJU AIR) 수속 카운터 이용
+          </div>
+          <div class="meeting-point-sub" style="margin-top: 4px;">
+            본 상품은 가이드가 동행하지 않는 <strong>자유여행 상품</strong>으로 별도의 공항 미팅이 없습니다.<br>
+            항공기 출발 최소 2시간~2시간 30분 전까지 김해공항 국제선 2층 제주항공 카운터에 도착하셔서 개별 탑승수속 및 수하물 위탁을 진행해 주세요.
+          </div>
+        </div>
+      </div>
+      
+      <div class="image-container">
+        <div style="background: #edf2f7; padding: 15px; border-radius: 6px; font-size: 14px; color: #4a5568; line-height: 1.5; text-align: left; border-left: 4px solid var(--jeju-orange); margin-bottom: 10px;">
+          📌 <strong>안내장에 첨부된 제주항공 카운터 배정 정보</strong>를 공항 전광판에서 한 번 더 확인하신 후 수속해 주세요. (일반적으로 김해공항 제주항공 카운터에서 진행됩니다.)
+        </div>
+        <span>📸 첨부해주신 제주항공 카운터 안내 가이드가 적용되는 영역입니다.</span>
+      </div>
+      
+      <a class="link-pill-orange" href="https://www.jejuair.net/ko/linkService/fastProcedure/guide.do" target="_blank">제주항공 카운터 및 탑승수속 상세 안내 보기 ➔</a>
+    </div>
+  </div>
+
+  <div class="flight-banner">
+    <div class="flight-banner-title">✈️ 항공 일정 — 제주항공 (부산 출도착)</div>
+    <div class="alert alert-blue" style="margin-top:0; margin-bottom:10px; font-size:13px; padding:8px 12px;">
+      ※ 정확한 비행 편명과 출도착 시간은 아래 확정 일정표 버튼을 눌러 최종 재확인을 부탁드립니다.
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-card-header">✈ 가는 편 (부산 김해 ➔ 후쿠오카)</div>
+      <div class="flight-card-body">
+        <div class="flight-route">
+          <div class="flight-city">
+            <div class="flight-city-code">PUS</div>
+            <div class="flight-city-name">부산 (김해)</div>
+          </div>
+          <div class="flight-arrow-wrap">
+            <div class="flight-arrow">→</div>
+          </div>
+          <div class="flight-city">
+            <div class="flight-city-code">FUK</div>
+            <div class="flight-city-name">후쿠오카</div>
+          </div>
+        </div>
+        <div class="flight-meta-row">
+          <span class="flight-meta-chip">제주항공</span>
+          <span class="flight-meta-chip">부산 출발 상품</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-card-header" style="background:linear-gradient(135deg, #4a5568, #718096);">✈ 오는 편 (후쿠오카 ➔ 부산 김해)</div>
+      <div class="flight-card-body">
+        <div class="flight-route">
+          <div class="flight-city">
+            <div class="flight-city-code">FUK</div>
+            <div class="flight-city-name">후쿠오카</div>
+          </div>
+          <div class="flight-arrow-wrap">
+            <div class="flight-arrow">→</div>
+          </div>
+          <div class="flight-city">
+            <div class="flight-city-code">PUS</div>
+            <div class="flight-city-name">부산 (김해)</div>
+          </div>
+        </div>
+        <div class="flight-meta-row">
+          <span class="flight-meta-chip">제주항공</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="baggage-banner">
+    <div class="baggage-title">🧳 수하물 안내 — 제주항공 일반 운임 기준</div>
+    <div class="baggage-grid">
+      <div class="baggage-item">
+        <div class="baggage-label">위탁 수하물 (부치는 짐)</div>
+        <div class="baggage-val">15kg · 1개</div>
+        <div class="baggage-sub">초과 시 추가 요금 부과 (특가운임 여부 일정표 참고)</div>
+      </div>
+      <div class="baggage-item">
+        <div class="baggage-label">기내 수하물 (들고 타는 짐)</div>
+        <div class="baggage-val">10kg · 1개</div>
+        <div class="baggage-sub">삼면의 합 115cm 이내 · 보조배터리는 반드시 기내 지참</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="weather-bar">
+    <div class="weather-title">🌤️ 현지 날씨 정보 — 후쿠오카 (5월 날씨)</div>
+    <div class="weather-grid">
+      <div class="weather-day">
+        <div class="weather-day-label">초여름 날씨</div>
+        <div class="weather-day-icon">☀️</div>
+        <div class="weather-day-temp">18~26°C</div>
+        <div class="weather-day-desc">화창하고 쾌적함</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-label">낮 시간대</div>
+        <div class="weather-day-icon">👕</div>
+        <div class="weather-day-temp">초여름</div>
+        <div class="weather-day-desc">가벼운 반팔 차림</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-label">아침/저녁</div>
+        <div class="weather-day-icon">🧥</div>
+        <div class="weather-day-temp">선선함</div>
+        <div class="weather-day-desc">얇은 겉옷 필요</div>
+      </div>
+    </div>
+    <div class="weather-note">
+      👗 <strong>5월의 후쿠오카</strong>는 여행하기 가장 좋은 쾌적한 초여름 날씨입니다. 낮에는 기온이 올라 다소 더울 수 있으므로 시원한 반팔 옷차림이 좋으나, 일교차로 인해 저녁에는 서늘해질 수 있으니 가벼운 가디건이나 바람막이 등의 겉옷을 꼭 준비해 주세요.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-eyebrow">01</div>
+    <div class="section-heading">여행 일정표</div>
+    <div class="info-card">
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">확정 일정표</div>
+        <div class="info-val">
+          <span style="font-size:14px;color:var(--muted);display:block;margin-bottom:6px;">아래 버튼을 누르시면 실시간 모두투어 확정서 및 상세 일정을 확인하실 수 있습니다.</span>
+          <a class="link-pill" href="https://www.modetour.com/package/105138139?MLoc=99&Pnum=105138139&ANO=1772510&sno=C2181215&thru=crs" target="_blank">모두투어 확정 일정표 확인 ✔</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-eyebrow">02</div>
+    <div class="section-heading">투숙 호텔 안내</div>
+    
+    <div class="alert alert-red" style="margin-bottom:1.2rem; margin-top:0; font-weight: bold;">
+      ⚠️ [중요 리마크 사항] 본 상품은 도착 첫날 '1박'만 호텔이 포함되어 있으며, 나머지 2박 및 3일차 일정의 호텔 비용은 불포함된 상품입니다. 일정을 조율하실 때 반드시 유의해 주세요!
+    </div>
+
+    <div class="guide-grid">
+      <div class="guide-item" style="grid-column: 1 / -1;">
+        <div class="guide-item-label">🏠 1박 투숙 호텔 (5/29 금요일 체크인)</div>
+        <div class="guide-item-val" style="color: #1a4a8a; font-size: 16px;">WBF 그란데 하카타 (Hotel WBF Grande Hakata)</div>
+      </div>
+      <div class="guide-item">
+        <div class="guide-item-label">객실 타입</div>
+        <div class="guide-item-val">트윈 객실 (Twin Room)</div>
+      </div>
+      <div class="guide-item">
+        <div class="guide-item-label">체크아웃 시간</div>
+        <div class="guide-item-val">낮 12:00 (명시 기준)</div>
+      </div>
+      <div class="guide-item" style="grid-column: 1 / -1; background: #fffaf0; border-color: #feebc8;">
+        <div class="guide-item-label" style="color: #dd6b20;">🏠 2~3일차 숙박 예정</div>
+        <div class="guide-item-val" style="color: #dd6b20; font-size: 14px;">고객 개별 예약 및 투숙 (상품 내 비용 불포함)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-eyebrow">03</div>
+    <div class="section-heading">현지 지불 비용 (불포함 사항)</div>
+    <div class="info-card">
+      <div class="info-row">
+        <div class="info-key">호텔 비용</div>
+        <div class="info-val">
+          <strong>2일차 ~ 3일차 호텔 숙박 비용 일체 불포함</strong>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-key">지자체 숙박세</div>
+        <div class="info-val">
+          일본 관광 증진을 위한 지자체 시책으로 호텔 체크인 시 <strong>숙박세금</strong>이 별도로 부과됩니다.<br>
+          <span style="font-size:14px; color:var(--charcoal);">💰 <strong>1인당 1박 기준 약 100엔 ~ 500엔</strong></span><br>
+          <span style="font-size:13px;color:var(--muted);">※ 지역 및 호텔 등급, 숙박 요금 구간별로 상이하며 호텔 프런트에 직접 엔화 현금으로 지불합니다.</span>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-key">기타 비용</div>
+        <div class="info-val">
+          가이드가 없는 자유여행이므로 전 일정 식사비, 교통비, 관광지 입장료, 가이드/기사 비용 등은 포함되어 있지 않습니다.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-eyebrow">04</div>
+    <div class="section-heading">환전 안내 💴</div>
+    <div class="info-card">
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">개인 경비 준비</div>
+        <div class="info-val">
+          <div class="alert alert-gold" style="margin-top:0;">
+            💴 본 상품은 자유여행 상품이므로 현지에서 사용하실 <strong>식대, 교통비, 쇼핑 및 개인 경비</strong>를 직접 환전하여 준비하셔야 합니다.
+          </div>
+          <div class="alert alert-blue" style="margin-top:8px;">
+            💡 일본의 로컬 맛집이나 길거리 점포, 일부 엔틱 매장, 자판기 등에서는 여전히 <strong>엔화(¥) 현금만 사용 가능</strong>한 경우가 많으니 일정량의 엔화 현금을 함께 지참하시는 것을 권장합니다.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-eyebrow">05</div>
+    <div class="section-heading">준비물 체크리스트 🎒</div>
+    <div class="alert alert-blue" style="margin-bottom:1rem;margin-top:0;">
+      ⚡ 일본 전압은 <strong>110V</strong>입니다. 전자기기 충전을 위해 멀티탭 또는 <strong>플러그 어댑터(A타입 돼지코)</strong>를 꼭 준비해 주세요.
+    </div>
+    <ul class="checklist">
+      <li><div class="check-num">1</div><span><span class="check-cat">필수</span><strong>여권</strong> — 출발일 기준 유효기간 최소 6개월 이상 필수 확인!</span></li>
+      <li><div class="check-num">2</div><span><span class="check-cat">필수</span><strong>엔화 현금 및 신용카드</strong> — 개인 자유여행 경비 및 숙박세 지불용</span></li>
+      <li><div class="check-num">3</div><span><span class="check-cat">필수</span><strong>E-티켓 및 호텔 바우처</strong> — 모바일 저장 또는 인쇄물 소지 권장</span></li>
+      <li><div class="check-num">4</div><span><span class="check-cat">전기</span>플러그 어댑터 (A타입 110V 돼지코)</span></li>
+      <li><div class="check-num">5</div><span><span class="check-cat">네트워크</span>일본 포켓와이파이 또는 유심(USIM) / 이심(eSIM) 사전 신청</span></li>
+      <li><div class="check-num">6</div><span><span class="check-cat">날씨</span><strong>얇은 가디건 또는 겉옷</strong> — 선선한 아침, 저녁 일교차 대비</span></li>
+      <li><div class="check-num">7</div><span><span class="check-cat">복장</span><strong>편안한 운동화</strong> — 도보 이동이 많은 자유여행 필수품</span></li>
+      <li><div class="check-num">8</div><span><span class="check-cat">의약품</span>개인 상비약 (소화제, 감기약, 대역반창고 등)</span></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-eyebrow">06</div>
+    <div class="section-heading">자유여행 유의사항</div>
+    <ul class="checkin-list">
+      <li><div class="checkin-num">1</div><span>가이드가 동행하지 않는 상품이므로 개별 안전 및 수하물 관리에 특별히 유의해 주시기 바랍니다.</span></li>
+      <li><div class="checkin-num">2</div><span>여권 잔여 유효기간이 <strong>6개월 이상</strong> 남아있는지 다시 한번 확인해 주세요.</span></li>
+      <li><div class="checkin-num">3</div><span>호텔 체크인 시 예약자 성함 확인을 위해 여권을 제시하셔야 하며, 지자체 숙박세 부과액을 준비해 주십시오.</span></li>
+      <li><div class="checkin-num">4</div><span>비상 상황 발생 시에는 일정표 내 기재된 비상연락처 또는 안내받으신 긴급 연락처로 연락 주시기 바랍니다.</span></li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <div class="footer-content">
+      <div class="footer-title">🌸 즐거운 후쿠오카 자유여행 되세요!</div>
+      <div class="footer-sub">안전하고 행복 가득한 여행이 되시길 바랍니다.<br>추가 문의사항은 언제든 편하게 연락 주세요.</div>
+      <div class="footer-name">모두투어 이경진 실장</div>
+      <div class="footer-contacts">
+        <a class="footer-btn footer-btn-phone" href="tel:15445714">📞 1544-5714</a>
+        <a class="footer-btn footer-btn-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡 상담</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
