@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>나트랑 자유여행 확정서 - 김희정님 일행</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --coral: #E8593A;
+    --coral-bg: #FFF4F1;
+    --navy: #1C3557;
+    --navy-light: #2E4E72;
+    --gold: #C8973A;
+    --gold-light: #F0C870;
+    --mint: #3AA8A0;
+    --bg: #FAFAF8;
+    --card-bg: #FFFFFF;
+    --text-main: #1A1A1A;
+    --text-sub: #5A5A5A;
+    --text-muted: #8A8A8A;
+    --border: #E8E4DC;
+    --shadow: 0 2px 16px rgba(28,53,87,0.08);
+    --max-w: 680px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Noto Sans KR',sans-serif; background:var(--bg); color:var(--text-main); line-height:1.6; font-size:16px; }
+
+  /* HEADER */
+  .header { background:var(--navy); background-image:radial-gradient(ellipse at 70% 50%,rgba(200,151,58,0.18) 0%,transparent 60%),radial-gradient(ellipse at 20% 80%,rgba(232,89,58,0.15) 0%,transparent 50%); padding:44px 28px 40px; text-align:center; position:relative; overflow:hidden; width:100%; }
+  .header::before { content:''; position:absolute; top:-60px; right:-60px; width:220px; height:220px; border-radius:50%; background:rgba(200,151,58,0.12); }
+  .header::after  { content:''; position:absolute; bottom:-40px; left:-40px; width:150px; height:150px; border-radius:50%; background:rgba(232,89,58,0.10); }
+  .header-tag { display:inline-block; background:rgba(200,151,58,0.25); border:1px solid rgba(200,151,58,0.45); color:var(--gold-light); font-size:12px; font-weight:600; letter-spacing:2px; padding:5px 16px; border-radius:20px; margin-bottom:16px; text-transform:uppercase; }
+  .header-title { font-family:'Noto Serif KR',serif; color:#fff; font-size:30px; font-weight:600; line-height:1.35; margin-bottom:8px; }
+  .header-subtitle { color:rgba(255,255,255,0.62); font-size:14px; margin-bottom:22px; letter-spacing:0.5px; }
+  .header-names { display:inline-flex; align-items:center; gap:12px; background:rgba(255,255,255,0.10); border:1px solid rgba(255,255,255,0.20); border-radius:30px; padding:10px 26px; }
+  .header-names .name { color:#fff; font-size:17px; font-weight:600; letter-spacing:0.5px; }
+  .header-names .sep  { color:var(--gold-light); font-size:14px; }
+
+  /* TRIP BAND */
+  .trip-band { background:var(--coral); width:100%; }
+  .trip-band-inner { display:flex; align-items:stretch; max-width:var(--max-w); margin:0 auto; }
+  .trip-band-item { flex:1; padding:16px 14px; text-align:center; border-right:1px solid rgba(255,255,255,0.25); }
+  .trip-band-item:last-child { border-right:none; }
+  .trip-band-label { color:rgba(255,255,255,0.75); font-size:11px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; margin-bottom:4px; }
+  .trip-band-val   { color:#fff; font-size:14px; font-weight:700; line-height:1.3; }
+
+  /* CONTAINER */
+  .container { max-width:var(--max-w); margin:0 auto; padding:0 20px 48px; }
+
+  /* SECTION */
+  .section { margin-top:28px; }
+  .section-head { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+  .section-num { width:30px; height:30px; background:var(--navy); color:#fff; border-radius:50%; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .section-title { font-size:17px; font-weight:700; color:var(--navy); }
+
+  /* ALERTS */
+  .alert { border-radius:12px; padding:15px 18px; font-size:14px; line-height:1.7; margin-top:12px; }
+  .alert-coral { background:var(--coral-bg); border-left:3px solid var(--coral); }
+  .alert-navy  { background:#EEF3F8; border-left:3px solid var(--navy); }
+  .alert-gold  { background:#FDF6E8; border-left:3px solid var(--gold); }
+  .alert-mint  { background:#EEF9F8; border-left:3px solid var(--mint); }
+  .alert-red   { background:#FFF0EE; border:1.5px solid #E84040; color:#B02020; }
+  .alert strong { font-weight:700; }
+  .alert-red strong { color:#B02020; }
+
+  /* MEETING BOX */
+  .meeting-box { background:linear-gradient(135deg,#FFF8F0 0%,#FFFEF8 100%); border:2px solid var(--coral); border-radius:16px; overflow:hidden; box-shadow:var(--shadow); }
+  .meeting-header { background:var(--coral); padding:14px 20px; display:flex; align-items:center; gap:10px; }
+  .meeting-header .mtitle { color:#fff; font-size:15px; font-weight:700; }
+  .meeting-header .mbadge { margin-left:auto; background:rgba(255,255,255,0.25); color:#fff; font-size:12px; font-weight:700; padding:3px 12px; border-radius:12px; }
+  .meeting-body { padding:18px 20px; }
+  .meeting-time { background:#fff; border:1.5px solid var(--coral); border-radius:12px; padding:14px 18px; display:flex; align-items:center; gap:14px; margin-bottom:14px; }
+  .meeting-time .mdate { font-size:13px; color:var(--text-muted); margin-bottom:2px; }
+  .meeting-time .mtime { font-size:20px; font-weight:800; color:var(--coral); }
+  .meeting-rows { display:flex; flex-direction:column; }
+  .meeting-row { display:flex; gap:12px; padding:10px 0; border-bottom:1px dashed #F0C8B8; align-items:flex-start; }
+  .meeting-row:last-child { border-bottom:none; }
+  .meeting-key { font-size:13px; font-weight:700; color:var(--coral); min-width:72px; flex-shrink:0; padding-top:1px; }
+  .meeting-val { font-size:14px; color:var(--text-main); line-height:1.6; }
+  .meeting-val strong { font-weight:700; color:var(--navy); }
+
+  /* FLIGHT */
+  .flight-card { background:var(--card-bg); border-radius:16px; border:1px solid var(--border); box-shadow:var(--shadow); overflow:hidden; margin-bottom:12px; }
+  .flight-header { background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%); padding:14px 20px; display:flex; align-items:center; gap:10px; }
+  .flight-header .direction { color:rgba(255,255,255,0.75); font-size:12px; font-weight:600; letter-spacing:1px; }
+  .flight-header .fnum { color:var(--gold-light); font-size:15px; font-weight:700; margin-left:auto; }
+  .flight-body { padding:20px 20px 18px; }
+  .flight-route { display:flex; align-items:center; margin-bottom:16px; }
+  .flight-city { flex:1; }
+  .flight-city .city-code { font-size:30px; font-weight:800; color:var(--navy); letter-spacing:-1px; line-height:1; }
+  .flight-city .city-name { font-size:12px; color:var(--text-muted); margin-top:3px; }
+  .flight-city .city-time { font-size:18px; font-weight:700; color:var(--text-main); margin-top:7px; }
+  .flight-city .city-date { font-size:12px; color:var(--text-sub); }
+  .flight-city.right { text-align:right; }
+  .flight-arrow { flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding:0 10px; }
+  .flight-arrow .duration { font-size:12px; font-weight:600; color:var(--coral); }
+  .flight-arrow .line { width:100%; height:1px; background:var(--border); position:relative; }
+  .flight-arrow .line::after { content:'✈'; position:absolute; right:-4px; top:-10px; font-size:15px; color:var(--coral); }
+  .flight-badges { display:flex; gap:8px; flex-wrap:wrap; }
+  .fbadge { background:#F0F4F8; border-radius:8px; padding:5px 12px; font-size:12px; font-weight:600; color:var(--navy); }
+
+  /* BAGGAGE */
+  .baggage-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .baggage-box { background:var(--card-bg); border-radius:14px; border:1px solid var(--border); padding:16px; box-shadow:var(--shadow); }
+  .baggage-icon { font-size:24px; margin-bottom:8px; }
+  .baggage-title { font-size:14px; font-weight:700; color:var(--navy); margin-bottom:10px; }
+  .baggage-body { font-size:13px; color:var(--text-sub); line-height:1.8; }
+
+  /* HOTEL */
+  .hotel-card { background:var(--card-bg); border-radius:16px; border:2px solid var(--mint); box-shadow:var(--shadow); overflow:hidden; }
+  .hotel-card-header { background:linear-gradient(135deg,var(--mint) 0%,#5BBDB5 100%); padding:14px 20px; display:flex; align-items:center; gap:10px; }
+  .hotel-card-header .label { color:rgba(255,255,255,0.85); font-size:12px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; }
+  .hotel-card-header .night-badge { margin-left:auto; background:rgba(255,255,255,0.25); color:#fff; font-size:12px; font-weight:700; padding:3px 12px; border-radius:12px; }
+  .hotel-name { padding:18px 20px 6px; font-size:19px; font-weight:700; color:var(--navy); }
+  .hotel-rows { padding:0 20px 18px; }
+  .hotel-row { display:flex; gap:14px; align-items:flex-start; padding:9px 0; border-bottom:1px solid var(--border); }
+  .hotel-row:last-child { border-bottom:none; }
+  .hotel-row .hkey { font-size:13px; color:var(--text-muted); min-width:88px; flex-shrink:0; padding-top:1px; }
+  .hotel-row .hval { font-size:14px; font-weight:600; color:var(--navy); line-height:1.6; }
+
+  /* EMERGENCY CONTACTS */
+  .emer-box { background:var(--card-bg); border-radius:16px; border:1.5px solid var(--navy); box-shadow:var(--shadow); overflow:hidden; }
+  .emer-header { background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%); padding:14px 20px; display:flex; align-items:center; gap:10px; }
+  .emer-header .etitle { color:#fff; font-size:15px; font-weight:700; }
+  .emer-body { padding:0; }
+  .emer-row { display:flex; gap:14px; padding:14px 20px; border-bottom:1px solid var(--border); align-items:flex-start; }
+  .emer-row:last-child { border-bottom:none; }
+  .emer-name { font-size:14px; font-weight:700; color:var(--navy); min-width:90px; flex-shrink:0; }
+  .emer-info { font-size:13px; color:var(--text-sub); line-height:1.8; }
+  .emer-info a { color:var(--navy); font-weight:600; text-decoration:none; }
+
+  /* EXCHANGE BOX */
+  .exchange-box { background:#FDF6E8; border:1.5px solid var(--gold); border-radius:16px; overflow:hidden; box-shadow:var(--shadow); }
+  .exchange-header { background:linear-gradient(135deg,var(--gold) 0%,#E0B050 100%); padding:14px 20px; display:flex; align-items:center; gap:10px; }
+  .exchange-header .extitle { color:#fff; font-size:15px; font-weight:700; }
+  .exchange-body { padding:18px 20px; display:flex; flex-direction:column; gap:0; }
+  .exchange-row { padding:11px 0; border-bottom:1px dashed #E8D8A0; font-size:14px; color:var(--text-main); line-height:1.7; }
+  .exchange-row:last-child { border-bottom:none; padding-bottom:0; }
+  .exchange-row strong { font-weight:700; color:#6B4E10; }
+  .calc-box { background:#fff; border-radius:10px; border:1px solid #E8D8A0; padding:14px 16px; margin-top:10px; font-size:13px; color:var(--text-sub); line-height:1.9; }
+  .calc-box .calc-title { font-size:13px; font-weight:700; color:#8B6820; margin-bottom:8px; }
+  .calc-box .calc-example { font-size:13px; color:var(--text-main); font-weight:500; }
+
+  /* PREP GRID */
+  .prep-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .prep-card { background:var(--card-bg); border-radius:14px; border:1px solid var(--border); padding:18px; box-shadow:var(--shadow); }
+  .prep-icon { font-size:24px; margin-bottom:10px; }
+  .prep-card-title { font-size:14px; font-weight:700; color:var(--navy); margin-bottom:10px; }
+  .prep-card-body { font-size:13px; color:var(--text-sub); line-height:1.8; }
+
+  /* PRODUCT LINK */
+  .product-link-box { background:var(--card-bg); border-radius:16px; border:1px solid var(--border); box-shadow:var(--shadow); overflow:hidden; }
+  .product-link-inner { padding:18px 20px; display:flex; align-items:center; gap:16px; }
+  .product-link-icon { width:48px; height:48px; background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+  .product-link-text .plabel { font-size:12px; color:var(--text-muted); font-weight:600; letter-spacing:0.5px; margin-bottom:3px; }
+  .product-link-text .ptitle { font-size:15px; font-weight:700; color:var(--navy); line-height:1.35; }
+  .product-link-arrow { margin-left:auto; color:var(--text-muted); font-size:20px; }
+  .product-link-box a { text-decoration:none; display:block; }
+
+  /* FOOTER */
+  .footer { background:var(--navy); padding:34px 28px; text-align:center; margin-top:36px; border-radius:16px 16px 0 0; position:relative; overflow:hidden; width:100%; }
+  .footer::before { content:''; position:absolute; top:-50px; right:-50px; width:180px; height:180px; border-radius:50%; background:rgba(200,151,58,0.10); }
+  .footer-emoji { font-size:30px; margin-bottom:12px; }
+  .footer-msg  { color:rgba(255,255,255,0.90); font-size:18px; font-weight:600; margin-bottom:6px; }
+  .footer-sub  { color:rgba(255,255,255,0.50); font-size:13px; line-height:1.7; margin-bottom:20px; }
+  .footer-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+  .footer-btn  { padding:11px 24px; border-radius:22px; font-size:13px; font-weight:700; text-decoration:none; }
+  .footer-btn.tel   { background:var(--coral); color:#fff; }
+  .footer-btn.kakao { background:#FEE500; color:#3A1D1D; }
+
+  @media (max-width:480px) {
+    .header-title { font-size:25px; }
+    .baggage-grid,.prep-grid { grid-template-columns:1fr; }
+    .flight-city .city-code { font-size:22px; }
+    .container { padding:0 14px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-tag">✈ Travel Confirmation</div>
+  <div class="header-title">나트랑 자유여행<br>여행 확정서</div>
+  <div class="header-subtitle">NHA TRANG FREE TRAVEL · 2026</div>
+  <div class="header-names">
+    <span class="name">김희정님 일행</span>
+    <span class="sep">✦</span>
+    <span class="name">총 6명</span>
+  </div>
+</div>
+
+<!-- TRIP BAND -->
+<div class="trip-band">
+  <div class="trip-band-inner">
+    <div class="trip-band-item">
+      <div class="trip-band-label">출발</div>
+      <div class="trip-band-val">5/29(금)</div>
+    </div>
+    <div class="trip-band-item">
+      <div class="trip-band-label">귀국</div>
+      <div class="trip-band-val">6/2(화)</div>
+    </div>
+    <div class="trip-band-item">
+      <div class="trip-band-label">일정</div>
+      <div class="trip-band-val">3박 5일</div>
+    </div>
+    <div class="trip-band-item">
+      <div class="trip-band-label">투어 타입</div>
+      <div class="trip-band-val">자유여행</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 01. 상품 안내 -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">01</div>
+      <div class="section-title">상품 안내</div>
+    </div>
+    <div class="product-link-box">
+      <a href="https://www.modetour.com/package/101476266?MLoc=99&Pnum=101476266&ANO=4547682&sno=C2181215&thru=crs" target="_blank">
+        <div class="product-link-inner">
+          <div class="product-link-icon">🗺️</div>
+          <div class="product-link-text">
+            <div class="plabel">MODETOUR 상품 바로가기</div>
+            <div class="ptitle">나트랑 자유여행 패키지<br>모두투어 확정 일정표 확인</div>
+          </div>
+          <div class="product-link-arrow">›</div>
+        </div>
+      </a>
+    </div>
+    <div class="alert alert-navy" style="margin-top:12px;">
+      ℹ️ 본 상품은 <strong>가이드 없는 자유여행</strong> 상품입니다.<br>
+      공항↔호텔 이동은 <strong>개별 이동</strong>이며, 현지 일정도 자유롭게 진행하시면 됩니다.
+    </div>
+  </div>
+
+  <!-- 02. 공항 미팅 안내 -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">02</div>
+      <div class="section-title">공항 미팅 안내</div>
+    </div>
+    <div class="meeting-box">
+      <div class="meeting-header">
+        <span style="font-size:18px;">📍</span>
+        <span class="mtitle">김해국제공항 미팅 안내</span>
+        <span class="mbadge">필독</span>
+      </div>
+      <div class="meeting-body">
+        <div class="meeting-time">
+          <div style="font-size:30px;">🕓</div>
+          <div>
+            <div class="mdate">2026년 05월 29일 (금)</div>
+            <div class="mtime">오후 04:00</div>
+          </div>
+        </div>
+        <div class="meeting-rows">
+          <div class="meeting-row">
+            <div class="meeting-key">📍 장소</div>
+            <div class="meeting-val"><strong>김해국제공항 국제선 3층 오른쪽</strong><br>모두투어 안내판 앞 미팅 테이블</div>
+          </div>
+          <div class="meeting-row">
+            <div class="meeting-key">⏰ 도착</div>
+            <div class="meeting-val">출발 <strong>최소 3시간 전</strong>까지 공항 도착 권장</div>
+          </div>
+          <div class="meeting-row">
+            <div class="meeting-key">ℹ️ 안내</div>
+            <div class="meeting-val"><strong>가이드 없는 자유여행</strong> 상품으로, 미팅 후 개별 탑승수속을 진행하시면 됩니다.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03. 항공 일정 -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">03</div>
+      <div class="section-title">항공 일정</div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-header">
+        <span style="font-size:16px;">🛫</span>
+        <span class="direction">출발편 · 진에어</span>
+        <span class="fnum">LJ 115</span>
+      </div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="flight-city">
+            <div class="city-code">PUS</div>
+            <div class="city-name">부산 김해국제공항</div>
+            <div class="city-time">19:55</div>
+            <div class="city-date">2026.05.29 (금)</div>
+          </div>
+          <div class="flight-arrow">
+            <div class="duration">약 5시간</div>
+            <div class="line"></div>
+          </div>
+          <div class="flight-city right">
+            <div class="city-code">CXR</div>
+            <div class="city-name">나트랑 깜라인 국제공항</div>
+            <div class="city-time">22:55</div>
+            <div class="city-date">2026.05.29 (금)</div>
+          </div>
+        </div>
+        <div class="flight-badges">
+          <span class="fbadge">✈ 진에어</span>
+          <span class="fbadge">기내식 미제공</span>
+          <span class="fbadge">위탁 15kg</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-header">
+        <span style="font-size:16px;">🛬</span>
+        <span class="direction">귀국편 · 진에어</span>
+        <span class="fnum">LJ 116</span>
+      </div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="flight-city">
+            <div class="city-code">CXR</div>
+            <div class="city-name">나트랑 깜라인 국제공항</div>
+            <div class="city-time">23:55</div>
+            <div class="city-date">2026.06.01 (월)</div>
+          </div>
+          <div class="flight-arrow">
+            <div class="duration">약 5시간</div>
+            <div class="line"></div>
+          </div>
+          <div class="flight-city right">
+            <div class="city-code">PUS</div>
+            <div class="city-name">부산 김해국제공항</div>
+            <div class="city-time">06:40</div>
+            <div class="city-date">2026.06.02 (화)</div>
+          </div>
+        </div>
+        <div class="flight-badges">
+          <span class="fbadge">✈ 진에어</span>
+          <span class="fbadge">기내식 미제공</span>
+          <span class="fbadge">위탁 15kg</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-coral" style="margin-top:4px;">
+      🍱 <strong>기내식 미제공</strong> : 진에어는 기내식이 제공되지 않습니다. 필요 시 마이페이지에서 사전 기내식 구매를 추천드립니다.
+    </div>
+  </div>
+
+  <!-- 04. 수하물 안내 -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">04</div>
+      <div class="section-title">수하물 안내</div>
+    </div>
+    <div class="baggage-grid">
+      <div class="baggage-box">
+        <div class="baggage-icon">🧳</div>
+        <div class="baggage-title">무료 위탁수하물</div>
+        <div class="baggage-body">
+          성인/소아(만 2세 이상)<br>
+          <strong>15kg 1개</strong><br>
+          크기 158cm(3변 합) 이내<br><br>
+          유아(만 2세 미만)<br>
+          <strong>10kg 1개</strong> (115cm 이내)<br>
+          폴딩형 유모차 또는 유아용 카시트 추가 허용
+        </div>
+      </div>
+      <div class="baggage-box">
+        <div class="baggage-icon">👜</div>
+        <div class="baggage-title">허용 기내수하물</div>
+        <div class="baggage-body">
+          <strong>10kg 1개</strong><br>
+          세변의 합 115cm 이하<br>
+          가로 40 × 세로 20 × 높이 55cm 미만
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05. 투숙 호텔 -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">05</div>
+      <div class="section-title">투숙 호텔 안내</div>
+    </div>
+    <div class="hotel-card">
+      <div class="hotel-card-header">
+        <span class="label">🏨 전 일정 포함 호텔 · 3박</span>
+        <span class="night-badge">5/29~6/1 포함</span>
+      </div>
+      <div class="hotel-name">이비스 호텔 나트랑</div>
+      <div class="hotel-rows">
+        <div class="hotel-row">
+          <span class="hkey">투숙 기간</span>
+          <span class="hval">2026.05.29(금) 체크인 ~ 2026.06.01(월) 체크아웃</span>
+        </div>
+        <div class="hotel-row">
+          <span class="hkey">인원</span>
+          <span class="hval">성인 4명 + 아동 2명 · 총 6명</span>
+        </div>
+        <div class="hotel-row">
+          <span class="hkey">룸 타입</span>
+          <span class="hval">2룸 (ROH 타입)<br>더블베드 1개 또는 싱글베드 2개 중 <strong>랜덤 배정</strong></span>
+        </div>
+        <div class="hotel-row">
+          <span class="hkey">컨펌 번호</span>
+          <span class="hval"><strong>466511667</strong></span>
+        </div>
+        <div class="hotel-row">
+          <span class="hkey">체크아웃</span>
+          <span class="hval"><strong>낮 12시</strong> 전 완료 · 이후 짐은 호텔 로비 보관 가능</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06. 현지 비상연락처 -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">06</div>
+      <div class="section-title">현지 비상연락처</div>
+    </div>
+    <div class="emer-box">
+      <div class="emer-header">
+        <span style="font-size:18px;">🆘</span>
+        <span class="etitle">현지 비상연락처 — 긴급 시 연락</span>
+      </div>
+      <div class="emer-body">
+        <div class="emer-row">
+          <div class="emer-name">안준모 과장</div>
+          <div class="emer-info">
+            ☎ <a href="tel:+84765231501">+84 76-523-1501</a><br>
+            카카오톡 ID : <strong>53253</strong>
+          </div>
+        </div>
+        <div class="emer-row">
+          <div class="emer-name">정은별 대리</div>
+          <div class="emer-info">
+            ☎ <a href="tel:+84868307374">+84 86-830-7374</a><br>
+            카카오톡 ID : <strong>Star961113</strong>
+          </div>
+        </div>
+        <div class="emer-row">
+          <div class="emer-name">남현 소장</div>
+          <div class="emer-info">
+            ☎ <a href="tel:+84812474424">+84 81-247-4424</a><br>
+            카카오톡 ID : <strong>DCARLOS</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 07. 베트남 입출국 안내 -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">07</div>
+      <div class="section-title">베트남 입출국 안내</div>
+    </div>
+    <div class="alert alert-navy" style="margin-top:0;">
+      🛂 <strong>출입국신고서 작성 불필요</strong> : 베트남 출입국 시 신고서 작성 없이 <strong>여권으로만</strong> 출입국 심사를 받으시면 됩니다.
+    </div>
+    <div class="alert alert-gold" style="margin-top:10px;">
+      🎫 <strong>이티켓(e-Ticket) 보관 필수</strong> : 입국 시 세관원이 리턴편 티켓을 요청하는 경우가 있습니다. 이티켓을 반드시 잘 보관해 주세요.
+    </div>
+    <div class="alert alert-red" style="margin-top:10px; border-radius:12px; padding:15px 18px; font-size:14px; line-height:1.7;">
+      👶 <strong>[아동 동반 입국 주의사항]</strong><br>
+      <strong>아버지 없이 어머니와 아동이 입국하는 경우</strong>, 반드시 <strong>영문 가족관계증명서(영문등본)</strong>를 지참하셔야 합니다.<br>
+      출발 전 미리 준비해 두시기 바랍니다.
+    </div>
+    <div class="alert alert-coral" style="margin-top:10px;">
+      🌊 <strong>해변 안전 주의</strong> : 베트남 나트랑 지역은 파도가 강한 지역입니다. 해변에서의 <strong>개별 수영은 삼가</strong>주시고, 리조트 내 해변에서도 강한 파도와 조류에 유의하시며 <strong>반드시 안전요원의 지시</strong>에 따라주세요.
+    </div>
+  </div>
+
+  <!-- 08. 환전 안내 -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">08</div>
+      <div class="section-title">환전 안내</div>
+    </div>
+    <div class="exchange-box">
+      <div class="exchange-header">
+        <span style="font-size:18px;">💱</span>
+        <span class="extitle">환전 안내</span>
+      </div>
+      <div class="exchange-body">
+        <div class="exchange-row">
+          💵 <strong>한국에서 미국 달러(USD)로 환전</strong> 후, 현지 환전소에서 베트남 동(VND)으로 재환전해서 사용하시면 더 유리합니다.
+        </div>
+        <div class="exchange-row">
+          🏧 카드 사용도 가능하나, 현금 환전 후 사용을 권장드립니다.
+        </div>
+        <div class="exchange-row">
+          <div class="calc-box">
+            <div class="calc-title">💡 베트남 동(VND) 한화 계산법</div>
+            베트남 동 숫자에서 <strong>0을 하나 빼고 ÷ 2</strong> 한 후 <strong>약 15% 추가</strong>하면 한국 원화입니다.<br><br>
+            <div class="calc-example">
+              예) 500,000동<br>
+              → 50,000 ÷ 2 = 25,000원<br>
+              → 25,000 × 1.15 = <strong>약 28,750원</strong><br><br>
+              즉, 베트남 동 <strong>50만 동 ≈ 한화 약 28,750원</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 09. 날씨 & 준비물 -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">09</div>
+      <div class="section-title">날씨 & 여행 준비물</div>
+    </div>
+    <div class="prep-grid">
+      <div class="prep-card">
+        <div class="prep-icon">☀️</div>
+        <div class="prep-card-title">5월 말 나트랑 날씨</div>
+        <div class="prep-card-body">
+          평균 기온 <strong>27~33°C</strong><br>
+          습도 높고 무더움<br>
+          건기 막바지 · 맑은 날 많음<br>
+          자외선 매우 강함<br>
+          해풍으로 체감온도 낮을 수 있음
+        </div>
+      </div>
+      <div class="prep-card">
+        <div class="prep-icon">👕</div>
+        <div class="prep-card-title">옷차림 추천</div>
+        <div class="prep-card-body">
+          얇은 반팔·린넨 소재 권장<br>
+          실내 냉방 강하므로<br>
+          얇은 카디건 필수<br>
+          수영복·래쉬가드 챙기기<br>
+          편한 샌들·아쿠아슈즈
+        </div>
+      </div>
+      <div class="prep-card">
+        <div class="prep-icon">🎒</div>
+        <div class="prep-card-title">필수 준비물</div>
+        <div class="prep-card-body">
+          여권 (유효기간 6개월 이상)<br>
+          영문 가족관계증명서 <strong>(아동 동반 필수)</strong><br>
+          이티켓 출력 또는 저장<br>
+          자외선 차단제 SPF50+<br>
+          모기 기피제
+        </div>
+      </div>
+      <div class="prep-card">
+        <div class="prep-icon">📱</div>
+        <div class="prep-card-title">현지 이동 안내</div>
+        <div class="prep-card-body">
+          공항 ↔ 호텔 <strong>개별 이동</strong><br>
+          그랩(Grab) 앱 설치 권장<br>
+          (현지 택시 앱, 한국서 미리 설치)<br>
+          유심 또는 포켓와이파이<br>
+          출발 전 미리 준비 권장
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-emoji">✈️</div>
+  <div class="footer-msg">즐겁고 안전한 여행 되세요!</div>
+  <div class="footer-sub">김희정님 일행, 소중한 여행에 동행할 수 있어 감사합니다.<br>궁금하신 사항은 언제든 연락 주세요.</div>
+  <div class="footer-btns">
+    <a href="tel:15445714" class="footer-btn tel">📞 1544-5714</a>
+    <a href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank" class="footer-btn kakao">💬 카카오톡 상담</a>
+  </div>
+</div>
+
+</body>
+</html>
