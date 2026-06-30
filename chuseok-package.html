@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>추석연휴 9/24~27 휴가 없이 다녀오는 패키지 모음 | 여행컨설턴트 이실장</title>
+<style>
+  :root{
+    --navy:#1C3557;
+    --navy-deep:#0F2038;
+    --coral:#E8593A;
+    --gold:#C8973A;
+    --cream:#FBF6EC;
+    --paper:#FFFFFF;
+    --ink:#2B2B2B;
+    --line:#E4DCC8;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:"Pretendard","Noto Sans KR",-apple-system,BlinkMacSystemFont,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:96px;
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    background:radial-gradient(120% 140% at 18% -10%, #2A4A78 0%, var(--navy) 45%, var(--navy-deep) 100%);
+    color:#fff;
+    padding:64px 24px 56px;
+    overflow:hidden;
+  }
+  .moon{
+    position:absolute;
+    top:-90px; right:-60px;
+    width:280px; height:280px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #FFF3D6 0%, var(--gold) 55%, #9c7426 100%);
+    box-shadow:0 0 80px 10px rgba(200,151,58,0.35);
+    opacity:0.9;
+  }
+  .hero-inner{position:relative; max-width:880px; margin:0 auto; text-align:center;}
+  .header-cta{
+    display:flex; justify-content:center; gap:10px;
+    margin-bottom:28px;
+  }
+  .header-cta a{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:13px; font-weight:700;
+    text-decoration:none;
+    padding:8px 16px; border-radius:999px;
+    border:1px solid rgba(255,255,255,0.25);
+  }
+  .header-cta .hk{background:#FEE500; color:#3C1E1E; border-color:#FEE500;}
+  .header-cta .ht{background:rgba(255,255,255,0.08); color:#fff;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:13px; letter-spacing:0.12em;
+    color:var(--gold); font-weight:700;
+    border:1px solid rgba(200,151,58,0.5);
+    padding:6px 14px; border-radius:999px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{content:"●"; font-size:8px; color:var(--coral);}
+  h1{
+    font-size:clamp(28px,5vw,44px);
+    line-height:1.32;
+    margin:0 0 16px;
+    font-weight:800;
+    letter-spacing:-0.01em;
+  }
+  h1 .accent{color:var(--gold);}
+  .sub{
+    font-size:16px; line-height:1.7;
+    color:#D8E0EC; max-width:640px;
+    margin:0 auto 32px;
+  }
+  .date-strip{
+    display:flex; align-items:center; gap:0;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:16px;
+    padding:18px 22px;
+    max-width:560px;
+    margin:0 auto;
+    backdrop-filter:blur(2px);
+  }
+  .date-strip .d{
+    flex:1; text-align:center;
+  }
+  .date-strip .d .num{
+    display:block; font-size:24px; font-weight:800; color:#fff;
+  }
+  .date-strip .d .lbl{
+    display:block; font-size:12px; color:#A9BAD2; margin-top:2px;
+  }
+  .date-strip .arrow{
+    color:var(--coral); font-size:18px; padding:0 6px;
+  }
+  .date-strip .badge{
+    margin-left:auto;
+    background:var(--coral);
+    color:#fff; font-weight:700; font-size:12px;
+    padding:8px 14px; border-radius:999px;
+    white-space:nowrap;
+  }
+
+  /* ===== INTRO STRIP ===== */
+  .notice{
+    max-width:880px; margin:0 auto; padding:28px 24px 6px;
+    font-size:14px; color:#6b6450; line-height:1.7;
+  }
+  .notice b{color:var(--navy);}
+
+  /* ===== SECTION HEADERS ===== */
+  .section{max-width:880px; margin:0 auto; padding:36px 24px 0;}
+  .section-head{
+    display:flex; align-items:baseline; gap:10px;
+    margin-bottom:18px;
+    border-bottom:2px solid var(--navy);
+    padding-bottom:10px;
+  }
+  .section-head .tag{
+    font-size:12px; font-weight:800; color:#fff;
+    background:var(--navy); padding:4px 10px; border-radius:6px;
+    letter-spacing:0.02em;
+  }
+  .section-head h2{
+    font-size:19px; margin:0; color:var(--navy); font-weight:800;
+  }
+  .section-head .count{
+    margin-left:auto; font-size:12px; color:var(--coral); font-weight:700;
+  }
+
+  /* ===== CARD ===== */
+  .cards{display:flex; flex-direction:column; gap:14px; margin-bottom:8px;}
+  .card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:18px 20px;
+    display:flex; flex-direction:column; gap:10px;
+    box-shadow:0 1px 0 rgba(0,0,0,0.02);
+    transition:box-shadow .15s ease, transform .15s ease;
+  }
+  .card:hover{box-shadow:0 6px 18px rgba(28,53,87,0.10); transform:translateY(-1px);}
+  .card-top{display:flex; justify-content:space-between; align-items:flex-start; gap:12px;}
+  .card-title{
+    font-size:15.5px; font-weight:700; line-height:1.5; color:var(--ink);
+  }
+  .confirm{
+    display:inline-block; font-size:11px; font-weight:800;
+    color:#fff; background:var(--coral);
+    padding:2px 8px; border-radius:5px; margin-right:6px;
+    vertical-align:middle;
+  }
+  .price-row{
+    display:flex; align-items:baseline; gap:6px; white-space:nowrap;
+  }
+  .price-row .price{
+    font-size:19px; font-weight:800; color:var(--navy);
+  }
+  .price-row .unit{font-size:12px; color:#8a8a8a;}
+  .card-bottom{display:flex; justify-content:space-between; align-items:center; gap:12px;}
+  .card-link{
+    font-size:13px; font-weight:700; color:var(--navy);
+    text-decoration:none;
+    border:1px solid var(--navy);
+    padding:7px 14px; border-radius:8px;
+    transition:background .15s ease, color .15s ease;
+  }
+  .card-link:hover{background:var(--navy); color:#fff;}
+  .gold-dot{
+    width:6px; height:6px; border-radius:50%;
+    background:var(--gold); flex-shrink:0;
+  }
+
+  /* ===== FOOTER NOTE ===== */
+  .footer-note{
+    max-width:880px; margin:48px auto 0; padding:24px 24px 0;
+    border-top:1px dashed var(--line);
+    font-size:13px; color:#8a8264; line-height:1.8;
+  }
+  .brand-line{
+    max-width:880px; margin:0 auto; padding:18px 24px 0;
+    font-size:13px; color:var(--navy); font-weight:700;
+  }
+
+  /* ===== STICKY CTA ===== */
+  .cta-bar{
+    position:fixed; left:0; right:0; bottom:0;
+    display:flex; gap:0;
+    background:var(--paper);
+    border-top:1px solid var(--line);
+    box-shadow:0 -4px 18px rgba(0,0,0,0.06);
+    z-index:50;
+  }
+  .cta-btn{
+    flex:1;
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    padding:16px 10px;
+    font-size:15px; font-weight:800;
+    text-decoration:none;
+    border:none;
+  }
+  .cta-kakao{
+    background:#FEE500; color:#3C1E1E;
+  }
+  .cta-tel{
+    background:var(--navy); color:#fff;
+  }
+  .cta-btn .icon{font-size:17px;}
+
+  @media (max-width:480px){
+    .hero{padding:48px 18px 44px;}
+    .date-strip{flex-wrap:wrap; gap:10px;}
+    .date-strip .badge{margin-left:0; width:100%; text-align:center;}
+    .section{padding:30px 16px 0;}
+    .notice{padding:24px 16px 0;}
+    .card-top{flex-direction:column; align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="moon"></div>
+    <div class="hero-inner">
+      <div class="header-cta">
+        <a class="hk" href="https://open.kakao.com/o/stg9lISh" target="_blank">💬 카카오톡 상담</a>
+        <a class="ht" href="tel:010-2485-5689">📞 010-2485-5689</a>
+      </div>
+      <span class="eyebrow">추석 연휴 단기 패키지 / 9.24(목) ~ 9.27(일)</span>
+      <h1>휴가 안 써도 되는<br><span class="accent">진짜 연휴 여행지</span>만 모았습니다</h1>
+      <p class="sub">추석 본연휴 4일에 딱 맞춰 출발·귀국하는 패키지만 엄선했습니다.
+      연차 고민 없이, 명절에 다녀와서 평일 그대로 출근하시면 됩니다.</p>
+
+      <div class="date-strip">
+        <div class="d"><span class="num">9/24</span><span class="lbl">목 · 출발</span></div>
+        <div class="arrow">→</div>
+        <div class="d"><span class="num">9/27</span><span class="lbl">일 · 귀국</span></div>
+        <div class="badge">휴가 0일 소진</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="notice">아래 일정은 <b>추석 연휴 기간(9/24~9/27) 출발 기준으로 안내드리는 상품</b>이며, 항공 좌석 및 호텔 등급에 따라 가격은 변동될 수 있습니다. 정확한 잔여좌석과 최종 견적은 카카오톡 또는 전화로 문의 주시면 바로 확인해 드립니다.</p>
+
+  <!-- 동남아 -->
+  <div class="section">
+    <div class="section-head">
+      <span class="tag">동남아</span>
+      <h2>다낭 · 대만 · 홍콩 · 청도</h2>
+      <span class="count">5개 상품</span>
+    </div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-title"><span class="confirm">출발확정</span>[모두좋아한다낭+] 다낭/호이안/바나힐/스톤마사지90분 3박4일 [5성호텔]</div>
+          <div class="price-row"><span class="price">1,524,000</span><span class="unit">원 / 1인</span></div>
+        </div>
+        <div class="card-bottom">
+          <div style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:#8a8264;"><span class="gold-dot"></span>다낭패키지 · 5성호텔</div>
+          <a class="card-link" href="https://www.modetour.com/package/104517487?MLoc=99&Pnum=104517487&ANO=1772510&sno=C2181215&thru=crs" target="_blank">상품 자세히 보기</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-title">[모두CARE+][파리스델리-슈페리어] 다낭에어텔 3박4일 [미팅서비스포함]</div>
+          <div class="price-row"><span class="price">1,467,000</span><span class="unit">원 / 1인</span></div>
+        </div>
+        <div class="card-bottom">
+          <div style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:#8a8264;"><span class="gold-dot"></span>다낭 자유여행 · 에어텔</div>
+          <a class="card-link" href="https://www.modetour.com/package/104781636?MLoc=99&Pnum=104781636&ANO=1772510&sno=C2181215&thru=crs" target="_blank">상품 자세히 보기</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-title"><span class="confirm">출발확정</span>[추석연휴_선착순특가] 대만/단수이/예류/스펀/지우펀 4일 (4성호텔/천등체험/특식3회)</div>
+          <div class="price-row"><span class="price">1,399,000</span><span class="unit">원 / 1인</span></div>
+        </div>
+        <div class="card-bottom">
+          <div style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:#8a8264;"><span class="gold-dot"></span>대만패키지 · 4성호텔 · 천등체험</div>
+          <a class="card-link" href="https://www.modetour.com/package/105062603?MLoc=99&Pnum=105062603&ANO=1772510&sno=C2181215&thru=crs" target="_blank">상품 자세히 보기</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-title"><span class="confirm">출발확정</span>[인기1위] 홍콩 핵심투어+하루반나절 자유 3박4일</div>
+          <div class="price-row"><span class="price">899,900</span><span class="unit">원 / 1인</span></div>
+        </div>
+        <div class="card-bottom">
+          <div style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:#8a8264;"><span class="gold-dot"></span>홍콩패키지 · 반나절 자유일정</div>
+          <a class="card-link" href="https://www.modetour.com/package/109691272?MLoc=99&Pnum=109691272&ANO=1772510&sno=C2181215&thru=crs" target="_blank">상품 자세히 보기</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-title">청도/핵심 3일 [NEW시그니처/노팁/노옵션/노쇼핑/노산/씨뷰대관람차]</div>
+          <div class="price-row"><span class="price">889,000</span><span class="unit">원 / 1인</span></div>
+        </div>
+        <div class="card-bottom">
+          <div style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:#8a8264;"><span class="gold-dot"></span>청도패키지 · 노팁·노옵션·노쇼핑</div>
+          <a class="card-link" href="https://www.modetour.com/package/109903328?MLoc=99&Pnum=109903328&ANO=1772510&sno=C2181215&thru=crs" target="_blank">상품 자세히 보기</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 일본 -->
+  <div class="section">
+    <div class="section-head">
+      <span class="tag">일본</span>
+      <h2>도쿄 · 오사카 · 후쿠오카 · 북해도</h2>
+      <span class="count">5개 상품</span>
+    </div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-title"><span class="confirm">출발확정</span>[후지산을 품은 하코네] 도쿄/후지산/하코네 온천 3일(전일관광/트윈/해적선탑승)</div>
+          <div class="price-row"><span class="price">1,699,000</span><span class="unit">원 / 1인</span></div>
+        </div>
+        <div class="card-bottom">
+          <div style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:#8a8264;"><span class="gold-dot"></span>도쿄 2박3일 · 온천</div>
+          <a class="card-link" href="https://www.modetour.com/package/109523809?MLoc=99&Pnum=109523809&ANO=1772510&sno=C2181215&thru=crs" target="_blank">상품 자세히 보기</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-title"><span class="confirm">출발확정</span>[프리미엄][후지산을 품은 도쿄][노쇼핑노옵션] 도쿄/하코네/후지산/가와고에 4일 [전일정특급/온천호텔1박/팁포함)]</div>
+          <div class="price-row"><span class="price">1,749,000</span><span class="unit">원 / 1인</span></div>
+        </div>
+        <div class="card-bottom">
+          <div style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:#8a8264;"><span class="gold-dot"></span>도쿄 3박4일 · 노쇼핑·노옵션</div>
+          <a class="card-link" href="https://www.modetour.com/package/110274917?MLoc=99&Pnum=110274917&ANO=1772510&sno=C2181215&thru=crs" target="_blank">상품 자세히 보기</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-title">[좌석확보X연휴특가] 오사카/교토/아라시야마/고베 온천 3일 (전일/4대특식/일루미네이션/트윈)</div>
+          <div class="price-row"><span class="price">1,649,900</span><span class="unit">원 / 1인</span></div>
+        </div>
+        <div class="card-bottom">
+          <div style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:#8a8264;"><span class="gold-dot"></span>오사카 2박3일 · 좌석 한정</div>
+          <a class="card-link" href="https://www.modetour.com/package/107001485?MLoc=99&Pnum=107001485&ANO=1772510&sno=C2181215&thru=crs" target="_blank">상품 자세히 보기</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-title">[사계절 PICK] 오사카/나라/교토/아라시야마/고베/아리마온천 4일(전일/4대특식)</div>
+          <div class="price-row"><span class="price">1,899,900</span><span class="unit">원 / 1인</span></div>
+        </div>
+        <div class="card-bottom">
+          <div style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:#8a8264;"><span class="gold-dot"></span>오사카 3박4일 · 아리마온천</div>
+          <a class="card-link" href="https://www.modetour.com/package/105194809?MLoc=99&Pnum=105194809&ANO=1772510&sno=C2181215&thru=crs" target="_blank">상품 자세히 보기</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-title"><span class="confirm">출발확정</span>[추석특선, 낭만 가득 큐슈] 후쿠오카/벳부/유후인 3일 (아프리칸사파리/월드체인온천호텔+텐진시내호텔/호텔디너+술음료무제한/간식제공)</div>
+          <div class="price-row"><span class="price">1,499,000</span><span class="unit">원 / 1인</span></div>
+        </div>
+        <div class="card-bottom">
+          <div style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:#8a8264;"><span class="gold-dot"></span>후쿠오카 2박3일 · 추석특선</div>
+          <a class="card-link" href="https://www.modetour.com/package/109812492?MLoc=99&Pnum=109812492&ANO=1772510&sno=C2181215&thru=crs" target="_blank">상품 자세히 보기</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-title"><span class="confirm">출발확정</span>[추석명절특가][스마트특급온천] 도야/삿포로 북해도 핵심 4일 (무제한대게/술음료무제한/유람선탑승/시내중심2연박/노옵션)</div>
+          <div class="price-row"><span class="price">2,339,000</span><span class="unit">원 / 1인</span></div>
+        </div>
+        <div class="card-bottom">
+          <div style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:#8a8264;"><span class="gold-dot"></span>북해도 3박4일 · 무제한대게</div>
+          <a class="card-link" href="https://www.modetour.com/package/105197698?MLoc=99&Pnum=105197698&ANO=1772510&sno=C2181215&thru=crs" target="_blank">상품 자세히 보기</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer-note">
+    · 표시 가격은 1인 기준이며, 출발일·좌석·환율 변동에 따라 달라질 수 있습니다.<br>
+    · '출발확정' 상품은 모객 인원과 무관하게 출발이 보장된 일정입니다.<br>
+    · 추석 연휴 특성상 좌석이 빠르게 소진되니, 관심 있는 일정은 미리 문의해 주세요.
+  </div>
+
+  <p class="brand-line">여행컨설턴트 이실장 · 모두투어 투어콕</p>
+
+  <div class="cta-bar">
+    <a class="cta-btn cta-kakao" href="https://open.kakao.com/o/stg9lISh" target="_blank">
+      <span class="icon">💬</span> 카카오톡 상담
+    </a>
+    <a class="cta-btn cta-tel" href="tel:010-2485-5689">
+      <span class="icon">📞</span> 전화 연결
+    </a>
+  </div>
+
+</body>
+</html>
