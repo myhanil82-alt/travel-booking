@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>싱가포르 5일 패키지 추천 리스트</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --coral: #C8253A;
+    --coral-bg: #FFF0F2;
+    --navy: #1C3557;
+    --navy-light: #2E4E72;
+    --gold: #C8973A;
+    --gold-light: #F0C870;
+    --mint: #3AA8A0;
+    --bg: #FAFAF8;
+    --card-bg: #FFFFFF;
+    --text-main: #1A1A1A;
+    --text-sub: #5A5A5A;
+    --text-muted: #8A8A8A;
+    --border: #E8E4DC;
+    --shadow: 0 2px 16px rgba(28,53,87,0.08);
+    --max-w: 680px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family:'Noto Sans KR', sans-serif;
+    background: var(--bg);
+    color: var(--text-main);
+    font-size:16px;
+    line-height:1.6;
+    padding-bottom: 40px;
+  }
+  header {
+    width:100%;
+    background: radial-gradient(circle at 30% 20%, rgba(200,37,58,0.20), transparent 60%),
+                radial-gradient(circle at 80% 80%, rgba(255,120,130,0.12), transparent 60%),
+                #1A0810;
+    padding: 40px 20px 32px;
+    text-align:center;
+  }
+  .header-inner { max-width: var(--max-w); margin:0 auto; }
+  .header-tag {
+    display:inline-block;
+    background: rgba(255,255,255,0.12);
+    color: var(--gold-light);
+    font-size:12px;
+    letter-spacing:2px;
+    padding:5px 14px;
+    border-radius:20px;
+    margin-bottom:14px;
+    font-weight:500;
+  }
+  .header-title {
+    font-family:'Noto Serif KR', serif;
+    color:#fff;
+    font-size:26px;
+    font-weight:600;
+    margin-bottom:8px;
+  }
+  .header-subtitle {
+    color: rgba(255,255,255,0.65);
+    font-size:13px;
+    letter-spacing:1px;
+  }
+  .trip-band {
+    width:100%;
+    background: var(--coral);
+    padding:16px 0;
+  }
+  .trip-band-inner {
+    max-width: var(--max-w);
+    margin:0 auto;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align:center;
+    color:#fff;
+  }
+  .trip-band-item .label { font-size:11px; opacity:0.8; margin-bottom:4px; }
+  .trip-band-item .value { font-size:15px; font-weight:600; }
+
+  .container { max-width: var(--max-w); margin:0 auto; padding: 28px 20px; }
+
+  .intro-box {
+    background: var(--coral-bg);
+    border: 1px solid var(--coral);
+    border-radius:12px;
+    padding:16px 18px;
+    font-size:14px;
+    color: var(--text-sub);
+    margin-bottom: 24px;
+  }
+  .intro-box b { color: var(--coral); }
+
+  .section-label {
+    font-size:13px;
+    color: var(--text-muted);
+    font-weight:600;
+    letter-spacing:1px;
+    margin: 28px 0 12px;
+    padding-left: 4px;
+  }
+  .section-label:first-of-type { margin-top: 0; }
+
+  .product-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius:14px;
+    box-shadow: var(--shadow);
+    overflow:hidden;
+    margin-bottom:20px;
+  }
+  .product-header {
+    background: linear-gradient(135deg, var(--navy), var(--navy-light));
+    padding:16px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+  }
+  .product-badge {
+    display:inline-block;
+    background: var(--gold);
+    color:#fff;
+    font-size:11px;
+    font-weight:600;
+    padding:3px 10px;
+    border-radius:20px;
+    margin-bottom:6px;
+  }
+  .product-name {
+    color:#fff;
+    font-size:16px;
+    font-weight:600;
+    line-height:1.4;
+  }
+  .product-price {
+    text-align:right;
+    white-space:nowrap;
+  }
+  .product-price .won {
+    color: var(--gold-light);
+    font-size:20px;
+    font-weight:700;
+  }
+  .product-price .unit {
+    color: rgba(255,255,255,0.65);
+    font-size:11px;
+  }
+  .product-body { padding: 18px 20px; }
+  .hotel-row {
+    display:flex;
+    gap:10px;
+    margin-bottom:12px;
+  }
+  .hotel-tag {
+    flex-shrink:0;
+    background: var(--mint);
+    color:#fff;
+    font-size:11px;
+    font-weight:600;
+    padding:3px 9px;
+    border-radius:6px;
+    height:fit-content;
+    margin-top:1px;
+  }
+  .hotel-list {
+    font-size:13.5px;
+    color: var(--text-sub);
+    line-height:1.6;
+  }
+  .note-box {
+    background: var(--bg);
+    border-left: 3px solid var(--gold);
+    padding:10px 14px;
+    font-size:13px;
+    color: var(--text-sub);
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 14px;
+  }
+  .product-link-box {
+    display:block;
+    text-align:center;
+    background: var(--coral-bg);
+    border: 1px solid var(--coral);
+    color: var(--coral);
+    font-weight:600;
+    font-size:14px;
+    padding:11px;
+    border-radius:10px;
+    text-decoration:none;
+    transition: opacity 0.2s;
+  }
+  .product-link-box:active { opacity:0.7; }
+
+  .guide-box {
+    background: var(--card-bg);
+    border: 1px solid var(--navy);
+    border-radius:14px;
+    padding: 18px 20px;
+    margin-top: 8px;
+    text-align:center;
+  }
+  .guide-box .name {
+    font-size:17px;
+    font-weight:700;
+    color: var(--navy);
+    margin-bottom:4px;
+  }
+  .guide-box .role {
+    font-size:12.5px;
+    color: var(--text-muted);
+    margin-bottom:2px;
+  }
+
+  footer {
+    width:100%;
+    background: var(--navy);
+    padding: 26px 20px;
+    margin-top: 36px;
+  }
+  .footer-inner {
+    max-width: var(--max-w);
+    margin:0 auto;
+    display:flex;
+    gap:12px;
+  }
+  .footer-btn {
+    flex:1;
+    text-align:center;
+    padding:13px;
+    border-radius:10px;
+    font-weight:600;
+    font-size:14px;
+    text-decoration:none;
+  }
+  .btn-tel {
+    background: var(--coral);
+    color:#fff;
+  }
+  .btn-kakao {
+    background: #FEE500;
+    color: #3A1D1D;
+  }
+  .footer-caption {
+    text-align:center;
+    color: rgba(255,255,255,0.5);
+    font-size:11.5px;
+    margin-top:14px;
+  }
+
+  @media (max-width:480px) {
+    .trip-band-inner { gap: 4px; }
+    .product-header { flex-direction:column; align-items:flex-start; }
+    .product-price { text-align:left; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-tag">SINGAPORE PACKAGE</div>
+    <div class="header-title">싱가포르 5일 패키지 추천</div>
+    <div class="header-subtitle">부산(PUS) 출발 · 1일 자유일정 포함 · 노쇼핑</div>
+  </div>
+</header>
+
+<div class="trip-band">
+  <div class="trip-band-inner">
+    <div class="trip-band-item">
+      <div class="label">출발지</div>
+      <div class="value">부산(PUS)</div>
+    </div>
+    <div class="trip-band-item">
+      <div class="label">출발일</div>
+      <div class="value">9월 29일</div>
+    </div>
+    <div class="trip-band-item">
+      <div class="label">일정</div>
+      <div class="value">3박 5일</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="intro-box">
+    안녕하세요, 고객님 :) 문의주신 <b>부산 출발 · 9/29 · 4박 5일</b> 싱가포르 일정 중, <b>1일 자유일정이 포함</b>된 노쇼핑 상품으로 3가지 추려드렸습니다. 호텔 등급별로 가격 차이가 있으니 편하게 비교해보시고 궁금하신 점은 언제든 문의 주세요!
+  </div>
+
+  <div class="section-label">추천 상품 3종</div>
+
+  <!-- 상품 1 -->
+  <div class="product-card">
+    <div class="product-header">
+      <div>
+        <div class="product-badge">1일자유 · 노쇼핑</div>
+        <div class="product-name">싱가포르 5일<br>(월드체인호텔)</div>
+      </div>
+      <div class="product-price">
+        <div class="won">1,099,900원</div>
+        <div class="unit">1인 기준</div>
+      </div>
+    </div>
+    <div class="product-body">
+      <div class="hotel-row">
+        <span class="hotel-tag">예정호텔</span>
+        <div class="hotel-list">
+          머큐어 싱가포르 부기스 / 머큐어 싱가포르 온 스티븐스 / 머큐어 아이콘 싱가포르 / 머큐어 싱가포르 티휘트 중 1곳
+        </div>
+      </div>
+      <div class="note-box">출발 2~3일 전 확정 호텔 안내 가능</div>
+      <a class="product-link-box" href="https://www.modetour.com/package/102906376?MLoc=99&Pnum=102906376&ANO=1772510&sno=C2181215&thru=crs" target="_blank" rel="noopener">상품 상세 보기 →</a>
+    </div>
+  </div>
+
+  <!-- 상품 2 -->
+  <div class="product-card">
+    <div class="product-header">
+      <div>
+        <div class="product-badge">1일자유 · 노쇼핑</div>
+        <div class="product-name">싱가포르 5일<br>(특급호텔)</div>
+      </div>
+      <div class="product-price">
+        <div class="won">1,249,900원</div>
+        <div class="unit">1인 기준</div>
+      </div>
+    </div>
+    <div class="product-body">
+      <div class="hotel-row">
+        <span class="hotel-tag">예정호텔</span>
+        <div class="hotel-list">
+          바이브 호텔 싱가포르 오차드(구 엘리자베스 호텔) / 그랜드 콥톤 워터프론트 호텔 / 오차드 호텔 싱가포르 중 1곳
+        </div>
+      </div>
+      <div class="note-box">출발 2~3일 전 확정 호텔 안내 가능</div>
+      <a class="product-link-box" href="https://www.modetour.com/package/102906495?MLoc=99&Pnum=102906495&ANO=1772510&sno=C2181215&thru=crs" target="_blank" rel="noopener">상품 상세 보기 →</a>
+    </div>
+  </div>
+
+  <!-- 상품 3 -->
+  <div class="product-card">
+    <div class="product-header">
+      <div>
+        <div class="product-badge">1일자유 · 노쇼핑</div>
+        <div class="product-name">싱가포르 5일<br>(센토사 빌리지호텔)</div>
+      </div>
+      <div class="product-price">
+        <div class="won">1,249,900원</div>
+        <div class="unit">1인 기준</div>
+      </div>
+    </div>
+    <div class="product-body">
+      <div class="hotel-row">
+        <span class="hotel-tag">특징</span>
+        <div class="hotel-list">
+          파묵칼레형 인피니티 풀로 유명한 센토사 빌리지호텔 투숙
+        </div>
+      </div>
+      <div class="note-box">사진 명소로 유명한 수영장이 강점이나, 객실 자체는 다소 좁은 편입니다.</div>
+      <a class="product-link-box" href="https://www.modetour.com/package/102907232?MLoc=99&Pnum=102907232&ANO=1772510&sno=C2181215&thru=crs" target="_blank" rel="noopener">상품 상세 보기 →</a>
+    </div>
+  </div>
+
+  <div class="section-label">담당 컨설턴트</div>
+  <div class="guide-box">
+    <div class="name">이경진 실장</div>
+    <div class="role">여행컨설턴트 이실장 · 모두투어 투어콕</div>
+    <div class="role">25년 경력 · 싱가포르 상품 전문 상담</div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <a class="footer-btn btn-tel" href="tel:1544-5714">📞 1544-5714</a>
+    <a class="footer-btn btn-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank" rel="noopener">💬 카카오톡 상담</a>
+  </div>
+  <div class="footer-caption">여행컨설턴트 이실장 · 상품 가격 및 호텔은 예약 시점에 따라 변동될 수 있습니다</div>
+</footer>
+
+</body>
+</html>
