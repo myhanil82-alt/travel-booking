@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>도쿄 자유여행 확정서 - 홍혜민님 일행</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --coral: #D4547A;
+  --coral-bg: #FFF0F4;
+  --navy: #1C3557;
+  --navy-light: #2E4E72;
+  --gold: #C8973A;
+  --gold-light: #F0C870;
+  --mint: #3AA8A0;
+  --bg: #FAFAF8;
+  --card-bg: #FFFFFF;
+  --text-main: #1A1A1A;
+  --text-sub: #5A5A5A;
+  --text-muted: #8A8A8A;
+  --border: #E8E4DC;
+  --shadow: 0 2px 16px rgba(28,53,87,0.08);
+  --max-w: 680px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Noto Sans KR', sans-serif; font-size:16px; background:var(--bg); color:var(--text-main); line-height:1.6; }
+.header { width:100%; background:#2D1B2E; background-image: radial-gradient(circle at 20% 20%, rgba(212,84,122,0.20), transparent 60%), radial-gradient(circle at 80% 80%, rgba(255,182,193,0.12), transparent 60%); padding:44px 24px 36px; text-align:center; color:#fff; }
+.header-inner { max-width:var(--max-w); margin:0 auto; }
+.header-tag { font-size:13px; letter-spacing:2px; text-transform:uppercase; color:var(--gold-light); font-weight:600; margin-bottom:14px; }
+.header-title { font-family:'Noto Serif KR', serif; font-size:30px; font-weight:600; margin-bottom:8px; }
+.header-subtitle { font-size:14px; color:rgba(255,255,255,0.65); margin-bottom:20px; }
+.header-names { font-size:18px; font-weight:600; background:rgba(255,255,255,0.1); display:inline-block; padding:10px 22px; border-radius:30px; }
+.trip-band { width:100%; background:var(--coral); }
+.trip-band-inner { max-width:var(--max-w); margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); padding:20px 24px; }
+.trip-item { text-align:center; color:#fff; border-right:1px solid rgba(255,255,255,0.25); }
+.trip-item:last-child { border-right:none; }
+.trip-label { font-size:11px; opacity:0.85; margin-bottom:6px; }
+.trip-value { font-size:15px; font-weight:600; }
+.container { max-width:var(--max-w); margin:0 auto; padding:32px 20px 60px; }
+.section { margin-bottom:36px; }
+.section-head { display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+.section-num { width:26px; height:26px; border-radius:50%; background:var(--navy); color:#fff; font-size:13px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.section-title { font-size:17px; font-weight:700; color:var(--navy); }
+.product-link-box { display:block; background:var(--card-bg); border:1px solid var(--border); border-radius:12px; padding:16px 18px; text-decoration:none; color:var(--text-main); box-shadow:var(--shadow); }
+.product-link-box .plink-label { font-size:12px; color:var(--text-muted); margin-bottom:4px; }
+.product-link-box .plink-text { font-size:14px; color:var(--navy-light); font-weight:600; word-break:break-all; }
+.alert-navy, .alert-coral, .alert-gold, .alert-mint, .alert-red { border-radius:10px; padding:14px 16px; font-size:14px; margin-top:12px; line-height:1.7; }
+.alert-navy { background:#EEF2F7; color:var(--navy); border-left:4px solid var(--navy); }
+.alert-coral { background:var(--coral-bg); color:#8a3350; border-left:4px solid var(--coral); }
+.alert-gold { background:#FBF3E2; color:#7a5a1a; border-left:4px solid var(--gold); }
+.alert-mint { background:#E9F7F5; color:#1f6a63; border-left:4px solid var(--mint); }
+.alert-red { background:#FDEEEE; color:#a02020; border-left:4px solid #c0392b; }
+.flight-card { background:var(--card-bg); border:1px solid var(--border); border-radius:12px; overflow:hidden; box-shadow:var(--shadow); margin-bottom:14px; }
+.flight-header { background:linear-gradient(135deg, var(--navy), var(--navy-light)); color:#fff; padding:12px 18px; display:flex; justify-content:space-between; align-items:center; font-size:13px; }
+.flight-header .fno { color:var(--gold-light); font-weight:700; }
+.flight-route { display:flex; align-items:center; justify-content:space-between; padding:22px 18px 10px; }
+.flight-route .code { font-size:30px; font-weight:700; color:var(--navy); }
+.flight-route .place { font-size:12px; color:var(--text-muted); margin-top:4px; }
+.flight-route .mid { text-align:center; color:var(--text-muted); font-size:12px; flex:1; padding:0 10px; }
+.flight-route .mid .line { border-top:2px solid var(--border); margin:6px 0; position:relative; }
+.flight-time { text-align:center; padding:0 18px 16px; font-size:13px; color:var(--text-sub); }
+.flight-badges { display:flex; flex-wrap:wrap; gap:8px; padding:14px 18px; border-top:1px solid var(--border); }
+.badge { background:var(--coral-bg); color:var(--coral); font-size:12px; font-weight:600; padding:5px 12px; border-radius:20px; }
+.baggage-grid, .incl-grid, .prep-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.bg-card { background:var(--card-bg); border:1px solid var(--border); border-radius:12px; padding:16px; box-shadow:var(--shadow); }
+.bg-card .bg-title { font-size:13px; font-weight:700; color:var(--navy); margin-bottom:8px; }
+.bg-card .bg-val { font-size:14px; color:var(--text-sub); line-height:1.6; }
+.counter-box { background:var(--card-bg); border:1px solid var(--gold); border-radius:12px; padding:18px; box-shadow:var(--shadow); }
+.counter-step { display:flex; gap:12px; margin-bottom:14px; align-items:flex-start; }
+.counter-step:last-child { margin-bottom:0; }
+.step-num { width:24px; height:24px; border-radius:50%; background:var(--gold); color:#fff; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.step-text { font-size:14px; color:var(--text-sub); line-height:1.6; }
+.step-text b { color:var(--text-main); }
+.hotel-card { background:var(--card-bg); border:2px solid var(--mint); border-radius:14px; overflow:hidden; box-shadow:var(--shadow); }
+.hotel-header { background:linear-gradient(135deg, var(--mint), #4fc0b8); color:#fff; padding:12px 18px; display:flex; justify-content:space-between; align-items:center; font-size:13px; font-weight:600; }
+.hotel-body { padding:18px; }
+.hotel-name { font-size:19px; font-weight:700; color:var(--navy); margin-bottom:14px; }
+.hotel-row { display:flex; justify-content:space-between; font-size:14px; padding:8px 0; border-top:1px solid var(--border); color:var(--text-sub); }
+.hotel-row:first-of-type { border-top:none; }
+.hotel-row b { color:var(--text-main); }
+.exchange-box { background:var(--card-bg); border:1px solid var(--gold); border-radius:12px; padding:18px; box-shadow:var(--shadow); font-size:14px; color:var(--text-sub); line-height:1.8; }
+.coupon-box { background:var(--card-bg); border:1px dashed var(--coral); border-radius:12px; padding:16px 18px; box-shadow:var(--shadow); font-size:14px; color:var(--text-sub); }
+.coupon-box a { color:var(--coral); font-weight:600; word-break:break-all; }
+.footer { width:100%; background:var(--navy); padding:36px 24px; text-align:center; }
+.footer-inner { max-width:var(--max-w); margin:0 auto; }
+.footer-title { color:#fff; font-size:15px; font-weight:600; margin-bottom:18px; }
+.footer-btns { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+.fbtn { text-decoration:none; padding:12px 24px; border-radius:30px; font-size:14px; font-weight:700; }
+.fbtn.tel { background:var(--coral); color:#fff; }
+.fbtn.kakao { background:#FEE500; color:#3A1D1D; }
+@media (max-width:480px) {
+  .baggage-grid, .incl-grid, .prep-grid { grid-template-columns:1fr; }
+  .trip-band-inner { grid-template-columns:repeat(2,1fr); row-gap:14px; }
+  .trip-item:nth-child(2) { border-right:none; }
+  .header-title { font-size:24px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="header-tag">Travel Confirmation</div>
+    <div class="header-title">도쿄 자유여행 확정서</div>
+    <div class="header-subtitle">TOKYO FREE TRAVEL · 2026</div>
+    <div class="header-names">홍혜민님 일행</div>
+  </div>
+</div>
+
+<div class="trip-band">
+  <div class="trip-band-inner">
+    <div class="trip-item"><div class="trip-label">출발일</div><div class="trip-value">07.13(월)</div></div>
+    <div class="trip-item"><div class="trip-label">귀국일</div><div class="trip-value">07.15(수)</div></div>
+    <div class="trip-item"><div class="trip-label">일정</div><div class="trip-value">2박 3일</div></div>
+    <div class="trip-item"><div class="trip-label">투어타입</div><div class="trip-value">자유여행</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="section">
+    <div class="section-head"><div class="section-num">1</div><div class="section-title">상품 안내</div></div>
+    <a class="product-link-box" href="https://www.modetour.com/package/109059108?MLoc=99&Pnum=109059108&ANO=4547682&sno=C2181215&thru=crs" target="_blank">
+      <div class="plink-label">예약 상품 바로가기</div>
+      <div class="plink-text">모두투어 도쿄 자유여행 상품 상세보기 →</div>
+    </a>
+    <div class="alert-navy">
+      본 상품은 <b>가이드가 동행하지 않는 자유여행</b>입니다. 공항 미팅 서비스도 없으니, 김해공항 출국 수속 및 나리타공항 입국 수속은 <b>개별적으로</b> 진행해주세요.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">항공 일정</div></div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>출발편</span><span class="fno">진에어 LJ221</span></div>
+      <div class="flight-route">
+        <div><div class="code">PUS</div><div class="place">부산(김해)</div></div>
+        <div class="mid">→<div class="line"></div>비행</div>
+        <div><div class="code">NRT</div><div class="place">도쿄(나리타)</div></div>
+      </div>
+      <div class="flight-time">2026.07.13(월) 07:55 출발 → 10:05 도착</div>
+      <div class="flight-badges">
+        <span class="badge">진에어</span>
+        <span class="badge">위탁 15kg</span>
+        <span class="badge">기내 10kg</span>
+        <span class="badge">기내식 없음</span>
+        <span class="badge">좌석 미지정</span>
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>귀국편</span><span class="fno">진에어 LJ224</span></div>
+      <div class="flight-route">
+        <div><div class="code">NRT</div><div class="place">도쿄(나리타)</div></div>
+        <div class="mid">→<div class="line"></div>비행</div>
+        <div><div class="code">PUS</div><div class="place">부산(김해)</div></div>
+      </div>
+      <div class="flight-time">2026.07.15(수) 17:10 출발 → 19:15 도착</div>
+      <div class="flight-badges">
+        <span class="badge">진에어</span>
+        <span class="badge">위탁 15kg</span>
+        <span class="badge">기내 10kg</span>
+        <span class="badge">기내식 없음</span>
+        <span class="badge">좌석 미지정</span>
+      </div>
+    </div>
+
+    <div class="alert-coral">
+      ✈️ 진에어는 <b>두 편 모두 기내식이 제공되지 않습니다.</b> 필요 시 공항에서 미리 간식이나 식사를 준비해주세요.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">수하물 안내</div></div>
+    <div class="baggage-grid">
+      <div class="bg-card">
+        <div class="bg-title">위탁 수하물</div>
+        <div class="bg-val">1인 15kg (진에어 기준)</div>
+      </div>
+      <div class="bg-card">
+        <div class="bg-title">기내 수하물</div>
+        <div class="bg-val">1인 10kg (기내 반입)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">체크인 & 탑승권 안내</div></div>
+    <div class="counter-box">
+      <div class="counter-step">
+        <div class="step-num">1</div>
+        <div class="step-text"><b>온라인 체크인</b>은 진에어 홈페이지(예약 조회)에서 <b>출발 24시간 전부터</b> 가능합니다.<br>
+        <a href="https://www.jinair.com/booking/index" target="_blank" style="color:var(--coral); font-weight:600;">진에어 예약조회 바로가기 →</a></div>
+      </div>
+      <div class="counter-step">
+        <div class="step-num">2</div>
+        <div class="step-text">온라인 체크인 후 모바일 탑승권을 미리 발급받으시면 공항에서 대기 없이 바로 수하물 위탁이 가능합니다.</div>
+      </div>
+      <div class="counter-step">
+        <div class="step-num">3</div>
+        <div class="step-text">온라인 체크인을 못하신 경우, <b>김해공항 국제선 진에어 카운터</b>에서 출발 시간 전 여유 있게 수속해주세요.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">투숙 호텔</div></div>
+    <div class="hotel-card">
+      <div class="hotel-header"><span>Agora Place Asakusa</span><span>전 일정 포함</span></div>
+      <div class="hotel-body">
+        <div class="hotel-name">아고라 플레이스 아사쿠사</div>
+        <div class="hotel-row"><span>투숙 기간</span><b>2026.07.13(월) ~ 07.15(수), 2박</b></div>
+        <div class="hotel-row"><span>위치</span><b>도쿄 아사쿠사(浅草)</b></div>
+        <div class="hotel-row"><span>우편번호</span><b>111-0042</b></div>
+        <div class="hotel-row"><span>전화번호</span><b>+81 3-3842-8421</b></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">포함 / 불포함 사항</div></div>
+    <div class="incl-grid">
+      <div class="bg-card">
+        <div class="bg-title" style="color:var(--mint);">포함사항</div>
+        <div class="bg-val">왕복 항공권<br>호텔 숙박 (전 일정)</div>
+      </div>
+      <div class="bg-card">
+        <div class="bg-title" style="color:#c0392b;">불포함사항</div>
+        <div class="bg-val">숙박세(1인 1박 100~500엔)<br>현지 교통비 / 관광지 입장료<br>개인 식비<br>미구매 패스류 및 입장권 등</div>
+      </div>
+    </div>
+    <div class="alert-gold">
+      🏨 일본 정부의 관광 진흥 시책에 따라 <b>2023년 7월 1일 이후 호텔 체크인 시 숙박세(1인 1박당 100~500엔, 지역·호텔마다 상이)</b>가 별도 부과됩니다. 현장에서 직접 지불해주셔야 하니 참고 부탁드립니다.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">비짓재팬(Visit Japan Web) 작성 안내</div></div>
+    <div class="alert-navy">
+      일본 입국 전 <b>Visit Japan Web</b>에서 입국심사·세관신고를 온라인으로 미리 작성하시면 공항에서 빠르게 통과하실 수 있습니다. 숙소 정보 입력 시 아래 내용을 참고해주세요.
+    </div>
+    <div class="bg-card" style="margin-top:12px;">
+      <div class="bg-title">숙소 정보 입력값</div>
+      <div class="bg-val">
+        호텔명: Agora Place Asakusa<br>
+        우편번호: 111-0042 <span style="color:var(--text-muted);">(입력 시 하단 주소 자동 적용)</span><br>
+        전화번호: +81 3-3842-8421
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">환전 안내</div></div>
+    <div class="exchange-box">
+      💴 <b>엔화(JPY), 신용카드, 카카오페이</b> 모두 사용 가능합니다.<br>
+      대부분의 편의점·음식점·쇼핑몰에서 카드 결제가 원활하니 소액 현금(엔화)만 준비하시고 나머지는 카드 또는 카카오페이를 활용하시면 편리합니다.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">돈키호테 할인쿠폰</div></div>
+    <div class="coupon-box">
+      🛍️ 돈키호테 매장에서 사용 가능한 할인쿠폰이에요. 방문 전 아래 링크에서 미리 다운받아 가시면 할인 혜택을 받으실 수 있습니다.<br><br>
+      <a href="https://japanportal.donki-global.com/coupon/cp001_ko.html" target="_blank">돈키호테 할인쿠폰 받기 →</a>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">날씨 & 준비물</div></div>
+    <div class="prep-grid">
+      <div class="bg-card">
+        <div class="bg-title">☀️ 날씨</div>
+        <div class="bg-val">7월 도쿄는 장마가 끝나가는 시기로 평균 기온 24~31℃, 습도가 매우 높은 무더운 날씨입니다. 갑작스러운 소나기가 잦으니 우산이나 우비를 챙겨주세요.</div>
+      </div>
+      <div class="bg-card">
+        <div class="bg-title">👕 옷차림</div>
+        <div class="bg-val">반팔·반바지 등 통풍 잘 되는 여름옷 위주로 준비하시고, 실내 냉방이 강한 곳이 많으니 얇은 가디건 하나 챙기시면 좋아요.</div>
+      </div>
+      <div class="bg-card">
+        <div class="bg-title">🎒 준비물</div>
+        <div class="bg-val">여권(유효기간 6개월 이상), 휴대용 선풍기, 자외선 차단제, 보조배터리, 접이식 우산, 편한 신발</div>
+      </div>
+      <div class="bg-card">
+        <div class="bg-title">📶 현지 이동/통신</div>
+        <div class="bg-val">JR·지하철 IC카드(Suica/Pasmo) 이용 편리, 데이터 로밍 또는 포켓와이파이·유심 사전 준비 권장</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-title">담당 이경진 실장 · 여행컨설턴트 이실장</div>
+    <div class="footer-btns">
+      <a class="fbtn tel" href="tel:1544-5714">📞 1544-5714</a>
+      <a class="fbtn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 투어콕 카카오톡 채널</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
