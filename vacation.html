@@ -205,13 +205,24 @@ async function apiPost(payload){
   return res.json();
 }
 
+function normalizeDate(d){
+  if(!d) return d;
+  const s = String(d);
+  return s.length > 10 ? s.substring(0,10) : s;
+}
+
 async function loadData(manual){
   document.getElementById('loadingMsg').style.display = 'block';
   document.getElementById('vacTableWrap').style.display = 'none';
   try{
     const r = await apiGet();
     if(r.ok){
-      vacations = r.data.map(v => ({...v, days: Number(v.days)}));
+      vacations = r.data.map(v => ({
+        ...v,
+        days: Number(v.days),
+        startDate: normalizeDate(v.startDate),
+        endDate: normalizeDate(v.endDate)
+      }));
     } else {
       await modalMessage('데이터를 불러오지 못했습니다: ' + (r.error||''));
     }
