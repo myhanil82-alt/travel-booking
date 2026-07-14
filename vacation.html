@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>휴가 관리 대시보드</title>
+<style>
+  :root{
+    --navy:#1C3557;
+    --coral:#E8593A;
+    --gold:#C8973A;
+    --bg:#F5F6F8;
+    --card:#FFFFFF;
+    --border:#E4E7EC;
+    --text:#22303F;
+    --muted:#8A95A5;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Malgun Gothic','Apple SD Gothic Neo',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    padding:24px;
+  }
+  .wrap{max-width:1000px;margin:0 auto;}
+  h1{color:var(--navy);font-size:22px;margin:0 0 4px;}
+  .sub{color:var(--muted);font-size:13px;margin-bottom:24px;}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-bottom:28px;}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 18px;}
+  .card .name{font-weight:700;color:var(--navy);font-size:15px;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+  .dot{width:10px;height:10px;border-radius:50%;display:inline-block;}
+  .rowline{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin:3px 0;}
+  .rowline b{color:var(--text);font-weight:600;}
+  .bar{height:8px;border-radius:4px;background:#EEF0F3;margin:10px 0 6px;overflow:hidden;}
+  .bar-fill{height:100%;border-radius:4px;}
+  .remain{font-size:13px;font-weight:700;color:var(--coral);}
+
+  .panel{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:24px;}
+  .panel h2{font-size:15px;color:var(--navy);margin:0 0 14px;}
+  .formgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;align-items:end;}
+  label{font-size:12px;color:var(--muted);display:block;margin-bottom:4px;}
+  input,select{width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:inherit;background:#fff;}
+  .btn{background:var(--navy);color:#fff;border:none;border-radius:8px;padding:9px 16px;font-size:13px;cursor:pointer;font-weight:600;}
+  .btn:hover{opacity:.9;}
+  .btn:disabled{opacity:.5;cursor:default;}
+
+  .role-bar{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 16px;margin-bottom:20px;flex-wrap:wrap;}
+  .role-bar label{margin:0;font-size:13px;color:var(--text);font-weight:600;}
+  .role-bar select{width:auto;min-width:160px;}
+  .role-hint{font-size:12px;color:var(--muted);}
+
+  .cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+  .cal-head select{width:auto;}
+  .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;}
+  .cal-dow{text-align:center;font-size:11px;color:var(--muted);padding:4px 0;font-weight:600;}
+  .cal-cell{min-height:64px;border:1px solid var(--border);border-radius:8px;padding:5px;font-size:11px;background:#fff;}
+  .cal-cell.empty{background:transparent;border:none;}
+  .cal-cell .d{font-size:11px;color:var(--muted);margin-bottom:3px;}
+  .cal-cell.weekend .d{color:#C9718A;}
+  .tag{display:block;font-size:10px;color:#fff;border-radius:4px;padding:1px 4px;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .tag.dashed{opacity:.55;border:1px dashed rgba(255,255,255,.8);}
+
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  th,td{padding:8px 6px;border-bottom:1px solid var(--border);text-align:left;}
+  th{color:var(--muted);font-weight:600;font-size:12px;}
+  .del{color:var(--muted);cursor:pointer;border:none;background:none;font-size:12px;text-decoration:underline;}
+  .empty-msg{color:var(--muted);font-size:13px;padding:10px 0;}
+  .badge{display:inline-block;padding:2px 8px;border-radius:10px;color:#fff;font-size:11px;font-weight:600;}
+
+  .status{display:inline-block;padding:2px 9px;border-radius:10px;font-size:11px;font-weight:700;}
+  .status-pending{background:#FFF1D6;color:#9A6B00;}
+  .status-manager_approved{background:#DCEAFB;color:#1C5FA0;}
+  .status-approved{background:#E1F3E6;color:#2C7A3F;}
+  .status-rejected{background:#FBE1E1;color:#B5342B;}
+
+  .actbtn{border:none;border-radius:6px;padding:5px 10px;font-size:11px;cursor:pointer;font-weight:600;margin-right:4px;color:#fff;}
+  .actbtn.approve{background:#2C7A3F;}
+  .actbtn.reject{background:#B5342B;}
+
+  .modal-overlay{position:fixed;inset:0;background:rgba(20,26,36,.45);display:none;align-items:center;justify-content:center;z-index:999;}
+  .modal-box{background:#fff;border-radius:14px;padding:22px 24px;width:300px;max-width:90vw;box-shadow:0 12px 30px rgba(0,0,0,.2);}
+  .modal-title{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:12px;}
+  .modal-body{margin-bottom:16px;}
+  .modal-body input{margin-top:4px;}
+  .modal-actions{display:flex;justify-content:flex-end;gap:8px;}
+
+  .loading{text-align:center;color:var(--muted);font-size:13px;padding:20px;}
+</style>
+</head>
+<body>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <div class="modal-title" id="modalTitle"></div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-actions">
+      <button class="btn" id="modalCancel" style="background:#8A95A5;">취소</button>
+      <button class="btn" id="modalOk">확인</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <h1>🏖️ 여행컨설턴트 이실장 - 휴가 관리 대시보드</h1>
+  <div class="sub" id="todayLabel">기준일 2026-07-14</div>
+
+  <div class="role-bar">
+    <label>승인 관련</label>
+    <select id="roleSelect" onchange="renderAll()">
+      <option value="staff">직원 (신청만)</option>
+      <option value="e1">이경진 실장 (1차 승인자)</option>
+      <option value="director">황미희 이사 (최종 승인자)</option>
+    </select>
+    <span class="role-hint" id="roleHint"></span>
+    <button class="btn" style="background:#8A95A5;margin-left:auto;" onclick="loadData(true)">새로고침</button>
+  </div>
+
+  <div class="cards" id="cards"></div>
+
+  <div class="panel">
+    <h2>휴가 신청</h2>
+    <div class="formgrid">
+      <div>
+        <label>직원</label>
+        <select id="f-emp"></select>
+      </div>
+      <div>
+        <label>시작일</label>
+        <input type="date" id="f-start" value="2026-07-14">
+      </div>
+      <div>
+        <label>종료일</label>
+        <input type="date" id="f-end" value="2026-07-14">
+      </div>
+      <div>
+        <label>사용일수</label>
+        <input type="number" id="f-days" step="0.5" min="0.5" value="1">
+      </div>
+      <div>
+        <label>사유(선택)</label>
+        <input type="text" id="f-reason" placeholder="예: 연차, 반차">
+      </div>
+      <div>
+        <button class="btn" id="addBtn" onclick="addVacation()">신청</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="cal-head">
+      <h2 style="margin:0;">📅 캘린더</h2>
+      <select id="monthSelect" onchange="renderCalendar()"></select>
+    </div>
+    <div class="cal-grid" id="calGrid"></div>
+  </div>
+
+  <div class="panel">
+    <h2>신청/승인 내역</h2>
+    <div id="loadingMsg" class="loading">불러오는 중...</div>
+    <table id="vacTableWrap" style="display:none;">
+      <thead><tr><th>직원</th><th>기간</th><th>일수</th><th>사유</th><th>상태</th><th></th></tr></thead>
+      <tbody id="vacTable"></tbody>
+    </table>
+    <div class="empty-msg" id="emptyMsg" style="display:none;">등록된 휴가가 없습니다.</div>
+  </div>
+</div>
+
+<script>
+// ===== 설정 =====
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz6L_-st5ZOUith1Tzr3FZkn2FTqLd8hC1WyXvGYG-BNtEDAmz2BWuzcZNcd1rO3mW93g/exec';
+const TODAY = '2026-07-14';
+const COLORS = ['#1C3557','#E8593A','#C8973A','#3E7A6B','#7B5EA7','#2E86AB'];
+
+const EMPLOYEES = [
+  {id:'e1', name:'이경진 실장', total:20, baseUsed:9, note:''},
+  {id:'e2', name:'김영아 과장', total:13, baseUsed:7.5, note:''},
+  {id:'e3', name:'고은별 대리', total:15, baseUsed:0, note:'사용일수 확인중'}
+];
+
+const APPROVER_NAMES = { e1: '이경진 실장', director: '황미희 이사' };
+
+let vacations = [];
+
+// ===== API =====
+async function apiGet(){
+  const res = await fetch(APPS_SCRIPT_URL);
+  return res.json();
+}
+async function apiPost(payload){
+  const res = await fetch(APPS_SCRIPT_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(payload)
+  });
+  return res.json();
+}
+
+async function loadData(manual){
+  document.getElementById('loadingMsg').style.display = 'block';
+  document.getElementById('vacTableWrap').style.display = 'none';
+  try{
+    const r = await apiGet();
+    if(r.ok){
+      vacations = r.data.map(v => ({...v, days: Number(v.days)}));
+    } else {
+      await modalMessage('데이터를 불러오지 못했습니다: ' + (r.error||''));
+    }
+  }catch(err){
+    await modalMessage('서버에 연결하지 못했습니다. 잠시 후 새로고침해주세요.');
+  }
+  renderAll();
+}
+
+// ===== 모달 =====
+function modalMessage(text){
+  return new Promise(resolve=>{
+    const overlay = document.getElementById('modalOverlay');
+    document.getElementById('modalTitle').textContent = '알림';
+    const body = document.getElementById('modalBody');
+    body.innerHTML = `<div style="font-size:13px;line-height:1.5;color:var(--text);">${text}</div>`;
+    const okBtn = document.getElementById('modalOk');
+    const cancelBtn = document.getElementById('modalCancel');
+    cancelBtn.style.display = 'none';
+    okBtn.textContent = '확인';
+    overlay.style.display = 'flex';
+    function onOk(){ cleanup(); resolve(); }
+    function cleanup(){ overlay.style.display = 'none'; okBtn.removeEventListener('click', onOk); }
+    okBtn.addEventListener('click', onOk);
+  });
+}
+
+function modalPrompt(title, placeholder, type='text', defaultValue=''){
+  return new Promise(resolve=>{
+    const overlay = document.getElementById('modalOverlay');
+    document.getElementById('modalTitle').textContent = title;
+    const body = document.getElementById('modalBody');
+    body.innerHTML = '';
+    const input = document.createElement('input');
+    input.type = type;
+    input.placeholder = placeholder || '';
+    input.value = defaultValue || '';
+    body.appendChild(input);
+    const okBtn = document.getElementById('modalOk');
+    const cancelBtn = document.getElementById('modalCancel');
+    cancelBtn.style.display = 'inline-block';
+    okBtn.textContent = '확인';
+    cancelBtn.textContent = '취소';
+    overlay.style.display = 'flex';
+    setTimeout(()=>{ input.focus(); }, 50);
+    function onOk(){ cleanup(); resolve(input.value); }
+    function onCancel(){ cleanup(); resolve(null); }
+    function onKey(e){ if(e.key==='Enter'){ onOk(); } else if(e.key==='Escape'){ onCancel(); } }
+    function cleanup(){
+      overlay.style.display = 'none';
+      okBtn.removeEventListener('click', onOk);
+      cancelBtn.removeEventListener('click', onCancel);
+      input.removeEventListener('keydown', onKey);
+    }
+    okBtn.addEventListener('click', onOk);
+    cancelBtn.addEventListener('click', onCancel);
+    input.addEventListener('keydown', onKey);
+  });
+}
+
+async function verifyPin(role){
+  const name = APPROVER_NAMES[role];
+  const input = await modalPrompt(`${name} 본인 확인`, 'PIN 입력', 'password');
+  if(input === null) return null;
+  return input;
+}
+
+// ===== 렌더링 =====
+function empColor(id){
+  const idx = EMPLOYEES.findIndex(e=>e.id===id);
+  return COLORS[idx % COLORS.length];
+}
+
+function usedDays(emp){
+  const added = vacations
+    .filter(v=>v.employeeId===emp.id && v.status==='approved')
+    .reduce((s,v)=>s+Number(v.days),0);
+  return emp.baseUsed + added;
+}
+
+function renderCards(){
+  const wrap = document.getElementById('cards');
+  wrap.innerHTML = '';
+  EMPLOYEES.forEach(emp=>{
+    const used = usedDays(emp);
+    const remain = emp.total - used;
+    const pct = Math.min(100, (used/emp.total)*100);
+    const color = empColor(emp.id);
+    const div = document.createElement('div');
+    div.className='card';
+    div.innerHTML = `
+      <div class="name"><span class="dot" style="background:${color}"></span>${emp.name}</div>
+      <div class="rowline"><span>총 휴가</span><b>${emp.total}일</b></div>
+      <div class="rowline"><span>사용</span><b>${used}일</b></div>
+      <div class="bar"><div class="bar-fill" style="width:${pct}%;background:${color}"></div></div>
+      <div class="remain">잔여 ${remain}일</div>
+      ${emp.note ? `<div style="font-size:11px;color:var(--muted);margin-top:4px;">⚠ ${emp.note}</div>` : ''}
+    `;
+    wrap.appendChild(div);
+  });
+}
+
+function fillEmpSelect(){
+  const sel = document.getElementById('f-emp');
+  sel.innerHTML = EMPLOYEES.map(e=>`<option value="${e.id}">${e.name}</option>`).join('');
+}
+
+function daysBetween(start,end){
+  const s = new Date(start), e = new Date(end);
+  return Math.round((e-s)/86400000)+1;
+}
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  const s = document.getElementById('f-start');
+  const en = document.getElementById('f-end');
+  const d = document.getElementById('f-days');
+  function sync(){
+    if(s.value && en.value && en.value>=s.value){
+      d.value = daysBetween(s.value, en.value);
+    }
+  }
+  s.addEventListener('change', ()=>{ if(en.value<s.value) en.value=s.value; sync(); });
+  en.addEventListener('change', sync);
+});
+
+async function addVacation(){
+  const empId = document.getElementById('f-emp').value;
+  const emp = EMPLOYEES.find(e=>e.id===empId);
+  const start = document.getElementById('f-start').value;
+  const end = document.getElementById('f-end').value || start;
+  const days = Number(document.getElementById('f-days').value);
+  const reason = document.getElementById('f-reason').value;
+  if(!start || !days){ await modalMessage('시작일과 사용일수를 입력해주세요.'); return; }
+
+  const btn = document.getElementById('addBtn');
+  btn.disabled = true; btn.textContent = '신청 중...';
+  try{
+    const r = await apiPost({
+      action:'add', id:'v'+Date.now(),
+      employeeId: empId, employeeName: emp.name,
+      startDate: start, endDate: end, days, reason
+    });
+    if(!r.ok){ await modalMessage('신청 실패: ' + (r.error||'')); }
+    else { await loadData(); }
+  }catch(err){
+    await modalMessage('서버 연결에 실패했습니다.');
+  }
+  btn.disabled = false; btn.textContent = '신청';
+}
+
+async function cancelVacation(id){
+  const r = await apiPost({ action:'cancel', id });
+  if(!r.ok){ await modalMessage('취소 실패: ' + (r.error||'')); return; }
+  await loadData();
+}
+
+async function managerApprove(id){
+  const pin = await verifyPin('e1');
+  if(pin===null) return;
+  const r = await apiPost({ action:'approve1', id, pin });
+  if(!r.ok){ await modalMessage(r.error==='PIN_MISMATCH' ? 'PIN이 일치하지 않습니다.' : '처리 실패'); return; }
+  await loadData();
+}
+async function managerReject(id){
+  const pin = await verifyPin('e1');
+  if(pin===null) return;
+  const r = await apiPost({ action:'reject1', id, pin });
+  if(!r.ok){ await modalMessage(r.error==='PIN_MISMATCH' ? 'PIN이 일치하지 않습니다.' : '처리 실패'); return; }
+  await loadData();
+}
+async function directorApprove(id){
+  const pin = await verifyPin('director');
+  if(pin===null) return;
+  const r = await apiPost({ action:'approve2', id, pin });
+  if(!r.ok){ await modalMessage(r.error==='PIN_MISMATCH' ? 'PIN이 일치하지 않습니다.' : '처리 실패'); return; }
+  await loadData();
+}
+async function directorReject(id){
+  const pin = await verifyPin('director');
+  if(pin===null) return;
+  const r = await apiPost({ action:'reject2', id, pin });
+  if(!r.ok){ await modalMessage(r.error==='PIN_MISMATCH' ? 'PIN이 일치하지 않습니다.' : '처리 실패'); return; }
+  await loadData();
+}
+
+const STATUS_LABEL = {
+  pending: '대기 (1차 승인 필요)',
+  manager_approved: '1차 승인 (최종 승인 필요)',
+  approved: '최종 승인 완료',
+  rejected: '반려'
+};
+
+function currentRole(){ return document.getElementById('roleSelect').value; }
+
+function updateRoleHint(){
+  const role = currentRole();
+  const hint = document.getElementById('roleHint');
+  if(role==='staff') hint.textContent = '휴가를 신청할 수 있습니다.';
+  else if(role==='e1') hint.textContent = '대기 중인 신청을 1차 승인/반려할 수 있습니다. (PIN 확인)';
+  else hint.textContent = '1차 승인된 신청을 최종 승인/반려할 수 있습니다. (PIN 확인)';
+}
+
+function renderTable(){
+  const tbody = document.getElementById('vacTable');
+  const emptyMsg = document.getElementById('emptyMsg');
+  const tableWrap = document.getElementById('vacTableWrap');
+  const loadingMsg = document.getElementById('loadingMsg');
+  loadingMsg.style.display = 'none';
+  tableWrap.style.display = 'table';
+  tbody.innerHTML = '';
+  if(!vacations.length){ emptyMsg.style.display='block'; return; }
+  emptyMsg.style.display='none';
+
+  const role = currentRole();
+  vacations.slice().sort((a,b)=>String(a.startDate).localeCompare(String(b.startDate))).forEach(v=>{
+    const emp = EMPLOYEES.find(e=>e.id===v.employeeId);
+    const tr = document.createElement('tr');
+    const range = v.startDate===v.endDate ? v.startDate : `${v.startDate} ~ ${v.endDate}`;
+
+    let actions = '';
+    if(role==='staff' && v.status==='pending'){
+      actions = `<button class="del" onclick="cancelVacation('${v.id}')">신청취소</button>`;
+    } else if(role==='e1' && v.status==='pending'){
+      actions = `<button class="actbtn approve" onclick="managerApprove('${v.id}')">1차 승인</button>
+                 <button class="actbtn reject" onclick="managerReject('${v.id}')">반려</button>`;
+    } else if(role==='director' && v.status==='manager_approved'){
+      actions = `<button class="actbtn approve" onclick="directorApprove('${v.id}')">최종 승인</button>
+                 <button class="actbtn reject" onclick="directorReject('${v.id}')">반려</button>`;
+    }
+
+    tr.innerHTML = `
+      <td><span class="badge" style="background:${empColor(v.employeeId)}">${v.employeeName||(emp?emp.name:'?')}</span></td>
+      <td>${range}</td>
+      <td>${v.days}일</td>
+      <td>${v.reason||'-'}</td>
+      <td><span class="status status-${v.status}">${STATUS_LABEL[v.status]||v.status}</span></td>
+      <td>${actions}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+const MONTHS = [
+  {y:2026,m:7,label:'2026년 7월'},
+  {y:2026,m:8,label:'2026년 8월'},
+  {y:2026,m:9,label:'2026년 9월'},
+  {y:2026,m:10,label:'2026년 10월'},
+  {y:2026,m:11,label:'2026년 11월'},
+  {y:2026,m:12,label:'2026년 12월'}
+];
+
+function fillMonthSelect(){
+  const sel = document.getElementById('monthSelect');
+  sel.innerHTML = MONTHS.map((mo,i)=>`<option value="${i}">${mo.label}</option>`).join('');
+}
+
+function pad(n){ return String(n).padStart(2,'0'); }
+
+function renderCalendar(){
+  const idx = Number(document.getElementById('monthSelect').value || 0);
+  const {y,m} = MONTHS[idx];
+  const grid = document.getElementById('calGrid');
+  grid.innerHTML = '';
+  ['일','월','화','수','목','금','토'].forEach(dow=>{
+    const el = document.createElement('div');
+    el.className='cal-dow';
+    el.textContent = dow;
+    grid.appendChild(el);
+  });
+  const firstDay = new Date(y, m-1, 1);
+  const startWeekday = firstDay.getDay();
+  const daysInMonth = new Date(y, m, 0).getDate();
+
+  for(let i=0;i<startWeekday;i++){
+    const el = document.createElement('div');
+    el.className='cal-cell empty';
+    grid.appendChild(el);
+  }
+
+  for(let d=1; d<=daysInMonth; d++){
+    const dateStr = `${y}-${pad(m)}-${pad(d)}`;
+    const weekday = new Date(y,m-1,d).getDay();
+    const cell = document.createElement('div');
+    cell.className = 'cal-cell' + ((weekday===0||weekday===6) ? ' weekend' : '');
+    let html = `<div class="d">${d}</div>`;
+    vacations.forEach(v=>{
+      if(v.status==='rejected') return;
+      if(dateStr >= v.startDate && dateStr <= v.endDate){
+        const dashed = v.status!=='approved' ? ' dashed' : '';
+        const suffix = v.status==='approved' ? '' : ' (대기)';
+        const label = (v.employeeName||'').replace(' ','');
+        html += `<span class="tag${dashed}" style="background:${empColor(v.employeeId)}">${label}${suffix}</span>`;
+      }
+    });
+    cell.innerHTML = html;
+    grid.appendChild(cell);
+  }
+}
+
+function renderAll(){
+  updateRoleHint();
+  renderCards();
+  fillEmpSelect();
+  renderTable();
+  renderCalendar();
+}
+
+(function init(){
+  document.getElementById('todayLabel').textContent = `기준일 ${TODAY}`;
+  fillMonthSelect();
+  loadData();
+})();
+</script>
+</body>
+</html>
