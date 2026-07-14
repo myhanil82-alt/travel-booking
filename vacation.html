@@ -539,7 +539,8 @@ function renderCalendar(){
         const dashed = v.status!=='approved' ? ' dashed' : '';
         const suffix = v.status==='approved' ? '' : ' (대기)';
         const label = (v.employeeName||'').replace(' ','');
-        html += `<span class="tag${dashed}" style="background:${empColor(v.employeeId)}">${label}${suffix}</span>`;
+        const reasonText = v.reason ? ` ${v.reason}` : '';
+        html += `<span class="tag${dashed}" style="background:${empColor(v.employeeId)}">${label}${reasonText}${suffix}</span>`;
       }
     });
     cell.innerHTML = html;
