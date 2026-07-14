@@ -433,6 +433,15 @@ async function directorReject(id){
   await loadData();
 }
 
+async function adminDelete(id){
+  const role = currentRole();
+  const pin = await verifyPin(role);
+  if(pin===null) return;
+  const r = await apiPost({ action:'adminDelete', id, pin });
+  if(!r.ok){ await modalMessage(r.error==='PIN_MISMATCH' ? 'PIN이 일치하지 않습니다.' : '삭제 실패'); return; }
+  await loadData();
+}
+
 const STATUS_LABEL = {
   pending: '대기 (1차 승인 필요)',
   manager_approved: '1차 승인 (최종 승인 필요)',
@@ -476,6 +485,9 @@ function renderTable(){
     } else if(role==='director' && v.status==='manager_approved'){
       actions = `<button class="actbtn approve" onclick="directorApprove('${v.id}')">최종 승인</button>
                  <button class="actbtn reject" onclick="directorReject('${v.id}')">반려</button>`;
+    }
+    if(role==='e1' || role==='director'){
+      actions += `<button class="del" onclick="adminDelete('${v.id}')">삭제(관리자)</button>`;
     }
 
     tr.innerHTML = `
