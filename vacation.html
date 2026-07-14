@@ -152,6 +152,7 @@
       </div>
       <div>
         <button class="btn" id="addBtn" onclick="addVacation()">신청</button>
+        <button class="btn" id="adminAddBtn" style="display:none;background:#2C7A3F;margin-left:6px;" onclick="adminAddApproved()">즉시등록(관리자)</button>
       </div>
     </div>
   </div>
@@ -442,6 +443,38 @@ async function adminDelete(id){
   await loadData();
 }
 
+async function adminAddApproved(){
+  const empId = document.getElementById('f-emp').value;
+  const emp = EMPLOYEES.find(e=>e.id===empId);
+  const start = document.getElementById('f-start').value;
+  const end = document.getElementById('f-end').value || start;
+  const days = Number(document.getElementById('f-days').value);
+  const reason = getReasonValue();
+  if(!start || !days){ await modalMessage('시작일과 사용일수를 입력해주세요.'); return; }
+  if(document.getElementById('f-reason-select').value==='기타' && !reason){
+    await modalMessage('사유를 입력해주세요.');
+    return;
+  }
+  const role = currentRole();
+  const pin = await verifyPin(role);
+  if(pin===null) return;
+
+  const btn = document.getElementById('adminAddBtn');
+  btn.disabled = true; btn.textContent = '등록 중...';
+  try{
+    const r = await apiPost({
+      action:'adminAdd', id:'v'+Date.now(), pin,
+      employeeId: empId, employeeName: emp.name,
+      startDate: start, endDate: end, days, reason
+    });
+    if(!r.ok){ await modalMessage(r.error==='PIN_MISMATCH' ? 'PIN이 일치하지 않습니다.' : '등록 실패: ' + (r.error||'')); }
+    else { await loadData(); }
+  }catch(err){
+    await modalMessage('서버 연결에 실패했습니다.');
+  }
+  btn.disabled = false; btn.textContent = '즉시등록(관리자)';
+}
+
 const STATUS_LABEL = {
   pending: '대기 (1차 승인 필요)',
   manager_approved: '1차 승인 (최종 승인 필요)',
@@ -454,6 +487,8 @@ function currentRole(){ return document.getElementById('roleSelect').value; }
 function updateRoleHint(){
   const role = currentRole();
   const hint = document.getElementById('roleHint');
+  const adminBtn = document.getElementById('adminAddBtn');
+  adminBtn.style.display = (role==='e1' || role==='director') ? 'inline-block' : 'none';
   if(role==='staff') hint.textContent = '휴가를 신청할 수 있습니다.';
   else if(role==='e1') hint.textContent = '대기 중인 신청을 1차 승인/반려할 수 있습니다. (PIN 확인)';
   else hint.textContent = '1차 승인된 신청을 최종 승인/반려할 수 있습니다. (PIN 확인)';
