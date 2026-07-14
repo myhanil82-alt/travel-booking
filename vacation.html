@@ -139,8 +139,16 @@
         <input type="number" id="f-days" step="0.5" min="0.5" value="1">
       </div>
       <div>
-        <label>사유(선택)</label>
-        <input type="text" id="f-reason" placeholder="예: 연차, 반차">
+        <label>사유</label>
+        <select id="f-reason-select" onchange="onReasonChange()">
+          <option value="연차">연차</option>
+          <option value="오전반차">오전반차</option>
+          <option value="오후반차">오후반차</option>
+          <option value="경조사">경조사</option>
+          <option value="병가">병가</option>
+          <option value="기타">기타(직접입력)</option>
+        </select>
+        <input type="text" id="f-reason" placeholder="사유 직접 입력" style="display:none;margin-top:6px;">
       </div>
       <div>
         <button class="btn" id="addBtn" onclick="addVacation()">신청</button>
@@ -329,14 +337,39 @@ document.addEventListener('DOMContentLoaded', ()=>{
   en.addEventListener('change', sync);
 });
 
+function onReasonChange(){
+  const sel = document.getElementById('f-reason-select');
+  const txt = document.getElementById('f-reason');
+  if(sel.value === '기타'){
+    txt.style.display = 'block';
+    txt.value = '';
+    txt.focus();
+  } else {
+    txt.style.display = 'none';
+    txt.value = '';
+  }
+}
+
+function getReasonValue(){
+  const sel = document.getElementById('f-reason-select');
+  if(sel.value === '기타'){
+    return document.getElementById('f-reason').value.trim();
+  }
+  return sel.value;
+}
+
 async function addVacation(){
   const empId = document.getElementById('f-emp').value;
   const emp = EMPLOYEES.find(e=>e.id===empId);
   const start = document.getElementById('f-start').value;
   const end = document.getElementById('f-end').value || start;
   const days = Number(document.getElementById('f-days').value);
-  const reason = document.getElementById('f-reason').value;
+  const reason = getReasonValue();
   if(!start || !days){ await modalMessage('시작일과 사용일수를 입력해주세요.'); return; }
+  if(document.getElementById('f-reason-select').value==='기타' && !reason){
+    await modalMessage('사유를 입력해주세요.');
+    return;
+  }
 
   const btn = document.getElementById('addBtn');
   btn.disabled = true; btn.textContent = '신청 중...';
