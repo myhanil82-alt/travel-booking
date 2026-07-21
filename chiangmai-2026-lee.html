@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>치앙마이 여행 확정서 - 이경남님 일행</title>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sea: #8a3a10;
+    --sea-light: #fdf0e4;
+    --gold: #b07000;
+    --gold-light: #fff8e0;
+    --red: #c03020;
+    --red-light: #fdeeed;
+    --amber: #c06000;
+    --amber-light: #fff4e0;
+    --green: #1a6b3a;
+    --green-light: #e4f8ee;
+    --cream: #fdf8f4;
+    --warm-white: #ffffff;
+    --charcoal: #1a0c00;
+    --medium: #5a2a10;
+    --muted: #9a7060;
+    --border: #e4c8a8;
+    --blue: #1a4a8a;
+    --blue-light: #e4eeff;
+    --purple: #5a3080;
+    --purple-light: #f0eeff;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:"Nanum Gothic","맑은 고딕","Malgun Gothic",sans-serif; background:var(--cream); color:var(--charcoal); line-height:1.7; font-size:16px; }
+  .main { max-width:700px; margin:0 auto; }
+
+  /* HERO - 치앙마이 골든 템플 톤 */
+  .hero {
+    position:relative;
+    background:linear-gradient(160deg, #100800 0%, #301800 40%, #5a2c08 75%, #8a4010 100%);
+    padding:3.5rem 2rem 4rem; text-align:center; overflow:hidden;
+  }
+  .hero::after { content:""; position:absolute; bottom:-2px; left:0; right:0; height:50px; background:var(--cream); clip-path:ellipse(60% 100% at 50% 100%); }
+  .hero-blob { position:absolute; border-radius:50%; background:rgba(255,255,255,0.06); }
+  .hero-content { position:relative; z-index:2; }
+  .hero-tag { display:inline-block; background:rgba(255,255,255,0.13); border:1px solid rgba(255,255,255,0.3); border-radius:20px; padding:5px 18px; font-size:13px; letter-spacing:0.2em; color:rgba(255,255,255,0.92); margin-bottom:0.9rem; text-transform:uppercase; }
+  .hero-title { font-size:clamp(26px,5.5vw,38px); font-weight:800; color:#fff; line-height:1.35; margin-bottom:0.3rem; text-shadow:0 2px 12px rgba(0,0,0,0.3); }
+  .hero-title em { color:#ffd890; font-style:normal; }
+  .hero-names { font-size:18px; font-weight:700; color:rgba(255,255,255,0.9); margin-bottom:0.3rem; }
+  .hero-sub { font-size:15px; color:rgba(255,255,255,0.72); margin-bottom:1.4rem; }
+  .agent-wrap { display:flex; flex-direction:column; align-items:center; gap:8px; }
+  .agent-name { display:inline-flex; align-items:center; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.35); border-radius:30px; padding:8px 22px; font-size:15px; color:#fff; font-weight:700; }
+  .agent-contacts { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
+  .agent-contacts a { display:inline-flex; align-items:center; gap:6px; border-radius:30px; padding:8px 18px; font-size:14px; text-decoration:none; font-weight:700; }
+  .contact-phone { background:rgba(255,255,255,0.92); color:#301800; }
+  .contact-kakao { background:#FEE500; color:#3a1d00; }
+
+  /* 행사정보 배너 */
+  .meeting-banner { background:linear-gradient(135deg,#fdf0e4,#f8e4c8,#f2d8a8); padding:1.2rem 1.75rem; border-bottom:3px solid #8a4010; }
+  .meeting-banner-title { font-size:15px; font-weight:800; color:#301800; margin-bottom:0.8rem; }
+  .guide-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .guide-item { background:rgba(255,255,255,0.85); border-radius:12px; padding:12px 16px; border:1px solid rgba(138,64,16,0.25); }
+  .guide-item-label { font-size:12px; font-weight:700; color:#7a3008; margin-bottom:4px; }
+  .guide-item-val { font-size:14px; font-weight:800; color:#1a0c00; line-height:1.5; }
+  .guide-item-sub { font-size:12px; color:#5a2a10; margin-top:2px; line-height:1.5; }
+
+  /* 온라인 체크인 배너 */
+  .checkin-banner { background:linear-gradient(135deg,#020c18,#061830,#0a3060); padding:1.2rem 1.75rem; border-bottom:3px solid #40b0e0; }
+
+  /* 항공 배너 */
+  .flight-banner { background:linear-gradient(135deg,#e8f0ff,#d8e8ff,#c8e0ff); padding:1.2rem 1.75rem; border-bottom:3px solid #6090d0; }
+  .flight-banner-title { font-size:15px; font-weight:800; color:#1a3a7a; margin-bottom:0.8rem; }
+  .flight-card { background:rgba(255,255,255,0.88); border-radius:14px; overflow:hidden; border:1px solid rgba(80,130,200,0.35); margin-bottom:10px; }
+  .flight-card:last-child { margin-bottom:0; }
+  .flight-card-header { padding:9px 16px; font-size:13px; font-weight:800; letter-spacing:0.08em; display:flex; align-items:center; gap:8px; }
+  .flight-card-header.go   { background:linear-gradient(135deg,#301800,#8a4010); color:#fff; }
+  .flight-card-header.back { background:linear-gradient(135deg,#0a2040,#1a4a8a); color:#fff; }
+  .flight-card-body { padding:14px 18px; }
+  .flight-route { display:flex; align-items:center; justify-content:space-between; }
+  .flight-city { text-align:center; flex:1; }
+  .flight-city-code { font-size:25px; font-weight:800; color:#1a2040; }
+  .flight-city-time { font-size:18px; font-weight:800; color:#5a2c08; margin-top:2px; }
+  .flight-city-name { font-size:13px; color:var(--muted); margin-top:3px; }
+  .flight-arrow-wrap { flex:0 0 84px; text-align:center; }
+  .flight-arrow { font-size:22px; color:#4a80c0; }
+  .flight-arrow-label { font-size:12px; color:var(--muted); margin-top:2px; line-height:1.4; }
+  .flight-meta-row { display:flex; gap:6px; margin-top:10px; flex-wrap:wrap; }
+  .flight-meta-chip { background:#fdf0e4; border:1px solid #d4a060; border-radius:20px; padding:4px 12px; font-size:12px; font-weight:700; color:#5a2a10; }
+  .flight-meta-chip.warn { background:#fdeeed; border-color:#e08080; color:#8a1010; }
+
+  /* 수하물 배너 */
+  .baggage-banner { background:linear-gradient(135deg,#fdf0e4,#f8e4c8,#f2d8a8); padding:1.2rem 1.75rem; border-bottom:3px solid #8a4010; }
+  .baggage-title { font-size:15px; font-weight:800; color:#301800; margin-bottom:0.8rem; }
+  .baggage-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .baggage-item { background:rgba(255,255,255,0.85); border-radius:12px; padding:12px 15px; border:1px solid rgba(138,64,16,0.25); }
+  .baggage-label { font-size:12px; font-weight:700; color:#7a3008; margin-bottom:5px; }
+  .baggage-val   { font-size:16px; font-weight:800; color:#1a0c00; line-height:1.5; }
+  .baggage-sub   { font-size:13px; color:#5a2a10; margin-top:3px; line-height:1.5; }
+
+  /* 날씨 배너 */
+  .weather-bar { background:linear-gradient(160deg,#fff8d0,#ffeebb,#ffe0a0); padding:1.2rem 1.75rem; border-bottom:3px solid #d0a030; }
+  .weather-title { font-size:15px; font-weight:800; color:#6a3800; margin-bottom:0.8rem; }
+  .weather-note { background:rgba(255,255,255,0.78); border-radius:10px; padding:10px 15px; font-size:14px; color:#6a3800; font-weight:700; border:1px solid rgba(200,140,40,0.35); }
+  .weather-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin-bottom:10px; }
+  .weather-day { background:rgba(255,255,255,0.85); border-radius:10px; padding:10px 6px; text-align:center; border:1px solid rgba(200,140,40,0.4); }
+  .weather-day-label { font-size:12px; font-weight:700; color:#7a4a10; margin-bottom:3px; }
+  .weather-day-icon  { font-size:24px; margin-bottom:4px; }
+  .weather-day-temp  { font-size:13px; font-weight:800; color:#0a1000; }
+  .weather-day-desc  { font-size:11px; color:#7a5020; margin-top:3px; }
+
+  /* SECTIONS */
+  .section { background:var(--warm-white); border-bottom:1px solid var(--border); padding:1.9rem 1.75rem; }
+  .section:nth-child(even) { background:var(--cream); }
+  .section-eyebrow { font-size:12px; letter-spacing:0.22em; text-transform:uppercase; color:var(--sea); font-weight:700; margin-bottom:0.3rem; }
+  .section-heading { font-size:22px; font-weight:800; color:var(--charcoal); margin-bottom:1.2rem; display:flex; align-items:center; gap:10px; }
+  .section-heading::after { content:""; flex:1; height:1.5px; background:linear-gradient(to right,var(--border),transparent); }
+
+  .info-card { background:var(--warm-white); border:1px solid var(--border); border-radius:14px; overflow:hidden; box-shadow:0 2px 10px rgba(138,58,16,0.08); }
+  .info-row { display:flex; gap:1rem; padding:14px 18px; border-bottom:1px solid var(--border); align-items:flex-start; }
+  .info-row:last-child { border-bottom:none; }
+  .info-key { min-width:100px; font-size:14px; font-weight:700; color:var(--medium); padding-top:2px; }
+  .info-val { flex:1; color:var(--charcoal); line-height:1.7; font-size:14.5px; }
+  .info-val strong { color:var(--sea); font-weight:700; }
+
+  .alert { border-radius:10px; padding:12px 16px; font-size:14px; line-height:1.7; margin-top:8px; }
+  .alert-red    { background:var(--red-light);    border-left:3px solid var(--red);    color:#7a1010; }
+  .alert-amber  { background:var(--amber-light);  border-left:3px solid var(--amber);  color:#7a3800; }
+  .alert-green  { background:var(--green-light);  border-left:3px solid var(--green);  color:#0a3820; }
+  .alert-gold   { background:var(--gold-light);   border-left:3px solid var(--gold);   color:#7a4800; }
+  .alert-sea    { background:var(--sea-light);    border-left:3px solid var(--sea);    color:#301800; }
+  .alert-blue   { background:var(--blue-light);   border-left:3px solid var(--blue);   color:#0a1a4a; }
+  .alert-purple { background:var(--purple-light); border-left:3px solid var(--purple); color:#2a1050; }
+
+  a.link-pill { display:inline-flex; align-items:center; gap:6px; background:linear-gradient(135deg,#301800,#8a4010); border-radius:22px; padding:9px 20px; font-size:14px; color:#fff; text-decoration:none; margin-top:6px; font-weight:700; box-shadow:0 3px 10px rgba(138,64,16,0.3); }
+  a.link-pill-blue { display:inline-flex; align-items:center; gap:6px; background:linear-gradient(135deg,#1a4a8a,#2a6ab0); border-radius:22px; padding:9px 20px; font-size:14px; color:#fff; text-decoration:none; margin-top:6px; font-weight:700; }
+
+  /* 환전 테이블 */
+  .fx-table { width:100%; border-collapse:collapse; font-size:14px; margin-top:10px; }
+  .fx-table th { background:linear-gradient(135deg,#301800,#8a4010); color:#fff; padding:9px 12px; text-align:center; font-weight:700; font-size:12px; }
+  .fx-table td { padding:10px 12px; border-bottom:1px solid var(--border); text-align:center; font-weight:700; }
+  .fx-table tr:last-child td { border-bottom:none; }
+  .fx-table tr:nth-child(even) td { background:#fdf8f0; }
+
+  /* 입국신고서 박스 */
+  .thai-box { border:2px solid #8a4010; border-radius:14px; overflow:hidden; }
+  .thai-box-head { background:linear-gradient(135deg,#301800,#8a4010); padding:12px 18px; font-size:13px; font-weight:800; color:#fff; }
+  .thai-box-body { padding:16px 18px; background:var(--warm-white); }
+
+  .excl-list { list-style:none; padding:0; }
+  .excl-list li { display:flex; align-items:flex-start; gap:10px; padding:10px 0; border-bottom:1px solid var(--border); font-size:15px; line-height:1.6; }
+  .excl-list li:last-child { border-bottom:none; }
+  .excl-dot { width:8px; height:8px; background:var(--sea); border-radius:50%; flex-shrink:0; margin-top:7px; }
+
+  .checkin-list { list-style:none; padding:0; }
+  .checkin-list li { display:flex; gap:12px; padding:10px 0; border-bottom:1px solid var(--border); font-size:15px; line-height:1.7; }
+  .checkin-list li:last-child { border-bottom:none; }
+  .checkin-num { min-width:24px; height:24px; background:linear-gradient(135deg,#301800,#8a4010); color:#fff; border-radius:50%; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
+
+  .checklist { list-style:none; padding:0; }
+  .checklist li { display:flex; align-items:flex-start; gap:12px; padding:10px 0; border-bottom:1px solid var(--border); font-size:14.5px; line-height:1.65; }
+  .checklist li:last-child { border-bottom:none; }
+  .check-num { min-width:24px; height:24px; background:linear-gradient(135deg,#301800,#8a4010); color:#fff; border-radius:50%; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
+  .check-cat { font-size:12px; font-weight:800; color:var(--sea); background:var(--sea-light); border-radius:5px; padding:2px 8px; margin-right:5px; white-space:nowrap; }
+
+  .footer { background:linear-gradient(160deg,#100800,#301800 60%,#8a4010 100%); padding:2.8rem 2rem; text-align:center; position:relative; overflow:hidden; }
+  .footer::before { content:""; position:absolute; top:-60px; right:-60px; width:200px; height:200px; border-radius:50%; background:rgba(255,255,255,0.05); }
+  .footer-content { position:relative; z-index:1; }
+  .footer-title { font-size:23px; font-weight:800; color:#fff; margin-bottom:0.5rem; }
+  .footer-sub   { font-size:15px; color:rgba(255,255,255,0.65); line-height:1.8; margin-bottom:1.4rem; }
+  .footer-name  { font-size:16px; font-weight:700; color:rgba(255,255,255,0.9); margin-bottom:14px; }
+  .footer-contacts { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+  .footer-btn { display:inline-flex; align-items:center; gap:8px; border-radius:30px; padding:11px 24px; font-size:15px; text-decoration:none; font-weight:700; }
+  .footer-btn-phone { background:rgba(255,255,255,0.18); border:1.5px solid rgba(255,255,255,0.45); color:#fff; }
+  .footer-btn-kakao { background:#FEE500; border:1.5px solid #FEE500; color:#3a1d00; }
+
+  @media(max-width:520px){
+    .section { padding:1.5rem 1.2rem; }
+    .guide-grid,.baggage-grid { grid-template-columns:1fr; }
+    .weather-grid { grid-template-columns:repeat(2,1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="main">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-blob" style="width:240px;height:240px;top:-80px;right:-70px;"></div>
+    <div class="hero-blob" style="width:160px;height:160px;bottom:20px;left:-50px;"></div>
+    <div class="hero-content">
+      <div class="hero-tag">✦ Travel Confirmation ✦</div>
+      <div class="hero-title">🛕 <em>치앙마이</em> 여행 확정서</div>
+      <div class="hero-names">이경남님 일행</div>
+      <div class="hero-sub">인천국제공항 출발 · 3박 5일</div>
+      <div class="agent-wrap">
+        <div class="agent-name">담당 이경진 실장</div>
+        <div class="agent-contacts">
+          <a class="contact-phone" href="tel:15445714">📞 1544-5714</a>
+          <a class="contact-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡 상담</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 행사정보 배너 -->
+  <div class="meeting-banner">
+    <div class="meeting-banner-title">👤 현지 행사 정보</div>
+    <div class="guide-grid">
+      <div class="guide-item">
+        <div class="guide-item-label">담당 가이드</div>
+        <div class="guide-item-val">김병수 차장</div>
+      </div>
+      <div class="guide-item">
+        <div class="guide-item-label">가이드 연락처</div>
+        <div class="guide-item-val">66+064-687-6273</div>
+      </div>
+      <div class="guide-item">
+        <div class="guide-item-label">현지 비상연락처</div>
+        <div class="guide-item-val">이상호 소장</div>
+        <div class="guide-item-sub">66+089-962-5924</div>
+      </div>
+      <div class="guide-item">
+        <div class="guide-item-label">행사 인원 / 차량</div>
+        <div class="guide-item-val">7명</div>
+        <div class="guide-item-sub">9~12인승 봉고</div>
+      </div>
+    </div>
+    <div class="alert alert-green" style="margin-top:10px;">
+      📍 치앙마이 공항 입국장에서 <strong>모두투어 피켓</strong>을 들고 있는 가이드를 만나 함께 이동합니다.
+    </div>
+    <div class="alert alert-sea" style="margin-top:8px;">
+      ✈️ <strong>인천공항 미팅은 없습니다.</strong> 개별 티켓팅 후 각자 출발하시면 됩니다.
+    </div>
+  </div>
+
+  <!-- 온라인 체크인 배너 -->
+  <div class="checkin-banner">
+    <div style="font-size:15px;font-weight:800;color:#a0d0ff;margin-bottom:10px;">📱 진에어 온라인 체크인 안내</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">
+      <div style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:12px;padding:14px 16px;">
+        <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.6);letter-spacing:1px;margin-bottom:6px;">🔑 항공사 예약번호</div>
+        <div style="font-size:22px;font-weight:800;color:#ffd880;letter-spacing:3px;">MQU2FG</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:12px;padding:14px 16px;">
+        <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.6);letter-spacing:1px;margin-bottom:6px;">⏰ 체크인 가능 시간</div>
+        <div style="font-size:15px;font-weight:800;color:#fff;">출발 24시간 전부터</div>
+        <div style="font-size:13px;font-weight:700;color:#a0d0ff;margin-top:4px;">진에어 사이트에서 가능</div>
+      </div>
+    </div>
+    <div style="background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.18);border-radius:12px;padding:14px 16px;margin-bottom:10px;font-size:13.5px;color:#fff;line-height:1.9;">
+      <strong style="color:#ffd880;">① 온라인 체크인</strong> — 진에어 사이트 접속 → <strong style="color:#a0ffc0;">체크인/탑승권 탭</strong> → 예약번호 <strong style="color:#ffd880;">MQU2FG</strong> 입력 → 좌석 지정 후 탑승 QR 발급<br>
+      <strong style="color:#ffd880;">② 공항 수속</strong> — 인천공항 <strong>제2여객터미널 국제선 3층 E21~40번 카운터 셀프백드롭</strong> 후 개별 출발
+    </div>
+    <a href="https://www.jinair.com/booking/index" target="_blank"
+      style="display:inline-flex;align-items:center;gap:6px;background:#ffd880;border-radius:22px;padding:9px 20px;font-size:14px;color:#1a1000;text-decoration:none;font-weight:800;box-shadow:0 3px 10px rgba(0,0,0,0.2);">
+      진에어 온라인 체크인 바로가기 →
+    </a>
+    <div style="background:rgba(255,100,100,0.18);border:1px solid rgba(255,150,150,0.4);border-radius:10px;padding:10px 14px;margin-top:10px;font-size:13.5px;color:#ffcccc;font-weight:700;">
+      ⚠️ 온라인 체크인 못 하신 분 — 당일 <strong style="color:#fff;">제2여객터미널 국제선 3층 E21~40번 카운터</strong>에서 티켓팅 후 셀프백드롭으로 짐 수속하시면 됩니다.
+    </div>
+  </div>
+
+  <!-- 항공 배너 -->
+  <div class="flight-banner">
+    <div class="flight-banner-title">✈️ 항공 일정 — 진에어</div>
+    <div class="flight-card">
+      <div class="flight-card-header go">✈ 가는 편 &nbsp;·&nbsp; LJ009</div>
+      <div class="flight-card-body">
+        <div class="flight-route">
+          <div class="flight-city">
+            <div class="flight-city-code">ICN</div>
+            <div class="flight-city-time">17:20</div>
+            <div class="flight-city-name">인천 (T2)</div>
+          </div>
+          <div class="flight-arrow-wrap">
+            <div class="flight-arrow">→</div>
+            <div class="flight-arrow-label">2026.07.27(월)</div>
+          </div>
+          <div class="flight-city">
+            <div class="flight-city-code">CNX</div>
+            <div class="flight-city-time">20:45</div>
+            <div class="flight-city-name">치앙마이</div>
+          </div>
+        </div>
+        <div class="flight-meta-row">
+          <span class="flight-meta-chip">진에어</span>
+          <span class="flight-meta-chip">편명 LJ009</span>
+          <span class="flight-meta-chip">소요 약 5시간 25분</span>
+          <span class="flight-meta-chip warn">기내식 없음</span>
+          <span class="flight-meta-chip warn">좌석 미지정</span>
+        </div>
+      </div>
+    </div>
+    <div class="flight-card">
+      <div class="flight-card-header back">✈ 오는 편 &nbsp;·&nbsp; LJ010</div>
+      <div class="flight-card-body">
+        <div class="flight-route">
+          <div class="flight-city">
+            <div class="flight-city-code">CNX</div>
+            <div class="flight-city-time">21:45</div>
+            <div class="flight-city-name">치앙마이</div>
+          </div>
+          <div class="flight-arrow-wrap">
+            <div class="flight-arrow">→</div>
+            <div class="flight-arrow-label">2026.07.30(목)</div>
+          </div>
+          <div class="flight-city">
+            <div class="flight-city-code">ICN</div>
+            <div class="flight-city-time">05:05</div>
+            <div class="flight-city-name">인천 (T2) · 익일 7/31</div>
+          </div>
+        </div>
+        <div class="flight-meta-row">
+          <span class="flight-meta-chip">진에어</span>
+          <span class="flight-meta-chip">편명 LJ010</span>
+          <span class="flight-meta-chip">소요 약 5시간 20분</span>
+          <span class="flight-meta-chip warn">기내식 없음</span>
+          <span class="flight-meta-chip warn">좌석 미지정</span>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-red" style="margin-top:10px;">
+      ⚠️ 기내식이 포함되지 않습니다. 탑승 전 공항에서 미리 식사하시거나 간식을 준비해 가세요.
+    </div>
+  </div>
+
+  <!-- 수하물 배너 -->
+  <div class="baggage-banner">
+    <div class="baggage-title">🧳 수하물 안내 — 진에어</div>
+    <div class="baggage-grid">
+      <div class="baggage-item">
+        <div class="baggage-label">위탁 수하물</div>
+        <div class="baggage-val">15kg · 1인 1개</div>
+        <div class="baggage-sub">초과 시 공항에서 추가 요금 발생</div>
+      </div>
+      <div class="baggage-item">
+        <div class="baggage-label">기내 수하물</div>
+        <div class="baggage-val">10kg · 1인</div>
+        <div class="baggage-sub">액체류 100ml 이하 · 보조배터리 기내 반입</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 날씨 배너 -->
+  <div class="weather-bar">
+    <div class="weather-title">🌤️ 현지 날씨 — 치앙마이 (7월 말)</div>
+    <div class="weather-grid">
+      <div class="weather-day">
+        <div class="weather-day-label">7/27 (월)</div>
+        <div class="weather-day-icon">🌦️</div>
+        <div class="weather-day-temp">24~33°C</div>
+        <div class="weather-day-desc">소나기 가능</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-label">7/28 (화)</div>
+        <div class="weather-day-icon">⛅</div>
+        <div class="weather-day-temp">24~33°C</div>
+        <div class="weather-day-desc">구름 많음</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-label">7/29 (수)</div>
+        <div class="weather-day-icon">🌦️</div>
+        <div class="weather-day-temp">24~32°C</div>
+        <div class="weather-day-desc">소나기 가능</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-label">7/30 (목)</div>
+        <div class="weather-day-icon">⛅</div>
+        <div class="weather-day-temp">24~32°C</div>
+        <div class="weather-day-desc">구름 조금</div>
+      </div>
+    </div>
+    <div class="weather-note">
+      ☔ 치앙마이 7월은 우기 시즌으로 스콜이 자주 내립니다. 우산·우비를 챙겨가시고 선크림도 잊지 마세요!
+    </div>
+  </div>
+
+  <!-- 01. 상품 안내 -->
+  <div class="section">
+    <div class="section-eyebrow">01</div>
+    <div class="section-heading">상품 안내</div>
+    <div class="info-card">
+      <div class="info-row">
+        <div class="info-key">예약 상품</div>
+        <div class="info-val">
+          <span style="font-size:14px;color:var(--muted);display:block;margin-bottom:6px;">아래 버튼을 눌러 일정표를 확인하세요</span>
+          <a class="link-pill" href="https://www.modetour.com/package/103912929?MLoc=99&Pnum=103912929&ANO=1772510&sno=C2181215&thru=crs" target="_blank">모두투어 예약 확인 ✔</a>
+        </div>
+      </div>
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">투숙 호텔</div>
+        <div class="info-val"><strong>푸라마 치앙마이 호텔</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02. 태국 입국신고서 -->
+  <div class="section">
+    <div class="section-eyebrow">02</div>
+    <div class="section-heading">태국 입국 안내</div>
+    <div class="thai-box">
+      <div class="thai-box-head">🛂 태국 온라인 입국신고서 필수 작성 (출발 3일 전부터 가능)</div>
+      <div class="thai-box-body">
+        <div class="alert alert-red" style="margin-top:0;margin-bottom:12px;">
+          ⚠️ 태국 입국 시 온라인 입국신고서 작성이 <strong>필수</strong>입니다.<br>
+          <strong>출발 3일 전부터</strong> 작성 가능합니다. 탑승자 전원 각각 작성해 주세요.
+        </div>
+        <a class="link-pill" href="https://tdac.immigration.go.th/arrival-card/#/home" target="_blank">태국 입국신고서 작성하기 →</a>
+        <a class="link-pill-blue" href="https://blog.naver.com/dobargi/223996096204" target="_blank">작성 참고 블로그 →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03. 불포함 사항 -->
+  <div class="section">
+    <div class="section-eyebrow">03</div>
+    <div class="section-heading">불포함 사항</div>
+    <ul class="excl-list">
+      <li><div class="excl-dot"></div><span><strong>기사/가이드 경비 1인당 USD $40</strong> — 현지에서 달러로 직접 지불</span></li>
+      <li><div class="excl-dot"></div><span>선택 관광 경비</span></li>
+      <li><div class="excl-dot"></div><span>개인 경비 (간식·음료 등)</span></li>
+    </ul>
+  </div>
+
+  <!-- 04. 환전 안내 -->
+  <div class="section">
+    <div class="section-eyebrow">04</div>
+    <div class="section-heading">환전 안내 💵</div>
+    <div class="info-card">
+      <div class="info-row">
+        <div class="info-key">미국 달러 (USD)</div>
+        <div class="info-val">
+          가이드/기사 경비 및 선택관광은 <strong>미국 달러(USD) 현금</strong>으로 지불합니다.<br>
+          <strong>1인당 USD $300 정도</strong> 환전해 가시길 권장합니다.
+          <div style="border-radius:12px;overflow:hidden;border:1px solid var(--border);margin-top:10px;">
+            <table class="fx-table">
+              <thead>
+                <tr>
+                  <th>권종</th>
+                  <th>장수</th>
+                  <th>금액</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>$100</td><td>2장</td><td>$200</td></tr>
+                <tr><td>$50</td><td>1장</td><td>$50</td></tr>
+                <tr><td>$10</td><td>4장</td><td>$40</td></tr>
+                <tr><td>$1</td><td>10장</td><td>$10</td></tr>
+                <tr style="background:#fff8e0;"><td colspan="2" style="font-weight:800;color:#7a4800;">합계</td><td style="font-weight:800;color:#7a4800;">$300</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">태국 바트 (THB)</div>
+        <div class="info-val">
+          간식·음료 등 개인 경비는 <strong>태국 바트(THB)</strong>로 환전하여 사용하시면 됩니다.<br>
+          <strong>1인당 한국돈 5만원~10만원 정도</strong>를 바트로 환전하시면 충분합니다.
+          <div class="alert alert-sea" style="margin-top:8px;">
+            💡 바트 환전은 국내 은행·환전소 또는 현지 공항·시내 환전소에서 가능합니다.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05. 준비물 체크리스트 -->
+  <div class="section">
+    <div class="section-eyebrow">05</div>
+    <div class="section-heading">준비물 체크리스트 🎒</div>
+    <div class="alert alert-amber" style="margin-bottom:1rem;margin-top:0;">
+      🛕 사원 방문 시 <strong>어깨와 무릎을 가리는 복장</strong>이 필수입니다! 얇은 카디건·긴 바지(또는 스카프)를 꼭 챙겨가세요.
+    </div>
+    <ul class="checklist">
+      <li><div class="check-num">1</div><span><span class="check-cat">필수</span><strong>여권</strong> — 유효기간 6개월 이상 반드시 확인!</span></li>
+      <li><div class="check-num">2</div><span><span class="check-cat">필수</span><strong>항공권 E-티켓</strong> 출력 또는 스마트폰 저장</span></li>
+      <li><div class="check-num">3</div><span><span class="check-cat">필수</span><strong>미국 달러(USD) $300</strong> — 가이드경비·선택관광용</span></li>
+      <li><div class="check-num">4</div><span><span class="check-cat">복장</span><strong>얇은 가디건 또는 스카프</strong> — 사원 방문 시 어깨·무릎 가리기 필수</span></li>
+      <li><div class="check-num">5</div><span><span class="check-cat">복장</span>반팔·반바지 (더위 대비) + <strong>긴 바지 1벌</strong> (사원·실내 냉방)</span></li>
+      <li><div class="check-num">6</div><span><span class="check-cat">복장</span>편한 운동화 또는 샌들 — 도보 이동 많음</span></li>
+      <li><div class="check-num">7</div><span><span class="check-cat">수영</span><strong>수영복</strong> — 호텔 수영장 이용 대비</span></li>
+      <li><div class="check-num">8</div><span><span class="check-cat">수영</span>압축타월 · 방수 파우치</span></li>
+      <li><div class="check-num">9</div><span><span class="check-cat">날씨</span><strong>선크림 (SPF 50+)</strong> — 열대 자외선 강함</span></li>
+      <li><div class="check-num">10</div><span><span class="check-cat">날씨</span>선글라스 · 챙 넓은 모자</span></li>
+      <li><div class="check-num">11</div><span><span class="check-cat">날씨</span><strong>접이식 우산 또는 우비</strong> — 우기 스콜 잦음</span></li>
+      <li><div class="check-num">12</div><span><span class="check-cat">세면</span>개인 세면도구 (칫솔·치약·샴푸 등)</span></li>
+      <li><div class="check-num">13</div><span><span class="check-cat">건강</span>상비약 — 소화제·두통약·지사제·모기기피제</span></li>
+      <li><div class="check-num">14</div><span><span class="check-cat">전기</span>멀티 어댑터 (태국 220V · A/B타입) · 보조배터리</span></li>
+      <li><div class="check-num">15</div><span><span class="check-cat">기타</span>에코백 또는 소형 배낭 (관광지 이동·쇼핑용)</span></li>
+    </ul>
+  </div>
+
+  <!-- 06. 유의사항 -->
+  <div class="section">
+    <div class="section-eyebrow">06</div>
+    <div class="section-heading">유의사항</div>
+    <ul class="checkin-list">
+      <li><div class="checkin-num">1</div><span>인천국제공항 <strong>제2터미널</strong>에 출발 2시간 전까지 도착해 주세요.</span></li>
+      <li><div class="checkin-num">2</div><span>여권 유효기간을 꼭 확인해 주세요. <strong>잔여 유효기간 6개월 이상</strong> 필수입니다.</span></li>
+      <li><div class="checkin-num">3</div><span>태국 <strong>온라인 입국신고서</strong>는 출발 3일 전부터 작성 가능합니다. 미리 작성해 주세요.</span></li>
+      <li><div class="checkin-num">4</div><span>사원 방문 시 <strong>어깨와 무릎을 가리는 복장</strong>이 필수입니다.</span></li>
+      <li><div class="checkin-num">5</div><span>현지 사정에 따라 일부 일정이 변경될 수 있으며, 변경 시 <strong>가이드 안내</strong>에 따라 주세요.</span></li>
+      <li><div class="checkin-num">6</div><span>본 안내문은 대표자 한 분께 전달됩니다. <strong>일행 모두에게 공유</strong> 부탁드립니다.</span></li>
+    </ul>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-content">
+      <div class="footer-title">🛕 즐거운 치앙마이 여행 되세요!</div>
+      <div class="footer-sub">궁금하신 사항은 언제든지 문의 주세요.<br>감사합니다.</div>
+      <div class="footer-name">담당 이경진 실장</div>
+      <div class="footer-contacts">
+        <a class="footer-btn footer-btn-phone" href="tel:15445714">📞 1544-5714</a>
+        <a class="footer-btn footer-btn-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡 상담</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
