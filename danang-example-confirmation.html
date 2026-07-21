@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>다낭/호이안/바나힐 여행 확정서 (예시)</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --coral: #2A9D6E;
+    --coral-bg: #F0FAF5;
+    --navy: #1C3557;
+    --navy-light: #2E4E72;
+    --gold: #C8973A;
+    --gold-light: #F0C870;
+    --mint: #3AA8A0;
+    --bg: #FAFAF8;
+    --card-bg: #FFFFFF;
+    --text-main: #1A1A1A;
+    --text-sub: #5A5A5A;
+    --text-muted: #8A8A8A;
+    --border: #E8E4DC;
+    --shadow: 0 2px 16px rgba(28,53,87,0.08);
+    --max-w: 680px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Noto Sans KR',sans-serif; font-size:16px; background:var(--bg); color:var(--text-main); line-height:1.6; }
+  a { text-decoration:none; color:inherit; }
+
+  .demo-badge { background:var(--gold); color:#fff; text-align:center; padding:8px; font-size:13px; font-weight:600; letter-spacing:0.5px; }
+
+  header { width:100%; background:#1A3A2A; background-image:radial-gradient(circle at 20% 20%, rgba(42,157,110,0.20), transparent 50%), radial-gradient(circle at 80% 80%, rgba(100,200,150,0.12), transparent 50%); color:#fff; padding:40px 24px 32px; }
+  .header-inner { max-width:var(--max-w); margin:0 auto; }
+  .header-tag { font-size:13px; letter-spacing:2px; color:var(--gold-light); font-weight:600; text-transform:uppercase; }
+  .header-title { font-family:'Noto Serif KR',serif; font-size:28px; font-weight:600; margin-top:10px; }
+  .header-subtitle { font-size:14px; color:rgba(255,255,255,0.65); margin-top:6px; }
+  .header-names { margin-top:18px; font-size:15px; color:rgba(255,255,255,0.9); }
+
+  .trip-band { width:100%; background:var(--coral); padding:18px 24px; }
+  .trip-band-inner { max-width:var(--max-w); margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:12px; color:#fff; text-align:center; }
+  .trip-band-inner .label { font-size:11px; opacity:0.85; margin-bottom:4px; }
+  .trip-band-inner .value { font-size:15px; font-weight:600; }
+
+  .container { max-width:var(--max-w); margin:0 auto; padding:32px 20px 60px; }
+  .section { margin-bottom:32px; }
+  .section-head { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+  .section-num { width:26px; height:26px; border-radius:50%; background:var(--navy); color:#fff; font-size:13px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .section-title { font-size:17px; font-weight:700; color:var(--navy); }
+
+  .product-link-box { display:block; background:var(--card-bg); border:1px solid var(--border); border-radius:12px; padding:18px; box-shadow:var(--shadow); }
+  .product-link-box .name { font-weight:600; font-size:15px; margin-bottom:6px; }
+  .product-link-box .url { font-size:13px; color:var(--coral); word-break:break-all; }
+
+  .flight-card { background:var(--card-bg); border:1px solid var(--border); border-radius:12px; overflow:hidden; box-shadow:var(--shadow); margin-bottom:14px; }
+  .flight-header { background:linear-gradient(135deg,var(--navy),var(--navy-light)); color:#fff; padding:12px 18px; font-size:13px; display:flex; justify-content:space-between; }
+  .flight-header .flight-no { color:var(--gold-light); font-weight:600; }
+  .flight-route { display:flex; align-items:center; justify-content:center; gap:16px; padding:22px 18px 14px; }
+  .flight-route .code { font-size:30px; font-weight:700; color:var(--navy); }
+  .flight-route .mid { text-align:center; font-size:12px; color:var(--text-muted); }
+  .flight-badges { display:flex; flex-wrap:wrap; gap:8px; padding:0 18px 18px; }
+  .flight-badges span { background:var(--coral-bg); color:var(--coral); font-size:12px; padding:6px 10px; border-radius:20px; font-weight:500; }
+
+  .alert-coral { background:var(--coral-bg); border-left:4px solid var(--coral); padding:12px 16px; border-radius:6px; font-size:13.5px; color:var(--text-sub); margin-top:10px; }
+  .alert-gold { background:#FFF8EC; border-left:4px solid var(--gold); padding:12px 16px; border-radius:6px; font-size:13.5px; color:var(--text-sub); margin-top:10px; }
+  .alert-navy { background:#EFF3F8; border-left:4px solid var(--navy); padding:12px 16px; border-radius:6px; font-size:13.5px; color:var(--text-sub); margin-top:10px; }
+
+  .baggage-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .baggage-card { background:var(--card-bg); border:1px solid var(--border); border-radius:12px; padding:16px; box-shadow:var(--shadow); }
+  .baggage-card .label { font-size:12px; color:var(--text-muted); margin-bottom:6px; }
+  .baggage-card .value { font-size:18px; font-weight:700; color:var(--navy); }
+
+  .counter-box { background:var(--card-bg); border:1px solid var(--gold); border-radius:12px; padding:18px; box-shadow:var(--shadow); }
+  .counter-step { display:flex; gap:12px; margin-bottom:12px; }
+  .counter-step:last-child { margin-bottom:0; }
+  .step-num { width:22px; height:22px; border-radius:50%; background:var(--gold); color:#fff; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .step-text { font-size:13.5px; color:var(--text-sub); }
+
+  .hotel-card { background:var(--card-bg); border:2px solid var(--mint); border-radius:12px; overflow:hidden; box-shadow:var(--shadow); }
+  .hotel-header { background:linear-gradient(135deg,var(--mint),#4FC3B8); color:#fff; padding:10px 18px; font-size:12px; font-weight:600; display:flex; justify-content:space-between; align-items:center; }
+  .hotel-body { padding:18px; }
+  .hotel-name { font-size:17px; font-weight:700; color:var(--navy); margin-bottom:10px; }
+  .hotel-row { display:flex; justify-content:space-between; font-size:13.5px; padding:6px 0; border-bottom:1px dashed var(--border); }
+  .hotel-row:last-child { border-bottom:none; }
+  .hotel-row .k { color:var(--text-muted); }
+
+  footer { width:100%; background:var(--navy); padding:28px 24px; text-align:center; }
+  .footer-inner { max-width:var(--max-w); margin:0 auto; }
+  .footer-name { color:#fff; font-size:15px; font-weight:600; margin-bottom:14px; }
+  .footer-btns { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+  .btn { padding:10px 22px; border-radius:30px; font-size:13.5px; font-weight:600; display:inline-flex; align-items:center; gap:6px; }
+  .btn-call { background:var(--coral); color:#fff; }
+  .btn-kakao { background:#FEE500; color:#3A2929; }
+
+  @media (max-width:480px) {
+    .trip-band-inner { grid-template-columns:repeat(2,1fr); }
+    .baggage-grid { grid-template-columns:1fr; }
+    .header-title { font-size:23px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-badge">※ 이 문서는 형식 안내용 예시입니다 · 실제 확정 정보 아님</div>
+
+<header>
+  <div class="header-inner">
+    <div class="header-tag">Travel Confirmation</div>
+    <div class="header-title">다낭·호이안·바나힐 여행 확정서</div>
+    <div class="header-subtitle">DA NANG · HOI AN · BA NA HILLS 2026</div>
+    <div class="header-names">고객님 성함 (확정 시 기재)</div>
+  </div>
+</header>
+
+<div class="trip-band">
+  <div class="trip-band-inner">
+    <div><div class="label">출발일</div><div class="value">26.08.11(화)</div></div>
+    <div><div class="label">귀국일</div><div class="value">26.08.15(토)</div></div>
+    <div><div class="label">일정</div><div class="value">4박 5일</div></div>
+    <div><div class="label">투어타입</div><div class="value">패키지</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="section">
+    <div class="section-head"><div class="section-num">1</div><div class="section-title">상품 안내</div></div>
+    <a class="product-link-box" href="https://www.modetour.com/package/103695486?MLoc=99&Pnum=103695486&ANO=1772510&sno=C2181215&thru=crs3" target="_blank">
+      <div class="name">[인기있다낭/호텔무료UP] 다낭/호이안/바나힐 5일 (5성 알란씨 동급)</div>
+      <div class="url">상품 상세 페이지 바로가기 →</div>
+    </a>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">항공 일정</div></div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>출발편</span><span class="flight-no">티웨이항공 TW</span></div>
+      <div class="flight-route">
+        <div class="code">TAE</div>
+        <div class="mid">대구 → 다낭<br>21:10 출발</div>
+        <div class="code">DAD</div>
+      </div>
+      <div class="flight-badges">
+        <span>티웨이항공</span><span>대구국제공항</span><span>위탁 15kg</span><span>기내 10kg</span>
+      </div>
+      <div class="alert-coral" style="margin:0 18px 18px;">기내식 미포함 항공편입니다. 필요 시 개별 구매 또는 간식 지참 권장드립니다.</div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>귀국편</span><span class="flight-no">티웨이항공 TW</span></div>
+      <div class="flight-route">
+        <div class="code">DAD</div>
+        <div class="mid">다낭 → 대구<br>08:15 도착</div>
+        <div class="code">TAE</div>
+      </div>
+      <div class="flight-badges">
+        <span>티웨이항공</span><span>다낭국제공항</span><span>위탁 15kg</span><span>기내 10kg</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">수하물 안내</div></div>
+    <div class="baggage-grid">
+      <div class="baggage-card"><div class="label">위탁 수하물</div><div class="value">15kg</div></div>
+      <div class="baggage-card"><div class="label">기내 수하물</div><div class="value">10kg</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">체크인 카운터 안내 (예시)</div></div>
+    <div class="counter-box">
+      <div class="counter-step"><div class="step-num">1</div><div class="step-text">티웨이항공 온라인 체크인은 <b>출발 24시간 전부터</b> 가능합니다.</div></div>
+      <div class="counter-step"><div class="step-num">2</div><div class="step-text">대구국제공항 국제선 티웨이항공 카운터에서 위탁수하물 수속 진행</div></div>
+      <div class="counter-step"><div class="step-num">3</div><div class="step-text">항공기 출발 2시간 전 공항 도착 권장</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">투숙 호텔 (예시)</div></div>
+    <div class="hotel-card">
+      <div class="hotel-header"><span>ALL DAYS INCLUDED</span><span>4박 포함</span></div>
+      <div class="hotel-body">
+        <div class="hotel-name">5성급 알란씨 동급 호텔 (확정 시 실제 호텔명 기재)</div>
+        <div class="hotel-row"><span class="k">투숙 기간</span><span>26.08.11 ~ 26.08.15 (4박)</span></div>
+        <div class="hotel-row"><span class="k">룸타입</span><span>확정 시 안내</span></div>
+        <div class="hotel-row"><span class="k">체크아웃</span><span>호텔 규정에 따름</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">안내 사항</div></div>
+    <div class="alert-navy">베트남 입국 시 별도 출입국신고서는 불필요합니다 (여권만 소지). 다만 도착 72시간 전부터 사전 입국신고서(e-Visa 아님) 작성이 권장됩니다.</div>
+    <div class="alert-gold">이티켓(E-Ticket)은 인천/대구 출발 전 미리 출력 또는 모바일로 저장해두시기 바랍니다.</div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-name">여행컨설턴트 이경진 실장</div>
+    <div class="footer-btns">
+      <a class="btn btn-call" href="tel:1544-5714">☎ 1544-5714</a>
+      <a class="btn btn-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">투어콕 카카오톡 채널</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
