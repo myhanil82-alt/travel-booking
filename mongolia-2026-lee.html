@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>몽골 여행 확정서 - 이중석님 외 1명</title>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sea: #8a4a10;
+    --sea-light: #fdf0e0;
+    --gold: #b07000;
+    --gold-light: #fff8e0;
+    --red: #c03020;
+    --red-light: #fdeeed;
+    --amber: #c06000;
+    --amber-light: #fff4e0;
+    --green: #1a6b3a;
+    --green-light: #e4f8ee;
+    --cream: #fdf8f0;
+    --warm-white: #ffffff;
+    --charcoal: #1a0c00;
+    --medium: #5a3010;
+    --muted: #9a7050;
+    --border: #e0c898;
+    --blue: #1a4a8a;
+    --blue-light: #e4eeff;
+    --purple: #5a3080;
+    --purple-light: #f0eeff;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:"Nanum Gothic","맑은 고딕","Malgun Gothic",sans-serif; background:var(--cream); color:var(--charcoal); line-height:1.7; font-size:16px; }
+  .main { max-width:700px; margin:0 auto; }
+
+  .hero {
+    position:relative;
+    background:linear-gradient(160deg, #0c0800 0%, #281800 40%, #4a2c08 75%, #8a5010 100%);
+    padding:3.5rem 2rem 4rem; text-align:center; overflow:hidden;
+  }
+  .hero::after { content:""; position:absolute; bottom:-2px; left:0; right:0; height:50px; background:var(--cream); clip-path:ellipse(60% 100% at 50% 100%); }
+  .hero-blob { position:absolute; border-radius:50%; background:rgba(255,255,255,0.06); }
+  .hero-content { position:relative; z-index:2; }
+  .hero-tag { display:inline-block; background:rgba(255,255,255,0.13); border:1px solid rgba(255,255,255,0.3); border-radius:20px; padding:5px 18px; font-size:13px; letter-spacing:0.2em; color:rgba(255,255,255,0.92); margin-bottom:0.9rem; text-transform:uppercase; }
+  .hero-title { font-size:clamp(26px,5.5vw,38px); font-weight:800; color:#fff; line-height:1.35; margin-bottom:0.3rem; text-shadow:0 2px 12px rgba(0,0,0,0.3); }
+  .hero-title em { color:#ffd890; font-style:normal; }
+  .hero-names { font-size:18px; font-weight:700; color:rgba(255,255,255,0.9); margin-bottom:0.3rem; }
+  .hero-sub { font-size:15px; color:rgba(255,255,255,0.72); margin-bottom:1.4rem; }
+  .agent-wrap { display:flex; flex-direction:column; align-items:center; gap:8px; }
+  .agent-name { display:inline-flex; align-items:center; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.35); border-radius:30px; padding:8px 22px; font-size:15px; color:#fff; font-weight:700; }
+  .agent-contacts { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
+  .agent-contacts a { display:inline-flex; align-items:center; gap:6px; border-radius:30px; padding:8px 18px; font-size:14px; text-decoration:none; font-weight:700; }
+  .contact-phone { background:rgba(255,255,255,0.92); color:#281800; }
+  .contact-kakao { background:#FEE500; color:#3a1d00; }
+
+  /* 행사정보 배너 */
+  .meeting-banner { background:linear-gradient(135deg,#fdf0e0,#f8e4c8,#f2d8b0); padding:1.2rem 1.75rem; border-bottom:3px solid #8a5010; }
+  .meeting-banner-title { font-size:15px; font-weight:800; color:#281800; margin-bottom:0.8rem; }
+  .guide-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .guide-item { background:rgba(255,255,255,0.85); border-radius:12px; padding:12px 16px; border:1px solid rgba(138,80,16,0.25); }
+  .guide-item-label { font-size:12px; font-weight:700; color:#7a3808; margin-bottom:4px; }
+  .guide-item-val { font-size:14px; font-weight:800; color:#1a0c00; line-height:1.5; }
+  .guide-item-sub { font-size:12px; color:#5a3010; margin-top:2px; line-height:1.5; }
+
+  /* 온라인 체크인 배너 */
+  .checkin-banner { background:linear-gradient(135deg,#050f20,#0a2a5a,#0f3a80); padding:1.2rem 1.75rem; border-bottom:3px solid #60a0e0; }
+
+  /* 항공 배너 */
+  .flight-banner { background:linear-gradient(135deg,#e8f0ff,#d8e8ff,#c8e0ff); padding:1.2rem 1.75rem; border-bottom:3px solid #6090d0; }
+  .flight-banner-title { font-size:15px; font-weight:800; color:#1a3a7a; margin-bottom:0.8rem; }
+  .flight-card { background:rgba(255,255,255,0.88); border-radius:14px; overflow:hidden; border:1px solid rgba(80,130,200,0.35); margin-bottom:10px; }
+  .flight-card:last-child { margin-bottom:0; }
+  .flight-card-header { padding:9px 16px; font-size:13px; font-weight:800; }
+  .flight-card-header.go   { background:linear-gradient(135deg,#281800,#8a5010); color:#fff; }
+  .flight-card-header.back { background:linear-gradient(135deg,#0a2040,#1a4a8a); color:#fff; }
+  .flight-card-body { padding:14px 18px; }
+  .flight-route { display:flex; align-items:center; justify-content:space-between; }
+  .flight-city { text-align:center; flex:1; }
+  .flight-city-code { font-size:25px; font-weight:800; color:#1a2040; }
+  .flight-city-time { font-size:18px; font-weight:800; color:#4a2c08; margin-top:2px; }
+  .flight-city-name { font-size:13px; color:var(--muted); margin-top:3px; }
+  .flight-arrow-wrap { flex:0 0 84px; text-align:center; }
+  .flight-arrow { font-size:22px; color:#4a80c0; }
+  .flight-arrow-label { font-size:12px; color:var(--muted); margin-top:2px; line-height:1.4; }
+  .flight-meta-row { display:flex; gap:6px; margin-top:10px; flex-wrap:wrap; }
+  .flight-meta-chip { background:#fdf0e0; border:1px solid #d4a060; border-radius:20px; padding:4px 12px; font-size:12px; font-weight:700; color:#5a3010; }
+  .flight-meta-chip.good { background:var(--green-light); border-color:#80c0a0; color:#1a5a30; }
+  .flight-meta-chip.warn { background:#fdeeed; border-color:#e08080; color:#8a1010; }
+
+  /* 수하물 배너 */
+  .baggage-banner { background:linear-gradient(135deg,#fdf0e0,#f8e4c8,#f2d8b0); padding:1.2rem 1.75rem; border-bottom:3px solid #8a5010; }
+  .baggage-title { font-size:15px; font-weight:800; color:#281800; margin-bottom:0.8rem; }
+  .baggage-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .baggage-item { background:rgba(255,255,255,0.85); border-radius:12px; padding:12px 15px; border:1px solid rgba(138,80,16,0.25); }
+  .baggage-label { font-size:12px; font-weight:700; color:#7a3808; margin-bottom:5px; }
+  .baggage-val   { font-size:16px; font-weight:800; color:#1a0c00; line-height:1.5; }
+  .baggage-sub   { font-size:13px; color:#5a3010; margin-top:3px; line-height:1.5; }
+
+  /* 날씨 배너 */
+  .weather-bar { background:linear-gradient(160deg,#fff8d0,#ffeebb,#ffe0a0); padding:1.2rem 1.75rem; border-bottom:3px solid #d0a030; }
+  .weather-title { font-size:15px; font-weight:800; color:#6a3800; margin-bottom:0.8rem; }
+  .weather-note { background:rgba(255,255,255,0.78); border-radius:10px; padding:10px 15px; font-size:14px; color:#6a3800; font-weight:700; border:1px solid rgba(200,140,40,0.35); }
+  .weather-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin-bottom:10px; }
+  .weather-day { background:rgba(255,255,255,0.85); border-radius:10px; padding:10px 6px; text-align:center; border:1px solid rgba(200,140,40,0.4); }
+  .weather-day-label { font-size:12px; font-weight:700; color:#7a4a10; margin-bottom:3px; }
+  .weather-day-icon  { font-size:24px; margin-bottom:4px; }
+  .weather-day-temp  { font-size:13px; font-weight:800; color:#0a1000; }
+  .weather-day-desc  { font-size:11px; color:#7a5020; margin-top:3px; }
+
+  /* SECTIONS */
+  .section { background:var(--warm-white); border-bottom:1px solid var(--border); padding:1.9rem 1.75rem; }
+  .section:nth-child(even) { background:var(--cream); }
+  .section-eyebrow { font-size:12px; letter-spacing:0.22em; text-transform:uppercase; color:var(--sea); font-weight:700; margin-bottom:0.3rem; }
+  .section-heading { font-size:22px; font-weight:800; color:var(--charcoal); margin-bottom:1.2rem; display:flex; align-items:center; gap:10px; }
+  .section-heading::after { content:""; flex:1; height:1.5px; background:linear-gradient(to right,var(--border),transparent); }
+
+  .info-card { background:var(--warm-white); border:1px solid var(--border); border-radius:14px; overflow:hidden; box-shadow:0 2px 10px rgba(138,74,16,0.08); }
+  .info-row { display:flex; gap:1rem; padding:14px 18px; border-bottom:1px solid var(--border); align-items:flex-start; }
+  .info-row:last-child { border-bottom:none; }
+  .info-key { min-width:100px; font-size:14px; font-weight:700; color:var(--medium); padding-top:2px; }
+  .info-val { flex:1; color:var(--charcoal); line-height:1.7; font-size:14.5px; }
+  .info-val strong { color:var(--sea); font-weight:700; }
+
+  .alert { border-radius:10px; padding:12px 16px; font-size:14px; line-height:1.7; margin-top:8px; }
+  .alert-red    { background:var(--red-light);    border-left:3px solid var(--red);    color:#7a1010; }
+  .alert-amber  { background:var(--amber-light);  border-left:3px solid var(--amber);  color:#7a3800; }
+  .alert-green  { background:var(--green-light);  border-left:3px solid var(--green);  color:#0a3820; }
+  .alert-gold   { background:var(--gold-light);   border-left:3px solid var(--gold);   color:#7a4800; }
+  .alert-sea    { background:var(--sea-light);    border-left:3px solid var(--sea);    color:#281800; }
+  .alert-blue   { background:var(--blue-light);   border-left:3px solid var(--blue);   color:#0a1a4a; }
+  .alert-purple { background:var(--purple-light); border-left:3px solid var(--purple); color:#2a1050; }
+
+  a.link-pill { display:inline-flex; align-items:center; gap:6px; background:linear-gradient(135deg,#281800,#8a5010); border-radius:22px; padding:9px 20px; font-size:14px; color:#fff; text-decoration:none; margin-top:6px; font-weight:700; box-shadow:0 3px 10px rgba(138,80,16,0.3); }
+  a.link-pill-green { display:inline-flex; align-items:center; gap:6px; background:linear-gradient(135deg,#1a6b3a,#2a9a58); border-radius:22px; padding:9px 20px; font-size:14px; color:#fff; text-decoration:none; margin-top:6px; font-weight:700; }
+
+  /* 호텔 카드 */
+  .hotel-card { background:var(--warm-white); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-bottom:10px; }
+  .hotel-card:last-of-type { margin-bottom:0; }
+  .hotel-card-header { background:linear-gradient(135deg,#281800,#8a5010); padding:12px 18px; display:flex; align-items:center; justify-content:space-between; }
+  .hotel-card-name { font-size:15px; font-weight:800; color:#fff; }
+  .hotel-card-badge { background:rgba(255,255,255,0.25); border:1px solid rgba(255,255,255,0.4); color:#fff; font-size:12px; font-weight:700; padding:3px 12px; border-radius:20px; }
+  .hotel-info-val { padding:11px 16px; font-size:13.5px; color:var(--charcoal); line-height:1.6; }
+
+  /* 승마 특별 안내 박스 */
+  .special-box { border:2px solid #8a5010; border-radius:14px; overflow:hidden; }
+  .special-box-head { background:linear-gradient(135deg,#281800,#8a5010); padding:12px 18px; font-size:13px; font-weight:800; color:#fff; }
+  .special-box-body { padding:16px 18px; background:#fff8f0; font-size:14px; line-height:1.85; color:#3a1800; }
+
+  .excl-list { list-style:none; padding:0; }
+  .excl-list li { display:flex; align-items:flex-start; gap:10px; padding:10px 0; border-bottom:1px solid var(--border); font-size:15px; line-height:1.6; }
+  .excl-list li:last-child { border-bottom:none; }
+  .excl-dot { width:8px; height:8px; background:var(--sea); border-radius:50%; flex-shrink:0; margin-top:7px; }
+
+  .checkin-list { list-style:none; padding:0; }
+  .checkin-list li { display:flex; gap:12px; padding:10px 0; border-bottom:1px solid var(--border); font-size:15px; line-height:1.7; }
+  .checkin-list li:last-child { border-bottom:none; }
+  .checkin-num { min-width:24px; height:24px; background:linear-gradient(135deg,#281800,#8a5010); color:#fff; border-radius:50%; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
+
+  .checklist { list-style:none; padding:0; }
+  .checklist li { display:flex; align-items:flex-start; gap:12px; padding:10px 0; border-bottom:1px solid var(--border); font-size:14.5px; line-height:1.65; }
+  .checklist li:last-child { border-bottom:none; }
+  .check-num { min-width:24px; height:24px; background:linear-gradient(135deg,#281800,#8a5010); color:#fff; border-radius:50%; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
+  .check-cat { font-size:12px; font-weight:800; color:var(--sea); background:var(--sea-light); border-radius:5px; padding:2px 8px; margin-right:5px; white-space:nowrap; }
+
+  .footer { background:linear-gradient(160deg,#0c0800,#281800 60%,#8a5010 100%); padding:2.8rem 2rem; text-align:center; position:relative; overflow:hidden; }
+  .footer::before { content:""; position:absolute; top:-60px; right:-60px; width:200px; height:200px; border-radius:50%; background:rgba(255,255,255,0.05); }
+  .footer-content { position:relative; z-index:1; }
+  .footer-title { font-size:23px; font-weight:800; color:#fff; margin-bottom:0.5rem; }
+  .footer-sub   { font-size:15px; color:rgba(255,255,255,0.65); line-height:1.8; margin-bottom:1.4rem; }
+  .footer-name  { font-size:16px; font-weight:700; color:rgba(255,255,255,0.9); margin-bottom:14px; }
+  .footer-contacts { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+  .footer-btn { display:inline-flex; align-items:center; gap:8px; border-radius:30px; padding:11px 24px; font-size:15px; text-decoration:none; font-weight:700; }
+  .footer-btn-phone { background:rgba(255,255,255,0.18); border:1.5px solid rgba(255,255,255,0.45); color:#fff; }
+  .footer-btn-kakao { background:#FEE500; border:1.5px solid #FEE500; color:#3a1d00; }
+
+  @media(max-width:520px){
+    .section { padding:1.5rem 1.2rem; }
+    .guide-grid,.baggage-grid { grid-template-columns:1fr; }
+    .weather-grid { grid-template-columns:repeat(2,1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="main">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-blob" style="width:240px;height:240px;top:-80px;right:-70px;"></div>
+    <div class="hero-blob" style="width:160px;height:160px;bottom:20px;left:-50px;"></div>
+    <div class="hero-content">
+      <div class="hero-tag">✦ Travel Confirmation ✦</div>
+      <div class="hero-title">🏕 <em>몽골</em> 여행 확정서</div>
+      <div class="hero-names">이중석님 외 1명</div>
+      <div class="hero-sub">인천국제공항 출발 · 4박 5일</div>
+      <div class="agent-wrap">
+        <div class="agent-name">담당 이경진 실장</div>
+        <div class="agent-contacts">
+          <a class="contact-phone" href="tel:15445714">📞 1544-5714</a>
+          <a class="contact-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡 상담</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 행사정보 배너 -->
+  <div class="meeting-banner">
+    <div class="meeting-banner-title">👤 현지 행사 정보</div>
+    <div class="guide-grid">
+      <div class="guide-item">
+        <div class="guide-item-label">담당 가이드</div>
+        <div class="guide-item-val">수해 (남)</div>
+        <div class="guide-item-sub">피켓명: 모두투어 가이드 수해<br>김용철 외 23명</div>
+      </div>
+      <div class="guide-item">
+        <div class="guide-item-label">가이드 연락처</div>
+        <div class="guide-item-val">976-9903-8832</div>
+      </div>
+      <div class="guide-item">
+        <div class="guide-item-label">현지 비상연락처</div>
+        <div class="guide-item-val">을지 매니저</div>
+        <div class="guide-item-sub">+976-9192-4152</div>
+      </div>
+      <div class="guide-item">
+        <div class="guide-item-label">행사 인원 / 차량</div>
+        <div class="guide-item-val">24명</div>
+        <div class="guide-item-sub">현대 유니버스 45인승</div>
+      </div>
+    </div>
+    <div class="alert alert-green" style="margin-top:10px;">
+      📍 울란바타르 공항 입국장에서 <strong>모두투어 가이드 수해 / 김용철 외 23명</strong> 피켓을 들고 있는 가이드를 만나 함께 이동합니다.
+    </div>
+    <div class="alert alert-sea" style="margin-top:8px;">
+      ✈️ <strong>인천공항 미팅은 없습니다.</strong> 개별 티켓팅 후 각자 출발하시면 됩니다.
+    </div>
+  </div>
+
+  <!-- 온라인 체크인 배너 -->
+  <div class="checkin-banner">
+    <div style="font-size:15px;font-weight:800;color:#a0d0ff;margin-bottom:10px;">📱 제주항공 온라인 체크인 안내</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">
+      <div style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:12px;padding:14px 16px;">
+        <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.6);letter-spacing:1px;margin-bottom:6px;">🔑 항공사 예약번호</div>
+        <div style="font-size:22px;font-weight:800;color:#ffd880;letter-spacing:3px;">DGJV6H</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:12px;padding:14px 16px;">
+        <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.6);letter-spacing:1px;margin-bottom:6px;">⏰ 체크인 가능 시간</div>
+        <div style="font-size:15px;font-weight:800;color:#fff;">출발 24시간 전부터</div>
+        <div style="font-size:13px;font-weight:700;color:#a0d0ff;margin-top:4px;">제주항공 사이트에서 가능</div>
+      </div>
+    </div>
+    <div style="background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.18);border-radius:12px;padding:14px 16px;margin-bottom:10px;font-size:13.5px;color:#fff;line-height:1.9;">
+      <strong style="color:#ffd880;">① 온라인 체크인</strong> — 제주항공 사이트 접속 → 예약번호 <strong style="color:#ffd880;">DGJV6H</strong> 입력 → 좌석 지정 후 탑승 QR 발급<br>
+      <strong style="color:#ffd880;">② 공항 수속</strong> — 인천공항 <strong>제1터미널 제주항공 카운터</strong>에서 짐 수속 후 개별 출발
+    </div>
+    <a href="https://www.jejuair.net/ko/main/base/index.do" target="_blank"
+      style="display:inline-flex;align-items:center;gap:6px;background:#ffd880;border-radius:22px;padding:9px 20px;font-size:14px;color:#1a1000;text-decoration:none;font-weight:800;">
+      제주항공 온라인 체크인 바로가기 →
+    </a>
+    <div style="background:rgba(255,100,100,0.18);border:1px solid rgba(255,150,150,0.4);border-radius:10px;padding:10px 14px;margin-top:10px;font-size:13.5px;color:#ffcccc;font-weight:700;">
+      ⚠️ 온라인 체크인 못 하신 분 — 당일 인천공항 <strong style="color:#fff;">제주항공 카운터</strong>에서 티켓팅 후 짐 수속하시면 됩니다.
+    </div>
+  </div>
+
+  <!-- 항공 배너 -->
+  <div class="flight-banner">
+    <div class="flight-banner-title">✈️ 항공 일정 — 제주항공</div>
+    <div class="flight-card">
+      <div class="flight-card-header go">✈ 가는 편 &nbsp;·&nbsp; 7C5275</div>
+      <div class="flight-card-body">
+        <div class="flight-route">
+          <div class="flight-city">
+            <div class="flight-city-code">ICN</div>
+            <div class="flight-city-time">13:45</div>
+            <div class="flight-city-name">인천</div>
+          </div>
+          <div class="flight-arrow-wrap">
+            <div class="flight-arrow">→</div>
+            <div class="flight-arrow-label">2026.07.24(금)</div>
+          </div>
+          <div class="flight-city">
+            <div class="flight-city-code">ULN</div>
+            <div class="flight-city-time">16:05</div>
+            <div class="flight-city-name">울란바타르</div>
+          </div>
+        </div>
+        <div class="flight-meta-row">
+          <span class="flight-meta-chip">제주항공</span>
+          <span class="flight-meta-chip">편명 7C5275</span>
+          <span class="flight-meta-chip">소요 약 3시간 20분</span>
+          <span class="flight-meta-chip warn">기내식 없음</span>
+        </div>
+      </div>
+    </div>
+    <div class="flight-card">
+      <div class="flight-card-header back">✈ 오는 편 &nbsp;·&nbsp; 7C5276</div>
+      <div class="flight-card-body">
+        <div class="flight-route">
+          <div class="flight-city">
+            <div class="flight-city-code">ULN</div>
+            <div class="flight-city-time">17:05</div>
+            <div class="flight-city-name">울란바타르</div>
+          </div>
+          <div class="flight-arrow-wrap">
+            <div class="flight-arrow">→</div>
+            <div class="flight-arrow-label">2026.07.28(화)</div>
+          </div>
+          <div class="flight-city">
+            <div class="flight-city-code">ICN</div>
+            <div class="flight-city-time">21:20</div>
+            <div class="flight-city-name">인천</div>
+          </div>
+        </div>
+        <div class="flight-meta-row">
+          <span class="flight-meta-chip">제주항공</span>
+          <span class="flight-meta-chip">편명 7C5276</span>
+          <span class="flight-meta-chip">소요 약 3시간 15분</span>
+          <span class="flight-meta-chip warn">기내식 없음</span>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-red" style="margin-top:10px;">
+      ⚠️ 기내식이 포함되지 않습니다. 탑승 전 공항에서 미리 식사하시거나 간식을 준비해 가세요.
+    </div>
+  </div>
+
+  <!-- 수하물 배너 -->
+  <div class="baggage-banner">
+    <div class="baggage-title">🧳 수하물 안내 — 제주항공</div>
+    <div class="baggage-grid">
+      <div class="baggage-item">
+        <div class="baggage-label">위탁 수하물</div>
+        <div class="baggage-val">15kg · 1인 1개</div>
+        <div class="baggage-sub">초과 시 공항에서 추가 요금 발생</div>
+      </div>
+      <div class="baggage-item">
+        <div class="baggage-label">기내 수하물</div>
+        <div class="baggage-val">10kg · 1인</div>
+        <div class="baggage-sub">액체류 100ml 이하 · 보조배터리 기내 반입</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 날씨 배너 -->
+  <div class="weather-bar">
+    <div class="weather-title">🌤️ 현지 날씨 — 울란바타르·테를지 (7월 말)</div>
+    <div class="weather-grid">
+      <div class="weather-day">
+        <div class="weather-day-label">7/24 (금)</div>
+        <div class="weather-day-icon">☀️</div>
+        <div class="weather-day-temp">14~28°C</div>
+        <div class="weather-day-desc">맑음</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-label">7/25 (토)</div>
+        <div class="weather-day-icon">⛅</div>
+        <div class="weather-day-temp">13~27°C</div>
+        <div class="weather-day-desc">구름 조금</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-label">7/26 (일)</div>
+        <div class="weather-day-icon">🌦️</div>
+        <div class="weather-day-temp">12~25°C</div>
+        <div class="weather-day-desc">소나기 가능</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-label">7/27 (월)</div>
+        <div class="weather-day-icon">☀️</div>
+        <div class="weather-day-temp">13~27°C</div>
+        <div class="weather-day-desc">맑음</div>
+      </div>
+    </div>
+    <div class="weather-note">
+      🌡️ 몽골 7월은 낮에는 25~28°C로 따뜻하지만 아침·저녁 일교차가 10~15°C로 큽니다. 후리스나 얇은 패딩을 꼭 챙겨가세요!
+    </div>
+  </div>
+
+  <!-- 01. 상품 안내 -->
+  <div class="section">
+    <div class="section-eyebrow">01</div>
+    <div class="section-heading">상품 안내</div>
+    <div class="info-card">
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">예약 상품</div>
+        <div class="info-val">
+          <span style="font-size:14px;color:var(--muted);display:block;margin-bottom:6px;">아래 버튼을 눌러 일정표를 확인하세요</span>
+          <a class="link-pill" href="https://www.modetour.com/package/109370311?MLoc=99&Pnum=109370311&ANO=1772510&sno=C2181215&thru=crs" target="_blank">모두투어 예약 확인 ✔</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02. 투숙 호텔 -->
+  <div class="section">
+    <div class="section-eyebrow">02</div>
+    <div class="section-heading">투숙 호텔</div>
+    <div class="hotel-card">
+      <div class="hotel-card-header">
+        <div class="hotel-card-name">홀리데이인 울란바토르</div>
+        <div class="hotel-card-badge">호텔</div>
+      </div>
+      <div class="hotel-info-val">울란바타르 시내 호텔</div>
+    </div>
+    <div class="hotel-card">
+      <div class="hotel-card-header">
+        <div class="hotel-card-name">후이덜러호닥 바양척트 신식게르</div>
+        <div class="hotel-card-badge">게르 캠프</div>
+      </div>
+      <div class="hotel-info-val">초원 신식 게르 숙박</div>
+    </div>
+    <div class="hotel-card">
+      <div class="hotel-card-header">
+        <div class="hotel-card-name">테를지 신게르</div>
+        <div class="hotel-card-badge">게르 캠프 · 2인 1실</div>
+      </div>
+      <div class="hotel-info-val">테를지 국립공원 내 전통 게르 캠프</div>
+    </div>
+  </div>
+
+  <!-- 03. 승마·낙타 특별 안내 -->
+  <div class="section">
+    <div class="section-eyebrow">03</div>
+    <div class="section-heading">승마·낙타 탑승 안내 🐎</div>
+    <div class="special-box">
+      <div class="special-box-head">📸 이중석님 기념 촬영 안내 (승마·낙타 탑승 제한 대상)</div>
+      <div class="special-box-body">
+        이중석님께서는 연령 제한으로 <strong>승마 및 낙타 탑승이 제한</strong>됩니다.<br>
+        대신 <strong>기념 촬영</strong>으로 진행해 드립니다.<br><br>
+        ★ <strong>기념 촬영 방법</strong><br>
+        마부가 말/낙타를 <strong>단단히 잡고 있는 상태(1인 1마부)</strong>에서 탑승하여<br>
+        사진 촬영 후 내려오시면 됩니다.<br><br>
+        <span style="color:#c03020;font-weight:800;">⚠️ 탑승 및 촬영 시 안전에 각별히 유의해 주시기 바랍니다.</span>
+      </div>
+    </div>
+    <div class="alert alert-red" style="margin-top:12px;">
+      ⚠️ 승마 체험은 동물들의 돌발 상황으로 예기치 못한 사고가 발생할 수 있습니다. 가이드가 고지한 안내 사항을 반드시 준수해 주세요.
+    </div>
+  </div>
+
+  <!-- 04. 몽골 입국심사 유의사항 -->
+  <div class="section">
+    <div class="section-eyebrow">04</div>
+    <div class="section-heading">몽골 입국심사 유의사항</div>
+    <div style="border:2px solid #8a5010;border-radius:14px;overflow:hidden;margin-bottom:14px;">
+      <div style="background:linear-gradient(135deg,#281800,#8a5010);padding:11px 16px;font-size:13px;font-weight:800;color:#fff;">🛂 최근 강화된 몽골 입국심사 — 반드시 확인!</div>
+      <div style="padding:14px 16px;background:#fff8f0;">
+        <ul style="list-style:none;padding:0;">
+          <li style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;line-height:1.6;">
+            <span style="color:#8a5010;font-weight:800;flex-shrink:0;">✈️</span><span><strong>왕복 항공권</strong>을 반드시 소지해 주세요.</span>
+          </li>
+          <li style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;line-height:1.6;">
+            <span style="color:#8a5010;font-weight:800;flex-shrink:0;">🗣️</span><span>입국심사 방문 목적 질문 시 <strong style="color:#c03020;">★ "여행" ★</strong> 이라고 답변해 주세요.</span>
+          </li>
+          <li style="display:flex;gap:10px;padding:8px 0;border-bottom:none;font-size:14px;line-height:1.6;">
+            <span style="color:#8a5010;font-weight:800;flex-shrink:0;">🏨</span><span><strong>정확한 호텔명</strong>을 미리 숙지해 주세요.<br><span style="font-size:12.5px;color:var(--muted);">홀리데이인 울란바토르 / 후이덜러호닥 바양척트 신식게르 / 테를지 신게르</span></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Q-CODE -->
+    <div style="border:2px solid #1a6b3a;border-radius:14px;overflow:hidden;">
+      <div style="background:linear-gradient(135deg,#0a3820,#1a6b3a);padding:11px 16px;font-size:13px;font-weight:800;color:#fff;">🏥 한국 귀국 시 Q-CODE 제출 필수 (몽골 중점검역관리지역)</div>
+      <div style="padding:14px 16px;background:#f4faf5;font-size:13.5px;line-height:1.8;color:var(--charcoal);">
+        몽골은 <strong>중점검역관리지역</strong>으로 귀국 시 Q-CODE(또는 건강상태 질문서)를 검역관에게 제출해야 합니다.<br>
+        <strong>입국일 7일 전부터 발급 가능</strong>하며, 기내에서 건강상태 질문서를 작성하셔도 됩니다.
+        <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;">
+          <a href="https://qcode.kdca.go.kr/qco/index.do" target="_blank"
+            style="display:inline-flex;align-items:center;gap:5px;background:linear-gradient(135deg,#0a3820,#1a6b3a);border-radius:20px;padding:8px 16px;font-size:13px;color:#fff;text-decoration:none;font-weight:700;">
+            Q-CODE 발급 (한국어) →
+          </a>
+          <a href="https://qcode.kdca.go.kr/qco/index.do?lang=en" target="_blank"
+            style="display:inline-flex;align-items:center;gap:5px;background:linear-gradient(135deg,#1a4a8a,#2a6ab0);border-radius:20px;padding:8px 16px;font-size:13px;color:#fff;text-decoration:none;font-weight:700;">
+            Q-CODE (English) →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05. 불포함 사항 -->
+  <div class="section">
+    <div class="section-eyebrow">05</div>
+    <div class="section-heading">불포함 사항</div>
+    <ul class="excl-list">
+      <li><div class="excl-dot"></div><span>개인 물값 및 음료수</span></li>
+      <li><div class="excl-dot"></div><span>룸서비스 및 포터 팁</span></li>
+      <li><div class="excl-dot"></div><span><strong>마부팁</strong> — 승마·낙타 체험 시 마부에게 지불 (자율)</span></li>
+      <li><div class="excl-dot"></div><span>각종 개인 경비</span></li>
+    </ul>
+  </div>
+
+  <!-- 06. 환전 안내 -->
+  <div class="section">
+    <div class="section-eyebrow">06</div>
+    <div class="section-heading">환전 안내 💵</div>
+    <div class="info-card">
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">투그릭 (MNT)</div>
+        <div class="info-val">
+          몽골 화폐 <strong>투그릭(MNT)은 한국에서 환전이 불가</strong>합니다.<br>
+          <strong>미국 달러(USD)로 준비</strong>하신 후 현지 공항 또는 시내 환전소에서 투그릭으로 환전하여 사용하시면 됩니다.
+          <div class="alert alert-gold" style="margin-top:8px;">
+            💵 마부팁은 달러 현금 또는 한국 원화 1,000원권·10,000원권도 가능합니다.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 07. 준비물 체크리스트 -->
+  <div class="section">
+    <div class="section-eyebrow">07</div>
+    <div class="section-heading">준비물 체크리스트 🎒</div>
+    <div class="alert alert-gold" style="margin-bottom:1rem;margin-top:0;">
+      ⚡ 몽골은 <strong>220V</strong>로 한국과 동일합니다. 별도 어댑터 불필요!
+    </div>
+    <ul class="checklist">
+      <li><div class="check-num">1</div><span><span class="check-cat">필수</span><strong>여권</strong> — 유효기간 6개월 이상 반드시 확인!</span></li>
+      <li><div class="check-num">2</div><span><span class="check-cat">필수</span><strong>항공권 E-티켓</strong> 출력 또는 스마트폰 저장</span></li>
+      <li><div class="check-num">3</div><span><span class="check-cat">세면</span>개인 세면도구 + <strong>압축타올</strong> (게르 내 수건 없을 수 있음)</span></li>
+      <li><div class="check-num">4</div><span><span class="check-cat">복장</span><strong>후리스 또는 얇은 패딩</strong> — 아침·저녁 일교차 대비 필수</span></li>
+      <li><div class="check-num">5</div><span><span class="check-cat">복장</span>날씨에 맞는 의상 + <strong>긴 바지</strong> (승마 시 피부 보호)</span></li>
+      <li><div class="check-num">6</div><span><span class="check-cat">복장</span><strong>넥커버 모자</strong> — 목끈 있는 타입 (초원 바람에 날림 방지)</span></li>
+      <li><div class="check-num">7</div><span><span class="check-cat">복장</span>트레킹화 또는 운동화 (비포장 초원 이동 많음)</span></li>
+      <li><div class="check-num">8</div><span><span class="check-cat">자외선</span>선크림 (SPF 50+) · 선글라스 · 립밤 · 핸드크림 (고지대 자외선 강함)</span></li>
+      <li><div class="check-num">9</div><span><span class="check-cat">날씨</span>접이식 우산 또는 우비 (소나기 대비)</span></li>
+      <li><div class="check-num">10</div><span><span class="check-cat">식품</span><strong>완전 밀봉 소량 김치 · 튜브 고추장 · 김 · 참치캔</strong> 등 비상식품</span></li>
+      <li><div class="check-num">11</div><span><span class="check-cat">위생</span>물티슈 · 휴지 (게르 주변 위생시설 제한적)</span></li>
+      <li><div class="check-num">12</div><span><span class="check-cat">건강</span>상비약 — 타이레놀·지사제·장염약·소화제·벌레기피제</span></li>
+      <li><div class="check-num">13</div><span><span class="check-cat">침구</span><strong>침낭</strong> — 게르 내 추위 대비 (밤에 기온이 크게 떨어짐)</span></li>
+      <li><div class="check-num">14</div><span><span class="check-cat">전기</span>드라이기 · 보조배터리 · 충전기 (게르 내 전기 제한적)</span></li>
+      <li><div class="check-num">15</div><span><span class="check-cat">기타</span>현금 (달러 + 원화 소액) — 마부팁·개인경비용</span></li>
+    </ul>
+  </div>
+
+  <!-- 08. 유의사항 -->
+  <div class="section">
+    <div class="section-eyebrow">08</div>
+    <div class="section-heading">유의사항</div>
+    <ul class="checkin-list">
+      <li><div class="checkin-num">1</div><span>인천국제공항에 <strong>출발 3시간 전</strong>까지 도착해 주세요.</span></li>
+      <li><div class="checkin-num">2</div><span>여권 유효기간을 꼭 확인해 주세요. <strong>잔여 유효기간 6개월 이상</strong> 필수입니다.</span></li>
+      <li><div class="checkin-num">3</div><span>몽골 초원·게르 지역은 인터넷·통신이 제한될 수 있습니다. 주요 연락은 미리 마쳐 두세요.</span></li>
+      <li><div class="checkin-num">4</div><span>이중석님은 승마·낙타 탑승 제한으로 <strong>기념 촬영</strong>으로 진행합니다. 가이드 안내에 따라 주세요.</span></li>
+      <li><div class="checkin-num">5</div><span>본 안내문은 대표자 한 분께 전달됩니다. <strong>일행 모두에게 공유</strong> 부탁드립니다.</span></li>
+    </ul>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-content">
+      <div class="footer-title">🏕 멋진 몽골 여행 되세요!</div>
+      <div class="footer-sub">궁금하신 사항은 언제든지 문의 주세요.<br>감사합니다.</div>
+      <div class="footer-name">담당 이경진 실장</div>
+      <div class="footer-contacts">
+        <a class="footer-btn footer-btn-phone" href="tel:15445714">📞 1544-5714</a>
+        <a class="footer-btn footer-btn-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡 상담</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
