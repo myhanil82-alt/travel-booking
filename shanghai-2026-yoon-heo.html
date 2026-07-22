@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>상해 여행 확정서 - 윤현정·허민서님</title>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sea: #9a1a2a;
+    --sea-light: #fdeeed;
+    --gold: #b07000;
+    --gold-light: #fff8e0;
+    --red: #c03020;
+    --red-light: #fdeeed;
+    --amber: #c06000;
+    --amber-light: #fff4e0;
+    --green: #1a6b3a;
+    --green-light: #e4f8ee;
+    --cream: #fdf8f8;
+    --warm-white: #ffffff;
+    --charcoal: #1a0808;
+    --medium: #5a1a1a;
+    --muted: #9a6a6a;
+    --border: #e4c0c0;
+    --blue: #1a4a8a;
+    --blue-light: #e4eeff;
+    --purple: #5a3080;
+    --purple-light: #f0eeff;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:"Nanum Gothic","맑은 고딕","Malgun Gothic",sans-serif; background:var(--cream); color:var(--charcoal); line-height:1.7; font-size:16px; }
+  .main { max-width:700px; margin:0 auto; }
+
+  .hero {
+    position:relative;
+    background:linear-gradient(160deg, #1a0000 0%, #3a0808 40%, #6a1010 75%, #9a1a2a 100%);
+    padding:3.5rem 2rem 4rem; text-align:center; overflow:hidden;
+  }
+  .hero::after { content:""; position:absolute; bottom:-2px; left:0; right:0; height:50px; background:var(--cream); clip-path:ellipse(60% 100% at 50% 100%); }
+  .hero-blob { position:absolute; border-radius:50%; background:rgba(255,255,255,0.06); }
+  .hero-content { position:relative; z-index:2; }
+  .hero-tag { display:inline-block; background:rgba(255,255,255,0.13); border:1px solid rgba(255,255,255,0.3); border-radius:20px; padding:5px 18px; font-size:13px; letter-spacing:0.2em; color:rgba(255,255,255,0.92); margin-bottom:0.9rem; text-transform:uppercase; }
+  .hero-title { font-size:clamp(26px,5.5vw,38px); font-weight:800; color:#fff; line-height:1.35; margin-bottom:0.3rem; text-shadow:0 2px 12px rgba(0,0,0,0.3); }
+  .hero-title em { color:#ffa0a0; font-style:normal; }
+  .hero-names { font-size:18px; font-weight:700; color:rgba(255,255,255,0.9); margin-bottom:0.3rem; }
+  .hero-sub { font-size:15px; color:rgba(255,255,255,0.72); margin-bottom:1.4rem; }
+  .agent-wrap { display:flex; flex-direction:column; align-items:center; gap:8px; }
+  .agent-name { display:inline-flex; align-items:center; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.35); border-radius:30px; padding:8px 22px; font-size:15px; color:#fff; font-weight:700; }
+  .agent-contacts { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
+  .agent-contacts a { display:inline-flex; align-items:center; gap:6px; border-radius:30px; padding:8px 18px; font-size:14px; text-decoration:none; font-weight:700; }
+  .contact-phone { background:rgba(255,255,255,0.92); color:#3a0808; }
+  .contact-kakao { background:#FEE500; color:#3a1d00; }
+
+  /* 행사정보 배너 */
+  .meeting-banner { background:linear-gradient(135deg,#fdeeed,#f8e0e0,#f4d0d0); padding:1.2rem 1.75rem; border-bottom:3px solid #9a1a2a; }
+  .meeting-banner-title { font-size:15px; font-weight:800; color:#3a0808; margin-bottom:0.8rem; }
+  .guide-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .guide-item { background:rgba(255,255,255,0.85); border-radius:12px; padding:12px 16px; border:1px solid rgba(154,26,42,0.25); }
+  .guide-item-label { font-size:12px; font-weight:700; color:#7a1020; margin-bottom:4px; }
+  .guide-item-val { font-size:14px; font-weight:800; color:#1a0808; line-height:1.5; }
+  .guide-item-sub { font-size:12px; color:#5a1a20; margin-top:2px; line-height:1.5; }
+
+  /* 항공 배너 */
+  .flight-banner { background:linear-gradient(135deg,#e8f0ff,#d8e8ff,#c8e0ff); padding:1.2rem 1.75rem; border-bottom:3px solid #6090d0; }
+  .flight-banner-title { font-size:15px; font-weight:800; color:#1a3a7a; margin-bottom:0.8rem; }
+  .flight-card { background:rgba(255,255,255,0.88); border-radius:14px; overflow:hidden; border:1px solid rgba(80,130,200,0.35); margin-bottom:10px; }
+  .flight-card:last-child { margin-bottom:0; }
+  .flight-card-header { padding:9px 16px; font-size:13px; font-weight:800; }
+  .flight-card-header.go   { background:linear-gradient(135deg,#3a0808,#9a1a2a); color:#fff; }
+  .flight-card-header.back { background:linear-gradient(135deg,#0a2040,#1a4a8a); color:#fff; }
+  .flight-card-body { padding:14px 18px; }
+  .flight-route { display:flex; align-items:center; justify-content:space-between; }
+  .flight-city { text-align:center; flex:1; }
+  .flight-city-code { font-size:25px; font-weight:800; color:#1a2040; }
+  .flight-city-time { font-size:18px; font-weight:800; color:#7a1020; margin-top:2px; }
+  .flight-city-name { font-size:13px; color:var(--muted); margin-top:3px; }
+  .flight-arrow-wrap { flex:0 0 84px; text-align:center; }
+  .flight-arrow { font-size:22px; color:#4a80c0; }
+  .flight-arrow-label { font-size:12px; color:var(--muted); margin-top:2px; line-height:1.4; }
+  .flight-meta-row { display:flex; gap:6px; margin-top:10px; flex-wrap:wrap; }
+  .flight-meta-chip { background:#fdeeed; border:1px solid #e0a0a0; border-radius:20px; padding:4px 12px; font-size:12px; font-weight:700; color:#5a1020; }
+  .flight-meta-chip.good { background:var(--green-light); border-color:#80c0a0; color:#1a5a30; }
+  .flight-meta-chip.warn { background:#fdeeed; border-color:#e08080; color:#8a1010; }
+
+  /* 수하물 배너 */
+  .baggage-banner { background:linear-gradient(135deg,#fdeeed,#f8e0e0,#f4d0d0); padding:1.2rem 1.75rem; border-bottom:3px solid #9a1a2a; }
+  .baggage-title { font-size:15px; font-weight:800; color:#3a0808; margin-bottom:0.8rem; }
+  .baggage-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .baggage-item { background:rgba(255,255,255,0.85); border-radius:12px; padding:12px 15px; border:1px solid rgba(154,26,42,0.25); }
+  .baggage-label { font-size:12px; font-weight:700; color:#7a1020; margin-bottom:5px; }
+  .baggage-val   { font-size:16px; font-weight:800; color:#1a0808; line-height:1.5; }
+  .baggage-sub   { font-size:13px; color:#5a1a20; margin-top:3px; line-height:1.5; }
+
+  /* 날씨 배너 */
+  .weather-bar { background:linear-gradient(160deg,#fff8d0,#ffeebb,#ffe0a0); padding:1.2rem 1.75rem; border-bottom:3px solid #d0a030; }
+  .weather-title { font-size:15px; font-weight:800; color:#6a3800; margin-bottom:0.8rem; }
+  .weather-note { background:rgba(255,255,255,0.78); border-radius:10px; padding:10px 15px; font-size:14px; color:#6a3800; font-weight:700; border:1px solid rgba(200,140,40,0.35); }
+  .weather-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin-bottom:10px; }
+  .weather-day { background:rgba(255,255,255,0.85); border-radius:10px; padding:10px 6px; text-align:center; border:1px solid rgba(200,140,40,0.4); }
+  .weather-day-label { font-size:12px; font-weight:700; color:#7a4a10; margin-bottom:3px; }
+  .weather-day-icon  { font-size:24px; margin-bottom:4px; }
+  .weather-day-temp  { font-size:13px; font-weight:800; color:#0a1000; }
+  .weather-day-desc  { font-size:11px; color:#7a5020; margin-top:3px; }
+
+  /* SECTIONS */
+  .section { background:var(--warm-white); border-bottom:1px solid var(--border); padding:1.9rem 1.75rem; }
+  .section:nth-child(even) { background:var(--cream); }
+  .section-eyebrow { font-size:12px; letter-spacing:0.22em; text-transform:uppercase; color:var(--sea); font-weight:700; margin-bottom:0.3rem; }
+  .section-heading { font-size:22px; font-weight:800; color:var(--charcoal); margin-bottom:1.2rem; display:flex; align-items:center; gap:10px; }
+  .section-heading::after { content:""; flex:1; height:1.5px; background:linear-gradient(to right,var(--border),transparent); }
+
+  .info-card { background:var(--warm-white); border:1px solid var(--border); border-radius:14px; overflow:hidden; box-shadow:0 2px 10px rgba(154,26,42,0.08); }
+  .info-row { display:flex; gap:1rem; padding:14px 18px; border-bottom:1px solid var(--border); align-items:flex-start; }
+  .info-row:last-child { border-bottom:none; }
+  .info-key { min-width:100px; font-size:14px; font-weight:700; color:var(--medium); padding-top:2px; }
+  .info-val { flex:1; color:var(--charcoal); line-height:1.7; font-size:14.5px; }
+  .info-val strong { color:var(--sea); font-weight:700; }
+
+  .alert { border-radius:10px; padding:12px 16px; font-size:14px; line-height:1.7; margin-top:8px; }
+  .alert-red    { background:var(--red-light);    border-left:3px solid var(--red);    color:#7a1010; }
+  .alert-amber  { background:var(--amber-light);  border-left:3px solid var(--amber);  color:#7a3800; }
+  .alert-green  { background:var(--green-light);  border-left:3px solid var(--green);  color:#0a3820; }
+  .alert-gold   { background:var(--gold-light);   border-left:3px solid var(--gold);   color:#7a4800; }
+  .alert-sea    { background:var(--sea-light);    border-left:3px solid var(--sea);    color:#3a0808; }
+  .alert-blue   { background:var(--blue-light);   border-left:3px solid var(--blue);   color:#0a1a4a; }
+  .alert-purple { background:var(--purple-light); border-left:3px solid var(--purple); color:#2a1050; }
+
+  a.link-pill { display:inline-flex; align-items:center; gap:6px; background:linear-gradient(135deg,#3a0808,#9a1a2a); border-radius:22px; padding:9px 20px; font-size:14px; color:#fff; text-decoration:none; margin-top:6px; font-weight:700; box-shadow:0 3px 10px rgba(154,26,42,0.3); }
+  a.link-pill-blue { display:inline-flex; align-items:center; gap:6px; background:linear-gradient(135deg,#1a4a8a,#2a6ab0); border-radius:22px; padding:9px 20px; font-size:14px; color:#fff; text-decoration:none; margin-top:6px; font-weight:700; }
+
+  /* 입국신고서 박스 */
+  .cn-box { border:2px solid #9a1a2a; border-radius:14px; overflow:hidden; }
+  .cn-box-head { background:linear-gradient(135deg,#3a0808,#9a1a2a); padding:12px 18px; font-size:13px; font-weight:800; color:#fff; }
+  .cn-box-body { padding:16px 18px; background:#fff8f8; }
+
+  /* 알리페이 박스 */
+  .alipay-box { border:2px solid #1677FF; border-radius:14px; overflow:hidden; }
+  .alipay-box-head { background:linear-gradient(135deg,#0050b3,#1677FF); padding:12px 18px; font-size:13px; font-weight:800; color:#fff; }
+  .alipay-box-body { padding:16px 18px; background:#f0f7ff; }
+  .alipay-step { display:flex; gap:12px; padding:10px 0; border-bottom:1px solid #c8dff8; font-size:14px; line-height:1.7; }
+  .alipay-step:last-child { border-bottom:none; }
+  .alipay-step-num { min-width:26px; height:26px; background:linear-gradient(135deg,#0050b3,#1677FF); color:#fff; border-radius:50%; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
+
+  .excl-list { list-style:none; padding:0; }
+  .excl-list li { display:flex; align-items:flex-start; gap:10px; padding:10px 0; border-bottom:1px solid var(--border); font-size:15px; line-height:1.6; }
+  .excl-list li:last-child { border-bottom:none; }
+  .excl-dot { width:8px; height:8px; background:var(--sea); border-radius:50%; flex-shrink:0; margin-top:7px; }
+
+  .checkin-list { list-style:none; padding:0; }
+  .checkin-list li { display:flex; gap:12px; padding:10px 0; border-bottom:1px solid var(--border); font-size:15px; line-height:1.7; }
+  .checkin-list li:last-child { border-bottom:none; }
+  .checkin-num { min-width:24px; height:24px; background:linear-gradient(135deg,#3a0808,#9a1a2a); color:#fff; border-radius:50%; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
+
+  .checklist { list-style:none; padding:0; }
+  .checklist li { display:flex; align-items:flex-start; gap:12px; padding:10px 0; border-bottom:1px solid var(--border); font-size:14.5px; line-height:1.65; }
+  .checklist li:last-child { border-bottom:none; }
+  .check-num { min-width:24px; height:24px; background:linear-gradient(135deg,#3a0808,#9a1a2a); color:#fff; border-radius:50%; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
+  .check-cat { font-size:12px; font-weight:800; color:var(--sea); background:var(--sea-light); border-radius:5px; padding:2px 8px; margin-right:5px; white-space:nowrap; }
+
+  .footer { background:linear-gradient(160deg,#1a0000,#3a0808 60%,#9a1a2a 100%); padding:2.8rem 2rem; text-align:center; position:relative; overflow:hidden; }
+  .footer::before { content:""; position:absolute; top:-60px; right:-60px; width:200px; height:200px; border-radius:50%; background:rgba(255,255,255,0.05); }
+  .footer-content { position:relative; z-index:1; }
+  .footer-title { font-size:23px; font-weight:800; color:#fff; margin-bottom:0.5rem; }
+  .footer-sub   { font-size:15px; color:rgba(255,255,255,0.65); line-height:1.8; margin-bottom:1.4rem; }
+  .footer-name  { font-size:16px; font-weight:700; color:rgba(255,255,255,0.9); margin-bottom:14px; }
+  .footer-contacts { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+  .footer-btn { display:inline-flex; align-items:center; gap:8px; border-radius:30px; padding:11px 24px; font-size:15px; text-decoration:none; font-weight:700; }
+  .footer-btn-phone { background:rgba(255,255,255,0.18); border:1.5px solid rgba(255,255,255,0.45); color:#fff; }
+  .footer-btn-kakao { background:#FEE500; border:1.5px solid #FEE500; color:#3a1d00; }
+
+  @media(max-width:520px){
+    .section { padding:1.5rem 1.2rem; }
+    .guide-grid,.baggage-grid { grid-template-columns:1fr; }
+    .weather-grid { grid-template-columns:repeat(2,1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="main">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-blob" style="width:240px;height:240px;top:-80px;right:-70px;"></div>
+    <div class="hero-blob" style="width:160px;height:160px;bottom:20px;left:-50px;"></div>
+    <div class="hero-content">
+      <div class="hero-tag">✦ Travel Confirmation ✦</div>
+      <div class="hero-title">🏮 <em>상해</em> 여행 확정서</div>
+      <div class="hero-names">윤현정 · 허민서님</div>
+      <div class="hero-sub">인천국제공항 출발 · 3박 4일</div>
+      <div class="agent-wrap">
+        <div class="agent-name">담당 이경진 실장</div>
+        <div class="agent-contacts">
+          <a class="contact-phone" href="tel:15445714">📞 1544-5714</a>
+          <a class="contact-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡 상담</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 행사정보 배너 -->
+  <div class="meeting-banner">
+    <div class="meeting-banner-title">👤 현지 행사 정보</div>
+    <div class="guide-grid">
+      <div class="guide-item">
+        <div class="guide-item-label">담당 가이드</div>
+        <div class="guide-item-val">허윤언 (남)</div>
+        <div class="guide-item-sub">XU YUN YAN<br>자격증: HS-260112</div>
+      </div>
+      <div class="guide-item">
+        <div class="guide-item-label">가이드 연락처</div>
+        <div class="guide-item-val">182-5817-7711</div>
+      </div>
+      <div class="guide-item">
+        <div class="guide-item-label">현지 비상연락처</div>
+        <div class="guide-item-val">사무실 0082-21-6401-0885</div>
+        <div class="guide-item-sub">부장 186-2195-5932<br>부장 135-6462-9996</div>
+      </div>
+      <div class="guide-item">
+        <div class="guide-item-label">행사 인원 / 차량</div>
+        <div class="guide-item-val">13명 / 33인승</div>
+      </div>
+    </div>
+    <div class="alert alert-green" style="margin-top:10px;">
+      📍 상해 푸동공항 입국장에서 <strong>모두투어 피켓</strong>을 들고 있는 가이드를 만나 함께 이동합니다.
+    </div>
+    <div class="alert alert-sea" style="margin-top:8px;">
+      ✈️ <strong>인천공항 미팅은 없습니다.</strong> 개별 티켓팅 후 각자 출발하시면 됩니다.
+    </div>
+  </div>
+
+  <!-- 항공 배너 -->
+  <div class="flight-banner">
+    <div class="flight-banner-title">✈️ 항공 일정 — 대한항공</div>
+    <div class="flight-card">
+      <div class="flight-card-header go">✈ 가는 편 &nbsp;·&nbsp; KE881</div>
+      <div class="flight-card-body">
+        <div class="flight-route">
+          <div class="flight-city">
+            <div class="flight-city-code">ICN</div>
+            <div class="flight-city-time">08:25</div>
+            <div class="flight-city-name">인천</div>
+          </div>
+          <div class="flight-arrow-wrap">
+            <div class="flight-arrow">→</div>
+            <div class="flight-arrow-label">2026.07.24(금)</div>
+          </div>
+          <div class="flight-city">
+            <div class="flight-city-code">PVG</div>
+            <div class="flight-city-time">09:40</div>
+            <div class="flight-city-name">상해 푸동</div>
+          </div>
+        </div>
+        <div class="flight-meta-row">
+          <span class="flight-meta-chip">대한항공</span>
+          <span class="flight-meta-chip">편명 KE881</span>
+          <span class="flight-meta-chip">소요 약 1시간 55분</span>
+          <span class="flight-meta-chip good">기내식 제공</span>
+        </div>
+      </div>
+    </div>
+    <div class="flight-card">
+      <div class="flight-card-header back">✈ 오는 편 &nbsp;·&nbsp; KE882</div>
+      <div class="flight-card-body">
+        <div class="flight-route">
+          <div class="flight-city">
+            <div class="flight-city-code">PVG</div>
+            <div class="flight-city-time">11:10</div>
+            <div class="flight-city-name">상해 푸동</div>
+          </div>
+          <div class="flight-arrow-wrap">
+            <div class="flight-arrow">→</div>
+            <div class="flight-arrow-label">2026.07.27(월)</div>
+          </div>
+          <div class="flight-city">
+            <div class="flight-city-code">ICN</div>
+            <div class="flight-city-time">14:20</div>
+            <div class="flight-city-name">인천</div>
+          </div>
+        </div>
+        <div class="flight-meta-row">
+          <span class="flight-meta-chip">대한항공</span>
+          <span class="flight-meta-chip">편명 KE882</span>
+          <span class="flight-meta-chip">소요 약 2시간 10분</span>
+          <span class="flight-meta-chip good">기내식 제공</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 수하물 배너 -->
+  <div class="baggage-banner">
+    <div class="baggage-title">🧳 수하물 안내 — 대한항공</div>
+    <div class="baggage-grid">
+      <div class="baggage-item">
+        <div class="baggage-label">위탁 수하물</div>
+        <div class="baggage-val">23kg · 1인 1개</div>
+        <div class="baggage-sub">초과 시 공항에서 추가 요금 발생</div>
+      </div>
+      <div class="baggage-item">
+        <div class="baggage-label">기내 수하물</div>
+        <div class="baggage-val">10kg · 1인</div>
+        <div class="baggage-sub">액체류 100ml 이하 · 보조배터리 기내 반입</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 날씨 배너 -->
+  <div class="weather-bar">
+    <div class="weather-title">🌤️ 현지 날씨 — 상해 (7월 말)</div>
+    <div class="weather-grid">
+      <div class="weather-day">
+        <div class="weather-day-label">7/24 (금)</div>
+        <div class="weather-day-icon">☀️</div>
+        <div class="weather-day-temp">28~36°C</div>
+        <div class="weather-day-desc">맑음·폭염</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-label">7/25 (토)</div>
+        <div class="weather-day-icon">🌦️</div>
+        <div class="weather-day-temp">27~35°C</div>
+        <div class="weather-day-desc">소나기 가능</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-label">7/26 (일)</div>
+        <div class="weather-day-icon">⛅</div>
+        <div class="weather-day-temp">27~35°C</div>
+        <div class="weather-day-desc">구름 많음</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-label">7/27 (월)</div>
+        <div class="weather-day-icon">☀️</div>
+        <div class="weather-day-temp">28~36°C</div>
+        <div class="weather-day-desc">맑음</div>
+      </div>
+    </div>
+    <div class="weather-note">
+      🌡️ 상해 7월은 무덥고 습한 날씨가 지속됩니다. 자외선도 강하니 선크림과 얇은 겉옷을 꼭 챙겨가세요!
+    </div>
+  </div>
+
+  <!-- 01. 상품 안내 -->
+  <div class="section">
+    <div class="section-eyebrow">01</div>
+    <div class="section-heading">상품 안내</div>
+    <div class="info-card">
+      <div class="info-row">
+        <div class="info-key">예약 상품</div>
+        <div class="info-val">
+          <span style="font-size:14px;color:var(--muted);display:block;margin-bottom:6px;">아래 버튼을 눌러 일정표를 확인하세요</span>
+          <a class="link-pill" href="https://www.modetour.com/package/105303872?MLoc=99&Pnum=105303872&ANO=1772510&sno=C2181215&thru=crs" target="_blank">모두투어 예약 확인 ✔</a>
+        </div>
+      </div>
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">투숙 호텔</div>
+        <div class="info-val"><strong>상해 송강 홀리데이인 호텔</strong> · 3박</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02. 중국 입국신고서 -->
+  <div class="section">
+    <div class="section-eyebrow">02</div>
+    <div class="section-heading">중국 온라인 입국신고서</div>
+    <div class="cn-box">
+      <div class="cn-box-head">🛂 중국 입국 시 온라인 입국신고서 작성 필수 (2025.12.06~)</div>
+      <div class="cn-box-body">
+        <div class="alert alert-red" style="margin-top:0;margin-bottom:12px;">
+          ⚠️ 2025년 12월 6일부터 중국 입국 외국인 관광객은 <strong>온라인 입국신고서 작성이 의무</strong>입니다.<br>
+          출발 전 미리 작성해 주세요. 2명 각각 개별로 작성하셔야 합니다.
+        </div>
+        <a class="link-pill" href="https://s.nia.gov.cn/ArrivalCardFillingPC/entry-registation-home" target="_blank">온라인 입국신고서 작성하기 →</a>
+        <a class="link-pill-blue" href="https://blog.naver.com/knowtip/224289163381" target="_blank">작성 참고 블로그 →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03. 알리페이 안내 -->
+  <div class="section">
+    <div class="section-eyebrow">03</div>
+    <div class="section-heading">결제 안내 — 알리페이 💳</div>
+    <div class="alipay-box">
+      <div class="alipay-box-head">📱 상해에서는 알리페이(Alipay) 하나로 대부분의 결제 가능!</div>
+      <div class="alipay-box-body">
+        <div class="alert alert-blue" style="margin-top:0;margin-bottom:14px;">
+          💡 상해를 포함한 중국 본토에서는 현금(위안화) 사용이 점점 줄고 있습니다.<br>
+          <strong>알리페이(Alipay)를 미리 설정해 두시면 현지에서 훨씬 편리합니다!</strong><br>
+          외국 신용카드(Visa/Mastercard)도 알리페이에 등록하여 사용 가능합니다.
+        </div>
+        <div class="alipay-step">
+          <div class="alipay-step-num">1</div>
+          <div><strong>알리페이 앱 설치</strong> — 앱스토어 또는 구글플레이에서 "Alipay" 검색 후 설치</div>
+        </div>
+        <div class="alipay-step">
+          <div class="alipay-step-num">2</div>
+          <div><strong>회원가입 및 해외 카드 등록</strong> — 한국 핸드폰 번호로 가입 → 본인 명의 해외 카드(Visa/Mastercard) 등록</div>
+        </div>
+        <div class="alipay-step">
+          <div class="alipay-step-num">3</div>
+          <div><strong>출발 전 한국에서 미리 설정</strong> — 현지 와이파이 환경에서는 인증이 어려울 수 있으니 국내에서 미리 완료해 두세요.</div>
+        </div>
+        <div class="alipay-step">
+          <div class="alipay-step-num">4</div>
+          <div><strong>현지에서 QR코드 스캔으로 결제</strong> — 식당·편의점·관광지·택시 등 대부분의 가맹점에서 사용 가능</div>
+        </div>
+        <div class="alert alert-gold" style="margin-top:10px;">
+          ⚠️ 중국 현지 <strong>위안화(CNY) 환전은 별도로 필요하지 않습니다.</strong><br>
+          알리페이를 사용하시면 개인 경비를 훨씬 편리하게 결제하실 수 있습니다.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04. 불포함 사항 -->
+  <div class="section">
+    <div class="section-eyebrow">04</div>
+    <div class="section-heading">불포함 사항</div>
+    <ul class="excl-list">
+      <li><div class="excl-dot"></div><span><strong>가이드/기사 경비 1인 USD $40</strong> (성인·아동 동일) — 현지에서 달러로 직접 지불</span></li>
+      <li><div class="excl-dot"></div><span>자유 일정 중 식사 비용</span></li>
+      <li><div class="excl-dot"></div><span>개인 경비 및 기타 경비</span></li>
+    </ul>
+  </div>
+
+  <!-- 05. 환전 안내 -->
+  <div class="section">
+    <div class="section-eyebrow">05</div>
+    <div class="section-heading">환전 안내 💵</div>
+    <div class="info-card">
+      <div class="info-row">
+        <div class="info-key">미국 달러 (USD)</div>
+        <div class="info-val">
+          가이드/기사 경비 <strong>1인 $40는 달러 현금</strong>으로 준비해 주세요.<br>
+          소액 달러를 추가로 준비해 두시면 비상시 유용합니다.
+        </div>
+      </div>
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">위안화 (CNY)</div>
+        <div class="info-val">
+          별도 위안화 환전은 필요하지 않습니다.<br>
+          개인 경비는 <strong>알리페이</strong>로 편리하게 결제하시면 됩니다.
+          <div class="alert alert-sea" style="margin-top:8px;">
+            💡 알리페이 설정은 위 결제 안내 섹션을 참고해 주세요.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06. 호텔 일회용품 안내 -->
+  <div class="section">
+    <div class="section-eyebrow">06</div>
+    <div class="section-heading">호텔 일회용품 안내 ⚠️</div>
+    <div style="border:2px solid #9a1a2a;border-radius:14px;overflow:hidden;">
+      <div style="background:linear-gradient(135deg,#3a0808,#9a1a2a);padding:12px 18px;font-size:13px;font-weight:800;color:#fff;">
+        🪥 상해 호텔 일회용품 제공 중단 (2019년 7월 1일부터 시행)
+      </div>
+      <div style="padding:16px 18px;background:#fff8f8;font-size:14px;line-height:1.8;color:#3a0808;">
+        상해시 조례에 따라 호텔에서 <strong>일회용 세면도구를 제공하지 않습니다.</strong><br>
+        아래 세면도구를 반드시 개인 준비해 주세요.
+        <div style="background:rgba(154,26,42,0.08);border-radius:10px;padding:12px 16px;margin-top:10px;font-weight:700;font-size:14px;">
+          치약 · 칫솔 · 샴푸 · 린스 · 면도기 · 바디워시 등
+        </div>
+        <div style="font-size:12.5px;color:var(--muted);margin-top:8px;">※ 호텔에 따라 일부 비품이 제공될 수 있으나 반드시 개인 준비를 권장합니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 07. 준비물 체크리스트 -->
+  <div class="section">
+    <div class="section-eyebrow">07</div>
+    <div class="section-heading">준비물 체크리스트 🎒</div>
+    <div class="alert alert-amber" style="margin-bottom:1rem;margin-top:0;">
+      ⚡ 중국 전압은 <strong>220V</strong>로 한국과 동일합니다. 콘센트 모양이 다를 수 있으니 여행용 어댑터를 챙겨가세요.
+    </div>
+    <ul class="checklist">
+      <li><div class="check-num">1</div><span><span class="check-cat">필수</span><strong>여권</strong> — 유효기간 6개월 이상 반드시 확인!</span></li>
+      <li><div class="check-num">2</div><span><span class="check-cat">필수</span><strong>항공권 E-티켓</strong> 출력 또는 스마트폰 저장</span></li>
+      <li><div class="check-num">3</div><span><span class="check-cat">필수</span><strong>알리페이 앱</strong> — 출발 전 한국에서 카드 등록까지 완료!</span></li>
+      <li><div class="check-num">4</div><span><span class="check-cat">세면</span><strong>치약·칫솔·샴푸·린스·면도기</strong> — 호텔 미제공, 반드시 개인 준비</span></li>
+      <li><div class="check-num">5</div><span><span class="check-cat">복장</span>반팔·반바지 + <strong>얇은 가디건</strong> — 실내 냉방 강함</span></li>
+      <li><div class="check-num">6</div><span><span class="check-cat">복장</span>편한 운동화 또는 샌들</span></li>
+      <li><div class="check-num">7</div><span><span class="check-cat">날씨</span><strong>선크림 (SPF 50+)</strong> · 선글라스 · 모자 — 상해 7월 자외선 강함</span></li>
+      <li><div class="check-num">8</div><span><span class="check-cat">날씨</span>접이식 우산 ☂️ — 소나기 대비</span></li>
+      <li><div class="check-num">9</div><span><span class="check-cat">건강</span>상비약 — 소화제·두통약·지사제</span></li>
+      <li><div class="check-num">10</div><span><span class="check-cat">전기</span>여행용 멀티 어댑터 · 보조배터리 · 충전기</span></li>
+      <li><div class="check-num">11</div><span><span class="check-cat">기타</span>에코백 또는 소형 배낭 — 관광·쇼핑 이동용</span></li>
+    </ul>
+  </div>
+
+  <!-- 08. 유의사항 -->
+  <div class="section">
+    <div class="section-eyebrow">08</div>
+    <div class="section-heading">유의사항</div>
+    <ul class="checkin-list">
+      <li><div class="checkin-num">1</div><span>인천국제공항에 <strong>출발 3시간 전</strong>까지 도착해 주세요.</span></li>
+      <li><div class="checkin-num">2</div><span>여권 유효기간을 꼭 확인해 주세요. <strong>잔여 유효기간 6개월 이상</strong> 필수입니다.</span></li>
+      <li><div class="checkin-num">3</div><span>중국 <strong>온라인 입국신고서</strong> 작성이 의무입니다. 출발 전 2명 각각 개별 작성해 주세요.</span></li>
+      <li><div class="checkin-num">4</div><span><strong>알리페이</strong> 앱 설치 및 카드 등록을 출발 전 한국에서 미리 완료해 주세요.</span></li>
+      <li><div class="checkin-num">5</div><span>호텔 세면도구는 제공되지 않으니 <strong>치약·칫솔 등 개인 세면도구</strong>를 반드시 챙겨가세요.</span></li>
+      <li><div class="checkin-num">6</div><span>현지 사정에 따라 일부 일정이 변경될 수 있으며, 변경 시 <strong>가이드 안내</strong>에 따라 주세요.</span></li>
+    </ul>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-content">
+      <div class="footer-title">🏮 즐거운 상해 여행 되세요!</div>
+      <div class="footer-sub">궁금하신 사항은 언제든지 문의 주세요.<br>감사합니다.</div>
+      <div class="footer-name">담당 이경진 실장</div>
+      <div class="footer-contacts">
+        <a class="footer-btn footer-btn-phone" href="tel:15445714">📞 1544-5714</a>
+        <a class="footer-btn footer-btn-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡 상담</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
