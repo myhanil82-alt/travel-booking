@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>후쿠오카 여행 확정서 - 김혜진님 가족</title>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sea: #1a4a8a;
+    --sea-light: #e4eeff;
+    --gold: #b07000;
+    --gold-light: #fff8e0;
+    --red: #c03020;
+    --red-light: #fdeeed;
+    --amber: #c06000;
+    --amber-light: #fff4e0;
+    --green: #1a6b3a;
+    --green-light: #e4f8ee;
+    --cream: #f4f8fd;
+    --warm-white: #ffffff;
+    --charcoal: #080c1a;
+    --medium: #1a2a5a;
+    --muted: #5a6a8a;
+    --border: #c0cce8;
+    --blue: #1a4a8a;
+    --blue-light: #e4eeff;
+    --navy: #0a1a3a;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:"Nanum Gothic","맑은 고딕","Malgun Gothic",sans-serif; background:var(--cream); color:var(--charcoal); line-height:1.7; font-size:16px; }
+  .main { max-width:700px; margin:0 auto; }
+
+  .hero {
+    position:relative;
+    background:linear-gradient(160deg, #040810 0%, #080c2a 40%, #0c1848 75%, #1a3a7a 100%);
+    padding:3.5rem 2rem 4rem; text-align:center; overflow:hidden;
+  }
+  .hero::after { content:""; position:absolute; bottom:-2px; left:0; right:0; height:50px; background:var(--cream); clip-path:ellipse(60% 100% at 50% 100%); }
+  .hero-blob { position:absolute; border-radius:50%; background:rgba(255,255,255,0.06); }
+  .hero-content { position:relative; z-index:2; }
+  .hero-tag { display:inline-block; background:rgba(255,255,255,0.13); border:1px solid rgba(255,255,255,0.3); border-radius:20px; padding:5px 18px; font-size:13px; letter-spacing:0.2em; color:rgba(255,255,255,0.92); margin-bottom:0.9rem; text-transform:uppercase; }
+  .hero-title { font-size:clamp(26px,5.5vw,38px); font-weight:800; color:#fff; line-height:1.35; margin-bottom:0.3rem; text-shadow:0 2px 12px rgba(0,0,0,0.3); }
+  .hero-title em { color:#90c8ff; font-style:normal; }
+  .hero-names { font-size:18px; font-weight:700; color:rgba(255,255,255,0.9); margin-bottom:0.3rem; }
+  .hero-sub { font-size:15px; color:rgba(255,255,255,0.72); margin-bottom:1.4rem; }
+  .agent-wrap { display:flex; flex-direction:column; align-items:center; gap:8px; }
+  .agent-name { display:inline-flex; align-items:center; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.35); border-radius:30px; padding:8px 22px; font-size:15px; color:#fff; font-weight:700; }
+  .agent-contacts { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
+  .agent-contacts a { display:inline-flex; align-items:center; gap:6px; border-radius:30px; padding:8px 18px; font-size:14px; text-decoration:none; font-weight:700; }
+  .contact-phone { background:rgba(255,255,255,0.92); color:#0a1a3a; }
+  .contact-kakao { background:#FEE500; color:#3a1d00; }
+
+  /* 미팅 배너 */
+  .meeting-time-banner { background:linear-gradient(135deg,#0a1838,#1a3a7a); padding:1.3rem 1.75rem; border-bottom:3px solid #4080c0; }
+
+  /* 선박 일정 배너 */
+  .ferry-banner { background:linear-gradient(135deg,#0a1838,#0c2050,#1a3a7a); padding:1.2rem 1.75rem; border-bottom:3px solid #4080c0; }
+  .ferry-card { background:rgba(255,255,255,0.10); border:1px solid rgba(255,255,255,0.2); border-radius:14px; overflow:hidden; margin-bottom:10px; }
+  .ferry-card:last-child { margin-bottom:0; }
+  .ferry-card-header { padding:10px 16px; font-size:13px; font-weight:800; display:flex; align-items:center; gap:8px; }
+  .ferry-card-header.go   { background:linear-gradient(135deg,#0a1838,#1a4a9a); color:#fff; }
+  .ferry-card-header.back { background:linear-gradient(135deg,#0a2040,#2a5aaa); color:#fff; }
+  .ferry-card-body { padding:14px 18px; }
+  .ferry-route { display:flex; align-items:center; justify-content:space-between; }
+  .ferry-city { text-align:center; flex:1; }
+  .ferry-city-name-big { font-size:20px; font-weight:800; color:#fff; }
+  .ferry-city-time { font-size:18px; font-weight:800; color:#90c8ff; margin-top:4px; }
+  .ferry-city-date { font-size:12px; color:rgba(255,255,255,0.65); margin-top:3px; }
+  .ferry-arrow-wrap { flex:0 0 80px; text-align:center; }
+  .ferry-arrow { font-size:28px; color:#90c8ff; }
+  .ferry-arrow-label { font-size:11px; color:rgba(255,255,255,0.6); margin-top:2px; line-height:1.4; }
+  .ferry-meta-row { display:flex; gap:6px; margin-top:10px; flex-wrap:wrap; }
+  .ferry-meta-chip { background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.25); border-radius:20px; padding:4px 12px; font-size:12px; font-weight:700; color:#d0e8ff; }
+  .ferry-meta-chip.warn { background:rgba(220,80,80,0.25); border-color:rgba(220,80,80,0.5); color:#ffc0c0; }
+
+  /* 행사정보 배너 */
+  .guide-banner { background:linear-gradient(135deg,#e4eeff,#d0e0fc,#bcd0f8); padding:1.2rem 1.75rem; border-bottom:3px solid #1a4a8a; }
+  .guide-banner-title { font-size:15px; font-weight:800; color:#0a1a4a; margin-bottom:0.8rem; }
+  .guide-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .guide-item { background:rgba(255,255,255,0.85); border-radius:12px; padding:12px 16px; border:1px solid rgba(26,74,138,0.25); }
+  .guide-item-label { font-size:12px; font-weight:700; color:#1a3a7a; margin-bottom:4px; }
+  .guide-item-val { font-size:14px; font-weight:800; color:#080c1a; line-height:1.5; }
+  .guide-item-sub { font-size:12px; color:#2a4a7a; margin-top:2px; line-height:1.5; }
+
+  /* 날씨 배너 */
+  .weather-bar { background:linear-gradient(160deg,#fff8d0,#ffeebb,#ffe0a0); padding:1.2rem 1.75rem; border-bottom:3px solid #d0a030; }
+  .weather-title { font-size:15px; font-weight:800; color:#6a3800; margin-bottom:0.8rem; }
+  .weather-note { background:rgba(255,255,255,0.78); border-radius:10px; padding:10px 15px; font-size:14px; color:#6a3800; font-weight:700; border:1px solid rgba(200,140,40,0.35); }
+  .weather-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin-bottom:10px; }
+  .weather-day { background:rgba(255,255,255,0.85); border-radius:10px; padding:10px 6px; text-align:center; border:1px solid rgba(200,140,40,0.4); }
+  .weather-day-label { font-size:12px; font-weight:700; color:#7a4a10; margin-bottom:3px; }
+  .weather-day-icon  { font-size:24px; margin-bottom:4px; }
+  .weather-day-temp  { font-size:13px; font-weight:800; color:#0a1000; }
+  .weather-day-desc  { font-size:11px; color:#7a5020; margin-top:3px; }
+
+  /* SECTIONS */
+  .section { background:var(--warm-white); border-bottom:1px solid var(--border); padding:1.9rem 1.75rem; }
+  .section:nth-child(even) { background:var(--cream); }
+  .section-eyebrow { font-size:12px; letter-spacing:0.22em; text-transform:uppercase; color:var(--sea); font-weight:700; margin-bottom:0.3rem; }
+  .section-heading { font-size:22px; font-weight:800; color:var(--charcoal); margin-bottom:1.2rem; display:flex; align-items:center; gap:10px; }
+  .section-heading::after { content:""; flex:1; height:1.5px; background:linear-gradient(to right,var(--border),transparent); }
+
+  .info-card { background:var(--warm-white); border:1px solid var(--border); border-radius:14px; overflow:hidden; box-shadow:0 2px 10px rgba(26,74,138,0.08); }
+  .info-row { display:flex; gap:1rem; padding:14px 18px; border-bottom:1px solid var(--border); align-items:flex-start; }
+  .info-row:last-child { border-bottom:none; }
+  .info-key { min-width:90px; font-size:14px; font-weight:700; color:var(--medium); padding-top:2px; }
+  .info-val { flex:1; color:var(--charcoal); line-height:1.7; font-size:14.5px; }
+  .info-val strong { color:var(--sea); font-weight:700; }
+
+  .alert { border-radius:10px; padding:12px 16px; font-size:14px; line-height:1.7; margin-top:8px; }
+  .alert-red    { background:var(--red-light);    border-left:3px solid var(--red);    color:#7a1010; }
+  .alert-amber  { background:var(--amber-light);  border-left:3px solid var(--amber);  color:#7a3800; }
+  .alert-green  { background:var(--green-light);  border-left:3px solid var(--green);  color:#0a3820; }
+  .alert-gold   { background:var(--gold-light);   border-left:3px solid var(--gold);   color:#7a4800; }
+  .alert-sea    { background:var(--sea-light);    border-left:3px solid var(--sea);    color:#0a1a4a; }
+  .alert-blue   { background:var(--blue-light);   border-left:3px solid var(--blue);   color:#0a1a4a; }
+
+  a.link-pill { display:inline-flex; align-items:center; gap:6px; background:linear-gradient(135deg,#0a1838,#1a4a8a); border-radius:22px; padding:9px 20px; font-size:14px; color:#fff; text-decoration:none; margin-top:6px; font-weight:700; box-shadow:0 3px 10px rgba(26,74,138,0.3); }
+
+  /* 선내식 안내 박스 */
+  .meal-box { border:2px solid var(--sea); border-radius:14px; overflow:hidden; }
+  .meal-box-head { background:linear-gradient(135deg,#0a1838,#1a4a8a); padding:12px 18px; font-size:13px; font-weight:800; color:#fff; }
+  .meal-box-body { padding:16px 18px; background:#f8f8ff; }
+
+  .excl-list { list-style:none; padding:0; }
+  .excl-list li { display:flex; align-items:flex-start; gap:10px; padding:10px 0; border-bottom:1px solid var(--border); font-size:15px; line-height:1.6; }
+  .excl-list li:last-child { border-bottom:none; }
+  .excl-dot { width:8px; height:8px; background:var(--sea); border-radius:50%; flex-shrink:0; margin-top:7px; }
+
+  .checkin-list { list-style:none; padding:0; }
+  .checkin-list li { display:flex; gap:12px; padding:10px 0; border-bottom:1px solid var(--border); font-size:15px; line-height:1.7; }
+  .checkin-list li:last-child { border-bottom:none; }
+  .checkin-num { min-width:24px; height:24px; background:linear-gradient(135deg,#0a1838,#1a4a8a); color:#fff; border-radius:50%; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
+
+  .checklist { list-style:none; padding:0; }
+  .checklist li { display:flex; align-items:flex-start; gap:12px; padding:10px 0; border-bottom:1px solid var(--border); font-size:14.5px; line-height:1.65; }
+  .checklist li:last-child { border-bottom:none; }
+  .check-num { min-width:24px; height:24px; background:linear-gradient(135deg,#0a1838,#1a4a8a); color:#fff; border-radius:50%; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
+  .check-cat { font-size:12px; font-weight:800; color:var(--sea); background:var(--sea-light); border-radius:5px; padding:2px 8px; margin-right:5px; white-space:nowrap; }
+
+  .footer { background:linear-gradient(160deg,#040810,#080c2a 60%,#1a3a7a 100%); padding:2.8rem 2rem; text-align:center; position:relative; overflow:hidden; }
+  .footer::before { content:""; position:absolute; top:-60px; right:-60px; width:200px; height:200px; border-radius:50%; background:rgba(255,255,255,0.05); }
+  .footer-content { position:relative; z-index:1; }
+  .footer-title { font-size:23px; font-weight:800; color:#fff; margin-bottom:0.5rem; }
+  .footer-sub   { font-size:15px; color:rgba(255,255,255,0.65); line-height:1.8; margin-bottom:1.4rem; }
+  .footer-name  { font-size:16px; font-weight:700; color:rgba(255,255,255,0.9); margin-bottom:14px; }
+  .footer-contacts { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+  .footer-btn { display:inline-flex; align-items:center; gap:8px; border-radius:30px; padding:11px 24px; font-size:15px; text-decoration:none; font-weight:700; }
+  .footer-btn-phone { background:rgba(255,255,255,0.18); border:1.5px solid rgba(255,255,255,0.45); color:#fff; }
+  .footer-btn-kakao { background:#FEE500; border:1.5px solid #FEE500; color:#3a1d00; }
+
+  @media(max-width:520px){
+    .section { padding:1.5rem 1.2rem; }
+    .guide-grid { grid-template-columns:1fr; }
+    .weather-grid { grid-template-columns:repeat(2,1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="main">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-blob" style="width:240px;height:240px;top:-80px;right:-70px;"></div>
+    <div class="hero-blob" style="width:160px;height:160px;bottom:20px;left:-50px;"></div>
+    <div class="hero-content">
+      <div class="hero-tag">✦ Travel Confirmation ✦</div>
+      <div class="hero-title">⛴️ <em>후쿠오카</em> 여행 확정서</div>
+      <div class="hero-names">김혜진님 가족</div>
+      <div class="hero-sub">부관훼리 성희호 · 부산 출발 · 2박 4일</div>
+      <div class="agent-wrap">
+        <div class="agent-name">담당 이경진 실장</div>
+        <div class="agent-contacts">
+          <a class="contact-phone" href="tel:15445714">📞 1544-5714</a>
+          <a class="contact-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡 상담</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 미팅 시간 배너 -->
+  <div class="meeting-time-banner">
+    <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.7);margin-bottom:8px;letter-spacing:0.1em;">⚓ 부산 집결 미팅 안내</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+      <div style="background:rgba(255,255,255,0.13);border:1px solid rgba(255,255,255,0.25);border-radius:12px;padding:14px 16px;">
+        <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.6);letter-spacing:1px;margin-bottom:6px;">📅 미팅 일시</div>
+        <div style="font-size:15px;font-weight:800;color:#90c8ff;">2026.07.25(토)</div>
+        <div style="font-size:22px;font-weight:800;color:#fff;margin-top:4px;letter-spacing:2px;">오후 17:00</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.13);border:1px solid rgba(255,255,255,0.25);border-radius:12px;padding:14px 16px;">
+        <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.6);letter-spacing:1px;margin-bottom:6px;">📍 미팅 장소</div>
+        <div style="font-size:14px;font-weight:800;color:#fff;line-height:1.7;">부산 신국제여객터미널<br>3층 부관훼리 카운터 앞</div>
+      </div>
+    </div>
+    <div style="background:rgba(255,220,0,0.2);border:1px solid rgba(255,220,0,0.4);border-radius:10px;padding:10px 14px;margin-top:10px;font-size:13.5px;color:#ffe88a;font-weight:700;">
+      ⚠️ 선박 출발 <strong style="color:#fff;">오후 21:00</strong> — 늦어도 <strong style="color:#fff;">오후 17:00</strong>까지 카운터 앞으로 와주세요!
+    </div>
+  </div>
+
+  <!-- 선박 일정 배너 -->
+  <div class="ferry-banner">
+    <div style="font-size:15px;font-weight:800;color:#90c8ff;margin-bottom:12px;">⛴️ 부관훼리 성희호 일정</div>
+
+    <div class="ferry-card">
+      <div class="ferry-card-header go">⛴️ 가는 편 &nbsp;·&nbsp; 부산 → 시모노세키</div>
+      <div class="ferry-card-body">
+        <div class="ferry-route">
+          <div class="ferry-city">
+            <div class="ferry-city-name-big">부산</div>
+            <div class="ferry-city-time">21:00</div>
+            <div class="ferry-city-date">2026.07.25(토)</div>
+          </div>
+          <div class="ferry-arrow-wrap">
+            <div class="ferry-arrow">⛴️</div>
+            <div class="ferry-arrow-label">선박 이동<br>약 10시간 45분</div>
+          </div>
+          <div class="ferry-city">
+            <div class="ferry-city-name-big">시모노세키</div>
+            <div class="ferry-city-time">07:45</div>
+            <div class="ferry-city-date">2026.07.26(일)</div>
+          </div>
+        </div>
+        <div class="ferry-meta-row">
+          <span class="ferry-meta-chip">부관훼리 성희호</span>
+          <span class="ferry-meta-chip">야간 페리</span>
+          <span class="ferry-meta-chip">선내 숙박 포함</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ferry-card">
+      <div class="ferry-card-header back">⛴️ 오는 편 &nbsp;·&nbsp; 시모노세키 → 부산</div>
+      <div class="ferry-card-body">
+        <div class="ferry-route">
+          <div class="ferry-city">
+            <div class="ferry-city-name-big">시모노세키</div>
+            <div class="ferry-city-time">19:45</div>
+            <div class="ferry-city-date">2026.07.27(월)</div>
+          </div>
+          <div class="ferry-arrow-wrap">
+            <div class="ferry-arrow">⛴️</div>
+            <div class="ferry-arrow-label">선박 이동<br>약 12시간 15분</div>
+          </div>
+          <div class="ferry-city">
+            <div class="ferry-city-name-big">부산</div>
+            <div class="ferry-city-time">08:00</div>
+            <div class="ferry-city-date">2026.07.28(화)</div>
+          </div>
+        </div>
+        <div class="ferry-meta-row">
+          <span class="ferry-meta-chip">부관훼리 성희호</span>
+          <span class="ferry-meta-chip">야간 페리</span>
+          <span class="ferry-meta-chip">선내 숙박 포함</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.18);border-radius:10px;padding:12px 14px;margin-top:10px;font-size:13.5px;color:#d0e8ff;font-weight:700;line-height:1.8;">
+      ℹ️ 부관훼리는 부산과 시모노세키를 <strong style="color:#fff;">매일 운항</strong>하는 국제 여객선입니다.<br>
+      더 자세한 선박 안내는 아래 버튼에서 확인하세요.
+    </div>
+    <a href="https://www.pukwan.co.kr/WEB/003001/webpassenger/mb012" target="_blank"
+      style="display:inline-flex;align-items:center;gap:6px;background:#90c8ff;border-radius:22px;padding:9px 20px;font-size:14px;color:#0a1a3a;text-decoration:none;font-weight:800;margin-top:10px;">
+      부관훼리 승객 안내 →
+    </a>
+  </div>
+
+  <!-- 행사정보 배너 -->
+  <div class="guide-banner">
+    <div class="guide-banner-title">👤 현지 행사 정보</div>
+    <div class="alert alert-sea" style="margin-top:0;">
+      📞 담당 가이드께서 <strong>내일 전화 드릴 예정</strong>입니다.
+    </div>
+  </div>
+
+  <!-- 날씨 배너 -->
+  <div class="weather-bar">
+    <div class="weather-title">🌤️ 현지 날씨 — 후쿠오카 (7월 말)</div>
+    <div class="weather-grid">
+      <div class="weather-day">
+        <div class="weather-day-label">7/25 (토)</div>
+        <div class="weather-day-icon">⛴️</div>
+        <div class="weather-day-temp">선내 이동</div>
+        <div class="weather-day-desc">야간 출항</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-label">7/26 (일)</div>
+        <div class="weather-day-icon">☀️</div>
+        <div class="weather-day-temp">26~35°C</div>
+        <div class="weather-day-desc">맑음·무더움</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-label">7/27 (월)</div>
+        <div class="weather-day-icon">🌦️</div>
+        <div class="weather-day-temp">26~34°C</div>
+        <div class="weather-day-desc">소나기 가능</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-label">7/28 (화)</div>
+        <div class="weather-day-icon">⛴️</div>
+        <div class="weather-day-temp">선내 이동</div>
+        <div class="weather-day-desc">귀국 입항</div>
+      </div>
+    </div>
+    <div class="weather-note">
+      🌡️ 후쿠오카 7월은 매우 덥고 습합니다. 선크림·모자 필수! 선내 냉방이 강할 수 있으니 얇은 겉옷도 챙겨가세요.
+    </div>
+  </div>
+
+  <!-- 01. 상품 안내 -->
+  <div class="section">
+    <div class="section-eyebrow">01</div>
+    <div class="section-heading">상품 안내</div>
+    <div class="info-card">
+      <div class="info-row">
+        <div class="info-key">예약 상품</div>
+        <div class="info-val">
+          <span style="font-size:14px;color:var(--muted);display:block;margin-bottom:6px;">아래 버튼을 눌러 일정표를 확인하세요</span>
+          <a class="link-pill" href="https://www.modetour.com/package/106644915?MLoc=99&Pnum=106644915&ANO=1772510&sno=C2181215&thru=crs" target="_blank">모두투어 예약 확인 ✔</a>
+        </div>
+      </div>
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">투숙 호텔</div>
+        <div class="info-val">
+          <strong>후쿠오카 유벨 호텔</strong> · 1박<br>
+          <a href="https://www.google.com/maps/place/%ED%9B%84%EC%BF%A0%EC%98%A4%EC%B9%B4+%EC%9C%A0%EB%B2%A8+%ED%98%B8%ED%85%94/data=!4m2!3m1!1s0x3541915dd414806d:0xbeeff31b868c7f17" target="_blank"
+            style="display:inline-flex;align-items:center;gap:5px;color:#1a4a8a;font-size:13px;font-weight:700;text-decoration:none;margin-top:5px;">
+            📍 지도에서 위치 확인 →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02. 선내식 안내 -->
+  <div class="section">
+    <div class="section-eyebrow">02</div>
+    <div class="section-heading">선내식 및 식사 안내 🍽️</div>
+    <div class="meal-box">
+      <div class="meal-box-head">🚢 선내식 4회 제공 안내</div>
+      <div class="meal-box-body">
+        <div class="alert alert-blue" style="margin-top:0;margin-bottom:12px;">
+          ℹ️ 선내식은 총 4회 제공됩니다. 단, <strong>성희호 출발 시 AL(알코올 포함)</strong> 조건으로 제공됩니다.
+        </div>
+        <div style="font-size:14px;color:var(--charcoal);line-height:1.8;">
+          선내 레스토랑을 이용하시거나 선내 매점에서 간식을 구입하실 수 있습니다.<br>
+          현지 식사(후쿠오카 관광 중)는 <strong>불포함</strong>으로 개별 부담입니다.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03. 불포함 사항 -->
+  <div class="section">
+    <div class="section-eyebrow">03</div>
+    <div class="section-heading">불포함 사항</div>
+    <ul class="excl-list">
+      <li><div class="excl-dot"></div><span><strong>가이드/기사 경비 1인 30,000원</strong> (성인·아동 동일 / 만2세 미만 유아 제외) — 현지 지불</span></li>
+      <li><div class="excl-dot"></div><span>현지 식사 (후쿠오카 관광 중 식사 개별 부담)</span></li>
+      <li><div class="excl-dot"></div><span>개인 경비 및 기타 경비</span></li>
+    </ul>
+  </div>
+
+  <!-- 04. 환전 안내 -->
+  <div class="section">
+    <div class="section-eyebrow">04</div>
+    <div class="section-heading">환전 안내 💴</div>
+    <div class="info-card">
+      <div class="info-row">
+        <div class="info-key">일본 엔 (JPY)</div>
+        <div class="info-val">
+          <strong>엔화(JPY)</strong>로 준비해 가시면 됩니다.<br>
+          국내 은행·환전소에서 출발 전 환전하거나 현지 환전소 이용 가능합니다.
+          <div class="alert alert-gold" style="margin-top:8px;">
+            💴 가이드/기사 경비 <strong>1인 30,000원</strong>은 원화 현금으로도 지불 가능합니다.
+          </div>
+        </div>
+      </div>
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">한국 원화</div>
+        <div class="info-val">
+          선내에서 원화 사용 가능합니다.<br>
+          <span style="font-size:13px;color:var(--muted);">일본 현지에서는 엔화 또는 카드를 사용하세요.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05. 준비물 체크리스트 -->
+  <div class="section">
+    <div class="section-eyebrow">05</div>
+    <div class="section-heading">준비물 체크리스트 🎒</div>
+    <div class="alert alert-sea" style="margin-bottom:1rem;margin-top:0;">
+      ⚡ 일본 전압은 <strong>100V</strong>입니다. 한국 전자제품 사용 시 멀티 어댑터를 챙겨가세요!
+    </div>
+    <ul class="checklist">
+      <li><div class="check-num">1</div><span><span class="check-cat">필수</span><strong>여권</strong> — 유효기간 6개월 이상 반드시 확인!</span></li>
+      <li><div class="check-num">2</div><span><span class="check-cat">선박</span><strong>멀미약</strong> — 선박 승선 전 미리 복용 권장</span></li>
+      <li><div class="check-num">3</div><span><span class="check-cat">선박</span>얇은 긴팔·겉옷 — 선내 냉방 매우 강함</span></li>
+      <li><div class="check-num">4</div><span><span class="check-cat">선박</span>세면도구·슬리퍼 — 선내 객실 사용</span></li>
+      <li><div class="check-num">5</div><span><span class="check-cat">복장</span>반팔·반바지 + 얇은 가디건 (현지 이동용)</span></li>
+      <li><div class="check-num">6</div><span><span class="check-cat">복장</span>편한 운동화 또는 샌들 — 도보 이동 많음</span></li>
+      <li><div class="check-num">7</div><span><span class="check-cat">날씨</span><strong>선크림 (SPF 50+)</strong> · 선글라스 · 모자 — 폭염 대비</span></li>
+      <li><div class="check-num">8</div><span><span class="check-cat">날씨</span>접이식 우산 또는 우비 ☂️</span></li>
+      <li><div class="check-num">9</div><span><span class="check-cat">세면</span>개인 세면도구 (칫솔·치약·샴푸 등)</span></li>
+      <li><div class="check-num">10</div><span><span class="check-cat">건강</span>상비약 — 소화제·두통약·지사제</span></li>
+      <li><div class="check-num">11</div><span><span class="check-cat">전기</span>멀티 어댑터 (일본 100V) · 보조배터리</span></li>
+      <li><div class="check-num">12</div><span><span class="check-cat">기타</span>에코백 또는 소형 배낭 — 관광·쇼핑 이동용</span></li>
+    </ul>
+  </div>
+
+  <!-- 06. 유의사항 -->
+  <div class="section">
+    <div class="section-eyebrow">06</div>
+    <div class="section-heading">유의사항</div>
+    <ul class="checkin-list">
+      <li><div class="checkin-num">1</div><span>부산 신국제여객터미널 3층 부관훼리 카운터 앞에서 <strong>오후 17:00</strong>까지 집결해 주세요.</span></li>
+      <li><div class="checkin-num">2</div><span>여권 유효기간을 꼭 확인해 주세요. <strong>잔여 유효기간 6개월 이상</strong> 필수입니다.</span></li>
+      <li><div class="checkin-num">3</div><span>선박 멀미가 심하신 분은 <strong>승선 전 멀미약</strong>을 미리 복용해 두세요.</span></li>
+      <li><div class="checkin-num">4</div><span>가이드/기사 경비 <strong>1인 30,000원</strong>을 현지에서 지불해 주세요. (만2세 미만 유아 제외)</span></li>
+      <li><div class="checkin-num">5</div><span>일본 전압은 <strong>100V</strong>입니다. 한국 전자제품 사용 시 어댑터를 꼭 챙겨가세요.</span></li>
+      <li><div class="checkin-num">6</div><span>본 안내문은 대표자 한 분께 전달됩니다. <strong>가족 모두에게 공유</strong> 부탁드립니다.</span></li>
+    </ul>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-content">
+      <div class="footer-title">⛴️ 즐거운 후쿠오카 여행 되세요!</div>
+      <div class="footer-sub">궁금하신 사항은 언제든지 문의 주세요.<br>감사합니다.</div>
+      <div class="footer-name">담당 이경진 실장</div>
+      <div class="footer-contacts">
+        <a class="footer-btn footer-btn-phone" href="tel:15445714">📞 1544-5714</a>
+        <a class="footer-btn footer-btn-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡 상담</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
