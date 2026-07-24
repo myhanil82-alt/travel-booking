@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>동유럽+발칸 여행 확정서 - 박종현님 일행</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --coral: #E8593A;
+    --coral-bg: #FFF4F1;
+    --navy: #1C3557;
+    --navy-light: #2E4E72;
+    --gold: #C8973A;
+    --gold-light: #F0C870;
+    --mint: #3AA8A0;
+    --bg: #FAFAF8;
+    --card-bg: #FFFFFF;
+    --text-main: #1A1A1A;
+    --text-sub: #5A5A5A;
+    --text-muted: #8A8A8A;
+    --border: #E8E4DC;
+    --shadow: 0 2px 16px rgba(28,53,87,0.08);
+    --max-w: 680px;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Noto Sans KR', sans-serif; background:var(--bg); color:var(--text-main); font-size:16px; line-height:1.7; }
+
+  /* HEADER */
+  header {
+    width:100%; background:#1A2540;
+    background-image: radial-gradient(ellipse at 20% 50%, rgba(232,89,58,0.18) 0%, transparent 60%),
+                      radial-gradient(ellipse at 80% 20%, rgba(200,151,58,0.14) 0%, transparent 55%);
+    padding:2.8rem 1.5rem 2.4rem; text-align:center;
+  }
+  .header-inner { max-width:var(--max-w); margin:0 auto; }
+  .header-tag { display:inline-block; border:1px solid rgba(255,255,255,0.35); border-radius:20px; padding:4px 16px; font-size:11px; letter-spacing:0.2em; color:rgba(255,255,255,0.75); margin-bottom:1rem; text-transform:uppercase; }
+  .header-title { font-family:'Noto Serif KR',serif; font-size:clamp(24px,5vw,34px); font-weight:600; color:#fff; line-height:1.35; margin-bottom:0.3rem; }
+  .header-subtitle { font-size:13px; color:rgba(255,255,255,0.55); letter-spacing:0.12em; margin-bottom:1.2rem; }
+  .header-names { display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.25); border-radius:30px; padding:8px 22px; font-size:15px; font-weight:600; color:#fff; }
+
+  /* TRIP BAND */
+  .trip-band { width:100%; background:var(--coral); }
+  .trip-band-inner { max-width:var(--max-w); margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); }
+  .trip-item { padding:1rem 0.5rem; text-align:center; border-right:1px solid rgba(255,255,255,0.2); }
+  .trip-item:last-child { border-right:none; }
+  .trip-label { font-size:11px; color:rgba(255,255,255,0.75); letter-spacing:0.1em; margin-bottom:4px; text-transform:uppercase; }
+  .trip-value { font-size:14px; font-weight:700; color:#fff; line-height:1.4; }
+
+  /* CONTAINER */
+  .container { max-width:var(--max-w); margin:0 auto; padding:0 1rem 2rem; }
+
+  /* SECTION */
+  .section { margin-top:2rem; }
+  .section-head { display:flex; align-items:center; gap:12px; margin-bottom:1.2rem; }
+  .section-num { width:30px; height:30px; background:var(--navy); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; color:#fff; flex-shrink:0; }
+  .section-title { font-size:17px; font-weight:700; color:var(--navy); }
+
+  /* CARDS */
+  .card { background:var(--card-bg); border-radius:14px; box-shadow:var(--shadow); overflow:hidden; margin-bottom:12px; }
+  .card:last-child { margin-bottom:0; }
+
+  /* PRODUCT LINK BOX */
+  .product-link-box { display:flex; align-items:center; justify-content:space-between; padding:1.1rem 1.3rem; background:var(--card-bg); border:2px solid var(--navy); border-radius:14px; text-decoration:none; color:var(--navy); transition:background 0.2s; }
+  .product-link-box:hover { background:var(--coral-bg); }
+  .product-link-label { font-size:13px; color:var(--text-muted); margin-bottom:3px; }
+  .product-link-title { font-size:15px; font-weight:700; }
+  .product-link-arrow { font-size:20px; color:var(--coral); }
+
+  /* MEETING BOX */
+  .meeting-box { border:2px solid var(--coral); border-radius:14px; overflow:hidden; }
+  .meeting-box-head { background:var(--coral); padding:10px 16px; font-size:13px; font-weight:700; color:#fff; }
+  .meeting-box-body { padding:1rem 1.2rem; }
+  .meeting-time { font-size:26px; font-weight:700; color:var(--coral); line-height:1.2; }
+  .meeting-date { font-size:13px; color:var(--text-sub); margin-top:2px; }
+  .info-row { display:flex; gap:10px; padding:8px 0; border-bottom:1px solid var(--border); font-size:14px; align-items:flex-start; }
+  .info-row:last-child { border-bottom:none; }
+  .info-key { min-width:90px; font-weight:600; color:var(--navy); font-size:13px; padding-top:1px; flex-shrink:0; }
+  .info-val { color:var(--text-main); line-height:1.6; }
+
+  /* FLIGHT CARD */
+  .flight-card { border-radius:14px; overflow:hidden; box-shadow:var(--shadow); margin-bottom:12px; }
+  .flight-card:last-child { margin-bottom:0; }
+  .flight-header { background:linear-gradient(135deg,var(--navy),var(--navy-light)); padding:10px 16px; display:flex; align-items:center; justify-content:space-between; }
+  .flight-header-left { font-size:13px; font-weight:700; color:rgba(255,255,255,0.8); }
+  .flight-header-right { font-size:15px; font-weight:700; color:var(--gold-light); letter-spacing:1px; }
+  .flight-body { background:var(--card-bg); padding:1.2rem 1.3rem; }
+  .flight-route { display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem; }
+  .flight-city { text-align:center; }
+  .flight-code { font-size:30px; font-weight:700; color:var(--navy); }
+  .flight-time { font-size:18px; font-weight:700; color:var(--text-main); margin-top:2px; }
+  .flight-name { font-size:12px; color:var(--text-muted); margin-top:3px; }
+  .flight-mid { text-align:center; flex:1; padding:0 8px; }
+  .flight-arrow { font-size:20px; color:var(--coral); }
+  .flight-duration { font-size:12px; color:var(--text-muted); margin-top:4px; }
+  .flight-badges { display:flex; flex-wrap:wrap; gap:6px; }
+  .badge { display:inline-flex; align-items:center; gap:4px; background:var(--bg); border:1px solid var(--border); border-radius:20px; padding:4px 12px; font-size:12px; font-weight:600; color:var(--text-sub); }
+  .badge-coral { background:var(--coral-bg); border-color:var(--coral); color:var(--coral); }
+  .badge-navy { background:#EEF2F8; border-color:var(--navy); color:var(--navy); }
+  .badge-gold { background:#FDF6E8; border-color:var(--gold); color:#8A5A10; }
+  .badge-mint { background:#EEF9F8; border-color:var(--mint); color:#1A6E68; }
+
+  /* SEAT BOX */
+  .seat-box { border:2px solid var(--gold); border-radius:14px; overflow:hidden; margin-bottom:12px; }
+  .seat-box-head { background:linear-gradient(135deg,var(--navy),var(--navy-light)); padding:10px 16px; font-size:13px; font-weight:700; color:var(--gold-light); }
+  .seat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; padding:1rem 1.2rem; background:var(--card-bg); }
+  .seat-item { background:#EEF2F8; border-radius:10px; padding:12px 10px; text-align:center; border:1px solid var(--border); }
+  .seat-item-name { font-size:13px; font-weight:700; color:var(--navy); margin-bottom:4px; }
+  .seat-item-num { font-size:20px; font-weight:700; color:var(--coral); }
+  .seat-alert { padding:10px 1.2rem; background:#FFF9EE; font-size:13px; color:#7A5A10; border-top:1px solid var(--border); line-height:1.6; }
+
+  /* BAGGAGE */
+  .baggage-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .baggage-card { background:var(--card-bg); border:1px solid var(--border); border-radius:12px; padding:1.1rem; box-shadow:var(--shadow); }
+  .baggage-icon { font-size:24px; margin-bottom:6px; }
+  .baggage-label { font-size:12px; color:var(--text-muted); font-weight:600; margin-bottom:4px; }
+  .baggage-value { font-size:18px; font-weight:700; color:var(--navy); }
+  .baggage-note { font-size:12px; color:var(--text-sub); margin-top:4px; line-height:1.5; }
+
+  /* COUNTER BOX */
+  .counter-box { border:2px solid var(--gold); border-radius:14px; overflow:hidden; }
+  .counter-box-head { background:linear-gradient(135deg,#8A6010,var(--gold)); padding:10px 16px; font-size:13px; font-weight:700; color:#fff; }
+  .counter-body { padding:1rem 1.2rem; background:var(--card-bg); }
+  .counter-step { display:flex; gap:12px; padding:9px 0; border-bottom:1px solid var(--border); font-size:14px; align-items:flex-start; }
+  .counter-step:last-child { border-bottom:none; }
+  .step-num { width:24px; height:24px; background:var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; color:#fff; flex-shrink:0; margin-top:1px; }
+
+  /* GUIDE BOX */
+  .guide-box { border:2px solid var(--navy); border-radius:14px; overflow:hidden; }
+  .guide-box-head { background:linear-gradient(135deg,var(--navy),var(--navy-light)); padding:10px 16px; font-size:13px; font-weight:700; color:#fff; }
+  .guide-body { padding:1rem 1.2rem; background:var(--card-bg); }
+
+  /* 선택관광 */
+  .optional-table { width:100%; border-collapse:collapse; font-size:13.5px; }
+  .optional-table thead tr { background:linear-gradient(135deg,var(--navy),var(--navy-light)); }
+  .optional-table thead th { color:#fff; font-weight:600; padding:10px 12px; text-align:left; font-size:12px; }
+  .optional-table tbody tr { border-bottom:1px solid var(--border); }
+  .optional-table tbody tr:last-child { border-bottom:none; }
+  .optional-table tbody tr:nth-child(even) { background:#F8F6F2; }
+  .optional-table td { padding:10px 12px; color:var(--text-main); vertical-align:middle; line-height:1.5; }
+  .opt-name { font-weight:600; color:var(--navy); }
+  .opt-price { font-weight:700; color:var(--coral); }
+  .opt-badge { display:inline-block; background:#EEF2F8; border:1px solid var(--navy); border-radius:10px; padding:2px 8px; font-size:11px; color:var(--navy); font-weight:600; }
+
+  /* WEATHER/PREP */
+  .prep-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .prep-card { background:var(--card-bg); border:1px solid var(--border); border-radius:12px; padding:1.1rem; box-shadow:var(--shadow); }
+  .prep-icon { font-size:24px; margin-bottom:6px; }
+  .prep-title { font-size:13px; font-weight:700; color:var(--navy); margin-bottom:6px; }
+  .prep-list { list-style:none; }
+  .prep-list li { font-size:13px; color:var(--text-sub); padding:3px 0; line-height:1.5; }
+  .prep-list li::before { content:"·"; color:var(--coral); font-weight:700; margin-right:6px; }
+
+  /* ALERTS */
+  .alert { border-radius:10px; padding:11px 14px; font-size:13.5px; line-height:1.7; margin-top:10px; }
+  .alert:first-child { margin-top:0; }
+  .alert-navy { background:#EEF2F8; border-left:3px solid var(--navy); color:#1C3557; }
+  .alert-coral { background:var(--coral-bg); border-left:3px solid var(--coral); color:#8A2510; }
+  .alert-gold { background:#FDF6E8; border-left:3px solid var(--gold); color:#7A5010; }
+  .alert-mint { background:#EEF9F8; border-left:3px solid var(--mint); color:#1A6E68; }
+  .alert-red { background:#FFF0F0; border-left:3px solid #C83030; color:#7A1010; }
+
+  /* INCL */
+  .incl-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .incl-card { border-radius:12px; padding:1rem 1.1rem; }
+  .incl-card.included { background:#EEF9F8; border:1px solid var(--mint); }
+  .incl-card.excluded { background:var(--coral-bg); border:1px solid var(--coral); }
+  .incl-title { font-size:13px; font-weight:700; margin-bottom:8px; }
+  .incl-title.included { color:var(--mint); }
+  .incl-title.excluded { color:var(--coral); }
+  .incl-list { list-style:none; }
+  .incl-list li { font-size:13px; padding:3px 0; line-height:1.5; display:flex; gap:6px; }
+  .incl-list li::before { content:"✓"; font-weight:700; flex-shrink:0; }
+  .incl-list.included li::before { color:var(--mint); }
+  .incl-list.excluded li::before { content:"✗"; color:var(--coral); }
+
+  /* FOOTER */
+  footer { width:100%; background:linear-gradient(135deg,var(--navy),var(--navy-light)); padding:2rem 1.5rem; margin-top:2rem; }
+  .footer-inner { max-width:var(--max-w); margin:0 auto; text-align:center; }
+  .footer-title { font-family:'Noto Serif KR',serif; font-size:16px; color:rgba(255,255,255,0.85); margin-bottom:0.5rem; }
+  .footer-sub { font-size:13px; color:rgba(255,255,255,0.55); margin-bottom:1.2rem; }
+  .footer-name { font-size:14px; font-weight:600; color:rgba(255,255,255,0.8); margin-bottom:1rem; }
+  .footer-btns { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+  .footer-btn { display:inline-flex; align-items:center; gap:8px; border-radius:30px; padding:10px 22px; font-size:14px; text-decoration:none; font-weight:700; }
+  .btn-phone { background:var(--coral); color:#fff; }
+  .btn-kakao { background:#FEE500; color:#3a1d00; }
+
+  @media(max-width:480px){
+    .trip-band-inner { grid-template-columns:repeat(2,1fr); }
+    .baggage-grid,.prep-grid,.incl-grid,.seat-grid { grid-template-columns:1fr; }
+    .optional-table { font-size:12px; }
+    .optional-table thead th, .optional-table td { padding:8px 8px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="header-tag">✦ Travel Confirmation ✦</div>
+    <div class="header-title">동유럽 + 발칸 여행 확정서</div>
+    <div class="header-subtitle">EASTERN EUROPE &amp; BALKANS · 2026</div>
+    <div class="header-names">🧳 박종현님 일행</div>
+  </div>
+</header>
+
+<!-- TRIP BAND -->
+<div class="trip-band">
+  <div class="trip-band-inner">
+    <div class="trip-item">
+      <div class="trip-label">출발일</div>
+      <div class="trip-value">07.26(일)</div>
+    </div>
+    <div class="trip-item">
+      <div class="trip-label">귀국일</div>
+      <div class="trip-value">08.05(수)</div>
+    </div>
+    <div class="trip-item">
+      <div class="trip-label">일정</div>
+      <div class="trip-value">9박 11일</div>
+    </div>
+    <div class="trip-item">
+      <div class="trip-label">투어타입</div>
+      <div class="trip-value">패키지</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 01. 상품 안내 -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">1</div>
+      <div class="section-title">상품 안내</div>
+    </div>
+    <a class="product-link-box" href="https://www.modetour.com/package/104893644?MLoc=99&Pnum=104893644&ANO=1772510&sno=C2181215&thru=crs" target="_blank">
+      <div>
+        <div class="product-link-label">모두투어 예약 확인</div>
+        <div class="product-link-title">동유럽 + 발칸 패키지 일정표 보기</div>
+      </div>
+      <div class="product-link-arrow">→</div>
+    </a>
+    <div class="alert alert-navy" style="margin-top:10px;">
+      📋 투숙 호텔은 모두투어 일정표를 참고해 주세요.
+    </div>
+  </div>
+
+  <!-- 02. 인솔자 & 행사 정보 -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">2</div>
+      <div class="section-title">인솔자 & 행사 정보</div>
+    </div>
+    <div class="guide-box">
+      <div class="guide-box-head">👤 담당 인솔자 정보</div>
+      <div class="guide-body">
+        <div class="info-row">
+          <div class="info-key">인솔자</div>
+          <div class="info-val"><strong>조경희</strong></div>
+        </div>
+        <div class="info-row">
+          <div class="info-key">연락처</div>
+          <div class="info-val"><a href="tel:01053711726" style="color:var(--coral);font-weight:700;">010-5371-1726</a></div>
+        </div>
+        <div class="info-row" style="border-bottom:none;">
+          <div class="info-key">미팅 안내</div>
+          <div class="info-val">인천공항 개별 수속 후 현지에서 인솔자와 합류</div>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-navy" style="margin-top:10px;">
+      ℹ️ 인천공항 미팅은 없습니다. 개별 티켓팅 후 출국하시면 됩니다.
+    </div>
+  </div>
+
+  <!-- 03. 항공 일정 -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">3</div>
+      <div class="section-title">항공 일정</div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-header">
+        <div class="flight-header-left">✈ 가는 편</div>
+        <div class="flight-header-right">OZ547</div>
+      </div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="flight-city">
+            <div class="flight-code">ICN</div>
+            <div class="flight-time">12:35</div>
+            <div class="flight-name">인천 (T1)</div>
+          </div>
+          <div class="flight-mid">
+            <div class="flight-arrow">→</div>
+            <div class="flight-duration">약 12시간 30분</div>
+          </div>
+          <div class="flight-city">
+            <div class="flight-code">BUD</div>
+            <div class="flight-time">18:05</div>
+            <div class="flight-name">부다페스트</div>
+          </div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge badge-navy">아시아나항공</span>
+          <span class="badge badge-navy">2026.07.26(일)</span>
+          <span class="badge badge-mint">기내식 제공</span>
+          <span class="badge badge-gold">예약번호 ETRERR</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-header">
+        <div class="flight-header-left">✈ 오는 편</div>
+        <div class="flight-header-right">OZ546</div>
+      </div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="flight-city">
+            <div class="flight-code">PRG</div>
+            <div class="flight-time">18:50</div>
+            <div class="flight-name">프라하</div>
+          </div>
+          <div class="flight-mid">
+            <div class="flight-arrow">→</div>
+            <div class="flight-duration">약 10시간 20분</div>
+          </div>
+          <div class="flight-city">
+            <div class="flight-code">ICN</div>
+            <div class="flight-time">13:10</div>
+            <div class="flight-name">인천 (T1) +1</div>
+          </div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge badge-navy">아시아나항공</span>
+          <span class="badge badge-navy">2026.08.04(화)</span>
+          <span class="badge badge-mint">기내식 제공</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04. 좌석 배정 안내 -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">4</div>
+      <div class="section-title">좌석 배정 안내</div>
+    </div>
+    <div class="seat-box">
+      <div class="seat-box-head">🪑 현재 지정된 좌석 (가는 편 기준)</div>
+      <div class="seat-grid">
+        <div class="seat-item">
+          <div class="seat-item-name">박종현</div>
+          <div class="seat-item-num">25G</div>
+        </div>
+        <div class="seat-item">
+          <div class="seat-item-name">박진원</div>
+          <div class="seat-item-num">25J</div>
+        </div>
+        <div class="seat-item">
+          <div class="seat-item-name">박성원</div>
+          <div class="seat-item-num">26H</div>
+        </div>
+      </div>
+      <div class="seat-alert">
+        ⚠️ 현재 좌석이 일행끼리 분리되어 있습니다. <strong>공항 카운터에서 좌석 조정을 요청</strong>해 주세요. 일찍 도착하실수록 조정 가능성이 높습니다.
+      </div>
+    </div>
+  </div>
+
+  <!-- 05. 체크인 카운터 안내 -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">5</div>
+      <div class="section-title">체크인 카운터 안내</div>
+    </div>
+    <div class="counter-box">
+      <div class="counter-box-head">📍 인천공항 제1터미널 — 아시아나항공</div>
+      <div class="counter-body">
+        <div class="counter-step">
+          <div class="step-num">1</div>
+          <div><strong>온라인 체크인 (출발 48시간 전부터)</strong><br>
+          아시아나항공 사이트 → 예약번호 <strong style="color:var(--coral);">ETRERR</strong> 입력 → 좌석 조정 요청</div>
+        </div>
+        <div class="counter-step">
+          <div class="step-num">2</div>
+          <div><strong>공항 수속</strong><br>인천공항 제1터미널 아시아나항공 카운터 방문 → <strong>좌석 조정 요청</strong> → 수하물 위탁</div>
+        </div>
+        <div class="counter-step">
+          <div class="step-num">3</div>
+          <div><strong>출발 3시간 전 도착 권장</strong><br>좌석 조정을 위해 여유 있게 일찍 도착하시는 것을 강력 권장합니다.</div>
+        </div>
+      </div>
+    </div>
+    <a href="https://flyasiana.com/C/KR/KO/contents/online-check-in" target="_blank"
+      style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,var(--navy),var(--navy-light));border-radius:22px;padding:9px 20px;font-size:14px;color:#fff;text-decoration:none;font-weight:700;margin-top:10px;box-shadow:var(--shadow);">
+      아시아나항공 온라인 체크인 바로가기 →
+    </a>
+  </div>
+
+  <!-- 06. 수하물 안내 -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">6</div>
+      <div class="section-title">수하물 안내</div>
+    </div>
+    <div class="baggage-grid">
+      <div class="baggage-card">
+        <div class="baggage-icon">🧳</div>
+        <div class="baggage-label">위탁 수하물</div>
+        <div class="baggage-value">23kg × 1개</div>
+        <div class="baggage-note">1인 1개 / 초과 시 현장 추가요금</div>
+      </div>
+      <div class="baggage-card">
+        <div class="baggage-icon">🎒</div>
+        <div class="baggage-label">기내 수하물</div>
+        <div class="baggage-value">10kg × 1개</div>
+        <div class="baggage-note">액체류 100ml 이하 / 보조배터리 기내 반입</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 07. 선택관광 안내 -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">7</div>
+      <div class="section-title">선택관광 안내</div>
+    </div>
+    <div class="card">
+      <div style="background:linear-gradient(135deg,var(--navy),var(--navy-light));padding:10px 16px;font-size:13px;font-weight:700;color:var(--gold-light);">
+        🗺️ 선택관광 리스트 — 비용은 현지에서 유로(EUR)로 지불
+      </div>
+      <div style="overflow-x:auto;">
+        <table class="optional-table">
+          <thead>
+            <tr>
+              <th>관광명</th>
+              <th>비용 (성인)</th>
+              <th>비용 (아동)</th>
+              <th>소요시간</th>
+              <th>인솔자</th>
+              <th>미참여 시</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="opt-name">#라스토케 마을투어</div></td>
+              <td><span class="opt-price">€40</span></td>
+              <td><span class="opt-price">€40</span></td>
+              <td>45분</td>
+              <td><span class="opt-badge">동행</span></td>
+              <td>자유시간</td>
+            </tr>
+            <tr>
+              <td><div class="opt-name">#플레트나 보트 + 블레드섬</div></td>
+              <td><span class="opt-price">€80</span></td>
+              <td><span class="opt-price">€80</span></td>
+              <td>90분</td>
+              <td><span class="opt-badge">동행</span></td>
+              <td>자유시간</td>
+            </tr>
+            <tr>
+              <td><div class="opt-name">#스르지산 전망</div></td>
+              <td><span class="opt-price">€60</span></td>
+              <td><span class="opt-price">€60</span></td>
+              <td>60분</td>
+              <td><span class="opt-badge">동행</span></td>
+              <td>자유시간</td>
+            </tr>
+            <tr>
+              <td><div class="opt-name">#잘츠카머구트 케이블카</div></td>
+              <td><span class="opt-price">€70</span></td>
+              <td><span class="opt-price">€70</span></td>
+              <td>45분</td>
+              <td><span style="display:inline-block;background:#FFF4F1;border:1px solid var(--coral);border-radius:10px;padding:2px 8px;font-size:11px;color:var(--coral);font-weight:600;">동행안함</span></td>
+              <td>자유시간</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="alert alert-gold" style="margin-top:10px;">
+      💶 선택관광 비용은 모두 <strong>유로(EUR) 현금</strong>으로 현지에서 지불합니다.<br>
+      최소 인원(10명)이 충족되지 않으면 진행되지 않을 수 있습니다.
+    </div>
+  </div>
+
+  <!-- 08. 포함/불포함 -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">8</div>
+      <div class="section-title">포함 / 불포함</div>
+    </div>
+    <div class="incl-grid">
+      <div class="incl-card included">
+        <div class="incl-title included">✅ 포함 사항</div>
+        <ul class="incl-list included">
+          <li>왕복 항공료 (기내식 포함)</li>
+          <li>일정 내 호텔 숙박</li>
+          <li>일정 내 식사</li>
+          <li>인솔자 서비스</li>
+          <li>현지 가이드</li>
+          <li>관광지 입장료</li>
+          <li>버스 교통비</li>
+        </ul>
+      </div>
+      <div class="incl-card excluded">
+        <div class="incl-title excluded">✗ 불포함 사항</div>
+        <ul class="incl-list excluded">
+          <li>선택관광 비용 (EUR 현금)</li>
+          <li>개인 경비</li>
+          <li>여행자 보험</li>
+          <li>식사 시 음료</li>
+          <li>팁 (가이드/기사)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 09. 환전 안내 -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">9</div>
+      <div class="section-title">환전 안내</div>
+    </div>
+    <div class="counter-box">
+      <div class="counter-box-head">💶 동유럽·발칸 환전 안내</div>
+      <div class="counter-body">
+        <div class="info-row">
+          <div class="info-key">주요 통화</div>
+          <div class="info-val"><strong>유로(EUR)</strong> — 선택관광·개인 경비 등 대부분 유로 사용</div>
+        </div>
+        <div class="info-row">
+          <div class="info-key">권장 금액</div>
+          <div class="info-val">선택관광 4종 모두 참여 시 1인 <strong>EUR 250</strong> 수준 + 개인 경비 여유분</div>
+        </div>
+        <div class="info-row" style="border-bottom:none;">
+          <div class="info-key">카드</div>
+          <div class="info-val">Visa / Mastercard 신용카드도 대부분 가맹점에서 사용 가능</div>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-gold" style="margin-top:10px;">
+      💡 발칸 일부 국가(보스니아·북마케도니아·세르비아 등)는 자국 화폐를 사용하지만, 대부분의 관광 명소와 식당에서 유로를 받습니다. 소액 현지 화폐도 준비하면 편리합니다.
+    </div>
+  </div>
+
+  <!-- 10. 날씨 & 준비물 -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">10</div>
+      <div class="section-title">날씨 & 준비물</div>
+    </div>
+    <div class="prep-grid">
+      <div class="prep-card">
+        <div class="prep-icon">🌤️</div>
+        <div class="prep-title">현지 날씨 (7월 말~8월 초)</div>
+        <ul class="prep-list">
+          <li>부다페스트·프라하: 20~32°C</li>
+          <li>크로아티아 해안: 25~34°C</li>
+          <li>슬로베니아·오스트리아: 18~28°C</li>
+          <li>습도 낮고 쾌적한 편</li>
+          <li>아침·저녁 일교차 있음</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="prep-icon">👕</div>
+        <div class="prep-title">옷차림</div>
+        <ul class="prep-list">
+          <li>반팔·반바지 (낮 기본)</li>
+          <li>얇은 긴팔·가디건 (저녁 필수)</li>
+          <li>편한 운동화 (도보 많음)</li>
+          <li>샌들 (해변·관광지)</li>
+          <li>모자·선글라스</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="prep-icon">🎒</div>
+        <div class="prep-title">필수 준비물</div>
+        <ul class="prep-list">
+          <li>여권 (유효기간 6개월 이상)</li>
+          <li>유로 현금</li>
+          <li>국제 신용카드</li>
+          <li>선크림 (SPF 50+)</li>
+          <li>개인 상비약</li>
+          <li>보조배터리·어댑터 (220V C타입)</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="prep-icon">✈️</div>
+        <div class="prep-title">여행 팁</div>
+        <ul class="prep-list">
+          <li>유럽 어댑터 C/F타입 필요</li>
+          <li>전압 220V (한국과 동일)</li>
+          <li>물값 유료 (생수 별도 구매)</li>
+          <li>팁 문화 있음 (EUR 1~5)</li>
+          <li>치안 양호하나 소매치기 주의</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-title">🌍 즐거운 동유럽·발칸 여행 되세요!</div>
+    <div class="footer-sub">궁금하신 사항은 언제든지 문의 주세요.</div>
+    <div class="footer-name">담당 이경진 실장</div>
+    <div class="footer-btns">
+      <a class="footer-btn btn-phone" href="tel:15445714">📞 1544-5714</a>
+      <a class="footer-btn btn-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡 상담</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
