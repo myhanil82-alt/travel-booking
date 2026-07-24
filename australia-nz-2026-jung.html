@@ -97,6 +97,25 @@
   .baggage-val   { font-size:16px; font-weight:800; color:#081020; line-height:1.5; }
   .baggage-sub   { font-size:13px; color:#2a4a7a; margin-top:3px; line-height:1.5; }
 
+  /* 날씨 배너 */
+  .weather-bar { background:linear-gradient(160deg,#fff8d0,#ffeebb,#ffe0a0); padding:1.2rem 1.75rem; border-bottom:3px solid #d0a030; }
+  .weather-title { font-size:15px; font-weight:800; color:#6a3800; margin-bottom:0.8rem; }
+  .weather-note { background:rgba(255,255,255,0.78); border-radius:10px; padding:10px 15px; font-size:14px; color:#6a3800; font-weight:700; border:1px solid rgba(200,140,40,0.35); margin-top:10px; }
+  .weather-region-label { font-size:13px; font-weight:800; color:#4a2800; margin:10px 0 6px; letter-spacing:0.05em; }
+  .weather-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin-bottom:4px; }
+  .weather-grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin-bottom:4px; }
+  .weather-day { background:rgba(255,255,255,0.85); border-radius:10px; padding:10px 6px; text-align:center; border:1px solid rgba(200,140,40,0.4); }
+  .weather-day-label { font-size:12px; font-weight:700; color:#7a4a10; margin-bottom:3px; }
+  .weather-day-icon  { font-size:22px; margin-bottom:4px; }
+  .weather-day-temp  { font-size:13px; font-weight:800; color:#0a1000; }
+  .weather-day-desc  { font-size:11px; color:#7a5020; margin-top:3px; }
+  /* 준비물 */
+  .checklist { list-style:none; padding:0; }
+  .checklist li { display:flex; align-items:flex-start; gap:12px; padding:10px 0; border-bottom:1px solid var(--border); font-size:14.5px; line-height:1.65; }
+  .checklist li:last-child { border-bottom:none; }
+  .check-num { min-width:24px; height:24px; background:linear-gradient(135deg,#082040,#1a5a8a); color:#fff; border-radius:50%; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
+  .check-cat { font-size:12px; font-weight:800; color:var(--sea); background:var(--sea-light); border-radius:5px; padding:2px 8px; margin-right:5px; white-space:nowrap; }
+
   /* SECTIONS */
   .section { background:var(--warm-white); border-bottom:1px solid var(--border); padding:1.9rem 1.75rem; }
   .section:nth-child(even) { background:var(--cream); }
@@ -342,6 +361,81 @@
     </div>
   </div>
 
+  <!-- 날씨 배너 -->
+  <div class="weather-bar">
+    <div class="weather-title">🌤️ 현지 날씨 안내 (7월 말~8월 초)</div>
+
+    <div class="weather-region-label">🇦🇺 호주 · 시드니 — 7/31~8/2 (남반구 겨울)</div>
+    <div class="weather-grid-3">
+      <div class="weather-day">
+        <div class="weather-day-label">7/31 (금)</div>
+        <div class="weather-day-icon">🌤️</div>
+        <div class="weather-day-temp">10~18°C</div>
+        <div class="weather-day-desc">구름 조금</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-label">8/1 (토)</div>
+        <div class="weather-day-icon">☀️</div>
+        <div class="weather-day-temp">11~19°C</div>
+        <div class="weather-day-desc">맑음</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-label">8/2 (일)</div>
+        <div class="weather-day-icon">⛅</div>
+        <div class="weather-day-temp">10~18°C</div>
+        <div class="weather-day-desc">구름 많음</div>
+      </div>
+    </div>
+
+    <div class="weather-region-label">🇳🇿 뉴질랜드 · 남섬/퀸스타운 — 8/2~8/5 (남반구 겨울)</div>
+    <div class="weather-grid-3">
+      <div class="weather-day">
+        <div class="weather-day-label">8/2~3</div>
+        <div class="weather-day-icon">🌨️</div>
+        <div class="weather-day-temp">1~10°C</div>
+        <div class="weather-day-desc">눈/비 가능</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-label">8/3~4</div>
+        <div class="weather-day-icon">☀️</div>
+        <div class="weather-day-temp">2~12°C</div>
+        <div class="weather-day-desc">맑음·쌀쌀</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-label">8/4~5</div>
+        <div class="weather-day-icon">🌦️</div>
+        <div class="weather-day-temp">3~11°C</div>
+        <div class="weather-day-desc">소나기</div>
+      </div>
+    </div>
+
+    <div class="weather-region-label">🇳🇿 뉴질랜드 · 북섬/로토루아·오클랜드 — 8/5~8/8</div>
+    <div class="weather-grid-3">
+      <div class="weather-day">
+        <div class="weather-day-label">8/5~6</div>
+        <div class="weather-day-icon">🌦️</div>
+        <div class="weather-day-temp">8~14°C</div>
+        <div class="weather-day-desc">비 조금</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-label">8/6~7</div>
+        <div class="weather-day-icon">⛅</div>
+        <div class="weather-day-temp">9~15°C</div>
+        <div class="weather-day-desc">구름 많음</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-label">8/7~8</div>
+        <div class="weather-day-icon">☀️</div>
+        <div class="weather-day-temp">8~15°C</div>
+        <div class="weather-day-desc">맑음</div>
+      </div>
+    </div>
+
+    <div class="weather-note">
+      ⚠️ 호주·뉴질랜드는 <strong>남반구 겨울</strong>입니다! 한국의 한겨울처럼 춥지는 않지만 뉴질랜드 남섬(퀸스타운)은 기온이 매우 낮고 눈이 올 수 있습니다. <strong>두꺼운 겉옷·방한복 필수!</strong>
+    </div>
+  </div>
+
   <!-- 01. 상품 안내 -->
   <div class="section">
     <div class="section-eyebrow">01</div>
@@ -476,9 +570,34 @@
     </div>
   </div>
 
-  <!-- 06. 유의사항 -->
+  <!-- 06. 준비물 체크리스트 -->
   <div class="section">
     <div class="section-eyebrow">06</div>
+    <div class="section-heading">준비물 체크리스트 🎒</div>
+    <div class="alert alert-blue" style="margin-bottom:1rem;margin-top:0;">
+      🧥 호주·뉴질랜드는 <strong>남반구 겨울!</strong> 뉴질랜드 남섬은 특히 추우니 패딩·방한복을 반드시 준비하세요.
+    </div>
+    <ul class="checklist">
+      <li><div class="check-num">1</div><span><span class="check-cat">필수</span><strong>여권</strong> — 유효기간 6개월 이상 반드시 확인!</span></li>
+      <li><div class="check-num">2</div><span><span class="check-cat">필수</span><strong>항공권 E-티켓</strong> 출력 또는 스마트폰 저장</span></li>
+      <li><div class="check-num">3</div><span><span class="check-cat">필수</span><strong>호주 ETA / 뉴질랜드 NZeTA 승인 화면 캡처</strong> 저장</span></li>
+      <li><div class="check-num">4</div><span><span class="check-cat">방한</span><strong>두꺼운 패딩 또는 방한 점퍼</strong> — 뉴질랜드 남섬 기온 1~12°C</span></li>
+      <li><div class="check-num">5</div><span><span class="check-cat">방한</span>따뜻한 니트·기모 맨투맨 · 히트텍 등 레이어링 의류</span></li>
+      <li><div class="check-num">6</div><span><span class="check-cat">방한</span>장갑 · 목도리 · 귀마개 · 두꺼운 양말</span></li>
+      <li><div class="check-num">7</div><span><span class="check-cat">복장</span>트레킹화 또는 워커 — 야외 활동 많음 (젖어도 되는 신발 권장)</span></li>
+      <li><div class="check-num">8</div><span><span class="check-cat">날씨</span>접이식 우산 또는 방수 우비 ☂️ — 날씨 변화 잦음</span></li>
+      <li><div class="check-num">9</div><span><span class="check-cat">날씨</span>선크림 (SPF 50+) · 선글라스 — 남반구 자외선 강함 (겨울에도!)</span></li>
+      <li><div class="check-num">10</div><span><span class="check-cat">세면</span>개인 세면도구 (칫솔·치약·샴푸 등)</span></li>
+      <li><div class="check-num">11</div><span><span class="check-cat">건강</span>상비약 — 소화제·두통약·감기약·멀미약</span></li>
+      <li><div class="check-num">12</div><span><span class="check-cat">전기</span>여행용 멀티 어댑터 (호주·뉴질랜드: 230V · 3핀) · 보조배터리</span></li>
+      <li><div class="check-num">13</div><span><span class="check-cat">기타</span>에코백 또는 소형 배낭 — 관광·쇼핑 이동용</span></li>
+      <li><div class="check-num">14</div><span><span class="check-cat">기타</span><strong>호주·뉴질랜드 음식 반입 금지 주의</strong> — 육류·과일·견과류 등 세관 신고 필수</span></li>
+    </ul>
+  </div>
+
+  <!-- 07. 유의사항 -->
+  <div class="section">
+    <div class="section-eyebrow">07</div>
     <div class="section-heading">유의사항</div>
     <ul class="checkin-list">
       <li><div class="checkin-num">1</div><span>인천국제공항 <strong>제2터미널 A~D 카운터</strong>에 출발 3시간 전까지 도착해 주세요.</span></li>
