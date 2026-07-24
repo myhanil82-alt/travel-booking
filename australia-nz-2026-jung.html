@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>호주/뉴질랜드 여행 확정서 - 정상국님 가족</title>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sea: #1a5a8a;
+    --sea-light: #e4f0fc;
+    --gold: #b07000;
+    --gold-light: #fff8e0;
+    --red: #c03020;
+    --red-light: #fdeeed;
+    --amber: #c06000;
+    --amber-light: #fff4e0;
+    --green: #1a6b3a;
+    --green-light: #e4f8ee;
+    --cream: #f4f8fd;
+    --warm-white: #ffffff;
+    --charcoal: #081020;
+    --medium: #1a3a5a;
+    --muted: #5a7a9a;
+    --border: #c0d4e8;
+    --blue: #1a4a8a;
+    --blue-light: #e4eeff;
+    --aus: #00407a;
+    --nz: #00543d;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:"Nanum Gothic","맑은 고딕","Malgun Gothic",sans-serif; background:var(--cream); color:var(--charcoal); line-height:1.7; font-size:16px; }
+  .main { max-width:700px; margin:0 auto; }
+
+  .hero {
+    position:relative;
+    background:linear-gradient(160deg, #040c18 0%, #082040 40%, #0c3060 75%, #1a5a8a 100%);
+    padding:3.5rem 2rem 4rem; text-align:center; overflow:hidden;
+  }
+  .hero::after { content:""; position:absolute; bottom:-2px; left:0; right:0; height:50px; background:var(--cream); clip-path:ellipse(60% 100% at 50% 100%); }
+  .hero-blob { position:absolute; border-radius:50%; background:rgba(255,255,255,0.06); }
+  .hero-content { position:relative; z-index:2; }
+  .hero-tag { display:inline-block; background:rgba(255,255,255,0.13); border:1px solid rgba(255,255,255,0.3); border-radius:20px; padding:5px 18px; font-size:13px; letter-spacing:0.2em; color:rgba(255,255,255,0.92); margin-bottom:0.9rem; text-transform:uppercase; }
+  .hero-title { font-size:clamp(24px,5vw,36px); font-weight:800; color:#fff; line-height:1.35; margin-bottom:0.3rem; text-shadow:0 2px 12px rgba(0,0,0,0.3); }
+  .hero-title em { color:#90d0ff; font-style:normal; }
+  .hero-names { font-size:18px; font-weight:700; color:rgba(255,255,255,0.9); margin-bottom:0.3rem; }
+  .hero-sub { font-size:15px; color:rgba(255,255,255,0.72); margin-bottom:1.4rem; }
+  .agent-wrap { display:flex; flex-direction:column; align-items:center; gap:8px; }
+  .agent-name { display:inline-flex; align-items:center; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.35); border-radius:30px; padding:8px 22px; font-size:15px; color:#fff; font-weight:700; }
+  .agent-contacts { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
+  .agent-contacts a { display:inline-flex; align-items:center; gap:6px; border-radius:30px; padding:8px 18px; font-size:14px; text-decoration:none; font-weight:700; }
+  .contact-phone { background:rgba(255,255,255,0.92); color:#082040; }
+  .contact-kakao { background:#FEE500; color:#3a1d00; }
+
+  /* ETA 경고 배너 */
+  .eta-warning { background:linear-gradient(135deg,#7a1010,#c03020); padding:1.2rem 1.75rem; border-bottom:3px solid #e05040; }
+
+  /* 가이드 배너 */
+  .guide-banner { background:linear-gradient(135deg,#e4f0fc,#d0e4f8,#bcD8f4); padding:1.2rem 1.75rem; border-bottom:3px solid #1a5a8a; }
+
+  /* 카운터 배너 */
+  .counter-banner { background:linear-gradient(135deg,#050f20,#0a2a5a,#0f3a80); padding:1.2rem 1.75rem; border-bottom:3px solid #60a0e0; }
+  .counter-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:10px; }
+  .counter-item { background:rgba(255,255,255,0.10); border:1px solid rgba(255,255,255,0.18); border-radius:12px; padding:14px 16px; }
+  .counter-item-label { font-size:11px; font-weight:700; color:rgba(255,255,255,0.6); letter-spacing:1px; margin-bottom:6px; }
+  .counter-item-val { font-size:15px; font-weight:800; color:#fff; line-height:1.5; }
+  .counter-item-sub { font-size:13px; font-weight:700; color:#a0d0ff; margin-top:4px; }
+
+  /* 항공 배너 */
+  .flight-banner { background:linear-gradient(135deg,#e8f0ff,#d8e8ff,#c8e0ff); padding:1.2rem 1.75rem; border-bottom:3px solid #6090d0; }
+  .flight-banner-title { font-size:15px; font-weight:800; color:#1a3a7a; margin-bottom:0.8rem; }
+  .flight-card { background:rgba(255,255,255,0.88); border-radius:14px; overflow:hidden; border:1px solid rgba(80,130,200,0.35); margin-bottom:10px; }
+  .flight-card:last-child { margin-bottom:0; }
+  .flight-card-header { padding:9px 16px; font-size:13px; font-weight:800; }
+  .flight-card-header.go   { background:linear-gradient(135deg,#082040,#1a5a8a); color:#fff; }
+  .flight-card-header.back { background:linear-gradient(135deg,#0a2040,#1a4a8a); color:#fff; }
+  .flight-card-body { padding:14px 18px; }
+  .flight-route { display:flex; align-items:center; justify-content:space-between; }
+  .flight-city { text-align:center; flex:1; }
+  .flight-city-code { font-size:25px; font-weight:800; color:#1a2040; }
+  .flight-city-time { font-size:18px; font-weight:800; color:#0a3a6a; margin-top:2px; }
+  .flight-city-name { font-size:13px; color:var(--muted); margin-top:3px; }
+  .flight-arrow-wrap { flex:0 0 84px; text-align:center; }
+  .flight-arrow { font-size:22px; color:#4a80c0; }
+  .flight-arrow-label { font-size:12px; color:var(--muted); margin-top:2px; line-height:1.4; }
+  .flight-meta-row { display:flex; gap:6px; margin-top:10px; flex-wrap:wrap; }
+  .flight-meta-chip { background:#e4f0fc; border:1px solid #80b0d8; border-radius:20px; padding:4px 12px; font-size:12px; font-weight:700; color:#0a3a6a; }
+  .flight-meta-chip.good { background:var(--green-light); border-color:#80c0a0; color:#1a5a30; }
+  .flight-meta-chip.warn { background:#fdeeed; border-color:#e08080; color:#8a1010; }
+
+  /* 수하물 배너 */
+  .baggage-banner { background:linear-gradient(135deg,#e4f0fc,#d0e4f8,#bcd8f4); padding:1.2rem 1.75rem; border-bottom:3px solid #1a5a8a; }
+  .baggage-title { font-size:15px; font-weight:800; color:#082040; margin-bottom:0.8rem; }
+  .baggage-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .baggage-item { background:rgba(255,255,255,0.85); border-radius:12px; padding:12px 15px; border:1px solid rgba(26,90,138,0.25); }
+  .baggage-label { font-size:12px; font-weight:700; color:#1a4a7a; margin-bottom:5px; }
+  .baggage-val   { font-size:16px; font-weight:800; color:#081020; line-height:1.5; }
+  .baggage-sub   { font-size:13px; color:#2a4a7a; margin-top:3px; line-height:1.5; }
+
+  /* SECTIONS */
+  .section { background:var(--warm-white); border-bottom:1px solid var(--border); padding:1.9rem 1.75rem; }
+  .section:nth-child(even) { background:var(--cream); }
+  .section-eyebrow { font-size:12px; letter-spacing:0.22em; text-transform:uppercase; color:var(--sea); font-weight:700; margin-bottom:0.3rem; }
+  .section-heading { font-size:22px; font-weight:800; color:var(--charcoal); margin-bottom:1.2rem; display:flex; align-items:center; gap:10px; }
+  .section-heading::after { content:""; flex:1; height:1.5px; background:linear-gradient(to right,var(--border),transparent); }
+
+  .info-card { background:var(--warm-white); border:1px solid var(--border); border-radius:14px; overflow:hidden; box-shadow:0 2px 10px rgba(26,90,138,0.08); }
+  .info-row { display:flex; gap:1rem; padding:14px 18px; border-bottom:1px solid var(--border); align-items:flex-start; }
+  .info-row:last-child { border-bottom:none; }
+  .info-key { min-width:90px; font-size:14px; font-weight:700; color:var(--medium); padding-top:2px; }
+  .info-val { flex:1; color:var(--charcoal); line-height:1.7; font-size:14.5px; }
+  .info-val strong { color:var(--sea); font-weight:700; }
+
+  .alert { border-radius:10px; padding:12px 16px; font-size:14px; line-height:1.7; margin-top:8px; }
+  .alert-red    { background:var(--red-light);    border-left:3px solid var(--red);    color:#7a1010; }
+  .alert-amber  { background:var(--amber-light);  border-left:3px solid var(--amber);  color:#7a3800; }
+  .alert-green  { background:var(--green-light);  border-left:3px solid var(--green);  color:#0a3820; }
+  .alert-gold   { background:var(--gold-light);   border-left:3px solid var(--gold);   color:#7a4800; }
+  .alert-sea    { background:var(--sea-light);    border-left:3px solid var(--sea);    color:#082040; }
+  .alert-blue   { background:var(--blue-light);   border-left:3px solid var(--blue);   color:#0a1a4a; }
+
+  a.link-pill { display:inline-flex; align-items:center; gap:6px; background:linear-gradient(135deg,#082040,#1a5a8a); border-radius:22px; padding:9px 20px; font-size:14px; color:#fff; text-decoration:none; margin-top:6px; font-weight:700; box-shadow:0 3px 10px rgba(26,90,138,0.3); }
+  a.link-pill-green { display:inline-flex; align-items:center; gap:6px; background:linear-gradient(135deg,#003828,#00543d); border-radius:22px; padding:9px 20px; font-size:14px; color:#fff; text-decoration:none; margin-top:6px; font-weight:700; }
+
+  /* 지역별 가이드 카드 */
+  .guide-region { border-radius:14px; overflow:hidden; margin-bottom:10px; border:1px solid var(--border); }
+  .guide-region:last-of-type { margin-bottom:0; }
+  .guide-region-head { padding:10px 16px; font-size:13px; font-weight:800; color:#fff; display:flex; align-items:center; gap:8px; }
+  .guide-region-head.aus { background:linear-gradient(135deg,#00284a,#00407a); }
+  .guide-region-head.nz-south { background:linear-gradient(135deg,#003828,#00543d); }
+  .guide-region-head.nz-north { background:linear-gradient(135deg,#1a3a00,#2a6000); }
+  .guide-region-body { padding:12px 16px; background:var(--warm-white); font-size:14px; line-height:1.8; }
+  .guide-region-body .g-row { display:flex; gap:8px; border-bottom:1px solid var(--border); padding:8px 0; }
+  .guide-region-body .g-row:last-child { border-bottom:none; }
+  .guide-region-body .g-key { min-width:90px; font-size:13px; font-weight:700; color:var(--muted); }
+  .guide-region-body .g-val { flex:1; font-size:13.5px; font-weight:700; color:var(--charcoal); }
+
+  /* 호텔 타임라인 */
+  .hotel-timeline { list-style:none; padding:0; position:relative; }
+  .hotel-timeline::before { content:""; position:absolute; left:20px; top:0; bottom:0; width:2px; background:linear-gradient(to bottom,#1a5a8a,#00543d); }
+  .hotel-timeline li { display:flex; gap:16px; padding:0 0 16px 0; position:relative; }
+  .hotel-timeline li:last-child { padding-bottom:0; }
+  .hotel-dot { width:42px; height:42px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:18px; position:relative; z-index:1; }
+  .hotel-dot.aus { background:linear-gradient(135deg,#00284a,#00407a); }
+  .hotel-dot.nz  { background:linear-gradient(135deg,#003828,#00543d); }
+  .hotel-info { flex:1; background:var(--warm-white); border:1px solid var(--border); border-radius:12px; padding:12px 16px; }
+  .hotel-date { font-size:12px; font-weight:700; color:var(--muted); margin-bottom:3px; }
+  .hotel-name { font-size:15px; font-weight:800; color:var(--charcoal); }
+  .hotel-detail { font-size:13px; color:var(--muted); margin-top:3px; }
+  .hotel-badge { display:inline-block; background:var(--sea-light); color:var(--sea); font-size:11px; font-weight:800; padding:2px 8px; border-radius:10px; margin-top:4px; }
+
+  /* ETA 박스 */
+  .eta-box { border-radius:14px; overflow:hidden; margin-bottom:12px; }
+  .eta-box:last-of-type { margin-bottom:0; }
+  .eta-box-head { padding:11px 16px; font-size:13px; font-weight:800; color:#fff; }
+  .eta-box-head.aus { background:linear-gradient(135deg,#00284a,#00407a); }
+  .eta-box-head.nz  { background:linear-gradient(135deg,#003828,#00543d); }
+  .eta-box-body { padding:14px 16px; border:1px solid var(--border); border-top:none; border-radius:0 0 14px 14px; font-size:14px; line-height:1.8; }
+
+  .excl-list { list-style:none; padding:0; }
+  .excl-list li { display:flex; align-items:flex-start; gap:10px; padding:10px 0; border-bottom:1px solid var(--border); font-size:15px; line-height:1.6; }
+  .excl-list li:last-child { border-bottom:none; }
+  .excl-dot { width:8px; height:8px; background:var(--sea); border-radius:50%; flex-shrink:0; margin-top:7px; }
+
+  .checkin-list { list-style:none; padding:0; }
+  .checkin-list li { display:flex; gap:12px; padding:10px 0; border-bottom:1px solid var(--border); font-size:15px; line-height:1.7; }
+  .checkin-list li:last-child { border-bottom:none; }
+  .checkin-num { min-width:24px; height:24px; background:linear-gradient(135deg,#082040,#1a5a8a); color:#fff; border-radius:50%; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
+
+  .footer { background:linear-gradient(160deg,#040c18,#082040 60%,#1a5a8a 100%); padding:2.8rem 2rem; text-align:center; position:relative; overflow:hidden; }
+  .footer-content { position:relative; z-index:1; }
+  .footer-title { font-size:23px; font-weight:800; color:#fff; margin-bottom:0.5rem; }
+  .footer-sub   { font-size:15px; color:rgba(255,255,255,0.65); line-height:1.8; margin-bottom:1.4rem; }
+  .footer-name  { font-size:16px; font-weight:700; color:rgba(255,255,255,0.9); margin-bottom:14px; }
+  .footer-contacts { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+  .footer-btn { display:inline-flex; align-items:center; gap:8px; border-radius:30px; padding:11px 24px; font-size:15px; text-decoration:none; font-weight:700; }
+  .footer-btn-phone { background:rgba(255,255,255,0.18); border:1.5px solid rgba(255,255,255,0.45); color:#fff; }
+  .footer-btn-kakao { background:#FEE500; border:1.5px solid #FEE500; color:#3a1d00; }
+
+  @media(max-width:520px){
+    .section { padding:1.5rem 1.2rem; }
+    .counter-grid,.baggage-grid { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="main">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-blob" style="width:240px;height:240px;top:-80px;right:-70px;"></div>
+    <div class="hero-blob" style="width:160px;height:160px;bottom:20px;left:-50px;"></div>
+    <div class="hero-content">
+      <div class="hero-tag">✦ Travel Confirmation ✦</div>
+      <div class="hero-title">🦘 <em>호주 · 뉴질랜드</em> 여행 확정서</div>
+      <div class="hero-names">정상국님 가족</div>
+      <div class="hero-sub">인천국제공항 출발 · 9박 10일</div>
+      <div class="agent-wrap">
+        <div class="agent-name">담당 이경진 실장</div>
+        <div class="agent-contacts">
+          <a class="contact-phone" href="tel:15445714">📞 1544-5714</a>
+          <a class="contact-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡 상담</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ETA 경고 배너 -->
+  <div class="eta-warning">
+    <div style="display:flex;align-items:center;gap:14px;">
+      <div style="font-size:36px;">⚠️</div>
+      <div>
+        <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:4px;">호주 ETA · 뉴질랜드 NZeTA — 반드시 사전 승인 필수!</div>
+        <div style="font-size:14px;color:rgba(255,255,255,0.9);line-height:1.7;">
+          <strong style="color:#ffd880;">ETA 승인이 없으면 입국이 불가합니다.</strong><br>
+          출발 전 승인 여부를 반드시 다시 한번 정확하게 확인해 주세요!
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 가이드 배너 -->
+  <div class="guide-banner">
+    <div style="font-size:15px;font-weight:800;color:#082040;margin-bottom:10px;">👤 현지 가이드 정보</div>
+    <div class="guide-region">
+      <div class="guide-region-head aus">🦘 호주 — 시드니</div>
+      <div class="guide-region-body">
+        <div class="g-row"><div class="g-key">가이드</div><div class="g-val">윤호인 &nbsp;|&nbsp; 📞 0415-007-109</div></div>
+        <div class="g-row"><div class="g-key">비상연락</div><div class="g-val">김태경 소장 &nbsp;|&nbsp; T: +61(0)2-9283-6133 &nbsp;/&nbsp; M: +61(0)406-318-676</div></div>
+      </div>
+    </div>
+    <div class="guide-region" style="margin-top:8px;">
+      <div class="guide-region-head nz-south">🥝 뉴질랜드 — 남섬</div>
+      <div class="guide-region-body">
+        <div class="g-row"><div class="g-key">가이드</div><div class="g-val">강영수 &nbsp;|&nbsp; 📞 0221-331-130</div></div>
+        <div class="g-row"><div class="g-key">비상연락</div><div class="g-val">유준길 소장 &nbsp;|&nbsp; M: +64(0)27-201-0663</div></div>
+      </div>
+    </div>
+    <div class="guide-region" style="margin-top:8px;">
+      <div class="guide-region-head nz-north">🥝 뉴질랜드 — 북섬</div>
+      <div class="guide-region-body">
+        <div class="g-row"><div class="g-key">가이드</div><div class="g-val">이창운 &nbsp;|&nbsp; 📞 021-599-193</div></div>
+        <div class="g-row"><div class="g-key">비상연락</div><div class="g-val">박성민 소장 &nbsp;|&nbsp; T: +64(0)9-278-5027 &nbsp;/&nbsp; M: +64(0)21-761-335</div></div>
+      </div>
+    </div>
+    <div class="alert alert-sea" style="margin-top:10px;">
+      📍 행사 인원 성인 17명 + 아동 1명 · 차량 25인승 미니버스<br>
+      ✈️ <strong>인천공항 미팅은 없습니다.</strong> 개별 출발 후 현지에서 가이드를 만납니다.
+    </div>
+  </div>
+
+  <!-- 카운터 배너 -->
+  <div class="counter-banner">
+    <div style="font-size:15px;font-weight:800;color:#a0d0ff;margin-bottom:10px;">✈️ 인천공항 탑승 수속 안내 — 대한항공</div>
+    <div class="counter-grid">
+      <div class="counter-item">
+        <div class="counter-item-label">📍 카운터 위치</div>
+        <div class="counter-item-val">인천공항 제2터미널</div>
+        <div class="counter-item-sub">A · B · C · D 카운터</div>
+      </div>
+      <div class="counter-item">
+        <div class="counter-item-label">⏰ 출발 3시간 전까지</div>
+        <div class="counter-item-val">2026.07.30(목)</div>
+        <div class="counter-item-sub">19:10 출발 → 16:00까지 도착 권장</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 항공 배너 -->
+  <div class="flight-banner">
+    <div class="flight-banner-title">✈️ 항공 일정 — 대한항공</div>
+    <div class="flight-card">
+      <div class="flight-card-header go">✈ 가는 편 &nbsp;·&nbsp; KE401</div>
+      <div class="flight-card-body">
+        <div class="flight-route">
+          <div class="flight-city">
+            <div class="flight-city-code">ICN</div>
+            <div class="flight-city-time">19:10</div>
+            <div class="flight-city-name">인천 (T2)</div>
+          </div>
+          <div class="flight-arrow-wrap">
+            <div class="flight-arrow">→</div>
+            <div class="flight-arrow-label">2026.07.30(목)</div>
+          </div>
+          <div class="flight-city">
+            <div class="flight-city-code">SYD</div>
+            <div class="flight-city-time">06:20</div>
+            <div class="flight-city-name">시드니 (익일 7/31)</div>
+          </div>
+        </div>
+        <div class="flight-meta-row">
+          <span class="flight-meta-chip">대한항공</span>
+          <span class="flight-meta-chip">편명 KE401</span>
+          <span class="flight-meta-chip">소요 약 10시간 10분</span>
+          <span class="flight-meta-chip good">기내식 제공</span>
+        </div>
+      </div>
+    </div>
+    <div class="flight-card">
+      <div class="flight-card-header back">✈ 오는 편 &nbsp;·&nbsp; KE412</div>
+      <div class="flight-card-body">
+        <div class="flight-route">
+          <div class="flight-city">
+            <div class="flight-city-code">AKL</div>
+            <div class="flight-city-time">11:05</div>
+            <div class="flight-city-name">오클랜드</div>
+          </div>
+          <div class="flight-arrow-wrap">
+            <div class="flight-arrow">→</div>
+            <div class="flight-arrow-label">2026.08.08(토)</div>
+          </div>
+          <div class="flight-city">
+            <div class="flight-city-code">ICN</div>
+            <div class="flight-city-time">20:20</div>
+            <div class="flight-city-name">인천 (T2)</div>
+          </div>
+        </div>
+        <div class="flight-meta-row">
+          <span class="flight-meta-chip">대한항공</span>
+          <span class="flight-meta-chip">편명 KE412</span>
+          <span class="flight-meta-chip">소요 약 11시간 15분</span>
+          <span class="flight-meta-chip good">기내식 제공</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 수하물 배너 -->
+  <div class="baggage-banner">
+    <div class="baggage-title">🧳 수하물 안내 — 대한항공</div>
+    <div class="baggage-grid">
+      <div class="baggage-item">
+        <div class="baggage-label">위탁 수하물</div>
+        <div class="baggage-val">23kg · 1인 1개</div>
+        <div class="baggage-sub">초과 시 공항에서 추가 요금 발생</div>
+      </div>
+      <div class="baggage-item">
+        <div class="baggage-label">기내 수하물</div>
+        <div class="baggage-val">10kg · 1인</div>
+        <div class="baggage-sub">액체류 100ml 이하 · 보조배터리 기내 반입</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 01. 상품 안내 -->
+  <div class="section">
+    <div class="section-eyebrow">01</div>
+    <div class="section-heading">상품 안내</div>
+    <div class="info-card">
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">예약 상품</div>
+        <div class="info-val">
+          <span style="font-size:14px;color:var(--muted);display:block;margin-bottom:6px;">아래 버튼을 눌러 일정표를 확인하세요</span>
+          <a class="link-pill" href="https://www.modetour.com/package/104008192?MLoc=99&Pnum=104008192&ANO=1772510&sno=C2181215&thru=crs" target="_blank">모두투어 예약 확인 ✔</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02. 투숙 호텔 -->
+  <div class="section">
+    <div class="section-eyebrow">02</div>
+    <div class="section-heading">투숙 호텔 일정</div>
+    <ul class="hotel-timeline">
+      <li>
+        <div class="hotel-dot aus">🦘</div>
+        <div class="hotel-info">
+          <div class="hotel-date">7/31(금) ~ 8/2(일) · 2박</div>
+          <div class="hotel-name">노보텔 시드니 인터내셔날 에어포트</div>
+          <div class="hotel-detail">시드니 공항 인근</div>
+          <div class="hotel-badge">🇦🇺 호주 · 시드니</div>
+        </div>
+      </li>
+      <li>
+        <div class="hotel-dot nz">🥝</div>
+        <div class="hotel-info">
+          <div class="hotel-date">8/2(일) ~ 8/3(월) · 1박</div>
+          <div class="hotel-name">디스팅션 럭스모어</div>
+          <div class="hotel-badge">🇳🇿 뉴질랜드 · 남섬</div>
+        </div>
+      </li>
+      <li>
+        <div class="hotel-dot nz">🥝</div>
+        <div class="hotel-info">
+          <div class="hotel-date">8/3(월) ~ 8/4(화) · 1박</div>
+          <div class="hotel-name">홀리데이인 리마커블스 퀸스타운</div>
+          <div class="hotel-badge">🇳🇿 뉴질랜드 · 퀸스타운</div>
+        </div>
+      </li>
+      <li>
+        <div class="hotel-dot nz">🥝</div>
+        <div class="hotel-info">
+          <div class="hotel-date">8/4(화) ~ 8/5(수) · 1박</div>
+          <div class="hotel-name">그랜드 리카턴</div>
+          <div class="hotel-badge">🇳🇿 뉴질랜드 · 크라이스트처치</div>
+        </div>
+      </li>
+      <li>
+        <div class="hotel-dot nz">🥝</div>
+        <div class="hotel-info">
+          <div class="hotel-date">8/5(수) ~ 8/7(금) · 2박</div>
+          <div class="hotel-name">브이알 로토루아 레이크 리조트</div>
+          <div class="hotel-badge">🇳🇿 뉴질랜드 · 로토루아</div>
+        </div>
+      </li>
+      <li>
+        <div class="hotel-dot nz">🥝</div>
+        <div class="hotel-info">
+          <div class="hotel-date">8/7(금) ~ 8/8(토) · 1박</div>
+          <div class="hotel-name">제트파크 오클랜드 에어포트</div>
+          <div class="hotel-detail">오클랜드 공항 인근 · 귀국 전날</div>
+          <div class="hotel-badge">🇳🇿 뉴질랜드 · 오클랜드</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 03. ETA 비자 안내 -->
+  <div class="section">
+    <div class="section-eyebrow">03</div>
+    <div class="section-heading">ETA 비자 안내 🛂</div>
+    <div class="alert alert-red" style="margin-top:0;margin-bottom:14px;">
+      ⚠️ <strong>ETA 승인 없이는 절대 탑승 및 입국 불가!</strong><br>
+      출발 전 반드시 승인 여부를 다시 한번 정확하게 확인해 주세요.
+    </div>
+
+    <div class="eta-box">
+      <div class="eta-box-head aus">🇦🇺 호주 ETA — 대행 불가, 개별 신청</div>
+      <div class="eta-box-body">
+        <strong>비용: AUD $20</strong><br>
+        공식 앱 <strong>"Australian ETA"</strong> 에서 직접 신청하세요.<br>
+        <a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/electronic-travel-authority-601" target="_blank"
+          style="display:inline-flex;align-items:center;gap:5px;color:#00407a;font-weight:700;font-size:13px;text-decoration:none;margin-top:6px;">
+          호주 ETA 공식 안내 →
+        </a>
+      </div>
+    </div>
+
+    <div class="eta-box" style="margin-top:10px;">
+      <div class="eta-box-head nz">🇳🇿 뉴질랜드 NZeTA — 대행 불가, 개별 신청</div>
+      <div class="eta-box-body">
+        <strong>모바일 앱 신청: NZD $117</strong> &nbsp;|&nbsp; <strong>홈페이지 신청: NZD $123</strong><br>
+        앱이 더 저렴하니 모바일 앱 신청을 권장합니다.
+      </div>
+    </div>
+  </div>
+
+  <!-- 04. 불포함 사항 -->
+  <div class="section">
+    <div class="section-eyebrow">04</div>
+    <div class="section-heading">불포함 사항</div>
+    <ul class="excl-list">
+      <li><div class="excl-dot"></div><span>쇼핑 및 개인 경비</span></li>
+      <li><div class="excl-dot"></div><span>식사 시 음료</span></li>
+      <li><div class="excl-dot"></div><span><strong>호주 ETA 비자 AUD $20</strong> (대행 불가, 개별 진행)</span></li>
+      <li><div class="excl-dot"></div><span><strong>뉴질랜드 NZeTA 비자</strong> (대행 불가, 개별 진행)<br>
+        <span style="font-size:13px;color:var(--muted);">모바일앱 NZD $117 / 홈페이지 NZD $123</span></span></li>
+    </ul>
+  </div>
+
+  <!-- 05. 환전 안내 -->
+  <div class="section">
+    <div class="section-eyebrow">05</div>
+    <div class="section-heading">환전 안내 💵</div>
+    <div class="info-card">
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">개인 경비</div>
+        <div class="info-val">
+          <strong>호주 달러(AUD)</strong> 또는 <strong>신용카드</strong>로 결제 가능합니다.<br>
+          뉴질랜드에서도 AUD가 일부 통용되며, 신용카드(Visa/Mastercard) 사용이 편리합니다.
+          <div class="alert alert-gold" style="margin-top:8px;">
+            💡 호주·뉴질랜드는 카드 결제가 매우 보편화되어 있습니다. 소액 현금만 준비하셔도 충분합니다.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06. 유의사항 -->
+  <div class="section">
+    <div class="section-eyebrow">06</div>
+    <div class="section-heading">유의사항</div>
+    <ul class="checkin-list">
+      <li><div class="checkin-num">1</div><span>인천국제공항 <strong>제2터미널 A~D 카운터</strong>에 출발 3시간 전까지 도착해 주세요.</span></li>
+      <li><div class="checkin-num">2</div><span>여권 유효기간을 꼭 확인해 주세요. <strong>잔여 유효기간 6개월 이상</strong> 필수입니다.</span></li>
+      <li><div class="checkin-num">3</div><span><strong style="color:#c03020;">호주 ETA / 뉴질랜드 NZeTA 승인 여부</strong>를 출발 전 반드시 재확인하세요. 미승인 시 탑승 불가입니다.</span></li>
+      <li><div class="checkin-num">4</div><span>호주·뉴질랜드는 <strong>검역이 매우 엄격</strong>합니다. 식품·동식물 반입 금지 품목을 꼭 확인하세요.</span></li>
+      <li><div class="checkin-num">5</div><span>본 안내문은 대표자 한 분께 전달됩니다. <strong>가족 모두에게 공유</strong> 부탁드립니다.</span></li>
+    </ul>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-content">
+      <div class="footer-title">🦘 즐거운 호주·뉴질랜드 여행 되세요!</div>
+      <div class="footer-sub">궁금하신 사항은 언제든지 문의 주세요.<br>감사합니다.</div>
+      <div class="footer-name">담당 이경진 실장</div>
+      <div class="footer-contacts">
+        <a class="footer-btn footer-btn-phone" href="tel:15445714">📞 1544-5714</a>
+        <a class="footer-btn footer-btn-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡 상담</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
