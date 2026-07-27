@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>코타키나발루 여행 확정서 - 권은정님 가족</title>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sea: #0a6a50;
+    --sea-light: #e0f8f2;
+    --gold: #b07000;
+    --gold-light: #fff8e0;
+    --red: #c03020;
+    --red-light: #fdeeed;
+    --amber: #c06000;
+    --amber-light: #fff4e0;
+    --green: #1a6b3a;
+    --green-light: #e4f8ee;
+    --cream: #f2fcf8;
+    --warm-white: #ffffff;
+    --charcoal: #081810;
+    --medium: #1a4a38;
+    --muted: #5a8878;
+    --border: #a8d8c8;
+    --blue: #1a4a8a;
+    --blue-light: #e4eeff;
+    --teal: #0a7a6a;
+    --teal-light: #e0f8f4;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:"Nanum Gothic","맑은 고딕","Malgun Gothic",sans-serif; background:var(--cream); color:var(--charcoal); line-height:1.7; font-size:16px; }
+  .main { max-width:700px; margin:0 auto; }
+
+  .hero {
+    position:relative;
+    background:linear-gradient(160deg, #011810 0%, #022a18 40%, #044830 75%, #0a6a50 100%);
+    padding:3.5rem 2rem 4rem; text-align:center; overflow:hidden;
+  }
+  .hero::after { content:""; position:absolute; bottom:-2px; left:0; right:0; height:50px; background:var(--cream); clip-path:ellipse(60% 100% at 50% 100%); }
+  .hero-blob { position:absolute; border-radius:50%; background:rgba(255,255,255,0.06); }
+  .hero-content { position:relative; z-index:2; }
+  .hero-tag { display:inline-block; background:rgba(255,255,255,0.13); border:1px solid rgba(255,255,255,0.3); border-radius:20px; padding:5px 18px; font-size:13px; letter-spacing:0.2em; color:rgba(255,255,255,0.92); margin-bottom:0.9rem; text-transform:uppercase; }
+  .hero-title { font-size:clamp(24px,5vw,36px); font-weight:800; color:#fff; line-height:1.35; margin-bottom:0.3rem; text-shadow:0 2px 12px rgba(0,0,0,0.3); }
+  .hero-title em { color:#80ffd8; font-style:normal; }
+  .hero-names { font-size:18px; font-weight:700; color:rgba(255,255,255,0.9); margin-bottom:0.3rem; }
+  .hero-sub { font-size:15px; color:rgba(255,255,255,0.72); margin-bottom:1.4rem; }
+  .agent-wrap { display:flex; flex-direction:column; align-items:center; gap:8px; }
+  .agent-name { display:inline-flex; align-items:center; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.35); border-radius:30px; padding:8px 22px; font-size:15px; color:#fff; font-weight:700; }
+  .agent-contacts { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
+  .agent-contacts a { display:inline-flex; align-items:center; gap:6px; border-radius:30px; padding:8px 18px; font-size:14px; text-decoration:none; font-weight:700; }
+  .contact-phone { background:rgba(255,255,255,0.92); color:#022a18; }
+  .contact-kakao { background:#FEE500; color:#3a1d00; }
+
+  /* 노노노 배너 */
+  .nonono-banner { background:linear-gradient(135deg,#e4f8ee,#d0f4e0,#bce8cc); padding:1.1rem 1.75rem; border-bottom:3px solid #1a6b3a; }
+
+  /* 미팅 배너 */
+  .meeting-banner { background:linear-gradient(135deg,#022a18,#0a6a50); padding:1.2rem 1.75rem; border-bottom:3px solid #40c090; }
+  .meeting-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:10px; }
+  .meeting-item { background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); border-radius:12px; padding:14px 16px; }
+  .meeting-item-label { font-size:11px; font-weight:700; color:rgba(255,255,255,0.65); letter-spacing:1px; margin-bottom:6px; }
+  .meeting-item-val { font-size:15px; font-weight:800; color:#fff; line-height:1.5; }
+  .meeting-item-sub { font-size:12px; font-weight:700; color:#80ffd8; margin-top:4px; line-height:1.5; }
+
+  /* 카운터 배너 */
+  .counter-banner { background:linear-gradient(135deg,#050f20,#0a2a5a,#0f3a80); padding:1.2rem 1.75rem; border-bottom:3px solid #60a0e0; }
+  .counter-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:10px; }
+  .counter-item { background:rgba(255,255,255,0.10); border:1px solid rgba(255,255,255,0.18); border-radius:12px; padding:14px 16px; }
+  .counter-item-label { font-size:11px; font-weight:700; color:rgba(255,255,255,0.6); letter-spacing:1px; margin-bottom:6px; }
+  .counter-item-val { font-size:15px; font-weight:800; color:#fff; line-height:1.5; }
+  .counter-item-sub { font-size:13px; font-weight:700; color:#a0d0ff; margin-top:4px; }
+
+  /* 항공 배너 */
+  .flight-banner { background:linear-gradient(135deg,#e8f0ff,#d8e8ff,#c8e0ff); padding:1.2rem 1.75rem; border-bottom:3px solid #6090d0; }
+  .flight-banner-title { font-size:15px; font-weight:800; color:#1a3a7a; margin-bottom:0.8rem; }
+  .flight-card { background:rgba(255,255,255,0.88); border-radius:14px; overflow:hidden; border:1px solid rgba(80,130,200,0.35); margin-bottom:10px; }
+  .flight-card:last-child { margin-bottom:0; }
+  .flight-card-header { padding:9px 16px; font-size:13px; font-weight:800; }
+  .flight-card-header.go   { background:linear-gradient(135deg,#022a18,#0a6a50); color:#fff; }
+  .flight-card-header.back { background:linear-gradient(135deg,#0a2040,#1a4a8a); color:#fff; }
+  .flight-card-body { padding:14px 18px; }
+  .flight-route { display:flex; align-items:center; justify-content:space-between; }
+  .flight-city { text-align:center; flex:1; }
+  .flight-city-code { font-size:25px; font-weight:800; color:#1a2040; }
+  .flight-city-time { font-size:18px; font-weight:800; color:#044830; margin-top:2px; }
+  .flight-city-name { font-size:13px; color:var(--muted); margin-top:3px; }
+  .flight-arrow-wrap { flex:0 0 84px; text-align:center; }
+  .flight-arrow { font-size:22px; color:#4a80c0; }
+  .flight-arrow-label { font-size:12px; color:var(--muted); margin-top:2px; line-height:1.4; }
+  .flight-meta-row { display:flex; gap:6px; margin-top:10px; flex-wrap:wrap; }
+  .flight-meta-chip { background:#e0f8f2; border:1px solid #80c8b0; border-radius:20px; padding:4px 12px; font-size:12px; font-weight:700; color:#044830; }
+  .flight-meta-chip.warn { background:#fdeeed; border-color:#e08080; color:#8a1010; }
+
+  /* 수하물 배너 */
+  .baggage-banner { background:linear-gradient(135deg,#e0f8f2,#ccf4ea,#b8f0e0); padding:1.2rem 1.75rem; border-bottom:3px solid #0a6a50; }
+  .baggage-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .baggage-item { background:rgba(255,255,255,0.85); border-radius:12px; padding:12px 15px; border:1px solid rgba(10,106,80,0.25); }
+  .baggage-label { font-size:12px; font-weight:700; color:#0a5a40; margin-bottom:5px; }
+  .baggage-val   { font-size:16px; font-weight:800; color:#081810; line-height:1.5; }
+  .baggage-sub   { font-size:13px; color:#1a4a38; margin-top:3px; line-height:1.5; }
+
+  /* 날씨 배너 */
+  .weather-bar { background:linear-gradient(160deg,#fff8d0,#ffeebb,#ffe0a0); padding:1.2rem 1.75rem; border-bottom:3px solid #d0a030; }
+  .weather-title { font-size:15px; font-weight:800; color:#6a3800; margin-bottom:0.8rem; }
+  .weather-note { background:rgba(255,255,255,0.78); border-radius:10px; padding:10px 15px; font-size:14px; color:#6a3800; font-weight:700; border:1px solid rgba(200,140,40,0.35); }
+  .weather-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin-bottom:10px; }
+  .weather-day { background:rgba(255,255,255,0.85); border-radius:10px; padding:10px 6px; text-align:center; border:1px solid rgba(200,140,40,0.4); }
+  .weather-day-label { font-size:12px; font-weight:700; color:#7a4a10; margin-bottom:3px; }
+  .weather-day-icon  { font-size:22px; margin-bottom:4px; }
+  .weather-day-temp  { font-size:13px; font-weight:800; color:#0a1000; }
+  .weather-day-desc  { font-size:11px; color:#7a5020; margin-top:3px; }
+
+  /* SECTIONS */
+  .section { background:var(--warm-white); border-bottom:1px solid var(--border); padding:1.9rem 1.75rem; }
+  .section:nth-child(even) { background:var(--cream); }
+  .section-eyebrow { font-size:12px; letter-spacing:0.22em; text-transform:uppercase; color:var(--sea); font-weight:700; margin-bottom:0.3rem; }
+  .section-heading { font-size:22px; font-weight:800; color:var(--charcoal); margin-bottom:1.2rem; display:flex; align-items:center; gap:10px; }
+  .section-heading::after { content:""; flex:1; height:1.5px; background:linear-gradient(to right,var(--border),transparent); }
+
+  .info-card { background:var(--warm-white); border:1px solid var(--border); border-radius:14px; overflow:hidden; }
+  .info-row { display:flex; gap:1rem; padding:14px 18px; border-bottom:1px solid var(--border); align-items:flex-start; }
+  .info-row:last-child { border-bottom:none; }
+  .info-key { min-width:90px; font-size:14px; font-weight:700; color:var(--medium); padding-top:2px; }
+  .info-val { flex:1; color:var(--charcoal); line-height:1.7; font-size:14.5px; }
+  .info-val strong { color:var(--sea); font-weight:700; }
+
+  .alert { border-radius:10px; padding:12px 16px; font-size:14px; line-height:1.7; margin-top:8px; }
+  .alert-red    { background:var(--red-light);    border-left:3px solid var(--red);    color:#7a1010; }
+  .alert-amber  { background:var(--amber-light);  border-left:3px solid var(--amber);  color:#7a3800; }
+  .alert-green  { background:var(--green-light);  border-left:3px solid var(--green);  color:#0a3820; }
+  .alert-gold   { background:var(--gold-light);   border-left:3px solid var(--gold);   color:#7a4800; }
+  .alert-sea    { background:var(--sea-light);    border-left:3px solid var(--sea);    color:#022a18; }
+  .alert-blue   { background:var(--blue-light);   border-left:3px solid var(--blue);   color:#0a1a4a; }
+  .alert-teal   { background:var(--teal-light);   border-left:3px solid var(--teal);   color:#083830; }
+
+  a.link-pill { display:inline-flex; align-items:center; gap:6px; background:linear-gradient(135deg,#022a18,#0a6a50); border-radius:22px; padding:9px 20px; font-size:14px; color:#fff; text-decoration:none; margin-top:6px; font-weight:700; }
+  a.link-pill-blue { display:inline-flex; align-items:center; gap:6px; background:linear-gradient(135deg,#1a4a8a,#2a6ab0); border-radius:22px; padding:9px 20px; font-size:14px; color:#fff; text-decoration:none; margin-top:6px; font-weight:700; }
+
+  /* 선택일정 카드 */
+  .tour-card { border:2px solid var(--sea); border-radius:14px; overflow:hidden; margin-bottom:12px; }
+  .tour-card:last-of-type { margin-bottom:0; }
+  .tour-card-header { background:linear-gradient(135deg,#022a18,#0a6a50); padding:12px 18px; display:flex; align-items:center; gap:10px; }
+  .tour-card-day { background:rgba(255,255,255,0.25); border:1px solid rgba(255,255,255,0.4); color:#fff; font-size:12px; font-weight:800; padding:3px 12px; border-radius:20px; flex-shrink:0; }
+  .tour-card-name { font-size:15px; font-weight:800; color:#fff; }
+  .tour-card-tag { font-size:12px; color:rgba(255,255,255,0.7); margin-top:2px; }
+  .tour-card-body { padding:14px 18px; background:var(--warm-white); }
+  .tour-desc { font-size:14px; color:#1a4a38; line-height:1.75; font-weight:600; margin-bottom:10px; }
+  .tour-steps { list-style:none; padding:0; }
+  .tour-steps li { display:flex; gap:10px; padding:7px 0; border-bottom:1px solid var(--border); font-size:13.5px; color:var(--charcoal); line-height:1.6; }
+  .tour-steps li:last-child { border-bottom:none; }
+  .tour-step-time { min-width:90px; font-weight:700; color:var(--sea); flex-shrink:0; font-size:13px; }
+
+  /* MDAC 박스 */
+  .mdac-box { border:2px solid var(--red); border-radius:14px; overflow:hidden; }
+  .mdac-head { background:linear-gradient(135deg,#7a0808,#c03020); padding:12px 18px; font-size:13px; font-weight:800; color:#fff; }
+  .mdac-body { padding:16px 18px; background:#fff8f8; }
+
+  /* 물놀이 그리드 */
+  .water-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:10px; }
+  .water-item { background:var(--sea-light); border:1px solid rgba(10,106,80,0.3); border-radius:10px; padding:10px 14px; font-size:14px; font-weight:700; color:#033a28; display:flex; align-items:center; gap:8px; }
+
+  .excl-list { list-style:none; padding:0; }
+  .excl-list li { display:flex; align-items:flex-start; gap:10px; padding:10px 0; border-bottom:1px solid var(--border); font-size:14.5px; line-height:1.6; }
+  .excl-list li:last-child { border-bottom:none; }
+  .excl-dot { width:8px; height:8px; background:var(--sea); border-radius:50%; flex-shrink:0; margin-top:7px; }
+
+  .checklist { list-style:none; padding:0; }
+  .checklist li { display:flex; align-items:flex-start; gap:12px; padding:10px 0; border-bottom:1px solid var(--border); font-size:14.5px; line-height:1.65; }
+  .checklist li:last-child { border-bottom:none; }
+  .check-num { min-width:24px; height:24px; background:linear-gradient(135deg,#022a18,#0a6a50); color:#fff; border-radius:50%; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
+  .check-cat { font-size:12px; font-weight:800; color:var(--sea); background:var(--sea-light); border-radius:5px; padding:2px 8px; margin-right:5px; white-space:nowrap; }
+
+  .footer { background:linear-gradient(160deg,#011810,#022a18 60%,#0a6a50 100%); padding:2.8rem 2rem; text-align:center; }
+  .footer-title { font-size:23px; font-weight:800; color:#fff; margin-bottom:0.5rem; }
+  .footer-sub   { font-size:15px; color:rgba(255,255,255,0.65); line-height:1.8; margin-bottom:1.4rem; }
+  .footer-name  { font-size:16px; font-weight:700; color:rgba(255,255,255,0.9); margin-bottom:14px; }
+  .footer-contacts { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+  .footer-btn { display:inline-flex; align-items:center; gap:8px; border-radius:30px; padding:11px 24px; font-size:15px; text-decoration:none; font-weight:700; }
+  .footer-btn-phone { background:rgba(255,255,255,0.18); border:1.5px solid rgba(255,255,255,0.45); color:#fff; }
+  .footer-btn-kakao { background:#FEE500; border:1.5px solid #FEE500; color:#3a1d00; }
+
+  @media(max-width:520px){
+    .section { padding:1.5rem 1.2rem; }
+    .counter-grid,.baggage-grid,.meeting-grid,.water-grid { grid-template-columns:1fr; }
+    .weather-grid { grid-template-columns:repeat(2,1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="main">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-blob" style="width:240px;height:240px;top:-80px;right:-70px;"></div>
+    <div class="hero-blob" style="width:160px;height:160px;bottom:20px;left:-50px;"></div>
+    <div class="hero-content">
+      <div class="hero-tag">✦ Travel Confirmation ✦</div>
+      <div class="hero-title">🌴 <em>코타키나발루</em> 여행 확정서</div>
+      <div class="hero-names">권은정님 가족</div>
+      <div class="hero-sub">인천국제공항 출발 · 3박 5일</div>
+      <div class="agent-wrap">
+        <div class="agent-name">담당 이경진 실장</div>
+        <div class="agent-contacts">
+          <a class="contact-phone" href="tel:15445714">📞 1544-5714</a>
+          <a class="contact-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡 상담</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 노노노 배너 -->
+  <div class="nonono-banner">
+    <div style="display:flex;align-items:center;gap:14px;">
+      <div style="font-size:36px;">✅</div>
+      <div>
+        <div style="font-size:15px;font-weight:800;color:#0a3820;margin-bottom:4px;">노팁 · 노옵션 · 노쇼핑 상품</div>
+        <div style="font-size:13.5px;color:#1a5a30;line-height:1.7;">별도 가이드/기사 경비 없음 · 강제 쇼핑 없음</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 미팅 배너 -->
+  <div class="meeting-banner">
+    <div style="font-size:15px;font-weight:800;color:#80ffd8;margin-bottom:10px;">📍 인천공항 미팅 안내</div>
+    <div class="meeting-grid">
+      <div class="meeting-item">
+        <div class="meeting-item-label">📅 미팅 일시</div>
+        <div class="meeting-item-val">2026.08.01(토)</div>
+        <div class="meeting-item-sub">오후 16:10</div>
+      </div>
+      <div class="meeting-item">
+        <div class="meeting-item-label">📍 미팅 장소</div>
+        <div class="meeting-item-val">인천공항 제1터미널</div>
+        <div class="meeting-item-sub">3층 출국장 · N카운터 14번출구 옆<br>여행사카운터 9~10번 "모두투어"</div>
+      </div>
+    </div>
+    <div style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.22);border-radius:10px;padding:11px 14px;margin-top:10px;font-size:13.5px;color:#fff;line-height:1.8;">
+      ℹ️ 미팅 서비스 사전 신청 고객은 <strong>N카운터 14번출구 앞 9~10번 모두투어 테이블</strong>에서 미팅 후 개별 수속하셔도 됩니다.<br>
+      공항 도착 후 별도 미팅 없이 <strong>바로 출국 수속</strong>을 진행하셔도 됩니다. <strong>(출발 최소 3시간 전 도착 권장)</strong>
+    </div>
+  </div>
+
+  <!-- 카운터 배너 -->
+  <div class="counter-banner">
+    <div style="font-size:15px;font-weight:800;color:#a0d0ff;margin-bottom:10px;">✈️ 인천공항 탑승 수속 안내 — 제주항공</div>
+    <div class="counter-grid">
+      <div class="counter-item">
+        <div class="counter-item-label">📍 카운터 위치</div>
+        <div class="counter-item-val">인천공항 제1터미널</div>
+        <div class="counter-item-sub">L13 ~ L36 카운터</div>
+      </div>
+      <div class="counter-item">
+        <div class="counter-item-label">⏰ 온라인 체크인</div>
+        <div class="counter-item-val">출발 24시간 전부터</div>
+        <div class="counter-item-sub">제주항공 사이트에서 가능</div>
+      </div>
+    </div>
+    <a href="https://www.jejuair.net/ko/main/base/index.do" target="_blank"
+      style="display:inline-flex;align-items:center;gap:6px;background:#ffd880;border-radius:22px;padding:9px 20px;font-size:14px;color:#1a1000;text-decoration:none;font-weight:800;margin-top:10px;">
+      제주항공 온라인 체크인 →
+    </a>
+  </div>
+
+  <!-- 항공 배너 -->
+  <div class="flight-banner">
+    <div class="flight-banner-title">✈️ 항공 일정 — 제주항공</div>
+    <div class="flight-card">
+      <div class="flight-card-header go">✈ 가는 편 &nbsp;·&nbsp; 7C2603</div>
+      <div class="flight-card-body">
+        <div class="flight-route">
+          <div class="flight-city">
+            <div class="flight-city-code">ICN</div>
+            <div class="flight-city-time">19:10</div>
+            <div class="flight-city-name">인천 (T1)</div>
+          </div>
+          <div class="flight-arrow-wrap">
+            <div class="flight-arrow">→</div>
+            <div class="flight-arrow-label">2026.08.01(토)</div>
+          </div>
+          <div class="flight-city">
+            <div class="flight-city-code">BKI</div>
+            <div class="flight-city-time">23:30</div>
+            <div class="flight-city-name">코타키나발루</div>
+          </div>
+        </div>
+        <div class="flight-meta-row">
+          <span class="flight-meta-chip">제주항공</span>
+          <span class="flight-meta-chip">편명 7C2603</span>
+          <span class="flight-meta-chip">소요 약 5시간 20분</span>
+          <span class="flight-meta-chip warn">기내식 없음</span>
+        </div>
+      </div>
+    </div>
+    <div class="flight-card">
+      <div class="flight-card-header back">✈ 오는 편 &nbsp;·&nbsp; 7C2604</div>
+      <div class="flight-card-body">
+        <div class="flight-route">
+          <div class="flight-city">
+            <div class="flight-city-code">BKI</div>
+            <div class="flight-city-time">00:30</div>
+            <div class="flight-city-name">코타키나발루</div>
+          </div>
+          <div class="flight-arrow-wrap">
+            <div class="flight-arrow">→</div>
+            <div class="flight-arrow-label">2026.08.05(수)</div>
+          </div>
+          <div class="flight-city">
+            <div class="flight-city-code">ICN</div>
+            <div class="flight-city-time">06:50</div>
+            <div class="flight-city-name">인천 (T1)</div>
+          </div>
+        </div>
+        <div class="flight-meta-row">
+          <span class="flight-meta-chip">제주항공</span>
+          <span class="flight-meta-chip">편명 7C2604</span>
+          <span class="flight-meta-chip">소요 약 5시간 20분</span>
+          <span class="flight-meta-chip warn">기내식 없음</span>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-red" style="margin-top:10px;">
+      ⚠️ 기내식이 없습니다. 탑승 전 공항에서 미리 식사하시거나 간식을 준비해 가세요.
+    </div>
+  </div>
+
+  <!-- 수하물 배너 -->
+  <div class="baggage-banner">
+    <div style="font-size:15px;font-weight:800;color:#022a18;margin-bottom:10px;">🧳 수하물 안내 — 제주항공</div>
+    <div class="baggage-grid">
+      <div class="baggage-item">
+        <div class="baggage-label">위탁 수하물</div>
+        <div class="baggage-val">15kg · 1인 1개</div>
+        <div class="baggage-sub">초과 시 공항에서 추가 요금 발생</div>
+      </div>
+      <div class="baggage-item">
+        <div class="baggage-label">기내 수하물</div>
+        <div class="baggage-val">10kg · 1인</div>
+        <div class="baggage-sub">액체류 100ml 이하 · 보조배터리 기내 반입</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 날씨 배너 -->
+  <div class="weather-bar">
+    <div class="weather-title">🌤️ 현지 날씨 — 코타키나발루 (8월 초)</div>
+    <div class="weather-grid">
+      <div class="weather-day">
+        <div class="weather-day-label">8/2 (일)</div>
+        <div class="weather-day-icon">☀️</div>
+        <div class="weather-day-temp">24~33°C</div>
+        <div class="weather-day-desc">맑음</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-label">8/3 (월)</div>
+        <div class="weather-day-icon">🌤️</div>
+        <div class="weather-day-temp">24~32°C</div>
+        <div class="weather-day-desc">구름 조금</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-label">8/4 (화)</div>
+        <div class="weather-day-icon">⛅</div>
+        <div class="weather-day-temp">24~32°C</div>
+        <div class="weather-day-desc">쾌청</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-label">8/5 (수)</div>
+        <div class="weather-day-icon">☀️</div>
+        <div class="weather-day-temp">24~33°C</div>
+        <div class="weather-day-desc">맑음</div>
+      </div>
+    </div>
+    <div class="weather-note">
+      🌴 코타키나발루 8월은 맑고 쾌적한 시즌! 세계 3대 선셋으로 유명하며 바다도 아름답습니다. 자외선이 강하니 선크림 필수!
+    </div>
+  </div>
+
+  <!-- 01. 상품 안내 -->
+  <div class="section">
+    <div class="section-eyebrow">01</div>
+    <div class="section-heading">상품 안내</div>
+    <div class="info-card">
+      <div class="info-row">
+        <div class="info-key">예약 상품</div>
+        <div class="info-val">
+          <span style="font-size:14px;color:var(--muted);display:block;margin-bottom:6px;">아래 버튼을 눌러 일정표를 확인하세요</span>
+          <a class="link-pill" href="https://www.modetour.com/package/103382045?MLoc=99&Pnum=103382045&ANO=1772510&sno=C2181215&thru=crs" target="_blank">모두투어 예약 확인 ✔</a>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-key">행사 정보</div>
+        <div class="info-val"><strong>여행 출발 2일 전</strong> 일정표에서 확인 가능합니다.</div>
+      </div>
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">투숙 호텔</div>
+        <div class="info-val"><strong>마젤란 수트라하버 리조트</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02. 선택 일정 -->
+  <div class="section">
+    <div class="section-eyebrow">02</div>
+    <div class="section-heading">사전 선택 일정 🌟</div>
+
+    <div class="tour-card">
+      <div class="tour-card-header">
+        <div class="tour-card-day">2일차</div>
+        <div>
+          <div class="tour-card-name">반딧불 투어 🌙</div>
+          <div class="tour-card-tag">세계 3대 선셋 아래 한 여름 밤의 "크리스마스 트리"</div>
+        </div>
+      </div>
+      <div class="tour-card-body">
+        <div class="tour-desc">세계 3대 선셋으로 유명한 코타키나발루의 황홀한 노을을 감상하고, 어둠이 내리면 보트를 타고 맹글로브 숲을 따라 반짝이는 반딧불을 만나는 특별한 경험!</div>
+        <ul class="tour-steps">
+          <li><div class="tour-step-time">오후 2:30~3:00</div><div>가이드 미팅 후 출발</div></li>
+          <li><div class="tour-step-time">이동</div><div>반딧불 투어 장소 도착</div></li>
+          <li><div class="tour-step-time">선셋</div><div>세계 3대 선셋 코타키나발루 노을 감상 + 저녁식사</div></li>
+          <li><div class="tour-step-time">야간</div><div>보트 탑승 → 맹글로브 숲 → 반딧불 감상 🌟</div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tour-card">
+      <div class="tour-card-header">
+        <div class="tour-card-day">3일차</div>
+        <div>
+          <div class="tour-card-name">아일랜드 호핑투어 🐠</div>
+          <div class="tour-card-tag">툰구 압둘라만 해양국립공원 스노클링 + 해산물 BBQ</div>
+        </div>
+      </div>
+      <div class="tour-card-body">
+        <div class="tour-desc">스피드 보트를 타고 코타키나발루 근해 산호섬으로 이동! 투명한 바다에서 스노클링을 즐기고 신선한 해산물 BBQ 현지식 뷔페로 배부른 하루를 보내는 베스트 인기 투어입니다. (소요 약 5~6시간)</div>
+        <ul class="tour-steps">
+          <li><div class="tour-step-time">08:00~09:00</div><div>호텔 조식 후 가이드 미팅</div></li>
+          <li><div class="tour-step-time">09:40</div><div>선착장으로 이동 (수트라하버 또는 시내 선착장)</div></li>
+          <li><div class="tour-step-time">10:00</div><div>스피드 보트 탑승 → 산호섬 이동 (10~15분)</div></li>
+          <li><div class="tour-step-time">10:20</div><div>섬 도착 · 해수욕 및 해변 자유시간 🏖</div></li>
+          <li><div class="tour-step-time">12:00</div><div>해산물 BBQ 현지식 뷔페 🦐 (해산물 꼬치구이·볶음밥·야채볶음)</div></li>
+          <li><div class="tour-step-time">14:00</div><div>투어 종료 · 호텔 복귀</div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="alert alert-teal" style="margin-top:10px;">
+      🌊 아일랜드 호핑투어 시 <strong>래시가드·수영복·수경</strong>을 꼭 챙겨가세요!
+    </div>
+  </div>
+
+  <!-- 03. 말레이시아 디지털 입국카드 -->
+  <div class="section">
+    <div class="section-eyebrow">03</div>
+    <div class="section-heading">말레이시아 입국 안내 🛂</div>
+    <div class="mdac-box">
+      <div class="mdac-head">🇲🇾 디지털 입국카드 (MDAC) — 필수 사전 등록!</div>
+      <div class="mdac-body">
+        <div class="alert alert-red" style="margin-top:0;margin-bottom:12px;">
+          ⚠️ 말레이시아 입국 전 <strong>디지털 입국카드(MDAC) 사전 등록이 필수</strong>입니다.<br>
+          <strong>현지 도착 3일 전부터</strong> 작성 가능합니다. 가족 각각 개별로 작성해야 합니다.
+        </div>
+        <a class="link-pill" href="https://imigresen-online.imi.gov.my/mdac/main" target="_blank">MDAC 디지털 입국카드 작성하기 →</a>
+        <a class="link-pill-blue" href="https://blog.naver.com/ironmask0728/223283495025" target="_blank">작성 참고 블로그 →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04. 바다 물놀이 준비물 -->
+  <div class="section">
+    <div class="section-eyebrow">04</div>
+    <div class="section-heading">바다 물놀이 준비물 🐠</div>
+    <div class="alert alert-teal" style="margin-top:0;margin-bottom:12px;">
+      🌊 아일랜드 호핑투어 스노클링을 위해 아래 준비물을 꼭 챙겨가세요!
+    </div>
+    <div class="water-grid">
+      <div class="water-item">👙 수영복</div>
+      <div class="water-item">🩱 래시가드 (필수!)</div>
+      <div class="water-item">🕶 수경 (물안경)</div>
+      <div class="water-item">🩴 아쿠아슈즈</div>
+      <div class="water-item">🧴 방수 선크림 SPF50+</div>
+      <div class="water-item">👒 챙 넓은 모자</div>
+      <div class="water-item">🎽 여분 수영복</div>
+      <div class="water-item">🛍 방수 파우치</div>
+    </div>
+    <div class="alert alert-amber" style="margin-top:10px;">
+      ⚠️ 래시가드는 강한 자외선 차단과 스노클링 시 피부 보호를 위해 반드시 착용해 주세요.<br>
+      스노클링 장비는 현지에서 대여 가능하나 개인 수경을 가져가시면 더 편리합니다.
+    </div>
+  </div>
+
+  <!-- 05. 불포함 사항 -->
+  <div class="section">
+    <div class="section-eyebrow">05</div>
+    <div class="section-heading">불포함 사항</div>
+    <ul class="excl-list">
+      <li><div class="excl-dot"></div><span>개인 경비</span></li>
+      <li><div class="excl-dot"></div><span><strong>매너팁</strong> (자율) — 식당·객실 청소 등 서비스 이용 시 감사의 표시 / 지불 여부에 따른 불이익 없음</span></li>
+    </ul>
+  </div>
+
+  <!-- 06. 환전 안내 -->
+  <div class="section">
+    <div class="section-eyebrow">06</div>
+    <div class="section-heading">환전 안내 💵</div>
+    <div class="info-card">
+      <div class="info-row" style="border-bottom:none;">
+        <div class="info-key">말레이시아 링깃 (MYR)</div>
+        <div class="info-val">
+          개인 경비는 <strong>말레이시아 링깃(MYR)</strong> 또는 달러(USD)를 소액 환전해 사용하시면 됩니다.<br>
+          노노노 상품으로 별도 경비 부담이 없어 소액만 준비하시면 충분합니다.
+          <div class="alert alert-teal" style="margin-top:8px;">
+            💡 신용카드(Visa/Mastercard)도 대부분의 가맹점에서 사용 가능합니다.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 07. 준비물 체크리스트 -->
+  <div class="section">
+    <div class="section-eyebrow">07</div>
+    <div class="section-heading">준비물 체크리스트 🎒</div>
+    <div class="alert alert-sea" style="margin-bottom:1rem;margin-top:0;">
+      ⚡ 말레이시아 전압은 <strong>240V · 3핀</strong>입니다. 영국식 어댑터를 챙겨가세요!
+    </div>
+    <ul class="checklist">
+      <li><div class="check-num">1</div><span><span class="check-cat">필수</span><strong>여권</strong> — 유효기간 6개월 이상 반드시 확인!</span></li>
+      <li><div class="check-num">2</div><span><span class="check-cat">필수</span><strong>항공권 E-티켓</strong> 출력 또는 스마트폰 저장</span></li>
+      <li><div class="check-num">3</div><span><span class="check-cat">필수</span><strong>MDAC 디지털 입국카드</strong> 사전 등록 완료 확인</span></li>
+      <li><div class="check-num">4</div><span><span class="check-cat">바다</span><strong>래시가드</strong> · 수영복 · 아쿠아슈즈</span></li>
+      <li><div class="check-num">5</div><span><span class="check-cat">바다</span>수경 (물안경) · 방수 파우치</span></li>
+      <li><div class="check-num">6</div><span><span class="check-cat">날씨</span><strong>방수 선크림 (SPF 50+)</strong> — 열대 자외선 매우 강함</span></li>
+      <li><div class="check-num">7</div><span><span class="check-cat">날씨</span>챙 넓은 모자 · 선글라스 · 접이식 우산 ☂️</span></li>
+      <li><div class="check-num">8</div><span><span class="check-cat">복장</span>반팔·반바지 여름 의류 + 얇은 가디건 (실내 냉방 강함)</span></li>
+      <li><div class="check-num">9</div><span><span class="check-cat">복장</span>편한 샌들·슬리퍼 + 운동화</span></li>
+      <li><div class="check-num">10</div><span><span class="check-cat">세면</span>개인 세면도구 (칫솔·치약·샴푸 등)</span></li>
+      <li><div class="check-num">11</div><span><span class="check-cat">건강</span>상비약 — 소화제·두통약·지사제·모기기피제</span></li>
+      <li><div class="check-num">12</div><span><span class="check-cat">전기</span><strong>영국식 3핀 어댑터</strong> · 보조배터리 · 충전기</span></li>
+    </ul>
+  </div>
+
+  <!-- 08. 유의사항 -->
+  <div class="section">
+    <div class="section-eyebrow">08</div>
+    <div class="section-heading">유의사항</div>
+    <ul class="checklist">
+      <li><div class="check-num">1</div><span>인천공항 제1터미널에 <strong>출발 최소 3시간 전</strong>까지 도착해 주세요.</span></li>
+      <li><div class="check-num">2</div><span>여권 유효기간을 꼭 확인해 주세요. <strong>잔여 유효기간 6개월 이상</strong> 필수입니다.</span></li>
+      <li><div class="check-num">3</div><span>말레이시아 <strong>MDAC 디지털 입국카드</strong>를 도착 3일 전부터 미리 작성해 주세요. 가족 각각 개별 작성 필수!</span></li>
+      <li><div class="check-num">4</div><span>아일랜드 호핑투어 시 <strong>래시가드·수영복·수경</strong>을 꼭 챙겨가세요.</span></li>
+      <li><div class="check-num">5</div><span>본 안내문을 <strong>가족 모두에게 공유</strong> 부탁드립니다.</span></li>
+    </ul>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-title">🌴 즐거운 코타키나발루 여행 되세요!</div>
+    <div class="footer-sub">궁금하신 사항은 언제든지 문의 주세요.<br>감사합니다.</div>
+    <div class="footer-name">담당 이경진 실장</div>
+    <div class="footer-contacts">
+      <a class="footer-btn footer-btn-phone" href="tel:15445714">📞 1544-5714</a>
+      <a class="footer-btn footer-btn-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡 상담</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
