@@ -7,8 +7,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --sea: #1a5a8a;
-    --sea-light: #e4eeff;
+    --sea: #2a6a3a;
+    --sea-light: #e4f8ec;
     --gold: #b07000;
     --gold-light: #fff8e0;
     --red: #c03020;
@@ -17,14 +17,14 @@
     --amber-light: #fff4e0;
     --green: #1a6b3a;
     --green-light: #e4f8ee;
-    --cream: #f4f7fd;
+    --cream: #f2fcf4;
     --warm-white: #ffffff;
     --charcoal: #080c20;
     --medium: #1a2a48;
-    --muted: #5a6888;
-    --border: #b8c8e4;
-    --blue: #1a4a8a;
-    --blue-light: #e4eeff;
+    --muted: #5a7868;
+    --border: #b0d8b8;
+    --blue: #2a6a3a;
+    --blue-light: #e4f8ec;
     --teal: #0a7a6a;
     --teal-light: #e0f8f4;
   }
@@ -34,7 +34,7 @@
 
   .hero {
     position:relative;
-    background:linear-gradient(160deg, #040810 0%, #081830 40%, #102848 75%, #1a5a8a 100%);
+    background:linear-gradient(160deg, #040c06 0%, #0a2010 40%, #143820 75%, #2a6a3a 100%);
     padding:3.5rem 2rem 4rem; text-align:center; overflow:hidden;
   }
   .hero::after { content:""; position:absolute; bottom:-2px; left:0; right:0; height:50px; background:var(--cream); clip-path:ellipse(60% 100% at 50% 100%); }
@@ -42,24 +42,24 @@
   .hero-content { position:relative; z-index:2; }
   .hero-tag { display:inline-block; background:rgba(255,255,255,0.13); border:1px solid rgba(255,255,255,0.3); border-radius:20px; padding:5px 18px; font-size:13px; letter-spacing:0.2em; color:rgba(255,255,255,0.92); margin-bottom:0.9rem; text-transform:uppercase; }
   .hero-title { font-size:clamp(26px,5.5vw,38px); font-weight:800; color:#fff; line-height:1.35; margin-bottom:0.3rem; text-shadow:0 2px 12px rgba(0,0,0,0.3); }
-  .hero-title em { color:#a0c8ff; font-style:normal; }
+  .hero-title em { color:#a0ffb8; font-style:normal; }
   .hero-names { font-size:18px; font-weight:700; color:rgba(255,255,255,0.9); margin-bottom:0.3rem; }
   .hero-sub { font-size:15px; color:rgba(255,255,255,0.72); margin-bottom:1.4rem; }
   .agent-wrap { display:flex; flex-direction:column; align-items:center; gap:8px; }
   .agent-name { display:inline-flex; align-items:center; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.35); border-radius:30px; padding:8px 22px; font-size:15px; color:#fff; font-weight:700; }
   .agent-contacts { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
   .agent-contacts a { display:inline-flex; align-items:center; gap:6px; border-radius:30px; padding:8px 18px; font-size:14px; text-decoration:none; font-weight:700; }
-  .contact-phone { background:rgba(255,255,255,0.92); color:#081830; }
+  .contact-phone { background:rgba(255,255,255,0.92); color:#0a2010; }
   .contact-kakao { background:#FEE500; color:#3a1d00; }
 
   /* 노노노 배너 */
   .nonono-banner { background:linear-gradient(135deg,#e4f8ee,#d0f4e0,#bce8cc); padding:1.1rem 1.75rem; border-bottom:3px solid #1a6b3a; }
 
   /* 행사정보 배너 */
-  .guide-banner { background:linear-gradient(135deg,#e4eeff,#d4e4ff,#c4d8ff); padding:1.2rem 1.75rem; border-bottom:3px solid #1a5a8a; }
+  .guide-banner { background:linear-gradient(135deg,#e4f8ec,#d0f4e0,#bce8cc); padding:1.2rem 1.75rem; border-bottom:3px solid #2a6a3a; }
   .guide-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-  .guide-item { background:rgba(255,255,255,0.85); border-radius:12px; padding:12px 16px; border:1px solid rgba(26,90,138,0.22); }
-  .guide-item-label { font-size:12px; font-weight:700; color:#1a5a8a; margin-bottom:4px; }
+  .guide-item { background:rgba(255,255,255,0.85); border-radius:12px; padding:12px 16px; border:1px solid rgba(42,106,58,0.22); }
+  .guide-item-label { font-size:12px; font-weight:700; color:#2a6a3a; margin-bottom:4px; }
   .guide-item-val { font-size:14px; font-weight:800; color:#080c20; line-height:1.5; }
   .guide-item-sub { font-size:12px; color:#1a2a48; margin-top:2px; line-height:1.5; }
 
@@ -77,27 +77,27 @@
   .flight-card { background:rgba(255,255,255,0.88); border-radius:14px; overflow:hidden; border:1px solid rgba(80,130,200,0.35); margin-bottom:10px; }
   .flight-card:last-child { margin-bottom:0; }
   .flight-card-header { padding:9px 16px; font-size:13px; font-weight:800; }
-  .flight-card-header.go   { background:linear-gradient(135deg,#081830,#1a5a8a); color:#fff; }
+  .flight-card-header.go   { background:linear-gradient(135deg,#0a2010,#2a6a3a); color:#fff; }
   .flight-card-header.back { background:linear-gradient(135deg,#0a2040,#1a4a8a); color:#fff; }
   .flight-card-body { padding:14px 18px; }
   .flight-route { display:flex; align-items:center; justify-content:space-between; }
   .flight-city { text-align:center; flex:1; }
   .flight-city-code { font-size:25px; font-weight:800; color:#1a2040; }
-  .flight-city-time { font-size:18px; font-weight:800; color:#102848; margin-top:2px; }
+  .flight-city-time { font-size:18px; font-weight:800; color:#0a2010; margin-top:2px; }
   .flight-city-name { font-size:13px; color:var(--muted); margin-top:3px; }
   .flight-arrow-wrap { flex:0 0 84px; text-align:center; }
   .flight-arrow { font-size:22px; color:#4a80c0; }
   .flight-arrow-label { font-size:12px; color:var(--muted); margin-top:2px; line-height:1.4; }
   .flight-meta-row { display:flex; gap:6px; margin-top:10px; flex-wrap:wrap; }
-  .flight-meta-chip { background:#e4eeff; border:1px solid #90b0d8; border-radius:20px; padding:4px 12px; font-size:12px; font-weight:700; color:#102848; }
+  .flight-meta-chip { background:#e4f8ec; border:1px solid #80c898; border-radius:20px; padding:4px 12px; font-size:12px; font-weight:700; color:#0a2010; }
   .flight-meta-chip.good { background:var(--green-light); border-color:#80c0a0; color:#1a5a30; }
   .flight-meta-chip.warn { background:#fdeeed; border-color:#e08080; color:#8a1010; }
 
   /* 수하물 배너 */
-  .baggage-banner { background:linear-gradient(135deg,#e4eeff,#d4e4ff,#c4d8ff); padding:1.2rem 1.75rem; border-bottom:3px solid #1a5a8a; }
+  .baggage-banner { background:linear-gradient(135deg,#e4f8ec,#d0f4e0,#bce8cc); padding:1.2rem 1.75rem; border-bottom:3px solid #2a6a3a; }
   .baggage-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-  .baggage-item { background:rgba(255,255,255,0.85); border-radius:12px; padding:12px 15px; border:1px solid rgba(26,90,138,0.22); }
-  .baggage-label { font-size:12px; font-weight:700; color:#1a5a8a; margin-bottom:5px; }
+  .baggage-item { background:rgba(255,255,255,0.85); border-radius:12px; padding:12px 15px; border:1px solid rgba(42,106,58,0.22); }
+  .baggage-label { font-size:12px; font-weight:700; color:#2a6a3a; margin-bottom:5px; }
   .baggage-val   { font-size:16px; font-weight:800; color:#080c20; line-height:1.5; }
   .baggage-sub   { font-size:13px; color:#1a2a48; margin-top:3px; line-height:1.5; }
 
@@ -131,11 +131,11 @@
   .alert-amber  { background:var(--amber-light);  border-left:3px solid var(--amber);  color:#7a3800; }
   .alert-green  { background:var(--green-light);  border-left:3px solid var(--green);  color:#0a3820; }
   .alert-gold   { background:var(--gold-light);   border-left:3px solid var(--gold);   color:#7a4800; }
-  .alert-sea    { background:var(--sea-light);    border-left:3px solid var(--sea);    color:#081830; }
+  .alert-sea    { background:var(--sea-light);    border-left:3px solid var(--sea);    color:#0a2010; }
   .alert-blue   { background:var(--blue-light);   border-left:3px solid var(--blue);   color:#0a1a4a; }
   .alert-teal   { background:var(--teal-light);   border-left:3px solid var(--teal);   color:#083830; }
 
-  a.link-pill { display:inline-flex; align-items:center; gap:6px; background:linear-gradient(135deg,#081830,#1a5a8a); border-radius:22px; padding:9px 20px; font-size:14px; color:#fff; text-decoration:none; margin-top:6px; font-weight:700; }
+  a.link-pill { display:inline-flex; align-items:center; gap:6px; background:linear-gradient(135deg,#0a2010,#2a6a3a); border-radius:22px; padding:9px 20px; font-size:14px; color:#fff; text-decoration:none; margin-top:6px; font-weight:700; }
   a.link-pill-blue { display:inline-flex; align-items:center; gap:6px; background:linear-gradient(135deg,#1a4a8a,#2a6ab0); border-radius:22px; padding:9px 20px; font-size:14px; color:#fff; text-decoration:none; margin-top:6px; font-weight:700; }
 
   /* 호텔 리스트 */
@@ -146,11 +146,11 @@
 
   /* 준비물 그리드 */
   .supply-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-top:10px; }
-  .supply-item { background:var(--sea-light); border:1px solid rgba(26,90,138,0.3); border-radius:10px; padding:10px 12px; font-size:13.5px; font-weight:700; color:#081830; display:flex; align-items:center; gap:8px; }
+  .supply-item { background:var(--sea-light); border:1px solid rgba(42,106,58,0.3); border-radius:10px; padding:10px 12px; font-size:13.5px; font-weight:700; color:#0a2010; display:flex; align-items:center; gap:8px; }
 
   /* 중국 입국신고서 박스 */
   .cn-box { border:2px solid var(--sea); border-radius:14px; overflow:hidden; }
-  .cn-box-head { background:linear-gradient(135deg,#081830,#1a5a8a); padding:12px 18px; font-size:13px; font-weight:800; color:#fff; }
+  .cn-box-head { background:linear-gradient(135deg,#0a2010,#2a6a3a); padding:12px 18px; font-size:13px; font-weight:800; color:#fff; }
   .cn-box-body { padding:16px 18px; background:var(--warm-white); }
 
   .excl-list { list-style:none; padding:0; }
@@ -161,10 +161,10 @@
   .checklist { list-style:none; padding:0; }
   .checklist li { display:flex; align-items:flex-start; gap:12px; padding:10px 0; border-bottom:1px solid var(--border); font-size:14.5px; line-height:1.65; }
   .checklist li:last-child { border-bottom:none; }
-  .check-num { min-width:24px; height:24px; background:linear-gradient(135deg,#081830,#1a5a8a); color:#fff; border-radius:50%; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
+  .check-num { min-width:24px; height:24px; background:linear-gradient(135deg,#0a2010,#2a6a3a); color:#fff; border-radius:50%; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
   .check-cat { font-size:12px; font-weight:800; color:var(--sea); background:var(--sea-light); border-radius:5px; padding:2px 8px; margin-right:5px; white-space:nowrap; }
 
-  .footer { background:linear-gradient(160deg,#040810,#081830 60%,#1a5a8a 100%); padding:2.8rem 2rem; text-align:center; }
+  .footer { background:linear-gradient(160deg,#040c06,#0a2010 60%,#2a6a3a 100%); padding:2.8rem 2rem; text-align:center; }
   .footer-title { font-size:23px; font-weight:800; color:#fff; margin-bottom:0.5rem; }
   .footer-sub   { font-size:15px; color:rgba(255,255,255,0.65); line-height:1.8; margin-bottom:1.4rem; }
   .footer-name  { font-size:16px; font-weight:700; color:rgba(255,255,255,0.9); margin-bottom:14px; }
@@ -216,7 +216,7 @@
 
   <!-- 행사정보 배너 -->
   <div class="guide-banner">
-    <div style="font-size:15px;font-weight:800;color:#081830;margin-bottom:10px;">👤 현지 행사 정보</div>
+    <div style="font-size:15px;font-weight:800;color:#0a2010;margin-bottom:10px;">👤 현지 행사 정보</div>
     <div class="guide-grid">
       <div class="guide-item">
         <div class="guide-item-label">담당 가이드</div>
@@ -338,7 +338,7 @@
 
   <!-- 수하물 배너 -->
   <div class="baggage-banner">
-    <div style="font-size:15px;font-weight:800;color:#081830;margin-bottom:10px;">🧳 수하물 안내 — 대한항공</div>
+    <div style="font-size:15px;font-weight:800;color:#0a2010;margin-bottom:10px;">🧳 수하물 안내 — 대한항공</div>
     <div class="baggage-grid">
       <div class="baggage-item">
         <div class="baggage-label">위탁 수하물</div>
@@ -437,10 +437,10 @@
     </div>
 
     <!-- 등산스틱 -->
-    <div style="background:var(--sea-light);border:1px solid rgba(26,90,138,0.25);border-radius:12px;padding:14px 18px;margin-bottom:10px;">
+    <div style="background:var(--sea-light);border:1px solid rgba(42,106,58,0.25);border-radius:12px;padding:14px 18px;margin-bottom:10px;">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
         <div style="font-size:24px;">🥢</div>
-        <div style="font-size:15px;font-weight:800;color:#081830;">등산 스틱 (선택)</div>
+        <div style="font-size:15px;font-weight:800;color:#0a2010;">등산 스틱 (선택)</div>
       </div>
       <div style="font-size:13.5px;color:#1a2a48;line-height:1.8;">
         장가계는 케이블카·엘리베이터로 편하게 이동하는 코스입니다. 다만 <strong>돌계단 이동 구간</strong>이 있어, 어르신이나 무릎이 좋지 않으신 분께는 등산 스틱이 있으면 훨씬 편하게 이동하실 수 있습니다.
