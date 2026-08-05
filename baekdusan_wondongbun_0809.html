@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>태항산 여행 확정서 - 이동헌님</title>
+<title>백두산 여행 확정서 - 원동분님 일행</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <style>
 :root{
@@ -69,7 +69,7 @@ img{max-width:100%;display:block;}
 .section-title{font-size:18px;font-weight:800;color:var(--text-main);}
 
 .product-link-box{display:flex;justify-content:space-between;align-items:center;background:var(--forest-bg);border:1px solid var(--forest);border-radius:14px;padding:16px 18px;font-weight:700;color:var(--forest-dark);margin-bottom:14px;transition:transform .15s ease-out, background .2s;}
-.product-link-box:hover{transform:scale(1.01);}
+.product-link-box:hover{background:#E1F0E6;transform:scale(1.01);}
 .product-link-box:active{transform:scale(0.98);}
 .product-link-box span.arrow{font-size:18px;}
 
@@ -77,14 +77,20 @@ img{max-width:100%;display:block;}
 .alert-forest{background:var(--forest-bg);border:1px solid var(--forest);color:#1F4A36;}
 .alert-terracotta{background:var(--terracotta-bg);border:1px solid var(--terracotta);color:#8E2E28;}
 .alert-gold{background:var(--gold-bg);border:1px solid var(--gold);color:#8A6414;}
-.alert-red{background:var(--red-bg);border:1px solid var(--red);color:#8E2E28;}
 
 .meeting-box{border:1.5px solid var(--terracotta);border-radius:16px;background:#fff;padding:20px;box-shadow:var(--shadow);}
-.meeting-time{font-size:24px;font-weight:800;color:var(--terracotta);text-align:center;margin-bottom:14px;}
-.meeting-row{display:flex;justify-content:space-between;font-size:14px;padding:8px 0;border-bottom:1px dashed var(--border);}
+.meeting-time{font-size:22px;font-weight:800;color:var(--terracotta);text-align:center;margin-bottom:14px;}
+.meeting-row{display:flex;justify-content:space-between;font-size:14px;padding:8px 0;border-bottom:1px dashed var(--border);gap:10px;}
 .meeting-row:last-child{border-bottom:none;}
 .meeting-row .label{color:var(--text-sub);}
 .meeting-row .val{font-weight:700;color:var(--text-main);text-align:right;}
+
+.counter-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:var(--gold-bg);}
+.step{display:flex;gap:12px;margin-bottom:14px;}
+.step:last-child{margin-bottom:0;}
+.step-num{width:24px;height:24px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0;}
+.step-text{font-size:14px;color:var(--text-main);line-height:1.55;}
+.step-text b{color:#8A6414;}
 
 .flight-card{border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px;}
 .flight-header{background:linear-gradient(120deg,#1F4A36,#275A42);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:700;}
@@ -117,29 +123,14 @@ img{max-width:100%;display:block;}
 .hotel-card{border:2px solid var(--forest);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:14px;}
 .hotel-header{background:linear-gradient(120deg,var(--forest),#4E9270);color:#fff;padding:10px 18px;font-size:12.5px;font-weight:700;display:flex;justify-content:space-between;align-items:center;}
 .hotel-body{background:#fff;padding:18px 18px;}
-.hotel-name{font-size:18px;font-weight:800;color:var(--text-main);margin-bottom:10px;}
-.hotel-row{display:flex;justify-content:space-between;font-size:14px;padding:7px 0;border-bottom:1px dashed var(--border);}
-.hotel-row:last-child{border-bottom:none;}
-.hotel-row .label{color:var(--text-sub);font-weight:500;}
-.hotel-row .val{color:var(--text-main);font-weight:700;text-align:right;}
+.hotel-name{font-size:18px;font-weight:800;color:var(--text-main);}
 
 .incl-card{border-radius:14px;padding:16px;font-size:13.5px;line-height:1.7;background:var(--terracotta-bg);border:1px solid var(--terracotta);}
 .incl-card .head{font-weight:800;margin-bottom:8px;font-size:14px;color:#8E2E28;}
 
-.visa-box{border:1.5px solid var(--gold);border-radius:16px;background:var(--gold-bg);padding:20px;}
-.visa-box .head{font-weight:800;font-size:15px;color:#8A6414;margin-bottom:10px;}
-.visa-box .info-row{display:flex;justify-content:space-between;font-size:13.5px;padding:6px 0;border-bottom:1px dashed rgba(138,100,20,0.25);gap:10px;}
-.visa-box .info-row:last-child{border-bottom:none;}
-.visa-box .info-row .val{font-weight:700;text-align:right;}
-.visa-box a.linkbtn{display:inline-block;margin-top:10px;background:var(--gold);color:#fff;font-weight:700;font-size:13.5px;padding:9px 18px;border-radius:10px;}
-
-.weather-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
-.weather-card{flex:0 0 auto;width:110px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 10px;text-align:center;box-shadow:var(--shadow);}
-.weather-card .date{font-size:12px;font-weight:700;color:var(--text-sub);margin-bottom:6px;}
-.weather-card .day{font-size:10.5px;color:var(--text-muted);margin-bottom:6px;}
-.weather-card .icon{font-size:26px;margin-bottom:8px;}
-.weather-card .high{font-size:17px;font-weight:800;color:var(--terracotta);}
-.weather-card .low{font-size:13px;color:var(--text-muted);margin-top:2px;}
+.exchange-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:#fff;box-shadow:var(--shadow);}
+.exchange-box .ex-row{display:flex;justify-content:space-between;font-size:14px;padding:8px 0;border-bottom:1px dashed var(--border);}
+.exchange-box .ex-row:last-child{border-bottom:none;}
 
 .prep-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 .prep-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
@@ -183,18 +174,18 @@ img{max-width:100%;display:block;}
 <div class="header">
   <div class="header-inner">
     <span class="header-tag">TRAVEL CONFIRMATION</span>
-    <div class="header-title">⛰️ 태항산 여행 확정서</div>
-    <div class="header-subtitle">부산(김해)국제공항 출발 · 4박 5일 · TAIHANG MOUNTAIN 2026</div>
-    <div class="header-names">이동헌님</div><br>
-    <a class="header-cta" href="https://www.modetour.com/package/103595492?MLoc=99&Pnum=103595492&ANO=4547682&sno=C2181215&thru=crs" target="_blank">🔗 여행상품 확인하기</a>
+    <div class="header-title">🏔️ 백두산 여행 확정서</div>
+    <div class="header-subtitle">인천국제공항 출발 · 3박 4일 · BAEKDU MOUNTAIN 2026</div>
+    <div class="header-names">원동분님 일행</div><br>
+    <a class="header-cta" href="https://www.modetour.com/package/103739847?MLoc=99&Pnum=103739847&ANO=1772510&sno=C2181215&thru=crs" target="_blank">🔗 여행상품 확인하기</a>
   </div>
 </div>
 
 <div class="trip-band">
   <div class="trip-band-inner">
-    <div class="trip-item"><div class="label">출발일</div><div class="value">2026.08.11(화)</div></div>
-    <div class="trip-item"><div class="label">귀국일</div><div class="value">2026.08.15(토)</div></div>
-    <div class="trip-item"><div class="label">일정</div><div class="value">4박 5일</div></div>
+    <div class="trip-item"><div class="label">출발일</div><div class="value">2026.08.09(일)</div></div>
+    <div class="trip-item"><div class="label">귀국일</div><div class="value">2026.08.12(수)</div></div>
+    <div class="trip-item"><div class="label">일정</div><div class="value">3박 4일</div></div>
     <div class="trip-item"><div class="label">투어타입</div><div class="value">패키지</div></div>
   </div>
 </div>
@@ -204,35 +195,31 @@ img{max-width:100%;display:block;}
   <!-- 상품 안내 -->
   <div class="section">
     <div class="section-head"><div class="section-num">1</div><div class="section-title">상품 안내</div></div>
-    <a class="product-link-box" href="https://www.modetour.com/package/103595492?MLoc=99&Pnum=103595492&ANO=4547682&sno=C2181215&thru=crs" target="_blank">
-      <span>모두투어 태항산 상품 바로가기</span>
+    <a class="product-link-box" href="https://www.modetour.com/package/103739847?MLoc=99&Pnum=103739847&ANO=1772510&sno=C2181215&thru=crs" target="_blank">
+      <span>모두투어 백두산 상품 바로가기</span>
       <span class="arrow">↗</span>
     </a>
     <div class="alert alert-forest">
-      ✔ 현지 가이드와 함께하는 <b>패키지 상품</b>입니다. 출발 당일 김해공항에서 <b>모두투어 미팅</b>을 진행한 뒤, 석가장 도착 시에는 현지 가이드가 안내해 드립니다.
+      ✔ 현지 가이드와 함께하는 <b>패키지 상품</b>입니다. 아래 2번 안내를 참고해서 인천공항 이용해 주세요.
     </div>
   </div>
 
-  <!-- 미팅 안내 -->
+  <!-- 인천공항 미팅/체크인 안내 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">2</div><div class="section-title">미팅 안내</div></div>
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">인천공항 미팅 · 체크인 안내</div></div>
     <div class="meeting-box">
-      <div class="meeting-time">2026.08.11(화) 07:00</div>
-      <div class="meeting-row"><span class="label">장소</span><span class="val">김해국제공항 국제선 3층<br>모두투어 미팅테이블(안내판 앞)</span></div>
-      <div class="meeting-row"><span class="label">진행 순서</span><span class="val">미팅 → 서류 수령 → 개별 티켓팅 → 개별 출국</span></div>
+      <div class="meeting-time">2026.08.09(일) 12:55</div>
+      <div class="meeting-row"><span class="label">기본 안내</span><span class="val">공항 도착 후 별도 미팅 없이<br>바로 개별 출국 수속 가능</span></div>
+      <div class="meeting-row"><span class="label">개별수속 기준</span><span class="val">출발 최소 3시간 전까지 공항 도착</span></div>
     </div>
     <div class="counter-box" style="margin-top:14px;">
       <div class="step">
         <div class="step-num">1</div>
-        <div class="step-text">07:00까지 <b>모두투어 미팅테이블</b>로 오시면 담당 인솔자로부터 <b>프린트된 일정표와 전자항공권 확인서</b>를 받으실 수 있습니다.</div>
+        <div class="step-text"><b>미팅서비스를 사전 신청하신 경우</b>, 12:55까지 인천공항 <b>제1터미널 3층 출국장 서편 N카운터 14번 출구 앞, 여행사 카운터 9~10번 모두투어 테이블</b>로 와주세요.</div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
-        <div class="step-text">서류 수령 후 <b>제주항공 카운터</b>로 이동해 티켓팅(수하물 위탁 포함)을 진행해 주세요.</div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-text">티켓팅 완료 후에는 <b>개별적으로 출국 수속</b>을 진행하시면 됩니다. (탑승구까지 별도 인솔 없음)</div>
+        <div class="step-text">미팅을 신청하지 않으셨다면 <b>개별적으로 제주항공 카운터(L13~L36)</b>에서 티켓팅하시면 됩니다. 출발(15:55) 기준 <b>최소 3시간 전</b> 공항 도착 필수입니다.</div>
       </div>
     </div>
   </div>
@@ -242,12 +229,12 @@ img{max-width:100%;display:block;}
     <div class="section-head"><div class="section-num">3</div><div class="section-title">항공편 정보</div></div>
 
     <div class="flight-card">
-      <div class="flight-header"><span>출발편 · 제주항공</span><span class="code">7C8851</span></div>
+      <div class="flight-header"><span>출발편 · 제주항공</span><span class="code">7C8903</span></div>
       <div class="flight-body">
         <div class="flight-route">
-          <div class="airport"><div class="code">PUS</div><div class="city">부산 · 08.11(화) 09:50</div></div>
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 08.09(일) 15:55</div></div>
           <div class="mid"><div class="time">직항</div><div class="line"></div></div>
-          <div class="airport"><div class="code">SJW</div><div class="city">석가장 · 08.11(화) 11:30</div></div>
+          <div class="airport"><div class="code">YNJ</div><div class="city">연길 · 08.09(일) 17:25</div></div>
         </div>
         <div class="flight-badges">
           <span class="badge">✈ 제주항공</span>
@@ -259,12 +246,12 @@ img{max-width:100%;display:block;}
     </div>
 
     <div class="flight-card">
-      <div class="flight-header"><span>귀국편 · 제주항공</span><span class="code">7C8852</span></div>
+      <div class="flight-header"><span>귀국편 · 제주항공</span><span class="code">7C8904</span></div>
       <div class="flight-body">
         <div class="flight-route">
-          <div class="airport"><div class="code">SJW</div><div class="city">석가장 · 08.15(토) 12:25</div></div>
+          <div class="airport"><div class="code">YNJ</div><div class="city">연길 · 08.12(수) 18:25</div></div>
           <div class="mid"><div class="time">직항</div><div class="line"></div></div>
-          <div class="airport"><div class="code">PUS</div><div class="city">부산 · 08.15(토) 16:00</div></div>
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 08.12(수) 21:55</div></div>
         </div>
         <div class="flight-badges">
           <span class="badge">✈ 제주항공</span>
@@ -299,15 +286,15 @@ img{max-width:100%;display:block;}
     </div>
   </div>
 
-  <!-- 현지 가이드 & 행사 정보 -->
+  <!-- 현지 가이드 & 행사정보 -->
   <div class="section">
     <div class="section-head"><div class="section-num">5</div><div class="section-title">현지 가이드 & 행사 정보</div></div>
     <div class="guide-box">
-      <div class="guide-row"><span class="label">가이드명</span><span class="val">박승룡(남) · PIAO SHENGLONG</span></div>
-      <div class="guide-row"><span class="label">가이드 연락처</span><span class="val">150-1059-2254</span></div>
-      <div class="guide-row"><span class="label">현지 비상연락처</span><span class="val">139-0114-3954</span></div>
-      <div class="guide-row"><span class="label">행사인원</span><span class="val">15명</span></div>
-      <div class="guide-row"><span class="label">행사차량</span><span class="val">25인승 리무진</span></div>
+      <div class="guide-row"><span class="label">가이드명</span><span class="val">지국화(여) · CHI GUOHUA</span></div>
+      <div class="guide-row"><span class="label">가이드 연락처</span><span class="val">+86-138-4435-4407</span></div>
+      <div class="guide-row"><span class="label">현지 비상연락처</span><span class="val">+86-137-6123-2222</span></div>
+      <div class="guide-row"><span class="label">행사인원</span><span class="val">26명</span></div>
+      <div class="guide-row"><span class="label">행사차량</span><span class="val">37인승 리무진</span></div>
     </div>
   </div>
 
@@ -315,20 +302,15 @@ img{max-width:100%;display:block;}
   <div class="section">
     <div class="section-head"><div class="section-num">6</div><div class="section-title">투숙 호텔</div></div>
     <div class="hotel-card">
-      <div class="hotel-header"><span>🏨 임주 지역</span><span>3박</span></div>
-      <div class="hotel-body">
-        <div class="hotel-name">임주 건통 금원 호텔<br><span style="font-size:12.5px;font-weight:500;color:var(--text-sub);">Jiantong Jinyuan Hotel (林州建通金圆酒店)</span></div>
-        <div class="hotel-row"><span class="label">연락처</span><span class="val">0372-879-9999</span></div>
-      </div>
+      <div class="hotel-header"><span>🏨 연길</span><span></span></div>
+      <div class="hotel-body"><div class="hotel-name">연변국제호텔</div></div>
     </div>
     <div class="hotel-card">
-      <div class="hotel-header"><span>🏨 석가장 지역</span><span>1박</span></div>
-      <div class="hotel-body">
-        <div class="hotel-name">석가장 세기호텔</div>
-      </div>
+      <div class="hotel-header"><span>🏨 이도백하</span><span></span></div>
+      <div class="hotel-body"><div class="hotel-name">보석국제호텔</div></div>
     </div>
     <div class="alert alert-gold">
-      💡 태항산 등반 일정(임주 지역) 3박 + 귀국 전날 석가장 세기호텔 1박, 총 4박 일정입니다.
+      💡 총 3박 일정으로, 연길 연변국제호텔과 백두산 인근 이도백하 보석국제호텔에 나누어 투숙합니다. 세부 박수 배정은 현지 가이드 안내에 따라 진행됩니다.
     </div>
   </div>
 
@@ -337,78 +319,29 @@ img{max-width:100%;display:block;}
     <div class="section-head"><div class="section-num">7</div><div class="section-title">불포함 사항</div></div>
     <div class="incl-card">
       <div class="head">✘ 불포함사항</div>
-      ◎ 개인 경비 (생수 및 음료수 등)<br>
-      ◎ 호텔 벨보이, 호텔 메이드 등 매너팁이 발생할 수 있으며, 지불 여부에 따른 불이익은 없습니다.
+      개인경비 및 매너팁
     </div>
   </div>
 
-  <!-- 중국 입국신고서 -->
+  <!-- 환전 안내 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">8</div><div class="section-title">중국 온라인 입국신고서 필수 안내</div></div>
-    <div class="visa-box">
-      <div class="head">📝 중국 온라인 입국신고서(Arrival Card) 작성 의무</div>
-      현지 도착시간 기준 <b>72시간 전부터</b> 작성 가능합니다. 아래 정보를 참고해 미리 작성해 주세요.
-      <div class="info-row"><span>도착 도시</span><span class="val">SHIJIAZHUANG (석가장)</span></div>
-      <div class="info-row"><span>중국 내 주소</span><span class="val">Jiantong Jinyuan Hotel<br>(林州建通金圆酒店)</span></div>
-      <div class="info-row"><span>현지 연락처(TEL)</span><span class="val">0372-879-9999</span></div>
-      <br>
-      <a class="linkbtn" href="https://s.nia.gov.cn/ArrivalCardFillingPC/entry-registation-home" target="_blank">🔗 입국신고서 작성하기</a>
-      <a class="linkbtn" href="https://blog.naver.com/knowtip/224289163381" target="_blank" style="margin-left:8px;background:#fff;color:#8A6414;border:1px solid var(--gold);">📖 작성법 가이드 보기</a>
-    </div>
-  </div>
-
-  <!-- 날씨 -->
-  <div class="section">
-    <div class="section-head"><div class="section-num">9</div><div class="section-title">일자별 날씨 정보</div></div>
-    <div class="weather-row">
-      <div class="weather-card">
-        <div class="date">8/11(화)</div>
-        <div class="day">출국일</div>
-        <div class="icon">☀️</div>
-        <div class="high">33℃</div>
-        <div class="low">23℃</div>
-      </div>
-      <div class="weather-card">
-        <div class="date">8/12(수)</div>
-        <div class="day">태항산</div>
-        <div class="icon">⛅</div>
-        <div class="high">31℃</div>
-        <div class="low">22℃</div>
-      </div>
-      <div class="weather-card">
-        <div class="date">8/13(목)</div>
-        <div class="day">태항산</div>
-        <div class="icon">🌦️</div>
-        <div class="high">29℃</div>
-        <div class="low">21℃</div>
-      </div>
-      <div class="weather-card">
-        <div class="date">8/14(금)</div>
-        <div class="day">태항산</div>
-        <div class="icon">⛅</div>
-        <div class="high">30℃</div>
-        <div class="low">21℃</div>
-      </div>
-      <div class="weather-card">
-        <div class="date">8/15(토)</div>
-        <div class="day">귀국일</div>
-        <div class="icon">☀️</div>
-        <div class="high">32℃</div>
-        <div class="low">23℃</div>
-      </div>
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">환전 안내</div></div>
+    <div class="exchange-box">
+      <div class="ex-row"><span>환전 필요 여부</span><span style="font-weight:700;">별도 환전 불필요 (노쇼핑 상품)</span></div>
+      <div class="ex-row"><span>준비하면 좋은 것</span><span style="font-weight:700;">한국돈 1,000원권 소액 여러 장</span></div>
     </div>
     <div class="alert alert-gold">
-      ☀️ 위 기온은 8월 중순 석가장·태항산 지역의 <b>평년 평균 기온 기준 참고값</b>입니다. 실제 예보는 출발 1주일 전쯤 다시 확인하시는 걸 권장드려요. 산악지역 특성상 계곡·정상부는 체감상 더 서늘할 수 있습니다.
+      💵 본 상품은 <b>노쇼핑 상품</b>이라 별도 환전이 필요하지 않습니다. 다만 가이드·기사님께 감사 인사나 소소한 팁이 필요할 수 있으니 <b>한국돈 1,000원권 소액</b>만 준비해 주세요.
     </div>
   </div>
 
   <!-- 준비물 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">10</div><div class="section-title">여행 준비물</div></div>
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">여행 준비물</div></div>
 
     <div class="prep-full" style="margin-bottom:12px;">
       <div class="title">🥢 밑반찬 (강력 추천!)</div>
-      태항산은 산세가 험하고 식사가 입에 안 맞을 수 있어, 밑반찬을 넉넉히 챙기시는 걸 적극 추천드립니다.
+      백두산 지역은 산세가 험하고 현지 식사가 입에 안 맞을 수 있어, 밑반찬을 넉넉히 챙기시는 걸 적극 추천드립니다.
       <ul>
         <li><b>마른 반찬류</b>: 멸치볶음, 진미채·오징어채무침, 콩자반, 무말랭이무침, 김자반 — 국물 없고 상온 보관 잘 되는 것 위주</li>
         <li><b>조미김 / 김자반</b>: 소포장으로 여러 개, 밥 반찬이자 간식으로도 유용</li>
@@ -424,14 +357,14 @@ img{max-width:100%;display:block;}
     <div class="prep-full" style="margin-bottom:12px;">
       <div class="title">🥾 등산 준비물</div>
       <ul>
-        <li><b>등산스틱</b> — 태항산은 계단·경사 구간이 많아 무릎 부담을 크게 줄여줍니다 (필수급)</li>
+        <li><b>등산스틱</b> — 백두산은 계단·경사 구간이 많아 무릎 부담을 크게 줄여줍니다 (필수급)</li>
         <li><b>파스류</b> — 붙이는 파스, 스프레이 파스 등 넉넉히 준비 (근육통·무릎통증 대비)</li>
         <li>발목까지 감싸는 <b>등산화</b> (트레킹화), 미끄럼방지 밑창 필수</li>
         <li>무릎보호대 (평소 무릎이 약하신 분)</li>
-        <li>등산장갑 (암벽·손잡이 구간 잡을 때 유용)</li>
         <li>모자, 선글라스, 자외선차단제 — 산 정상부 햇빛이 강합니다</li>
-        <li>휴대용 우비 — 산악 지역 특성상 갑작스러운 소나기 대비</li>
-        <li>개인 물통 또는 보냉병 (여름철 등반 시 탈수 주의)</li>
+        <li>방풍·방한 겉옷 — 백두산 정상은 한여름에도 쌀쌀하고 바람이 강할 수 있습니다</li>
+        <li>휴대용 우비 — 산악 지역 특성상 갑작스러운 소나기·안개 대비</li>
+        <li>개인 물통 또는 보냉병</li>
       </ul>
     </div>
 
@@ -441,7 +374,7 @@ img{max-width:100%;display:block;}
         <div class="title">옷차림</div>
         <ul>
           <li>기능성 반팔·긴팔 등산복(땀 배출 잘 되는 소재)</li>
-          <li>일교차 대비 얇은 바람막이 1개</li>
+          <li>일교차·정상부 대비 얇은 바람막이 1개</li>
           <li>여벌 양말(등산 시 땀 흡수 잘 되는 것)</li>
         </ul>
       </div>
@@ -451,7 +384,7 @@ img{max-width:100%;display:block;}
         <ul>
           <li>소화제, 지사제, 진통제</li>
           <li>모기기피제(여름철 산행)</li>
-          <li>여권, 중국 위안화(현금) 여유 있게</li>
+          <li>여권, 한국돈 1,000원권 소액</li>
           <li>멀티 어댑터(중국 220V, A/C타입)</li>
         </ul>
       </div>
@@ -463,7 +396,7 @@ img{max-width:100%;display:block;}
 <div class="footer">
   <div class="footer-inner">
     <div class="footer-agent">담당 이경진 실장</div>
-    <div class="footer-sub">이동헌님의 안전하고 즐거운 태항산 여행을 응원합니다 ⛰️</div>
+    <div class="footer-sub">원동분님 일행의 안전하고 즐거운 백두산 여행을 응원합니다 🏔️</div>
     <div class="footer-btns">
       <a class="footer-btn tel" href="tel:1544-5714">📞 1544-5714</a>
       <a class="footer-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 투어콕 카카오톡 채널</a>
