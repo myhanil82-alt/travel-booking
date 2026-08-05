@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>서미순님 가족 푸꾸옥 여행 확정서</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --coral: #2A9D6E;
+  --coral-bg: #F0FAF5;
+  --navy: #1C3557;
+  --navy-light: #2E4E72;
+  --gold: #C8973A;
+  --gold-light: #F0C870;
+  --mint: #3AA8A0;
+  --bg: #FAFAF8;
+  --card-bg: #FFFFFF;
+  --text-main: #1A1A1A;
+  --text-sub: #5A5A5A;
+  --text-muted: #8A8A8A;
+  --border: #E8E4DC;
+  --shadow: 0 2px 16px rgba(28,53,87,0.08);
+  --max-w: 680px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 16px;
+  color: var(--text-main);
+  background: var(--bg);
+  line-height: 1.6;
+}
+.header {
+  width: 100%;
+  background: #1A3A2A;
+  background-image: radial-gradient(circle at 20% 20%, rgba(42,157,110,0.20), transparent 50%),
+                     radial-gradient(circle at 80% 80%, rgba(100,200,150,0.12), transparent 50%);
+  padding: 40px 24px 32px;
+}
+.header-inner { max-width: var(--max-w); margin: 0 auto; }
+.header-tag {
+  display: inline-block;
+  color: var(--gold-light);
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+.header-title {
+  font-family: 'Noto Serif KR', serif;
+  color: #fff;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.header-subtitle {
+  color: rgba(255,255,255,0.7);
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+.header-names {
+  color: var(--gold-light);
+  font-size: 16px;
+  font-weight: 500;
+}
+.trip-band {
+  width: 100%;
+  background: var(--coral);
+}
+.trip-band-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 18px 24px;
+}
+.trip-band-item { text-align: center; color: #fff; }
+.trip-band-label { font-size: 11px; opacity: 0.85; margin-bottom: 4px; }
+.trip-band-value { font-size: 14px; font-weight: 600; }
+.container { max-width: var(--max-w); margin: 0 auto; padding: 32px 20px 60px; }
+.section { margin-bottom: 36px; }
+.section-head { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.section-num {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--navy); color: #fff;
+  font-size: 13px; font-weight: 600;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.section-title { font-size: 17px; font-weight: 700; color: var(--navy); }
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+.product-link-box {
+  display: block;
+  background: var(--coral-bg);
+  border: 1px solid var(--coral);
+  border-radius: 12px;
+  padding: 16px 18px;
+  text-decoration: none;
+  color: var(--navy);
+  font-weight: 600;
+  font-size: 14px;
+}
+.product-link-box span { display: block; color: var(--coral); font-size: 12px; font-weight: 500; margin-bottom: 6px; }
+.flight-card { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); margin-bottom: 14px; box-shadow: var(--shadow); }
+.flight-header {
+  background: linear-gradient(135deg, var(--navy), var(--navy-light));
+  color: #fff; padding: 12px 18px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 13px;
+}
+.flight-header b { color: var(--gold-light); font-size: 14px; }
+.flight-body { background: #fff; padding: 20px 18px; }
+.flight-route { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.flight-airport { text-align: center; }
+.flight-code { font-size: 28px; font-weight: 700; color: var(--navy); }
+.flight-time { font-size: 13px; color: var(--text-sub); margin-top: 2px; }
+.flight-date { font-size: 12px; color: var(--text-muted); }
+.flight-arrow { flex: 1; text-align: center; color: var(--text-muted); font-size: 12px; padding: 0 10px; }
+.flight-arrow div:first-child { font-size: 18px; color: var(--coral); }
+.flight-badges { display: flex; flex-wrap: wrap; gap: 8px; }
+.badge {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 8px; padding: 6px 12px; font-size: 12px; color: var(--text-sub);
+}
+.baggage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.baggage-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center; box-shadow: var(--shadow); }
+.baggage-icon { font-size: 22px; margin-bottom: 6px; }
+.baggage-label { font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
+.baggage-value { font-size: 18px; font-weight: 700; color: var(--navy); }
+.counter-box { background: var(--card-bg); border: 2px solid var(--gold); border-radius: 12px; padding: 20px; }
+.step-row { display: flex; gap: 12px; margin-bottom: 14px; }
+.step-row:last-child { margin-bottom: 0; }
+.step-num {
+  width: 24px; height: 24px; border-radius: 50%; background: var(--gold);
+  color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.step-text b { color: var(--navy); }
+.step-text { font-size: 14px; color: var(--text-sub); }
+.guide-box { background: var(--card-bg); border: 2px solid var(--navy); border-radius: 12px; padding: 20px; }
+.guide-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px dashed var(--border); font-size: 14px; }
+.guide-row:last-child { border-bottom: none; }
+.guide-row span:first-child { color: var(--text-muted); }
+.guide-row span:last-child { font-weight: 600; color: var(--navy); }
+.guide-row a { color: var(--coral); text-decoration: none; font-weight: 600; }
+.hotel-card { border: 2px solid var(--mint); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); }
+.hotel-header { background: linear-gradient(135deg, var(--mint), #4FC3B8); color: #fff; padding: 10px 18px; font-size: 12px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; }
+.hotel-body { background: #fff; padding: 20px 18px; }
+.hotel-name { font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 14px; }
+.hotel-row { display: flex; justify-content: space-between; font-size: 14px; padding: 8px 0; border-bottom: 1px dashed var(--border); }
+.hotel-row:last-child { border-bottom: none; }
+.hotel-row span:first-child { color: var(--text-muted); }
+.incl-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+.incl-item {
+  background: #FFF4F1; border: 1px solid #F0A78E; border-radius: 10px;
+  padding: 14px 16px; font-size: 14px; color: var(--text-main);
+  display: flex; gap: 8px; align-items: flex-start;
+}
+.incl-item b { color: #D4522A; }
+.visa-box { background: var(--card-bg); border: 2px solid var(--coral); border-radius: 12px; padding: 20px; }
+.visa-box h4 { color: var(--coral); font-size: 15px; margin-bottom: 8px; }
+.visa-box a { color: var(--navy); font-weight: 600; word-break: break-all; }
+.alert { border-radius: 10px; padding: 14px 16px; font-size: 13.5px; margin-top: 12px; line-height: 1.55; }
+.alert-navy { background: #EEF2F7; border: 1px solid var(--navy-light); color: var(--navy); }
+.alert-coral { background: var(--coral-bg); border: 1px solid var(--coral); color: #1A5C40; }
+.alert-gold { background: #FBF4E4; border: 1px solid var(--gold); color: #7A5B1E; }
+.alert-red { background: #FDECEC; border: 1px solid #D9534F; color: #A83232; }
+.exchange-box { background: var(--card-bg); border: 1px solid var(--gold); border-radius: 12px; padding: 20px; }
+.exchange-box h4 { color: var(--gold); font-size: 14px; margin-bottom: 10px; }
+.exchange-example { background: #FBF4E4; border-radius: 10px; padding: 14px; margin-top: 10px; font-size: 13.5px; }
+.exchange-example table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 13px; }
+.exchange-example td { padding: 6px 4px; border-bottom: 1px solid #EEDFC0; }
+.weather-scroll { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 6px; }
+.weather-card {
+  min-width: 118px; background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 12px; padding: 14px 10px; text-align: center; box-shadow: var(--shadow); flex-shrink: 0;
+}
+.weather-date { font-size: 12px; color: var(--text-muted); margin-bottom: 6px; }
+.weather-icon { font-size: 24px; margin-bottom: 6px; }
+.weather-temp { font-size: 14px; font-weight: 700; color: var(--navy); }
+.weather-desc { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
+.tip-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 18px; margin-bottom: 14px; box-shadow: var(--shadow); }
+.tip-card h4 { color: var(--coral); font-size: 15px; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+.tip-card ul { padding-left: 18px; }
+.tip-card li { font-size: 13.5px; color: var(--text-sub); margin-bottom: 6px; }
+.tip-card li b { color: var(--text-main); }
+.checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.check-item {
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
+  padding: 12px 14px; font-size: 13.5px; display: flex; gap: 8px; align-items: flex-start;
+}
+.check-item::before { content: "✓"; color: var(--mint); font-weight: 700; }
+.footer {
+  width: 100%; background: var(--navy); padding: 32px 24px; text-align: center;
+}
+.footer-inner { max-width: var(--max-w); margin: 0 auto; }
+.footer-name { color: #fff; font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.footer-role { color: rgba(255,255,255,0.6); font-size: 12px; margin-bottom: 18px; }
+.footer-buttons { display: flex; gap: 10px; justify-content: center; }
+.footer-btn {
+  flex: 1; max-width: 200px; padding: 13px; border-radius: 10px;
+  text-decoration: none; font-size: 14px; font-weight: 600; text-align: center;
+}
+.btn-tel { background: var(--coral); color: #fff; }
+.btn-kakao { background: #FEE500; color: #3A2E00; }
+@media (max-width: 480px) {
+  .trip-band-inner { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .baggage-grid { grid-template-columns: 1fr 1fr; }
+  .checklist { grid-template-columns: 1fr; }
+  .header-title { font-size: 22px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="header-tag">TRAVEL CONFIRMATION</div>
+    <div class="header-title">푸꾸옥 여행 확정서</div>
+    <div class="header-subtitle">Phu Quoc, Vietnam · 2026</div>
+    <div class="header-names">서미순님 가족 (5명)</div>
+  </div>
+</div>
+
+<div class="trip-band">
+  <div class="trip-band-inner">
+    <div class="trip-band-item">
+      <div class="trip-band-label">출발일</div>
+      <div class="trip-band-value">08.08(토)</div>
+    </div>
+    <div class="trip-band-item">
+      <div class="trip-band-label">귀국일</div>
+      <div class="trip-band-value">08.12(수)</div>
+    </div>
+    <div class="trip-band-item">
+      <div class="trip-band-label">일정</div>
+      <div class="trip-band-value">3박 5일</div>
+    </div>
+    <div class="trip-band-item">
+      <div class="trip-band-label">투어타입</div>
+      <div class="trip-band-value">패키지</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 1. 상품안내 -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">1</div>
+      <div class="section-title">상품 안내</div>
+    </div>
+    <a href="https://www.modetour.com/package/104855582?MLoc=99&Pnum=104855582&ANO=1772510&sno=C2181215&thru=crs" target="_blank" class="product-link-box">
+      <span>예약 상품 바로가기</span>
+      모두투어 · 서미순님 가족 푸꾸옥 패키지 상세보기 →
+    </a>
+  </div>
+
+  <!-- 2. 항공일정 -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">2</div>
+      <div class="section-title">항공 일정</div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-header">
+        <span>출발편 · 진에어</span>
+        <b>LJ091</b>
+      </div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="flight-airport">
+            <div class="flight-code">ICN</div>
+            <div class="flight-time">17:05</div>
+            <div class="flight-date">08.08(토)</div>
+          </div>
+          <div class="flight-arrow">
+            <div>✈</div>
+            <div>인천 → 푸꾸옥</div>
+          </div>
+          <div class="flight-airport">
+            <div class="flight-code">PQC</div>
+            <div class="flight-time">20:50</div>
+            <div class="flight-date">08.08(토)</div>
+          </div>
+        </div>
+        <div class="flight-badges">
+          <div class="badge">진에어</div>
+          <div class="badge">위탁 15kg</div>
+          <div class="badge">기내 10kg</div>
+          <div class="badge">기내식 없음</div>
+          <div class="badge">좌석 미지정</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-header">
+        <span>귀국편 · 진에어</span>
+        <b>LJ092</b>
+      </div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="flight-airport">
+            <div class="flight-code">PQC</div>
+            <div class="flight-time">21:55</div>
+            <div class="flight-date">08.11(화)</div>
+          </div>
+          <div class="flight-arrow">
+            <div>✈</div>
+            <div>푸꾸옥 → 인천</div>
+          </div>
+          <div class="flight-airport">
+            <div class="flight-code">ICN</div>
+            <div class="flight-time">05:20</div>
+            <div class="flight-date">08.12(수)</div>
+          </div>
+        </div>
+        <div class="flight-badges">
+          <div class="badge">진에어</div>
+          <div class="badge">위탁 15kg</div>
+          <div class="badge">기내 10kg</div>
+          <div class="badge">기내식 없음</div>
+          <div class="badge">좌석 미지정</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-coral">
+      ★ 두 항공편 모두 기내식이 제공되지 않습니다. 공항 또는 기내에서 별도 구매하시거나 간단한 간식을 준비해 주세요.
+    </div>
+    <div class="alert alert-gold">
+      ※ 귀국편은 심야 출발(21:55) → 새벽 도착(05:20) 일정입니다. 기내에서 편히 이동하실 수 있도록 목베개, 담요 등을 준비하시면 좋습니다.
+    </div>
+  </div>
+
+  <!-- 3. 수하물 안내 -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">3</div>
+      <div class="section-title">수하물 안내</div>
+    </div>
+    <div class="baggage-grid">
+      <div class="baggage-card">
+        <div class="baggage-icon">🧳</div>
+        <div class="baggage-label">위탁수하물</div>
+        <div class="baggage-value">1인 15kg</div>
+      </div>
+      <div class="baggage-card">
+        <div class="baggage-icon">🎒</div>
+        <div class="baggage-label">기내수하물</div>
+        <div class="baggage-value">1인 10kg</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. 체크인 안내 -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">4</div>
+      <div class="section-title">온라인 체크인 & 공항 수속 안내</div>
+    </div>
+    <div class="counter-box">
+      <div class="step-row">
+        <div class="step-num">1</div>
+        <div class="step-text">출발 <b>24시간 전</b>부터 <a href="https://www.jinair.com/booking/index" target="_blank" style="color:var(--coral); font-weight:600;">진에어 홈페이지</a>에서 체크인/탑승권 탭 → 좌석 지정 후 탑승 QR 발급 가능</div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">2</div>
+        <div class="step-text">온라인 체크인 완료 시 <b>인천공항 제2여객터미널 국제선 3층 E21~40번 카운터</b>에서 셀프백드롭 후 개별 출발</div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">3</div>
+        <div class="step-text">온라인 체크인을 못하신 경우 당일 공항 카운터에서 티켓팅 후 셀프백드롭 진행</div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">4</div>
+        <div class="step-text">인천공항에서는 별도 미팅 없이 <b>개별 수속 후 개별 출발</b>이며, 항공기 출발 <b>2~3시간 전</b> 공항 도착을 권장드립니다</div>
+      </div>
+    </div>
+    <div class="alert alert-navy">예약번호(PNR): <b>AQKS7K</b></div>
+  </div>
+
+  <!-- 5. 현지 가이드 & 행사정보 -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">5</div>
+      <div class="section-title">현지 가이드 & 행사 정보</div>
+    </div>
+    <div class="guide-box">
+      <div class="guide-row"><span>가이드명</span><span>임명헌 부장</span></div>
+      <div class="guide-row"><span>가이드 연락처</span><a href="tel:0774192751">0774192751</a></div>
+      <div class="guide-row"><span>현지 비상연락처</span><span>이여산 차장</span></div>
+      <div class="guide-row"><span>비상연락처 번호</span><a href="tel:0896992445">089 699 2445</a></div>
+      <div class="guide-row"><span>카카오톡 ID</span><span>MODETOURPQ</span></div>
+      <div class="guide-row"><span>행사인원</span><span>5명</span></div>
+    </div>
+  </div>
+
+  <!-- 6. 투숙호텔 -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">6</div>
+      <div class="section-title">투숙 호텔</div>
+    </div>
+    <div class="hotel-card">
+      <div class="hotel-header">
+        <span>숙박 정보</span>
+        <span>전 일정 포함</span>
+      </div>
+      <div class="hotel-body">
+        <div class="hotel-name">베스트웨스턴 풀빌라 (Best Western Pool Villa)</div>
+        <div class="hotel-row"><span>투숙 기간</span><span>08.08 ~ 08.11 (3박)</span></div>
+        <div class="hotel-row"><span>객실 형태</span><span>패키지 지정 객실</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. 불포함사항 -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">7</div>
+      <div class="section-title">불포함 사항</div>
+    </div>
+    <div class="incl-grid">
+      <div class="incl-item">✕ <span>기사/가이드 경비 <b>1인 $40</b> (성인/아동 동일, 현지 결제)</span></div>
+    </div>
+  </div>
+
+  <!-- 8. 베트남 입국 필수사항 -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">8</div>
+      <div class="section-title">베트남 입국 필수 사항</div>
+    </div>
+    <div class="visa-box">
+      <h4>✅ 사전 온라인 입국신고서 필수 작성</h4>
+      <p style="font-size:13.5px; color:var(--text-sub); margin-bottom:10px;">
+        베트남 입국 전, 도착일 기준 <b>72시간 전부터</b> 온라인 사전 입국신고서 작성이 필요합니다. 가족 구성원 모두 개별로 작성해 주세요.
+      </p>
+      <a href="https://prearrival.immigration.gov.vn/" target="_blank">https://prearrival.immigration.gov.vn/</a>
+      <div class="alert alert-navy" style="margin-top:12px;">
+        ※ 작성 방법 참고 블로그: <a href="https://blog.naver.com/knowtip/224318787160" target="_blank" style="color:var(--navy); font-weight:600;">바로가기</a>
+      </div>
+    </div>
+    <div class="alert alert-gold">📌 항공권·호텔 바우처(이티켓) 출력 또는 캡처본을 꼭 보관해 주세요.</div>
+    <div class="alert alert-red">👨‍👩‍👧 만 14세 미만 아동 동반 시, 부모와 함께 여행하더라도 영문 가족관계증명서를 지참하시면 입국 심사가 원활합니다.</div>
+    <div class="alert alert-coral">🏖 해변 및 액티비티 이용 시 안전 요원의 안내를 따라주시고, 음주 후 수영은 삼가주세요.</div>
+  </div>
+
+  <!-- 9. 환전 안내 -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">9</div>
+      <div class="section-title">환전 안내</div>
+    </div>
+    <div class="exchange-box">
+      <h4>💱 베트남 동(VND) 환전 가이드</h4>
+      <p style="font-size:13.5px; color:var(--text-sub);">
+        기사/가이드 경비 및 선택관광 경비는 <b>미국 달러(USD)</b>로 준비해 주세요. 개인 경비(쇼핑, 마사지, 간식 등)는 신용카드 또는 <b>베트남 동(VND)</b>으로 결제하시면 됩니다. 원화를 바로 동으로 환전하기보다, 한국에서 미국 달러로 환전 후 현지에서 동으로 재환전하시는 것이 환율상 유리합니다.
+      </p>
+      <div class="exchange-example">
+        <b>💡 환율 계산 예시 (참고용, 실시간 환율에 따라 변동)</b>
+        <table>
+          <tr><td>1 USD</td><td style="text-align:right;">≈ 25,000 ~ 26,000 VND</td></tr>
+          <tr><td>1,000원</td><td style="text-align:right;">≈ 18,000 VND 내외</td></tr>
+          <tr><td>10만원</td><td style="text-align:right;">≈ 180만 VND 내외</td></tr>
+        </table>
+        <p style="margin-top:8px; font-size:12.5px; color:var(--text-muted);">※ 실제 환율은 매일 변동되므로 출국 전 환율을 다시 확인해 주세요.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. 날씨 정보 -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">10</div>
+      <div class="section-title">일자별 날씨 정보</div>
+    </div>
+    <div class="weather-scroll">
+      <div class="weather-card">
+        <div class="weather-date">8/8(토)</div>
+        <div class="weather-icon">⛅</div>
+        <div class="weather-temp">26° - 32°</div>
+        <div class="weather-desc">구름 조금</div>
+      </div>
+      <div class="weather-card">
+        <div class="weather-date">8/9(일)</div>
+        <div class="weather-icon">🌦</div>
+        <div class="weather-temp">25° - 31°</div>
+        <div class="weather-desc">오후 소나기</div>
+      </div>
+      <div class="weather-card">
+        <div class="weather-date">8/10(월)</div>
+        <div class="weather-icon">🌦</div>
+        <div class="weather-temp">25° - 31°</div>
+        <div class="weather-desc">오후 소나기</div>
+      </div>
+      <div class="weather-card">
+        <div class="weather-date">8/11(화)</div>
+        <div class="weather-icon">⛅</div>
+        <div class="weather-temp">26° - 32°</div>
+        <div class="weather-desc">구름 많음</div>
+      </div>
+      <div class="weather-card">
+        <div class="weather-date">8/12(수)</div>
+        <div class="weather-icon">☀️</div>
+        <div class="weather-temp">26° - 33°</div>
+        <div class="weather-desc">대체로 맑음</div>
+      </div>
+    </div>
+    <div class="alert alert-navy">☔ 8월 푸꾸옥은 우기로, 오전엔 맑다가 오후에 짧고 굵은 소나기가 오는 경우가 많습니다. 우산보다는 우비나 방수 파우치를 챙기시는 것을 추천드립니다.</div>
+  </div>
+
+  <!-- 11. 관광지 이용 팁 -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">11</div>
+      <div class="section-title">주요 관광지 이용 꿀팁</div>
+    </div>
+
+    <div class="tip-card">
+      <h4>🏊 혼똠섬 케이블카 & 워터파크</h4>
+      <ul>
+        <li><b>수영복 & 래시가드</b> — 지퍼나 금속 장식이 있는 수영복은 슬라이드 탑승이 제한되니 일반 래시가드를 권장해요.</li>
+        <li><b>아쿠아슈즈 필수</b> — 낮 시간 워터파크 바닥이 매우 뜨거워요.</li>
+        <li><b>개인 타월 지참</b> — 대여 시 별도 비용이 발생해요.</li>
+        <li><b>샤워 키트, 압축타월</b> — 샤워실에 기본 비품이 없는 경우가 많아요.</li>
+        <li><b>현금 소액 준비</b> — 섬 내 일부 매장은 현금만 가능해요.</li>
+        <li><b>외부 음식 반입 제한</b> — 입장 시 음식물 검사가 있으니 점심은 섬 내에서 해결하세요.</li>
+        <li><b>유료 라커 활용</b> — 입구 근처 라커(약 3만 동)에 짐을 맡기면 훨씬 가볍게 즐길 수 있어요.</li>
+      </ul>
+    </div>
+
+    <div class="tip-card">
+      <h4>🌇 그랜드월드</h4>
+      <ul>
+        <li><b>골든타임은 오후 5~6시</b> — 노을과 야경을 함께 즐길 수 있는 최적의 시간대예요.</li>
+        <li><b>곤돌라는 저녁에</b> — 조명이 들어오는 저녁 곤돌라 투어가 훨씬 낭만적이에요 (별도 비용).</li>
+        <li><b>야간 공연 시간 미리 확인</b> — 입구 안내센터나 앱에서 확인하세요.</li>
+        <li><b>편한 운동화 필수</b> — 규모가 워낙 커서 많이 걷게 돼요. 운하 뷰 카페에서 잠깐 쉬어가는 것도 추천!</li>
+      </ul>
+    </div>
+
+    <div class="tip-card">
+      <h4>🦐 소나시 야시장</h4>
+      <ul>
+        <li><b>중부 리조트 투숙객이면 도보 or 짧은 그랩 이동</b>으로 매일 밤 즐기기 좋아요.</li>
+        <li><b>해산물은 가격 비교 필수</b> — 2~3곳 정도 무게 대비 가격을 비교하고 흥정해보세요.</li>
+        <li><b>휴대용 미니 선풍기 추천</b> — 대부분 야외 좌석이라 있으면 훨씬 시원해요.</li>
+        <li><b>영업시간은 보통 오후 6시 ~ 밤 11시 전후</b>예요.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 12. 여행 준비물 체크리스트 -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">12</div>
+      <div class="section-title">여행 준비물 체크리스트</div>
+    </div>
+    <div class="checklist">
+      <div class="check-item">여권 (유효기간 6개월 이상)</div>
+      <div class="check-item">사전 입국신고서 캡처본</div>
+      <div class="check-item">이티켓 · 바우처 캡처본</div>
+      <div class="check-item">달러(USD) 소액권 현금</div>
+      <div class="check-item">국제 운전면허증 (렌트/그랩바이크 이용 시)</div>
+      <div class="check-item">여름 옷, 얇은 긴팔 (실내 냉방 대비)</div>
+      <div class="check-item">모자 · 선글라스 · 고SPF 자외선차단제</div>
+      <div class="check-item">우비 or 우산 (오후 소나기 대비)</div>
+      <div class="check-item">보조배터리, 멀티어댑터</div>
+      <div class="check-item">상비약 (지사제, 소화제, 해열제)</div>
+      <div class="check-item">방수팩 (휴대폰, 여권 보관용)</div>
+      <div class="check-item">벌레 기피제 (해변/야외 활동 대비)</div>
+    </div>
+    <div class="alert alert-gold" style="margin-top:14px;">
+      💡 인플루언서 꿀팁 — 베트남 전압은 220V(한국과 동일)라 대부분 어댑터 없이 사용 가능하지만, 콘센트 구멍 모양이 다른 숙소도 있으니 멀티어댑터 하나쯤은 챙겨가면 마음이 편해요. 그랩(Grab) 앱은 미리 한국에서 설치하고 카드 등록까지 해두시면 현지에서 훨씬 편하게 이동하실 수 있어요!
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-name">이경진 실장</div>
+    <div class="footer-role">여행 관련 문의사항은 언제든 연락주세요</div>
+    <div class="footer-buttons">
+      <a href="tel:1544-5714" class="footer-btn btn-tel">📞 전화 상담</a>
+      <a href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank" class="footer-btn btn-kakao">💬 카카오톡 상담</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
