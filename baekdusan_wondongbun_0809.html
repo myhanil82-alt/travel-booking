@@ -132,6 +132,14 @@ img{max-width:100%;display:block;}
 .exchange-box .ex-row{display:flex;justify-content:space-between;font-size:14px;padding:8px 0;border-bottom:1px dashed var(--border);}
 .exchange-box .ex-row:last-child{border-bottom:none;}
 
+.weather-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
+.weather-card{flex:0 0 auto;width:104px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 8px;text-align:center;box-shadow:var(--shadow);}
+.weather-card .date{font-size:12px;font-weight:700;color:var(--text-sub);margin-bottom:6px;}
+.weather-card .day{font-size:10px;color:var(--text-muted);margin-bottom:6px;}
+.weather-card .icon{font-size:24px;margin-bottom:8px;}
+.weather-card .high{font-size:16px;font-weight:800;color:var(--terracotta);}
+.weather-card .low{font-size:12.5px;color:var(--text-muted);margin-top:2px;}
+
 .prep-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 .prep-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
 .prep-card .icon{font-size:20px;margin-bottom:6px;}
@@ -204,23 +212,15 @@ img{max-width:100%;display:block;}
     </div>
   </div>
 
-  <!-- 인천공항 미팅/체크인 안내 -->
+  <!-- 인천공항 미팅 안내 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">2</div><div class="section-title">인천공항 미팅 · 체크인 안내</div></div>
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">인천공항 미팅 안내</div></div>
     <div class="meeting-box">
       <div class="meeting-time">2026.08.09(일) 12:55</div>
-      <div class="meeting-row"><span class="label">기본 안내</span><span class="val">공항 도착 후 별도 미팅 없이<br>바로 개별 출국 수속 가능</span></div>
-      <div class="meeting-row"><span class="label">개별수속 기준</span><span class="val">출발 최소 3시간 전까지 공항 도착</span></div>
+      <div class="meeting-row"><span class="label">장소</span><span class="val">인천공항 제1터미널 3층 출국장 서편<br>N카운터 14번 출구 앞<br>여행사 카운터 9~10번 모두투어 테이블</span></div>
     </div>
-    <div class="counter-box" style="margin-top:14px;">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-text"><b>미팅서비스를 사전 신청하신 경우</b>, 12:55까지 인천공항 <b>제1터미널 3층 출국장 서편 N카운터 14번 출구 앞, 여행사 카운터 9~10번 모두투어 테이블</b>로 와주세요.</div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-text">미팅을 신청하지 않으셨다면 <b>개별적으로 제주항공 카운터(L13~L36)</b>에서 티켓팅하시면 됩니다. 출발(15:55) 기준 <b>최소 3시간 전</b> 공항 도착 필수입니다.</div>
-      </div>
+    <div class="alert alert-terracotta">
+      ⏰ 12:55까지 위 장소로 와주세요. 담당 인솔자가 안내해 드립니다.
     </div>
   </div>
 
@@ -335,9 +335,48 @@ img{max-width:100%;display:block;}
     </div>
   </div>
 
+  <!-- 날씨 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">일자별 날씨 정보</div></div>
+    <div class="weather-row">
+      <div class="weather-card">
+        <div class="date">8/9(일)</div>
+        <div class="day">연길 도착</div>
+        <div class="icon">⛅</div>
+        <div class="high">27℃</div>
+        <div class="low">18℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">8/10(월)</div>
+        <div class="day">이도백하</div>
+        <div class="icon">🌦️</div>
+        <div class="high">25℃</div>
+        <div class="low">16℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">8/11(화)</div>
+        <div class="day">백두산 등정</div>
+        <div class="icon">⛰️</div>
+        <div class="high">24℃</div>
+        <div class="low">15℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">8/12(수)</div>
+        <div class="day">귀국일</div>
+        <div class="icon">⛅</div>
+        <div class="high">26℃</div>
+        <div class="low">17℃</div>
+      </div>
+    </div>
+    <div class="alert alert-gold">
+      ☀️ 위 기온은 8월 중순 연길·이도백하 지역의 <b>평년 평균 기온 기준 참고값</b>입니다(중국 지역 특성상 실시간 예보 연동이 제한적이라 참고용으로만 봐주세요). 출발 며칠 전 다시 확인해 드릴게요.<br>
+      ⛰ <b>백두산 정상부는 도시 기온과 무관하게 훨씬 쌀쌀하고 바람이 강합니다.</b> 여름철에도 정상은 10℃ 안팎까지 떨어질 수 있고 안개·비로 시야가 가려지는 경우가 잦으니, 방풍·방한 겉옷은 꼭 챙겨주세요.
+    </div>
+  </div>
+
   <!-- 준비물 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">9</div><div class="section-title">여행 준비물</div></div>
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">여행 준비물</div></div>
 
     <div class="prep-full" style="margin-bottom:12px;">
       <div class="title">🥢 밑반찬 (강력 추천!)</div>
