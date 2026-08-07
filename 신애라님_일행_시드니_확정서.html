@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>신애라님 일행 시드니 여행 확정서</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --coral: #1A7AC8;
+  --coral-bg: #EFF6FF;
+  --navy: #1C3557;
+  --navy-light: #2E4E72;
+  --gold: #C8973A;
+  --gold-light: #F0C870;
+  --mint: #3AA8A0;
+  --bg: #FAFAF8;
+  --card-bg: #FFFFFF;
+  --text-main: #1A1A1A;
+  --text-sub: #5A5A5A;
+  --text-muted: #8A8A8A;
+  --border: #E8E4DC;
+  --shadow: 0 2px 16px rgba(28,53,87,0.08);
+  --max-w: 680px;
+}
+* { box-sizing: border-box; margin:0; padding:0; }
+body { font-family:'Noto Sans KR', sans-serif; font-size:16px; color:var(--text-main); background:var(--bg); line-height:1.6; }
+a { color:inherit; text-decoration:none; }
+
+/* HEADER */
+.header { width:100%; background:linear-gradient(135deg,#0D2B45,#1A7AC8 140%); position:relative; overflow:hidden; }
+.header::before { content:''; position:absolute; inset:0; background:radial-gradient(circle at 20% 20%, rgba(26,122,200,0.20), transparent 60%), radial-gradient(circle at 80% 80%, rgba(100,180,255,0.12), transparent 60%); }
+.header-inner { max-width:var(--max-w); margin:0 auto; padding:44px 24px 36px; position:relative; z-index:1; }
+.header-tag { display:inline-block; font-size:12px; letter-spacing:2px; color:var(--gold-light); font-weight:600; text-transform:uppercase; margin-bottom:14px; }
+.header-title { font-family:'Noto Serif KR', serif; font-size:30px; font-weight:600; color:#fff; margin-bottom:8px; }
+.header-subtitle { font-size:13px; color:rgba(255,255,255,0.65); letter-spacing:1px; margin-bottom:18px; }
+.header-names { font-size:15px; color:#fff; background:rgba(255,255,255,0.1); display:inline-block; padding:8px 16px; border-radius:20px; }
+
+/* TRIP BAND */
+.trip-band { width:100%; background:var(--coral); }
+.trip-band-inner { max-width:var(--max-w); margin:0 auto; padding:18px 24px; display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+.trip-item { text-align:center; color:#fff; }
+.trip-item .label { font-size:11px; opacity:0.8; margin-bottom:4px; }
+.trip-item .value { font-size:14px; font-weight:700; }
+
+/* CONTAINER */
+.container { max-width:var(--max-w); margin:0 auto; padding:32px 24px; }
+.section { margin-bottom:36px; }
+.section-head { display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+.section-num { width:28px; height:28px; border-radius:50%; background:var(--navy); color:#fff; font-size:13px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.section-title { font-size:17px; font-weight:700; color:var(--navy); }
+
+/* Product link box */
+.product-link-box { display:block; background:var(--coral-bg); border:1px solid var(--coral); border-radius:12px; padding:16px 18px; font-size:14px; color:var(--navy); font-weight:600; }
+.product-link-box span { display:block; font-size:12px; color:var(--text-sub); font-weight:400; margin-top:4px; }
+
+/* Alerts */
+.alert { border-radius:10px; padding:13px 16px; font-size:13.5px; line-height:1.7; margin-top:12px; }
+.alert-navy { background:#EEF2F7; border:1px solid #C9D5E4; color:var(--navy); }
+.alert-coral { background:var(--coral-bg); border:1px solid #A8D4E4; color:#0D2B45; }
+.alert-gold { background:#FBF3E3; border:1px solid var(--gold-light); color:#7A5A18; }
+.alert-mint { background:#EAFBF9; border:1px solid var(--mint); color:#1E6C66; }
+.alert-red { background:#FDECEC; border:1px solid #E8A0A0; color:#A32020; }
+
+/* Flight cards */
+.flight-card { border-radius:14px; overflow:hidden; border:1px solid var(--border); box-shadow:var(--shadow); margin-bottom:14px; }
+.flight-header { background:linear-gradient(135deg,var(--navy),var(--navy-light)); padding:12px 18px; display:flex; justify-content:space-between; align-items:center; }
+.flight-header .label { font-size:12px; color:rgba(255,255,255,0.7); }
+.flight-header .code { font-size:14px; font-weight:700; color:var(--gold-light); }
+.flight-body { background:#fff; padding:18px; }
+.flight-route { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
+.flight-route .airport { text-align:center; }
+.flight-route .airport .code { font-size:30px; font-weight:800; color:var(--navy); }
+.flight-route .airport .time { font-size:13px; color:var(--text-sub); margin-top:2px; }
+.flight-route .airport .date { font-size:11px; color:var(--text-muted); }
+.flight-route .mid { text-align:center; flex:1; padding:0 12px; }
+.flight-route .mid .arrow { font-size:18px; color:var(--coral); }
+.flight-badges { display:flex; flex-wrap:wrap; gap:8px; }
+.flight-badges span { background:var(--bg); border:1px solid var(--border); border-radius:20px; padding:5px 12px; font-size:12px; color:var(--text-sub); }
+
+/* Baggage grid */
+.baggage-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.baggage-card { background:#fff; border:1px solid var(--border); border-radius:12px; padding:16px; box-shadow:var(--shadow); }
+.baggage-card .bhead { font-size:12px; color:var(--text-sub); margin-bottom:6px; }
+.baggage-card .bvalue { font-size:18px; font-weight:800; color:var(--navy); }
+
+/* Guide box */
+.guide-box { border:1.5px solid var(--navy); border-radius:14px; padding:18px; background:#fff; }
+.guide-row { display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px dashed var(--border); font-size:14px; }
+.guide-row:last-child { border-bottom:none; }
+.guide-row .k { color:var(--text-sub); }
+.guide-row .v { font-weight:700; color:var(--text-main); text-align:right; }
+
+/* Hotel card */
+.hotel-card { border:2px solid var(--mint); border-radius:16px; overflow:hidden; box-shadow:var(--shadow); }
+.hotel-header { background:linear-gradient(135deg,var(--mint),#5CC2BA); padding:12px 18px; display:flex; justify-content:space-between; align-items:center; }
+.hotel-header .htag { font-size:12px; color:#fff; font-weight:600; }
+.hotel-header .hbadge { background:rgba(255,255,255,0.25); color:#fff; font-size:11px; padding:4px 10px; border-radius:20px; }
+.hotel-body { background:#fff; padding:18px; }
+.hotel-name { font-size:19px; font-weight:800; color:var(--navy); margin-bottom:12px; }
+.hotel-row { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px dashed var(--border); font-size:14px; }
+.hotel-row:last-child { border-bottom:none; }
+.hotel-row .k { color:var(--text-sub); }
+.hotel-row .v { font-weight:600; text-align:right; }
+
+/* Include/exclude grid */
+.incl-grid { display:grid; grid-template-columns:1fr; gap:10px; }
+.excl-box { background:#FFF4F1; border:1px solid #F0C0B0; border-radius:12px; padding:16px 18px; }
+.excl-box .ehead { font-size:13px; font-weight:700; color:#A34620; margin-bottom:8px; }
+.excl-box ul { list-style:none; }
+.excl-box li { font-size:13.5px; color:var(--text-main); padding:5px 0; padding-left:16px; position:relative; }
+.excl-box li::before { content:'-'; position:absolute; left:0; color:#A34620; }
+
+/* ETA / entry cards */
+.eta-box { border:2px solid #C03020; border-radius:14px; overflow:hidden; }
+.eta-box-head { background:linear-gradient(135deg,#7A1010,#C03020); padding:12px 18px; font-size:13px; font-weight:800; color:#fff; }
+.eta-box-body { padding:16px 18px; background:#fff; }
+.link-pill { display:inline-block; margin-top:6px; background:var(--navy); color:#fff; font-size:12.5px; font-weight:600; padding:8px 14px; border-radius:20px; }
+
+.customs-table { width:100%; border-collapse:collapse; font-size:12.5px; }
+.customs-table th { background:var(--navy); color:#fff; padding:10px 8px; text-align:left; font-size:12px; }
+.customs-table td { padding:10px 8px; border-bottom:1px solid var(--border); vertical-align:top; background:#fff; }
+.customs-cat { font-weight:700; color:var(--navy); }
+.customs-tip { color:var(--text-sub); font-size:12px; }
+
+/* Exchange box */
+.exchange-box { border:1px solid var(--gold-light); background:#FEFAF0; border-radius:12px; padding:16px 18px; font-size:13.5px; line-height:1.9; }
+
+/* Prep grid */
+.prep-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.prep-card { background:#fff; border:1px solid var(--border); border-radius:12px; padding:14px 16px; box-shadow:var(--shadow); }
+.prep-card .phead { font-size:12px; color:var(--coral); font-weight:700; margin-bottom:6px; }
+.prep-card .pbody { font-size:13px; color:var(--text-main); line-height:1.7; }
+
+/* Footer */
+.footer { width:100%; background:var(--navy); padding:32px 24px; }
+.footer-inner { max-width:var(--max-w); margin:0 auto; text-align:center; }
+.footer-brand { color:#fff; font-size:15px; font-weight:700; margin-bottom:16px; }
+.footer-buttons { display:flex; gap:10px; justify-content:center; }
+.footer-buttons a { flex:1; max-width:180px; padding:12px; border-radius:10px; font-size:13.5px; font-weight:700; text-align:center; }
+.btn-tel { background:var(--coral); color:#fff; }
+.btn-kakao { background:#FEE500; color:#3A2A00; }
+
+@media (max-width:480px) {
+  .baggage-grid, .prep-grid { grid-template-columns:1fr; }
+  .trip-band-inner { grid-template-columns:repeat(2,1fr); }
+  .header-title { font-size:24px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="header-tag">Travel Confirmation</div>
+    <div class="header-title">시드니 여행 확정서</div>
+    <div class="header-subtitle">SYDNEY, AUSTRALIA · 2026</div>
+    <div class="header-names">신애라님 일행 (34명)</div>
+  </div>
+</div>
+
+<div class="trip-band">
+  <div class="trip-band-inner">
+    <div class="trip-item"><div class="label">출발일</div><div class="value">8.12(수)</div></div>
+    <div class="trip-item"><div class="label">귀국일</div><div class="value">8.17(월)</div></div>
+    <div class="trip-item"><div class="label">일정</div><div class="value">5박6일</div></div>
+    <div class="trip-item"><div class="label">투어타입</div><div class="value">패키지</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 상품 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">1</div><div class="section-title">상품 안내</div></div>
+    <a class="product-link-box" href="https://www.modetour.com/package/104108465?MLoc=99&Pnum=104108465&ANO=4547682&sno=C2181215&thru=crs" target="_blank">
+      모두투어 · 시드니 패키지 상품 상세보기 →
+      <span>예약번호 C2181215 · 클릭 시 새 탭에서 열립니다</span>
+    </a>
+    <div class="alert alert-navy">출국 공항 미팅 시간·장소는 확정 후 별도 안내드립니다.</div>
+  </div>
+
+  <!-- 항공 일정 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">항공 일정</div></div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span class="label">출발편</span><span class="code">JQ048 · 젯스타항공</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">ICN</div><div class="time">21:50</div><div class="date">8.12(수)</div></div>
+          <div class="mid"><div class="arrow">✈ →</div></div>
+          <div class="airport"><div class="code">SYD</div><div class="time">09:05</div><div class="date">8.13(목)</div></div>
+        </div>
+        <div class="flight-badges"><span>젯스타항공</span><span>인천 → 시드니</span><span>위탁 20kg 1개</span><span>기내식 1회 제공</span></div>
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span class="label">귀국편</span><span class="code">JQ047 · 젯스타항공</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">SYD</div><div class="time">10:45</div><div class="date">8.17(월)</div></div>
+          <div class="mid"><div class="arrow">✈ →</div></div>
+          <div class="airport"><div class="code">ICN</div><div class="time">20:15</div><div class="date">8.17(월)</div></div>
+        </div>
+        <div class="flight-badges"><span>젯스타항공</span><span>시드니 → 인천</span><span>위탁 20kg 1개</span><span>기내식 1회 제공</span></div>
+      </div>
+    </div>
+
+    <div class="alert alert-coral">
+      ※ 편도 기준 기내식 2회 제공 (일반식 1회, 간편식 1회)<br>
+      ※ <strong>사전좌석 지정 불가</strong> — 당일 공항에서 티켓팅 후 좌석 지정됩니다.
+    </div>
+  </div>
+
+  <!-- 수하물 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">수하물 안내</div></div>
+    <div class="baggage-grid">
+      <div class="baggage-card"><div class="bhead">무료 위탁수하물</div><div class="bvalue">20kg 1개</div></div>
+      <div class="baggage-card"><div class="bhead">기내 수하물 (그룹좌석/이코노미)</div><div class="bvalue">7kg 1개</div></div>
+    </div>
+  </div>
+
+  <!-- 현지 가이드 & 행사 정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">현지 가이드 &amp; 행사 정보</div></div>
+    <div class="guide-box">
+      <div class="guide-row"><span class="k">가이드</span><span class="v">시드니 윤호인 · 0415 007 109</span></div>
+      <div class="guide-row"><span class="k">현지 비상연락처</span><span class="v">김태경 소장<br>T. +61 (0)2 9283 6133<br>M. +61 (0)406 318 676</span></div>
+      <div class="guide-row"><span class="k">행사 인원</span><span class="v">성인 31명 · 아동 3명</span></div>
+      <div class="guide-row"><span class="k">행사 차량</span><span class="v">45인승</span></div>
+    </div>
+  </div>
+
+  <!-- 투숙 호텔 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">투숙 호텔</div></div>
+    <div class="hotel-card">
+      <div class="hotel-header"><span class="htag">전 일정 포함 (4박)</span><span class="hbadge">HOTEL</span></div>
+      <div class="hotel-body">
+        <div class="hotel-name">Rydges Bankstown (리지스 뱅스타운)</div>
+        <div class="hotel-row"><span class="k">주소</span><span class="v">874 Hume Hwy, Bass Hill NSW 2197, Australia</span></div>
+        <div class="hotel-row"><span class="k">전화</span><span class="v">+61 2 8707 2800</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 불포함 사항 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">불포함 사항</div></div>
+    <div class="excl-box">
+      <div class="ehead">불포함 항목</div>
+      <ul>
+        <li>쇼핑 및 개인경비</li>
+        <li>식사 시 음료</li>
+        <li>현지 가이드 &amp; 기사 경비 USD $60 (반드시 미국달러로 준비)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 호주 입국 필수 사항 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">호주 입국 필수 사항 🛂</div></div>
+
+    <div class="eta-box" style="margin-bottom:14px;">
+      <div class="eta-box-head">✈️ 호주 ETA (전자여행허가) — 입국 필수!</div>
+      <div class="eta-box-body">
+        <div class="alert alert-red" style="margin-top:0;margin-bottom:12px;">
+          ⚠️ 호주는 <strong>ETA 승인 없이는 입국이 불가</strong>합니다. ETA 미발급 시 탑승 자체가 거부될 수 있습니다.
+        </div>
+        <div style="font-size:13.5px; line-height:1.9;">
+          <strong>발급 방법 :</strong> 호주 정부 공식 앱 "Australian ETA" (iOS/Android) 또는 공식 홈페이지에서 신청<br>
+          <strong>발급 비용 :</strong> AUD $20 (앱 결제)<br>
+          <strong>소요 시간 :</strong> 즉시~수 분 이내 (대부분 즉시 승인)<br>
+          <strong>※ 참여 인원 전원 각자 개별 신청</strong> 및 출발 전 승인 화면 캡처 저장 필수
+        </div>
+        <a class="link-pill" href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/electronic-travel-authority-601" target="_blank">호주 ETA 공식 안내 →</a>
+      </div>
+    </div>
+
+    <div class="alert alert-gold" style="margin-bottom:14px;">
+      📋 <strong>입국신고서 (Incoming Passenger Card)</strong> — ETA와 별도로 작성해야 합니다.<br>
+      기내에서 승무원이 배부하는 카드를 <strong>영어 대문자</strong>로 작성하며, 가족이라도 <strong>각자 1장씩</strong> 작성합니다.
+    </div>
+
+    <div class="alert alert-amber" style="background:#FEFAF0;border:1px solid var(--gold-light);color:#7A5A18;margin-bottom:14px;">
+      ⚠️ 호주는 <strong>생물보안(biosecurity) 규정이 세계에서 가장 엄격한 나라</strong> 중 하나입니다. 미신고가 더 위험하니 애매하면 무조건 신고하세요.
+    </div>
+
+    <div style="border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);">
+      <table class="customs-table">
+        <thead>
+          <tr><th style="width:22%;">구분</th><th style="width:42%;">핵심 주의점</th><th style="width:36%;">실무 팁</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="customs-cat">📋 입국신고서</div></td>
+            <td>식품·약품·동식물 관련 항목은 <strong>반드시 체크</strong></td>
+            <td><div class="customs-tip">미신고가 더 위험. 애매하면 신고</div></td>
+          </tr>
+          <tr>
+            <td><div class="customs-cat">🍜 식품</div></td>
+            <td>가공식품도 신고 대상 가능<br><strong>육류 성분(건더기 스프 등) 포함 여부 확인</strong></td>
+            <td><div class="customs-tip">라면·과자도 '식품'으로 체크 권장. 육류 성분 의심 시 반입 자제</div></td>
+          </tr>
+          <tr>
+            <td><div class="customs-cat">💊 의약품</div></td>
+            <td>의약품 항목 체크 후 필요 시 설명 준비</td>
+            <td><div class="customs-tip">처방약은 영문 처방전 준비 권장</div></td>
+          </tr>
+          <tr>
+            <td><div class="customs-cat">🚬 담배</div></td>
+            <td>면세 포함 <strong>25개비 또는 25g 제한</strong></td>
+            <td><div class="customs-tip">초과 시 압수 및 벌금 가능</div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 환전 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">환전 안내</div></div>
+    <div class="exchange-box">
+      <strong>가이드·기사 경비</strong> : 반드시 <strong>미국달러(USD)</strong>로 준비 ($60)<br>
+      <strong>선택관광</strong> : 호주달러(AUD) 현금 준비 권장<br>
+      <strong>마트·쇼핑</strong> : 카드 결제 가능
+    </div>
+  </div>
+
+  <!-- 날씨 & 준비물 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">날씨 &amp; 준비물</div></div>
+    <div class="prep-grid">
+      <div class="prep-card"><div class="phead">날씨</div><div class="pbody">8월 시드니는 남반구 겨울로 평균 8~17℃, 아침저녁 쌀쌀하고 비가 잦습니다.</div></div>
+      <div class="prep-card"><div class="phead">옷차림</div><div class="pbody">겉옷(자켓/코트) 필수, 얇은 옷 여러 벌 겹쳐 입기, 우산·우비 준비</div></div>
+      <div class="prep-card"><div class="phead">환전</div><div class="pbody">USD $60(가이드·기사경비) + AUD 현금(선택관광·개인경비)</div></div>
+      <div class="prep-card"><div class="phead">기타</div><div class="pbody">ETA 승인 캡처본, 입국신고서 작성용 볼펜, 상비약</div></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">여행컨설턴트 이실장</div>
+    <div class="footer-buttons">
+      <a class="btn-tel" href="tel:1544-5714">📞 1544-5714</a>
+      <a class="btn-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">투어콕 카카오톡 채널</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
