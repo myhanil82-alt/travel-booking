@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>울릉도 여행 확정서 - 신이철님</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+  --sea:#1B5E8A;
+  --sea-dark:#123F5C;
+  --sea-bg:#E9F2F7;
+  --sunflower:#F2B705;
+  --sunflower-bg:#FEF6E0;
+  --gold:#E8A93E;
+  --gold-bg:#FDF3E5;
+  --sky-top:#E7EFF3;
+  --sky-bottom:#F7F8F4;
+  --text-main:#1E2A2E;
+  --text-sub:#57676E;
+  --text-muted:#8C9BA0;
+  --card-bg:#FFFFFF;
+  --border:#E1E8EA;
+  --shadow:0 4px 20px rgba(27,94,138,0.10);
+  --max-w:680px;
+  --red:#D3453C;
+  --red-bg:#FDEFED;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Pretendard',sans-serif;background:linear-gradient(180deg,var(--sky-top) 0%, var(--sky-bottom) 45%, #FBFAF7 100%);color:var(--text-main);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+
+.top-bar{width:100%;background:rgba(18,63,92,0.92);backdrop-filter:blur(6px);padding:10px 20px;}
+.top-bar-inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.agent-info{color:#E9F2F7;font-size:15px;font-weight:500;}
+.agent-info b{color:#fff;}
+.top-btns{display:flex;gap:8px;}
+.top-btn{font-size:14.5px;font-weight:600;padding:6px 12px;border-radius:20px;background:rgba(255,255,255,0.15);color:#fff;transition:transform .15s ease-out, background .2s;}
+.top-btn:hover{background:rgba(255,255,255,0.28);}
+.top-btn:active{transform:scale(0.97);}
+.top-btn.kakao{background:#FEE500;color:#391B1B;}
+
+.header{width:100%;padding:28px 16px 24px;}
+.header-inner{max-width:var(--max-w);margin:0 auto;text-align:center;position:relative;z-index:1;border-radius:24px;overflow:hidden;padding:48px 24px 40px;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(27,94,138,0.32), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(242,183,5,0.18), transparent 50%),
+    linear-gradient(160deg,#0A2E44 0%, #123F5C 55%, #1B5E8A 100%);
+  box-shadow:0 12px 32px rgba(10,46,68,0.28);}
+.header-tag{display:inline-block;font-size:14px;font-weight:700;letter-spacing:2.5px;color:var(--sunflower);border:1px solid rgba(242,183,5,0.5);padding:6px 16px;border-radius:20px;margin-bottom:18px;}
+.header-title{font-size:34px;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-0.5px;text-shadow:0 2px 12px rgba(0,0,0,0.4);}
+.header-subtitle{font-size:16px;color:rgba(255,255,255,0.85);font-weight:500;margin-bottom:28px;letter-spacing:0.5px;}
+.header-names{font-size:22px;font-weight:700;color:#fff;background:rgba(255,255,255,0.1);display:inline-block;padding:10px 24px;border-radius:14px;margin-bottom:22px;}
+.header-cta{display:inline-flex;align-items:center;gap:8px;background:var(--sunflower);color:#3A2C00;font-weight:700;font-size:17px;padding:13px 26px;border-radius:12px;box-shadow:0 8px 20px rgba(242,183,5,0.4);transition:transform .2s ease-out, box-shadow .2s;}
+.header-cta:hover{transform:translateY(-2px) scale(1.02);}
+.header-cta:active{transform:scale(0.97);}
+
+.trip-band{width:100%;background:linear-gradient(90deg,var(--sea),#3D84B0);}
+.trip-band-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);text-align:center;padding:20px 16px;}
+.trip-item .label{font-size:13px;color:rgba(255,255,255,0.85);font-weight:600;margin-bottom:4px;}
+.trip-item .value{font-size:17px;color:#fff;font-weight:800;}
+
+.container{max-width:var(--max-w);margin:0 auto;padding:36px 20px 60px;}
+.section{margin-bottom:36px;opacity:0;transform:translateY(16px);transition:opacity .5s ease-out, transform .5s ease-out;}
+.section.visible{opacity:1;transform:translateY(0);}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.section-num{width:30px;height:30px;border-radius:50%;background:var(--sea-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0;}
+.section-title{font-size:20px;font-weight:800;color:var(--text-main);}
+
+.product-link-box{display:flex;justify-content:space-between;align-items:center;background:var(--sea-bg);border:1px solid var(--sea);border-radius:14px;padding:16px 18px;font-weight:700;color:var(--sea-dark);margin-bottom:14px;transition:transform .15s ease-out, background .2s;}
+.product-link-box:hover{background:#DCEAF2;transform:scale(1.01);}
+.product-link-box:active{transform:scale(0.98);}
+.product-link-box span.arrow{font-size:20px;}
+
+.alert{border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.6;margin-top:12px;}
+.alert-sea{background:var(--sea-bg);border:1px solid var(--sea);color:#123F5C;}
+.alert-sunflower{background:var(--sunflower-bg);border:1px solid var(--sunflower);color:#8A6B00;}
+.alert-gold{background:var(--gold-bg);border:1px solid var(--gold);color:#8A5E0E;}
+.alert-red{background:var(--red-bg);border:1px solid var(--red);color:#A32C24;}
+
+.counter-box{border:1.5px solid var(--sunflower);border-radius:16px;padding:20px;background:var(--sunflower-bg);}
+.step{display:flex;gap:12px;margin-bottom:14px;}
+.step:last-child{margin-bottom:0;}
+.step-num{width:26px;height:26px;border-radius:50%;background:var(--sunflower);color:#3A2C00;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0;}
+.step-text{font-size:16px;color:var(--text-main);line-height:1.6;}
+.step-text b{color:#8A6B00;}
+
+.ferry-card{border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px;}
+.ferry-header{background:linear-gradient(120deg,#0A2E44,#123F5C);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:700;}
+.ferry-body{background:#fff;padding:20px 18px;}
+.ferry-route{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.ferry-route .port{text-align:center;}
+.ferry-route .port .name{font-size:22px;font-weight:800;color:var(--text-main);}
+.ferry-route .port .time{font-size:14px;color:var(--text-sub);margin-top:2px;}
+.ferry-route .mid{flex:1;text-align:center;padding:0 12px;}
+.ferry-route .mid .line{height:2px;background:var(--border);position:relative;margin-top:6px;}
+.ferry-route .mid .line::after{content:"⛴";position:absolute;top:-11px;left:50%;transform:translateX(-50%);font-size:18px;}
+
+.guide-box{border:1.5px solid var(--sea-dark);border-radius:16px;background:var(--sea-bg);padding:20px;}
+.guide-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed rgba(18,63,92,0.2);gap:10px;}
+.guide-row:last-child{border-bottom:none;}
+.guide-row .label{color:var(--text-sub);}
+.guide-row .val{font-weight:700;color:var(--sea-dark);text-align:right;}
+
+.incl-card{border-radius:14px;padding:16px;font-size:15.5px;line-height:1.75;background:var(--sea-bg);border:1px solid var(--sea);}
+.incl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#123F5C;}
+
+.id-box{border:1.5px solid var(--red);border-radius:16px;background:var(--red-bg);padding:20px;}
+.id-box .head{font-weight:800;font-size:17px;color:#A32C24;margin-bottom:10px;}
+.id-box .cat{font-weight:700;color:var(--text-main);margin-top:10px;margin-bottom:4px;font-size:15.5px;}
+.id-box p{font-size:14.5px;color:var(--text-sub);line-height:1.7;}
+
+.facility-box{border:1.5px solid var(--sea);border-radius:16px;background:#fff;box-shadow:var(--shadow);padding:20px;}
+.facility-box .info-row{display:flex;justify-content:space-between;font-size:15.5px;padding:6px 0;border-bottom:1px dashed var(--border);gap:10px;}
+.facility-box .info-row:last-child{border-bottom:none;}
+.facility-box .info-row .val{font-weight:700;text-align:right;}
+
+.warn-box{border:1.5px solid var(--gold);border-radius:16px;background:var(--gold-bg);padding:20px;margin-bottom:12px;}
+.warn-box .title{font-weight:800;font-size:16px;color:#8A5E0E;margin-bottom:8px;}
+.warn-box ul{padding-left:18px;font-size:15px;color:var(--text-sub);line-height:1.75;}
+
+.weather-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
+.weather-card{flex:0 0 auto;width:106px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 8px;text-align:center;box-shadow:var(--shadow);}
+.weather-card .date{font-size:13.5px;font-weight:700;color:var(--text-sub);margin-bottom:6px;}
+.weather-card .day{font-size:12px;color:var(--text-muted);margin-bottom:6px;}
+.weather-card .icon{font-size:26px;margin-bottom:8px;}
+.weather-card .high{font-size:17px;font-weight:800;color:var(--sea);}
+.weather-card .low{font-size:14px;color:var(--text-muted);margin-top:2px;}
+
+.prep-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.prep-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.prep-card .icon{font-size:22px;margin-bottom:6px;}
+.prep-card .title{font-weight:700;font-size:15.5px;color:var(--sea-dark);margin-bottom:6px;}
+.prep-card ul{padding-left:16px;font-size:15px;color:var(--text-sub);line-height:1.75;}
+
+@media (max-width:480px){
+  .trip-band-inner{grid-template-columns:repeat(2,1fr);gap:14px;}
+  .prep-grid{grid-template-columns:1fr;}
+  .header-title{font-size:28px;}
+}
+
+.footer{width:100%;background:#0A2E44;padding:32px 20px;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;text-align:center;}
+.footer-agent{color:#fff;font-size:17px;font-weight:700;margin-bottom:6px;}
+.footer-sub{color:rgba(255,255,255,0.55);font-size:14.5px;margin-bottom:18px;}
+.footer-btns{display:flex;justify-content:center;gap:10px;}
+.footer-btn{padding:10px 20px;border-radius:12px;font-weight:700;font-size:15.5px;transition:transform .15s ease-out;}
+.footer-btn:active{transform:scale(0.97);}
+.footer-btn.tel{background:var(--sea);color:#fff;}
+.footer-btn.kakao{background:#FEE500;color:#391B1B;}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="agent-info">담당 <b>이경진 실장</b> · 모두투어 투어콕</div>
+    <div class="top-btns">
+      <a class="top-btn" href="tel:1544-5714">📞 전화상담</a>
+      <a class="top-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡</a>
+    </div>
+  </div>
+</div>
+
+<div class="header">
+  <div class="header-inner">
+    <span class="header-tag">TRAVEL CONFIRMATION</span>
+    <div class="header-title">🌻 울릉도 여행 확정서</div>
+    <div class="header-subtitle">포항여객선터미널 출발 · 2박 3일 · ULLEUNGDO 2026</div>
+    <div class="header-names">신이철님</div><br>
+    <a class="header-cta" href="https://www.modetour.com/package/109289456?MLoc=99&Pnum=109289456&ANO=1772510&sno=C2181215&thru=crs" target="_blank">🔗 여행상품 확인하기</a>
+  </div>
+</div>
+
+<div class="trip-band">
+  <div class="trip-band-inner">
+    <div class="trip-item"><div class="label">출발일</div><div class="value">2026.08.11(화)</div></div>
+    <div class="trip-item"><div class="label">귀항일</div><div class="value">2026.08.13(목)</div></div>
+    <div class="trip-item"><div class="label">일정</div><div class="value">2박 3일</div></div>
+    <div class="trip-item"><div class="label">이용선사</div><div class="value">대저해운</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 상품 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">1</div><div class="section-title">상품 안내</div></div>
+    <a class="product-link-box" href="https://www.modetour.com/package/109289456?MLoc=99&Pnum=109289456&ANO=1772510&sno=C2181215&thru=crs" target="_blank">
+      <span>모두투어 울릉도 상품 바로가기</span>
+      <span class="arrow">↗</span>
+    </a>
+    <div class="alert alert-sea">
+      ⛴ 이용선사: <b>대저해운</b>
+    </div>
+  </div>
+
+  <!-- 포항여객선터미널 승선안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">포항여객선터미널 승선 안내</div></div>
+    <div class="counter-box">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text"><b>08:50까지</b> 포항여객선터미널 내 대저해운매표소 맞은편 <b>'여행사카운터-잠자리투어'</b>에서 선표 수령 및 승선해 주세요.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">원활한 수속을 위해 <b>출항 1시간 전까지</b> 도착하여 승선수속을 진행해 주세요.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">터미널 미팅담당자 연락처는 <b>출발 1일 전</b>에 안내드릴 예정입니다.</div>
+      </div>
+    </div>
+    <div class="alert alert-red">
+      ⚠ <b>신분증 미지참 시 승선이 불가능</b>합니다. 꼭 지참해 주세요. (자세한 인정 신분증 목록은 6번 참고)
+    </div>
+  </div>
+
+  <!-- 선박 일정 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">선박 일정</div></div>
+
+    <div class="ferry-card">
+      <div class="ferry-header"><span>출발편 · 대저해운</span><span>2026.08.11(화)</span></div>
+      <div class="ferry-body">
+        <div class="ferry-route">
+          <div class="port"><div class="name">포항</div><div class="time">09:50 출항</div></div>
+          <div class="mid"><div class="line"></div></div>
+          <div class="port"><div class="name">울릉도 도동항</div><div class="time">12:40 도착</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ferry-card">
+      <div class="ferry-header"><span>귀항편 · 대저해운</span><span>2026.08.13(목)</span></div>
+      <div class="ferry-body">
+        <div class="ferry-route">
+          <div class="port"><div class="name">울릉도 도동항</div><div class="time">14:20 출항</div></div>
+          <div class="mid"><div class="line"></div></div>
+          <div class="port"><div class="name">포항</div><div class="time">17:10 도착</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-sunflower">
+      🌊 <b>선박시간은 기상상황에 따라 변경될 수 있습니다.</b> 본 일정은 기본일정으로, 기상상황·현지사정에 따라 순서 등이 변경 진행될 수 있는 점 참고해 주세요.
+    </div>
+  </div>
+
+  <!-- 울릉도 도착 미팅안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">울릉도 도착 미팅 안내</div></div>
+    <div class="guide-box">
+      <div class="guide-row"><span class="label">미팅 장소</span><span class="val">선박 하선 후<br>🌻 해바라기 모형피켓 앞</span></div>
+      <div class="guide-row"><span class="label">현지직원 비상연락처</span><span class="val">출발 1일 전 안내</span></div>
+    </div>
+    <div class="alert alert-sea">
+      ℹ 본 상품은 <b>일정 내내 인솔자가 동행하지 않습니다.</b> 현지직원은 숙소·식당 위치 등 간단한 안내와 일정관리만 담당합니다.<br>
+      · 육로버스 관광 시: 기사님이 드라이빙 가이드로 진행<br>
+      · 유람선 관광 시: 선내 직원이 안내
+    </div>
+  </div>
+
+  <!-- 신분증 필수지참 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">선박 승선 시 신분증 필수 지참</div></div>
+    <div class="id-box">
+      <div class="head">⚠ 신분증 미지참 시 발권 및 승선이 거절됩니다</div>
+      <div class="cat">일반인</div>
+      <p>주민등록증, 운전면허증, 유효기간 내 여권, 공무원증, 복지카드, 국가유공자증, 정부가 운영(또는 인정)하는 모바일 신분증 등</p>
+      <div class="cat">외국인</div>
+      <p>외국인등록증, 재외동포 국내거소증, 유효기간 내 여권 등</p>
+      <div class="cat">초/중/고 학생, 미취학 아동</div>
+      <p>청소년증, 건강보험증, 주민등록등·초본 또는 가족관계증명서, 학생증(생년월일 없으면 불가)</p>
+      <div class="cat">신분증으로 인정되지 않는 것</div>
+      <p>신분증 복사본, 촬영본, 스마트폰 캡처본, 모바일 국가기술자격증, 밀리패스, 사진 부착 신용카드, 유효기간 지난 신분증 등</p>
+    </div>
+  </div>
+
+  <!-- 불포함 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">불포함 사항</div></div>
+    <div class="incl-card">
+      <div class="head">✘ 불포함사항</div>
+      ◈ 제공식 외 식사<br>
+      ◈ 선택(옵션) 관광<br>
+      ◈ 기타 개인경비<br>
+      ◈ 여행자 보험<br>
+      ◈ 유류할증료 변동 시 차액
+    </div>
+  </div>
+
+  <!-- 포항여객선터미널 시설안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">포항여객선터미널 시설 안내</div></div>
+    <div class="facility-box">
+      <div class="info-row"><span>위치</span><span class="val">경북 포항시 북구 해안로 44</span></div>
+      <div class="info-row"><span>주차시설</span><span class="val">대형/소형 주차공간<br>(차량별 요금 상이, 054-245-1833)</span></div>
+    </div>
+    <div class="alert alert-sunflower">
+      🅿 성수기·주말·공휴일·추석연휴 등 수송객이 많은 날은 주차장이 매우 혼잡합니다. 가급적 대중교통을 이용해 주시고, 터미널 주차장 만차 시 <a href="https://naver.me/GYCzYkIW" target="_blank" style="text-decoration:underline;font-weight:700;">인근 포항영일대해수욕장 공영주차장</a>을 이용해 주세요.
+    </div>
+  </div>
+
+  <!-- 숙소 환경 및 비품 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">숙소 환경 & 비품 안내</div></div>
+    <div class="warn-box">
+      <div class="title">🏠 숙소 환경</div>
+      <ul>
+        <li>모텔·호텔급이라도 시설이 간소하거나 노후된 경우가 많습니다</li>
+        <li>대부분 엘리베이터가 없고 계단 이동이 많으니, <b>캐리어보다는 배낭 사용을 권장</b>드립니다</li>
+        <li>객실은 기본 온돌형이며, 침대 객실 지정은 불가합니다</li>
+        <li>인원 추가 시 침구만 제공되며, 숙소 타입·인원수에 따라 요금이 변동될 수 있습니다</li>
+      </ul>
+    </div>
+    <div class="warn-box" style="margin-bottom:0;">
+      <div class="title">🧴 비품 제공 안내</div>
+      <ul>
+        <li>숙소에서는 <b>수건·비누·드라이기만 제공</b>됩니다</li>
+        <li>치약·칫솔·면도기 등 <b>개인 세면도구는 반드시 지참</b>해 주세요</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 독도 관광 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">독도 관광 안내</div></div>
+    <div class="alert alert-sea">
+      🏝 독도는 입도관광이 가능하며, 해상 날씨에 따라 접안이 불가능할 경우 <b>선내 선회관광으로 대체</b>될 수 있습니다. 이 경우 별도의 환불은 없는 점 양해 부탁드립니다.
+    </div>
+  </div>
+
+  <!-- 날씨 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">일자별 날씨 정보</div></div>
+    <div class="weather-row">
+      <div class="weather-card">
+        <div class="date">8/11(화)</div>
+        <div class="day">출항일</div>
+        <div class="icon">☀️</div>
+        <div class="high">28℃</div>
+        <div class="low">23℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">8/12(수)</div>
+        <div class="day">울릉도</div>
+        <div class="icon">⛅</div>
+        <div class="high">27℃</div>
+        <div class="low">23℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">8/13(목)</div>
+        <div class="day">귀항일</div>
+        <div class="icon">🌦️</div>
+        <div class="high">27℃</div>
+        <div class="low">22℃</div>
+      </div>
+    </div>
+    <div class="alert alert-gold">
+      ☀️ 8월 울릉도는 평균 22~28℃로 대체로 온화하지만, 해상 날씨 변화가 잦은 지역입니다. 위 기온은 평년 평균 참고값이며, <b>선박 운항 여부는 기상상황에 따라 변경될 수 있으니</b> 출발 며칠 전 다시 확인해 드릴게요.
+    </div>
+  </div>
+
+  <!-- 준비물 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">11</div><div class="section-title">여행 준비물</div></div>
+    <div class="prep-grid">
+      <div class="prep-card">
+        <div class="icon">🪪</div>
+        <div class="title">필수 서류</div>
+        <ul>
+          <li>신분증(승선 필수, 5번 목록 참고)</li>
+          <li>여행상품 예약 확인서</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🎒</div>
+        <div class="title">짐 관련</div>
+        <ul>
+          <li>캐리어보다 <b>배낭</b> 추천(숙소 계단 多)</li>
+          <li>개인 세면도구(치약·칫솔·면도기 등)</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🚢</div>
+        <div class="title">승선 관련</div>
+        <ul>
+          <li>멀미약(뱃멀미 대비 필수)</li>
+          <li>보온 겉옷(선상 바람 대비)</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🧴</div>
+        <div class="title">기타 준비물</div>
+        <ul>
+          <li>선크림·모자·선글라스</li>
+          <li>편한 운동화(계단·트레킹 코스 多)</li>
+          <li>우산 또는 우비</li>
+          <li>상비약(소화제·해열제 등)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-agent">담당 이경진 실장</div>
+    <div class="footer-sub">신이철님의 안전하고 즐거운 울릉도 여행을 응원합니다 🌻</div>
+    <div class="footer-btns">
+      <a class="footer-btn tel" href="tel:1544-5714">📞 1544-5714</a>
+      <a class="footer-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 투어콕 카카오톡 채널</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.1});
+sections.forEach(s=>observer.observe(s));
+</script>
+
+</body>
+</html>
