@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>몽골 여행 확정서 - 장나영님 일행</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+  --ochre:#C9862F;
+  --ochre-dark:#8F5D1E;
+  --ochre-bg:#FBF1E4;
+  --sky:#2E6F95;
+  --sky-bg:#EAF3F8;
+  --gold:#E8A93E;
+  --gold-bg:#FDF3E5;
+  --bg-top:#F1EDE4;
+  --bg-bottom:#F7F5F0;
+  --text-main:#2A2420;
+  --text-sub:#655B4F;
+  --text-muted:#9A9082;
+  --card-bg:#FFFFFF;
+  --border:#EAE3D6;
+  --shadow:0 4px 20px rgba(201,134,47,0.12);
+  --max-w:680px;
+  --red:#D3453C;
+  --red-bg:#FDEFED;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Pretendard',sans-serif;background:linear-gradient(180deg,var(--bg-top) 0%, var(--bg-bottom) 45%, #FBFAF7 100%);color:var(--text-main);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+
+.top-bar{width:100%;background:rgba(45,35,20,0.92);backdrop-filter:blur(6px);padding:10px 20px;}
+.top-bar-inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.agent-info{color:#FBF1E4;font-size:15px;font-weight:500;}
+.agent-info b{color:#fff;}
+.top-btns{display:flex;gap:8px;}
+.top-btn{font-size:14.5px;font-weight:600;padding:6px 12px;border-radius:20px;background:rgba(255,255,255,0.15);color:#fff;transition:transform .15s ease-out, background .2s;}
+.top-btn:hover{background:rgba(255,255,255,0.28);}
+.top-btn:active{transform:scale(0.97);}
+.top-btn.kakao{background:#FEE500;color:#391B1B;}
+
+.header{width:100%;padding:28px 16px 24px;}
+.header-inner{max-width:var(--max-w);margin:0 auto;text-align:center;position:relative;z-index:1;border-radius:24px;overflow:hidden;padding:48px 24px 40px;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(201,134,47,0.30), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(46,111,149,0.24), transparent 50%),
+    linear-gradient(160deg,#1C1710 0%, #3A2E1C 55%, #4E3B22 100%);
+  box-shadow:0 12px 32px rgba(28,23,16,0.28);}
+.header-tag{display:inline-block;font-size:14px;font-weight:700;letter-spacing:2.5px;color:var(--gold);border:1px solid rgba(232,169,62,0.5);padding:6px 16px;border-radius:20px;margin-bottom:18px;}
+.header-title{font-size:34px;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-0.5px;text-shadow:0 2px 12px rgba(0,0,0,0.4);}
+.header-subtitle{font-size:16px;color:rgba(255,255,255,0.85);font-weight:500;margin-bottom:28px;letter-spacing:0.5px;}
+.header-names{font-size:22px;font-weight:700;color:#fff;background:rgba(255,255,255,0.1);display:inline-block;padding:10px 24px;border-radius:14px;margin-bottom:22px;}
+.header-cta{display:inline-flex;align-items:center;gap:8px;background:var(--sky);color:#fff;font-weight:700;font-size:17px;padding:13px 26px;border-radius:12px;box-shadow:0 8px 20px rgba(46,111,149,0.4);transition:transform .2s ease-out, box-shadow .2s;}
+.header-cta:hover{transform:translateY(-2px) scale(1.02);}
+.header-cta:active{transform:scale(0.97);}
+
+.trip-band{width:100%;background:linear-gradient(90deg,var(--ochre),#DDA758);}
+.trip-band-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);text-align:center;padding:20px 16px;}
+.trip-item .label{font-size:13px;color:rgba(255,255,255,0.9);font-weight:600;margin-bottom:4px;}
+.trip-item .value{font-size:17px;color:#fff;font-weight:800;}
+
+.container{max-width:var(--max-w);margin:0 auto;padding:36px 20px 60px;}
+.section{margin-bottom:36px;opacity:0;transform:translateY(16px);transition:opacity .5s ease-out, transform .5s ease-out;}
+.section.visible{opacity:1;transform:translateY(0);}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.section-num{width:30px;height:30px;border-radius:50%;background:var(--ochre-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0;}
+.section-title{font-size:20px;font-weight:800;color:var(--text-main);}
+
+.product-link-box{display:flex;justify-content:space-between;align-items:center;background:var(--ochre-bg);border:1px solid var(--ochre);border-radius:14px;padding:16px 18px;font-weight:700;color:var(--ochre-dark);margin-bottom:14px;transition:transform .15s ease-out, background .2s;}
+.product-link-box:hover{background:#F5E7CE;transform:scale(1.01);}
+.product-link-box:active{transform:scale(0.98);}
+.product-link-box span.arrow{font-size:20px;}
+
+.alert{border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.6;margin-top:12px;}
+.alert-ochre{background:var(--ochre-bg);border:1px solid var(--ochre);color:#8F5D1E;}
+.alert-sky{background:var(--sky-bg);border:1px solid var(--sky);color:#1F4E68;}
+.alert-gold{background:var(--gold-bg);border:1px solid var(--gold);color:#8A5E0E;}
+.alert-red{background:var(--red-bg);border:1px solid var(--red);color:#A32C24;}
+
+.flight-card{border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px;}
+.flight-header{background:linear-gradient(120deg,#1C1710,#3A2E1C);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:700;}
+.flight-header .code{color:var(--gold);}
+.flight-body{background:#fff;padding:20px 18px;}
+.flight-route{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.flight-route .airport{text-align:center;}
+.flight-route .airport .code{font-size:30px;font-weight:800;color:var(--text-main);}
+.flight-route .airport .city{font-size:14px;color:var(--text-sub);margin-top:2px;}
+.flight-route .mid{flex:1;text-align:center;padding:0 12px;}
+.flight-route .mid .time{font-size:14px;color:var(--text-muted);}
+.flight-route .mid .line{height:2px;background:var(--border);position:relative;margin-top:6px;}
+.flight-route .mid .line::after{content:"✈";position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:16px;}
+.flight-badges{display:flex;flex-wrap:wrap;gap:8px;}
+.badge{font-size:14px;font-weight:600;color:var(--text-sub);background:#FAF7F0;border:1px solid var(--border);padding:5px 10px;border-radius:8px;}
+
+.guide-box{border:1.5px solid var(--ochre-dark);border-radius:16px;background:var(--ochre-bg);padding:20px;}
+.guide-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;}
+.guide-row .label{color:var(--text-sub);}
+.guide-row .val{font-weight:700;color:var(--ochre-dark);text-align:right;}
+
+.incl-card{border-radius:14px;padding:16px;font-size:15.5px;line-height:1.75;background:var(--sky-bg);border:1px solid var(--sky);}
+.incl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#1F4E68;}
+
+.exchange-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:#fff;box-shadow:var(--shadow);}
+.exchange-box .ex-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed var(--border);}
+.exchange-box .ex-row:last-child{border-bottom:none;}
+
+.weather-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
+.weather-card{flex:0 0 auto;width:106px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 8px;text-align:center;box-shadow:var(--shadow);}
+.weather-card.est{opacity:0.75;border-style:dashed;}
+.weather-card .date{font-size:13.5px;font-weight:700;color:var(--text-sub);margin-bottom:6px;}
+.weather-card .day{font-size:12px;color:var(--text-muted);margin-bottom:6px;}
+.weather-card .icon{font-size:26px;margin-bottom:8px;}
+.weather-card .high{font-size:17px;font-weight:800;color:var(--ochre);}
+.weather-card .low{font-size:14px;color:var(--text-muted);margin-top:2px;}
+
+.prep-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.prep-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.prep-card .icon{font-size:22px;margin-bottom:6px;}
+.prep-card .title{font-weight:700;font-size:15.5px;color:var(--ochre-dark);margin-bottom:6px;}
+.prep-card ul{padding-left:16px;font-size:15px;color:var(--text-sub);line-height:1.75;}
+
+.warn-box{border:1.5px solid var(--red);border-radius:16px;background:var(--red-bg);padding:20px;margin-bottom:12px;}
+.warn-box .title{font-weight:800;font-size:16px;color:#A32C24;margin-bottom:8px;}
+.warn-box ul{padding-left:18px;font-size:15px;color:#A32C24;line-height:1.75;}
+
+.checklist{background:#fff;border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);padding:6px 18px;}
+.check-item{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);font-size:15.5px;color:var(--text-main);}
+.check-item:last-child{border-bottom:none;}
+.check-item::before{content:"☐";color:var(--sky);font-size:18px;}
+
+@media (max-width:480px){
+  .trip-band-inner{grid-template-columns:repeat(2,1fr);gap:14px;}
+  .prep-grid{grid-template-columns:1fr;}
+  .header-title{font-size:28px;}
+}
+
+.footer{width:100%;background:#1C1710;padding:32px 20px;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;text-align:center;}
+.footer-agent{color:#fff;font-size:17px;font-weight:700;margin-bottom:6px;}
+.footer-sub{color:rgba(255,255,255,0.55);font-size:14.5px;margin-bottom:18px;}
+.footer-btns{display:flex;justify-content:center;gap:10px;}
+.footer-btn{padding:10px 20px;border-radius:12px;font-weight:700;font-size:15.5px;transition:transform .15s ease-out;}
+.footer-btn:active{transform:scale(0.97);}
+.footer-btn.tel{background:var(--sky);color:#fff;}
+.footer-btn.kakao{background:#FEE500;color:#391B1B;}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="agent-info">담당 <b>이경진 실장</b> · 모두투어 투어콕</div>
+    <div class="top-btns">
+      <a class="top-btn" href="tel:1544-5714">📞 전화상담</a>
+      <a class="top-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡</a>
+    </div>
+  </div>
+</div>
+
+<div class="header">
+  <div class="header-inner">
+    <span class="header-tag">TRAVEL CONFIRMATION</span>
+    <div class="header-title">🐎 몽골 여행 확정서</div>
+    <div class="header-subtitle">인천국제공항 출발 · 4박 5일 · MONGOLIA 2026</div>
+    <div class="header-names">장나영님 일행</div><br>
+    <a class="header-cta" href="https://www.modetour.com/package/104586945?MLoc=99&Pnum=104586945&ANO=4547682&sno=C2181215&thru=crs" target="_blank">🔗 여행상품 확인하기</a>
+  </div>
+</div>
+
+<div class="trip-band">
+  <div class="trip-band-inner">
+    <div class="trip-item"><div class="label">출발일</div><div class="value">2026.08.12(수)</div></div>
+    <div class="trip-item"><div class="label">귀국일</div><div class="value">2026.08.16(일)</div></div>
+    <div class="trip-item"><div class="label">일정</div><div class="value">4박 5일</div></div>
+    <div class="trip-item"><div class="label">투어타입</div><div class="value">패키지</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 상품 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">1</div><div class="section-title">상품 안내</div></div>
+    <a class="product-link-box" href="https://www.modetour.com/package/104586945?MLoc=99&Pnum=104586945&ANO=4547682&sno=C2181215&thru=crs" target="_blank">
+      <span>모두투어 몽골 패키지 상품 바로가기</span>
+      <span class="arrow">↗</span>
+    </a>
+    <div class="alert alert-ochre">
+      ✔ 아시아나항공 예약번호(PNR): <b>FBKCDI</b><br>
+      ✔ <b>인천공항 미팅이 없습니다.</b> 개별적으로 아시아나항공 카운터에서 티켓팅 후 출발해 주세요.
+    </div>
+  </div>
+
+  <!-- 온라인 체크인 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">온라인 체크인 안내</div></div>
+    <div class="alert alert-sky">
+      💻 여행 출발 <b>48시간 전부터</b> 아시아나항공 사이트에서 온라인 체크인을 진행하시면서 <b>좌석 지정 및 탑승 QR</b>을 안내받으실 수 있습니다.<br>
+      온라인 체크인이 어려우신 경우 <b>당일 공항에서 진행</b>하시면 됩니다.
+    </div>
+  </div>
+
+  <!-- 항공편 정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">항공편 정보</div></div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>출발편 · 아시아나항공</span><span class="code">OZ567</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 08.12(수) 20:20</div></div>
+          <div class="mid"><div class="time">직항(야간)</div><div class="line"></div></div>
+          <div class="airport"><div class="code">ULN</div><div class="city">울란바타르 · 08.12(수) 23:05</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 아시아나항공</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>귀국편 · 아시아나항공</span><span class="code">OZ568</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">ULN</div><div class="city">울란바타르 · 08.16(일) 00:45</div></div>
+          <div class="mid"><div class="time">직항(야간)</div><div class="line"></div></div>
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 08.16(일) 05:05</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 아시아나항공</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-ochre">
+      ⚠ 귀국편은 <b>새벽 00:45 출발</b>이니 8/15(토) 밤 늦게 공항으로 이동하셔야 합니다.
+    </div>
+  </div>
+
+  <!-- 현지 행사 정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">현지 가이드 & 행사 정보</div></div>
+    <div class="guide-box">
+      <div class="guide-row"><span class="label">가이드·행사 정보</span><span class="val">8/10(월) 오후 14시경<br>일정표에서 확인 가능</span></div>
+    </div>
+  </div>
+
+  <!-- 불포함 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">불포함 사항</div></div>
+    <div class="incl-card">
+      <div class="head">✘ 불포함사항</div>
+      ▣ 추가적인 개인 물값, 호텔 등에서의 룸서비스 및 포터팁, 각종 개인경비
+    </div>
+    <div class="alert alert-gold">
+      ⛺ <b>게르 투숙 시 개인 세면도구는 필수로 준비</b>해 주세요.
+    </div>
+  </div>
+
+  <!-- 환전 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">환전 & 금전 안내</div></div>
+    <div class="exchange-box">
+      <div class="ex-row"><span>투어 가이드 경비</span><span style="font-weight:700;">포함(별도 팁 불필요)</span></div>
+      <div class="ex-row"><span>개인 경비</span><span style="font-weight:700;">투그릭(MNT) 또는 달러(USD) 현금 준비</span></div>
+      <div class="ex-row"><span>카드</span><span style="font-weight:700;">Visa·Mastercard(일부 매장만 가능)</span></div>
+    </div>
+  </div>
+
+  <!-- 게르 숙박 & 여행 시 유의사항 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">여행 중 유의사항</div></div>
+    <div class="warn-box">
+      <div class="title">⛺ 게르(텐트) 숙박 시 유의</div>
+      <ul>
+        <li>냉·온수 사용이 불안정할 수 있음(날씨·전기·보일러 상태에 따라)</li>
+        <li>벌레가 있을 수 있음 (기피제 준비 권장)</li>
+        <li>전기선이 1개만 있고 위치가 랜덤</li>
+        <li>화장실이 공동 시설일 수 있음</li>
+      </ul>
+    </div>
+    <div class="warn-box">
+      <div class="title">🍖 음식 관련</div>
+      <ul>
+        <li>양고기가 메인 음식(특유의 향이 있음)</li>
+        <li>밑반찬이 별도로 제공되지 않음</li>
+        <li>개인 반찬 준비를 권장드립니다</li>
+      </ul>
+    </div>
+    <div class="warn-box">
+      <div class="title">🚙 이동 관련</div>
+      <ul>
+        <li>비포장 도로가 많고 도로 상태가 좋지 않음</li>
+        <li>장거리 이동이 많음</li>
+        <li>멀미약 필수 준비</li>
+      </ul>
+    </div>
+    <div class="warn-box" style="margin-bottom:0;">
+      <div class="title">🌡️ 기후 관련</div>
+      <ul>
+        <li>일교차가 매우 심함</li>
+        <li>산악 지역이라 날씨 변수가 많음</li>
+        <li>밤에 매우 추움</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 날씨 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">일자별 날씨 정보</div></div>
+    <div class="weather-row">
+      <div class="weather-card">
+        <div class="date">8/12(수)</div>
+        <div class="day">출국일</div>
+        <div class="icon">☀️</div>
+        <div class="high">23℃</div>
+        <div class="low">8℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">8/13(목)</div>
+        <div class="day">몽골</div>
+        <div class="icon">☀️</div>
+        <div class="high">26℃</div>
+        <div class="low">11℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">8/14(금)</div>
+        <div class="day">몽골</div>
+        <div class="icon">🌦️</div>
+        <div class="high">24℃</div>
+        <div class="low">14℃</div>
+      </div>
+      <div class="weather-card est">
+        <div class="date">8/15(토)</div>
+        <div class="day">몽골</div>
+        <div class="icon">⛅</div>
+        <div class="high">~24℃</div>
+        <div class="low">~11℃</div>
+      </div>
+      <div class="weather-card est">
+        <div class="date">8/16(일)</div>
+        <div class="day">귀국일</div>
+        <div class="icon">⛅</div>
+        <div class="high">~23℃</div>
+        <div class="low">~10℃</div>
+      </div>
+    </div>
+    <div class="alert alert-sky">
+      🐎 8/12~14는 실제 예보 기준이고, 이후는 예보 범위 밖이라 참고값입니다. <b>낮 20~30℃, 밤 10℃ 이하로 일교차가 매우 큰 지역</b>이니 레이어드 옷차림이 필수예요. 출발 며칠 전 다시 확인해 드릴게요.
+    </div>
+  </div>
+
+  <!-- 준비물 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">여행 준비물</div></div>
+
+    <div class="prep-grid">
+      <div class="prep-card">
+        <div class="icon">🧥</div>
+        <div class="title">의류 & 신발 (레이어링 핵심!)</div>
+        <ul>
+          <li>내복/히트텍(밤 추위 대비), 경량 패딩(저녁·밤 필수)</li>
+          <li>반팔/얇은 긴팔 + 기모 후드티·플리스</li>
+          <li>바람막이 재킷(비포장 도로 먼지 방지)</li>
+          <li>청바지·트레킹 팬츠, 편한 운동화</li>
+          <li>슬리퍼(호텔·게르에 없음), 모자·선글라스, 스카프</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🧴</div>
+        <div class="title">세면도구 & 상비약</div>
+        <ul>
+          <li>칫솔·치약, 샴푸/린스/바디워시(고정형 용기)</li>
+          <li>로션·보습제(건조함 심함), 선크림 SPF50+</li>
+          <li>멀미약(필수), 소화제·배탈약, 감기약</li>
+          <li>파스·밴드, 소염제, 콧물약</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🔌</div>
+        <div class="title">전자기기</div>
+        <ul>
+          <li>110V 어댑터(멀티탭 필수 — 게르당 1~2개 필요)</li>
+          <li>핸드폰 충전기, 보조배터리</li>
+          <li>카메라 & 메모리카드</li>
+          <li>헤어드라이기(게르에 없을 수 있음)</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">💡</div>
+        <div class="title">여행자 꿀팁 아이템</div>
+        <ul>
+          <li>보온병(따뜻한 물 보관), 핫팩(밤 추위 대비)</li>
+          <li>목베개, 방수 배낭(먼지 방지)</li>
+          <li>개인 반찬(몽골식 음식이 육류 중심)</li>
+          <li>벌레 퇴치제, 여행용 세제, 압축팩, 손톱깎이</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="checklist" style="margin-top:14px;">
+      <div class="check-item">여권 & 항공권 바우처</div>
+      <div class="check-item">내복/히트텍 & 경량 패딩</div>
+      <div class="check-item">편한 운동화</div>
+      <div class="check-item">세면도구(칫솔·치약·샴푸)</div>
+      <div class="check-item">멀미약 & 파스</div>
+      <div class="check-item">110V 어댑터 & 멀티탭</div>
+      <div class="check-item">선크림 & 보습제</div>
+      <div class="check-item">핸드폰 충전기 & 보조배터리</div>
+      <div class="check-item">카메라</div>
+      <div class="check-item">벌레 퇴치제</div>
+      <div class="check-item">개인 반찬(선택사항)</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-agent">담당 이경진 실장</div>
+    <div class="footer-sub">장나영님 일행의 안전하고 즐거운 몽골 여행을 응원합니다 🐎</div>
+    <div class="footer-btns">
+      <a class="footer-btn tel" href="tel:1544-5714">📞 1544-5714</a>
+      <a class="footer-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 투어콕 카카오톡 채널</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.1});
+sections.forEach(s=>observer.observe(s));
+</script>
+
+</body>
+</html>
