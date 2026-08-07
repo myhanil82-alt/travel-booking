@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>마츠야마 여행 확정서 - 이민정님 가족</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+  --sakura:#D4547A;
+  --sakura-dark:#B23A63;
+  --sakura-bg:#FDF0F4;
+  --gold:#FDB022;
+  --gold-bg:#FFF8EC;
+  --sky-top:#F3E9F2;
+  --sky-bottom:#F7F2ED;
+  --text-main:#1E293B;
+  --text-sub:#5C5468;
+  --text-muted:#928B9C;
+  --card-bg:#FFFFFF;
+  --border:#EEE1E9;
+  --shadow:0 4px 20px rgba(212,84,122,0.10);
+  --max-w:680px;
+  --red:#E24C4C;
+  --red-bg:#FEF0F0;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Pretendard',sans-serif;background:linear-gradient(180deg,var(--sky-top) 0%, var(--sky-bottom) 45%, #FDFBFA 100%);color:var(--text-main);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+
+.top-bar{width:100%;background:rgba(45,27,46,0.92);backdrop-filter:blur(6px);padding:10px 20px;}
+.top-bar-inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.agent-info{color:#FBEFF3;font-size:15px;font-weight:500;}
+.agent-info b{color:#fff;}
+.top-btns{display:flex;gap:8px;}
+.top-btn{font-size:14.5px;font-weight:600;padding:6px 12px;border-radius:20px;background:rgba(255,255,255,0.15);color:#fff;transition:transform .15s ease-out, background .2s;}
+.top-btn:hover{background:rgba(255,255,255,0.28);}
+.top-btn:active{transform:scale(0.97);}
+.top-btn.kakao{background:#FEE500;color:#391B1B;}
+
+.header{width:100%;padding:28px 16px 24px;}
+.header-inner{max-width:var(--max-w);margin:0 auto;text-align:center;position:relative;z-index:1;border-radius:24px;overflow:hidden;padding:48px 24px 40px;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(212,84,122,0.30), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(253,176,34,0.16), transparent 50%),
+    linear-gradient(160deg,#2D1B2E 0%, #3D2740 55%, #4A2E4C 100%);
+  box-shadow:0 12px 32px rgba(45,27,46,0.25);}
+.header-tag{display:inline-block;font-size:14px;font-weight:700;letter-spacing:2.5px;color:var(--gold);border:1px solid rgba(253,176,34,0.5);padding:6px 16px;border-radius:20px;margin-bottom:18px;}
+.header-title{font-size:34px;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-0.5px;text-shadow:0 2px 12px rgba(0,0,0,0.4);}
+.header-subtitle{font-size:16px;color:rgba(255,255,255,0.85);font-weight:500;margin-bottom:28px;letter-spacing:0.5px;}
+.header-names{font-size:22px;font-weight:700;color:#fff;background:rgba(255,255,255,0.1);display:inline-block;padding:10px 24px;border-radius:14px;margin-bottom:22px;}
+.header-cta{display:inline-flex;align-items:center;gap:8px;background:var(--sakura);color:#fff;font-weight:700;font-size:17px;padding:13px 26px;border-radius:12px;box-shadow:0 8px 20px rgba(212,84,122,0.4);transition:transform .2s ease-out, box-shadow .2s;}
+.header-cta:hover{transform:translateY(-2px) scale(1.02);}
+.header-cta:active{transform:scale(0.97);}
+
+.trip-band{width:100%;background:linear-gradient(90deg,var(--sakura),#E88AA6);}
+.trip-band-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);text-align:center;padding:20px 16px;}
+.trip-item .label{font-size:13px;color:rgba(255,255,255,0.85);font-weight:600;margin-bottom:4px;}
+.trip-item .value{font-size:17px;color:#fff;font-weight:800;}
+
+.container{max-width:var(--max-w);margin:0 auto;padding:36px 20px 60px;}
+.section{margin-bottom:36px;opacity:0;transform:translateY(16px);transition:opacity .5s ease-out, transform .5s ease-out;}
+.section.visible{opacity:1;transform:translateY(0);}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.section-num{width:30px;height:30px;border-radius:50%;background:var(--sakura-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0;}
+.section-title{font-size:20px;font-weight:800;color:var(--text-main);}
+
+.product-link-box{display:flex;justify-content:space-between;align-items:center;background:var(--sakura-bg);border:1px solid var(--sakura);border-radius:14px;padding:16px 18px;font-weight:700;color:var(--sakura-dark);margin-bottom:14px;transition:transform .15s ease-out, background .2s;}
+.product-link-box:hover{background:#FBE3EA;transform:scale(1.01);}
+.product-link-box:active{transform:scale(0.98);}
+.product-link-box span.arrow{font-size:20px;}
+
+.alert{border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.6;margin-top:12px;}
+.alert-sakura{background:var(--sakura-bg);border:1px solid var(--sakura);color:#8E2E4E;}
+.alert-gold{background:var(--gold-bg);border:1px solid var(--gold);color:#8A5E0E;}
+.alert-red{background:var(--red-bg);border:1px solid var(--red);color:#B02E2E;}
+
+.benefit-highlight{border:1.5px solid var(--gold);border-radius:16px;background:var(--gold-bg);padding:20px;}
+.benefit-highlight .head{font-weight:800;font-size:17px;color:#8A5E0E;margin-bottom:10px;}
+.benefit-highlight ul{padding-left:0;list-style:none;font-size:15.5px;color:var(--text-sub);line-height:1.9;}
+
+.flight-card{border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px;}
+.flight-header{background:linear-gradient(120deg,#2D1B2E,#4A2E4C);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:700;}
+.flight-header .code{color:var(--gold);}
+.flight-body{background:#fff;padding:20px 18px;}
+.flight-route{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.flight-route .airport{text-align:center;}
+.flight-route .airport .code{font-size:30px;font-weight:800;color:var(--text-main);}
+.flight-route .airport .city{font-size:14px;color:var(--text-sub);margin-top:2px;}
+.flight-route .mid{flex:1;text-align:center;padding:0 12px;}
+.flight-route .mid .time{font-size:14px;color:var(--text-muted);}
+.flight-route .mid .line{height:2px;background:var(--border);position:relative;margin-top:6px;}
+.flight-route .mid .line::after{content:"✈";position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:16px;}
+.flight-badges{display:flex;flex-wrap:wrap;gap:8px;}
+.badge{font-size:14px;font-weight:600;color:var(--text-sub);background:#FBF6F8;border:1px solid var(--border);padding:5px 10px;border-radius:8px;}
+
+.baggage-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.baggage-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.baggage-card .icon{font-size:24px;margin-bottom:6px;}
+.baggage-card .title{font-size:15px;font-weight:700;color:var(--text-sub);margin-bottom:4px;}
+.baggage-card .amount{font-size:18px;font-weight:800;color:var(--sakura-dark);}
+.baggage-card .desc{font-size:14px;color:var(--text-muted);margin-top:4px;line-height:1.5;}
+
+.hotel-card{border:2px solid var(--sakura);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);}
+.hotel-header{background:linear-gradient(120deg,var(--sakura),#E88AA6);color:#fff;padding:10px 18px;font-size:14.5px;font-weight:700;display:flex;justify-content:space-between;align-items:center;}
+.hotel-body{background:#fff;padding:20px 18px;}
+.hotel-name{font-size:22px;font-weight:800;color:var(--text-main);margin-bottom:14px;}
+.hotel-row{display:flex;justify-content:space-between;font-size:16px;padding:9px 0;border-bottom:1px dashed var(--border);}
+.hotel-row:last-child{border-bottom:none;}
+.hotel-row .label{color:var(--text-sub);font-weight:500;}
+.hotel-row .val{color:var(--text-main);font-weight:700;text-align:right;}
+
+.incl-card{border-radius:14px;padding:16px;font-size:15.5px;line-height:1.75;background:var(--sakura-bg);border:1px solid var(--sakura);}
+.incl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#8E2E4E;}
+
+.visa-box{border:1.5px solid var(--gold);border-radius:16px;background:var(--gold-bg);padding:20px;}
+.visa-box .head{font-weight:800;font-size:17px;color:#8A5E0E;margin-bottom:10px;}
+.visa-box .info-row{display:flex;justify-content:space-between;font-size:15.5px;padding:6px 0;border-bottom:1px dashed rgba(138,94,14,0.25);gap:10px;}
+.visa-box .info-row:last-child{border-bottom:none;}
+.visa-box .info-row .val{font-weight:700;text-align:right;}
+.visa-box a.linkbtn{display:inline-block;margin-top:10px;background:var(--gold);color:#fff;font-weight:700;font-size:15.5px;padding:9px 18px;border-radius:10px;}
+
+.benefit-box{border:1.5px solid var(--sakura);border-radius:16px;background:var(--sakura-bg);padding:20px;}
+.benefit-box .head{font-weight:800;font-size:17px;color:#8E2E4E;margin-bottom:10px;}
+.benefit-box a.linkbtn{display:inline-block;margin-top:10px;background:var(--sakura);color:#fff;font-weight:700;font-size:15.5px;padding:9px 18px;border-radius:10px;}
+
+.coupon-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;}
+.coupon-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.coupon-card .title{font-weight:800;font-size:15.5px;color:var(--sakura-dark);margin-bottom:8px;}
+.coupon-card ul{padding-left:16px;font-size:14.5px;color:var(--text-sub);line-height:1.7;}
+
+.shuttle-table{width:100%;border-collapse:collapse;font-size:14px;margin-top:10px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:var(--shadow);}
+.shuttle-table th{background:var(--sakura);color:#fff;padding:8px 4px;font-weight:700;text-align:center;}
+.shuttle-table td{padding:8px 4px;text-align:center;border-bottom:1px solid var(--border);}
+.shuttle-table tr.highlight td{background:var(--sakura-bg);font-weight:800;color:var(--sakura-dark);}
+.shuttle-note{font-size:14px;color:var(--text-sub);margin-top:10px;line-height:1.65;}
+
+.exchange-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:#fff;box-shadow:var(--shadow);}
+.exchange-box .ex-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed var(--border);}
+.exchange-box .ex-row:last-child{border-bottom:none;}
+
+.weather-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
+.weather-card{flex:0 0 auto;width:110px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 8px;text-align:center;box-shadow:var(--shadow);}
+.weather-card .date{font-size:13.5px;font-weight:700;color:var(--text-sub);margin-bottom:6px;}
+.weather-card .day{font-size:12px;color:var(--text-muted);margin-bottom:6px;}
+.weather-card .icon{font-size:26px;margin-bottom:8px;}
+.weather-card .high{font-size:17px;font-weight:800;color:var(--sakura);}
+.weather-card .low{font-size:14px;color:var(--text-muted);margin-top:2px;}
+
+.prep-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.prep-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.prep-card .icon{font-size:22px;margin-bottom:6px;}
+.prep-card .title{font-weight:700;font-size:15.5px;color:var(--sakura-dark);margin-bottom:6px;}
+.prep-card ul{padding-left:16px;font-size:15px;color:var(--text-sub);line-height:1.75;}
+
+@media (max-width:480px){
+  .trip-band-inner{grid-template-columns:repeat(2,1fr);gap:14px;}
+  .baggage-grid,.prep-grid,.coupon-grid{grid-template-columns:1fr;}
+  .header-title{font-size:28px;}
+  .shuttle-table{font-size:11.5px;}
+}
+
+.footer{width:100%;background:#2D1B2E;padding:32px 20px;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;text-align:center;}
+.footer-agent{color:#fff;font-size:17px;font-weight:700;margin-bottom:6px;}
+.footer-sub{color:rgba(255,255,255,0.55);font-size:14.5px;margin-bottom:18px;}
+.footer-btns{display:flex;justify-content:center;gap:10px;}
+.footer-btn{padding:10px 20px;border-radius:12px;font-weight:700;font-size:15.5px;transition:transform .15s ease-out;}
+.footer-btn:active{transform:scale(0.97);}
+.footer-btn.tel{background:var(--sakura);color:#fff;}
+.footer-btn.kakao{background:#FEE500;color:#391B1B;}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="agent-info">담당 <b>이경진 실장</b> · 모두투어 투어콕</div>
+    <div class="top-btns">
+      <a class="top-btn" href="tel:1544-5714">📞 전화상담</a>
+      <a class="top-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡</a>
+    </div>
+  </div>
+</div>
+
+<div class="header">
+  <div class="header-inner">
+    <span class="header-tag">TRAVEL CONFIRMATION</span>
+    <div class="header-title">🏮 마츠야마 자유여행 확정서</div>
+    <div class="header-subtitle">인천국제공항 출발 · 2박 3일 · MATSUYAMA 2026</div>
+    <div class="header-names">이민정님 가족</div><br>
+    <a class="header-cta" href="https://www.modetour.com/package/111112594?MLoc=99&Pnum=111112594&ANO=4547682&sno=C2181215&thru=crs" target="_blank">🔗 여행상품 확인하기</a>
+  </div>
+</div>
+
+<div class="trip-band">
+  <div class="trip-band-inner">
+    <div class="trip-item"><div class="label">출발일</div><div class="value">2026.08.16(일)</div></div>
+    <div class="trip-item"><div class="label">귀국일</div><div class="value">2026.08.18(화)</div></div>
+    <div class="trip-item"><div class="label">일정</div><div class="value">2박 3일</div></div>
+    <div class="trip-item"><div class="label">투어타입</div><div class="value">자유여행</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 상품 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">1</div><div class="section-title">상품 안내</div></div>
+    <a class="product-link-box" href="https://www.modetour.com/package/111112594?MLoc=99&Pnum=111112594&ANO=4547682&sno=C2181215&thru=crs" target="_blank">
+      <span>모두투어 마츠야마 자유여행 상품 바로가기</span>
+      <span class="arrow">↗</span>
+    </a>
+    <div class="benefit-highlight">
+      <div class="head">🛫 이번 상품의 특별 혜택</div>
+      <ul>
+        <li>✔ 제주항공 인천 ↔ 마츠야마 직항</li>
+        <li>✔ 관광지 무료입장권</li>
+        <li>✔ 왕복 무료셔틀 포함</li>
+        <li>✔ 마츠야마 시내 최고 번화가 <b>오카이도 상점가</b>·미츠코시 백화점, 맛집·가챠샵·이자카야가 가득한 오카이도 상점가까지 <b>도보 5분</b></li>
+        <li>✔ <b>마츠야마성</b>까지 도보 7분</li>
+      </ul>
+    </div>
+    <div class="alert alert-sakura">
+      ✔ 본 상품은 <b>가이드 없는 자유여행</b>이며, <b>인천공항 미팅이 없습니다.</b> 개별 티켓팅 후 출발해 주세요.
+    </div>
+  </div>
+
+  <!-- 항공편 정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">항공편 정보</div></div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>출발편 · 제주항공</span><span class="code">7C1771</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 08.16(일) 08:40</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">MYJ</div><div class="city">마츠야마 · 08.16(일) 10:15</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 제주항공</span>
+          <span class="badge">위탁 15kg</span>
+          <span class="badge">기내 10kg</span>
+          <span class="badge">기내식 없음</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>귀국편 · 제주항공</span><span class="code">7C1772</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">MYJ</div><div class="city">마츠야마 · 08.18(화) 11:15</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 08.18(화) 12:55</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 제주항공</span>
+          <span class="badge">위탁 15kg</span>
+          <span class="badge">기내 10kg</span>
+          <span class="badge">기내식 없음</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-sakura">
+      ⚠ 두 항공편 모두 <b>기내식이 제공되지 않습니다.</b> 출발 전 간단한 식사를 준비해 주세요.
+    </div>
+  </div>
+
+  <!-- 수하물 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">수하물 안내</div></div>
+    <div class="baggage-grid">
+      <div class="baggage-card">
+        <div class="icon">🧳</div>
+        <div class="title">위탁수하물</div>
+        <div class="amount">15kg · 1개</div>
+        <div class="desc">성인/아동 기준, 세 변의 합 203cm 이내<br>유아는 10kg (유모차·카시트 등 추가 허용)</div>
+      </div>
+      <div class="baggage-card">
+        <div class="icon">🎒</div>
+        <div class="title">기내수하물</div>
+        <div class="amount">10kg 이하</div>
+        <div class="desc">캐리어 21inch 이하(40×20×55cm)<br>+ 개인휴대품 1개(35×15×40cm) 포함</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 투숙 호텔 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">투숙 호텔</div></div>
+    <div class="hotel-card">
+      <div class="hotel-header"><span>🏨 전 일정 포함</span><span>2박</span></div>
+      <div class="hotel-body">
+        <div class="hotel-name">다이와 로이넷 호텔 마쓰야마<br><span style="font-size:15px;font-weight:500;color:var(--text-sub);">Daiwa Roynet Hotel Matsuyama</span></div>
+        <div class="hotel-row"><span class="label">투숙기간</span><span class="val">2026.08.16 ~ 2026.08.18 (2박)</span></div>
+        <div class="hotel-row"><span class="label">주소</span><span class="val">2 Chome-6-5 Ichibancho<br>(이치반초)</span></div>
+        <div class="hotel-row"><span class="label">우편번호</span><span class="val">790-0001</span></div>
+        <div class="hotel-row"><span class="label">일본 내 연락처</span><span class="val">+81-89-913-1355</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 불포함 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">불포함 사항</div></div>
+    <div class="incl-card">
+      <div class="head">✘ 불포함사항</div>
+      ☞ 현지 교통비 / 관광지 입장료 / 개인식비 등<br>
+      ☞ 기타 구매하지 않은 모든 패스류 및 입장권 등<br>
+      ☞ 일정표상 기존 룸타입에서 변경 시 발생비용 (싱글이용료·업글비용 등)
+    </div>
+  </div>
+
+  <!-- 비지트재팬 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">비지트 재팬 웹(Visit Japan Web) 작성 필수</div></div>
+    <div class="visa-box">
+      <div class="head">📝 입국 전 온라인 입국심사·세관신고 등록</div>
+      일본 입국을 위해 <b>Visit Japan Web</b> 사전 등록이 필요합니다. 아래 정보를 참고해서 작성해 주세요.
+      <div class="info-row"><span>호텔명</span><span class="val">Daiwa Roynet Hotel Matsuyama</span></div>
+      <div class="info-row"><span>우편번호</span><span class="val">790-0001 (입력 시 하단 주소 자동기재)</span></div>
+      <div class="info-row"><span>그 외 주소</span><span class="val">2 Chome-6-5 Ichibancho</span></div>
+      <div class="info-row"><span>일본 내 연락처</span><span class="val">81-89-913-1355</span></div>
+      <br>
+      <a class="linkbtn" href="https://services.digital.go.jp/ko/visit-japan-web/" target="_blank">🔗 Visit Japan Web 작성하기</a>
+      <a class="linkbtn" href="https://blog.naver.com/scurugi/224360221811" target="_blank" style="margin-left:8px;background:#fff;color:#8A5E0E;border:1px solid var(--gold);">📖 작성법 가이드 보기</a>
+    </div>
+  </div>
+
+  <!-- 에히메 무료교환권 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">에히메 무료교환권 & 할인권</div></div>
+    <div class="benefit-box">
+      <div class="head">🎁 제주항공 인천↔마츠야마 직항 이용객 전용</div>
+      마츠야마 공항 도착 후 <b>1층 일본 국내선 인포메이션 센터</b>에서 <b>한국 여권</b>을 제시하면 무료 교환권과 할인권을 받으실 수 있습니다. 각 교환권은 이용할 시설의 매표소에서 여권과 함께 제시 후 티켓으로 교환하시면 됩니다.
+      <br><br>
+      <a class="linkbtn" href="https://www.visitehimejapan.com/ko/updates/update-002/" target="_blank">🔗 자세히 보기 (에히메 공식 관광 사이트)</a>
+    </div>
+
+    <div class="coupon-grid">
+      <div class="coupon-card">
+        <div class="title">1SET · 무료 교환권</div>
+        <ul>
+          <li>마츠야마성 로프웨이/리프트 왕복</li>
+          <li>마츠야마성 전수각 입욕권</li>
+          <li>도고온천 별관 아스카노유 1층 입욕권</li>
+        </ul>
+      </div>
+      <div class="coupon-card">
+        <div class="title">2SET · 무료교환권 & 할인권</div>
+        <ul>
+          <li><b>오즈시</b>: 오즈성·반전소 입장권 각 50% 할인</li>
+          <li><b>무치코정</b>: 목랍자료관 카미하가지처, 상업관 생활박물관 통합티켓 무료교환</li>
+          <li><b>도베정</b>: 도예기 전통산업회관 무료교환</li>
+          <li><b>이마바리시</b>: 이마바리 지역 쿠폰 조정 중(4월 이후 이마바리성 쿠폰 불가)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 도고온천 셔틀버스 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">도고온천 셔틀버스 시간표</div></div>
+    <div class="alert alert-red">
+      🚨 <b>여행 3일차(귀국일, 8/18) 무료 셔틀버스로 공항 이동을 희망하시는 경우, 오카이도역(이치반초)에서 07:05에 출발하는 셔틀버스 탑승이 필수</b>입니다. 놓치시면 다음 편이 늦어져 항공기 시간(11:15)에 촉박할 수 있으니 꼭 시간 맞춰 나와주세요.
+    </div>
+    <table class="shuttle-table">
+      <tr><th>시내→공항 (매일오전)</th><th>이치반초(오카이도)</th><th>JR마쓰야마역</th><th>마쓰야마공항 도착</th></tr>
+      <tr class="highlight"><td>8/18 귀국일 필수</td><td>07:05</td><td>07:20</td><td>07:35</td></tr>
+    </table>
+    <div class="shuttle-note">
+      * 위 시간은 인천-마쓰야마 노선(제주항공) 이용객 대상 왕복 무료셔틀 기준입니다.<br>
+      * 셔틀버스를 놓치신 경우 공항 택시(약 15~20분 소요)도 이용 가능합니다.
+    </div>
+  </div>
+
+  <!-- 환전 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">환전 안내</div></div>
+    <div class="exchange-box">
+      <div class="ex-row"><span>현지 화폐</span><span style="font-weight:700;">일본 엔화 (JPY)</span></div>
+      <div class="ex-row"><span>환전 방법</span><span style="font-weight:700;">국내 은행 환전 또는 트래블월렛/트래블로그 카드</span></div>
+      <div class="ex-row"><span>결제 팁</span><span style="font-weight:700;">호텔·대형매장 카드 결제 가능, 온천·로컬 식당은 현금 권장</span></div>
+    </div>
+  </div>
+
+  <!-- 날씨 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">일자별 날씨 정보</div></div>
+    <div class="weather-row">
+      <div class="weather-card">
+        <div class="date">8/16(일)</div>
+        <div class="day">출국일</div>
+        <div class="icon">☀️</div>
+        <div class="high">33℃</div>
+        <div class="low">25℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">8/17(월)</div>
+        <div class="day">마츠야마</div>
+        <div class="icon">⛅</div>
+        <div class="high">32℃</div>
+        <div class="low">25℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">8/18(화)</div>
+        <div class="day">귀국일</div>
+        <div class="icon">🌦️</div>
+        <div class="high">32℃</div>
+        <div class="low">25℃</div>
+      </div>
+    </div>
+    <div class="alert alert-gold">
+      ☀️ 8월 마츠야마(에히메)는 평균 25~33℃로 고온다습하며 오후 소나기 가능성이 있는 시기입니다. 위 기온은 평년 평균 참고값이며, 출발 며칠 전 실제 예보를 다시 확인해 드릴게요.
+    </div>
+  </div>
+
+  <!-- 준비물 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">11</div><div class="section-title">여행 준비물</div></div>
+    <div class="prep-grid">
+      <div class="prep-card">
+        <div class="icon">👕</div>
+        <div class="title">옷차림</div>
+        <ul>
+          <li>반팔·반바지 등 시원한 옷</li>
+          <li>가벼운 우산 또는 우비</li>
+          <li>온천 산책하기 편한 신발</li>
+          <li>실내 냉방 대비 가벼운 겉옷</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🎒</div>
+        <div class="title">필수 준비물</div>
+        <ul>
+          <li>여권(유효기간 6개월 이상)</li>
+          <li>엔화 현금 · 트래블월렛/카드</li>
+          <li>선크림·모자·선글라스</li>
+          <li>멀티 어댑터(일본 100V, A타입)</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">♨️</div>
+        <div class="title">온천 이용 준비물</div>
+        <ul>
+          <li>개인 수건(호텔/시설 대여 가능한 곳도 있음)</li>
+          <li>목욕용품(개인 선호 제품)</li>
+          <li>슬리퍼·편한 실내복</li>
+          <li>문신이 있는 경우 입욕 가능 여부 사전 확인</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🎟️</div>
+        <div class="title">무료교환권 관련</div>
+        <ul>
+          <li>가족 인원수만큼 여권 지참(개별 교환 시)</li>
+          <li>사용 희망 시설의 운영시간·휴무일 미리 확인</li>
+          <li>1SET/2SET 교환 장소가 다르니 동선 계획 추천</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-agent">담당 이경진 실장</div>
+    <div class="footer-sub">이민정님 가족의 즐거운 마츠야마 여행을 응원합니다 🏮</div>
+    <div class="footer-btns">
+      <a class="footer-btn tel" href="tel:1544-5714">📞 1544-5714</a>
+      <a class="footer-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 투어콕 카카오톡 채널</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.1});
+sections.forEach(s=>observer.observe(s));
+</script>
+
+</body>
+</html>
