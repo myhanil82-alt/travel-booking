@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>대마도 여행 확정서 - 변재희님</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --coral: #D4547A;
+    --coral-bg: #FFF0F4;
+    --navy: #1C3557;
+    --navy-light: #2E4E72;
+    --gold: #C8973A;
+    --gold-light: #F0C870;
+    --mint: #3AA8A0;
+    --bg: #FAFAF8;
+    --card-bg: #FFFFFF;
+    --text-main: #1A1A1A;
+    --text-sub: #5A5A5A;
+    --text-muted: #8A8A8A;
+    --border: #E8E4DC;
+    --shadow: 0 2px 16px rgba(28,53,87,0.08);
+    --max-w: 680px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans KR', sans-serif; font-size: 16px; background: var(--bg); color: var(--text-main); line-height: 1.6; }
+  .header { width: 100%; background: #2D1B2E; background-image: radial-gradient(circle at 20% 20%, rgba(212,84,122,0.20), transparent 50%), radial-gradient(circle at 80% 80%, rgba(255,182,193,0.12), transparent 50%); padding: 40px 20px 32px; }
+  .header-inner { max-width: var(--max-w); margin: 0 auto; text-align: center; color: #fff; }
+  .header-tag { font-size: 13px; letter-spacing: 3px; color: var(--gold-light); text-transform: uppercase; margin-bottom: 12px; }
+  .header-title { font-family: 'Noto Serif KR', serif; font-size: 28px; font-weight: 600; margin-bottom: 8px; }
+  .header-subtitle { font-size: 14px; color: rgba(255,255,255,0.7); margin-bottom: 20px; }
+  .header-names { font-size: 18px; font-weight: 500; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.2); display: inline-block; }
+
+  .trip-band { width: 100%; background: var(--coral); }
+  .trip-band-inner { max-width: var(--max-w); margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); text-align: center; padding: 18px 10px; }
+  .trip-band-inner div { color: #fff; }
+  .tb-label { font-size: 12px; opacity: 0.85; margin-bottom: 4px; }
+  .tb-value { font-size: 15px; font-weight: 600; }
+
+  .container { max-width: var(--max-w); margin: 0 auto; padding: 32px 20px 60px; }
+  .section { margin-bottom: 36px; }
+  .section-head { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+  .section-num { width: 28px; height: 28px; border-radius: 50%; background: var(--navy); color: #fff; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-title { font-size: 18px; font-weight: 700; color: var(--navy); }
+
+  .card { background: var(--card-bg); border-radius: 12px; box-shadow: var(--shadow); padding: 20px; }
+
+  .product-link-box { display: block; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; box-shadow: var(--shadow); text-decoration: none; color: var(--text-main); }
+  .product-link-box .plb-label { font-size: 12px; color: var(--coral); font-weight: 600; margin-bottom: 6px; }
+  .product-link-box .plb-title { font-size: 15px; font-weight: 600; line-height: 1.5; margin-bottom: 6px; }
+  .product-link-box .plb-code { font-size: 12px; color: var(--text-muted); }
+
+  .meeting-box { background: var(--card-bg); border: 1.5px solid var(--coral); border-radius: 12px; padding: 20px; box-shadow: var(--shadow); }
+  .meeting-time { font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+  .meeting-row { display: flex; justify-content: space-between; padding: 8px 0; border-top: 1px dashed var(--border); font-size: 14px; }
+  .meeting-row .mr-label { color: var(--text-sub); }
+  .meeting-row .mr-value { font-weight: 600; }
+
+  .ferry-card { border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); margin-bottom: 14px; }
+  .ferry-header { background: linear-gradient(135deg, var(--navy), var(--navy-light)); color: #fff; padding: 12px 18px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
+  .ferry-header .fh-num { color: var(--gold-light); font-weight: 700; }
+  .ferry-route { background: #fff; padding: 20px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .ferry-route .fr-code { font-size: 26px; font-weight: 700; color: var(--navy); }
+  .ferry-route .fr-time { font-size: 13px; color: var(--text-sub); margin-top: 4px; }
+  .ferry-route .fr-mid { text-align: center; color: var(--text-muted); font-size: 12px; flex: 1; padding: 0 10px; }
+  .ferry-route .fr-arrow { font-size: 18px; color: var(--coral); }
+  .ferry-badges { display: flex; gap: 10px; padding: 12px 18px; background: var(--coral-bg); flex-wrap: wrap; font-size: 12px; color: var(--text-sub); }
+  .ferry-badges span { background: #fff; border-radius: 20px; padding: 5px 12px; border: 1px solid var(--border); }
+
+  .alert { border-radius: 10px; padding: 14px 16px; font-size: 14px; margin-top: 10px; }
+  .alert-navy { background: #EEF2F7; color: var(--navy); border-left: 4px solid var(--navy); }
+  .alert-coral { background: var(--coral-bg); color: #A83A57; border-left: 4px solid var(--coral); }
+  .alert-gold { background: #FDF6E8; color: #8A6A20; border-left: 4px solid var(--gold); }
+  .alert-mint { background: #EAF7F5; color: #1F6E67; border-left: 4px solid var(--mint); }
+
+  .guide-box { background: var(--card-bg); border: 1.5px solid var(--navy); border-radius: 12px; padding: 20px; box-shadow: var(--shadow); }
+  .guide-box .gb-row { display: flex; justify-content: space-between; padding: 8px 0; font-size: 14px; border-top: 1px dashed var(--border); }
+  .guide-box .gb-row:first-child { border-top: none; }
+
+  .hotel-card { border: 2px solid var(--mint); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); }
+  .hotel-header { background: linear-gradient(135deg, var(--mint), #4FC2B8); color: #fff; padding: 10px 18px; font-size: 12px; display: flex; justify-content: space-between; align-items: center; }
+  .hotel-badge { background: rgba(255,255,255,0.25); border-radius: 20px; padding: 3px 10px; font-size: 11px; }
+  .hotel-body { background: #fff; padding: 18px; }
+  .hotel-name { font-size: 19px; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+  .hotel-row { display: flex; justify-content: space-between; font-size: 14px; padding: 6px 0; border-top: 1px dashed var(--border); }
+  .hotel-row:first-of-type { border-top: none; }
+
+  .incl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .incl-box { border-radius: 10px; padding: 14px 16px; font-size: 13px; }
+  .incl-yes { background: #EEF9F1; border-left: 4px solid #3AA85A; }
+  .incl-no { background: #FDEEEE; border-left: 4px solid #D4547A; }
+  .incl-box .ib-title { font-weight: 700; margin-bottom: 8px; }
+  .incl-box ul { padding-left: 16px; }
+  .incl-box li { margin-bottom: 4px; }
+
+  .itinerary-day { margin-bottom: 18px; }
+  .itinerary-day .day-tag { display: inline-block; background: var(--navy); color: #fff; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 20px; margin-bottom: 10px; }
+  .itinerary-day .day-date { font-size: 13px; color: var(--text-sub); margin-left: 8px; }
+  .itinerary-day ul { padding-left: 18px; font-size: 14px; color: var(--text-sub); }
+  .itinerary-day li { margin-bottom: 6px; }
+  .itinerary-day .meal-line { margin-top: 10px; font-size: 13px; color: var(--gold); font-weight: 600; }
+
+  .exchange-box { background: var(--card-bg); border: 1px solid var(--gold); border-radius: 12px; padding: 18px; box-shadow: var(--shadow); font-size: 14px; }
+
+  .prep-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .prep-box { background: var(--card-bg); border-radius: 10px; padding: 14px 16px; box-shadow: var(--shadow); font-size: 13px; }
+  .prep-box .pb-title { font-weight: 700; margin-bottom: 6px; color: var(--navy); }
+
+  .footer { width: 100%; background: var(--navy); padding: 28px 20px; }
+  .footer-inner { max-width: var(--max-w); margin: 0 auto; display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+  .footer-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 14px; }
+  .footer-tel { background: var(--coral); color: #fff; }
+  .footer-kakao { background: #FEE500; color: #3A1D1D; }
+
+  @media (max-width: 480px) {
+    .incl-grid, .prep-grid, .trip-band-inner { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="header-tag">Travel Confirmation</div>
+    <div class="header-title">대마도 확정서</div>
+    <div class="header-subtitle">Tsushima, Japan · 2026</div>
+    <div class="header-names">변재희님</div>
+  </div>
+</div>
+
+<div class="trip-band">
+  <div class="trip-band-inner">
+    <div><div class="tb-label">출발일</div><div class="tb-value">26.08.13(목)</div></div>
+    <div><div class="tb-label">귀국일</div><div class="tb-value">26.08.14(금)</div></div>
+    <div><div class="tb-label">일정</div><div class="tb-value">1박 2일</div></div>
+    <div><div class="tb-label">투어타입</div><div class="tb-value">패키지</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="section">
+    <div class="section-head"><div class="section-num">1</div><div class="section-title">상품 안내</div></div>
+    <a class="product-link-box" href="https://www.modetour.com/package/109055048?MLoc=99&Pnum=109055048&ANO=1772510&sno=C2181215&thru=crs" target="_blank">
+      <div class="plb-label">모두투어 상품 바로가기</div>
+      <div class="plb-title">★365일 매일출발★ [토요코인이즈하라100%확정+온천욕+게르마늄수액시트 특전] 대마도 2일 (연합)</div>
+      <div class="plb-code">상품코드 BJC651NNH2 · 단체번호 109055048</div>
+    </a>
+    <div class="alert alert-navy">본 상품은 타 예약자와 함께 진행되는 <b>연합행사</b>입니다. 최종 행사인원에 따라 미팅 방식이 달라지니 아래 안내를 꼭 확인해주세요.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">집결 안내</div></div>
+    <div class="meeting-box">
+      <div class="meeting-time">08:10 부산 신국제여객터미널 집결 (권장)</div>
+      <div class="meeting-row"><span class="mr-label">집결 장소</span><span class="mr-value">부산 신국제여객터미널 3층 스타라인(NOVA) 카운터 앞</span></div>
+      <div class="meeting-row"><span class="mr-label">출발 시각</span><span class="mr-value">09:10</span></div>
+      <div class="meeting-row"><span class="mr-label">권장 도착</span><span class="mr-value">출발 1시간 전</span></div>
+    </div>
+    <div class="alert alert-gold">
+      <b>최종 행사인원 9명 이하</b> 진행 시 → 현지(히타카츠) 여객터미널에서 차량 가이드(10인승 차량)와 미팅 후 일정 진행<br>
+      <b>최종 행사인원 10명 이상</b> 진행 시 → 부산 여객터미널에서 가이드와 미팅 후 함께 출발
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">선박 일정</div></div>
+
+    <div class="ferry-card">
+      <div class="ferry-header"><span>출발편</span><span class="fh-num">스타라인(NOVA)</span></div>
+      <div class="ferry-route">
+        <div><div class="fr-code">PUS</div><div class="fr-time">부산 · 08.13(목) 09:10</div></div>
+        <div class="fr-mid">1시간 30분<br><span class="fr-arrow">➜</span></div>
+        <div style="text-align:right"><div class="fr-code">HIT</div><div class="fr-time">히타카츠 · 08.13(목) 10:40</div></div>
+      </div>
+      <div class="ferry-badges"><span>선사 스타라인</span><span>부산 신국제여객터미널</span></div>
+    </div>
+
+    <div class="ferry-card">
+      <div class="ferry-header"><span>귀국편</span><span class="fh-num">스타라인(NOVA)</span></div>
+      <div class="ferry-route">
+        <div><div class="fr-code">HIT</div><div class="fr-time">히타카츠 · 08.14(금) 16:10</div></div>
+        <div class="fr-mid">1시간 30분<br><span class="fr-arrow">➜</span></div>
+        <div style="text-align:right"><div class="fr-code">PUS</div><div class="fr-time">부산 · 08.14(금) 17:40</div></div>
+      </div>
+      <div class="ferry-badges"><span>선사 스타라인</span><span>히타카츠 국제여객터미널</span></div>
+    </div>
+
+    <div class="alert alert-navy">선박 수하물은 별도 중량 제한이 상품 페이지에 명시되어 있지 않습니다. 여유롭게 휴대 가능한 범위 내에서 짐을 준비해주시고, 정확한 수하물 규정은 승선 전 스타라인 카운터에서 다시 한번 확인해주세요.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">투숙 호텔</div></div>
+    <div class="hotel-card">
+      <div class="hotel-header"><span>확정 호텔</span><span class="hotel-badge">1박 포함</span></div>
+      <div class="hotel-body">
+        <div class="hotel-name">토요코인 호텔 이즈하라점</div>
+        <div class="hotel-row"><span>투숙 기간</span><span>1박2일 · 8/13(목) 1박</span></div>
+        <div class="hotel-row"><span>위치</span><span>대마도 이즈하라</span></div>
+        <div class="hotel-row"><span>조식</span><span>호텔식 포함 (2일차)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">일정표</div></div>
+
+    <div class="itinerary-day">
+      <span class="day-tag">1일차</span><span class="day-date">2026.08.13(목) · 부산 → 대마도</span>
+      <ul>
+        <li>부산 출발(09:10) → 히타카츠 도착(10:40)</li>
+        <li>이즈하라 이동 (시내도로 협소로 도보 이동 구간 포함)</li>
+        <li>금석성(가네이시성터) · 덕혜옹주 결혼봉축기념비</li>
+        <li>나가라이 토스이 기념관 · 방화벽 · 팔번궁</li>
+        <li>에보시다케 전망대 · 와타즈미 신사(차창) · 한국전망대</li>
+        <li>미우다 해수욕장</li>
+        <li>토요코인 호텔 이즈하라점 체크인 · <b>온천욕</b> 특전</li>
+      </ul>
+      <div class="meal-line">식사: 중식 - 현지식 / 석식 - 현지식(바베큐 특식)</div>
+    </div>
+
+    <div class="itinerary-day">
+      <span class="day-tag">2일차</span><span class="day-date">2026.08.14(금) · 대마도 → 부산</span>
+      <ul>
+        <li>호텔 조식 후 히타카츠 이동</li>
+        <li>만제키바시(만관교) 관광</li>
+        <li>히타카츠 출발(16:10) → 부산 도착(17:40)</li>
+      </ul>
+      <div class="meal-line">식사: 조식 - 호텔식</div>
+    </div>
+
+    <div class="alert alert-mint">게르마늄 수액시트 특전이 포함된 상품입니다. 현지 안내에 따라 수령해주세요.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">포함 / 불포함</div></div>
+    <div class="incl-grid">
+      <div class="incl-box incl-yes">
+        <div class="ib-title">포함 사항</div>
+        <ul>
+          <li>최대 1억원 해외여행자보험</li>
+          <li>왕복 선박</li>
+          <li>한/일 유류부두세</li>
+          <li>현지 경비 (일정 내 식사/숙박/차량 등)</li>
+        </ul>
+      </div>
+      <div class="incl-box incl-no">
+        <div class="ib-title">불포함 사항</div>
+        <ul>
+          <li>가이드/기사 경비 1인당 20,000원 (현지 지불, 유아 제외)</li>
+          <li>국제관광여객세 1인당 3,000엔 (현지 지불)</li>
+          <li>개인경비 (엔화로 환전 권장)</li>
+          <li>2인실 기준 상품 · 트윈 변경 시 1인당 10,000원 추가 / 싱글(1인실) 1인당 30,000원 추가</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">일본 입국 안내</div></div>
+    <div class="alert alert-navy">여권 유효기간 6개월 이상 필요 · 관광 목적 단기체류는 비자 불요</div>
+    <div class="alert alert-gold">Visit Japan Web(사전 입국신고+세관신고) 등록을 권장드립니다. 출발 전 미리 등록해두시면 입국 절차가 한결 빨라집니다.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">환전 안내</div></div>
+    <div class="exchange-box">
+      개인 경비는 <b>엔화(JPY)</b>로 환전하시거나 트래블월렛 등 환전 서비스를 이용하시기 바랍니다.<br>
+      현지에서 <b>국제관광여객세 1인당 3,000엔</b>과 <b>가이드/기사 경비 1인당 20,000원(원화 가능)</b>을 별도 지불하셔야 하니 미리 준비해주세요.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">날씨 & 준비물</div></div>
+    <div class="prep-grid">
+      <div class="prep-box"><div class="pb-title">날씨</div>8월 대마도는 한여름 무더위와 높은 습도가 특징입니다. 낮 기온 30도 이상, 습하고 갑작스러운 소나기가 잦습니다.</div>
+      <div class="prep-box"><div class="pb-title">옷차림</div>통풍 잘 되는 여름 옷, 걷기 편한 신발, 우산 또는 우비, 모자·선글라스</div>
+      <div class="prep-box"><div class="pb-title">온천 준비물</div>온천욕 특전이 포함되어 있으니 수건, 세면도구를 준비하시면 좋습니다.</div>
+      <div class="prep-box"><div class="pb-title">기타</div>선크림, 개인 상비약, 보조배터리, 엔화 소액권</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <a class="footer-btn footer-tel" href="tel:1544-5714">☎ 1544-5714</a>
+    <a class="footer-btn footer-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">투어콕 카카오톡 채널</a>
+  </div>
+</div>
+
+</body>
+</html>
