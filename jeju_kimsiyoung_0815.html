@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제주도 여행 확정서 - 김시영님</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+  --teal:#0E8C8C;
+  --teal-dark:#0A6363;
+  --teal-bg:#E9F7F6;
+  --tangerine:#F2994A;
+  --tangerine-bg:#FEF2E7;
+  --gold:#E8A93E;
+  --gold-bg:#FDF3E5;
+  --sky-top:#E6F4F1;
+  --sky-bottom:#F7F8F4;
+  --text-main:#1E2A2A;
+  --text-sub:#57696A;
+  --text-muted:#8CA0A0;
+  --card-bg:#FFFFFF;
+  --border:#E1EAE6;
+  --shadow:0 4px 20px rgba(14,140,140,0.10);
+  --max-w:680px;
+  --red:#D3453C;
+  --red-bg:#FDEFED;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Pretendard',sans-serif;background:linear-gradient(180deg,var(--sky-top) 0%, var(--sky-bottom) 45%, #FBFAF7 100%);color:var(--text-main);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+
+.top-bar{width:100%;background:rgba(10,99,99,0.92);backdrop-filter:blur(6px);padding:10px 20px;}
+.top-bar-inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.agent-info{color:#E9F7F6;font-size:15px;font-weight:500;}
+.agent-info b{color:#fff;}
+.top-btns{display:flex;gap:8px;}
+.top-btn{font-size:14.5px;font-weight:600;padding:6px 12px;border-radius:20px;background:rgba(255,255,255,0.15);color:#fff;transition:transform .15s ease-out, background .2s;}
+.top-btn:hover{background:rgba(255,255,255,0.28);}
+.top-btn:active{transform:scale(0.97);}
+.top-btn.kakao{background:#FEE500;color:#391B1B;}
+
+.header{width:100%;padding:28px 16px 24px;}
+.header-inner{max-width:var(--max-w);margin:0 auto;text-align:center;position:relative;z-index:1;border-radius:24px;overflow:hidden;padding:48px 24px 40px;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(14,140,140,0.32), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(242,153,74,0.20), transparent 50%),
+    linear-gradient(160deg,#062E2E 0%, #0A6363 55%, #0E8C8C 100%);
+  box-shadow:0 12px 32px rgba(6,46,46,0.28);}
+.header-tag{display:inline-block;font-size:14px;font-weight:700;letter-spacing:2.5px;color:var(--gold);border:1px solid rgba(232,169,62,0.5);padding:6px 16px;border-radius:20px;margin-bottom:18px;}
+.header-title{font-size:34px;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-0.5px;text-shadow:0 2px 12px rgba(0,0,0,0.4);}
+.header-subtitle{font-size:16px;color:rgba(255,255,255,0.85);font-weight:500;margin-bottom:28px;letter-spacing:0.5px;}
+.header-names{font-size:22px;font-weight:700;color:#fff;background:rgba(255,255,255,0.1);display:inline-block;padding:10px 24px;border-radius:14px;margin-bottom:22px;}
+.header-cta{display:inline-flex;align-items:center;gap:8px;background:var(--tangerine);color:#fff;font-weight:700;font-size:17px;padding:13px 26px;border-radius:12px;box-shadow:0 8px 20px rgba(242,153,74,0.4);transition:transform .2s ease-out, box-shadow .2s;}
+.header-cta:hover{transform:translateY(-2px) scale(1.02);}
+.header-cta:active{transform:scale(0.97);}
+
+.trip-band{width:100%;background:linear-gradient(90deg,var(--teal),#3CB3B3);}
+.trip-band-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);text-align:center;padding:20px 16px;}
+.trip-item .label{font-size:13px;color:rgba(255,255,255,0.85);font-weight:600;margin-bottom:4px;}
+.trip-item .value{font-size:17px;color:#fff;font-weight:800;}
+
+.container{max-width:var(--max-w);margin:0 auto;padding:36px 20px 60px;}
+.section{margin-bottom:36px;opacity:0;transform:translateY(16px);transition:opacity .5s ease-out, transform .5s ease-out;}
+.section.visible{opacity:1;transform:translateY(0);}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.section-num{width:30px;height:30px;border-radius:50%;background:var(--teal-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0;}
+.section-title{font-size:20px;font-weight:800;color:var(--text-main);}
+
+.product-link-box{display:flex;justify-content:space-between;align-items:center;background:var(--teal-bg);border:1px solid var(--teal);border-radius:14px;padding:16px 18px;font-weight:700;color:var(--teal-dark);margin-bottom:14px;transition:transform .15s ease-out, background .2s;}
+.product-link-box:hover{background:#DBF3F1;transform:scale(1.01);}
+.product-link-box:active{transform:scale(0.98);}
+.product-link-box span.arrow{font-size:20px;}
+
+.alert{border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.6;margin-top:12px;}
+.alert-teal{background:var(--teal-bg);border:1px solid var(--teal);color:#0A6363;}
+.alert-tangerine{background:var(--tangerine-bg);border:1px solid var(--tangerine);color:#A3540E;}
+.alert-gold{background:var(--gold-bg);border:1px solid var(--gold);color:#8A5E0E;}
+.alert-red{background:var(--red-bg);border:1px solid var(--red);color:#A32C24;}
+
+.counter-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:var(--gold-bg);}
+.step{display:flex;gap:12px;margin-bottom:14px;}
+.step:last-child{margin-bottom:0;}
+.step-num{width:26px;height:26px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0;}
+.step-text{font-size:16px;color:var(--text-main);line-height:1.6;}
+.step-text b{color:#8A5E0E;}
+
+.flight-card{border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px;}
+.flight-header{background:linear-gradient(120deg,#062E2E,#0A6363);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:700;}
+.flight-header .code{color:var(--gold);}
+.flight-body{background:#fff;padding:20px 18px;}
+.flight-route{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.flight-route .airport{text-align:center;}
+.flight-route .airport .code{font-size:30px;font-weight:800;color:var(--text-main);}
+.flight-route .airport .city{font-size:14px;color:var(--text-sub);margin-top:2px;}
+.flight-route .mid{flex:1;text-align:center;padding:0 12px;}
+.flight-route .mid .time{font-size:14px;color:var(--text-muted);}
+.flight-route .mid .line{height:2px;background:var(--border);position:relative;margin-top:6px;}
+.flight-route .mid .line::after{content:"✈";position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:16px;}
+.flight-badges{display:flex;flex-wrap:wrap;gap:8px;}
+.badge{font-size:14px;font-weight:600;color:var(--text-sub);background:#F3FAFA;border:1px solid var(--border);padding:5px 10px;border-radius:8px;}
+
+.baggage-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.baggage-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.baggage-card .icon{font-size:24px;margin-bottom:6px;}
+.baggage-card .title{font-size:15px;font-weight:700;color:var(--text-sub);margin-bottom:4px;}
+.baggage-card .amount{font-size:20px;font-weight:800;color:var(--teal-dark);}
+.baggage-card .desc{font-size:14px;color:var(--text-muted);margin-top:4px;line-height:1.5;}
+
+.guide-box{border:1.5px solid var(--teal-dark);border-radius:16px;background:var(--teal-bg);padding:20px;}
+.guide-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed rgba(10,99,99,0.2);gap:10px;}
+.guide-row:last-child{border-bottom:none;}
+.guide-row .label{color:var(--text-sub);}
+.guide-row .val{font-weight:700;color:var(--teal-dark);text-align:right;}
+
+.hotel-card{border:2px solid var(--teal);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);}
+.hotel-header{background:linear-gradient(120deg,var(--teal),#3CB3B3);color:#fff;padding:10px 18px;font-size:14.5px;font-weight:700;display:flex;justify-content:space-between;align-items:center;}
+.hotel-body{background:#fff;padding:20px 18px;}
+.hotel-name{font-size:22px;font-weight:800;color:var(--text-main);margin-bottom:8px;}
+.hotel-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed var(--border);}
+.hotel-row:last-child{border-bottom:none;}
+.hotel-row .label{color:var(--text-sub);font-weight:500;}
+.hotel-row .val{color:var(--text-main);font-weight:700;text-align:right;}
+
+.incl-card{border-radius:14px;padding:16px;font-size:15.5px;line-height:1.75;background:var(--tangerine-bg);border:1px solid var(--tangerine);}
+.incl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#A3540E;}
+
+.weather-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
+.weather-card{flex:0 0 auto;width:110px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 8px;text-align:center;box-shadow:var(--shadow);}
+.weather-card .date{font-size:13.5px;font-weight:700;color:var(--text-sub);margin-bottom:6px;}
+.weather-card .day{font-size:12px;color:var(--text-muted);margin-bottom:6px;}
+.weather-card .icon{font-size:26px;margin-bottom:8px;}
+.weather-card .high{font-size:17px;font-weight:800;color:var(--tangerine);}
+.weather-card .low{font-size:14px;color:var(--text-muted);margin-top:2px;}
+
+.prep-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.prep-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.prep-card .icon{font-size:22px;margin-bottom:6px;}
+.prep-card .title{font-weight:700;font-size:15.5px;color:var(--teal-dark);margin-bottom:6px;}
+.prep-card ul{padding-left:16px;font-size:15px;color:var(--text-sub);line-height:1.75;}
+
+@media (max-width:480px){
+  .trip-band-inner{grid-template-columns:repeat(2,1fr);gap:14px;}
+  .baggage-grid,.prep-grid{grid-template-columns:1fr;}
+  .header-title{font-size:28px;}
+}
+
+.footer{width:100%;background:#062E2E;padding:32px 20px;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;text-align:center;}
+.footer-agent{color:#fff;font-size:17px;font-weight:700;margin-bottom:6px;}
+.footer-sub{color:rgba(255,255,255,0.55);font-size:14.5px;margin-bottom:18px;}
+.footer-btns{display:flex;justify-content:center;gap:10px;}
+.footer-btn{padding:10px 20px;border-radius:12px;font-weight:700;font-size:15.5px;transition:transform .15s ease-out;}
+.footer-btn:active{transform:scale(0.97);}
+.footer-btn.tel{background:var(--tangerine);color:#fff;}
+.footer-btn.kakao{background:#FEE500;color:#391B1B;}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="agent-info">담당 <b>이경진 실장</b> · 모두투어 투어콕</div>
+    <div class="top-btns">
+      <a class="top-btn" href="tel:1544-5714">📞 전화상담</a>
+      <a class="top-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡</a>
+    </div>
+  </div>
+</div>
+
+<div class="header">
+  <div class="header-inner">
+    <span class="header-tag">TRAVEL CONFIRMATION</span>
+    <div class="header-title">🍊 제주도 여행 확정서</div>
+    <div class="header-subtitle">김포국제공항 출발 · 2박 3일 · JEJU 2026</div>
+    <div class="header-names">김시영님</div><br>
+    <a class="header-cta" href="https://www.modetour.com/package/111603510?MLoc=99&Pnum=111603510&ANO=4547682&sno=C2181215&thru=crs" target="_blank">🔗 여행상품 확인하기</a>
+  </div>
+</div>
+
+<div class="trip-band">
+  <div class="trip-band-inner">
+    <div class="trip-item"><div class="label">출발일</div><div class="value">2026.08.15(토)</div></div>
+    <div class="trip-item"><div class="label">귀국일</div><div class="value">2026.08.17(월)</div></div>
+    <div class="trip-item"><div class="label">일정</div><div class="value">2박 3일</div></div>
+    <div class="trip-item"><div class="label">투어타입</div><div class="value">패키지(연합)</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 상품 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">1</div><div class="section-title">상품 안내</div></div>
+    <a class="product-link-box" href="https://www.modetour.com/package/111603510?MLoc=99&Pnum=111603510&ANO=4547682&sno=C2181215&thru=crs" target="_blank">
+      <span>모두투어 제주도 패키지 상품 바로가기</span>
+      <span class="arrow">↗</span>
+    </a>
+    <div class="alert alert-teal">
+      ✔ 이스타항공 예약번호(PNR): <b>I5KQKP</b> (김시영)
+    </div>
+    <div class="alert alert-tangerine">
+      ℹ 본 상품은 <b>연합상품</b>으로, 제주공항 미팅 시 대기 시간이 발생할 수 있는 점 양해 부탁드립니다. 자세한 내용은 5번 항목을 참고해 주세요.
+    </div>
+  </div>
+
+  <!-- 항공권 수령 및 체크인 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">항공권 수령 및 체크인 안내</div></div>
+    <div class="counter-box">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">장소: <b>김포공항 국내선 2층</b></div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">각 항공사 <b>키오스크(자동발권기)</b> 또는 <b>웹/모바일 사전 체크인</b>으로 탑승권을 받으실 수 있습니다.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">수하물이 있으신 경우, 체크인 후 <b>수하물 전용카운터</b>에서 위탁해 주세요.</div>
+      </div>
+    </div>
+    <div class="alert alert-tangerine">
+      ⚠ <b>공항 혼잡으로 1시간 이상 여유시간</b>을 두고 도착해 주세요. <b>신분증 지참 필수</b>이며(아동 동반 시 주민등록등본 지참), 국내선이라도 여유 있게 준비해 주시는 걸 권장드립니다.
+    </div>
+  </div>
+
+  <!-- 항공편 정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">항공편 정보</div></div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>출발편 · 이스타항공</span><span class="code">ZE217</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">GMP</div><div class="city">김포 · 08.15(토) 13:45</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">CJU</div><div class="city">제주 · 08.15(토) 15:00</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 이스타항공</span>
+          <span class="badge">위탁 15kg</span>
+          <span class="badge">기내 10kg</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>귀국편 · 이스타항공</span><span class="code">ZE230</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">CJU</div><div class="city">제주 · 08.17(월) 20:25</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">GMP</div><div class="city">김포 · 08.17(월) 21:40</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 이스타항공</span>
+          <span class="badge">위탁 15kg</span>
+          <span class="badge">기내 10kg</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 수하물 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">수하물 안내</div></div>
+    <div class="baggage-grid">
+      <div class="baggage-card">
+        <div class="icon">🧳</div>
+        <div class="title">위탁수하물</div>
+        <div class="amount">15kg · 1개</div>
+        <div class="desc">3면의 합 203cm 이하<br>만 2세 미만 유아 동반 시 유모차·요람·카시트 중 1개 무료위탁 가능</div>
+      </div>
+      <div class="baggage-card">
+        <div class="icon">🎒</div>
+        <div class="title">기내수하물</div>
+        <div class="amount">10kg 이하</div>
+        <div class="desc">3면의 합 115cm 이하<br>(20+55+40cm)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 제주공항 미팅 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">제주공항 미팅 안내</div></div>
+    <div class="alert alert-tangerine">
+      🛬 제주공항 <b>연합팀 미팅 시간은 16시경</b>입니다. 연합상품 특성상 다른 여행사 고객들과 함께 미팅이 진행되어 <b>대기 시간이 발생할 수 있는 점</b> 양해 부탁드립니다.
+    </div>
+  </div>
+
+  <!-- 현지 정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">현지 가이드 & 행사 정보</div></div>
+    <div class="guide-box">
+      <div class="guide-row"><span class="label">가이드(기사) 연락처</span><span class="val">8/14(금) 안내 예정</span></div>
+      <div class="guide-row"><span class="label">현지 비상연락처</span><span class="val">064-711-5088</span></div>
+      <div class="guide-row"><span class="label">행사인원</span><span class="val">8/14(금) 안내 예정</span></div>
+      <div class="guide-row"><span class="label">행사차량</span><span class="val">8/14(금) 안내 예정</span></div>
+    </div>
+    <div class="alert alert-teal">
+      📅 가이드 연락처·행사인원·차량 정보는 <b>8월 14일(금)</b>에 별도 안내드릴 예정입니다.
+    </div>
+  </div>
+
+  <!-- 투숙 호텔 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">투숙 호텔</div></div>
+    <div class="hotel-card">
+      <div class="hotel-header"><span>🏨 제주</span><span>2박</span></div>
+      <div class="hotel-body">
+        <div class="hotel-name">제주 해마호텔</div>
+        <div class="hotel-row"><span class="label">체크인 대표자</span><span class="val">김시영님</span></div>
+        <div class="hotel-row"><span class="label">객실 타입</span><span class="val">스탠다드 더블룸 1객실</span></div>
+        <div class="hotel-row"><span class="label">투숙기간</span><span class="val">2026.08.15 ~ 2026.08.17 (2박)</span></div>
+        <div class="hotel-row"><span class="label">조식</span><span class="val">포함</span></div>
+        <div class="hotel-row"><span class="label">호텔 예약번호</span><span class="val">#141889</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 불포함 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">불포함 사항</div></div>
+    <div class="incl-card">
+      <div class="head">✘ 불포함사항</div>
+      ① 선택관광비용, 개인세면도구, 개인경비 등<br>
+      ② 국내선 유류할증료 변동 시 차액 (매달 상이하며 발권일 기준 적용)<br>
+      ③ 국내여행자 보험<br>
+      ④ 가이드 경비 1인 <b>20,000원</b>(성인·소아 동일)<br>
+      ⑤ 전 일정 석식
+    </div>
+  </div>
+
+  <!-- 날씨 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">일자별 날씨 정보</div></div>
+    <div class="weather-row">
+      <div class="weather-card">
+        <div class="date">8/15(토)</div>
+        <div class="day">출국일</div>
+        <div class="icon">☀️</div>
+        <div class="high">31℃</div>
+        <div class="low">26℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">8/16(일)</div>
+        <div class="day">제주</div>
+        <div class="icon">⛅</div>
+        <div class="high">30℃</div>
+        <div class="low">25℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">8/17(월)</div>
+        <div class="day">귀국일</div>
+        <div class="icon">🌦️</div>
+        <div class="high">30℃</div>
+        <div class="low">25℃</div>
+      </div>
+    </div>
+    <div class="alert alert-gold">
+      ☀️ 8월 제주는 평균 25~31℃로 고온다습하며, 오후 소나기나 태풍 영향이 있을 수 있는 시기입니다. 위 기온은 평년 평균 참고값이며, 출발 며칠 전 실제 예보를 다시 확인해 드릴게요.
+    </div>
+  </div>
+
+  <!-- 준비물 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">여행 준비물</div></div>
+    <div class="prep-grid">
+      <div class="prep-card">
+        <div class="icon">🪪</div>
+        <div class="title">필수 서류</div>
+        <ul>
+          <li>신분증(주민등록증·운전면허증 등)</li>
+          <li>아동 동반 시 주민등록등본</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">👕</div>
+        <div class="title">옷차림</div>
+        <ul>
+          <li>반팔·반바지 등 시원한 여름옷</li>
+          <li>수영복(해변·물놀이 일정 대비)</li>
+          <li>우산 또는 우비(소나기·태풍 대비)</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🎒</div>
+        <div class="title">기타 준비물</div>
+        <ul>
+          <li>선크림·모자·선글라스</li>
+          <li>개인 세면도구(불포함 항목이라 별도 준비)</li>
+          <li>상비약(소화제·해열제 등)</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">💳</div>
+        <div class="title">경비 관련</div>
+        <ul>
+          <li>가이드 경비 20,000원(현금 준비 권장)</li>
+          <li>전 일정 석식 불포함이니 식비 별도 준비</li>
+          <li>선택관광 참여 시 별도 결제</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-agent">담당 이경진 실장</div>
+    <div class="footer-sub">김시영님의 즐거운 제주도 여행을 응원합니다 🍊</div>
+    <div class="footer-btns">
+      <a class="footer-btn tel" href="tel:1544-5714">📞 1544-5714</a>
+      <a class="footer-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 투어콕 카카오톡 채널</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.1});
+sections.forEach(s=>observer.observe(s));
+</script>
+
+</body>
+</html>
