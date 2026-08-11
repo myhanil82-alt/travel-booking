@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>마나도 여행 확정서 - 이주학님 일행</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+  --ocean:#0B6E8F;
+  --ocean-dark:#084D64;
+  --ocean-bg:#E8F4F8;
+  --reef:#1FAE8E;
+  --reef-bg:#E7F9F4;
+  --gold:#F0A93E;
+  --gold-bg:#FEF6E8;
+  --sky-top:#E5F3F5;
+  --sky-bottom:#F6F9F5;
+  --text-main:#1E2A2E;
+  --text-sub:#57696E;
+  --text-muted:#8CA0A5;
+  --card-bg:#FFFFFF;
+  --border:#E1EAEA;
+  --shadow:0 4px 20px rgba(11,110,143,0.10);
+  --max-w:680px;
+  --red:#D3453C;
+  --red-bg:#FDEFED;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Pretendard',sans-serif;background:linear-gradient(180deg,var(--sky-top) 0%, var(--sky-bottom) 45%, #FBFAF7 100%);color:var(--text-main);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+
+.top-bar{width:100%;background:rgba(8,77,100,0.92);backdrop-filter:blur(6px);padding:10px 20px;}
+.top-bar-inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.agent-info{color:#E8F4F8;font-size:15px;font-weight:500;}
+.agent-info b{color:#fff;}
+.top-btns{display:flex;gap:8px;}
+.top-btn{font-size:14.5px;font-weight:600;padding:6px 12px;border-radius:20px;background:rgba(255,255,255,0.15);color:#fff;transition:transform .15s ease-out, background .2s;}
+.top-btn:hover{background:rgba(255,255,255,0.28);}
+.top-btn:active{transform:scale(0.97);}
+.top-btn.kakao{background:#FEE500;color:#391B1B;}
+
+.header{width:100%;padding:28px 16px 24px;}
+.header-inner{max-width:var(--max-w);margin:0 auto;text-align:center;position:relative;z-index:1;border-radius:24px;overflow:hidden;padding:48px 24px 40px;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(11,110,143,0.32), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(31,174,142,0.22), transparent 50%),
+    linear-gradient(160deg,#052E3B 0%, #084D64 55%, #0B6E8F 100%);
+  box-shadow:0 12px 32px rgba(5,46,59,0.28);}
+.header-tag{display:inline-block;font-size:14px;font-weight:700;letter-spacing:2.5px;color:var(--gold);border:1px solid rgba(240,169,62,0.5);padding:6px 16px;border-radius:20px;margin-bottom:18px;}
+.header-title{font-size:34px;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-0.5px;text-shadow:0 2px 12px rgba(0,0,0,0.4);}
+.header-subtitle{font-size:16px;color:rgba(255,255,255,0.85);font-weight:500;margin-bottom:28px;letter-spacing:0.5px;}
+.header-names{font-size:22px;font-weight:700;color:#fff;background:rgba(255,255,255,0.1);display:inline-block;padding:10px 24px;border-radius:14px;margin-bottom:22px;}
+.header-cta{display:inline-flex;align-items:center;gap:8px;background:var(--reef);color:#fff;font-weight:700;font-size:17px;padding:13px 26px;border-radius:12px;box-shadow:0 8px 20px rgba(31,174,142,0.4);transition:transform .2s ease-out, box-shadow .2s;}
+.header-cta:hover{transform:translateY(-2px) scale(1.02);}
+.header-cta:active{transform:scale(0.97);}
+
+.trip-band{width:100%;background:linear-gradient(90deg,var(--ocean),#3D93B4);}
+.trip-band-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);text-align:center;padding:20px 16px;}
+.trip-item .label{font-size:13px;color:rgba(255,255,255,0.85);font-weight:600;margin-bottom:4px;}
+.trip-item .value{font-size:17px;color:#fff;font-weight:800;}
+
+.container{max-width:var(--max-w);margin:0 auto;padding:36px 20px 60px;}
+.section{margin-bottom:36px;opacity:0;transform:translateY(16px);transition:opacity .5s ease-out, transform .5s ease-out;}
+.section.visible{opacity:1;transform:translateY(0);}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.section-num{width:30px;height:30px;border-radius:50%;background:var(--ocean-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0;}
+.section-title{font-size:20px;font-weight:800;color:var(--text-main);}
+
+.product-link-box{display:flex;justify-content:space-between;align-items:center;background:var(--ocean-bg);border:1px solid var(--ocean);border-radius:14px;padding:16px 18px;font-weight:700;color:var(--ocean-dark);margin-bottom:14px;transition:transform .15s ease-out, background .2s;}
+.product-link-box:hover{background:#DBEFF4;transform:scale(1.01);}
+.product-link-box:active{transform:scale(0.98);}
+.product-link-box span.arrow{font-size:20px;}
+
+.alert{border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.6;margin-top:12px;}
+.alert-ocean{background:var(--ocean-bg);border:1px solid var(--ocean);color:#084D64;}
+.alert-reef{background:var(--reef-bg);border:1px solid var(--reef);color:#0F6E58;}
+.alert-gold{background:var(--gold-bg);border:1px solid var(--gold);color:#8A5E0E;}
+.alert-red{background:var(--red-bg);border:1px solid var(--red);color:#A32C24;}
+
+.counter-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:var(--gold-bg);}
+.step{display:flex;gap:12px;margin-bottom:14px;}
+.step:last-child{margin-bottom:0;}
+.step-num{width:26px;height:26px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0;}
+.step-text{font-size:16px;color:var(--text-main);line-height:1.6;}
+.step-text b{color:#8A5E0E;}
+.step-text a{color:#8A5E0E;text-decoration:underline;font-weight:700;}
+
+.flight-card{border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px;}
+.flight-header{background:linear-gradient(120deg,#052E3B,#084D64);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:700;}
+.flight-header .code{color:var(--gold);}
+.flight-body{background:#fff;padding:20px 18px;}
+.flight-route{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.flight-route .airport{text-align:center;}
+.flight-route .airport .code{font-size:30px;font-weight:800;color:var(--text-main);}
+.flight-route .airport .city{font-size:14px;color:var(--text-sub);margin-top:2px;}
+.flight-route .mid{flex:1;text-align:center;padding:0 12px;}
+.flight-route .mid .time{font-size:14px;color:var(--text-muted);}
+.flight-route .mid .line{height:2px;background:var(--border);position:relative;margin-top:6px;}
+.flight-route .mid .line::after{content:"✈";position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:16px;}
+.flight-badges{display:flex;flex-wrap:wrap;gap:8px;}
+.badge{font-size:14px;font-weight:600;color:var(--text-sub);background:#F3F9FA;border:1px solid var(--border);padding:5px 10px;border-radius:8px;}
+
+.baggage-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.baggage-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.baggage-card .icon{font-size:24px;margin-bottom:6px;}
+.baggage-card .title{font-size:15px;font-weight:700;color:var(--text-sub);margin-bottom:4px;}
+.baggage-card .amount{font-size:20px;font-weight:800;color:var(--ocean-dark);}
+.baggage-card .desc{font-size:14px;color:var(--text-muted);margin-top:4px;line-height:1.5;}
+.baggage-card a{color:var(--ocean-dark);text-decoration:underline;}
+
+.guide-box{border:1.5px solid var(--ocean-dark);border-radius:16px;background:var(--ocean-bg);padding:20px;}
+.guide-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed rgba(8,77,100,0.2);gap:10px;}
+.guide-row:last-child{border-bottom:none;}
+.guide-row .label{color:var(--text-sub);}
+.guide-row .val{font-weight:700;color:var(--ocean-dark);text-align:right;}
+
+.hotel-card{border:2px solid var(--ocean);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);}
+.hotel-header{background:linear-gradient(120deg,var(--ocean),#3D93B4);color:#fff;padding:10px 18px;font-size:14.5px;font-weight:700;display:flex;justify-content:space-between;align-items:center;}
+.hotel-body{background:#fff;padding:20px 18px;}
+.hotel-name{font-size:22px;font-weight:800;color:var(--text-main);}
+
+.incl-card{border-radius:14px;padding:16px;font-size:15.5px;line-height:1.75;background:var(--reef-bg);border:1px solid var(--reef);}
+.incl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#0F6E58;}
+
+.entry-box{border:1.5px solid var(--ocean);border-radius:16px;background:#fff;box-shadow:var(--shadow);padding:20px;}
+.entry-box .title{font-weight:800;font-size:16px;color:var(--ocean-dark);margin-bottom:8px;}
+
+.limit-box{border:1.5px solid var(--red);border-radius:16px;background:var(--red-bg);padding:20px;}
+.limit-box .head{font-weight:800;font-size:17px;color:#A32C24;margin-bottom:10px;}
+.limit-box ul{padding-left:18px;font-size:15px;color:#A32C24;line-height:1.85;}
+
+.visa-box{border:1.5px solid var(--gold);border-radius:16px;background:var(--gold-bg);padding:20px;}
+.visa-box .head{font-weight:800;font-size:17px;color:#8A5E0E;margin-bottom:10px;}
+.visa-box a.linkbtn{display:inline-block;margin-top:10px;background:var(--gold);color:#fff;font-weight:700;font-size:15.5px;padding:9px 18px;border-radius:10px;}
+
+.weather-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
+.weather-card{flex:0 0 auto;width:106px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 8px;text-align:center;box-shadow:var(--shadow);}
+.weather-card .date{font-size:13.5px;font-weight:700;color:var(--text-sub);margin-bottom:6px;}
+.weather-card .day{font-size:12px;color:var(--text-muted);margin-bottom:6px;}
+.weather-card .icon{font-size:26px;margin-bottom:8px;}
+.weather-card .high{font-size:17px;font-weight:800;color:var(--reef);}
+.weather-card .low{font-size:14px;color:var(--text-muted);margin-top:2px;}
+.weather-card .rain{font-size:12px;color:var(--ocean);margin-top:4px;}
+
+.prep-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.prep-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.prep-card .icon{font-size:22px;margin-bottom:6px;}
+.prep-card .title{font-weight:700;font-size:15.5px;color:var(--ocean-dark);margin-bottom:6px;}
+.prep-card ul{padding-left:16px;font-size:15px;color:var(--text-sub);line-height:1.75;}
+
+@media (max-width:480px){
+  .trip-band-inner{grid-template-columns:repeat(2,1fr);gap:14px;}
+  .baggage-grid,.prep-grid{grid-template-columns:1fr;}
+  .header-title{font-size:28px;}
+}
+
+.footer{width:100%;background:#052E3B;padding:32px 20px;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;text-align:center;}
+.footer-agent{color:#fff;font-size:17px;font-weight:700;margin-bottom:6px;}
+.footer-sub{color:rgba(255,255,255,0.55);font-size:14.5px;margin-bottom:18px;}
+.footer-btns{display:flex;justify-content:center;gap:10px;}
+.footer-btn{padding:10px 20px;border-radius:12px;font-weight:700;font-size:15.5px;transition:transform .15s ease-out;}
+.footer-btn:active{transform:scale(0.97);}
+.footer-btn.tel{background:var(--reef);color:#fff;}
+.footer-btn.kakao{background:#FEE500;color:#391B1B;}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="agent-info">담당 <b>이경진 실장</b> · 모두투어 투어콕</div>
+    <div class="top-btns">
+      <a class="top-btn" href="tel:1544-5714">📞 전화상담</a>
+      <a class="top-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡</a>
+    </div>
+  </div>
+</div>
+
+<div class="header">
+  <div class="header-inner">
+    <span class="header-tag">TRAVEL CONFIRMATION</span>
+    <div class="header-title">🐠 마나도 여행 확정서</div>
+    <div class="header-subtitle">인천국제공항 출발 · 3박 5일 · MANADO 2026</div>
+    <div class="header-names">이주학님 일행</div><br>
+    <a class="header-cta" href="https://www.modetour.com/package/110250755?MLoc=99&Pnum=110250755&ANO=1772510&sno=C2181215&thru=crs" target="_blank">🔗 여행상품 확인하기</a>
+  </div>
+</div>
+
+<div class="trip-band">
+  <div class="trip-band-inner">
+    <div class="trip-item"><div class="label">출발일</div><div class="value">2026.08.14(금)</div></div>
+    <div class="trip-item"><div class="label">귀국일</div><div class="value">2026.08.18(화)</div></div>
+    <div class="trip-item"><div class="label">일정</div><div class="value">3박 5일</div></div>
+    <div class="trip-item"><div class="label">투어타입</div><div class="value">패키지</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 상품 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">1</div><div class="section-title">상품 안내</div></div>
+    <a class="product-link-box" href="https://www.modetour.com/package/110250755?MLoc=99&Pnum=110250755&ANO=1772510&sno=C2181215&thru=crs" target="_blank">
+      <span>모두투어 마나도 패키지 상품 바로가기</span>
+      <span class="arrow">↗</span>
+    </a>
+    <div class="alert alert-ocean">
+      ✔ 이스타항공 예약번호(PNR): <b>C94B7Q</b>
+    </div>
+  </div>
+
+  <!-- 온라인 체크인 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">온라인 체크인 안내</div></div>
+    <div class="counter-box">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">이스타항공 온라인 체크인은 <b>출발 24시간 전부터 1시간 전까지</b> 이스타항공 사이트(<a href="https://www.eastarjet.com" target="_blank">eastarjet.com</a>) 또는 모바일 앱에서 가능합니다.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">항공기 출발(20:25) 기준 <b>2~3시간 전</b> 공항 도착을 권장드립니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 항공편 정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">항공편 정보</div></div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>출발편 · 이스타항공</span><span class="code">ZE535</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 08.14(금) 20:25</div></div>
+          <div class="mid"><div class="time">직항(야간)</div><div class="line"></div></div>
+          <div class="airport"><div class="code">MDC</div><div class="city">마나도 · 08.15(토) 01:15</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 이스타항공</span>
+          <span class="badge">위탁 15kg</span>
+          <span class="badge">기내 10kg</span>
+          <span class="badge">기내식 없음</span>
+          <span class="badge">좌석 미지정</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>귀국편 · 이스타항공</span><span class="code">ZE536</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">MDC</div><div class="city">마나도 · 08.18(화) 02:20</div></div>
+          <div class="mid"><div class="time">직항(야간)</div><div class="line"></div></div>
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 08.18(화) 08:40</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 이스타항공</span>
+          <span class="badge">위탁 15kg</span>
+          <span class="badge">기내 10kg</span>
+          <span class="badge">기내식 없음</span>
+          <span class="badge">좌석 미지정</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-ocean">
+      ⚠ 두 항공편 모두 <b>기내식이 제공되지 않으며, 좌석은 미지정</b>입니다. 출발 전 간단한 식사를 준비해 주세요.
+    </div>
+  </div>
+
+  <!-- 수하물 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">수하물 안내</div></div>
+    <div class="baggage-grid">
+      <div class="baggage-card">
+        <div class="icon">🧳</div>
+        <div class="title">위탁수하물</div>
+        <div class="amount">15kg · 1개</div>
+        <div class="desc">3면의 합 203cm 이내<br><a href="https://www.eastarjet.com/newstar/PGWIK00001" target="_blank">자세한 규정 보기</a></div>
+      </div>
+      <div class="baggage-card">
+        <div class="icon">🎒</div>
+        <div class="title">기내수하물</div>
+        <div class="amount">10kg 이하 · 1개</div>
+        <div class="desc">3면의 합 115cm 이내<br><a href="https://www.eastarjet.com/newstar/PGWIK00002" target="_blank">자세한 규정 보기</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 현지 가이드 & 행사정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">현지 가이드 & 행사 정보</div></div>
+    <div class="guide-box">
+      <div class="guide-row"><span class="label">가이드</span><span class="val">손준영<br>+62 821 5692 7493</span></div>
+      <div class="guide-row"><span class="label">행사인원</span><span class="val">9명</span></div>
+      <div class="guide-row"><span class="label">비상연락망</span><span class="val">전득용 지사장 +62 851 9592 8812<br>홍창오 소장 +62 812 2807 2366</span></div>
+    </div>
+  </div>
+
+  <!-- 투숙 호텔 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">투숙 호텔</div></div>
+    <div class="hotel-card">
+      <div class="hotel-header"><span>🏨 전 일정</span><span>3박</span></div>
+      <div class="hotel-body">
+        <div class="hotel-name">파라다이스 호텔골프&리조트 마나도</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 불포함 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">불포함 사항</div></div>
+    <div class="incl-card">
+      <div class="head">✘ 불포함사항</div>
+      개인경비
+    </div>
+  </div>
+
+  <!-- 마나도 공항 입국절차 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">마나도 공항 입국 절차</div></div>
+    <div class="entry-box">
+      <div class="title">✈️ 입국 순서</div>
+      <div class="step" style="margin-top:10px;">
+        <div class="step-num">1</div>
+        <div class="step-text">공항 도착 후 <b>'ARRIVAL'</b> 표지판을 따라 이동합니다.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text"><b>E-비자 완료 고객</b>은 입국심사 시 QR코드를 제시하시면 되고, <b>미완료 고객</b>은 도착비자 창구에서 비자 발급 후 입국심사를 진행합니다.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">입국심사 → 세관심사 → 수하물 수령 → <b>공항 밖에서 미팅 담당자(피켓 확인)</b>와 만납니다.</div>
+      </div>
+    </div>
+    <div class="alert alert-gold">
+      ※ 일부 상품의 경우 현지 미팅이 없을 수 있습니다(일정표 참고).
+    </div>
+  </div>
+
+  <!-- 비자 대행서비스 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">비자 대행서비스 신청 고객 안내</div></div>
+    <div class="visa-box">
+      <div class="head">★ 비자 대행서비스 신청 고객 비상연락망 ★</div>
+      비자 대행 신청이 완료되었으며, 비자담당자가 개별적으로 연락드릴 예정입니다. 문제 발생 시 아래 채널로 문의해 주세요.
+      <br><br>
+      <a class="linkbtn" href="http://pf.kakao.com/_NIDZX" target="_blank">💬 카카오톡 오픈채팅방 문의</a>
+    </div>
+    <div class="alert alert-gold">
+      ※ 본 연락망은 <b>비자 대행 신청하신 고객 전용</b>이며, 그 외 문의는 모두투어로 접수 부탁드립니다.
+    </div>
+  </div>
+
+  <!-- 반입 제한 및 면세 기준 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">반입 제한 및 면세 기준</div></div>
+    <div class="limit-box">
+      <div class="head">🚫 인도네시아 입국 시 참고해 주세요</div>
+      <ul>
+        <li>담배: 궐련 200개비까지</li>
+        <li>주류: 1인당 1리터까지</li>
+        <li>면세 한도: USD 500 이하 (초과 시 관세가 부과될 수 있습니다)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 액티비티 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">11</div><div class="section-title">액티비티 유의사항</div></div>
+    <div class="alert alert-reef">
+      🤿 <b>2일차 스노클링 일정</b>이 있습니다. 구명조끼는 현지에서 대여해주는 것을 착용하셔도 무방하지만, <b>스노클링 장비(입으로 무는 호흡기)는 위생상 개인 장비를 준비</b>하시는 걸 권장드립니다.
+    </div>
+    <div class="alert alert-ocean" style="margin-top:12px;">
+      🎣 <b>야간낚시 일정</b>이 있으니 배멀미 대비 <b>멀미약을 미리 준비</b>하시면 좋습니다.
+    </div>
+  </div>
+
+  <!-- 날씨 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">12</div><div class="section-title">일자별 날씨 정보</div></div>
+    <div class="weather-row">
+      <div class="weather-card">
+        <div class="date">8/14(금)</div>
+        <div class="day">출국일</div>
+        <div class="icon">⛅</div>
+        <div class="high">27℃</div>
+        <div class="low">26℃</div>
+        <div class="rain">강수 10%</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">8/15(토)</div>
+        <div class="day">마나도</div>
+        <div class="icon">⛅</div>
+        <div class="high">27℃</div>
+        <div class="low">26℃</div>
+        <div class="rain">강수 20%</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">8/16(일)</div>
+        <div class="day">마나도</div>
+        <div class="icon">☀️</div>
+        <div class="high">27℃</div>
+        <div class="low">26℃</div>
+        <div class="rain">강수 10%</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">8/17(월)</div>
+        <div class="day">마나도</div>
+        <div class="icon">☀️</div>
+        <div class="high">27℃</div>
+        <div class="low">26℃</div>
+        <div class="rain">강수 10%</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">8/18(화)</div>
+        <div class="day">귀국일</div>
+        <div class="icon">☀️</div>
+        <div class="high">27℃</div>
+        <div class="low">26℃</div>
+        <div class="rain">강수 10%</div>
+      </div>
+    </div>
+    <div class="alert alert-gold">
+      ☀️ 실제 예보 기준으로 반영했어요. 마나도는 연중 27℃ 안팎으로 일정하고 8월은 건기라 강수확률이 낮은 편입니다. 출발 며칠 전 다시 확인해 드릴게요.
+    </div>
+  </div>
+
+  <!-- 준비물 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">13</div><div class="section-title">여행 준비물</div></div>
+    <div class="prep-grid">
+      <div class="prep-card">
+        <div class="icon">🤿</div>
+        <div class="title">스노클링 · 물놀이 준비물</div>
+        <ul>
+          <li>수영복, 래시가드(자외선·해파리 방지)</li>
+          <li><b>개인 스노클(호흡기)</b> — 위생상 개인 장비 권장</li>
+          <li>물안경(도수 있는 분은 도수용 스노클마스크)</li>
+          <li>아쿠아슈즈(암초·산호 지대 보호)</li>
+          <li>방수팩(휴대폰용), 방수 카메라</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">☀️</div>
+        <div class="title">자외선 & 피부 보호</div>
+        <ul>
+          <li>선크림 SPF50+ (해양 자외선 차단 제품 권장, 리프세이프 성분이면 더 좋음)</li>
+          <li>애프터선(화상 진정용 알로에젤)</li>
+          <li>모자·선글라스</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🎣</div>
+        <div class="title">야간낚시 · 액티비티</div>
+        <ul>
+          <li><b>멀미약</b> — 야간낚시 배멀미 대비 필수</li>
+          <li>얇은 바람막이(야간 선상 바람 대비)</li>
+          <li>손전등 또는 헤드랜턴</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🎒</div>
+        <div class="title">기타 준비물</div>
+        <ul>
+          <li>여권(유효기간 6개월 이상), E-비자 완료 화면(대행 신청자는 담당자 안내 확인)</li>
+          <li>미국달러(USD) 또는 인도네시아 루피아(IDR) 현금</li>
+          <li>상비약(지사제·소화제·해열제·모기기피제)</li>
+          <li>멀티어댑터(인도네시아 220V, C/F타입)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-agent">담당 이경진 실장</div>
+    <div class="footer-sub">이주학님 일행의 즐거운 마나도 여행을 응원합니다 🐠</div>
+    <div class="footer-btns">
+      <a class="footer-btn tel" href="tel:1544-5714">📞 1544-5714</a>
+      <a class="footer-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 투어콕 카카오톡 채널</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.1});
+sections.forEach(s=>observer.observe(s));
+</script>
+
+</body>
+</html>
