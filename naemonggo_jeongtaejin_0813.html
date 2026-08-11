@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>내몽고 여행 확정서 - 정태진님 일행</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+  --sand:#C08A3E;
+  --sand-dark:#8C6027;
+  --sand-bg:#FBF1E1;
+  --sky:#2E6F95;
+  --sky-bg:#EAF3F8;
+  --gold:#E8A93E;
+  --gold-bg:#FDF3E5;
+  --bg-top:#F2EDE2;
+  --bg-bottom:#F8F6F1;
+  --text-main:#2A2420;
+  --text-sub:#655B4F;
+  --text-muted:#9A9082;
+  --card-bg:#FFFFFF;
+  --border:#EAE3D6;
+  --shadow:0 4px 20px rgba(192,138,62,0.12);
+  --max-w:680px;
+  --red:#D3453C;
+  --red-bg:#FDEFED;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Pretendard',sans-serif;background:linear-gradient(180deg,var(--bg-top) 0%, var(--bg-bottom) 45%, #FBFAF7 100%);color:var(--text-main);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+
+.top-bar{width:100%;background:rgba(45,35,20,0.92);backdrop-filter:blur(6px);padding:10px 20px;}
+.top-bar-inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.agent-info{color:#FBF1E1;font-size:15px;font-weight:500;}
+.agent-info b{color:#fff;}
+.top-btns{display:flex;gap:8px;}
+.top-btn{font-size:14.5px;font-weight:600;padding:6px 12px;border-radius:20px;background:rgba(255,255,255,0.15);color:#fff;transition:transform .15s ease-out, background .2s;}
+.top-btn:hover{background:rgba(255,255,255,0.28);}
+.top-btn:active{transform:scale(0.97);}
+.top-btn.kakao{background:#FEE500;color:#391B1B;}
+
+.header{width:100%;padding:28px 16px 24px;}
+.header-inner{max-width:var(--max-w);margin:0 auto;text-align:center;position:relative;z-index:1;border-radius:24px;overflow:hidden;padding:48px 24px 40px;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(192,138,62,0.32), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(46,111,149,0.22), transparent 50%),
+    linear-gradient(160deg,#1C1710 0%, #3A2E1C 55%, #4E3B22 100%);
+  box-shadow:0 12px 32px rgba(28,23,16,0.28);}
+.header-tag{display:inline-block;font-size:14px;font-weight:700;letter-spacing:2.5px;color:var(--gold);border:1px solid rgba(232,169,62,0.5);padding:6px 16px;border-radius:20px;margin-bottom:18px;}
+.header-title{font-size:34px;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-0.5px;text-shadow:0 2px 12px rgba(0,0,0,0.4);}
+.header-subtitle{font-size:16px;color:rgba(255,255,255,0.85);font-weight:500;margin-bottom:28px;letter-spacing:0.5px;}
+.header-names{font-size:22px;font-weight:700;color:#fff;background:rgba(255,255,255,0.1);display:inline-block;padding:10px 24px;border-radius:14px;margin-bottom:22px;}
+.header-cta{display:inline-flex;align-items:center;gap:8px;background:var(--sky);color:#fff;font-weight:700;font-size:17px;padding:13px 26px;border-radius:12px;box-shadow:0 8px 20px rgba(46,111,149,0.4);transition:transform .2s ease-out, box-shadow .2s;}
+.header-cta:hover{transform:translateY(-2px) scale(1.02);}
+.header-cta:active{transform:scale(0.97);}
+
+.trip-band{width:100%;background:linear-gradient(90deg,var(--sand),#DDA758);}
+.trip-band-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);text-align:center;padding:20px 16px;}
+.trip-item .label{font-size:13px;color:rgba(255,255,255,0.9);font-weight:600;margin-bottom:4px;}
+.trip-item .value{font-size:17px;color:#fff;font-weight:800;}
+
+.container{max-width:var(--max-w);margin:0 auto;padding:36px 20px 60px;}
+.section{margin-bottom:36px;opacity:0;transform:translateY(16px);transition:opacity .5s ease-out, transform .5s ease-out;}
+.section.visible{opacity:1;transform:translateY(0);}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.section-num{width:30px;height:30px;border-radius:50%;background:var(--sand-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0;}
+.section-title{font-size:20px;font-weight:800;color:var(--text-main);}
+
+.product-link-box{display:flex;justify-content:space-between;align-items:center;background:var(--sand-bg);border:1px solid var(--sand);border-radius:14px;padding:16px 18px;font-weight:700;color:var(--sand-dark);margin-bottom:14px;transition:transform .15s ease-out, background .2s;}
+.product-link-box:hover{background:#F5E7CE;transform:scale(1.01);}
+.product-link-box:active{transform:scale(0.98);}
+.product-link-box span.arrow{font-size:20px;}
+
+.alert{border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.6;margin-top:12px;}
+.alert-sand{background:var(--sand-bg);border:1px solid var(--sand);color:#8C6027;}
+.alert-sky{background:var(--sky-bg);border:1px solid var(--sky);color:#1F4E68;}
+.alert-gold{background:var(--gold-bg);border:1px solid var(--gold);color:#8A5E0E;}
+.alert-red{background:var(--red-bg);border:1px solid var(--red);color:#A32C24;}
+
+.meeting-box{border:1.5px solid var(--sand);border-radius:16px;background:#fff;padding:20px;box-shadow:var(--shadow);}
+.meeting-time{font-size:24px;font-weight:800;color:var(--sand-dark);text-align:center;margin-bottom:14px;}
+.meeting-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed var(--border);gap:10px;}
+.meeting-row:last-child{border-bottom:none;}
+.meeting-row .label{color:var(--text-sub);}
+.meeting-row .val{font-weight:700;color:var(--text-main);text-align:right;}
+
+.step{display:flex;gap:12px;margin-bottom:14px;}
+.step:last-child{margin-bottom:0;}
+.step-num{width:26px;height:26px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0;}
+.step-text{font-size:16px;color:var(--text-main);line-height:1.6;}
+.step-text b{color:#8A5E0E;}
+.counter-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:var(--gold-bg);}
+
+.flight-card{border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px;}
+.flight-header{background:linear-gradient(120deg,#1C1710,#3A2E1C);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:700;}
+.flight-header .code{color:var(--gold);}
+.flight-body{background:#fff;padding:20px 18px;}
+.flight-route{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.flight-route .airport{text-align:center;}
+.flight-route .airport .code{font-size:30px;font-weight:800;color:var(--text-main);}
+.flight-route .airport .city{font-size:14px;color:var(--text-sub);margin-top:2px;}
+.flight-route .mid{flex:1;text-align:center;padding:0 12px;}
+.flight-route .mid .time{font-size:14px;color:var(--text-muted);}
+.flight-route .mid .line{height:2px;background:var(--border);position:relative;margin-top:6px;}
+.flight-route .mid .line::after{content:"✈";position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:16px;}
+.flight-badges{display:flex;flex-wrap:wrap;gap:8px;}
+.badge{font-size:14px;font-weight:600;color:var(--text-sub);background:#FAF7F0;border:1px solid var(--border);padding:5px 10px;border-radius:8px;}
+
+.baggage-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.baggage-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.baggage-card .icon{font-size:24px;margin-bottom:6px;}
+.baggage-card .title{font-size:15px;font-weight:700;color:var(--text-sub);margin-bottom:4px;}
+.baggage-card .amount{font-size:20px;font-weight:800;color:var(--sand-dark);}
+.baggage-card .desc{font-size:14px;color:var(--text-muted);margin-top:4px;line-height:1.5;}
+
+.guide-box{border:1.5px solid var(--sand-dark);border-radius:16px;background:var(--sand-bg);padding:20px;}
+.guide-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed rgba(140,96,39,0.2);gap:10px;}
+.guide-row:last-child{border-bottom:none;}
+.guide-row .label{color:var(--text-sub);}
+.guide-row .val{font-weight:700;color:var(--sand-dark);text-align:right;}
+
+.hotel-card{border:2px solid var(--sand);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:14px;}
+.hotel-header{background:linear-gradient(120deg,var(--sand),#DDA758);color:#fff;padding:10px 18px;font-size:14.5px;font-weight:700;display:flex;justify-content:space-between;align-items:center;}
+.hotel-body{background:#fff;padding:16px 18px;}
+.hotel-name{font-size:19px;font-weight:800;color:var(--text-main);}
+
+.incl-card{border-radius:14px;padding:16px;font-size:15.5px;line-height:1.75;background:var(--sky-bg);border:1px solid var(--sky);}
+.incl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#1F4E68;}
+
+.visa-box{border:1.5px solid var(--sky);border-radius:16px;background:var(--sky-bg);padding:20px;}
+.visa-box .head{font-weight:800;font-size:17px;color:#1F4E68;margin-bottom:10px;}
+
+.exchange-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:#fff;box-shadow:var(--shadow);}
+.exchange-box .ex-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed var(--border);}
+.exchange-box .ex-row:last-child{border-bottom:none;}
+
+.weather-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
+.weather-card{flex:0 0 auto;width:106px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 8px;text-align:center;box-shadow:var(--shadow);}
+.weather-card .date{font-size:13.5px;font-weight:700;color:var(--text-sub);margin-bottom:6px;}
+.weather-card .day{font-size:12px;color:var(--text-muted);margin-bottom:6px;}
+.weather-card .icon{font-size:26px;margin-bottom:8px;}
+.weather-card .high{font-size:17px;font-weight:800;color:var(--sand);}
+.weather-card .low{font-size:14px;color:var(--text-muted);margin-top:2px;}
+
+.prep-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.prep-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.prep-card .icon{font-size:22px;margin-bottom:6px;}
+.prep-card .title{font-weight:700;font-size:15.5px;color:var(--sand-dark);margin-bottom:6px;}
+.prep-card ul{padding-left:16px;font-size:15px;color:var(--text-sub);line-height:1.75;}
+.prep-full{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px;box-shadow:var(--shadow);}
+.prep-full .title{font-weight:800;font-size:16.5px;color:var(--sand-dark);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.prep-full ul{padding-left:18px;font-size:15.5px;color:var(--text-sub);line-height:1.9;}
+.prep-full ul li b{color:var(--text-main);}
+
+@media (max-width:480px){
+  .trip-band-inner{grid-template-columns:repeat(2,1fr);gap:14px;}
+  .baggage-grid,.prep-grid{grid-template-columns:1fr;}
+  .header-title{font-size:28px;}
+}
+
+.footer{width:100%;background:#1C1710;padding:32px 20px;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;text-align:center;}
+.footer-agent{color:#fff;font-size:17px;font-weight:700;margin-bottom:6px;}
+.footer-sub{color:rgba(255,255,255,0.55);font-size:14.5px;margin-bottom:18px;}
+.footer-btns{display:flex;justify-content:center;gap:10px;}
+.footer-btn{padding:10px 20px;border-radius:12px;font-weight:700;font-size:15.5px;transition:transform .15s ease-out;}
+.footer-btn:active{transform:scale(0.97);}
+.footer-btn.tel{background:var(--sky);color:#fff;}
+.footer-btn.kakao{background:#FEE500;color:#391B1B;}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="agent-info">담당 <b>이경진 실장</b> · 모두투어 투어콕</div>
+    <div class="top-btns">
+      <a class="top-btn" href="tel:1544-5714">📞 전화상담</a>
+      <a class="top-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡</a>
+    </div>
+  </div>
+</div>
+
+<div class="header">
+  <div class="header-inner">
+    <span class="header-tag">TRAVEL CONFIRMATION</span>
+    <div class="header-title">🐫 내몽고 여행 확정서</div>
+    <div class="header-subtitle">대구국제공항 출발 · 3박 4일 · ORDOS 2026</div>
+    <div class="header-names">정태진님 일행</div><br>
+    <a class="header-cta" href="https://www.modetour.com/package/105341527?MLoc=99&Pnum=105341527&ANO=1772510&sno=C2181215&thru=crs" target="_blank">🔗 여행상품 확인하기</a>
+  </div>
+</div>
+
+<div class="trip-band">
+  <div class="trip-band-inner">
+    <div class="trip-item"><div class="label">출발일</div><div class="value">2026.08.13(목)</div></div>
+    <div class="trip-item"><div class="label">귀국일</div><div class="value">2026.08.16(일)</div></div>
+    <div class="trip-item"><div class="label">일정</div><div class="value">3박 4일</div></div>
+    <div class="trip-item"><div class="label">투어타입</div><div class="value">패키지</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 상품 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">1</div><div class="section-title">상품 안내</div></div>
+    <a class="product-link-box" href="https://www.modetour.com/package/105341527?MLoc=99&Pnum=105341527&ANO=1772510&sno=C2181215&thru=crs" target="_blank">
+      <span>모두투어 내몽고(오르도스) 상품 바로가기</span>
+      <span class="arrow">↗</span>
+    </a>
+    <div class="alert alert-sand">
+      ✔ 중국연합항공(KN) 이용 상품입니다.
+    </div>
+  </div>
+
+  <!-- 대구공항 미팅 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">대구공항 미팅 안내</div></div>
+    <div class="meeting-box">
+      <div class="meeting-time">2026.08.13(목) 오전 10:00</div>
+      <div class="meeting-row"><span class="label">장소</span><span class="val">대구공항 국제선<br>모두투어 테이블</span></div>
+    </div>
+    <div class="counter-box" style="margin-top:14px;">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">모두투어 미팅테이블에서 <b>프린트된 일정표와 항공권</b>을 받으실 수 있습니다.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">서류 수령 후 <b>항공사 카운터</b>로 가셔서 티켓팅 후 출발하시면 됩니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 항공편 정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">항공편 정보</div></div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>출발편 · 중국연합항공</span><span class="code">KN880</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">TAE</div><div class="city">대구 · 08.13(목) 13:55</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">DSN</div><div class="city">오르도스 · 08.13(목) 16:15</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 중국연합항공</span>
+          <span class="badge">위탁 20kg</span>
+          <span class="badge">기내 10kg</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>귀국편 · 중국연합항공</span><span class="code">KN879</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">DSN</div><div class="city">오르도스 · 08.16(일) 08:55</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">TAE</div><div class="city">대구 · 08.16(일) 12:55</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 중국연합항공</span>
+          <span class="badge">위탁 20kg</span>
+          <span class="badge">기내 10kg</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 수하물 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">수하물 안내</div></div>
+    <div class="baggage-grid">
+      <div class="baggage-card">
+        <div class="icon">🧳</div>
+        <div class="title">위탁수하물</div>
+        <div class="amount">20kg · 1개</div>
+        <div class="desc">바퀴·핸들 포함 세 변의 합 158cm(62") 이내</div>
+      </div>
+      <div class="baggage-card">
+        <div class="icon">🎒</div>
+        <div class="title">기내수하물</div>
+        <div class="amount">10kg 이내</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 현지 가이드 & 행사정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">현지 가이드 & 행사 정보</div></div>
+    <div class="guide-box">
+      <div class="guide-row"><span class="label">가이드명</span><span class="val">임금화(여) · REN JIN HUA</span></div>
+      <div class="guide-row"><span class="label">가이드 연락처</span><span class="val">133-3108-3575</span></div>
+      <div class="guide-row"><span class="label">현지 비상연락처</span><span class="val">조남철(ZHAO NAN ZHE) 부장<br>159-7443-1999</span></div>
+      <div class="guide-row"><span class="label">행사인원</span><span class="val">18명 (+0 FOC)</span></div>
+      <div class="guide-row"><span class="label">행사차량</span><span class="val">38인승</span></div>
+    </div>
+  </div>
+
+  <!-- 투숙 호텔 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">투숙 호텔</div></div>
+    <div class="hotel-card">
+      <div class="hotel-header"><span>🏕 대초원</span><span>1박</span></div>
+      <div class="hotel-body"><div class="hotel-name">대초원 현대식 게르</div></div>
+    </div>
+    <div class="hotel-card">
+      <div class="hotel-header"><span>🏨 오르도스</span><span>1박</span></div>
+      <div class="hotel-body"><div class="hotel-name">크리스탈 오르도스 리조트</div></div>
+    </div>
+    <div class="hotel-card">
+      <div class="hotel-header"><span>🏨 오르도스</span><span>1박</span></div>
+      <div class="hotel-body"><div class="hotel-name">오르도스 주황 홀리데이 호텔</div></div>
+    </div>
+    <div class="alert alert-gold">
+      💡 총 3박 일정으로, 대초원 게르 1박 + 크리스탈 오르도스 리조트 1박 + 오르도스 주황 홀리데이 호텔 1박으로 진행됩니다.
+    </div>
+  </div>
+
+  <!-- 불포함 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">불포함 사항</div></div>
+    <div class="incl-card">
+      <div class="head">✘ 불포함사항</div>
+      [가이드/기사 경비] 전일정 <b>$40/인</b> (성인·아동 동일)
+    </div>
+  </div>
+
+  <!-- 중국 입국신고서 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">중국 입국신고서 안내</div></div>
+    <div class="visa-box">
+      <div class="head">📝 입국신고서 작성 완료</div>
+      중국 입국신고서는 <b>이미 작성이 완료</b>되어 QR코드를 사진으로 전송해 드렸습니다. 입국 시 전송받으신 QR 사진을 보여주시면 됩니다. 별도로 작성하지 않으셔도 됩니다.
+    </div>
+  </div>
+
+  <!-- 환전 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">환전 안내</div></div>
+    <div class="exchange-box">
+      <div class="ex-row"><span>가이드·기사 경비 / 선택관광</span><span style="font-weight:700;">미국달러(USD) 지불 기준</span></div>
+      <div class="ex-row"><span>권장 환전 금액</span><span style="font-weight:700;">1인 USD $300 정도</span></div>
+    </div>
+    <div class="alert alert-gold">
+      💵 기사·가이드 경비 및 선택관광은 <b>미국달러로 지불</b>하시게 되니, 1인당 <b>USD $300 정도 환전</b>해 오시는 걸 권장드립니다.
+    </div>
+  </div>
+
+  <!-- 날씨 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">일자별 날씨 정보</div></div>
+    <div class="weather-row">
+      <div class="weather-card">
+        <div class="date">8/13(목)</div>
+        <div class="day">출국일</div>
+        <div class="icon">☀️</div>
+        <div class="high">30℃</div>
+        <div class="low">17℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">8/14(금)</div>
+        <div class="day">오르도스</div>
+        <div class="icon">☀️</div>
+        <div class="high">29℃</div>
+        <div class="low">16℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">8/15(토)</div>
+        <div class="day">오르도스</div>
+        <div class="icon">⛅</div>
+        <div class="high">28℃</div>
+        <div class="low">15℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">8/16(일)</div>
+        <div class="day">귀국일</div>
+        <div class="icon">☀️</div>
+        <div class="high">29℃</div>
+        <div class="low">16℃</div>
+      </div>
+    </div>
+    <div class="alert alert-sky">
+      🏜 8월 오르도스(내몽고)는 <b>사막·초원성 기후</b>로 낮에는 덥고 밤에는 서늘한 <b>일교차가 큰 지역</b>입니다. 건조하고 자외선이 강하며, 모래바람이 불 수도 있습니다. 위 기온은 평년 평균 참고값이며, 출발 며칠 전 다시 확인해 드릴게요.
+    </div>
+  </div>
+
+  <!-- 준비물 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">11</div><div class="section-title">여행 준비물</div></div>
+
+    <div class="prep-full" style="margin-bottom:12px;">
+      <div class="title">🥢 밑반찬</div>
+      내몽고 지역은 현지 식사(양고기 등)가 입에 안 맞을 수 있어, 밑반찬을 준비하시면 훨씬 편하게 식사하실 수 있습니다.
+      <ul>
+        <li><b>마른 반찬류</b>: 멸치볶음, 진미채·오징어채무침, 콩자반, 무말랭이무침, 김자반 — 국물 없고 상온 보관 잘 되는 것 위주</li>
+        <li><b>조미김</b>: 소포장 여러 개, 밥 반찬 겸 간식으로 유용</li>
+        <li><b>즉석 고추장·쌈장</b>(튜브형 소포장), <b>즉석밥/컵밥/즉석국</b></li>
+        <li><b>라면/컵라면</b> 비상식 겸용 2~3개</li>
+        <li>냉장 보관이 필요한 반찬은 상하기 쉬우니 피해주세요</li>
+        <li>지퍼백·밀폐용기에 소분하면 위생적이고 짐도 가볍습니다</li>
+      </ul>
+    </div>
+
+    <div class="prep-full" style="margin-bottom:12px;">
+      <div class="title">🏜 사막·초원 지역 특화 준비물</div>
+      <ul>
+        <li><b>손수건 또는 머플러(스카프)</b> — 사막 지역 모래바람 대비 <b>입과 코를 가릴 수 있도록</b> 꼭 챙겨주세요</li>
+        <li>선글라스·고글 — 모래바람·강한 햇빛으로부터 눈 보호</li>
+        <li>선크림 SPF50+ — 자외선이 매우 강합니다</li>
+        <li>보습제·립밤 — 건조한 기후 대비</li>
+        <li>가벼운 겉옷(일교차 대비, 밤에는 쌀쌀함)</li>
+      </ul>
+    </div>
+
+    <div class="prep-grid">
+      <div class="prep-card">
+        <div class="icon">🧴</div>
+        <div class="title">세면도구</div>
+        <ul>
+          <li>칫솔·치약(게르·일부 숙소는 미제공)</li>
+          <li>샴푸·바디워시 개인용 소용량</li>
+          <li>물티슈·손소독제</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🔌</div>
+        <div class="title">전기·기기</div>
+        <ul>
+          <li><b>멀티플러그(어댑터)</b> 필수 — 중국은 220V, A/C/I타입 콘센트 혼용</li>
+          <li>보조배터리, 카메라·충전기</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">👕</div>
+        <div class="title">옷차림</div>
+        <ul>
+          <li>반팔+얇은 긴팔(레이어드), 편한 바지</li>
+          <li>운동화(초원·사막 지형 도보 이동 多)</li>
+          <li>모자(햇빛·모래바람 대비)</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">💊</div>
+        <div class="title">상비약 & 기타</div>
+        <ul>
+          <li>소화제·지사제·감기약, 멀미약(장거리 이동)</li>
+          <li>여권, 미국달러 현금(1인 $300 정도)</li>
+          <li>개인 물통(건조한 기후 대비 수분 보충)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-agent">담당 이경진 실장</div>
+    <div class="footer-sub">정태진님 일행의 안전하고 즐거운 내몽고 여행을 응원합니다 🐫</div>
+    <div class="footer-btns">
+      <a class="footer-btn tel" href="tel:1544-5714">📞 1544-5714</a>
+      <a class="footer-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 투어콕 카카오톡 채널</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.1});
+sections.forEach(s=>observer.observe(s));
+</script>
+
+</body>
+</html>
