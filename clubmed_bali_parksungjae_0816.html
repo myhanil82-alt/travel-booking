@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>클럽메드 발리 여행 확정서 - 박성재님 가족</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+  --teal:#0B8793;
+  --teal-dark:#075F68;
+  --teal-bg:#E7F4F5;
+  --sunset:#F2704F;
+  --sunset-bg:#FDEEE8;
+  --gold:#F0A93E;
+  --gold-bg:#FEF6E8;
+  --sky-top:#E6F3F2;
+  --sky-bottom:#F7F8F4;
+  --text-main:#1E2A2C;
+  --text-sub:#57696A;
+  --text-muted:#8CA0A2;
+  --card-bg:#FFFFFF;
+  --border:#E1EAE9;
+  --shadow:0 4px 20px rgba(11,135,147,0.10);
+  --max-w:680px;
+  --red:#D3453C;
+  --red-bg:#FDEFED;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Pretendard',sans-serif;background:linear-gradient(180deg,var(--sky-top) 0%, var(--sky-bottom) 45%, #FBFAF7 100%);color:var(--text-main);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+
+.top-bar{width:100%;background:rgba(7,95,104,0.92);backdrop-filter:blur(6px);padding:10px 20px;}
+.top-bar-inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.agent-info{color:#E7F4F5;font-size:15px;font-weight:500;}
+.agent-info b{color:#fff;}
+.top-btns{display:flex;gap:8px;}
+.top-btn{font-size:14.5px;font-weight:600;padding:6px 12px;border-radius:20px;background:rgba(255,255,255,0.15);color:#fff;transition:transform .15s ease-out, background .2s;}
+.top-btn:hover{background:rgba(255,255,255,0.28);}
+.top-btn:active{transform:scale(0.97);}
+.top-btn.kakao{background:#FEE500;color:#391B1B;}
+
+.header{width:100%;padding:28px 16px 24px;}
+.header-inner{max-width:var(--max-w);margin:0 auto;text-align:center;position:relative;z-index:1;border-radius:24px;overflow:hidden;padding:48px 24px 40px;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(11,135,147,0.32), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(242,112,79,0.20), transparent 50%),
+    linear-gradient(160deg,#052F33 0%, #075F68 55%, #0B8793 100%);
+  box-shadow:0 12px 32px rgba(5,47,51,0.28);}
+.header-tag{display:inline-block;font-size:14px;font-weight:700;letter-spacing:2.5px;color:var(--gold);border:1px solid rgba(240,169,62,0.5);padding:6px 16px;border-radius:20px;margin-bottom:18px;}
+.header-title{font-size:32px;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-0.5px;text-shadow:0 2px 12px rgba(0,0,0,0.4);}
+.header-subtitle{font-size:16px;color:rgba(255,255,255,0.85);font-weight:500;margin-bottom:28px;letter-spacing:0.5px;}
+.header-names{font-size:22px;font-weight:700;color:#fff;background:rgba(255,255,255,0.1);display:inline-block;padding:10px 24px;border-radius:14px;margin-bottom:22px;}
+.header-cta{display:inline-flex;align-items:center;gap:8px;background:var(--sunset);color:#fff;font-weight:700;font-size:17px;padding:13px 26px;border-radius:12px;box-shadow:0 8px 20px rgba(242,112,79,0.4);transition:transform .2s ease-out, box-shadow .2s;}
+.header-cta:hover{transform:translateY(-2px) scale(1.02);}
+.header-cta:active{transform:scale(0.97);}
+
+.trip-band{width:100%;background:linear-gradient(90deg,var(--teal),#3DA8B4);}
+.trip-band-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);text-align:center;padding:20px 16px;}
+.trip-item .label{font-size:13px;color:rgba(255,255,255,0.85);font-weight:600;margin-bottom:4px;}
+.trip-item .value{font-size:17px;color:#fff;font-weight:800;}
+
+.container{max-width:var(--max-w);margin:0 auto;padding:36px 20px 60px;}
+.section{margin-bottom:36px;opacity:0;transform:translateY(16px);transition:opacity .5s ease-out, transform .5s ease-out;}
+.section.visible{opacity:1;transform:translateY(0);}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.section-num{width:30px;height:30px;border-radius:50%;background:var(--teal-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0;}
+.section-title{font-size:20px;font-weight:800;color:var(--text-main);}
+
+.product-link-box{display:flex;justify-content:space-between;align-items:center;background:var(--teal-bg);border:1px solid var(--teal);border-radius:14px;padding:16px 18px;font-weight:700;color:var(--teal-dark);margin-bottom:14px;transition:transform .15s ease-out, background .2s;}
+.product-link-box:hover{background:#D9EFF0;transform:scale(1.01);}
+.product-link-box:active{transform:scale(0.98);}
+.product-link-box span.arrow{font-size:20px;}
+
+.alert{border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.6;margin-top:12px;}
+.alert-teal{background:var(--teal-bg);border:1px solid var(--teal);color:#075F68;}
+.alert-sunset{background:var(--sunset-bg);border:1px solid var(--sunset);color:#A13F16;}
+.alert-gold{background:var(--gold-bg);border:1px solid var(--gold);color:#8A5E0E;}
+.alert-red{background:var(--red-bg);border:1px solid var(--red);color:#A32C24;}
+
+.counter-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:var(--gold-bg);}
+.step{display:flex;gap:12px;margin-bottom:14px;}
+.step:last-child{margin-bottom:0;}
+.step-num{width:26px;height:26px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0;}
+.step-text{font-size:16px;color:var(--text-main);line-height:1.6;}
+.step-text b{color:#8A5E0E;}
+.step-text a{color:#8A5E0E;text-decoration:underline;font-weight:700;}
+
+.flight-card{border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px;}
+.flight-header{background:linear-gradient(120deg,#052F33,#075F68);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:700;}
+.flight-header .code{color:var(--gold);}
+.flight-body{background:#fff;padding:20px 18px;}
+.flight-route{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.flight-route .airport{text-align:center;}
+.flight-route .airport .code{font-size:30px;font-weight:800;color:var(--text-main);}
+.flight-route .airport .city{font-size:14px;color:var(--text-sub);margin-top:2px;}
+.flight-route .mid{flex:1;text-align:center;padding:0 12px;}
+.flight-route .mid .time{font-size:14px;color:var(--text-muted);}
+.flight-route .mid .line{height:2px;background:var(--border);position:relative;margin-top:6px;}
+.flight-route .mid .line::after{content:"✈";position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:16px;}
+.flight-badges{display:flex;flex-wrap:wrap;gap:8px;}
+.badge{font-size:14px;font-weight:600;color:var(--text-sub);background:#F3FAFA;border:1px solid var(--border);padding:5px 10px;border-radius:8px;}
+
+.hotel-card{border:2px solid var(--teal);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);}
+.hotel-header{background:linear-gradient(120deg,var(--teal),#3DA8B4);color:#fff;padding:10px 18px;font-size:14.5px;font-weight:700;display:flex;justify-content:space-between;align-items:center;}
+.hotel-body{background:#fff;padding:20px 18px;}
+.hotel-name{font-size:22px;font-weight:800;color:var(--text-main);margin-bottom:10px;}
+.hotel-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed var(--border);}
+.hotel-row:last-child{border-bottom:none;}
+.hotel-row .label{color:var(--text-sub);font-weight:500;}
+.hotel-row .val{color:var(--text-main);font-weight:700;text-align:right;}
+
+.incl-card{border-radius:14px;padding:16px;font-size:15.5px;line-height:1.75;background:var(--sunset-bg);border:1px solid var(--sunset);}
+.incl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#A13F16;}
+
+.visa-box{border:1.5px solid var(--gold);border-radius:16px;background:var(--gold-bg);padding:20px;}
+.visa-box .head{font-weight:800;font-size:17px;color:#8A5E0E;margin-bottom:10px;}
+.visa-box a.linkbtn{display:inline-block;margin-top:10px;background:var(--gold);color:#fff;font-weight:700;font-size:15.5px;padding:9px 18px;border-radius:10px;}
+
+.limit-box{border:1.5px solid var(--red);border-radius:16px;background:var(--red-bg);padding:20px;}
+.limit-box .head{font-weight:800;font-size:16px;color:#A32C24;margin-bottom:8px;}
+.limit-box ul{padding-left:18px;font-size:14.5px;color:#A32C24;line-height:1.8;}
+
+.exchange-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:#fff;box-shadow:var(--shadow);}
+.exchange-box .ex-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed var(--border);}
+.exchange-box .ex-row:last-child{border-bottom:none;}
+
+.info-box{border:1.5px solid var(--teal);border-radius:16px;background:#fff;box-shadow:var(--shadow);padding:20px;margin-bottom:12px;}
+.info-box .title{font-weight:800;font-size:16px;color:var(--teal-dark);margin-bottom:8px;}
+.info-box p{font-size:15px;color:var(--text-sub);line-height:1.7;}
+
+.weather-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
+.weather-card{flex:0 0 auto;width:106px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 8px;text-align:center;box-shadow:var(--shadow);}
+.weather-card .date{font-size:13.5px;font-weight:700;color:var(--text-sub);margin-bottom:6px;}
+.weather-card .day{font-size:12px;color:var(--text-muted);margin-bottom:6px;}
+.weather-card .icon{font-size:26px;margin-bottom:8px;}
+.weather-card .high{font-size:17px;font-weight:800;color:var(--sunset);}
+.weather-card .low{font-size:14px;color:var(--text-muted);margin-top:2px;}
+.weather-card .rain{font-size:12px;color:var(--teal);margin-top:4px;}
+
+.prep-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.prep-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.prep-card .icon{font-size:22px;margin-bottom:6px;}
+.prep-card .title{font-weight:700;font-size:15.5px;color:var(--teal-dark);margin-bottom:6px;}
+.prep-card ul{padding-left:16px;font-size:15px;color:var(--text-sub);line-height:1.75;}
+
+@media (max-width:480px){
+  .trip-band-inner{grid-template-columns:repeat(2,1fr);gap:14px;}
+  .prep-grid{grid-template-columns:1fr;}
+  .header-title{font-size:26px;}
+}
+
+.footer{width:100%;background:#052F33;padding:32px 20px;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;text-align:center;}
+.footer-agent{color:#fff;font-size:17px;font-weight:700;margin-bottom:6px;}
+.footer-sub{color:rgba(255,255,255,0.55);font-size:14.5px;margin-bottom:18px;}
+.footer-btns{display:flex;justify-content:center;gap:10px;}
+.footer-btn{padding:10px 20px;border-radius:12px;font-weight:700;font-size:15.5px;transition:transform .15s ease-out;}
+.footer-btn:active{transform:scale(0.97);}
+.footer-btn.tel{background:var(--sunset);color:#fff;}
+.footer-btn.kakao{background:#FEE500;color:#391B1B;}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="agent-info">담당 <b>이경진 실장</b> · 모두투어 투어콕</div>
+    <div class="top-btns">
+      <a class="top-btn" href="tel:1544-5714">📞 전화상담</a>
+      <a class="top-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡</a>
+    </div>
+  </div>
+</div>
+
+<div class="header">
+  <div class="header-inner">
+    <span class="header-tag">TRAVEL CONFIRMATION</span>
+    <div class="header-title">🌺 클럽메드 발리 여행 확정서</div>
+    <div class="header-subtitle">부산(김해)국제공항 출발 · 3박 5일 · BALI 2026</div>
+    <div class="header-names">박성재님 가족</div><br>
+    <a class="header-cta" href="https://www.modetour.com/package/104062267?MLoc=99&Pnum=104062267&ANO=1772510&sno=C2181215&thru=crs" target="_blank">🔗 여행상품 확인하기</a>
+  </div>
+</div>
+
+<div class="trip-band">
+  <div class="trip-band-inner">
+    <div class="trip-item"><div class="label">출발일</div><div class="value">2026.08.16(일)</div></div>
+    <div class="trip-item"><div class="label">귀국일</div><div class="value">2026.08.20(목)</div></div>
+    <div class="trip-item"><div class="label">일정</div><div class="value">3박 5일</div></div>
+    <div class="trip-item"><div class="label">투어타입</div><div class="value">리조트</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 상품 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">1</div><div class="section-title">상품 안내</div></div>
+    <a class="product-link-box" href="https://www.modetour.com/package/104062267?MLoc=99&Pnum=104062267&ANO=1772510&sno=C2181215&thru=crs" target="_blank">
+      <span>모두투어 클럽메드 발리 상품 바로가기</span>
+      <span class="arrow">↗</span>
+    </a>
+    <div class="alert alert-teal">
+      ✔ <b>김해공항 미팅이 없습니다.</b> 개별적으로 에어부산 카운터에서 티켓팅 후 출발해 주세요.
+    </div>
+  </div>
+
+  <!-- 김해공항 체크인 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">김해공항 체크인 안내</div></div>
+    <div class="counter-box">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">본 구간은 <b>공항 미팅이 없습니다.</b> 출발 시간(17:00) 기준 <b>2~3시간 전 공항 도착</b>을 권장드립니다.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">김해공항 국제선에서 <b>에어부산(BX601) 카운터</b>를 이용해 티켓팅해 주세요.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 항공편 정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">항공편 정보</div></div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>출발편 · 에어부산</span><span class="code">BX601</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">PUS</div><div class="city">부산 · 08.16(일) 17:00</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">DPS</div><div class="city">발리 · 08.16(일) 22:55</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 에어부산</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>귀국편 · 에어부산</span><span class="code">BX602</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">DPS</div><div class="city">발리 · 08.20(목) 00:05</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">PUS</div><div class="city">부산 · 08.20(목) 08:00</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 에어부산</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-sunset">
+      ⚠ 귀국편은 <b>새벽 00:05 출발</b>이므로 8/19(수) 밤 늦게 공항으로 이동하셔야 합니다.
+    </div>
+  </div>
+
+  <!-- 현지 도착 미팅 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">현지 공항 도착 안내</div></div>
+    <div class="alert alert-teal">
+      🔱 현지공항 도착 후 <b>클럽메드 트라이던트(삼지창) 로고가 있는 피켓</b>을 찾아주세요.
+    </div>
+  </div>
+
+  <!-- 투숙 호텔 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">투숙 호텔</div></div>
+    <div class="hotel-card">
+      <div class="hotel-header"><span>🏨 전 일정</span><span>3박</span></div>
+      <div class="hotel-body">
+        <div class="hotel-name">클럽메드 발리 (Club Med Bali)</div>
+        <div class="hotel-row"><span class="label">객실 기준</span><span class="val">2인 1실</span></div>
+        <div class="hotel-row"><span class="label">시차</span><span class="val">한국보다 1시간 느림</span></div>
+        <div class="hotel-row"><span class="label">전압</span><span class="val">220V (한국과 동일)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 불포함 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">불포함 사항</div></div>
+    <div class="incl-card">
+      <div class="head">✘ 불포함사항</div>
+      ① 매너팁 (소비자의 자율적 선택사항 — 식당·기사 등 서비스에 대한 감사 표시로 자율 지불)<br>
+      ② 도착비자 비용 약 50만 루피아 (사전신청 또는 현지공항 지불)<br>
+      ③ 관광세 15만 루피아 (Love Bali 웹사이트 <a href="https://lovebali.baliprov.go.id" target="_blank" style="text-decoration:underline;">lovebali.baliprov.go.id</a> 또는 Love Bali 앱)
+    </div>
+  </div>
+
+  <!-- 인도네시아 입국 필수사항 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">인도네시아 입국 필수 사항</div></div>
+    <div class="visa-box">
+      <div class="head">📝 온라인 도착카드 + 전자도착비자 + 관광세 통합 작성</div>
+      아래 사이트에서 온라인 도착카드, 전자도착비자, 관광세를 한 번에 작성·납부하실 수 있습니다.
+      <br><br>
+      <a class="linkbtn" href="https://allindonesia.imigrasi.go.id/" target="_blank">🔗 All Indonesia 작성하기</a>
+    </div>
+    <div class="counter-box" style="margin-top:14px;">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">사이트에서 <b>온라인 정보 입력 및 결제</b>를 진행합니다.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">완료 후 <b>QR코드가 발급</b>됩니다.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text"><b>QR코드를 저장하고 프린트</b>해서 현지 입국 시 제시해 주세요.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 면세한도 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">인도네시아 면세 허용 범위</div></div>
+    <div class="limit-box">
+      <div class="head">🛃 1인당 면세 허용 범위</div>
+      <ul>
+        <li>일반(18세 이상): US$500까지의 물품</li>
+        <li>담배 200개비, 시가 50개비, 씹는 담배 200g, 주류 1리터까지 허용</li>
+        <li>면세한도 초과 시 <b>벌금이 부과</b>될 수 있습니다</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 환전 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">환전 안내</div></div>
+    <div class="exchange-box">
+      <div class="ex-row"><span>현지 화폐</span><span style="font-weight:700;">인도네시아 루피아(Rp)</span></div>
+      <div class="ex-row"><span>환전 장소</span><span style="font-weight:700;">클럽메드 리셉션에서 환전 가능</span></div>
+      <div class="ex-row"><span>환전 팁</span><span style="font-weight:700;">원화→루피아보다 달러(USD)→루피아가 유리</span></div>
+      <div class="ex-row"><span>빌리지 내 결제</span><span style="font-weight:700;">신용카드 사용 권장</span></div>
+      <div class="ex-row"><span>팁 문화</span><span style="font-weight:700;">클럽메드는 No-Tip</span></div>
+    </div>
+  </div>
+
+  <!-- 클럽메드 이용 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">클럽메드 이용 안내</div></div>
+    <div class="info-box">
+      <div class="title">🎭 인포메이션 미팅</div>
+      <p>매일 <b>오전 10시, 오후 5시</b>에 극장에서 빌리지 안내 및 프로그램 설명회가 진행됩니다. 머무는 동안 필요한 정보를 얻을 수 있는 시간이니 참가해서 즐겁고 유쾌한 휴가를 준비해 보세요.</p>
+    </div>
+    <div class="info-box">
+      <div class="title">💳 디파짓 카드</div>
+      <p>빌리지 내에서 사용할 수 있는 일종의 신용카드입니다. 리셉션에서 발급 가능하며, 신용카드나 현금(US $500 상당)으로 보증한 후 사용하실 수 있습니다. 마지막 날 체크아웃 시 정산됩니다.</p>
+    </div>
+    <div class="info-box" style="margin-bottom:0;">
+      <div class="title">🧳 체크아웃 & 시설 이용</div>
+      <p>발리 체크아웃은 <b>오전 10시</b>이며, 빌리지를 떠나기 전까지 모든 시설을 이용하실 수 있습니다. 샤워룸 & 라커는 <b>08:00~21:00 무료 이용</b> 가능합니다. 원활한 체크아웃을 위해 <b>출발 하루 전 리셉션 옆 "Departure Board"</b>에서 객실 비우는 시간, 짐 내놓는 시간 등을 미리 확인해 주세요.</p>
+    </div>
+  </div>
+
+  <!-- 날씨 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">11</div><div class="section-title">일자별 날씨 정보</div></div>
+    <div class="weather-row">
+      <div class="weather-card">
+        <div class="date">8/16(일)</div>
+        <div class="day">출국일</div>
+        <div class="icon">☀️</div>
+        <div class="high">29℃</div>
+        <div class="low">23℃</div>
+        <div class="rain">강수 15%</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">8/17(월)</div>
+        <div class="day">발리</div>
+        <div class="icon">⛅</div>
+        <div class="high">29℃</div>
+        <div class="low">23℃</div>
+        <div class="rain">강수 20%</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">8/18(화)</div>
+        <div class="day">발리</div>
+        <div class="icon">☀️</div>
+        <div class="high">29℃</div>
+        <div class="low">23℃</div>
+        <div class="rain">강수 15%</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">8/19(수)</div>
+        <div class="day">발리</div>
+        <div class="icon">☀️</div>
+        <div class="high">29℃</div>
+        <div class="low">23℃</div>
+        <div class="rain">강수 10%</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">8/20(목)</div>
+        <div class="day">귀국일</div>
+        <div class="icon">⛅</div>
+        <div class="high">29℃</div>
+        <div class="low">23℃</div>
+        <div class="rain">강수 20%</div>
+      </div>
+    </div>
+    <div class="alert alert-gold">
+      ☀️ 실제 예보 기준으로 반영했어요. 8월 발리는 건기라 맑고 쾌적한 날씨가 이어지며 강수확률도 낮은 편입니다. 출발 며칠 전 다시 확인해 드릴게요.
+    </div>
+  </div>
+
+  <!-- 준비물 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">12</div><div class="section-title">여행 준비물</div></div>
+    <div class="prep-grid">
+      <div class="prep-card">
+        <div class="icon">🧴</div>
+        <div class="title">세면도구</div>
+        <ul>
+          <li><b>치약·칫솔·면도기는 별도 준비 필수</b></li>
+          <li>타올·비누·샴푸는 비치되어 있으나, 다 쓴 후 재비치되지 않으니 여유분 챙기기 권장</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🏊</div>
+        <div class="title">액티비티 & 여름용품</div>
+        <ul>
+          <li>운동화(지상스포츠 이용 시), 수영복, 비치샌들</li>
+          <li>선탠오일 및 크림, 모기약</li>
+          <li>빗, 선글라스, 모자</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">👕</div>
+        <div class="title">옷차림</div>
+        <ul>
+          <li>얇은 긴옷(에어컨·저녁 대비)</li>
+          <li>일반 상비약</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">⌚</div>
+        <div class="title">기타 준비물</div>
+        <ul>
+          <li><b>시계</b> — 클럽메드는 온전히 편안히 즐기시라고 객실 내 시계가 없습니다</li>
+          <li>QR코드 저장·프린트본(입국카드/비자/관광세)</li>
+          <li>미국달러(USD) 현금(루피아 환전용)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-agent">담당 이경진 실장</div>
+    <div class="footer-sub">박성재님 가족의 즐거운 클럽메드 발리 여행을 응원합니다 🌺</div>
+    <div class="footer-btns">
+      <a class="footer-btn tel" href="tel:1544-5714">📞 1544-5714</a>
+      <a class="footer-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 투어콕 카카오톡 채널</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.1});
+sections.forEach(s=>observer.observe(s));
+</script>
+
+</body>
+</html>
