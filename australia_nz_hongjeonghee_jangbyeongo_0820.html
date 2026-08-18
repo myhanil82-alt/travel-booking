@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>호주·뉴질랜드 여행 확정서 - 홍정희, 장병오님</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+  --ocean:#0E6BA8;
+  --ocean-dark:#0A4F7D;
+  --ocean-bg:#EAF4FA;
+  --sunset:#E86A33;
+  --sunset-bg:#FDF1EA;
+  --gold:#F0A93E;
+  --gold-bg:#FEF6E8;
+  --sky-top:#E7F1F8;
+  --sky-bottom:#F6F8F5;
+  --text-main:#1E2733;
+  --text-sub:#5A6673;
+  --text-muted:#8D97A2;
+  --card-bg:#FFFFFF;
+  --border:#E1E9EE;
+  --shadow:0 4px 20px rgba(14,107,168,0.10);
+  --max-w:680px;
+  --red:#D3453C;
+  --red-bg:#FDEFED;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Pretendard',sans-serif;background:linear-gradient(180deg,var(--sky-top) 0%, var(--sky-bottom) 45%, #FBFAF7 100%);color:var(--text-main);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+
+.top-bar{width:100%;background:rgba(10,79,125,0.92);backdrop-filter:blur(6px);padding:10px 20px;}
+.top-bar-inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.agent-info{color:#EAF4FA;font-size:15px;font-weight:500;}
+.agent-info b{color:#fff;}
+.top-btns{display:flex;gap:8px;}
+.top-btn{font-size:14.5px;font-weight:600;padding:6px 12px;border-radius:20px;background:rgba(255,255,255,0.15);color:#fff;transition:transform .15s ease-out, background .2s;}
+.top-btn:hover{background:rgba(255,255,255,0.28);}
+.top-btn:active{transform:scale(0.97);}
+.top-btn.kakao{background:#FEE500;color:#391B1B;}
+
+.header{width:100%;padding:28px 16px 24px;}
+.header-inner{max-width:var(--max-w);margin:0 auto;text-align:center;position:relative;z-index:1;border-radius:24px;overflow:hidden;padding:48px 24px 40px;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(14,107,168,0.32), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(232,106,51,0.18), transparent 50%),
+    linear-gradient(160deg,#08324E 0%, #0A4F7D 55%, #0E6BA8 100%);
+  box-shadow:0 12px 32px rgba(8,50,78,0.28);}
+.header-tag{display:inline-block;font-size:14px;font-weight:700;letter-spacing:2.5px;color:var(--gold);border:1px solid rgba(240,169,62,0.5);padding:6px 16px;border-radius:20px;margin-bottom:18px;}
+.header-title{font-size:30px;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-0.5px;text-shadow:0 2px 12px rgba(0,0,0,0.4);}
+.header-subtitle{font-size:16px;color:rgba(255,255,255,0.85);font-weight:500;margin-bottom:28px;letter-spacing:0.5px;}
+.header-names{font-size:22px;font-weight:700;color:#fff;background:rgba(255,255,255,0.1);display:inline-block;padding:10px 24px;border-radius:14px;margin-bottom:22px;}
+.header-cta{display:inline-flex;align-items:center;gap:8px;background:var(--sunset);color:#fff;font-weight:700;font-size:17px;padding:13px 26px;border-radius:12px;box-shadow:0 8px 20px rgba(232,106,51,0.4);transition:transform .2s ease-out, box-shadow .2s;}
+.header-cta:hover{transform:translateY(-2px) scale(1.02);}
+.header-cta:active{transform:scale(0.97);}
+
+.trip-band{width:100%;background:linear-gradient(90deg,var(--ocean),#3D93C9);}
+.trip-band-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);text-align:center;padding:20px 16px;}
+.trip-item .label{font-size:13px;color:rgba(255,255,255,0.85);font-weight:600;margin-bottom:4px;}
+.trip-item .value{font-size:16px;color:#fff;font-weight:800;}
+
+.container{max-width:var(--max-w);margin:0 auto;padding:36px 20px 60px;}
+.section{margin-bottom:36px;opacity:0;transform:translateY(16px);transition:opacity .5s ease-out, transform .5s ease-out;}
+.section.visible{opacity:1;transform:translateY(0);}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.section-num{width:30px;height:30px;border-radius:50%;background:var(--ocean-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0;}
+.section-title{font-size:20px;font-weight:800;color:var(--text-main);}
+
+.product-link-box{display:flex;justify-content:space-between;align-items:center;background:var(--ocean-bg);border:1px solid var(--ocean);border-radius:14px;padding:16px 18px;font-weight:700;color:var(--ocean-dark);margin-bottom:14px;transition:transform .15s ease-out, background .2s;}
+.product-link-box:hover{background:#DCEEF8;transform:scale(1.01);}
+.product-link-box:active{transform:scale(0.98);}
+.product-link-box span.arrow{font-size:20px;}
+
+.alert{border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.6;margin-top:12px;}
+.alert-ocean{background:var(--ocean-bg);border:1px solid var(--ocean);color:#0A4F7D;}
+.alert-sunset{background:var(--sunset-bg);border:1px solid var(--sunset);color:#A13F16;}
+.alert-gold{background:var(--gold-bg);border:1px solid var(--gold);color:#8A5E0E;}
+.alert-red{background:var(--red-bg);border:1px solid var(--red);color:#A32C24;}
+
+.meeting-box{border:1.5px solid var(--sunset);border-radius:16px;background:#fff;padding:20px;box-shadow:var(--shadow);}
+.meeting-time{font-size:22px;font-weight:800;color:var(--sunset);text-align:center;margin-bottom:14px;}
+.meeting-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed var(--border);gap:10px;}
+.meeting-row:last-child{border-bottom:none;}
+.meeting-row .label{color:var(--text-sub);}
+.meeting-row .val{font-weight:700;color:var(--text-main);text-align:right;}
+
+.flight-card{border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px;}
+.flight-header{background:linear-gradient(120deg,#08324E,#0A4F7D);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:700;}
+.flight-header .code{color:var(--gold);}
+.flight-body{background:#fff;padding:20px 18px;}
+.flight-route{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.flight-route .airport{text-align:center;}
+.flight-route .airport .code{font-size:28px;font-weight:800;color:var(--text-main);}
+.flight-route .airport .city{font-size:14px;color:var(--text-sub);margin-top:2px;}
+.flight-route .mid{flex:1;text-align:center;padding:0 12px;}
+.flight-route .mid .time{font-size:14px;color:var(--text-muted);}
+.flight-route .mid .line{height:2px;background:var(--border);position:relative;margin-top:6px;}
+.flight-route .mid .line::after{content:"✈";position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:16px;}
+.flight-badges{display:flex;flex-wrap:wrap;gap:8px;}
+.badge{font-size:14px;font-weight:600;color:var(--text-sub);background:#F4F8FA;border:1px solid var(--border);padding:5px 10px;border-radius:8px;}
+
+.baggage-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.baggage-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.baggage-card .icon{font-size:24px;margin-bottom:6px;}
+.baggage-card .title{font-size:15px;font-weight:700;color:var(--text-sub);margin-bottom:4px;}
+.baggage-card .amount{font-size:18px;font-weight:800;color:var(--ocean-dark);}
+.baggage-card .desc{font-size:13.5px;color:var(--text-muted);margin-top:4px;line-height:1.5;}
+
+.guide-box{border:1.5px solid var(--ocean-dark);border-radius:16px;background:var(--ocean-bg);padding:20px;}
+.guide-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed rgba(10,79,125,0.2);gap:10px;}
+.guide-row:last-child{border-bottom:none;}
+.guide-row .label{color:var(--text-sub);}
+.guide-row .val{font-weight:700;color:var(--ocean-dark);text-align:right;}
+
+.hotel-card{border:2px solid var(--ocean);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);}
+.hotel-header{background:linear-gradient(120deg,var(--ocean),#3D93C9);color:#fff;padding:10px 18px;font-size:14.5px;font-weight:700;display:flex;justify-content:space-between;align-items:center;}
+.hotel-body{background:#fff;padding:20px 18px;}
+.hotel-name{font-size:20px;font-weight:800;color:var(--text-main);margin-bottom:8px;}
+.hotel-row{display:flex;justify-content:space-between;font-size:15px;padding:7px 0;border-bottom:1px dashed var(--border);}
+.hotel-row:last-child{border-bottom:none;}
+.hotel-row .label{color:var(--text-sub);font-weight:500;}
+.hotel-row .val{color:var(--text-main);font-weight:700;text-align:right;}
+
+.incl-card{border-radius:14px;padding:16px;font-size:15.5px;line-height:1.75;background:var(--sunset-bg);border:1px solid var(--sunset);}
+.incl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#A13F16;}
+
+.visa-box{border:1.5px solid var(--red);border-radius:16px;background:var(--red-bg);padding:20px;}
+.visa-box .head{font-weight:800;font-size:17px;color:#A32C24;margin-bottom:10px;}
+
+.card-form{border:1.5px solid var(--gold);border-radius:16px;background:var(--gold-bg);padding:20px;}
+.card-form .head{font-weight:800;font-size:17px;color:#8A5E0E;margin-bottom:10px;}
+.card-form .info-row{display:flex;justify-content:space-between;font-size:15px;padding:6px 0;border-bottom:1px dashed rgba(138,94,14,0.2);gap:10px;}
+.card-form .info-row .val{font-weight:700;text-align:right;}
+.declare-list{margin-top:12px;background:#fff;border-radius:10px;padding:12px 14px;font-size:14px;color:var(--text-sub);line-height:1.7;}
+.declare-list b{color:var(--red);}
+
+.exchange-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:#fff;box-shadow:var(--shadow);}
+.exchange-box .ex-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed var(--border);}
+.exchange-box .ex-row:last-child{border-bottom:none;}
+
+.weather-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
+.weather-card{flex:0 0 auto;width:140px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 12px;text-align:center;box-shadow:var(--shadow);}
+.weather-card .region{font-size:14px;font-weight:800;color:var(--text-main);margin-bottom:6px;}
+.weather-card .icon{font-size:26px;margin-bottom:8px;}
+.weather-card .high{font-size:16px;font-weight:800;color:var(--sunset);}
+.weather-card .low{font-size:13.5px;color:var(--text-muted);margin-top:2px;}
+
+.prep-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.prep-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.prep-card .icon{font-size:22px;margin-bottom:6px;}
+.prep-card .title{font-weight:700;font-size:15.5px;color:var(--ocean-dark);margin-bottom:6px;}
+.prep-card ul{padding-left:16px;font-size:15px;color:var(--text-sub);line-height:1.75;}
+
+@media (max-width:480px){
+  .trip-band-inner{grid-template-columns:repeat(2,1fr);gap:14px;}
+  .baggage-grid,.prep-grid{grid-template-columns:1fr;}
+  .header-title{font-size:24px;}
+}
+
+.footer{width:100%;background:#08324E;padding:32px 20px;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;text-align:center;}
+.footer-agent{color:#fff;font-size:17px;font-weight:700;margin-bottom:6px;}
+.footer-sub{color:rgba(255,255,255,0.55);font-size:14.5px;margin-bottom:18px;}
+.footer-btns{display:flex;justify-content:center;gap:10px;}
+.footer-btn{padding:10px 20px;border-radius:12px;font-weight:700;font-size:15.5px;transition:transform .15s ease-out;}
+.footer-btn:active{transform:scale(0.97);}
+.footer-btn.tel{background:var(--sunset);color:#fff;}
+.footer-btn.kakao{background:#FEE500;color:#391B1B;}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="agent-info">담당 <b>이경진 실장</b> · 모두투어 투어콕</div>
+    <div class="top-btns">
+      <a class="top-btn" href="tel:1544-5714">📞 전화상담</a>
+      <a class="top-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡</a>
+    </div>
+  </div>
+</div>
+
+<div class="header">
+  <div class="header-inner">
+    <span class="header-tag">TRAVEL CONFIRMATION</span>
+    <div class="header-title">🦘🥝 호주·뉴질랜드 여행 확정서</div>
+    <div class="header-subtitle">인천국제공항 출발 · 8박 10일 · AUSTRALIA·NEW ZEALAND 2026</div>
+    <div class="header-names">홍정희, 장병오님</div><br>
+    <a class="header-cta" href="https://www.modetour.com/package/104008198?MLoc=99&Pnum=104008198&ANO=1772510&sno=C2181215&thru=crs" target="_blank">🔗 여행상품 확인하기</a>
+  </div>
+</div>
+
+<div class="trip-band">
+  <div class="trip-band-inner">
+    <div class="trip-item"><div class="label">출발일</div><div class="value">2026.08.20(목)</div></div>
+    <div class="trip-item"><div class="label">귀국일</div><div class="value">2026.08.29(토)</div></div>
+    <div class="trip-item"><div class="label">일정</div><div class="value">8박 10일</div></div>
+    <div class="trip-item"><div class="label">투어타입</div><div class="value">패키지</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 상품 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">1</div><div class="section-title">상품 안내</div></div>
+    <a class="product-link-box" href="https://www.modetour.com/package/104008198?MLoc=99&Pnum=104008198&ANO=1772510&sno=C2181215&thru=crs" target="_blank">
+      <span>모두투어 호주·뉴질랜드 패키지 상품 바로가기</span>
+      <span class="arrow">↗</span>
+    </a>
+    <div class="alert alert-ocean">
+      ✔ 조인코드: <b>PME130KE04 / PMP130KE0D</b><br>
+      ✔ 시드니 → 뉴질랜드(남섬·북섬)를 잇는 일정으로, 현지 국내선 구간이 포함되어 있습니다(자세한 이동 일정은 일정표 참고).
+    </div>
+  </div>
+
+  <!-- 인천공항 미팅 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">인천공항 미팅 안내</div></div>
+    <div class="meeting-box">
+      <div class="meeting-time">2026.08.20(목) 15:45</div>
+      <div class="meeting-row"><span class="label">장소</span><span class="val">인천국제공항 제2터미널<br>A카운터 1번 출구 앞<br>1~2번 모두투어 테이블</span></div>
+    </div>
+  </div>
+
+  <!-- 항공편 정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">항공편 정보</div></div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>출발편 · 대한항공</span><span class="code">KE401</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 08.20(목) 19:10</div></div>
+          <div class="mid"><div class="time">직항(야간)</div><div class="line"></div></div>
+          <div class="airport"><div class="code">SYD</div><div class="city">시드니 · 08.21(금) 06:20</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 대한항공</span>
+          <span class="badge">위탁 23kg</span>
+          <span class="badge">기내 10kg</span>
+          <span class="badge">기내식 제공</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>귀국편 · 대한항공</span><span class="code">KE412</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">AKL</div><div class="city">오클랜드 · 08.29(토) 11:05</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 08.29(토) 20:20</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 대한항공</span>
+          <span class="badge">위탁 23kg</span>
+          <span class="badge">기내 10kg</span>
+          <span class="badge">기내식 제공</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-ocean">
+      ✈ 시드니↔뉴질랜드 구간은 <b>현지 국내선(중간구간)</b>으로 이동하며, 이 구간은 수하물 규정이 다르니 4번 항목을 꼭 확인해 주세요.
+    </div>
+  </div>
+
+  <!-- 수하물 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">수하물 안내</div></div>
+    <div class="baggage-grid">
+      <div class="baggage-card">
+        <div class="icon">🧳</div>
+        <div class="title">위탁수하물 (국제선)</div>
+        <div class="amount">23kg(50lbs) · 1개</div>
+        <div class="desc">3면의 합 158cm(62in) 이내</div>
+      </div>
+      <div class="baggage-card">
+        <div class="icon">🎒</div>
+        <div class="title">기내수하물 (국제선)</div>
+        <div class="amount">10kg 이하 · 1개</div>
+        <div class="desc">일반석 기준</div>
+      </div>
+      <div class="baggage-card">
+        <div class="icon">🧳</div>
+        <div class="title">위탁수하물 (현지 국내선)</div>
+        <div class="amount">20kg 이하 · 1개</div>
+        <div class="desc">시드니↔뉴질랜드 구간 기준</div>
+      </div>
+      <div class="baggage-card">
+        <div class="icon">🎒</div>
+        <div class="title">기내수하물 (현지 국내선)</div>
+        <div class="amount">7kg 이하 · 1개</div>
+        <div class="desc">시드니↔뉴질랜드 구간 기준</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 현지 가이드 & 행사정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">현지 가이드 & 행사 정보</div></div>
+    <div class="guide-box">
+      <div class="guide-row"><span class="label">시드니 가이드</span><span class="val">이강면<br>0426 104 269</span></div>
+      <div class="guide-row"><span class="label">뉴질랜드 남섬 가이드</span><span class="val">강민(강경래)<br>027 964 3089</span></div>
+      <div class="guide-row"><span class="label">뉴질랜드 북섬 가이드</span><span class="val">양기모<br>022 080 0280</span></div>
+      <div class="guide-row"><span class="label">시드니 비상연락처</span><span class="val">김태경 소장<br>T:+61 (0)2 9283 6133<br>M:+61 (0)406 318 676</span></div>
+      <div class="guide-row"><span class="label">뉴질랜드 북섬 비상연락처</span><span class="val">박성민 소장<br>T:+64 (0)9 278 5027<br>M:+64 (0)21 761 335</span></div>
+      <div class="guide-row"><span class="label">뉴질랜드 남섬 비상연락처</span><span class="val">유준길 소장<br>M:+64 (0)27 201 0663</span></div>
+      <div class="guide-row"><span class="label">행사인원</span><span class="val">성인 12</span></div>
+      <div class="guide-row"><span class="label">행사차량</span><span class="val">25인승 미니버스</span></div>
+    </div>
+  </div>
+
+  <!-- 투숙 호텔 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">투숙 호텔</div></div>
+    <div class="hotel-card">
+      <div class="hotel-header"><span>🏨 첫날(시드니)</span><span></span></div>
+      <div class="hotel-body">
+        <div class="hotel-name">Moxy Sydney Airport</div>
+        <div class="hotel-row"><span class="label">주소</span><span class="val">56 Baxter Rd, Mascot NSW 2020</span></div>
+        <div class="hotel-row"><span class="label">전화번호</span><span class="val">+61 2 9132 4800</span></div>
+      </div>
+    </div>
+    <div class="alert alert-ocean">
+      🏨 <b>그 외 일정의 투숙 호텔은 일정표를 참고</b>해 주세요. 시드니-뉴질랜드 남섬-북섬을 잇는 여정이라 여러 도시에서 나누어 투숙합니다.
+    </div>
+  </div>
+
+  <!-- 불포함 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">불포함 사항</div></div>
+    <div class="incl-card">
+      <div class="head">✘ 불포함사항</div>
+      * 쇼핑 및 개인경비<br>
+      * 식사 시 음료
+    </div>
+  </div>
+
+  <!-- 호주/뉴질랜드 ETA -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">호주 · 뉴질랜드 ETA 필수 안내</div></div>
+    <div class="visa-box">
+      <div class="head">🚨 호주·뉴질랜드 각각 ETA 발급 필수</div>
+      호주와 뉴질랜드는 <b>각국의 ETA(전자여행허가)를 발급받지 않으면 입국이 불가</b>합니다. <b>호주 ETA, 뉴질랜드 ETA 모두</b> 승인 완료 화면을 각자 캡처해두시고, 출발 전 반드시 한 번 더 재확인해 주세요.
+    </div>
+  </div>
+
+  <!-- 호주 입국신고서 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">호주 입국신고서(Incoming Passenger Card) 안내</div></div>
+    <div class="card-form">
+      <div class="head">📝 호주 입국신고서 작성 안내</div>
+      ETA와는 별개로 입국신고서 작성이 필요합니다. 성·이름은 여권 영어 표기 그대로 기재해 주세요.
+      <div class="info-row"><span>호주 내 주소(첫날 숙소)</span><span class="val">56 Baxter Rd,<br>Mascot NSW 2020</span></div>
+      <div class="info-row"><span>숙소명</span><span class="val">Moxy Sydney Airport</span></div>
+      <div class="info-row"><span>현지 연락처</span><span class="val">+61 2 9132 4800</span></div>
+      <div class="declare-list">
+        ⚠ 신고 항목 체크 시 특히 주의해 주세요.<br>
+        · <b>약(의약품)</b>을 소지하신 경우 반드시 신고 항목에 체크해 주세요.<br>
+        · <b>라면, 김치</b> 등 음식물을 캐리어에 넣어오신 경우 반드시 신고하셔야 합니다. 신고하지 않고 적발되면 벌금이 부과될 수 있고, 신고하더라도 검역 과정에서 압수될 수 있으니 <b>가급적 최소한으로 챙기시는 걸 권장</b>드려요.<br>
+        · 이 외 육류·유제품·신선식품·씨앗류 등도 반입이 엄격히 제한되니 함께 확인해 주세요.
+      </div>
+    </div>
+  </div>
+
+  <!-- 뉴질랜드 입국 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">뉴질랜드 입국 안내</div></div>
+    <div class="alert alert-ocean">
+      🥝 뉴질랜드는 <b>ETA 승인화면만으로 입국이 가능</b>하며, 별도의 입국신고서를 작성하실 필요는 없습니다.
+    </div>
+  </div>
+
+  <!-- 환전 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">11</div><div class="section-title">환전 안내</div></div>
+    <div class="exchange-box">
+      <div class="ex-row"><span>가이드·기사 경비</span><span style="font-weight:700;">불포함 항목 없음 (노팁·노옵션 상품)</span></div>
+      <div class="ex-row"><span>개인경비</span><span style="font-weight:700;">호주달러(AUD) 현금 + 신용카드</span></div>
+      <div class="ex-row"><span>뉴질랜드 구간</span><span style="font-weight:700;">카드 결제 위주 이용 권장</span></div>
+    </div>
+    <div class="alert alert-gold">
+      💵 본 상품은 <b>노팁·노옵션 상품</b>이라 별도로 달러(USD)를 준비하실 필요가 없습니다. 개인경비는 <b>호주달러(AUD) 현금</b>과 <b>신용카드</b>를 준비해 주세요.
+    </div>
+  </div>
+
+  <!-- 팁 문화 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">12</div><div class="section-title">팁 문화 안내</div></div>
+    <div class="alert alert-sunset">
+      🛎 본 상품은 <b>팁 문화가 없습니다.</b> 호텔 베개 위에 별도로 돈을 올려두실 필요가 없어요.
+    </div>
+  </div>
+
+  <!-- 날씨 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">13</div><div class="section-title">지역별 날씨 정보</div></div>
+    <div class="weather-row">
+      <div class="weather-card">
+        <div class="region">🏙 시드니</div>
+        <div class="icon">⛅</div>
+        <div class="high">17℃</div>
+        <div class="low">9℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="region">🥝 뉴질랜드 북섬</div>
+        <div class="icon">🌦️</div>
+        <div class="high">14℃</div>
+        <div class="low">7℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="region">🏔 뉴질랜드 남섬</div>
+        <div class="icon">❄️</div>
+        <div class="high">10℃</div>
+        <div class="low">1℃</div>
+      </div>
+    </div>
+    <div class="alert alert-gold">
+      ❄️ 8월은 <b>남반구 한겨울</b>입니다. 시드니는 아침·저녁 쌀쌀, 뉴질랜드 북섬은 시드니보다 조금 더 서늘, <b>뉴질랜드 남섬은 영하권까지 떨어질 수 있는 본격 겨울 날씨</b>예요. 정확한 도시별 일정 순서는 일정표를 참고해 주시고, 위 기온은 평년 평균 참고값이라 출발 며칠 전 다시 확인해 드릴게요.
+    </div>
+  </div>
+
+  <!-- 준비물 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">14</div><div class="section-title">여행 준비물</div></div>
+    <div class="prep-grid">
+      <div class="prep-card">
+        <div class="icon">🧥</div>
+        <div class="title">옷차림 (남반구 한겨울)</div>
+        <ul>
+          <li>두꺼운 패딩 또는 겨울 코트(뉴질랜드 남섬 필수)</li>
+          <li>니트·기모 안감 옷(겹쳐입기)</li>
+          <li>목도리·장갑·방한모자</li>
+          <li>방수 재킷(남섬 눈·비 대비)</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🔌</div>
+        <div class="title">전기·전압</div>
+        <ul>
+          <li>호주·뉴질랜드 전압 <b>230V</b> (한국 220V와 유사)</li>
+          <li>플러그는 <b>호주식(Type I, 삼발이 사선형)</b> — 한국과 달라 <b>멀티어댑터 필수</b></li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">💊</div>
+        <div class="title">상비약 & 기타</div>
+        <ul>
+          <li>감기약·소화제·진통제(영문 처방전 지참 권장)</li>
+          <li>선크림 — 겨울이어도 자외선 강한 편</li>
+          <li>여권, 호주·뉴질랜드 ETA 승인 화면 캡처본</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🎒</div>
+        <div class="title">기타 준비물</div>
+        <ul>
+          <li>호주달러(AUD) 현금, 신용카드</li>
+          <li>편한 방한 운동화(설원·빙판 지역 대비)</li>
+          <li>보조배터리, 멀티탭</li>
+          <li>선글라스(설산·호수 반사광 대비)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-agent">담당 이경진 실장</div>
+    <div class="footer-sub">홍정희, 장병오님의 즐거운 호주·뉴질랜드 여행을 응원합니다 🦘🥝</div>
+    <div class="footer-btns">
+      <a class="footer-btn tel" href="tel:1544-5714">📞 1544-5714</a>
+      <a class="footer-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 투어콕 카카오톡 채널</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.1});
+sections.forEach(s=>observer.observe(s));
+</script>
+
+</body>
+</html>
