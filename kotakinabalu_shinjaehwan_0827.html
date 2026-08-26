@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>코타키나발루 여행 확정서 - 신재환님 가족</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+  --emerald:#0F9E8E;
+  --emerald-dark:#0A6E62;
+  --emerald-bg:#E9F8F5;
+  --coral:#FF7A5C;
+  --coral-bg:#FFF1EC;
+  --gold:#FDB022;
+  --gold-bg:#FFF8EC;
+  --sky-top:#E3F5F3;
+  --sky-bottom:#F5FBF8;
+  --text-main:#1E2A2C;
+  --text-sub:#54696A;
+  --text-muted:#8AA1A1;
+  --card-bg:#FFFFFF;
+  --border:#DEEEEA;
+  --shadow:0 4px 20px rgba(15,158,142,0.10);
+  --max-w:680px;
+  --red:#E24C4C;
+  --red-bg:#FEF0F0;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Pretendard',sans-serif;background:linear-gradient(180deg,var(--sky-top) 0%, var(--sky-bottom) 45%, #FAFEFC 100%);color:var(--text-main);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+
+.top-bar{width:100%;background:rgba(10,110,98,0.92);backdrop-filter:blur(6px);padding:10px 20px;}
+.top-bar-inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.agent-info{color:#EAFAF7;font-size:15px;font-weight:500;}
+.agent-info b{color:#fff;}
+.top-btns{display:flex;gap:8px;}
+.top-btn{font-size:14.5px;font-weight:600;padding:6px 12px;border-radius:20px;background:rgba(255,255,255,0.15);color:#fff;transition:transform .15s ease-out, background .2s;}
+.top-btn:hover{background:rgba(255,255,255,0.28);}
+.top-btn:active{transform:scale(0.97);}
+.top-btn.kakao{background:#FEE500;color:#391B1B;}
+
+.header{width:100%;padding:28px 16px 24px;}
+.header-inner{max-width:var(--max-w);margin:0 auto;text-align:center;position:relative;z-index:1;border-radius:24px;overflow:hidden;padding:48px 24px 40px;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(15,158,142,0.32), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(255,122,92,0.18), transparent 50%),
+    linear-gradient(160deg,#04352F 0%, #0A6E62 55%, #0F9E8E 100%);
+  box-shadow:0 12px 32px rgba(4,53,47,0.28);}
+.header-tag{display:inline-block;font-size:14px;font-weight:700;letter-spacing:2.5px;color:var(--gold);border:1px solid rgba(253,176,34,0.5);padding:6px 16px;border-radius:20px;margin-bottom:18px;}
+.header-title{font-size:32px;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-0.5px;text-shadow:0 2px 12px rgba(0,0,0,0.4);}
+.header-subtitle{font-size:16px;color:rgba(255,255,255,0.85);font-weight:500;margin-bottom:28px;letter-spacing:0.5px;}
+.header-names{font-size:22px;font-weight:700;color:#fff;background:rgba(255,255,255,0.1);display:inline-block;padding:10px 24px;border-radius:14px;margin-bottom:22px;}
+.header-cta{display:inline-flex;align-items:center;gap:8px;background:var(--coral);color:#fff;font-weight:700;font-size:17px;padding:13px 26px;border-radius:12px;box-shadow:0 8px 20px rgba(255,122,92,0.4);transition:transform .2s ease-out, box-shadow .2s;}
+.header-cta:hover{transform:translateY(-2px) scale(1.02);}
+.header-cta:active{transform:scale(0.97);}
+
+.trip-band{width:100%;background:linear-gradient(90deg,var(--emerald),#3DBBA9);}
+.trip-band-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);text-align:center;padding:20px 16px;}
+.trip-item .label{font-size:13px;color:rgba(255,255,255,0.85);font-weight:600;margin-bottom:4px;}
+.trip-item .value{font-size:17px;color:#fff;font-weight:800;}
+
+.container{max-width:var(--max-w);margin:0 auto;padding:36px 20px 60px;}
+.section{margin-bottom:36px;opacity:0;transform:translateY(16px);transition:opacity .5s ease-out, transform .5s ease-out;}
+.section.visible{opacity:1;transform:translateY(0);}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.section-num{width:30px;height:30px;border-radius:50%;background:var(--emerald-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0;}
+.section-title{font-size:20px;font-weight:800;color:var(--text-main);}
+
+.product-link-box{display:flex;justify-content:space-between;align-items:center;background:var(--emerald-bg);border:1px solid var(--emerald);border-radius:14px;padding:16px 18px;font-weight:700;color:var(--emerald-dark);margin-bottom:14px;transition:transform .15s ease-out, background .2s;}
+.product-link-box:hover{background:#DBF3EE;transform:scale(1.01);}
+.product-link-box:active{transform:scale(0.98);}
+.product-link-box span.arrow{font-size:20px;}
+
+.alert{border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.6;margin-top:12px;}
+.alert-emerald{background:var(--emerald-bg);border:1px solid var(--emerald);color:#0A6E62;}
+.alert-coral{background:var(--coral-bg);border:1px solid var(--coral);color:#B23F26;}
+.alert-gold{background:var(--gold-bg);border:1px solid var(--gold);color:#8A5E0E;}
+.alert-red{background:var(--red-bg);border:1px solid var(--red);color:#B02E2E;}
+
+.counter-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:var(--gold-bg);}
+.step{display:flex;gap:12px;margin-bottom:14px;}
+.step:last-child{margin-bottom:0;}
+.step-num{width:26px;height:26px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0;}
+.step-text{font-size:16px;color:var(--text-main);line-height:1.6;}
+.step-text b{color:#8A5E0E;}
+.step-text a{color:#8A5E0E;text-decoration:underline;font-weight:700;}
+
+.flight-card{border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px;}
+.flight-header{background:linear-gradient(120deg,#04352F,#0A6E62);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:700;}
+.flight-header .code{color:var(--gold);}
+.flight-body{background:#fff;padding:20px 18px;}
+.flight-route{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.flight-route .airport{text-align:center;}
+.flight-route .airport .code{font-size:30px;font-weight:800;color:var(--text-main);}
+.flight-route .airport .city{font-size:14px;color:var(--text-sub);margin-top:2px;}
+.flight-route .mid{flex:1;text-align:center;padding:0 12px;}
+.flight-route .mid .time{font-size:14px;color:var(--text-muted);}
+.flight-route .mid .line{height:2px;background:var(--border);position:relative;margin-top:6px;}
+.flight-route .mid .line::after{content:"✈";position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:16px;}
+.flight-badges{display:flex;flex-wrap:wrap;gap:8px;}
+.badge{font-size:14px;font-weight:600;color:var(--text-sub);background:#F3FAF8;border:1px solid var(--border);padding:5px 10px;border-radius:8px;}
+
+.baggage-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.baggage-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.baggage-card .icon{font-size:24px;margin-bottom:6px;}
+.baggage-card .title{font-size:15px;font-weight:700;color:var(--text-sub);margin-bottom:4px;}
+.baggage-card .amount{font-size:19px;font-weight:800;color:var(--emerald-dark);}
+.baggage-card .desc{font-size:14px;color:var(--text-muted);margin-top:4px;line-height:1.5;}
+
+.guide-box{border:1.5px solid var(--emerald-dark);border-radius:16px;background:var(--emerald-bg);padding:20px;}
+.guide-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed rgba(10,110,98,0.2);gap:10px;}
+.guide-row:last-child{border-bottom:none;}
+.guide-row .label{color:var(--text-sub);}
+.guide-row .val{font-weight:700;color:var(--emerald-dark);text-align:right;}
+
+.hotel-card{border:2px solid var(--emerald);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);}
+.hotel-header{background:linear-gradient(120deg,var(--emerald),#3DBBA9);color:#fff;padding:10px 18px;font-size:14.5px;font-weight:700;display:flex;justify-content:space-between;align-items:center;}
+.hotel-body{background:#fff;padding:20px 18px;}
+.hotel-name{font-size:22px;font-weight:800;color:var(--text-main);}
+
+.incl-card{border-radius:14px;padding:16px;font-size:15.5px;line-height:1.75;background:var(--coral-bg);border:1px solid var(--coral);}
+.incl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#B23F26;}
+
+.visa-box{border:1.5px solid var(--gold);border-radius:16px;background:var(--gold-bg);padding:20px;}
+.visa-box .head{font-weight:800;font-size:17px;color:#8A5E0E;margin-bottom:10px;}
+.visa-box a.linkbtn{display:inline-block;margin-top:10px;background:var(--gold);color:#fff;font-weight:700;font-size:15.5px;padding:9px 18px;border-radius:10px;}
+
+.exchange-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:#fff;box-shadow:var(--shadow);}
+.exchange-box .ex-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed var(--border);}
+.exchange-box .ex-row:last-child{border-bottom:none;}
+
+.weather-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
+.weather-card{flex:0 0 auto;width:106px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 8px;text-align:center;box-shadow:var(--shadow);}
+.weather-card .date{font-size:13.5px;font-weight:700;color:var(--text-sub);margin-bottom:6px;}
+.weather-card .day{font-size:12px;color:var(--text-muted);margin-bottom:6px;}
+.weather-card .icon{font-size:26px;margin-bottom:8px;}
+.weather-card .high{font-size:17px;font-weight:800;color:var(--coral);}
+.weather-card .low{font-size:14px;color:var(--text-muted);margin-top:2px;}
+.weather-card .rain{font-size:12px;color:var(--emerald);margin-top:4px;}
+
+.prep-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.prep-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.prep-card .icon{font-size:22px;margin-bottom:6px;}
+.prep-card .title{font-weight:700;font-size:15.5px;color:var(--emerald-dark);margin-bottom:6px;}
+.prep-card ul{padding-left:16px;font-size:15px;color:var(--text-sub);line-height:1.75;}
+.prep-full{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px;box-shadow:var(--shadow);}
+.prep-full .title{font-weight:800;font-size:16.5px;color:var(--emerald-dark);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.prep-full ul{padding-left:18px;font-size:15.5px;color:var(--text-sub);line-height:1.9;}
+.prep-full ul li b{color:var(--text-main);}
+
+@media (max-width:480px){
+  .trip-band-inner{grid-template-columns:repeat(2,1fr);gap:14px;}
+  .baggage-grid,.prep-grid{grid-template-columns:1fr;}
+  .header-title{font-size:26px;}
+}
+
+.footer{width:100%;background:#04352F;padding:32px 20px;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;text-align:center;}
+.footer-agent{color:#fff;font-size:17px;font-weight:700;margin-bottom:6px;}
+.footer-sub{color:rgba(255,255,255,0.55);font-size:14.5px;margin-bottom:18px;}
+.footer-btns{display:flex;justify-content:center;gap:10px;}
+.footer-btn{padding:10px 20px;border-radius:12px;font-weight:700;font-size:15.5px;transition:transform .15s ease-out;}
+.footer-btn:active{transform:scale(0.97);}
+.footer-btn.tel{background:var(--coral);color:#fff;}
+.footer-btn.kakao{background:#FEE500;color:#391B1B;}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="agent-info">담당 <b>이경진 실장</b> · 모두투어 투어콕</div>
+    <div class="top-btns">
+      <a class="top-btn" href="tel:1544-5714">📞 전화상담</a>
+      <a class="top-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡</a>
+    </div>
+  </div>
+</div>
+
+<div class="header">
+  <div class="header-inner">
+    <span class="header-tag">TRAVEL CONFIRMATION</span>
+    <div class="header-title">🏝️ 코타키나발루 여행 확정서</div>
+    <div class="header-subtitle">인천국제공항 출발 · 3박 5일 · KOTA KINABALU 2026</div>
+    <div class="header-names">신재환님 가족</div><br>
+    <a class="header-cta" href="https://www.modetour.com/package/106612849?MLoc=99&Pnum=106612849&ANO=4547682&sno=C2181215&thru=crs" target="_blank">🔗 여행상품 확인하기</a>
+  </div>
+</div>
+
+<div class="trip-band">
+  <div class="trip-band-inner">
+    <div class="trip-item"><div class="label">출발일</div><div class="value">2026.08.27(목)</div></div>
+    <div class="trip-item"><div class="label">귀국일</div><div class="value">2026.08.31(월)</div></div>
+    <div class="trip-item"><div class="label">일정</div><div class="value">3박 5일</div></div>
+    <div class="trip-item"><div class="label">투어타입</div><div class="value">패키지</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 상품 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">1</div><div class="section-title">상품 안내</div></div>
+    <a class="product-link-box" href="https://www.modetour.com/package/106612849?MLoc=99&Pnum=106612849&ANO=4547682&sno=C2181215&thru=crs" target="_blank">
+      <span>모두투어 코타키나발루 패키지 상품 바로가기</span>
+      <span class="arrow">↗</span>
+    </a>
+    <div class="alert alert-emerald">
+      ✔ 진에어 예약번호(PNR): <b>C2QJY4</b>
+    </div>
+  </div>
+
+  <!-- 온라인 체크인 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">온라인 체크인 안내</div></div>
+    <div class="counter-box">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">진에어 모바일 탑승권 절차는 <b>출발 24시간 전인 2026.08.26(수) 19:15부터</b> 진에어 사이트(<a href="https://www.jinair.com/booking/index" target="_blank">jinair.com</a>)에서 진행하실 수 있으며, 이때 <b>좌석 지정도 가능</b>합니다.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">항공기 출발(19:15) 기준 <b>2~3시간 전</b> 공항 도착을 권장드립니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 항공편 정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">항공편 정보</div></div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>출발편 · 진에어</span><span class="code">LJ131</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 08.27(목) 19:15</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">BKI</div><div class="city">코타키나발루 · 08.27(목) 23:35</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 진에어</span>
+          <span class="badge">위탁 15kg</span>
+          <span class="badge">기내 10kg</span>
+          <span class="badge">기내식 없음</span>
+          <span class="badge">좌석 지정 가능</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>귀국편 · 진에어</span><span class="code">LJ132</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">BKI</div><div class="city">코타키나발루 · 08.31(월) 00:35</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 08.31(월) 06:55</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 진에어</span>
+          <span class="badge">위탁 15kg</span>
+          <span class="badge">기내 10kg</span>
+          <span class="badge">기내식 없음</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-coral">
+      ⚠ 두 항공편 모두 <b>기내식이 제공되지 않습니다.</b> 출발 전 간단한 식사를 준비해 주세요.<br>
+      ⚠ 귀국편은 <b>새벽 00:35 출발</b>이므로 8/30(일) 밤 늦게 공항으로 이동하셔야 합니다.
+    </div>
+  </div>
+
+  <!-- 수하물 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">수하물 안내</div></div>
+    <div class="baggage-grid">
+      <div class="baggage-card">
+        <div class="icon">🧳</div>
+        <div class="title">위탁수하물</div>
+        <div class="amount">15kg · 1개</div>
+        <div class="desc">성인 및 소아(만 2세 이상) 기준<br>유아(만 2세 미만): 10kg 1개 + 유모차 또는 카시트 1개(총 2개)</div>
+      </div>
+      <div class="baggage-card">
+        <div class="icon">🎒</div>
+        <div class="title">기내수하물</div>
+        <div class="amount">10kg 이하 · 1개</div>
+        <div class="desc">세 변의 합 115cm 이하(40×20×55cm)<br>초과 시 탑승구에서 추가요금(3만/6만/9만원)</div>
+      </div>
+    </div>
+    <div class="alert alert-gold">
+      💡 위탁수하물 무게 초과가 걱정되시면, 공항보다 최대 25% 저렴한 <b>사전 위탁수하물 구매</b>를 마이페이지에서 이용해보세요.
+    </div>
+  </div>
+
+  <!-- 현지 가이드 & 행사정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">현지 가이드 & 행사 정보</div></div>
+    <div class="guide-box">
+      <div class="guide-row"><span class="label">가이드명</span><span class="val">양유진(HANA/여)</span></div>
+      <div class="guide-row"><span class="label">가이드 연락처</span><span class="val">60-14-363-0207</span></div>
+      <div class="guide-row"><span class="label">현지 비상연락처</span><span class="val">랜드스타 T. 60-88-486-194<br>안병준 이사 T. +60 16-833-9039</span></div>
+      <div class="guide-row"><span class="label">행사인원</span><span class="val">31명</span></div>
+      <div class="guide-row"><span class="label">행사차량</span><span class="val">40인승 예정</span></div>
+    </div>
+  </div>
+
+  <!-- 투숙 호텔 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">투숙 호텔</div></div>
+    <div class="hotel-card">
+      <div class="hotel-header"><span>🏨 전 일정</span><span>3박</span></div>
+      <div class="hotel-body">
+        <div class="hotel-name">판 보르네오 호텔<br><span style="font-size:14px;font-weight:500;color:var(--text-sub);">Pan Borneo Hotel</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 불포함 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">불포함 사항</div></div>
+    <div class="incl-card">
+      <div class="head">✘ 불포함사항</div>
+      ① 기타 개인경비<br>
+      ② 현지가이드/기사경비: 전일정 <b>$50/1인(3박)</b>, $60/1인(4박)(아동 동일) 현지 지불<br>
+      ③ 투어리즘 택스: 룸박당 <b>10링깃</b>
+    </div>
+  </div>
+
+  <!-- 말레이시아 입국신고서 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">말레이시아 입국 필수 사항</div></div>
+    <div class="visa-box">
+      <div class="head">📝 말레이시아 디지털 입국카드(MDAC) 작성 필수</div>
+      말레이시아 입국을 위해 <b>MDAC(Malaysia Digital Arrival Card)</b> 온라인 작성이 필요합니다. <b>입국 3일 전부터</b> 작성 가능하니 미리 준비해 주세요.
+      <br><br>
+      <a class="linkbtn" href="https://imigresen-online.imi.gov.my/mdac/main" target="_blank">🔗 MDAC 작성하기</a>
+    </div>
+  </div>
+
+  <!-- 환전 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">환전 안내</div></div>
+    <div class="exchange-box">
+      <div class="ex-row"><span>가이드·기사 경비</span><span style="font-weight:700;">미국달러(USD) 지불 기준</span></div>
+      <div class="ex-row"><span>권장 환전 금액</span><span style="font-weight:700;">1인당 USD $200~$250</span></div>
+      <div class="ex-row"><span>현지 화폐</span><span style="font-weight:700;">필요 시 가이드에게 소액 환전 요청 가능</span></div>
+    </div>
+    <div class="alert alert-gold">
+      💵 <b>미국달러로 1인당 $200~$250 정도</b> 환전해 오시는 걸 권장드립니다. 현지 화폐(링깃)가 필요하실 경우, 여행 중 <b>가이드에게 소액 환전을 요청</b>하시면 됩니다.
+    </div>
+  </div>
+
+  <!-- 날씨 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">일자별 날씨 정보</div></div>
+    <div class="weather-row">
+      <div class="weather-card">
+        <div class="date">8/27(목)</div>
+        <div class="day">출국일</div>
+        <div class="icon">🌦️</div>
+        <div class="high">33℃</div>
+        <div class="low">25℃</div>
+        <div class="rain">강수 40%</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">8/28(금)</div>
+        <div class="day">코타키나발루</div>
+        <div class="icon">⛅</div>
+        <div class="high">33℃</div>
+        <div class="low">25℃</div>
+        <div class="rain">강수 25%</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">8/29(토)</div>
+        <div class="day">코타키나발루</div>
+        <div class="icon">⛅</div>
+        <div class="high">33℃</div>
+        <div class="low">25℃</div>
+        <div class="rain">강수 20%</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">8/30(일)</div>
+        <div class="day">코타키나발루</div>
+        <div class="icon">⛅</div>
+        <div class="high">33℃</div>
+        <div class="low">25℃</div>
+        <div class="rain">강수 25%</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">8/31(월)</div>
+        <div class="day">귀국일</div>
+        <div class="icon">🌦️</div>
+        <div class="high">33℃</div>
+        <div class="low">25℃</div>
+        <div class="rain">강수 25%</div>
+      </div>
+    </div>
+    <div class="alert alert-gold">
+      ☀️ 실제 예보 기준으로 반영했어요. 연중 25~33℃의 무더운 열대기후이며, 오후에 짧은 스콜성 소나기가 있을 수 있습니다. 출발 며칠 전 다시 확인해 드릴게요.
+    </div>
+  </div>
+
+  <!-- 준비물 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">11</div><div class="section-title">여행 준비물</div></div>
+
+    <div class="prep-full" style="margin-bottom:12px;">
+      <div class="title">🤿 호핑투어 · 바다 물놀이 준비물 (강력 추천!)</div>
+      코타키나발루는 대표적인 휴양지이고 호핑투어 일정이 있어, 물놀이 준비물을 꼼꼼히 챙기시면 훨씬 즐겁게 즐기실 수 있습니다.
+      <ul>
+        <li><b>래시가드</b> — 자외선·해파리 방지에 필수, 지퍼 없는 제품 권장</li>
+        <li><b>수영복</b> — 래시가드 안에 받쳐 입을 용도로 함께 준비</li>
+        <li><b>개인 스노클링 장비(마스크·호흡기)</b> — 현지 대여도 가능하지만 위생상 개인 장비 권장</li>
+        <li><b>아쿠아슈즈</b> — 산호·암초 지대 보호 및 미끄럼 방지</li>
+        <li><b>방수팩</b> — 휴대폰, 여권, 카메라 등 보관용</li>
+        <li><b>비치타월 또는 극세사 타월</b> — 빨리 마르는 소재로 챙기면 편리</li>
+        <li>튜브/구명조끼는 현지 대여 가능하나, 편안함을 위해 개인 것을 원하시면 지참하세요</li>
+      </ul>
+    </div>
+
+    <div class="prep-grid">
+      <div class="prep-card">
+        <div class="icon">☀️</div>
+        <div class="title">자외선 & 피부 보호</div>
+        <ul>
+          <li>선크림 SPF50+ (자주 덧발라주세요, 워터프루프 권장)</li>
+          <li>애프터선(화상 진정 알로에젤)</li>
+          <li>모자·선글라스</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">👕</div>
+        <div class="title">옷차림</div>
+        <ul>
+          <li>반팔·반바지 등 시원한 여름옷</li>
+          <li>실내 냉방 대비 얇은 겉옷</li>
+          <li>편한 샌들 또는 슬리퍼</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">💊</div>
+        <div class="title">상비약 & 기타</div>
+        <ul>
+          <li>소화제·지사제·해열제, 멀미약(호핑투어 대비)</li>
+          <li>모기기피제</li>
+          <li>여권, 미국달러 현금($200~250)</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🎒</div>
+        <div class="title">기타 준비물</div>
+        <ul>
+          <li>멀티어댑터(말레이시아 240V, Type G 영국식)</li>
+          <li>보조배터리, 방수 카메라</li>
+          <li>MDAC 작성 완료 화면 캡처본</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-agent">담당 이경진 실장</div>
+    <div class="footer-sub">신재환님 가족의 즐거운 코타키나발루 여행을 응원합니다 🏝️</div>
+    <div class="footer-btns">
+      <a class="footer-btn tel" href="tel:1544-5714">📞 1544-5714</a>
+      <a class="footer-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 투어콕 카카오톡 채널</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.1});
+sections.forEach(s=>observer.observe(s));
+</script>
+
+</body>
+</html>
