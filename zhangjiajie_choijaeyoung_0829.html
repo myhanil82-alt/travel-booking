@@ -107,6 +107,17 @@ img{max-width:100%;display:block;}
 .baggage-card .amount{font-size:18px;font-weight:800;color:var(--forest-dark);}
 .baggage-card .desc{font-size:13.5px;color:var(--text-muted);margin-top:4px;line-height:1.5;}
 
+.guide-box{border:1.5px solid var(--forest-dark);border-radius:16px;background:var(--forest-bg);padding:20px;}
+.guide-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed rgba(31,74,54,0.2);gap:10px;}
+.guide-row:last-child{border-bottom:none;}
+.guide-row .label{color:var(--text-sub);}
+.guide-row .val{font-weight:700;color:var(--forest-dark);text-align:right;}
+
+.hotel-card{border:2px solid var(--forest);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);}
+.hotel-header{background:linear-gradient(120deg,var(--forest),#4E9270);color:#fff;padding:10px 18px;font-size:14.5px;font-weight:700;display:flex;justify-content:space-between;align-items:center;}
+.hotel-body{background:#fff;padding:16px 18px;}
+.hotel-name{font-size:19px;font-weight:800;color:var(--text-main);}
+
 .incl-card{border-radius:14px;padding:16px;font-size:15.5px;line-height:1.75;background:var(--terracotta-bg);border:1px solid var(--terracotta);}
 .incl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#8E2E28;}
 
@@ -174,7 +185,7 @@ img{max-width:100%;display:block;}
     <span class="header-tag">TRAVEL CONFIRMATION</span>
     <div class="header-title">⛰️ 장가계 여행 확정서</div>
     <div class="header-subtitle">인천국제공항 출발 · 5박 6일 · ZHANGJIAJIE 2026</div>
-    <div class="header-names">최재영님 가족</div><br>
+    <div class="header-names">최재영님 일행</div><br>
     <a class="header-cta" href="https://www.modetour.com/package/102912582?MLoc=99&Pnum=102912582&ANO=4547682&sno=C2181215&thru=crs" target="_blank">🔗 여행상품 확인하기</a>
   </div>
 </div>
@@ -277,21 +288,29 @@ img{max-width:100%;display:block;}
 
   <!-- 아직 확인 전 항목 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">5</div><div class="section-title">추후 안내 예정 항목</div></div>
-    <div class="pending-box">
-      <div class="head">📅 여행 출발 2~3일 전 일정표에서 확인 가능</div>
-      <ul>
-        <li>현지 가이드 정보(성함·연락처)</li>
-        <li>행사인원 · 행사차량</li>
-        <li>투숙호텔</li>
-        <li>중국 입국신고서 작성 시 참고 현지주소</li>
-      </ul>
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">현지 가이드 & 행사 정보</div></div>
+    <div class="guide-box">
+      <div class="guide-row"><span class="label">가이드명</span><span class="val">최요한(남) · CUI YAO HAN</span></div>
+      <div class="guide-row"><span class="label">가이드 연락처</span><span class="val">178-7224-9861</span></div>
+      <div class="guide-row"><span class="label">가이드 자격증</span><span class="val">2603261021<br>(유효기간 2026.12.30까지)</span></div>
+      <div class="guide-row"><span class="label">현지 비상연락처</span><span class="val">195-7447-8208</span></div>
+      <div class="guide-row"><span class="label">행사인원</span><span class="val">8명</span></div>
+      <div class="guide-row"><span class="label">행사차량</span><span class="val">리무진 22인승</span></div>
+    </div>
+  </div>
+
+  <!-- 투숙 호텔 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">투숙 호텔</div></div>
+    <div class="hotel-card">
+      <div class="hotel-header"><span>🏨 전 일정</span><span>5박</span></div>
+      <div class="hotel-body"><div class="hotel-name">장가계 블루베이 호텔</div></div>
     </div>
   </div>
 
   <!-- 불포함 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">6</div><div class="section-title">불포함 사항</div></div>
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">불포함 사항</div></div>
     <div class="incl-card">
       <div class="head">✘ 불포함사항</div>
       ★ 개인 경비 (생수 및 음료수 등)
@@ -300,7 +319,7 @@ img{max-width:100%;display:block;}
 
   <!-- 중국 입국신고서 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">7</div><div class="section-title">중국 입국신고서 안내</div></div>
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">중국 입국신고서 안내</div></div>
     <div class="visa-box">
       <div class="head">📝 중국 온라인 입국신고서 작성 필수</div>
       중국 입국 시 온라인 입국신고서 작성이 필요합니다. 현지 참고주소는 <b>출발 2~3일 전 일정표에서 확인</b> 가능하며, 확인되는 대로 별도 안내드릴게요. 아래 사이트에서 미리 작성 방법을 참고해두셔도 좋습니다.
@@ -312,7 +331,7 @@ img{max-width:100%;display:block;}
 
   <!-- 환전 안내 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">8</div><div class="section-title">환전 안내</div></div>
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">환전 안내</div></div>
     <div class="exchange-box">
       <div class="ex-row"><span>환전 필요 여부</span><span style="font-weight:700;">별도 환전 필요 없음</span></div>
     </div>
@@ -323,7 +342,7 @@ img{max-width:100%;display:block;}
 
   <!-- 날씨 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">9</div><div class="section-title">일자별 날씨 정보</div></div>
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">일자별 날씨 정보</div></div>
     <div class="weather-row">
       <div class="weather-card">
         <div class="date">8/29(토)</div>
@@ -375,7 +394,7 @@ img{max-width:100%;display:block;}
 
   <!-- 준비물 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">10</div><div class="section-title">여행 준비물</div></div>
+    <div class="section-head"><div class="section-num">11</div><div class="section-title">여행 준비물</div></div>
 
     <div class="prep-full" style="margin-bottom:12px;">
       <div class="title">🥢 밑반찬 (강력 추천!)</div>
@@ -432,7 +451,7 @@ img{max-width:100%;display:block;}
 <div class="footer">
   <div class="footer-inner">
     <div class="footer-agent">담당 이경진 실장</div>
-    <div class="footer-sub">최재영님 가족의 안전하고 즐거운 장가계 여행을 응원합니다 ⛰️</div>
+    <div class="footer-sub">최재영님 일행의 안전하고 즐거운 장가계 여행을 응원합니다 ⛰️</div>
     <div class="footer-btns">
       <a class="footer-btn tel" href="tel:1544-5714">📞 1544-5714</a>
       <a class="footer-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 투어콕 카카오톡 채널</a>
