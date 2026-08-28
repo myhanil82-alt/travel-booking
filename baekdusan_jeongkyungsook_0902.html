@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>백두산 여행 확정서 - 정경숙님 외 3명</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+  --forest:#2F6B4F;
+  --forest-dark:#1F4A36;
+  --forest-bg:#EEF6F0;
+  --terracotta:#C1443C;
+  --terracotta-bg:#FDF1EF;
+  --gold:#D2A24C;
+  --gold-bg:#FBF4E6;
+  --sky-top:#EFF3EC;
+  --sky-bottom:#F8F6F0;
+  --text-main:#1E2A22;
+  --text-sub:#5C6A5F;
+  --text-muted:#8E9990;
+  --card-bg:#FFFFFF;
+  --border:#E4E9E2;
+  --shadow:0 4px 20px rgba(47,107,79,0.10);
+  --max-w:680px;
+  --red:#C1443C;
+  --red-bg:#FDF1EF;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Pretendard',sans-serif;background:linear-gradient(180deg,var(--sky-top) 0%, var(--sky-bottom) 45%, #FBFAF6 100%);color:var(--text-main);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+
+.top-bar{width:100%;background:rgba(31,74,54,0.92);backdrop-filter:blur(6px);padding:10px 20px;}
+.top-bar-inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.agent-info{color:#EFF7F1;font-size:15px;font-weight:500;}
+.agent-info b{color:#fff;}
+.top-btns{display:flex;gap:8px;}
+.top-btn{font-size:14.5px;font-weight:600;padding:6px 12px;border-radius:20px;background:rgba(255,255,255,0.15);color:#fff;transition:transform .15s ease-out, background .2s;}
+.top-btn:hover{background:rgba(255,255,255,0.28);}
+.top-btn:active{transform:scale(0.97);}
+.top-btn.kakao{background:#FEE500;color:#391B1B;}
+
+.header{width:100%;padding:28px 16px 24px;}
+.header-inner{max-width:var(--max-w);margin:0 auto;text-align:center;position:relative;z-index:1;border-radius:24px;overflow:hidden;padding:48px 24px 40px;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(47,107,79,0.32), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(193,68,60,0.18), transparent 50%),
+    linear-gradient(160deg,#122A1E 0%, #1F4A36 55%, #275A42 100%);
+  box-shadow:0 12px 32px rgba(18,42,30,0.28);}
+.header-tag{display:inline-block;font-size:14px;font-weight:700;letter-spacing:2.5px;color:var(--gold);border:1px solid rgba(210,162,76,0.5);padding:6px 16px;border-radius:20px;margin-bottom:18px;}
+.header-title{font-size:34px;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-0.5px;text-shadow:0 2px 12px rgba(0,0,0,0.4);}
+.header-subtitle{font-size:16px;color:rgba(255,255,255,0.85);font-weight:500;margin-bottom:28px;letter-spacing:0.5px;}
+.header-names{font-size:22px;font-weight:700;color:#fff;background:rgba(255,255,255,0.1);display:inline-block;padding:10px 24px;border-radius:14px;margin-bottom:22px;}
+.header-cta{display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:#fff;font-weight:700;font-size:17px;padding:13px 26px;border-radius:12px;box-shadow:0 8px 20px rgba(47,107,79,0.4);transition:transform .2s ease-out, box-shadow .2s;}
+.header-cta:hover{transform:translateY(-2px) scale(1.02);}
+.header-cta:active{transform:scale(0.97);}
+
+.trip-band{width:100%;background:linear-gradient(90deg,var(--terracotta),#D97267);}
+.trip-band-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);text-align:center;padding:20px 16px;}
+.trip-item .label{font-size:13px;color:rgba(255,255,255,0.85);font-weight:600;margin-bottom:4px;}
+.trip-item .value{font-size:17px;color:#fff;font-weight:800;}
+
+.container{max-width:var(--max-w);margin:0 auto;padding:36px 20px 60px;}
+.section{margin-bottom:36px;opacity:0;transform:translateY(16px);transition:opacity .5s ease-out, transform .5s ease-out;}
+.section.visible{opacity:1;transform:translateY(0);}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.section-num{width:30px;height:30px;border-radius:50%;background:var(--forest-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0;}
+.section-title{font-size:20px;font-weight:800;color:var(--text-main);}
+
+.product-link-box{display:flex;justify-content:space-between;align-items:center;background:var(--forest-bg);border:1px solid var(--forest);border-radius:14px;padding:16px 18px;font-weight:700;color:var(--forest-dark);margin-bottom:14px;transition:transform .15s ease-out, background .2s;}
+.product-link-box:hover{background:#E1F0E6;transform:scale(1.01);}
+.product-link-box:active{transform:scale(0.98);}
+.product-link-box span.arrow{font-size:20px;}
+
+.alert{border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.6;margin-top:12px;}
+.alert-forest{background:var(--forest-bg);border:1px solid var(--forest);color:#1F4A36;}
+.alert-terracotta{background:var(--terracotta-bg);border:1px solid var(--terracotta);color:#8E2E28;}
+.alert-gold{background:var(--gold-bg);border:1px solid var(--gold);color:#8A6414;}
+
+.meeting-box{border:1.5px solid var(--terracotta);border-radius:16px;background:#fff;padding:20px;box-shadow:var(--shadow);}
+.meeting-time{font-size:24px;font-weight:800;color:var(--terracotta);text-align:center;margin-bottom:14px;}
+.meeting-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed var(--border);gap:10px;}
+.meeting-row:last-child{border-bottom:none;}
+.meeting-row .label{color:var(--text-sub);}
+.meeting-row .val{font-weight:700;color:var(--text-main);text-align:right;}
+
+.flight-card{border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px;}
+.flight-header{background:linear-gradient(120deg,#122A1E,#1F4A36);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:700;}
+.flight-header .code{color:var(--gold);}
+.flight-body{background:#fff;padding:20px 18px;}
+.flight-route{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.flight-route .airport{text-align:center;}
+.flight-route .airport .code{font-size:30px;font-weight:800;color:var(--text-main);}
+.flight-route .airport .city{font-size:14px;color:var(--text-sub);margin-top:2px;}
+.flight-route .mid{flex:1;text-align:center;padding:0 12px;}
+.flight-route .mid .time{font-size:14px;color:var(--text-muted);}
+.flight-route .mid .line{height:2px;background:var(--border);position:relative;margin-top:6px;}
+.flight-route .mid .line::after{content:"✈";position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:16px;}
+.flight-badges{display:flex;flex-wrap:wrap;gap:8px;}
+.badge{font-size:14px;font-weight:600;color:var(--text-sub);background:#F5F8F4;border:1px solid var(--border);padding:5px 10px;border-radius:8px;}
+
+.baggage-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.baggage-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.baggage-card .icon{font-size:24px;margin-bottom:6px;}
+.baggage-card .title{font-size:15px;font-weight:700;color:var(--text-sub);margin-bottom:4px;}
+.baggage-card .amount{font-size:18px;font-weight:800;color:var(--forest-dark);}
+.baggage-card .desc{font-size:13.5px;color:var(--text-muted);margin-top:4px;line-height:1.5;}
+
+.guide-box{border:1.5px solid var(--forest-dark);border-radius:16px;background:var(--forest-bg);padding:20px;}
+.guide-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed rgba(31,74,54,0.2);gap:10px;}
+.guide-row:last-child{border-bottom:none;}
+.guide-row .label{color:var(--text-sub);}
+.guide-row .val{font-weight:700;color:var(--forest-dark);text-align:right;}
+
+.hotel-card{border:2px solid var(--forest);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:14px;}
+.hotel-header{background:linear-gradient(120deg,var(--forest),#4E9270);color:#fff;padding:10px 18px;font-size:14.5px;font-weight:700;display:flex;justify-content:space-between;align-items:center;}
+.hotel-body{background:#fff;padding:16px 18px;}
+.hotel-name{font-size:19px;font-weight:800;color:var(--text-main);}
+
+.incl-card{border-radius:14px;padding:16px;font-size:15.5px;line-height:1.75;background:var(--terracotta-bg);border:1px solid var(--terracotta);}
+.incl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#8E2E28;}
+
+.visa-box{border:1.5px solid var(--gold);border-radius:16px;background:var(--gold-bg);padding:20px;}
+.visa-box .head{font-weight:800;font-size:17px;color:#8A6414;margin-bottom:10px;}
+.visa-box .info-row{display:flex;justify-content:space-between;font-size:15px;padding:6px 0;border-bottom:1px dashed rgba(138,100,20,0.25);gap:10px;}
+.visa-box .info-row .val{font-weight:700;text-align:right;}
+.visa-box a.linkbtn{display:inline-block;margin-top:10px;background:var(--gold);color:#fff;font-weight:700;font-size:15.5px;padding:9px 18px;border-radius:10px;}
+
+.exchange-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:#fff;box-shadow:var(--shadow);}
+.exchange-box .ex-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed var(--border);}
+.exchange-box .ex-row:last-child{border-bottom:none;}
+
+.roam-grid{display:grid;grid-template-columns:1fr;gap:12px;}
+.roam-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px;box-shadow:var(--shadow);}
+.roam-card .rc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.roam-card .rc-title{font-weight:800;font-size:16.5px;color:var(--forest-dark);}
+.roam-card .rc-price{font-weight:800;font-size:15px;color:var(--terracotta);background:var(--terracotta-bg);padding:4px 10px;border-radius:8px;}
+.roam-card .rc-desc{font-size:14.5px;color:var(--text-sub);line-height:1.7;margin-bottom:8px;}
+.roam-card .rc-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.roam-card .rc-tag{font-size:13px;padding:4px 10px;border-radius:8px;background:var(--forest-bg);color:var(--forest-dark);font-weight:600;}
+.roam-card .rc-tag.con{background:var(--red-bg);color:#A32C24;}
+
+.weather-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
+.weather-card{flex:0 0 auto;width:106px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 8px;text-align:center;box-shadow:var(--shadow);}
+.weather-card .date{font-size:13.5px;font-weight:700;color:var(--text-sub);margin-bottom:6px;}
+.weather-card .day{font-size:12px;color:var(--text-muted);margin-bottom:6px;}
+.weather-card .icon{font-size:26px;margin-bottom:8px;}
+.weather-card .high{font-size:17px;font-weight:800;color:var(--terracotta);}
+.weather-card .low{font-size:14px;color:var(--text-muted);margin-top:2px;}
+
+.prep-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.prep-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.prep-card .icon{font-size:22px;margin-bottom:6px;}
+.prep-card .title{font-weight:700;font-size:15.5px;color:var(--forest-dark);margin-bottom:6px;}
+.prep-card ul{padding-left:16px;font-size:15px;color:var(--text-sub);line-height:1.75;}
+.prep-full{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px;box-shadow:var(--shadow);}
+.prep-full .title{font-weight:800;font-size:16.5px;color:var(--forest-dark);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.prep-full ul{padding-left:18px;font-size:15.5px;color:var(--text-sub);line-height:1.9;}
+.prep-full ul li b{color:var(--text-main);}
+
+@media (max-width:480px){
+  .trip-band-inner{grid-template-columns:repeat(2,1fr);gap:14px;}
+  .baggage-grid,.prep-grid{grid-template-columns:1fr;}
+  .header-title{font-size:28px;}
+}
+
+.footer{width:100%;background:#122A1E;padding:32px 20px;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;text-align:center;}
+.footer-agent{color:#fff;font-size:17px;font-weight:700;margin-bottom:6px;}
+.footer-sub{color:rgba(255,255,255,0.55);font-size:14.5px;margin-bottom:18px;}
+.footer-btns{display:flex;justify-content:center;gap:10px;}
+.footer-btn{padding:10px 20px;border-radius:12px;font-weight:700;font-size:15.5px;transition:transform .15s ease-out;}
+.footer-btn:active{transform:scale(0.97);}
+.footer-btn.tel{background:var(--terracotta);color:#fff;}
+.footer-btn.kakao{background:#FEE500;color:#391B1B;}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="agent-info">담당 <b>이경진 실장</b> · 모두투어 투어콕</div>
+    <div class="top-btns">
+      <a class="top-btn" href="tel:1544-5714">📞 전화상담</a>
+      <a class="top-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡</a>
+    </div>
+  </div>
+</div>
+
+<div class="header">
+  <div class="header-inner">
+    <span class="header-tag">TRAVEL CONFIRMATION</span>
+    <div class="header-title">🏔️ 백두산 여행 확정서</div>
+    <div class="header-subtitle">인천국제공항 출발 · 3박 4일 · BAEKDU MOUNTAIN 2026</div>
+    <div class="header-names">정경숙님 외 3명</div><br>
+    <a class="header-cta" href="https://www.modetour.com/package/111240705?MLoc=99&Pnum=111240705&ANO=1772510&sno=C2181215&thru=crs" target="_blank">🔗 여행상품 확인하기</a>
+  </div>
+</div>
+
+<div class="trip-band">
+  <div class="trip-band-inner">
+    <div class="trip-item"><div class="label">출발일</div><div class="value">2026.09.02(수)</div></div>
+    <div class="trip-item"><div class="label">귀국일</div><div class="value">2026.09.05(토)</div></div>
+    <div class="trip-item"><div class="label">일정</div><div class="value">3박 4일</div></div>
+    <div class="trip-item"><div class="label">투어타입</div><div class="value">패키지</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 상품 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">1</div><div class="section-title">상품 안내</div></div>
+    <a class="product-link-box" href="https://www.modetour.com/package/111240705?MLoc=99&Pnum=111240705&ANO=1772510&sno=C2181215&thru=crs" target="_blank">
+      <span>모두투어 백두산 상품 바로가기</span>
+      <span class="arrow">↗</span>
+    </a>
+    <div class="alert alert-forest">
+      ✔ 현지 가이드와 함께하는 <b>패키지 상품</b>입니다. 중국동방항공(MU) 이용 상품입니다.
+    </div>
+  </div>
+
+  <!-- 인천공항 미팅 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">인천공항 미팅 안내</div></div>
+    <div class="meeting-box">
+      <div class="meeting-time">2026.09.02(수) 12:40</div>
+      <div class="meeting-row"><span class="label">장소</span><span class="val">인천국제공항 제1터미널<br>N카운터 14번 출구 앞<br>9~10번 모두투어 테이블</span></div>
+    </div>
+  </div>
+
+  <!-- 항공편 정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">항공편 정보</div></div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>출발편 · 중국동방항공</span><span class="code">MU892</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 09.02(수) 15:40</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">YNJ</div><div class="city">연길 · 09.02(수) 16:55</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 중국동방항공</span>
+          <span class="badge">위탁 20kg</span>
+          <span class="badge">기내 8kg</span>
+          <span class="badge">기내식 없음</span>
+          <span class="badge">좌석 미지정</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>귀국편 · 중국동방항공</span><span class="code">MU891</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">YNJ</div><div class="city">연길 · 09.05(토) 11:35</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 09.05(토) 14:40</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 중국동방항공</span>
+          <span class="badge">위탁 20kg</span>
+          <span class="badge">기내 8kg</span>
+          <span class="badge">기내식 없음</span>
+          <span class="badge">좌석 미지정</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-terracotta">
+      ⚠ 두 항공편 모두 <b>기내식이 제공되지 않으며, 사전 좌석 지정이 불가</b>합니다. 출발 당일 공항에서 <b>선착순 티켓팅</b>하시면서 좌석이 배정되니 여유 있게 도착해 주세요.
+    </div>
+  </div>
+
+  <!-- 수하물 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">수하물 안내</div></div>
+    <div class="baggage-grid">
+      <div class="baggage-card">
+        <div class="icon">🧳</div>
+        <div class="title">위탁수하물</div>
+        <div class="amount">20kg · 1인</div>
+        <div class="desc">가방 크기 40×60×100cm 이내<br>(5×15×20cm보다 커야 함)</div>
+      </div>
+      <div class="baggage-card">
+        <div class="icon">🎒</div>
+        <div class="title">기내수하물</div>
+        <div class="amount">8kg</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 현지 가이드 & 행사정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">현지 가이드 & 행사 정보</div></div>
+    <div class="guide-box">
+      <div class="guide-row"><span class="label">가이드명</span><span class="val">이강(남) · LI QIANG</span></div>
+      <div class="guide-row"><span class="label">가이드 연락처</span><span class="val">+86-155-8558-7799</span></div>
+      <div class="guide-row"><span class="label">현지 비상연락처</span><span class="val">+86-137-6123-2222</span></div>
+      <div class="guide-row"><span class="label">행사인원</span><span class="val">14명</span></div>
+      <div class="guide-row"><span class="label">행사차량</span><span class="val">33인승</span></div>
+    </div>
+  </div>
+
+  <!-- 투숙 호텔 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">투숙 호텔</div></div>
+    <div class="hotel-card">
+      <div class="hotel-header"><span>🏨 이도백하</span><span>2박</span></div>
+      <div class="hotel-body"><div class="hotel-name">금수학 호텔</div></div>
+    </div>
+    <div class="hotel-card">
+      <div class="hotel-header"><span>🏨 연길</span><span>1박</span></div>
+      <div class="hotel-body"><div class="hotel-name">연변국제호텔</div></div>
+    </div>
+  </div>
+
+  <!-- 불포함 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">불포함 사항</div></div>
+    <div class="incl-card">
+      <div class="head">✘ 불포함사항</div>
+      개인경비
+    </div>
+  </div>
+
+  <!-- 중국 입국신고서 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">중국 입국신고서 안내</div></div>
+    <div class="visa-box">
+      <div class="head">📝 온라인 입국신고서 작성 시 기재할 주소</div>
+      <div class="info-row"><span>숙소명</span><span class="val">JINSHUIHE HOTEL<br>YANBIAN INTERNATIONAL HOTEL</span></div>
+      위 정보를 참고해서 아래 사이트에서 입국신고서를 작성해 주세요.
+      <br><br>
+      <a class="linkbtn" href="https://s.nia.gov.cn/ArrivalCardFillingPC/entry-registation-home" target="_blank">🔗 입국신고서 작성하기</a>
+      <a class="linkbtn" href="https://blog.naver.com/knowtip/224289163381" target="_blank" style="margin-left:8px;background:#fff;color:#8A6414;border:1px solid var(--gold);">📖 작성법 가이드 보기</a>
+    </div>
+  </div>
+
+  <!-- 환전 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">환전 안내</div></div>
+    <div class="exchange-box">
+      <div class="ex-row"><span>권장 환전 금액</span><span style="font-weight:700;">1인당 USD $200 정도</span></div>
+    </div>
+    <div class="alert alert-gold">
+      💵 이번 일정은 <b>현지에서 선택관광(옵션) 권유가 있을 예정</b>입니다. 참여를 원하실 경우를 대비해서 <b>1인당 미국달러(USD) $200 정도</b> 환전해 오시는 걸 권장드립니다.
+    </div>
+  </div>
+
+  <!-- 데이터 로밍 비교 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">현지 데이터 통신 옵션 비교</div></div>
+    <div class="alert alert-terracotta">
+      🚧 중국은 만리방화벽(GFW) 정책으로 <b>카카오톡·구글·인스타그램 등 접속이 제한</b>됩니다. 아래 유심·이심 상품은 <b>VPN 우회 기능이 포함된 여행자용 상품</b>을 기준으로 안내드리니, 구매 시 "카톡 가능/VPN 불필요" 문구가 있는지 꼭 확인해 주세요.
+    </div>
+    <div class="roam-grid" style="margin-top:14px;">
+      <div class="roam-card">
+        <div class="rc-head">
+          <div class="rc-title">📶 통신사 로밍</div>
+          <div class="rc-price">1일 약 1만원 내외</div>
+        </div>
+        <div class="rc-desc">한국 통신사에서 자동으로 신청. 기존 번호 그대로 사용, 별도 셋팅이 필요 없어 가장 간편합니다. 한국 통신망을 그대로 쓰는 방식이라 별도 VPN 없이도 카카오톡 등 사용이 가능합니다.</div>
+        <div class="rc-tags">
+          <span class="rc-tag">셋팅 불필요</span>
+          <span class="rc-tag">카톡 등 그대로 사용</span>
+          <span class="rc-tag con">요금 다소 높음</span>
+        </div>
+      </div>
+      <div class="roam-card">
+        <div class="rc-head">
+          <div class="rc-title">📱 현지 유심(USIM)</div>
+          <div class="rc-price">4일권 약 10,000~14,000원</div>
+        </div>
+        <div class="rc-desc">여행자용 VPN 내장 유심을 국내에서 미리 구매 후 도착 시 교체. 요금이 상대적으로 저렴하지만 <b>한국 번호로 오는 전화·문자 수신이 안 됩니다.</b></div>
+        <div class="rc-tags">
+          <span class="rc-tag">비교적 저렴</span>
+          <span class="rc-tag con">번호 변경(수신 불가)</span>
+        </div>
+      </div>
+      <div class="roam-card">
+        <div class="rc-head">
+          <div class="rc-title">💳 이심(eSIM)</div>
+          <div class="rc-price">4일권 약 12,500~17,000원</div>
+        </div>
+        <div class="rc-desc">앱으로 QR코드 스캔만 하면 설치 완료. 유심 교체 없이 <b>기존 유심(한국 번호)과 함께 듀얼로 사용 가능</b>해 한국 번호 수신도 유지하면서 데이터만 현지망(VPN 내장)으로 쓸 수 있습니다.</div>
+        <div class="rc-tags">
+          <span class="rc-tag">한국 번호 유지</span>
+          <span class="rc-tag">셋팅 간편(QR)</span>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-forest" style="margin-top:12px;">
+      💡 가격은 시기·판매처에 따라 변동될 수 있어 참고용으로 봐주세요.
+    </div>
+  </div>
+
+  <!-- 날씨 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">11</div><div class="section-title">일자별 날씨 정보</div></div>
+    <div class="weather-row">
+      <div class="weather-card">
+        <div class="date">9/2(수)</div>
+        <div class="day">출국일</div>
+        <div class="icon">⛅</div>
+        <div class="high">25℃</div>
+        <div class="low">16℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">9/3(목)</div>
+        <div class="day">이도백하</div>
+        <div class="icon">🌦️</div>
+        <div class="high">23℃</div>
+        <div class="low">14℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">9/4(금)</div>
+        <div class="day">백두산 등정</div>
+        <div class="icon">⛰️</div>
+        <div class="high">22℃</div>
+        <div class="low">13℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">9/5(토)</div>
+        <div class="day">귀국일</div>
+        <div class="icon">⛅</div>
+        <div class="high">24℃</div>
+        <div class="low">15℃</div>
+      </div>
+    </div>
+    <div class="alert alert-gold">
+      ☀️ 위 기온은 9월 초 연길·이도백하 지역의 <b>평년 평균 기온 기준 참고값</b>입니다(중국 지역 특성상 실시간 예보 연동이 제한적이라 참고용으로만 봐주세요). 출발 며칠 전 다시 확인해 드릴게요.<br>
+      ⛰ <b>백두산 정상부는 도시 기온과 무관하게 훨씬 쌀쌀하고 바람이 강합니다.</b> 9월이면 정상은 이미 초겨울 날씨(한자릿수~영하권)일 수 있어 방한 대비가 중요합니다.
+    </div>
+  </div>
+
+  <!-- 준비물 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">12</div><div class="section-title">여행 준비물</div></div>
+
+    <div class="prep-full" style="margin-bottom:12px;">
+      <div class="title">🥢 밑반찬 (강력 추천!)</div>
+      백두산 지역은 산세가 험하고 현지 식사가 입에 안 맞을 수 있어, 밑반찬을 넉넉히 챙기시는 걸 적극 추천드립니다.
+      <ul>
+        <li><b>마른 반찬류</b>: 멸치볶음, 진미채·오징어채무침, 콩자반, 무말랭이무침, 김자반 — 국물 없고 상온 보관 잘 되는 것 위주</li>
+        <li><b>조미김 / 김자반</b>: 소포장으로 여러 개, 밥 반찬이자 간식으로도 유용</li>
+        <li><b>즉석 고추장·쌈장</b>: 튜브형 소포장 제품 추천 (짜먹는 타입)</li>
+        <li><b>즉석밥 / 컵밥 / 즉석국(된장국·미역국 등)</b>: 호텔에 전기포트가 있다면 뜨거운 물로 바로 조리 가능</li>
+        <li><b>라면 / 컵라면</b>: 비상식 겸용으로 2~3개 정도</li>
+        <li>냉장 보관이 필요한 반찬(생나물무침, 계란찜, 젓갈류 등)은 상하기 쉬우니 <b>피해주세요</b></li>
+        <li>지퍼백이나 작은 밀폐용기에 1회분씩 소분하면 짐도 가볍고 위생적입니다</li>
+      </ul>
+    </div>
+
+    <div class="prep-full" style="margin-bottom:12px;">
+      <div class="title">🥾 등산 준비물</div>
+      <ul>
+        <li><b>등산스틱</b> — 백두산은 계단·경사 구간이 많아 무릎 부담을 크게 줄여줍니다 (필수급)</li>
+        <li><b>파스류</b> — 붙이는 파스, 스프레이 파스 등 넉넉히 준비 (근육통·무릎통증 대비)</li>
+        <li>발목까지 감싸는 <b>등산화</b>(트레킹화), 미끄럼방지 밑창 필수</li>
+        <li>무릎보호대 (평소 무릎이 약하신 분)</li>
+        <li>모자, 선글라스, 자외선차단제 — 산 정상부 햇빛이 강합니다</li>
+        <li><b>방풍·방한 겉옷(9월이면 필수)</b> — 백두산 정상은 가을철부터 매우 쌀쌀하고 바람이 강합니다</li>
+        <li>휴대용 우비 — 산악 지역 특성상 갑작스러운 소나기·안개 대비</li>
+        <li>개인 물통 또는 보냉병</li>
+      </ul>
+    </div>
+
+    <div class="prep-grid">
+      <div class="prep-card">
+        <div class="icon">👕</div>
+        <div class="title">옷차림</div>
+        <ul>
+          <li>얇은 긴팔·기모 내복(레이어드 필수)</li>
+          <li>일교차·정상부 대비 두꺼운 겉옷 1개</li>
+          <li>여벌 양말(등산 시 땀 흡수 잘 되는 것)</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">💊</div>
+        <div class="title">상비약 & 기타</div>
+        <ul>
+          <li>소화제, 지사제, 진통제</li>
+          <li>여권, 미국달러 현금(1인 $200)</li>
+          <li>멀티 어댑터(중국 220V, A/C타입)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-agent">담당 이경진 실장</div>
+    <div class="footer-sub">정경숙님 외 3명의 안전하고 즐거운 백두산 여행을 응원합니다 🏔️</div>
+    <div class="footer-btns">
+      <a class="footer-btn tel" href="tel:1544-5714">📞 1544-5714</a>
+      <a class="footer-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 투어콕 카카오톡 채널</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.1});
+sections.forEach(s=>observer.observe(s));
+</script>
+
+</body>
+</html>
