@@ -151,9 +151,19 @@ img{max-width:100%;display:block;}
 .prep-full ul li b{color:var(--text-main);}
 
 @media (max-width:480px){
-  .trip-band-inner{grid-template-columns:repeat(2,1fr);gap:14px;}
+  .container{padding-left:14px;padding-right:14px;}
+  .trip-band-inner{grid-template-columns:repeat(2,1fr);gap:14px;padding:16px 12px;}
   .baggage-grid,.prep-grid{grid-template-columns:1fr;}
-  .header-title{font-size:28px;}
+  .header-title{font-size:26px;}
+  .header-inner{padding:38px 18px 32px;}
+  .flight-badges{gap:6px;}
+  .badge{font-size:12.5px;padding:4px 8px;}
+}
+@media (max-width:400px){
+  .meeting-row,.guide-row,.hotel-row,.exchange-box .ex-row{flex-direction:column;align-items:flex-start;gap:2px;}
+  .meeting-row .val,.guide-row .val,.hotel-row .val,.exchange-box .ex-row .val{text-align:left;}
+  .meeting-time{font-size:20px;}
+  .roam-card .rc-head{flex-direction:column;align-items:flex-start;gap:6px;}
 }
 
 .footer{width:100%;background:#122A1E;padding:32px 20px;}
