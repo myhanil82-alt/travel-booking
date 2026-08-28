@@ -122,6 +122,9 @@ img{max-width:100%;display:block;}
 
 .visa-box{border:1.5px solid var(--gold);border-radius:16px;background:var(--gold-bg);padding:20px;}
 .visa-box .head{font-weight:800;font-size:17px;color:#8A6414;margin-bottom:10px;}
+.visa-box .info-row{display:flex;justify-content:space-between;font-size:15px;padding:6px 0;border-bottom:1px dashed rgba(138,100,20,0.25);gap:10px;}
+.visa-box .info-row .val{font-weight:700;text-align:right;}
+.visa-box a.linkbtn{display:inline-block;margin-top:10px;background:var(--gold);color:#fff;font-weight:700;font-size:15.5px;padding:9px 18px;border-radius:10px;}
 
 .exchange-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:#fff;box-shadow:var(--shadow);}
 .exchange-box .ex-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed var(--border);}
@@ -315,8 +318,12 @@ img{max-width:100%;display:block;}
   <div class="section">
     <div class="section-head"><div class="section-num">8</div><div class="section-title">중국 입국신고서 안내</div></div>
     <div class="visa-box">
-      <div class="head">📝 중국 온라인 입국신고서 작성 필수</div>
-      중국 입국 시 온라인 입국신고서 작성이 필요합니다. 자세한 안내는 여행 출발 전 별도로 안내드릴게요.
+      <div class="head">📝 온라인 입국신고서 작성 시 기재할 주소</div>
+      <div class="info-row"><span>Company Address</span><span class="val">No.18, West Ziwu Road,<br>Zhangjiajie City</span></div>
+      위 주소를 참고해서 아래 사이트에서 입국신고서를 작성해 주세요.
+      <br><br>
+      <a class="linkbtn" href="https://s.nia.gov.cn/ArrivalCardFillingPC/entry-registation-home" target="_blank">🔗 입국신고서 작성하기</a>
+      <a class="linkbtn" href="https://blog.naver.com/knowtip/224289163381" target="_blank" style="margin-left:8px;background:#fff;color:#8A6414;border:1px solid var(--gold);">📖 작성법 가이드 보기</a>
     </div>
   </div>
 
