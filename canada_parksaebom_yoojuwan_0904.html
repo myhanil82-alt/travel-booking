@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>캐나다 여행 확정서 - 박새봄, 유주완님</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+  --pine:#1F6E5C;
+  --pine-dark:#154A3D;
+  --pine-bg:#EAF6F2;
+  --glacier:#2E86C1;
+  --glacier-bg:#EAF3FB;
+  --amber:#E8A93E;
+  --amber-bg:#FDF3E5;
+  --sky-top:#EAF1EE;
+  --sky-bottom:#F7F8F4;
+  --text-main:#1E2A26;
+  --text-sub:#57696A;
+  --text-muted:#8CA0A0;
+  --card-bg:#FFFFFF;
+  --border:#E1EAE6;
+  --shadow:0 4px 20px rgba(31,110,92,0.10);
+  --max-w:680px;
+  --red:#D3453C;
+  --red-bg:#FDEFED;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Pretendard',sans-serif;background:linear-gradient(180deg,var(--sky-top) 0%, var(--sky-bottom) 45%, #FBFAF7 100%);color:var(--text-main);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+
+.top-bar{width:100%;background:rgba(21,74,61,0.92);backdrop-filter:blur(6px);padding:10px 20px;}
+.top-bar-inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.agent-info{color:#EAF6F2;font-size:15px;font-weight:500;}
+.agent-info b{color:#fff;}
+.top-btns{display:flex;gap:8px;}
+.top-btn{font-size:14.5px;font-weight:600;padding:6px 12px;border-radius:20px;background:rgba(255,255,255,0.15);color:#fff;transition:transform .15s ease-out, background .2s;}
+.top-btn:hover{background:rgba(255,255,255,0.28);}
+.top-btn:active{transform:scale(0.97);}
+.top-btn.kakao{background:#FEE500;color:#391B1B;}
+
+.header{width:100%;padding:28px 16px 24px;}
+.header-inner{max-width:var(--max-w);margin:0 auto;text-align:center;position:relative;z-index:1;border-radius:24px;overflow:hidden;padding:48px 24px 40px;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(31,110,92,0.32), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(46,134,193,0.22), transparent 50%),
+    linear-gradient(160deg,#0C2E26 0%, #154A3D 55%, #1F6E5C 100%);
+  box-shadow:0 12px 32px rgba(12,46,38,0.28);}
+.header-tag{display:inline-block;font-size:14px;font-weight:700;letter-spacing:2.5px;color:var(--amber);border:1px solid rgba(232,169,62,0.5);padding:6px 16px;border-radius:20px;margin-bottom:18px;}
+.header-title{font-size:32px;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-0.5px;text-shadow:0 2px 12px rgba(0,0,0,0.4);}
+.header-subtitle{font-size:16px;color:rgba(255,255,255,0.85);font-weight:500;margin-bottom:28px;letter-spacing:0.5px;}
+.header-names{font-size:22px;font-weight:700;color:#fff;background:rgba(255,255,255,0.1);display:inline-block;padding:10px 24px;border-radius:14px;margin-bottom:22px;}
+.header-cta{display:inline-flex;align-items:center;gap:8px;background:var(--glacier);color:#fff;font-weight:700;font-size:17px;padding:13px 26px;border-radius:12px;box-shadow:0 8px 20px rgba(46,134,193,0.4);transition:transform .2s ease-out, box-shadow .2s;}
+.header-cta:hover{transform:translateY(-2px) scale(1.02);}
+.header-cta:active{transform:scale(0.97);}
+
+.trip-band{width:100%;background:linear-gradient(90deg,var(--pine),#3D9A80);}
+.trip-band-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);text-align:center;padding:20px 16px;}
+.trip-item .label{font-size:13px;color:rgba(255,255,255,0.85);font-weight:600;margin-bottom:4px;}
+.trip-item .value{font-size:16px;color:#fff;font-weight:800;}
+
+.container{max-width:var(--max-w);margin:0 auto;padding:36px 20px 60px;}
+.section{margin-bottom:36px;opacity:0;transform:translateY(16px);transition:opacity .5s ease-out, transform .5s ease-out;}
+.section.visible{opacity:1;transform:translateY(0);}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.section-num{width:30px;height:30px;border-radius:50%;background:var(--pine-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0;}
+.section-title{font-size:20px;font-weight:800;color:var(--text-main);}
+
+.product-link-box{display:flex;justify-content:space-between;align-items:center;background:var(--pine-bg);border:1px solid var(--pine);border-radius:14px;padding:16px 18px;font-weight:700;color:var(--pine-dark);margin-bottom:14px;transition:transform .15s ease-out, background .2s;}
+.product-link-box:hover{background:#DDF0E9;transform:scale(1.01);}
+.product-link-box:active{transform:scale(0.98);}
+.product-link-box span.arrow{font-size:20px;}
+
+.alert{border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.6;margin-top:12px;}
+.alert-pine{background:var(--pine-bg);border:1px solid var(--pine);color:#154A3D;}
+.alert-glacier{background:var(--glacier-bg);border:1px solid var(--glacier);color:#1F5D85;}
+.alert-amber{background:var(--amber-bg);border:1px solid var(--amber);color:#8A5E0E;}
+.alert-red{background:var(--red-bg);border:1px solid var(--red);color:#A32C24;}
+
+.meeting-box{border:1.5px solid var(--glacier);border-radius:16px;background:#fff;padding:20px;box-shadow:var(--shadow);}
+.meeting-time{font-size:24px;font-weight:800;color:var(--glacier);text-align:center;margin-bottom:14px;}
+.meeting-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed var(--border);gap:10px;}
+.meeting-row:last-child{border-bottom:none;}
+.meeting-row .label{color:var(--text-sub);}
+.meeting-row .val{font-weight:700;color:var(--text-main);text-align:right;}
+
+.flight-card{border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px;}
+.flight-header{background:linear-gradient(120deg,#0C2E26,#154A3D);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:700;}
+.flight-header .code{color:var(--amber);}
+.flight-body{background:#fff;padding:20px 18px;}
+.flight-route{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.flight-route .airport{text-align:center;}
+.flight-route .airport .code{font-size:28px;font-weight:800;color:var(--text-main);}
+.flight-route .airport .city{font-size:14px;color:var(--text-sub);margin-top:2px;}
+.flight-route .mid{flex:1;text-align:center;padding:0 12px;}
+.flight-route .mid .time{font-size:14px;color:var(--text-muted);}
+.flight-route .mid .line{height:2px;background:var(--border);position:relative;margin-top:6px;}
+.flight-route .mid .line::after{content:"✈";position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:16px;}
+.flight-badges{display:flex;flex-wrap:wrap;gap:8px;}
+.badge{font-size:14px;font-weight:600;color:var(--text-sub);background:#F4F9F7;border:1px solid var(--border);padding:5px 10px;border-radius:8px;}
+
+.baggage-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.baggage-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.baggage-card .icon{font-size:24px;margin-bottom:6px;}
+.baggage-card .title{font-size:15px;font-weight:700;color:var(--text-sub);margin-bottom:4px;}
+.baggage-card .amount{font-size:19px;font-weight:800;color:var(--pine-dark);}
+.baggage-card .desc{font-size:13.5px;color:var(--text-muted);margin-top:4px;line-height:1.5;}
+
+.guide-box{border:1.5px solid var(--pine-dark);border-radius:16px;background:var(--pine-bg);padding:20px;margin-bottom:12px;}
+.guide-box .period{font-weight:800;font-size:15.5px;color:var(--pine-dark);margin-bottom:8px;}
+.guide-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed rgba(21,74,61,0.2);gap:10px;}
+.guide-row:last-child{border-bottom:none;}
+.guide-row .label{color:var(--text-sub);}
+.guide-row .val{font-weight:700;color:var(--pine-dark);text-align:right;}
+
+.hotel-card{border:2px dashed var(--pine);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);}
+.hotel-body{background:#fff;padding:20px 18px;text-align:center;}
+
+.incl-card{border-radius:14px;padding:16px;font-size:15.5px;line-height:1.75;background:var(--glacier-bg);border:1px solid var(--glacier);}
+.incl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#1F5D85;}
+
+.visa-box{border:1.5px solid var(--red);border-radius:16px;background:var(--red-bg);padding:20px;}
+.visa-box .head{font-weight:800;font-size:17px;color:#A32C24;margin-bottom:10px;}
+
+.exchange-box{border:1.5px solid var(--amber);border-radius:16px;padding:20px;background:#fff;box-shadow:var(--shadow);}
+.exchange-box .ex-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed var(--border);}
+.exchange-box .ex-row:last-child{border-bottom:none;}
+
+.tour-table-wrap{overflow-x:auto;border-radius:16px;box-shadow:var(--shadow);}
+.tour-table{width:100%;border-collapse:collapse;background:#fff;min-width:640px;}
+.tour-table th{background:linear-gradient(120deg,var(--pine),#3D9A80);color:#fff;padding:12px 8px;font-size:13.5px;font-weight:700;text-align:center;}
+.tour-table td{padding:12px 8px;text-align:center;font-size:14px;border-bottom:1px solid var(--border);color:var(--text-sub);}
+.tour-table tr:last-child td{border-bottom:none;}
+.tour-table td.name{text-align:left;font-weight:700;color:var(--pine-dark);}
+.tour-table td.price{font-weight:800;color:var(--text-main);}
+
+.weather-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
+.weather-card{flex:0 0 auto;width:106px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 8px;text-align:center;box-shadow:var(--shadow);}
+.weather-card.est{opacity:0.75;border-style:dashed;}
+.weather-card .date{font-size:13.5px;font-weight:700;color:var(--text-sub);margin-bottom:6px;}
+.weather-card .day{font-size:12px;color:var(--text-muted);margin-bottom:6px;}
+.weather-card .icon{font-size:26px;margin-bottom:8px;}
+.weather-card .high{font-size:17px;font-weight:800;color:var(--glacier);}
+.weather-card .low{font-size:14px;color:var(--text-muted);margin-top:2px;}
+
+.prep-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.prep-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.prep-card .icon{font-size:22px;margin-bottom:6px;}
+.prep-card .title{font-weight:700;font-size:15.5px;color:var(--pine-dark);margin-bottom:6px;}
+.prep-card ul{padding-left:16px;font-size:15px;color:var(--text-sub);line-height:1.75;}
+
+@media (max-width:480px){
+  .container{padding-left:14px;padding-right:14px;}
+  .trip-band-inner{grid-template-columns:repeat(2,1fr);gap:14px;padding:16px 12px;}
+  .baggage-grid,.prep-grid{grid-template-columns:1fr;}
+  .header-title{font-size:26px;}
+  .header-inner{padding:38px 18px 32px;}
+  .flight-badges{gap:6px;}
+  .badge{font-size:12.5px;padding:4px 8px;}
+}
+@media (max-width:400px){
+  .meeting-row,.guide-row,.exchange-box .ex-row{flex-direction:column;align-items:flex-start;gap:2px;}
+  .meeting-row .val,.guide-row .val,.exchange-box .ex-row .val{text-align:left;}
+  .meeting-time{font-size:20px;}
+}
+
+.footer{width:100%;background:#0C2E26;padding:32px 20px;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;text-align:center;}
+.footer-agent{color:#fff;font-size:17px;font-weight:700;margin-bottom:6px;}
+.footer-sub{color:rgba(255,255,255,0.55);font-size:14.5px;margin-bottom:18px;}
+.footer-btns{display:flex;justify-content:center;gap:10px;}
+.footer-btn{padding:10px 20px;border-radius:12px;font-weight:700;font-size:15.5px;transition:transform .15s ease-out;}
+.footer-btn:active{transform:scale(0.97);}
+.footer-btn.tel{background:var(--glacier);color:#fff;}
+.footer-btn.kakao{background:#FEE500;color:#391B1B;}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="agent-info">담당 <b>이경진 실장</b> · 모두투어 투어콕</div>
+    <div class="top-btns">
+      <a class="top-btn" href="tel:1544-5714">📞 전화상담</a>
+      <a class="top-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡</a>
+    </div>
+  </div>
+</div>
+
+<div class="header">
+  <div class="header-inner">
+    <span class="header-tag">TRAVEL CONFIRMATION</span>
+    <div class="header-title">🍁 캐나다 여행 확정서</div>
+    <div class="header-subtitle">인천국제공항 출발 · 8박 10일 · CANADA 2026</div>
+    <div class="header-names">박새봄, 유주완님</div><br>
+    <a class="header-cta" href="https://www.modetour.com/package/103609789?MLoc=99&Pnum=103609789&ANO=1772510&sno=C2181215&thru=crs" target="_blank">🔗 여행상품 확인하기</a>
+  </div>
+</div>
+
+<div class="trip-band">
+  <div class="trip-band-inner">
+    <div class="trip-item"><div class="label">출발일</div><div class="value">2026.09.04(금)</div></div>
+    <div class="trip-item"><div class="label">귀국일</div><div class="value">2026.09.13(일)</div></div>
+    <div class="trip-item"><div class="label">일정</div><div class="value">8박 10일</div></div>
+    <div class="trip-item"><div class="label">투어타입</div><div class="value">패키지</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 상품 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">1</div><div class="section-title">상품 안내</div></div>
+    <a class="product-link-box" href="https://www.modetour.com/package/103609789?MLoc=99&Pnum=103609789&ANO=1772510&sno=C2181215&thru=crs" target="_blank">
+      <span>모두투어 캐나다 패키지 상품 바로가기</span>
+      <span class="arrow">↗</span>
+    </a>
+    <div class="alert alert-pine">
+      ✔ 웨스트젯 이용 상품입니다. 캐나다 서부(캘거리·밴프 권역)와 동부(나이아가라·퀘벡 권역)를 잇는 일정입니다.
+    </div>
+  </div>
+
+  <!-- 인천공항 미팅 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">인천공항 미팅 안내</div></div>
+    <div class="meeting-box">
+      <div class="meeting-time">2026.09.04(금) 17:45</div>
+      <div class="meeting-row"><span class="label">장소</span><span class="val">인천국제공항 제1터미널<br>N카운터 14번 출구 앞<br>9~10번 모두투어 테이블</span></div>
+    </div>
+  </div>
+
+  <!-- 항공편 정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">항공편 정보</div></div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>출발편 · 웨스트젯</span><span class="code">WS087</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 09.04(금) 20:45</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">YYC</div><div class="city">캘거리 · 09.04(금) 16:10</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 웨스트젯</span>
+          <span class="badge">위탁 23kg</span>
+          <span class="badge">기내 10kg</span>
+          <span class="badge">기내식 제공</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>귀국편 · 웨스트젯</span><span class="code">WS086</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">YYC</div><div class="city">캘거리 · 09.12(토) 16:00</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 09.13(일) 18:45</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 웨스트젯</span>
+          <span class="badge">위탁 23kg</span>
+          <span class="badge">기내 10kg</span>
+          <span class="badge">기내식 제공</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-glacier">
+      ✈ 인천-캘거리 직항 시간표 기준이며, 서부(캘거리·밴프)에서 동부(나이아가라 등)로 이동하는 <b>현지 국내선 구간은 별도 일정표를 참고</b>해 주세요.
+    </div>
+  </div>
+
+  <!-- 수하물 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">수하물 안내</div></div>
+    <div class="baggage-grid">
+      <div class="baggage-card">
+        <div class="icon">🧳</div>
+        <div class="title">위탁수하물</div>
+        <div class="amount">23kg · 1개</div>
+        <div class="desc">1인 기준</div>
+      </div>
+      <div class="baggage-card">
+        <div class="icon">🎒</div>
+        <div class="title">기내수하물</div>
+        <div class="amount">10kg · 1개</div>
+        <div class="desc">3면의 합 118cm 이내(바퀴·손잡이 포함)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 현지 가이드 정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">현지 가이드 정보</div></div>
+    <div class="guide-box">
+      <div class="period">📍 2026.09.04 ~ 09.08 (서부)</div>
+      <div class="guide-row"><span class="label">담당 가이드</span><span class="val">오수영 부장</span></div>
+      <div class="guide-row"><span class="label">연락처</span><span class="val">1-403-477-7065</span></div>
+    </div>
+    <div class="guide-box" style="margin-bottom:0;">
+      <div class="period">📍 2026.09.08 ~ 09.12 (동부)</div>
+      <div class="guide-row"><span class="label">담당 가이드</span><span class="val">안정환 부장</span></div>
+      <div class="guide-row"><span class="label">연락처</span><span class="val">647-806-1571</span></div>
+    </div>
+    <div class="alert alert-pine">
+      🛄 현지공항 도착 후 짐을 찾고 나가시면 <b>모두투어 피켓</b>을 들고 있는 가이드가 대기하고 있을 예정입니다.
+    </div>
+  </div>
+
+  <!-- 투숙 호텔 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">투숙 호텔</div></div>
+    <div class="hotel-card">
+      <div class="hotel-body">
+        📋 투숙호텔은 <b>여행일정표에서 확인 필수</b>입니다.
+      </div>
+    </div>
+  </div>
+
+  <!-- 불포함 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">불포함 사항</div></div>
+    <div class="incl-card">
+      <div class="head">✘ 불포함사항</div>
+      ◈ 기사/가이드 경비 및 식당팁: <b>1인 CAD $240</b> (서부 CAD $125 / 동부 CAD $115)
+    </div>
+  </div>
+
+  <!-- 캐나다 ETA -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">캐나다 ETA 필수 확인</div></div>
+    <div class="visa-box">
+      <div class="head">🚨 ETA 승인화면 재확인 및 캡처 필수</div>
+      캐나다 <b>ETA 승인화면을 다시 한 번 확인</b>하셔서 승인 상태가 유지되고 있는지 체크해 주세요. 승인받은 화면은 <b>꼭 캡처</b>해서 가지고 계셔야 합니다.
+    </div>
+  </div>
+
+  <!-- 선택관광 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">선택관광 안내</div></div>
+    <div class="tour-table-wrap">
+      <table class="tour-table">
+        <tr>
+          <th>선택관광명</th><th>통화</th><th>성인</th><th>아동</th><th>소요시간</th><th>최소인원</th><th>가이드<br>동행</th><th>미참여시<br>대기장소</th>
+        </tr>
+        <tr>
+          <td class="name">몽모랑시 폭포 케이블카</td><td>CAD</td><td class="price">40</td><td class="price">40</td><td>60분</td><td>0명</td><td>동행안함</td><td>지정 장소<br>자유시간</td>
+        </tr>
+        <tr>
+          <td class="name">나이아가라 헬기투어</td><td>CAD</td><td class="price">215</td><td class="price">215</td><td>30분</td><td>0명</td><td>동행안함</td><td>지정 장소<br>자유시간</td>
+        </tr>
+        <tr>
+          <td class="name">월풀 제트보트</td><td>CAD</td><td class="price">150</td><td class="price">150</td><td>70분</td><td>0명</td><td>동행안함</td><td>지정 장소<br>자유시간</td>
+        </tr>
+      </table>
+    </div>
+    <div class="alert alert-amber">
+      💡 선택관광은 모두 최소인원 조건이 없어 참여를 원하시면 언제든 신청 가능합니다. 참여하지 않으시더라도 지정된 장소에서 자유시간을 보내실 수 있어요. 나이아가라 헬기투어·월풀 제트보트는 짐을 가볍게, 방수 대비를 하고 참여하시는 걸 추천드려요.
+    </div>
+  </div>
+
+  <!-- 환전 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">환전 안내</div></div>
+    <div class="exchange-box">
+      <div class="ex-row"><span>가이드·기사 경비/팁</span><span style="font-weight:700;">1인 CAD $240 (현금)</span></div>
+      <div class="ex-row"><span>권장 환전 금액</span><span style="font-weight:700;">1인당 CAD $650 정도</span></div>
+      <div class="ex-row"><span>결제 팁</span><span style="font-weight:700;">대형매장·호텔은 카드 결제 가능</span></div>
+    </div>
+    <div class="alert alert-amber">
+      💵 가이드/기사 경비·팁(1인 $240)에 선택관광 참여 비용까지 고려해서 <b>1인당 캐나다달러(CAD) $650 정도</b> 환전해 오시는 걸 권장드립니다. 대형 매장이나 호텔에서는 카드 결제도 편하게 가능합니다.
+    </div>
+  </div>
+
+  <!-- 날씨 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">11</div><div class="section-title">일자별 날씨 정보</div></div>
+    <div class="weather-row">
+      <div class="weather-card">
+        <div class="date">9/4(금)</div>
+        <div class="day">캘거리 도착</div>
+        <div class="icon">☀️</div>
+        <div class="high">20℃</div>
+        <div class="low">8℃</div>
+      </div>
+      <div class="weather-card est">
+        <div class="date">9/5~7</div>
+        <div class="day">서부(캘거리·밴프)</div>
+        <div class="icon">⛅</div>
+        <div class="high">~19℃</div>
+        <div class="low">~7℃</div>
+      </div>
+      <div class="weather-card est">
+        <div class="date">9/8~11</div>
+        <div class="day">동부(나이아가라 등)</div>
+        <div class="icon">⛅</div>
+        <div class="high">~24℃</div>
+        <div class="low">~14℃</div>
+      </div>
+      <div class="weather-card est">
+        <div class="date">9/12(토)</div>
+        <div class="day">귀국일</div>
+        <div class="icon">☀️</div>
+        <div class="high">~23℃</div>
+        <div class="low">~13℃</div>
+      </div>
+    </div>
+    <div class="alert alert-amber">
+      🍁 9월 캐나다 서부(캘거리·밴프)는 낮 15~20℃, 밤 5~9℃로 <b>일교차가 크고 산악지역은 갑자기 쌀쌀</b>해질 수 있습니다. 동부(나이아가라·퀘벡 권역)는 이보다 온화한 20℃대 초가을 날씨입니다. 위 기온은 참고값이며, 출발 며칠 전 다시 확인해 드릴게요.
+    </div>
+  </div>
+
+  <!-- 준비물 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">12</div><div class="section-title">여행 준비물</div></div>
+    <div class="prep-grid">
+      <div class="prep-card">
+        <div class="icon">🧥</div>
+        <div class="title">옷차림 (서부 산악 대비)</div>
+        <ul>
+          <li>경량 패딩 또는 두꺼운 자켓(밴프 등 산악지역 아침저녁 쌀쌀)</li>
+          <li>기모·니트류 겹쳐입기용</li>
+          <li>방수 재킷(산악지역 갑작스런 비 대비)</li>
+          <li>동부(나이아가라)는 상대적으로 온화, 얇은 겉옷 위주</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🚁</div>
+        <div class="title">선택관광 대비</div>
+        <ul>
+          <li>헬기투어: 선글라스(멀미 대비 탑승 전 가벼운 식사 권장)</li>
+          <li>제트보트: 젖어도 되는 옷 또는 우비, 방수팩(휴대폰용)</li>
+          <li>여벌 옷·수건(제트보트 참여 시 흠뻑 젖을 수 있음)</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🔌</div>
+        <div class="title">전기·전압</div>
+        <ul>
+          <li>캐나다 전압 <b>120V</b>(한국 220V와 다름) — <b>멀티어댑터·변압기 필수</b></li>
+          <li>플러그는 북미식(Type A/B)</li>
+          <li>보조배터리, 카메라 충전기</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">💊</div>
+        <div class="title">상비약 & 기타</div>
+        <ul>
+          <li>감기약·소화제·진통제(장거리 비행 대비)</li>
+          <li>선크림·모자·선글라스</li>
+          <li>여권, ETA 승인화면 캡처본</li>
+          <li>편한 운동화(도보 관광·트레킹 多)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-agent">담당 이경진 실장</div>
+    <div class="footer-sub">박새봄, 유주완님의 즐거운 캐나다 여행을 응원합니다 🍁</div>
+    <div class="footer-btns">
+      <a class="footer-btn tel" href="tel:1544-5714">📞 1544-5714</a>
+      <a class="footer-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 투어콕 카카오톡 채널</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.1});
+sections.forEach(s=>observer.observe(s));
+</script>
+
+</body>
+</html>
