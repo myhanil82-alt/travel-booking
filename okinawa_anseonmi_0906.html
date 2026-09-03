@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>오키나와 여행 확정서 - 안선미님 가족</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+  --sakura:#D4547A;
+  --sakura-dark:#B23A63;
+  --sakura-bg:#FDF0F4;
+  --ocean:#0E8FA8;
+  --ocean-bg:#E7F5F8;
+  --gold:#FDB022;
+  --gold-bg:#FFF8EC;
+  --sky-top:#EAF4F0;
+  --sky-bottom:#F7F5EF;
+  --text-main:#1E293B;
+  --text-sub:#5C5A68;
+  --text-muted:#928B9C;
+  --card-bg:#FFFFFF;
+  --border:#EEE1E9;
+  --shadow:0 4px 20px rgba(212,84,122,0.10);
+  --max-w:680px;
+  --red:#E24C4C;
+  --red-bg:#FEF0F0;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Pretendard',sans-serif;background:linear-gradient(180deg,var(--sky-top) 0%, var(--sky-bottom) 45%, #FDFBFA 100%);color:var(--text-main);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+
+.top-bar{width:100%;background:rgba(14,79,92,0.92);backdrop-filter:blur(6px);padding:10px 20px;}
+.top-bar-inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.agent-info{color:#E7F5F8;font-size:15px;font-weight:500;}
+.agent-info b{color:#fff;}
+.top-btns{display:flex;gap:8px;}
+.top-btn{font-size:14.5px;font-weight:600;padding:6px 12px;border-radius:20px;background:rgba(255,255,255,0.15);color:#fff;transition:transform .15s ease-out, background .2s;}
+.top-btn:hover{background:rgba(255,255,255,0.28);}
+.top-btn:active{transform:scale(0.97);}
+.top-btn.kakao{background:#FEE500;color:#391B1B;}
+
+.header{width:100%;padding:28px 16px 24px;}
+.header-inner{max-width:var(--max-w);margin:0 auto;text-align:center;position:relative;z-index:1;border-radius:24px;overflow:hidden;padding:48px 24px 40px;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(14,143,168,0.30), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(212,84,122,0.18), transparent 50%),
+    linear-gradient(160deg,#0A3540 0%, #0E4F5C 55%, #0E6478 100%);
+  box-shadow:0 12px 32px rgba(10,53,64,0.28);}
+.header-tag{display:inline-block;font-size:14px;font-weight:700;letter-spacing:2.5px;color:var(--gold);border:1px solid rgba(253,176,34,0.5);padding:6px 16px;border-radius:20px;margin-bottom:18px;}
+.header-title{font-size:32px;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-0.5px;text-shadow:0 2px 12px rgba(0,0,0,0.4);}
+.header-subtitle{font-size:16px;color:rgba(255,255,255,0.85);font-weight:500;margin-bottom:28px;letter-spacing:0.5px;}
+.header-names{font-size:22px;font-weight:700;color:#fff;background:rgba(255,255,255,0.1);display:inline-block;padding:10px 24px;border-radius:14px;margin-bottom:22px;}
+.header-cta{display:inline-flex;align-items:center;gap:8px;background:var(--sakura);color:#fff;font-weight:700;font-size:17px;padding:13px 26px;border-radius:12px;box-shadow:0 8px 20px rgba(212,84,122,0.4);transition:transform .2s ease-out, box-shadow .2s;}
+.header-cta:hover{transform:translateY(-2px) scale(1.02);}
+.header-cta:active{transform:scale(0.97);}
+
+.trip-band{width:100%;background:linear-gradient(90deg,var(--ocean),#3DB4C9);}
+.trip-band-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);text-align:center;padding:20px 16px;}
+.trip-item .label{font-size:13px;color:rgba(255,255,255,0.85);font-weight:600;margin-bottom:4px;}
+.trip-item .value{font-size:17px;color:#fff;font-weight:800;}
+
+.container{max-width:var(--max-w);margin:0 auto;padding:36px 20px 60px;}
+.section{margin-bottom:36px;opacity:0;transform:translateY(16px);transition:opacity .5s ease-out, transform .5s ease-out;}
+.section.visible{opacity:1;transform:translateY(0);}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.section-num{width:30px;height:30px;border-radius:50%;background:var(--ocean);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0;}
+.section-title{font-size:20px;font-weight:800;color:var(--text-main);}
+
+.product-link-box{display:flex;justify-content:space-between;align-items:center;background:var(--sakura-bg);border:1px solid var(--sakura);border-radius:14px;padding:16px 18px;font-weight:700;color:var(--sakura-dark);margin-bottom:14px;transition:transform .15s ease-out, background .2s;}
+.product-link-box:hover{background:#FBE3EA;transform:scale(1.01);}
+.product-link-box:active{transform:scale(0.98);}
+.product-link-box span.arrow{font-size:20px;}
+
+.alert{border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.6;margin-top:12px;}
+.alert-sakura{background:var(--sakura-bg);border:1px solid var(--sakura);color:#8E2E4E;}
+.alert-ocean{background:var(--ocean-bg);border:1px solid var(--ocean);color:#0E4F5C;}
+.alert-gold{background:var(--gold-bg);border:1px solid var(--gold);color:#8A5E0E;}
+.alert-red{background:var(--red-bg);border:1px solid var(--red);color:#B02E2E;}
+
+.meeting-box{border:1.5px solid var(--sakura);border-radius:16px;background:#fff;padding:20px;box-shadow:var(--shadow);}
+.meeting-time{font-size:24px;font-weight:800;color:var(--sakura-dark);text-align:center;margin-bottom:14px;}
+.meeting-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed var(--border);gap:10px;}
+.meeting-row:last-child{border-bottom:none;}
+.meeting-row .label{color:var(--text-sub);}
+.meeting-row .val{font-weight:700;color:var(--text-main);text-align:right;}
+
+.counter-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:var(--gold-bg);}
+.step{display:flex;gap:12px;margin-bottom:14px;}
+.step:last-child{margin-bottom:0;}
+.step-num{width:26px;height:26px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0;}
+.step-text{font-size:16px;color:var(--text-main);line-height:1.6;}
+.step-text b{color:#8A5E0E;}
+.step-text a{color:#8A5E0E;text-decoration:underline;font-weight:700;}
+
+.flight-card{border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px;}
+.flight-header{background:linear-gradient(120deg,#0A3540,#0E4F5C);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:700;}
+.flight-header .code{color:var(--gold);}
+.flight-body{background:#fff;padding:20px 18px;}
+.flight-route{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.flight-route .airport{text-align:center;}
+.flight-route .airport .code{font-size:30px;font-weight:800;color:var(--text-main);}
+.flight-route .airport .city{font-size:14px;color:var(--text-sub);margin-top:2px;}
+.flight-route .mid{flex:1;text-align:center;padding:0 12px;}
+.flight-route .mid .time{font-size:14px;color:var(--text-muted);}
+.flight-route .mid .line{height:2px;background:var(--border);position:relative;margin-top:6px;}
+.flight-route .mid .line::after{content:"✈";position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:16px;}
+.flight-badges{display:flex;flex-wrap:wrap;gap:8px;}
+.badge{font-size:14px;font-weight:600;color:var(--text-sub);background:#F5FAFA;border:1px solid var(--border);padding:5px 10px;border-radius:8px;}
+
+.baggage-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.baggage-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.baggage-card .icon{font-size:24px;margin-bottom:6px;}
+.baggage-card .title{font-size:15px;font-weight:700;color:var(--text-sub);margin-bottom:4px;}
+.baggage-card .amount{font-size:19px;font-weight:800;color:var(--sakura-dark);}
+.baggage-card .desc{font-size:14px;color:var(--text-muted);margin-top:4px;line-height:1.5;}
+
+.guide-box{border:1.5px solid var(--ocean);border-radius:16px;background:var(--ocean-bg);padding:20px;}
+.guide-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed rgba(14,79,92,0.2);gap:10px;}
+.guide-row:last-child{border-bottom:none;}
+.guide-row .label{color:var(--text-sub);}
+.guide-row .val{font-weight:700;color:#0E4F5C;text-align:right;}
+
+.hotel-card{border:2px solid var(--sakura);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);}
+.hotel-header{background:linear-gradient(120deg,var(--sakura),#E88AA6);color:#fff;padding:10px 18px;font-size:14.5px;font-weight:700;display:flex;justify-content:space-between;align-items:center;}
+.hotel-body{background:#fff;padding:20px 18px;}
+.hotel-name{font-size:20px;font-weight:800;color:var(--text-main);}
+
+.incl-card{border-radius:14px;padding:16px;font-size:15.5px;line-height:1.75;background:var(--sakura-bg);border:1px solid var(--sakura);}
+.incl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#8E2E4E;}
+
+.exchange-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:#fff;box-shadow:var(--shadow);}
+.exchange-box .ex-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed var(--border);}
+.exchange-box .ex-row:last-child{border-bottom:none;}
+
+.roam-grid{display:grid;grid-template-columns:1fr;gap:12px;}
+.roam-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px;box-shadow:var(--shadow);}
+.roam-card .rc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.roam-card .rc-title{font-weight:800;font-size:16.5px;color:var(--sakura-dark);}
+.roam-card .rc-price{font-weight:800;font-size:15px;color:var(--sakura);background:var(--sakura-bg);padding:4px 10px;border-radius:8px;}
+.roam-card .rc-desc{font-size:14.5px;color:var(--text-sub);line-height:1.7;margin-bottom:8px;}
+.roam-card .rc-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.roam-card .rc-tag{font-size:13px;padding:4px 10px;border-radius:8px;background:var(--gold-bg);color:#8A5E0E;font-weight:600;}
+.roam-card .rc-tag.con{background:var(--red-bg);color:#B02E2E;}
+
+.weather-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
+.weather-card{flex:0 0 auto;width:106px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 8px;text-align:center;box-shadow:var(--shadow);}
+.weather-card .date{font-size:13.5px;font-weight:700;color:var(--text-sub);margin-bottom:6px;}
+.weather-card .day{font-size:12px;color:var(--text-muted);margin-bottom:6px;}
+.weather-card .icon{font-size:26px;margin-bottom:8px;}
+.weather-card .high{font-size:17px;font-weight:800;color:var(--sakura);}
+.weather-card .low{font-size:14px;color:var(--text-muted);margin-top:2px;}
+.weather-card .rain{font-size:12px;color:var(--ocean);margin-top:4px;}
+
+.prep-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.prep-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.prep-card .icon{font-size:22px;margin-bottom:6px;}
+.prep-card .title{font-weight:700;font-size:15.5px;color:var(--sakura-dark);margin-bottom:6px;}
+.prep-card ul{padding-left:16px;font-size:15px;color:var(--text-sub);line-height:1.75;}
+
+@media (max-width:480px){
+  .container{padding-left:14px;padding-right:14px;}
+  .trip-band-inner{grid-template-columns:repeat(2,1fr);gap:14px;padding:16px 12px;}
+  .baggage-grid,.prep-grid{grid-template-columns:1fr;}
+  .header-title{font-size:26px;}
+  .header-inner{padding:38px 18px 32px;}
+  .flight-badges{gap:6px;}
+  .badge{font-size:12.5px;padding:4px 8px;}
+}
+@media (max-width:400px){
+  .meeting-row,.guide-row,.exchange-box .ex-row{flex-direction:column;align-items:flex-start;gap:2px;}
+  .meeting-row .val,.guide-row .val,.exchange-box .ex-row .val{text-align:left;}
+  .meeting-time{font-size:20px;}
+  .roam-card .rc-head{flex-direction:column;align-items:flex-start;gap:6px;}
+}
+
+.footer{width:100%;background:#0A3540;padding:32px 20px;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;text-align:center;}
+.footer-agent{color:#fff;font-size:17px;font-weight:700;margin-bottom:6px;}
+.footer-sub{color:rgba(255,255,255,0.55);font-size:14.5px;margin-bottom:18px;}
+.footer-btns{display:flex;justify-content:center;gap:10px;}
+.footer-btn{padding:10px 20px;border-radius:12px;font-weight:700;font-size:15.5px;transition:transform .15s ease-out;}
+.footer-btn:active{transform:scale(0.97);}
+.footer-btn.tel{background:var(--sakura);color:#fff;}
+.footer-btn.kakao{background:#FEE500;color:#391B1B;}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="agent-info">담당 <b>이경진 실장</b> · 모두투어 투어콕</div>
+    <div class="top-btns">
+      <a class="top-btn" href="tel:1544-5714">📞 전화상담</a>
+      <a class="top-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡</a>
+    </div>
+  </div>
+</div>
+
+<div class="header">
+  <div class="header-inner">
+    <span class="header-tag">TRAVEL CONFIRMATION</span>
+    <div class="header-title">🌺 오키나와 여행 확정서</div>
+    <div class="header-subtitle">부산(김해)국제공항 출발 · 2박 3일 · OKINAWA 2026</div>
+    <div class="header-names">안선미님 가족</div><br>
+    <a class="header-cta" href="https://www.modetour.com/package/108073051?MLoc=99&Pnum=108073051&ANO=4547682&sno=C2181215&thru=crs" target="_blank">🔗 여행상품 확인하기</a>
+  </div>
+</div>
+
+<div class="trip-band">
+  <div class="trip-band-inner">
+    <div class="trip-item"><div class="label">출발일</div><div class="value">2026.09.06(일)</div></div>
+    <div class="trip-item"><div class="label">귀국일</div><div class="value">2026.09.08(화)</div></div>
+    <div class="trip-item"><div class="label">일정</div><div class="value">2박 3일</div></div>
+    <div class="trip-item"><div class="label">투어타입</div><div class="value">패키지</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 상품 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">1</div><div class="section-title">상품 안내</div></div>
+    <a class="product-link-box" href="https://www.modetour.com/package/108073051?MLoc=99&Pnum=108073051&ANO=4547682&sno=C2181215&thru=crs" target="_blank">
+      <span>모두투어 오키나와 패키지 상품 바로가기</span>
+      <span class="arrow">↗</span>
+    </a>
+    <div class="alert alert-sakura">
+      ✔ 진에어 예약번호(PNR): <b>W397N4</b>
+    </div>
+  </div>
+
+  <!-- 김해공항 미팅 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">김해공항 미팅 안내</div></div>
+    <div class="meeting-box">
+      <div class="meeting-time">2026.09.06(일) 05:00</div>
+      <div class="meeting-row"><span class="label">장소</span><span class="val">김해국제공항 국제선 3층<br>오른쪽 "모두투어" 안내판 앞</span></div>
+    </div>
+    <div class="alert alert-gold">
+      ℹ 정확한 미팅 지점은 <b>가이드가 별도로 연락</b>드릴 예정입니다.
+    </div>
+  </div>
+
+  <!-- 온라인 체크인 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">온라인 체크인 안내</div></div>
+    <div class="counter-box">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">진에어 모바일 탑승권 절차는 <b>여행 출발 24시간 전부터</b> 진에어 사이트(<a href="https://www.jinair.com/booking/index" target="_blank">jinair.com</a>)에서 진행하실 수 있으며, 이때 <b>좌석 지정도 가능</b>합니다.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">항공기 출발(08:05) 기준 <b>2~3시간 전</b> 공항 도착을 권장드립니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 항공편 정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">항공편 정보</div></div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>출발편 · 진에어</span><span class="code">LJ371</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">PUS</div><div class="city">부산 · 09.06(일) 08:05</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">OKA</div><div class="city">오키나와 · 09.06(일) 10:05</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 진에어</span>
+          <span class="badge">위탁 15kg</span>
+          <span class="badge">기내 10kg</span>
+          <span class="badge">기내식 불포함</span>
+          <span class="badge">좌석 지정 가능</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>귀국편 · 진에어</span><span class="code">LJ372</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">OKA</div><div class="city">오키나와 · 09.08(화) 11:05</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">PUS</div><div class="city">부산 · 09.08(화) 13:05</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 진에어</span>
+          <span class="badge">위탁 15kg</span>
+          <span class="badge">기내 10kg</span>
+          <span class="badge">기내식 불포함</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 수하물 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">수하물 안내</div></div>
+    <div class="baggage-grid">
+      <div class="baggage-card">
+        <div class="icon">🧳</div>
+        <div class="title">위탁수하물</div>
+        <div class="amount">15kg</div>
+        <div class="desc">일본노선 기준, 3면의 합 203cm 이내</div>
+      </div>
+      <div class="baggage-card">
+        <div class="icon">🎒</div>
+        <div class="title">기내수하물</div>
+        <div class="amount">10kg 이하 · 1개</div>
+        <div class="desc">3면의 합 115cm 이내(40×20×55cm)</div>
+      </div>
+    </div>
+    <div class="alert alert-gold">
+      💡 위탁수하물 무게 초과가 걱정되시면, 공항보다 최대 25% 저렴한 <b>사전 위탁수하물 구매</b>를 마이페이지에서 이용해보세요.
+    </div>
+  </div>
+
+  <!-- 현지 가이드 & 행사정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">현지 가이드 & 행사 정보</div></div>
+    <div class="guide-box">
+      <div class="guide-row"><span class="label">쓰루가이드</span><span class="val">차종훈(남)</span></div>
+      <div class="guide-row"><span class="label">연락처</span><span class="val">010-9347-5244<br>일본 HP 080-4400-3546</span></div>
+      <div class="guide-row"><span class="label">총 행사인원</span><span class="val">14명 + 쓰루가이드 1명<br>(진에어 3명, 이스타 11명+가이드)</span></div>
+    </div>
+    <div class="alert alert-ocean">
+      ℹ 쓰루가이드는 <b>김해공항 미팅 진행 및 진에어 왕복 동행</b> 기준입니다.
+    </div>
+  </div>
+
+  <!-- 투숙 호텔 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">투숙 호텔</div></div>
+    <div class="hotel-card">
+      <div class="hotel-header"><span>🏨 전 일정</span><span>2박</span></div>
+      <div class="hotel-body">
+        <div class="hotel-name">더블트리 바이 힐튼 슈리 캐슬</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 불포함 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">불포함 사항</div></div>
+    <div class="incl-card">
+      <div class="head">✘ 불포함사항</div>
+      ■ 개인경비 (환전은 엔화로 하시기 바랍니다)<br>
+      ■ 기사/가이드 경비 1인 3,000엔 (성인·아동 동일)<br>
+      ■ 현지 석식 2회 불포함
+    </div>
+  </div>
+
+  <!-- 환전 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">환전 안내</div></div>
+    <div class="exchange-box">
+      <div class="ex-row"><span>가이드·기사 경비</span><span style="font-weight:700;">엔화(JPY) 지불 기준<br>1인 3,000엔</span></div>
+      <div class="ex-row"><span>개인경비 · 석식(2회 불포함)</span><span style="font-weight:700;">엔화(JPY)로 환전 권장</span></div>
+    </div>
+    <div class="alert alert-gold">
+      💴 본 상품은 <b>환전을 엔화(JPY)로</b> 하시는 것을 권장드립니다. 가이드·기사 경비(1인 3,000엔)와 불포함된 현지 석식 2회, 개인경비까지 고려해서 넉넉히 준비해 주세요.
+    </div>
+  </div>
+
+  <!-- 데이터 로밍 비교 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">현지 데이터 통신 옵션 비교</div></div>
+    <div class="roam-grid">
+      <div class="roam-card">
+        <div class="rc-head">
+          <div class="rc-title">📶 통신사 로밍</div>
+          <div class="rc-price">1일 약 9,000~11,000원</div>
+        </div>
+        <div class="rc-desc">한국 통신사에서 자동으로 신청. 기존 번호 그대로 사용, 별도 셋팅이 필요 없어 가장 간편합니다.</div>
+        <div class="rc-tags">
+          <span class="rc-tag">셋팅 불필요</span>
+          <span class="rc-tag">기존 번호 유지</span>
+          <span class="rc-tag con">요금 다소 높음</span>
+        </div>
+      </div>
+      <div class="roam-card">
+        <div class="rc-head">
+          <div class="rc-title">📱 현지 유심(USIM)</div>
+          <div class="rc-price">3일권 약 6,000~9,000원</div>
+        </div>
+        <div class="rc-desc">국내에서 미리 구매해 도착 후 교체하거나, 공항에서 바로 구매 가능. 요금이 저렴하지만 <b>한국 번호로 오는 전화·문자 수신이 안 됩니다.</b></div>
+        <div class="rc-tags">
+          <span class="rc-tag">가장 저렴</span>
+          <span class="rc-tag con">번호 변경(수신 불가)</span>
+        </div>
+      </div>
+      <div class="roam-card">
+        <div class="rc-head">
+          <div class="rc-title">💳 이심(eSIM)</div>
+          <div class="rc-price">3일권 약 6,000~10,000원</div>
+        </div>
+        <div class="rc-desc">앱으로 QR코드 스캔만 하면 설치 완료. <b>기존 유심(한국 번호)과 함께 듀얼로 사용 가능</b>해 한국 번호 수신도 유지하면서 데이터만 현지망으로 쓸 수 있어 최근 가장 인기 있는 방식입니다.</div>
+        <div class="rc-tags">
+          <span class="rc-tag">한국 번호 유지</span>
+          <span class="rc-tag">셋팅 간편(QR)</span>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-sakura" style="margin-top:12px;">
+      💡 <b>전화·문자 수신이 필요 없고 저렴하게 쓰고 싶으면 유심</b>, <b>한국 번호 그대로 두면서 편하게 쓰고 싶으면 이심</b>, <b>아무 설정 없이 가장 간편하게 쓰고 싶으면 로밍</b>을 추천드려요. (가격은 시기·판매처에 따라 변동될 수 있어 참고용으로 봐주세요.)
+    </div>
+  </div>
+
+  <!-- 날씨 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">11</div><div class="section-title">일자별 날씨 정보</div></div>
+    <div class="weather-row">
+      <div class="weather-card">
+        <div class="date">9/6(일)</div>
+        <div class="day">출국일</div>
+        <div class="icon">🌦️</div>
+        <div class="high">32℃</div>
+        <div class="low">27℃</div>
+        <div class="rain">강수 45%</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">9/7(월)</div>
+        <div class="day">오키나와</div>
+        <div class="icon">⛅</div>
+        <div class="high">31℃</div>
+        <div class="low">27℃</div>
+        <div class="rain">강수 35%</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">9/8(화)</div>
+        <div class="day">귀국일</div>
+        <div class="icon">🌦️</div>
+        <div class="high">31℃</div>
+        <div class="low">27℃</div>
+        <div class="rain">강수 45%</div>
+      </div>
+    </div>
+    <div class="alert alert-gold">
+      ☔ 9월 초 오키나와는 여전히 한여름 날씨(27~32℃)이며, 태풍 시즌과 겹쳐 소나기가 잦을 수 있습니다. 위 기온은 평년 평균 참고값이며, 출발 며칠 전 다시 확인해 드릴게요.
+    </div>
+  </div>
+
+  <!-- 준비물 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">12</div><div class="section-title">여행 준비물</div></div>
+    <div class="prep-grid">
+      <div class="prep-card">
+        <div class="icon">🏖️</div>
+        <div class="title">물놀이 준비물</div>
+        <ul>
+          <li>수영복·래시가드, 비치타월</li>
+          <li>방수팩(휴대폰용)</li>
+          <li>아쿠아슈즈(산호·암초 지대 대비)</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">☀️</div>
+        <div class="title">자외선 & 옷차림</div>
+        <ul>
+          <li>선크림 SPF50+, 애프터선</li>
+          <li>모자·선글라스</li>
+          <li>반팔·반바지, 얇은 겉옷(실내냉방 대비)</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">☔</div>
+        <div class="title">우천 대비</div>
+        <ul>
+          <li>휴대용 우산 또는 우비(태풍 시즌 대비)</li>
+          <li>여벌 옷·양말</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">💴</div>
+        <div class="title">현금 & 기타</div>
+        <ul>
+          <li>엔화 현금(가이드경비 1인 3,000엔 + 개인경비)</li>
+          <li>여권, 이티켓·바우처 캡처본</li>
+          <li>상비약(소화제·지사제 등)</li>
+          <li>보조배터리</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-agent">담당 이경진 실장</div>
+    <div class="footer-sub">안선미님 가족의 즐거운 오키나와 여행을 응원합니다 🌺</div>
+    <div class="footer-btns">
+      <a class="footer-btn tel" href="tel:1544-5714">📞 1544-5714</a>
+      <a class="footer-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 투어콕 카카오톡 채널</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.1});
+sections.forEach(s=>observer.observe(s));
+</script>
+
+</body>
+</html>
