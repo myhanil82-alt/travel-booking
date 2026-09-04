@@ -104,6 +104,12 @@ img{max-width:100%;display:block;}
 .pending-box .head{font-weight:800;font-size:16px;color:#8A6414;margin-bottom:8px;}
 .pending-box ul{padding-left:18px;font-size:15px;color:var(--text-sub);line-height:1.85;}
 
+.guide-box{border:1.5px solid var(--forest-dark);border-radius:16px;background:var(--forest-bg);padding:20px;}
+.guide-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed rgba(31,74,54,0.2);gap:10px;}
+.guide-row:last-child{border-bottom:none;}
+.guide-row .label{color:var(--text-sub);}
+.guide-row .val{font-weight:700;color:var(--forest-dark);text-align:right;}
+
 .hotel-card{border:2px solid var(--forest);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);}
 .hotel-header{background:linear-gradient(120deg,var(--forest),#4E9270);color:#fff;padding:10px 18px;font-size:14.5px;font-weight:700;display:flex;justify-content:space-between;align-items:center;}
 .hotel-body{background:#fff;padding:16px 18px;}
@@ -283,23 +289,33 @@ img{max-width:100%;display:block;}
     </div>
   </div>
 
+  <!-- 현지 가이드 & 행사정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">현지 가이드 & 행사 정보</div></div>
+    <div class="guide-box">
+      <div class="guide-row"><span class="label">가이드명</span><span class="val">원국(남) · YUAN GUO</span></div>
+      <div class="guide-row"><span class="label">가이드 연락처</span><span class="val">188-7446-1014</span></div>
+      <div class="guide-row"><span class="label">가이드 자격증</span><span class="val">인증번호 2507281235<br>(유효기간 26.07.01~26.12.31)</span></div>
+      <div class="guide-row"><span class="label">현지 비상연락처</span><span class="val">138-1011-5262</span></div>
+      <div class="guide-row"><span class="label">행사인원</span><span class="val">10명</span></div>
+      <div class="guide-row"><span class="label">행사차량</span><span class="val">23인승 차량</span></div>
+    </div>
+  </div>
+
   <!-- 추후 확인 항목 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">4</div><div class="section-title">추후 안내 예정 항목</div></div>
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">추후 안내 예정 항목</div></div>
     <div class="pending-box">
       <div class="head">📅 확인되는 대로 별도 안내드릴게요</div>
       <ul>
         <li>인천공항 미팅 시간·장소</li>
-        <li>현지 가이드 정보(성함·연락처)</li>
-        <li>행사인원 · 행사차량</li>
-        <li>중국 입국신고서 작성 시 참고 현지주소</li>
       </ul>
     </div>
   </div>
 
   <!-- 투숙 호텔 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">5</div><div class="section-title">투숙 호텔</div></div>
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">투숙 호텔</div></div>
     <div class="hotel-card">
       <div class="hotel-header"><span>🏨 전 일정</span><span>5박</span></div>
       <div class="hotel-body"><div class="hotel-name">장가계 피닉스호텔</div></div>
@@ -308,7 +324,7 @@ img{max-width:100%;display:block;}
 
   <!-- 불포함 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">6</div><div class="section-title">불포함 사항</div></div>
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">불포함 사항</div></div>
     <div class="incl-card">
       <div class="head">✘ 불포함사항</div>
       개인경비
@@ -317,19 +333,16 @@ img{max-width:100%;display:block;}
 
   <!-- 중국 입국신고서 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">7</div><div class="section-title">중국 입국신고서 안내</div></div>
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">중국 입국신고서 안내</div></div>
     <div class="visa-box">
-      <div class="head">📝 중국 온라인 입국신고서 작성 필수</div>
-      중국 입국 시 온라인 입국신고서 작성이 필요합니다. 참고 현지주소는 확인되는 대로 별도 안내드릴게요. 아래 사이트에서 미리 작성 방법을 참고해두셔도 좋습니다.
-      <br><br>
-      <a class="linkbtn" href="https://s.nia.gov.cn/ArrivalCardFillingPC/entry-registation-home" target="_blank">🔗 입국신고서 작성하기</a>
-      <a class="linkbtn" href="https://blog.naver.com/knowtip/224289163381" target="_blank" style="margin-left:8px;background:#fff;color:#8A6414;border:1px solid var(--gold);">📖 작성법 가이드 보기</a>
+      <div class="head">📝 입국신고서 작성 안내</div>
+      중국 입국신고서는 <b>이미 작성 완료되어 카카오톡으로 전달</b>드렸습니다. 현지 도착 후 입국심사대에서 <b>보여달라고 하실 때 전달드린 화면을 보여주시면</b> 됩니다. 별도로 작성하지 않으셔도 됩니다.
     </div>
   </div>
 
   <!-- 환전 안내 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">8</div><div class="section-title">환전 안내</div></div>
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">환전 안내</div></div>
     <div class="exchange-box">
       <div class="ex-row"><span>환전 필요 여부</span><span style="font-weight:700;">별도 환전 불필요 (노쇼핑 상품)</span></div>
       <div class="ex-row"><span>준비하면 좋은 것</span><span style="font-weight:700;">한국돈 1,000원권 소액 여러 장</span></div>
@@ -341,7 +354,7 @@ img{max-width:100%;display:block;}
 
   <!-- 데이터 로밍 비교 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">9</div><div class="section-title">현지 데이터 통신 옵션 비교</div></div>
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">현지 데이터 통신 옵션 비교</div></div>
     <div class="alert alert-terracotta">
       🚧 중국은 만리방화벽(GFW) 정책으로 <b>카카오톡·구글·인스타그램 등 접속이 제한</b>됩니다. 아래 유심·이심 상품은 <b>VPN 우회 기능이 포함된 여행자용 상품</b>을 기준으로 안내드리니, 구매 시 "카톡 가능/VPN 불필요" 문구가 있는지 꼭 확인해 주세요.
     </div>
@@ -388,7 +401,7 @@ img{max-width:100%;display:block;}
 
   <!-- 날씨 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">10</div><div class="section-title">일자별 날씨 정보</div></div>
+    <div class="section-head"><div class="section-num">11</div><div class="section-title">일자별 날씨 정보</div></div>
     <div class="weather-row">
       <div class="weather-card">
         <div class="date">9/5(토)</div>
@@ -440,7 +453,7 @@ img{max-width:100%;display:block;}
 
   <!-- 준비물 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">11</div><div class="section-title">여행 준비물</div></div>
+    <div class="section-head"><div class="section-num">12</div><div class="section-title">여행 준비물</div></div>
 
     <div class="prep-full" style="margin-bottom:12px;">
       <div class="title">🥢 밑반찬 (강력 추천!)</div>
