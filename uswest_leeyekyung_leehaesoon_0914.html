@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>미서부 여행 확정서 - 이예경, 이해순님</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+  --canyon:#C1543C;
+  --canyon-dark:#8A3B29;
+  --canyon-bg:#FDF0EC;
+  --desert-sky:#2E7FA8;
+  --desert-sky-bg:#EAF4FA;
+  --gold:#E8A93E;
+  --gold-bg:#FDF3E5;
+  --sky-top:#F0EAE1;
+  --sky-bottom:#F8F6F1;
+  --text-main:#2A2420;
+  --text-sub:#655B4F;
+  --text-muted:#9A9082;
+  --card-bg:#FFFFFF;
+  --border:#EAE3D6;
+  --shadow:0 4px 20px rgba(193,84,60,0.10);
+  --max-w:680px;
+  --red:#D3453C;
+  --red-bg:#FDEFED;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Pretendard',sans-serif;background:linear-gradient(180deg,var(--sky-top) 0%, var(--sky-bottom) 45%, #FBFAF7 100%);color:var(--text-main);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+
+.top-bar{width:100%;background:rgba(30,44,58,0.92);backdrop-filter:blur(6px);padding:10px 20px;}
+.top-bar-inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.agent-info{color:#EAF4FA;font-size:15px;font-weight:500;}
+.agent-info b{color:#fff;}
+.top-btns{display:flex;gap:8px;}
+.top-btn{font-size:14.5px;font-weight:600;padding:6px 12px;border-radius:20px;background:rgba(255,255,255,0.15);color:#fff;transition:transform .15s ease-out, background .2s;}
+.top-btn:hover{background:rgba(255,255,255,0.28);}
+.top-btn:active{transform:scale(0.97);}
+.top-btn.kakao{background:#FEE500;color:#391B1B;}
+
+.header{width:100%;padding:28px 16px 24px;}
+.header-inner{max-width:var(--max-w);margin:0 auto;text-align:center;position:relative;z-index:1;border-radius:24px;overflow:hidden;padding:48px 24px 40px;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(193,84,60,0.30), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(46,127,168,0.24), transparent 50%),
+    linear-gradient(160deg,#1E2C3A 0%, #2E3E4E 55%, #3A4C5E 100%);
+  box-shadow:0 12px 32px rgba(30,44,58,0.28);}
+.header-tag{display:inline-block;font-size:14px;font-weight:700;letter-spacing:2.5px;color:var(--gold);border:1px solid rgba(232,169,62,0.5);padding:6px 16px;border-radius:20px;margin-bottom:18px;}
+.header-title{font-size:32px;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-0.5px;text-shadow:0 2px 12px rgba(0,0,0,0.4);}
+.header-subtitle{font-size:16px;color:rgba(255,255,255,0.85);font-weight:500;margin-bottom:28px;letter-spacing:0.5px;}
+.header-names{font-size:22px;font-weight:700;color:#fff;background:rgba(255,255,255,0.1);display:inline-block;padding:10px 24px;border-radius:14px;margin-bottom:22px;}
+.header-cta{display:inline-flex;align-items:center;gap:8px;background:var(--canyon);color:#fff;font-weight:700;font-size:17px;padding:13px 26px;border-radius:12px;box-shadow:0 8px 20px rgba(193,84,60,0.4);transition:transform .2s ease-out, box-shadow .2s;}
+.header-cta:hover{transform:translateY(-2px) scale(1.02);}
+.header-cta:active{transform:scale(0.97);}
+
+.trip-band{width:100%;background:linear-gradient(90deg,var(--desert-sky),#4D9DC4);}
+.trip-band-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);text-align:center;padding:20px 16px;}
+.trip-item .label{font-size:13px;color:rgba(255,255,255,0.85);font-weight:600;margin-bottom:4px;}
+.trip-item .value{font-size:16px;color:#fff;font-weight:800;}
+
+.container{max-width:var(--max-w);margin:0 auto;padding:36px 20px 60px;}
+.section{margin-bottom:36px;opacity:0;transform:translateY(16px);transition:opacity .5s ease-out, transform .5s ease-out;}
+.section.visible{opacity:1;transform:translateY(0);}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.section-num{width:30px;height:30px;border-radius:50%;background:var(--canyon-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0;}
+.section-title{font-size:20px;font-weight:800;color:var(--text-main);}
+
+.product-link-box{display:flex;justify-content:space-between;align-items:center;background:var(--canyon-bg);border:1px solid var(--canyon);border-radius:14px;padding:16px 18px;font-weight:700;color:var(--canyon-dark);margin-bottom:14px;transition:transform .15s ease-out, background .2s;}
+.product-link-box:hover{background:#FBE1DA;transform:scale(1.01);}
+.product-link-box:active{transform:scale(0.98);}
+.product-link-box span.arrow{font-size:20px;}
+
+.alert{border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.6;margin-top:12px;}
+.alert-canyon{background:var(--canyon-bg);border:1px solid var(--canyon);color:#8A3B29;}
+.alert-sky{background:var(--desert-sky-bg);border:1px solid var(--desert-sky);color:#1F5D80;}
+.alert-gold{background:var(--gold-bg);border:1px solid var(--gold);color:#8A5E0E;}
+.alert-red{background:var(--red-bg);border:1px solid var(--red);color:#A32C24;}
+
+.flight-card{border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px;}
+.flight-header{background:linear-gradient(120deg,#1E2C3A,#2E3E4E);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:700;}
+.flight-header .code{color:var(--gold);}
+.flight-body{background:#fff;padding:20px 18px;}
+.flight-route{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.flight-route .airport{text-align:center;}
+.flight-route .airport .code{font-size:26px;font-weight:800;color:var(--text-main);}
+.flight-route .airport .city{font-size:14px;color:var(--text-sub);margin-top:2px;}
+.flight-route .mid{flex:1;text-align:center;padding:0 12px;}
+.flight-route .mid .time{font-size:14px;color:var(--text-muted);}
+.flight-route .mid .line{height:2px;background:var(--border);position:relative;margin-top:6px;}
+.flight-route .mid .line::after{content:"✈";position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:16px;}
+.flight-badges{display:flex;flex-wrap:wrap;gap:8px;}
+.badge{font-size:14px;font-weight:600;color:var(--text-sub);background:#F5F8F4;border:1px solid var(--border);padding:5px 10px;border-radius:8px;}
+
+.baggage-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.baggage-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.baggage-card .icon{font-size:24px;margin-bottom:6px;}
+.baggage-card .title{font-size:15px;font-weight:700;color:var(--text-sub);margin-bottom:4px;}
+.baggage-card .amount{font-size:18px;font-weight:800;color:var(--canyon-dark);}
+.baggage-card .desc{font-size:13.5px;color:var(--text-muted);margin-top:4px;line-height:1.5;}
+
+.guide-box{border:1.5px solid var(--desert-sky);border-radius:16px;background:var(--desert-sky-bg);padding:20px;}
+.guide-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed rgba(31,93,128,0.2);gap:10px;}
+.guide-row:last-child{border-bottom:none;}
+.guide-row .label{color:var(--text-sub);}
+.guide-row .val{font-weight:700;color:#1F5D80;text-align:right;}
+
+.incl-card{border-radius:14px;padding:16px;font-size:15.5px;line-height:1.75;background:var(--canyon-bg);border:1px solid var(--canyon);}
+.incl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#8A3B29;}
+
+.visa-box{border:1.5px solid var(--red);border-radius:16px;background:var(--red-bg);padding:20px;}
+.visa-box .head{font-weight:800;font-size:17px;color:#A32C24;margin-bottom:10px;}
+.step2{display:flex;gap:12px;margin-top:12px;}
+.step2:first-child{margin-top:0;}
+.step2-num{width:24px;height:24px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0;}
+.step2-text{font-size:14.5px;color:var(--text-sub);line-height:1.7;}
+.step2-text b{color:#A32C24;}
+.step2-text ul{padding-left:16px;margin-top:4px;}
+
+.warn-box{border:1.5px solid var(--red);border-radius:16px;background:var(--red-bg);padding:20px;}
+.warn-box .title{font-weight:800;font-size:16px;color:#A32C24;margin-bottom:8px;}
+.warn-box ul{padding-left:18px;font-size:15px;color:#A32C24;line-height:1.8;}
+
+.exchange-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:#fff;box-shadow:var(--shadow);}
+.exchange-box .ex-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed var(--border);}
+.exchange-box .ex-row:last-child{border-bottom:none;}
+
+.weather-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
+.weather-card{flex:0 0 auto;width:120px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 10px;text-align:center;box-shadow:var(--shadow);}
+.weather-card .region{font-size:13.5px;font-weight:700;color:var(--text-sub);margin-bottom:6px;}
+.weather-card .icon{font-size:26px;margin-bottom:8px;}
+.weather-card .high{font-size:17px;font-weight:800;color:var(--canyon);}
+.weather-card .low{font-size:14px;color:var(--text-muted);margin-top:2px;}
+
+.prep-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.prep-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.prep-card .icon{font-size:22px;margin-bottom:6px;}
+.prep-card .title{font-weight:700;font-size:15.5px;color:var(--canyon-dark);margin-bottom:6px;}
+.prep-card ul{padding-left:16px;font-size:15px;color:var(--text-sub);line-height:1.75;}
+
+@media (max-width:480px){
+  .container{padding-left:14px;padding-right:14px;}
+  .trip-band-inner{grid-template-columns:repeat(2,1fr);gap:14px;padding:16px 12px;}
+  .baggage-grid,.prep-grid{grid-template-columns:1fr;}
+  .header-title{font-size:26px;}
+  .header-inner{padding:38px 18px 32px;}
+  .flight-badges{gap:6px;}
+  .badge{font-size:12.5px;padding:4px 8px;}
+}
+@media (max-width:400px){
+  .guide-row,.exchange-box .ex-row{flex-direction:column;align-items:flex-start;gap:2px;}
+  .guide-row .val,.exchange-box .ex-row .val{text-align:left;}
+}
+
+.footer{width:100%;background:#1E2C3A;padding:32px 20px;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;text-align:center;}
+.footer-agent{color:#fff;font-size:17px;font-weight:700;margin-bottom:6px;}
+.footer-sub{color:rgba(255,255,255,0.55);font-size:14.5px;margin-bottom:18px;}
+.footer-btns{display:flex;justify-content:center;gap:10px;}
+.footer-btn{padding:10px 20px;border-radius:12px;font-weight:700;font-size:15.5px;transition:transform .15s ease-out;}
+.footer-btn:active{transform:scale(0.97);}
+.footer-btn.tel{background:var(--canyon);color:#fff;}
+.footer-btn.kakao{background:#FEE500;color:#391B1B;}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="agent-info">담당 <b>이경진 실장</b> · 모두투어 투어콕</div>
+    <div class="top-btns">
+      <a class="top-btn" href="tel:1544-5714">📞 전화상담</a>
+      <a class="top-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡</a>
+    </div>
+  </div>
+</div>
+
+<div class="header">
+  <div class="header-inner">
+    <span class="header-tag">TRAVEL CONFIRMATION</span>
+    <div class="header-title">🏜️ 미서부 여행 확정서</div>
+    <div class="header-subtitle">인천국제공항 출발 · 7박 9일 · US WEST COAST 2026</div>
+    <div class="header-names">이예경, 이해순님</div><br>
+    <a class="header-cta" href="https://www.modetour.com/package/104358258?MLoc=99&Pnum=104358258&ANO=1772510&sno=C2181215&thru=crs" target="_blank">🔗 여행상품 확인하기</a>
+  </div>
+</div>
+
+<div class="trip-band">
+  <div class="trip-band-inner">
+    <div class="trip-item"><div class="label">출발일</div><div class="value">2026.09.14(월)</div></div>
+    <div class="trip-item"><div class="label">귀국일</div><div class="value">2026.09.22(화)</div></div>
+    <div class="trip-item"><div class="label">일정</div><div class="value">7박 9일</div></div>
+    <div class="trip-item"><div class="label">투어타입</div><div class="value">패키지</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 상품 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">1</div><div class="section-title">상품 안내</div></div>
+    <a class="product-link-box" href="https://www.modetour.com/package/104358258?MLoc=99&Pnum=104358258&ANO=1772510&sno=C2181215&thru=crs" target="_blank">
+      <span>모두투어 미서부 패키지 상품 바로가기</span>
+      <span class="arrow">↗</span>
+    </a>
+    <div class="alert alert-canyon">
+      ✔ 에어프레미아 이용 상품입니다. <b>샌프란시스코 입국, 로스앤젤레스 출국</b>의 미서부 종단 일정입니다.
+    </div>
+  </div>
+
+  <!-- 항공편 정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">항공편 정보</div></div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>출발편 · 에어프레미아</span><span class="code">YP111</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 09.14(월) 19:15</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">SFO</div><div class="city">샌프란시스코 · 09.14(월) 14:15</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 에어프레미아</span>
+          <span class="badge">위탁 23kg × 2개</span>
+          <span class="badge">기내 10kg</span>
+          <span class="badge">기내식 무료 제공</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>귀국편 · 에어프레미아</span><span class="code">YP102</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">LAX</div><div class="city">로스앤젤레스 · 09.21(월) 10:50</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 09.22(화) 15:50</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 에어프레미아</span>
+          <span class="badge">위탁 23kg × 2개</span>
+          <span class="badge">기내 10kg</span>
+          <span class="badge">기내식 무료 제공</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-sky">
+      🍽 국제선 구간 <b>기내식 무료 제공</b>(따뜻한 식사, 한식·양식·현지식 메뉴)됩니다.<br>
+      💺 <b>그룹티켓 사전좌석지정은 출발 48시간 전부터</b> 가능합니다.
+    </div>
+  </div>
+
+  <!-- 수하물 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">수하물 안내</div></div>
+    <div class="baggage-grid">
+      <div class="baggage-card">
+        <div class="icon">🧳</div>
+        <div class="title">위탁수하물</div>
+        <div class="amount">23kg × 2개</div>
+        <div class="desc">1인 기준, 51lbs 이하, 3면의 합 158cm 이내</div>
+      </div>
+      <div class="baggage-card">
+        <div class="icon">🎒</div>
+        <div class="title">기내수하물</div>
+        <div class="amount">10kg · 1개</div>
+        <div class="desc">22lbs 이하, 3면의 합 115cm 이내(바퀴·손잡이 포함)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 현지 가이드 & 행사정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">현지 가이드 & 행사 정보</div></div>
+    <div class="guide-box">
+      <div class="guide-row"><span class="label">행사 가이드</span><span class="val">김덕규 가이드<br>1-213-840-9397</span></div>
+      <div class="guide-row"><span class="label">드라이버</span><span class="val">권혁준 가이드<br>1-925-519-5580</span></div>
+      <div class="guide-row"><span class="label">현지 연락처</span><span class="val">JOUN WORLD TRAVEL<br>1-213-400-3900</span></div>
+      <div class="guide-row"><span class="label">행사인원</span><span class="val">11명</span></div>
+      <div class="guide-row"><span class="label">차량</span><span class="val">럭셔리 스프린터 밴 1대</span></div>
+    </div>
+    <div class="alert alert-sky">
+      ℹ 별도 드라이버가 함께해서 <b>가이드·기사 총 2명</b>이 행사를 진행합니다.
+    </div>
+  </div>
+
+  <!-- 불포함 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">불포함 사항</div></div>
+    <div class="incl-card">
+      <div class="head">✘ 불포함사항</div>
+      ◈ 가이드/기사 경비 1인 <b>$220</b>(성인·아동 동일 / 식당팁 포함)<br>
+      ◈ 앤텔로프캐년 인디언 가이드팁 <b>$2~3</b> 현장 지불
+    </div>
+  </div>
+
+  <!-- 미국 입국 유의사항 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">미국 입국 시 유의사항</div></div>
+    <div class="visa-box">
+      <div class="head">🚨 출발 전 꼭 체크하세요!</div>
+      <div class="step2">
+        <div class="step2-num">1</div>
+        <div class="step2-text"><b>ESTA(전자여행허가) 승인 필수</b> — 대한민국 국적자는 미국 무비자 입국 시 ESTA 승인이 필요합니다. 여권은 출발일 기준 <b>6개월 이상 유효기간</b>이 남아 있어야 합니다.</div>
+      </div>
+      <div class="step2">
+        <div class="step2-num">2</div>
+        <div class="step2-text"><b>입국 심사</b> — 미국 도착 후 입국 심사를 진행하며, 여행 목적·여행 경비·체류 기간·숙박 장소·귀국 항공편 여부 등을 질문받을 수 있습니다.</div>
+      </div>
+      <div class="step2">
+        <div class="step2-num">3</div>
+        <div class="step2-text"><b>세관 신고 및 수하물 검사</b>
+          <ul>
+            <li>육류·과일·씨앗류 등 반입 제한 품목 주의(육류 스프가 들어간 라면 등 금지)</li>
+            <li>현금 1만 달러 이상 소지 시 신고 필요</li>
+            <li>의약품은 처방전 또는 영문 설명서 지참 권장</li>
+            <li>음식물은 애매하면 <b>가져가지 않으시는 걸 권장</b>드립니다</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-gold">
+      ※ 미국 입국 규정은 예고 없이 변경될 수 있으며, 최종 입국 허가 여부는 미국 이민국 심사에 따라 결정됩니다.
+    </div>
+  </div>
+
+  <!-- 이동시간 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">이동시간 안내</div></div>
+    <div class="alert alert-sky">
+      🚐 미서부는 도시 간 거리가 멀어 <b>차량 이동시간이 평균 3~4시간 이상</b> 소요됩니다. 편안한 복장과 신발을 꼭 지참해 주세요.
+    </div>
+  </div>
+
+  <!-- 홀스슈밴드 주의사항 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">홀스슈밴드(5일차) 관광 필수 주의사항</div></div>
+    <div class="warn-box" style="margin-bottom:0;">
+      <div class="title">⚠️ 안전 유의사항</div>
+      <ul>
+        <li><b>추락 가능성이 있으니 지정된 포인트에서만 관람</b>해 주세요.</li>
+        <li>위험한 행동은 삼가주세요.</li>
+        <li>홀스슈밴드의 장관은 가파른 절벽 위에서 구경할 수 있으며, <b>특별한 안전장치가 없어 각별한 주의</b>가 필요합니다.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 환전 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">환전 안내</div></div>
+    <div class="exchange-box">
+      <div class="ex-row"><span>가이드·기사 경비</span><span style="font-weight:700;">1인 $220 (USD)</span></div>
+      <div class="ex-row"><span>앤텔로프캐년 인디언 가이드팁</span><span style="font-weight:700;">$2~3 (현장 지불)</span></div>
+      <div class="ex-row"><span>환전 필요 여부</span><span style="font-weight:700;">필요 (미국달러 USD)</span></div>
+    </div>
+    <div class="alert alert-gold">
+      💵 이번 여행은 <b>환전이 필요</b>합니다. 가이드/기사 경비(1인 $220)와 앤텔로프캐년 인디언 가이드팁($2~3), 개인경비까지 고려해서 <b>미국달러(USD)</b>로 넉넉히 준비해 주세요. 대형 매장에서는 카드 결제도 편하게 가능합니다.
+    </div>
+  </div>
+
+  <!-- 날씨 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">지역별 날씨 정보</div></div>
+    <div class="weather-row">
+      <div class="weather-card">
+        <div class="region">🌉 샌프란시스코</div>
+        <div class="icon">⛅</div>
+        <div class="high">23℃</div>
+        <div class="low">14℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="region">🎰 라스베가스</div>
+        <div class="icon">☀️</div>
+        <div class="high">36℃</div>
+        <div class="low">23℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="region">🏜 그랜드캐년/앤텔로프</div>
+        <div class="icon">☀️</div>
+        <div class="high">30℃</div>
+        <div class="low">15℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="region">🏙 로스앤젤레스</div>
+        <div class="icon">☀️</div>
+        <div class="high">27℃</div>
+        <div class="low">17℃</div>
+      </div>
+    </div>
+    <div class="alert alert-gold">
+      ☀️ 9월 미서부는 <b>지역별 기온 차가 매우 큽니다.</b> 샌프란시스코는 서늘하고 안개가 잦은 편이고, 라스베가스·그랜드캐년 등 사막 지역은 낮 기온이 30~36℃까지 오르는 반면 아침저녁은 서늘합니다. <b>레이어드 옷차림</b>이 필수예요. 위 기온은 평년 참고값이며, 출발 며칠 전 다시 확인해 드릴게요.
+    </div>
+  </div>
+
+  <!-- 준비물 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">11</div><div class="section-title">여행 준비물</div></div>
+    <div class="prep-grid">
+      <div class="prep-card">
+        <div class="icon">👕</div>
+        <div class="title">옷차림</div>
+        <ul>
+          <li>편안한 복장과 신발(장거리 차량 이동 多)</li>
+          <li>사막 지역 대비 얇은 겉옷(일교차 大)</li>
+          <li>샌프란시스코 대비 자켓 1벌</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">📄</div>
+        <div class="title">필수 서류</div>
+        <ul>
+          <li>여권(6개월 이상 유효), ESTA 승인 화면 캡처본</li>
+          <li>의약품 처방전 또는 영문 설명서</li>
+          <li>이티켓·바우처 캡처본</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">☀️</div>
+        <div class="title">자외선 & 상비약</div>
+        <ul>
+          <li>선글라스·선크림·모자(사막 지역 강한 햇빛 대비)</li>
+          <li>소화제·지사제·해열제</li>
+          <li>립밤·수분크림(건조한 날씨 대비)</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🎒</div>
+        <div class="title">기타 준비물</div>
+        <ul>
+          <li>미국달러(USD) 현금</li>
+          <li>멀티어댑터(미국 120V, Type A/B)</li>
+          <li>보조배터리, 개인 물통</li>
+          <li>편한 운동화(그랜드캐년·홀스슈밴드 등 도보 관광 多)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-agent">담당 이경진 실장</div>
+    <div class="footer-sub">이예경, 이해순님의 즐거운 미서부 여행을 응원합니다 🏜️</div>
+    <div class="footer-btns">
+      <a class="footer-btn tel" href="tel:1544-5714">📞 1544-5714</a>
+      <a class="footer-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 투어콕 카카오톡 채널</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.1});
+sections.forEach(s=>observer.observe(s));
+</script>
+
+</body>
+</html>
