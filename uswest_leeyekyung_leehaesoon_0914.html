@@ -79,6 +79,13 @@ img{max-width:100%;display:block;}
 .alert-gold{background:var(--gold-bg);border:1px solid var(--gold);color:#8A5E0E;}
 .alert-red{background:var(--red-bg);border:1px solid var(--red);color:#A32C24;}
 
+.meeting-box{border:1.5px solid var(--canyon);border-radius:16px;background:#fff;padding:20px;box-shadow:var(--shadow);}
+.meeting-time{font-size:24px;font-weight:800;color:var(--canyon-dark);text-align:center;margin-bottom:14px;}
+.meeting-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed var(--border);gap:10px;}
+.meeting-row:last-child{border-bottom:none;}
+.meeting-row .label{color:var(--text-sub);}
+.meeting-row .val{font-weight:700;color:var(--text-main);text-align:right;}
+
 .flight-card{border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px;}
 .flight-header{background:linear-gradient(120deg,#1E2C3A,#2E3E4E);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:700;}
 .flight-header .code{color:var(--gold);}
@@ -210,9 +217,18 @@ img{max-width:100%;display:block;}
     </div>
   </div>
 
+  <!-- 인천공항 미팅 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">인천공항 미팅 안내</div></div>
+    <div class="meeting-box">
+      <div class="meeting-time">2026.09.14(월) 14:30</div>
+      <div class="meeting-row"><span class="label">장소</span><span class="val">인천국제공항 제1터미널<br>A카운터 1번 출구 앞<br>1~3번 모두투어 테이블</span></div>
+    </div>
+  </div>
+
   <!-- 항공편 정보 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">2</div><div class="section-title">항공편 정보</div></div>
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">항공편 정보</div></div>
 
     <div class="flight-card">
       <div class="flight-header"><span>출발편 · 에어프레미아</span><span class="code">YP111</span></div>
@@ -256,7 +272,7 @@ img{max-width:100%;display:block;}
 
   <!-- 수하물 안내 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">3</div><div class="section-title">수하물 안내</div></div>
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">수하물 안내</div></div>
     <div class="baggage-grid">
       <div class="baggage-card">
         <div class="icon">🧳</div>
@@ -275,7 +291,7 @@ img{max-width:100%;display:block;}
 
   <!-- 현지 가이드 & 행사정보 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">4</div><div class="section-title">현지 가이드 & 행사 정보</div></div>
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">현지 가이드 & 행사 정보</div></div>
     <div class="guide-box">
       <div class="guide-row"><span class="label">행사 가이드</span><span class="val">김덕규 가이드<br>1-213-840-9397</span></div>
       <div class="guide-row"><span class="label">드라이버</span><span class="val">권혁준 가이드<br>1-925-519-5580</span></div>
@@ -290,7 +306,7 @@ img{max-width:100%;display:block;}
 
   <!-- 불포함 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">5</div><div class="section-title">불포함 사항</div></div>
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">불포함 사항</div></div>
     <div class="incl-card">
       <div class="head">✘ 불포함사항</div>
       ◈ 가이드/기사 경비 1인 <b>$220</b>(성인·아동 동일 / 식당팁 포함)<br>
@@ -300,7 +316,7 @@ img{max-width:100%;display:block;}
 
   <!-- 미국 입국 유의사항 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">6</div><div class="section-title">미국 입국 시 유의사항</div></div>
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">미국 입국 시 유의사항</div></div>
     <div class="visa-box">
       <div class="head">🚨 출발 전 꼭 체크하세요!</div>
       <div class="step2">
@@ -330,7 +346,7 @@ img{max-width:100%;display:block;}
 
   <!-- 이동시간 안내 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">7</div><div class="section-title">이동시간 안내</div></div>
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">이동시간 안내</div></div>
     <div class="alert alert-sky">
       🚐 미서부는 도시 간 거리가 멀어 <b>차량 이동시간이 평균 3~4시간 이상</b> 소요됩니다. 편안한 복장과 신발을 꼭 지참해 주세요.
     </div>
@@ -338,7 +354,7 @@ img{max-width:100%;display:block;}
 
   <!-- 홀스슈밴드 주의사항 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">8</div><div class="section-title">홀스슈밴드(5일차) 관광 필수 주의사항</div></div>
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">홀스슈밴드(5일차) 관광 필수 주의사항</div></div>
     <div class="warn-box" style="margin-bottom:0;">
       <div class="title">⚠️ 안전 유의사항</div>
       <ul>
@@ -351,7 +367,7 @@ img{max-width:100%;display:block;}
 
   <!-- 환전 안내 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">9</div><div class="section-title">환전 안내</div></div>
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">환전 안내</div></div>
     <div class="exchange-box">
       <div class="ex-row"><span>가이드·기사 경비</span><span style="font-weight:700;">1인 $220 (USD)</span></div>
       <div class="ex-row"><span>앤텔로프캐년 인디언 가이드팁</span><span style="font-weight:700;">$2~3 (현장 지불)</span></div>
@@ -364,7 +380,7 @@ img{max-width:100%;display:block;}
 
   <!-- 날씨 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">10</div><div class="section-title">지역별 날씨 정보</div></div>
+    <div class="section-head"><div class="section-num">11</div><div class="section-title">지역별 날씨 정보</div></div>
     <div class="weather-row">
       <div class="weather-card">
         <div class="region">🌉 샌프란시스코</div>
@@ -398,7 +414,7 @@ img{max-width:100%;display:block;}
 
   <!-- 준비물 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">11</div><div class="section-title">여행 준비물</div></div>
+    <div class="section-head"><div class="section-num">12</div><div class="section-title">여행 준비물</div></div>
     <div class="prep-grid">
       <div class="prep-card">
         <div class="icon">👕</div>
