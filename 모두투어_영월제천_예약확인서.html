@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>영월·제천 여행 예약 확인서</title>
+<style>
+  :root {
+    --coral: #E8593A;
+    --coral-bg: #FFF4F1;
+    --navy: #1C3557;
+    --navy-light: #2E4E72;
+    --gold: #C8973A;
+    --gold-light: #F0C870;
+    --mint: #3AA8A0;
+    --bg: #FAFAF8;
+    --card-bg: #FFFFFF;
+    --text-main: #1A1A1A;
+    --text-sub: #5A5A5A;
+    --text-muted: #8A8A8A;
+    --border: #E8E4DC;
+    --shadow: 0 2px 16px rgba(28,53,87,0.08);
+    --max-w: 680px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: '맑은 고딕', 'Malgun Gothic', sans-serif;
+    font-size: 16px;
+    color: var(--text-main);
+    background: var(--bg);
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+
+  /* HEADER */
+  .header {
+    width: 100%;
+    background: var(--navy);
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(232,89,58,0.16), transparent 55%),
+      radial-gradient(circle at 85% 80%, rgba(240,200,112,0.10), transparent 55%),
+      linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    padding: 40px 24px 32px;
+    text-align: center;
+  }
+  .header-inner { max-width: var(--max-w); margin: 0 auto; }
+  .header-tag {
+    display: inline-block;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    border: 1px solid rgba(240,200,112,0.4);
+    border-radius: 20px;
+    padding: 5px 14px;
+    margin-bottom: 16px;
+  }
+  .header-title {
+    font-family: '맑은 고딕', 'Malgun Gothic', sans-serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+  }
+  .header-subtitle {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+  }
+  .header-names {
+    font-size: 15px;
+    color: #FFFFFF;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px;
+    padding: 10px 16px;
+    display: inline-block;
+  }
+  .header-manager {
+    margin-top: 14px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+  }
+  .header-manager b { color: var(--gold-light); font-weight: 600; }
+
+  /* TRIP BAND */
+  .trip-band {
+    width: 100%;
+    background: var(--coral);
+  }
+  .trip-band-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .trip-item {
+    text-align: center;
+    padding: 16px 8px;
+    border-right: 1px solid rgba(255,255,255,0.2);
+  }
+  .trip-item:last-child { border-right: none; }
+  .trip-label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 4px;
+  }
+  .trip-value {
+    font-size: 14px;
+    font-weight: 700;
+    color: #FFFFFF;
+  }
+
+  /* CONTAINER */
+  .container { max-width: var(--max-w); margin: 0 auto; padding: 32px 20px 8px; }
+  .section { margin-bottom: 32px; }
+  .section-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .section-num {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--navy); color: #fff;
+    font-size: 13px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .section-title { font-size: 17px; font-weight: 700; color: var(--navy); }
+
+  /* Product link box */
+  .product-link-box {
+    display: block;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    box-shadow: var(--shadow);
+    text-decoration: none;
+  }
+  .product-name { font-size: 15px; font-weight: 600; color: var(--text-main); margin-bottom: 6px; }
+  .product-link-url { font-size: 13px; color: var(--coral); word-break: break-all; }
+
+  /* Vehicle schedule (교통편) */
+  .vehicle-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .vehicle-header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: #fff;
+    padding: 12px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .vehicle-header span { color: var(--gold-light); }
+  .vehicle-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 18px;
+    border-top: 1px solid var(--border);
+  }
+  .vehicle-row:first-of-type { border-top: none; }
+  .vehicle-day { font-size: 13px; color: var(--text-muted); min-width: 80px; }
+  .vehicle-times { text-align: right; }
+  .vehicle-time-main { font-size: 20px; font-weight: 700; color: var(--navy); }
+  .vehicle-time-sub { font-size: 13px; color: var(--text-sub); margin-top: 2px; }
+  .vehicle-loc {
+    padding: 14px 18px;
+    background: var(--coral-bg);
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--text-sub);
+  }
+  .vehicle-loc b { color: var(--text-main); }
+
+  /* Cost box */
+  .cost-box {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .cost-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 13px 18px;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+  .cost-row:last-child { border-bottom: none; }
+  .cost-row.total {
+    background: var(--coral-bg);
+    font-weight: 700;
+  }
+  .cost-row.total .cost-value { color: var(--coral); font-size: 17px; }
+  .cost-label { color: var(--text-sub); }
+  .cost-value { color: var(--text-main); font-weight: 600; }
+
+  .pay-box {
+    margin-top: 12px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .pay-row {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+  }
+  .pay-row:last-child { border-bottom: none; }
+  .pay-row-top { display: flex; justify-content: space-between; align-items: baseline; }
+  .pay-name { font-size: 14px; font-weight: 600; color: var(--navy); }
+  .pay-amount { font-size: 17px; font-weight: 700; color: var(--text-main); }
+  .pay-deadline { font-size: 13px; color: var(--coral); margin-top: 4px; }
+
+  .account-box {
+    margin-top: 12px;
+    background: var(--navy);
+    border-radius: 12px;
+    padding: 16px 18px;
+    color: #fff;
+  }
+  .account-title { font-size: 13px; color: var(--gold-light); letter-spacing: 1px; margin-bottom: 8px; }
+  .account-num { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+  .account-sub { font-size: 13px; color: rgba(255,255,255,0.7); }
+  .account-divider { height: 1px; background: rgba(255,255,255,0.15); margin: 12px 0; }
+
+  /* Alert boxes */
+  .alert {
+    border-radius: 10px;
+    padding: 13px 16px;
+    font-size: 13.5px;
+    margin-top: 10px;
+    line-height: 1.55;
+  }
+  .alert-navy { background: var(--coral-bg); border: 1px solid var(--border); color: var(--text-sub); }
+  .alert-coral { background: var(--coral-bg); border: 1px solid rgba(232,89,58,0.3); color: var(--text-main); }
+  .alert-gold { background: #FDF6E8; border: 1px solid rgba(200,151,58,0.35); color: var(--text-main); }
+  .alert-red { background: #FDEEEC; border: 1px solid rgba(200,40,30,0.35); color: #B23A2A; }
+
+  /* Include/Exclude */
+  .incl-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+  .incl-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    box-shadow: var(--shadow);
+  }
+  .incl-card-title {
+    font-size: 13px; font-weight: 700; color: var(--coral);
+    margin-bottom: 8px; letter-spacing: 0.5px;
+  }
+  .incl-list { list-style: none; }
+  .incl-list li {
+    font-size: 14px; color: var(--text-main);
+    padding: 5px 0 5px 18px; position: relative;
+  }
+  .incl-list li::before {
+    content: '−'; position: absolute; left: 0; color: var(--coral); font-weight: 700;
+  }
+
+  /* Cancellation policy */
+  .cancel-dday {
+    background: var(--navy);
+    color: #fff;
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 13.5px;
+    margin-bottom: 12px;
+  }
+  .cancel-dday b { color: var(--gold-light); font-size: 15px; }
+  .policy-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    font-size: 13px;
+  }
+  .policy-table th {
+    background: var(--navy);
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .policy-table td {
+    padding: 10px 12px;
+    border-top: 1px solid var(--border);
+    color: var(--text-sub);
+  }
+  .policy-table tr:nth-child(even) td { background: var(--bg); }
+  .policy-note {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 10px;
+    line-height: 1.6;
+    padding-left: 2px;
+  }
+  .policy-note p { margin-bottom: 4px; }
+
+  /* FOOTER */
+  .footer {
+    width: 100%;
+    background: var(--navy);
+    padding: 28px 24px 32px;
+    margin-top: 12px;
+  }
+  .footer-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    text-align: center;
+  }
+  .footer-manager {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 14px;
+  }
+  .footer-manager b { color: #fff; font-weight: 600; }
+  .footer-buttons { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 11px 22px;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .btn-tel { background: var(--coral); color: #fff; }
+  .btn-kakao { background: #FEE500; color: #3A1D1D; }
+  .footer-note {
+    margin-top: 18px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+  }
+
+  @media (max-width: 480px) {
+    .trip-band-inner { grid-template-columns: repeat(2, 1fr); }
+    .trip-item:nth-child(2) { border-right: none; }
+    .header-title { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="header-inner">
+      <div class="header-tag">Travel Confirmation</div>
+      <div class="header-title">영월 · 제천 여행 예약 확인서</div>
+      <div class="header-subtitle">DOMESTIC TOUR · 2026</div>
+      <div class="header-names">예약인원 10명</div>
+      <div class="header-manager">담당 <b>이경진 실장</b> · 1544-5714</div>
+    </div>
+  </div>
+
+  <div class="trip-band">
+    <div class="trip-band-inner">
+      <div class="trip-item">
+        <div class="trip-label">출발일</div>
+        <div class="trip-value">2026.10.30(금)</div>
+      </div>
+      <div class="trip-item">
+        <div class="trip-label">귀국일</div>
+        <div class="trip-value">2026.10.31(토)</div>
+      </div>
+      <div class="trip-item">
+        <div class="trip-label">일정</div>
+        <div class="trip-value">1박 2일</div>
+      </div>
+      <div class="trip-item">
+        <div class="trip-label">여행형태</div>
+        <div class="trip-value">국내 패키지</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- 상품 안내 -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-num">1</div>
+        <div class="section-title">상품 안내</div>
+      </div>
+      <a class="product-link-box" href="https://www.modetour.com/package/107616245?MLoc=99&Pnum=107616245&ANO=1772510&sno=C2181215&thru=crs" target="_blank" rel="noopener">
+        <div class="product-name">[도어PICK] K-소도시 발견 : 왕사남의 그 길, 단종과 별빛 영월·제천 단독 1박 2일</div>
+        <div class="product-link-url">modetour.com 에서 상품 상세보기 →</div>
+      </a>
+      <div class="alert alert-navy">전용차량으로 이동하는 국내 단독 패키지 여행입니다. 예약/결제 관련 변경 및 취소는 인터넷에서 처리되지 않으니, 반드시 담당자에게 연락하여 주시기 바랍니다.</div>
+    </div>
+
+    <!-- 교통편 -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-num">2</div>
+        <div class="section-title">교통편 안내</div>
+      </div>
+      <div class="vehicle-card">
+        <div class="vehicle-header">전용차량 <span>· PRIVATE VEHICLE</span></div>
+        <div class="vehicle-row">
+          <div class="vehicle-day">1일차<br>2026.10.30(금)</div>
+          <div class="vehicle-times">
+            <div class="vehicle-time-main">07:30 → 10:00</div>
+            <div class="vehicle-time-sub">출발</div>
+          </div>
+        </div>
+        <div class="vehicle-row">
+          <div class="vehicle-day">2일차<br>2026.10.31(토)</div>
+          <div class="vehicle-times">
+            <div class="vehicle-time-main">16:00 → 19:00</div>
+            <div class="vehicle-time-sub">도착</div>
+          </div>
+        </div>
+        <div class="vehicle-loc">
+          <b>차량 탑승 · 출도착지</b><br>서울시 성북구 삼선교로 24길 16
+        </div>
+      </div>
+    </div>
+
+    <!-- 여행경비 -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-num">3</div>
+        <div class="section-title">여행경비 안내</div>
+      </div>
+      <div class="cost-box">
+        <div class="cost-row">
+          <div class="cost-label">1인 상품가</div>
+          <div class="cost-value">429,900원</div>
+        </div>
+        <div class="cost-row">
+          <div class="cost-label">예약 인원</div>
+          <div class="cost-value">10명</div>
+        </div>
+        <div class="cost-row total">
+          <div class="cost-label">총 상품가</div>
+          <div class="cost-value">4,299,000원</div>
+        </div>
+      </div>
+
+      <div class="pay-box">
+        <div class="pay-row">
+          <div class="pay-row-top">
+            <div class="pay-name">예약금</div>
+            <div class="pay-amount">500,000원</div>
+          </div>
+          <div class="pay-deadline">결제시한 : 2026.09.11(금) 오후 17:00까지</div>
+        </div>
+        <div class="pay-row">
+          <div class="pay-row-top">
+            <div class="pay-name">결제잔금</div>
+            <div class="pay-amount">3,799,000원</div>
+          </div>
+          <div class="pay-deadline">결제시한 : 2026.09.30(수) 오후 17:00까지</div>
+        </div>
+      </div>
+
+      <div class="account-box">
+        <div class="account-title">현금 결제 계좌</div>
+        <div class="account-num">562173-92-783017</div>
+        <div class="account-sub">신한은행 · (주)모두투어네트워크</div>
+        <div class="account-divider"></div>
+        <div class="account-title">카드 결제</div>
+        <div class="account-sub">www.modetour.com 로그인 후 결제</div>
+      </div>
+    </div>
+
+    <!-- 포함/불포함 -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-num">4</div>
+        <div class="section-title">불포함 사항</div>
+      </div>
+      <div class="incl-grid">
+        <div class="incl-card">
+          <div class="incl-card-title">불포함</div>
+          <ul class="incl-list">
+            <li>개인경비</li>
+            <li>여행자보험</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 여행취소료 규정 -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-num">5</div>
+        <div class="section-title">여행취소료 규정</div>
+      </div>
+
+      <div class="cancel-dday">오늘 기준 여행개시 <b>51일 전</b> 입니다.</div>
+
+      <div class="alert alert-red">
+        인터넷상에서 예약/결제 취소 및 변경은 불가능합니다. 예약/결제 취소나 여행자정보 변경을 원하시면 반드시 예약담당자(1544-5714)에게 연락하여 주시기 바랍니다.
+      </div>
+      <div class="alert alert-gold">
+        본 여행상품은 국내여행 표준약관(제6조)에 의하여 특별약관이 적용됩니다. 특별약관 적용 시 공정거래위원회에서 제시하는 표준약관보다 높은 취소수수료가 부과될 수 있습니다.
+      </div>
+
+      <table class="policy-table" style="margin-top: 12px;">
+        <tr>
+          <th>취소 시점</th>
+          <th>취소 수수료</th>
+        </tr>
+        <tr>
+          <td>여행개시 8일 전</td>
+          <td>여행경비 전액 환불</td>
+        </tr>
+        <tr>
+          <td>여행개시 7일 전 ~ 5일 전</td>
+          <td>여행경비 70% 공제 후 환불</td>
+        </tr>
+        <tr>
+          <td>여행개시 4일 전 ~ 당일</td>
+          <td>여행경비 전액 환불 불가</td>
+        </tr>
+      </table>
+
+      <div class="alert alert-navy">
+        ※ 6명 이상 단독출발 상품으로, 최소출발인원 미달 시 행사가 취소될 수 있습니다.
+      </div>
+
+      <div class="policy-note">
+        <p><b style="color:var(--text-sub)">여행 취소 접수 안내</b></p>
+        <p>· 취소는 업무시간 내 접수 시 확인 및 적용이 가능합니다.</p>
+        <p>· 취소수수료 발생일은 영업일 기준으로 산정됩니다. (주말, 공휴일 제외)</p>
+        <p>· 업무시간 외 접수한 경우에는 익일(영업일이 아닌 경우 다음 영업일)에 접수한 것으로 간주됩니다.</p>
+        <p>· 업무시간은 월~금 09:00~18:00 (주말, 공휴일 제외)</p>
+        <p>· 예) 토/일/월 출발 상품은 금요일 업무종료 이후 취소 시 당일 취소로 간주됩니다.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-inner">
+      <div class="footer-manager">담당 <b>이경진 실장</b> 이 예약을 도와드립니다</div>
+      <div class="footer-buttons">
+        <a class="btn btn-tel" href="tel:1544-5714">📞 1544-5714</a>
+        <a class="btn btn-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank" rel="noopener">💬 카카오톡 상담</a>
+      </div>
+      <div class="footer-note">본 확인서는 예약 내용 안내를 위한 문서이며, 실제 결제·계약 내용은 담당자 안내를 우선합니다.</div>
+    </div>
+  </div>
+
+</body>
+</html>
