@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제주도 완전정복 고품격투어 2박3일</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+  --sea:#1B5E8A;
+  --sea-dark:#124260;
+  --sea-bg:#E9F2F8;
+  --sunflower:#F2B705;
+  --sunflower-bg:#FFF8E1;
+  --coral:#E8623C;
+  --coral-bg:#FDEFE9;
+  --sky-top:#EAF3F8;
+  --sky-bottom:#F7F8F5;
+  --text-main:#1E293B;
+  --text-sub:#52667A;
+  --text-muted:#8FA0AE;
+  --card-bg:#FFFFFF;
+  --border:#DCEEF6;
+  --shadow:0 4px 20px rgba(27,94,138,0.10);
+  --max-w:680px;
+  --red:#E24C4C;
+  --red-bg:#FEF0F0;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Pretendard',sans-serif;background:linear-gradient(180deg,var(--sky-top) 0%, var(--sky-bottom) 45%, #FAFEFE 100%);color:var(--text-main);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+
+.top-bar{width:100%;background:rgba(18,66,96,0.92);backdrop-filter:blur(6px);padding:10px 20px;}
+.top-bar-inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.agent-info{color:#E9F2F8;font-size:15px;font-weight:500;}
+.agent-info b{color:#fff;}
+.top-btns{display:flex;gap:8px;}
+.top-btn{font-size:14.5px;font-weight:600;padding:6px 12px;border-radius:20px;background:rgba(255,255,255,0.15);color:#fff;transition:transform .15s ease-out, background .2s;}
+.top-btn:hover{background:rgba(255,255,255,0.28);}
+.top-btn:active{transform:scale(0.97);}
+.top-btn.kakao{background:#FEE500;color:#391B1B;}
+
+.header{width:100%;padding:28px 16px 24px;}
+.header-inner{max-width:var(--max-w);margin:0 auto;text-align:center;position:relative;z-index:1;border-radius:24px;overflow:hidden;padding:44px 24px 36px;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(27,94,138,0.30), transparent 55%),
+    radial-gradient(circle at 85% 75%, rgba(242,183,5,0.22), transparent 50%),
+    linear-gradient(160deg,#0A2A3E 0%, #124260 55%, #1B5E8A 100%);
+  box-shadow:0 12px 32px rgba(10,42,62,0.28);}
+.header-tag{display:inline-block;font-size:14px;font-weight:700;letter-spacing:2.5px;color:var(--sunflower);border:1px solid rgba(242,183,5,0.5);padding:6px 16px;border-radius:20px;margin-bottom:16px;}
+.header-title{font-size:28px;font-weight:800;color:#fff;margin-bottom:8px;letter-spacing:-0.5px;text-shadow:0 2px 12px rgba(0,0,0,0.4);line-height:1.4;}
+.header-badge{display:inline-block;background:var(--coral);color:#fff;font-weight:800;font-size:15px;padding:6px 16px;border-radius:20px;margin-top:6px;}
+.header-subtitle{font-size:15.5px;color:rgba(255,255,255,0.85);font-weight:500;margin-top:16px;}
+
+.trip-band{width:100%;background:linear-gradient(90deg,var(--sea),#3D8AB8);}
+.trip-band-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);text-align:center;padding:20px 16px;}
+.trip-item .label{font-size:13px;color:rgba(255,255,255,0.85);font-weight:600;margin-bottom:4px;}
+.trip-item .value{font-size:16px;color:#fff;font-weight:800;}
+
+.container{max-width:var(--max-w);margin:0 auto;padding:36px 20px 60px;}
+.section{margin-bottom:36px;opacity:0;transform:translateY(16px);transition:opacity .5s ease-out, transform .5s ease-out;}
+.section.visible{opacity:1;transform:translateY(0);}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.section-num{width:30px;height:30px;border-radius:50%;background:var(--sea-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0;}
+.section-title{font-size:20px;font-weight:800;color:var(--text-main);}
+
+.alert{border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.6;margin-top:12px;}
+.alert-sea{background:var(--sea-bg);border:1px solid var(--sea);color:#124260;}
+.alert-sunflower{background:var(--sunflower-bg);border:1px solid var(--sunflower);color:#8A6A00;}
+.alert-coral{background:var(--coral-bg);border:1px solid var(--coral);color:#A13F16;}
+
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.price-card{background:#fff;border:2px solid var(--sea);border-radius:16px;padding:20px;text-align:center;box-shadow:var(--shadow);}
+.price-card.best{border-color:var(--coral);background:var(--coral-bg);}
+.price-card .tag{display:inline-block;font-size:13px;font-weight:700;color:#fff;background:var(--coral);padding:3px 10px;border-radius:10px;margin-bottom:10px;}
+.price-card .date{font-size:15px;font-weight:700;color:var(--text-sub);margin-bottom:6px;}
+.price-card .price{font-size:26px;font-weight:800;color:var(--sea-dark);}
+.price-card.best .price{color:#A13F16;}
+.price-card .unit{font-size:13.5px;color:var(--text-muted);margin-top:2px;}
+
+.incl-card{border-radius:14px;padding:16px;font-size:15.5px;line-height:1.8;background:var(--sea-bg);border:1px solid var(--sea);margin-bottom:12px;}
+.incl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#124260;}
+.excl-card{border-radius:14px;padding:16px;font-size:15.5px;line-height:1.8;background:var(--coral-bg);border:1px solid var(--coral);}
+.excl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#A13F16;}
+
+.shopping-box{border:1.5px solid var(--sunflower);border-radius:16px;background:var(--sunflower-bg);padding:20px;}
+.shopping-box .head{font-weight:800;font-size:17px;color:#8A6A00;margin-bottom:10px;}
+.shopping-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;}
+.shopping-tag{background:#fff;border:1px solid var(--sunflower);color:#8A6A00;font-weight:700;font-size:14px;padding:6px 12px;border-radius:20px;}
+
+.bonus-box{border:1.5px dashed var(--coral);border-radius:16px;background:#fff;padding:18px;box-shadow:var(--shadow);text-align:center;}
+.bonus-box .head{font-weight:800;font-size:16px;color:var(--coral);}
+
+.day-tabs{display:flex;gap:8px;margin-bottom:16px;overflow-x:auto;}
+.day-tab{flex:0 0 auto;padding:10px 18px;border-radius:12px;font-weight:700;font-size:15px;background:#fff;border:1px solid var(--border);color:var(--text-sub);cursor:pointer;transition:all .2s;}
+.day-tab.active{background:var(--sea);color:#fff;border-color:var(--sea);}
+.day-panel{display:none;}
+.day-panel.active{display:block;}
+.day-card{background:#fff;border-radius:16px;box-shadow:var(--shadow);overflow:hidden;border:1px solid var(--border);}
+.day-header{background:linear-gradient(120deg,var(--sea),#3D8AB8);color:#fff;padding:14px 18px;font-weight:800;font-size:16px;}
+.day-body{padding:18px;}
+.itin-item{display:flex;gap:10px;padding:8px 0;font-size:15px;color:var(--text-main);line-height:1.6;}
+.itin-item .dot{color:var(--sea);font-weight:800;flex-shrink:0;}
+.itin-item.meal{color:#A13F16;font-weight:700;}
+.meal-box{margin-top:14px;background:var(--sea-bg);border-radius:12px;padding:12px 16px;font-size:14.5px;color:var(--sea-dark);}
+.meal-box b{color:#124260;}
+
+@media (max-width:480px){
+  .container{padding-left:14px;padding-right:14px;}
+  .trip-band-inner{grid-template-columns:repeat(3,1fr);gap:10px;padding:16px 12px;}
+  .price-grid{grid-template-columns:1fr;}
+  .header-title{font-size:23px;}
+}
+
+.footer{width:100%;background:#0A2A3E;padding:32px 20px;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;text-align:center;}
+.footer-agent{color:#fff;font-size:17px;font-weight:700;margin-bottom:6px;}
+.footer-sub{color:rgba(255,255,255,0.55);font-size:14.5px;margin-bottom:18px;}
+.footer-btns{display:flex;justify-content:center;gap:10px;}
+.footer-btn{padding:10px 20px;border-radius:12px;font-weight:700;font-size:15.5px;transition:transform .15s ease-out;}
+.footer-btn:active{transform:scale(0.97);}
+.footer-btn.tel{background:var(--coral);color:#fff;}
+.footer-btn.kakao{background:#FEE500;color:#391B1B;}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="agent-info">담당 <b>이경진 실장</b> · 모두투어 투어콕</div>
+    <div class="top-btns">
+      <a class="top-btn" href="tel:1544-5714">📞 전화상담</a>
+      <a class="top-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡</a>
+    </div>
+  </div>
+</div>
+
+<div class="header">
+  <div class="header-inner">
+    <span class="header-tag">TOUR ITINERARY</span>
+    <div class="header-title">노팁 노옵션 2석식<br>제주도 완전정복 고품격투어 2박3일</div>
+    <span class="header-badge">🛍 쇼핑 3회</span>
+    <div class="header-subtitle">서울(각 지역 공항) 출발 · JEJU 2026</div>
+  </div>
+</div>
+
+<div class="trip-band">
+  <div class="trip-band-inner">
+    <div class="trip-item"><div class="label">일정</div><div class="value">2박 3일</div></div>
+    <div class="trip-item"><div class="label">최소출발인원</div><div class="value">2명 이상</div></div>
+    <div class="trip-item"><div class="label">투어타입</div><div class="value">패키지</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 출발일 & 상품가 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">1</div><div class="section-title">출발일 & 상품가 (2인 1실 기준)</div></div>
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="date">10월 11일(일) 출발</div>
+        <div class="price">464,000원</div>
+        <div class="unit">1인 기준</div>
+      </div>
+      <div class="price-card best">
+        <div class="tag">10/10 출발</div>
+        <div class="date">10월 10일(토) 출발</div>
+        <div class="price">494,000원</div>
+        <div class="unit">1인 기준</div>
+      </div>
+    </div>
+    <div class="alert alert-sea">
+      ✈ 출발 1시간 전, 해당 공항 국내선에서 <b>개별수속</b> 진행하시면 됩니다. (신분증 필수 지참)
+    </div>
+  </div>
+
+  <!-- 포함/불포함 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">포함 · 불포함 사항</div></div>
+    <div class="incl-card">
+      <div class="head">✔ 포함사항</div>
+      왕복항공, 공항세, 유류할증(9월 발권기준), 호텔, 2조식, 3중식, 2석식, 관광차량, 주차료, 입장료, 가이드, 기사 및 가이드 봉사료, 선택관광
+    </div>
+    <div class="excl-card">
+      <div class="head">✘ 불포함사항</div>
+      여행자보험, 유류할증 변동차액
+    </div>
+  </div>
+
+  <!-- 쇼핑 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">쇼핑 방문 안내 (총 3회)</div></div>
+    <div class="shopping-box">
+      <div class="head">🛍 방문 예정 쇼핑 매장</div>
+      <div class="shopping-tags">
+        <span class="shopping-tag">제주테마농원</span>
+        <span class="shopping-tag">성읍민속마을</span>
+        <span class="shopping-tag">토산품 & 농수산</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 특전 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">특전</div></div>
+    <div class="bonus-box">
+      <div class="head">🎁 오메기떡 + 생수 증정</div>
+    </div>
+  </div>
+
+  <!-- 일자별 일정 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">일자별 상세 일정</div></div>
+
+    <div class="day-tabs">
+      <div class="day-tab active" data-day="1">1일차</div>
+      <div class="day-tab" data-day="2">2일차 (서부권)</div>
+      <div class="day-tab" data-day="3">3일차 (동부권)</div>
+    </div>
+
+    <div class="day-panel active" id="day1">
+      <div class="day-card">
+        <div class="day-header">1일차</div>
+        <div class="day-body">
+          <div class="itin-item"><span class="dot">●</span> 출발 1시간 전 해당공항 국내선 개별수속(신분증 필수 지참)</div>
+          <div class="itin-item"><span class="dot">●</span> 제주 도착 후 손님성함 가이드 미팅</div>
+          <div class="itin-item"><span class="dot">●</span> 도두봉</div>
+          <div class="itin-item"><span class="dot">●</span> 무지개해안도로</div>
+          <div class="itin-item"><span class="dot">●</span> 용연, 용두암</div>
+          <div class="itin-item meal"><span class="dot">●</span> 중식(전복죽배기 or 성게미역국)</div>
+          <div class="itin-item"><span class="dot">●</span> 자연인(플랜트카페+월평꽃시장) — 아메리카노, 월계수차, 호지차, 감귤차 중 1잔 제공</div>
+          <div class="itin-item"><span class="dot">●</span> 관음사(드라마 우영우 촬영지)</div>
+          <div class="itin-item"><span class="dot">●</span> 항파두리 항몽유적지</div>
+          <div class="itin-item meal"><span class="dot">●</span> 석식(갈치조림 & 고등어구이)</div>
+          <div class="itin-item"><span class="dot">●</span> 호텔투숙 후 자유시간</div>
+          <div class="meal-box"><b>식사</b> — 중식: 현지식 · 석식: 갈치조림 & 고등어구이</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-panel" id="day2">
+      <div class="day-card">
+        <div class="day-header">2일차 (서부권)</div>
+        <div class="day-body">
+          <div class="itin-item"><span class="dot">●</span> 호텔조식 후 출발</div>
+          <div class="itin-item"><span class="dot">●</span> 여미지식물원</div>
+          <div class="itin-item"><span class="dot">●</span> 카멜리아 힐</div>
+          <div class="itin-item meal"><span class="dot">●</span> 중식(돔베고기 + 고등어조림 + 쌈밥)</div>
+          <div class="itin-item"><span class="dot">●</span> 제주테마농원 🛍</div>
+          <div class="itin-item"><span class="dot">●</span> 산방굴사</div>
+          <div class="itin-item"><span class="dot">●</span> 녹차족욕</div>
+          <div class="itin-item"><span class="dot">●</span> 아트서커스</div>
+          <div class="itin-item meal"><span class="dot">●</span> 석식(흑돼지구이)</div>
+          <div class="itin-item"><span class="dot">●</span> 호텔투숙 후 자유시간</div>
+          <div class="meal-box"><b>식사</b> — 조식: 호텔조식 · 중식: 현지식 · 석식: 흑돼지구이</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-panel" id="day3">
+      <div class="day-card">
+        <div class="day-header">3일차 (동부권)</div>
+        <div class="day-body">
+          <div class="itin-item"><span class="dot">●</span> 호텔조식 후 출발</div>
+          <div class="itin-item"><span class="dot">●</span> 더케이쇼 공연</div>
+          <div class="itin-item"><span class="dot">●</span> 토산품 & 농수산 🛍</div>
+          <div class="itin-item"><span class="dot">●</span> 유채꽃사진촬영 또는 수국꽃</div>
+          <div class="itin-item"><span class="dot">●</span> 성읍민속마을 🛍</div>
+          <div class="itin-item"><span class="dot">●</span> 승마 or 낙타</div>
+          <div class="itin-item meal"><span class="dot">●</span> 중식(토속돼지불고기 + 좁쌀막걸리)</div>
+          <div class="itin-item"><span class="dot">●</span> 에코랜드 & 곶자왈 기차</div>
+          <div class="itin-item"><span class="dot">●</span> 우도유람선</div>
+          <div class="itin-item"><span class="dot">●</span> 해녀촌</div>
+          <div class="itin-item"><span class="dot">●</span> 제주공항 이동 후 안녕히 가십시요</div>
+          <div class="meal-box"><b>식사</b> — 조식: 호텔조식 · 중식: 현지식</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-sunflower" style="margin-top:16px;">
+      ※ 상기 일정은 항공기 및 현지 사정에 의해 다소 변경될 수 있습니다.
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-agent">담당 이경진 실장</div>
+    <div class="footer-sub">제주도 완전정복 고품격투어와 함께 즐거운 여행 되세요 🍊</div>
+    <div class="footer-btns">
+      <a class="footer-btn tel" href="tel:1544-5714">📞 1544-5714</a>
+      <a class="footer-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 투어콕 카카오톡 채널</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.1});
+sections.forEach(s=>observer.observe(s));
+
+const tabs = document.querySelectorAll('.day-tab');
+const panels = document.querySelectorAll('.day-panel');
+tabs.forEach(tab=>{
+  tab.addEventListener('click', ()=>{
+    tabs.forEach(t=>t.classList.remove('active'));
+    panels.forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('day'+tab.dataset.day).classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>
