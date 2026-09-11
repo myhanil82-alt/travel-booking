@@ -7,33 +7,34 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <style>
 :root{
-  --sea:#1B5E8A;
-  --sea-dark:#124260;
-  --sea-bg:#E9F2F8;
-  --sunflower:#F2B705;
-  --sunflower-bg:#FFF8E1;
-  --coral:#E8623C;
-  --coral-bg:#FDEFE9;
-  --sky-top:#EAF3F8;
-  --sky-bottom:#F7F8F5;
-  --text-main:#1E293B;
-  --text-sub:#52667A;
-  --text-muted:#8FA0AE;
+  --tangerine:#E07A1F;
+  --tangerine-dark:#A85413;
+  --tangerine-bg:#FBEFE1;
+  --sea:#2A4B5C;
+  --sea-dark:#1B333F;
+  --sea-bg:#EAF0F1;
+  --gold:#C99A3C;
+  --gold-bg:#FAF2E1;
+  --sky-top:#F6EEE2;
+  --sky-bottom:#F8F5EE;
+  --text-main:#2B2620;
+  --text-sub:#6B6055;
+  --text-muted:#9C9184;
   --card-bg:#FFFFFF;
-  --border:#DCEEF6;
-  --shadow:0 4px 20px rgba(27,94,138,0.10);
+  --border:#EEE3D3;
+  --shadow:0 4px 20px rgba(160,84,19,0.10);
   --max-w:680px;
-  --red:#E24C4C;
-  --red-bg:#FEF0F0;
+  --red:#C1443C;
+  --red-bg:#FDF1EF;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Pretendard',sans-serif;background:linear-gradient(180deg,var(--sky-top) 0%, var(--sky-bottom) 45%, #FAFEFE 100%);color:var(--text-main);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+body{font-family:'Pretendard',sans-serif;background:linear-gradient(180deg,var(--sky-top) 0%, var(--sky-bottom) 45%, #FBF8F2 100%);color:var(--text-main);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;}
 a{text-decoration:none;color:inherit;}
 img{max-width:100%;display:block;}
 
-.top-bar{width:100%;background:rgba(18,66,96,0.92);backdrop-filter:blur(6px);padding:10px 20px;}
+.top-bar{width:100%;background:rgba(27,51,63,0.92);backdrop-filter:blur(6px);padding:10px 20px;}
 .top-bar-inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
-.agent-info{color:#E9F2F8;font-size:15px;font-weight:500;}
+.agent-info{color:#F6EEE2;font-size:15px;font-weight:500;}
 .agent-info b{color:#fff;}
 .top-btns{display:flex;gap:8px;}
 .top-btn{font-size:14.5px;font-weight:600;padding:6px 12px;border-radius:20px;background:rgba(255,255,255,0.15);color:#fff;transition:transform .15s ease-out, background .2s;}
@@ -44,18 +45,18 @@ img{max-width:100%;display:block;}
 .header{width:100%;padding:28px 16px 24px;}
 .header-inner{max-width:var(--max-w);margin:0 auto;text-align:center;position:relative;z-index:1;border-radius:24px;overflow:hidden;padding:44px 24px 36px;
   background:
-    radial-gradient(circle at 20% 20%, rgba(27,94,138,0.30), transparent 55%),
-    radial-gradient(circle at 85% 75%, rgba(242,183,5,0.22), transparent 50%),
-    linear-gradient(160deg,#0A2A3E 0%, #124260 55%, #1B5E8A 100%);
-  box-shadow:0 12px 32px rgba(10,42,62,0.28);}
-.header-tag{display:inline-block;font-size:14px;font-weight:700;letter-spacing:2.5px;color:var(--sunflower);border:1px solid rgba(242,183,5,0.5);padding:6px 16px;border-radius:20px;margin-bottom:16px;}
-.header-title{font-size:28px;font-weight:800;color:#fff;margin-bottom:8px;letter-spacing:-0.5px;text-shadow:0 2px 12px rgba(0,0,0,0.4);line-height:1.4;}
-.header-badge{display:inline-block;background:var(--coral);color:#fff;font-weight:800;font-size:15px;padding:6px 16px;border-radius:20px;margin-top:6px;}
+    radial-gradient(circle at 20% 20%, rgba(224,122,31,0.32), transparent 55%),
+    radial-gradient(circle at 85% 75%, rgba(201,154,60,0.22), transparent 50%),
+    linear-gradient(160deg,#1B333F 0%, #2A4B5C 55%, #34576A 100%);
+  box-shadow:0 12px 32px rgba(27,51,63,0.28);}
+.header-tag{display:inline-block;font-size:14px;font-weight:700;letter-spacing:2.5px;color:var(--gold);border:1px solid rgba(201,154,60,0.55);padding:6px 16px;border-radius:20px;margin-bottom:16px;}
+.header-title{font-size:27px;font-weight:800;color:#fff;margin-bottom:8px;letter-spacing:-0.5px;text-shadow:0 2px 12px rgba(0,0,0,0.4);line-height:1.4;}
+.header-badge{display:inline-block;background:var(--tangerine);color:#fff;font-weight:800;font-size:15px;padding:6px 16px;border-radius:20px;margin-top:6px;}
 .header-subtitle{font-size:15.5px;color:rgba(255,255,255,0.85);font-weight:500;margin-top:16px;}
 
-.trip-band{width:100%;background:linear-gradient(90deg,var(--sea),#3D8AB8);}
+.trip-band{width:100%;background:linear-gradient(90deg,var(--tangerine),#EDA255);}
 .trip-band-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);text-align:center;padding:20px 16px;}
-.trip-item .label{font-size:13px;color:rgba(255,255,255,0.85);font-weight:600;margin-bottom:4px;}
+.trip-item .label{font-size:13px;color:rgba(255,255,255,0.9);font-weight:600;margin-bottom:4px;}
 .trip-item .value{font-size:16px;color:#fff;font-weight:800;}
 
 .container{max-width:var(--max-w);margin:0 auto;padding:36px 20px 60px;}
@@ -66,31 +67,30 @@ img{max-width:100%;display:block;}
 .section-title{font-size:20px;font-weight:800;color:var(--text-main);}
 
 .alert{border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.6;margin-top:12px;}
-.alert-sea{background:var(--sea-bg);border:1px solid var(--sea);color:#124260;}
-.alert-sunflower{background:var(--sunflower-bg);border:1px solid var(--sunflower);color:#8A6A00;}
-.alert-coral{background:var(--coral-bg);border:1px solid var(--coral);color:#A13F16;}
+.alert-sea{background:var(--sea-bg);border:1px solid var(--sea);color:#1B333F;}
+.alert-gold{background:var(--gold-bg);border:1px solid var(--gold);color:#7A5C1E;}
+.alert-tangerine{background:var(--tangerine-bg);border:1px solid var(--tangerine);color:#A85413;}
 
 .price-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.price-card{background:#fff;border:2px solid var(--sea);border-radius:16px;padding:20px;text-align:center;box-shadow:var(--shadow);}
-.price-card.best{border-color:var(--coral);background:var(--coral-bg);}
-.price-card .tag{display:inline-block;font-size:13px;font-weight:700;color:#fff;background:var(--coral);padding:3px 10px;border-radius:10px;margin-bottom:10px;}
-.price-card .date{font-size:15px;font-weight:700;color:var(--text-sub);margin-bottom:6px;}
+.price-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:20px;text-align:center;box-shadow:var(--shadow);position:relative;}
+.price-card.best{border:2px solid var(--tangerine);}
+.price-card .tag{position:absolute;top:-12px;left:50%;transform:translateX(-50%);font-size:12.5px;font-weight:800;color:#fff;background:var(--tangerine);padding:4px 14px;border-radius:12px;white-space:nowrap;}
+.price-card .date{font-size:15px;font-weight:700;color:var(--text-sub);margin-top:10px;margin-bottom:8px;}
 .price-card .price{font-size:26px;font-weight:800;color:var(--sea-dark);}
-.price-card.best .price{color:#A13F16;}
 .price-card .unit{font-size:13.5px;color:var(--text-muted);margin-top:2px;}
 
 .incl-card{border-radius:14px;padding:16px;font-size:15.5px;line-height:1.8;background:var(--sea-bg);border:1px solid var(--sea);margin-bottom:12px;}
-.incl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#124260;}
-.excl-card{border-radius:14px;padding:16px;font-size:15.5px;line-height:1.8;background:var(--coral-bg);border:1px solid var(--coral);}
-.excl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#A13F16;}
+.incl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#1B333F;}
+.excl-card{border-radius:14px;padding:16px;font-size:15.5px;line-height:1.8;background:var(--tangerine-bg);border:1px solid var(--tangerine);}
+.excl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#A85413;}
 
-.shopping-box{border:1.5px solid var(--sunflower);border-radius:16px;background:var(--sunflower-bg);padding:20px;}
-.shopping-box .head{font-weight:800;font-size:17px;color:#8A6A00;margin-bottom:10px;}
+.shopping-box{border:1.5px solid var(--gold);border-radius:16px;background:var(--gold-bg);padding:20px;}
+.shopping-box .head{font-weight:800;font-size:17px;color:#7A5C1E;margin-bottom:10px;}
 .shopping-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;}
-.shopping-tag{background:#fff;border:1px solid var(--sunflower);color:#8A6A00;font-weight:700;font-size:14px;padding:6px 12px;border-radius:20px;}
+.shopping-tag{background:#fff;border:1px solid var(--gold);color:#7A5C1E;font-weight:700;font-size:14px;padding:6px 12px;border-radius:20px;}
 
-.bonus-box{border:1.5px dashed var(--coral);border-radius:16px;background:#fff;padding:18px;box-shadow:var(--shadow);text-align:center;}
-.bonus-box .head{font-weight:800;font-size:16px;color:var(--coral);}
+.bonus-box{border:1.5px dashed var(--tangerine);border-radius:16px;background:#fff;padding:18px;box-shadow:var(--shadow);text-align:center;}
+.bonus-box .head{font-weight:800;font-size:16px;color:var(--tangerine-dark);}
 
 .day-tabs{display:flex;gap:8px;margin-bottom:16px;overflow-x:auto;}
 .day-tab{flex:0 0 auto;padding:10px 18px;border-radius:12px;font-weight:700;font-size:15px;background:#fff;border:1px solid var(--border);color:var(--text-sub);cursor:pointer;transition:all .2s;}
@@ -98,29 +98,29 @@ img{max-width:100%;display:block;}
 .day-panel{display:none;}
 .day-panel.active{display:block;}
 .day-card{background:#fff;border-radius:16px;box-shadow:var(--shadow);overflow:hidden;border:1px solid var(--border);}
-.day-header{background:linear-gradient(120deg,var(--sea),#3D8AB8);color:#fff;padding:14px 18px;font-weight:800;font-size:16px;}
+.day-header{background:linear-gradient(120deg,var(--sea),#3D6478);color:#fff;padding:14px 18px;font-weight:800;font-size:16px;}
 .day-body{padding:18px;}
 .itin-item{display:flex;gap:10px;padding:8px 0;font-size:15px;color:var(--text-main);line-height:1.6;}
-.itin-item .dot{color:var(--sea);font-weight:800;flex-shrink:0;}
-.itin-item.meal{color:#A13F16;font-weight:700;}
-.meal-box{margin-top:14px;background:var(--sea-bg);border-radius:12px;padding:12px 16px;font-size:14.5px;color:var(--sea-dark);}
-.meal-box b{color:#124260;}
+.itin-item .dot{color:var(--tangerine);font-weight:800;flex-shrink:0;}
+.itin-item.meal{color:var(--tangerine-dark);font-weight:700;}
+.meal-box{margin-top:14px;background:var(--gold-bg);border-radius:12px;padding:12px 16px;font-size:14.5px;color:#7A5C1E;}
+.meal-box b{color:#5C4415;}
 
 @media (max-width:480px){
   .container{padding-left:14px;padding-right:14px;}
   .trip-band-inner{grid-template-columns:repeat(3,1fr);gap:10px;padding:16px 12px;}
   .price-grid{grid-template-columns:1fr;}
-  .header-title{font-size:23px;}
+  .header-title{font-size:22px;}
 }
 
-.footer{width:100%;background:#0A2A3E;padding:32px 20px;}
+.footer{width:100%;background:#1B333F;padding:32px 20px;}
 .footer-inner{max-width:var(--max-w);margin:0 auto;text-align:center;}
 .footer-agent{color:#fff;font-size:17px;font-weight:700;margin-bottom:6px;}
 .footer-sub{color:rgba(255,255,255,0.55);font-size:14.5px;margin-bottom:18px;}
 .footer-btns{display:flex;justify-content:center;gap:10px;}
 .footer-btn{padding:10px 20px;border-radius:12px;font-weight:700;font-size:15.5px;transition:transform .15s ease-out;}
 .footer-btn:active{transform:scale(0.97);}
-.footer-btn.tel{background:var(--coral);color:#fff;}
+.footer-btn.tel{background:var(--tangerine);color:#fff;}
 .footer-btn.kakao{background:#FEE500;color:#391B1B;}
 </style>
 </head>
@@ -140,8 +140,8 @@ img{max-width:100%;display:block;}
   <div class="header-inner">
     <span class="header-tag">TOUR ITINERARY</span>
     <div class="header-title">노팁 노옵션 2석식<br>제주도 완전정복 고품격투어 2박3일</div>
-    <span class="header-badge">🛍 쇼핑 3회</span>
-    <div class="header-subtitle">서울(각 지역 공항) 출발 · JEJU 2026</div>
+    <span class="header-badge">🍊 쇼핑 3회</span>
+    <div class="header-subtitle">서울(각 지역 공항) 출발 · JEJU AUTUMN 2026</div>
   </div>
 </div>
 
@@ -165,7 +165,7 @@ img{max-width:100%;display:block;}
         <div class="unit">1인 기준</div>
       </div>
       <div class="price-card best">
-        <div class="tag">10/10 출발</div>
+        <span class="tag">10/10 출발</span>
         <div class="date">10월 10일(토) 출발</div>
         <div class="price">494,000원</div>
         <div class="unit">1인 기준</div>
@@ -279,7 +279,7 @@ img{max-width:100%;display:block;}
       </div>
     </div>
 
-    <div class="alert alert-sunflower" style="margin-top:16px;">
+    <div class="alert alert-gold" style="margin-top:16px;">
       ※ 상기 일정은 항공기 및 현지 사정에 의해 다소 변경될 수 있습니다.
     </div>
   </div>
@@ -289,7 +289,7 @@ img{max-width:100%;display:block;}
 <div class="footer">
   <div class="footer-inner">
     <div class="footer-agent">담당 이경진 실장</div>
-    <div class="footer-sub">제주도 완전정복 고품격투어와 함께 즐거운 여행 되세요 🍊</div>
+    <div class="footer-sub">제주도 완전정복 고품격투어와 함께 즐거운 가을여행 되세요 🍊</div>
     <div class="footer-btns">
       <a class="footer-btn tel" href="tel:1544-5714">📞 1544-5714</a>
       <a class="footer-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 투어콕 카카오톡 채널</a>
