@@ -78,6 +78,13 @@ img{max-width:100%;display:block;}
 .alert-terracotta{background:var(--terracotta-bg);border:1px solid var(--terracotta);color:#8E2E28;}
 .alert-gold{background:var(--gold-bg);border:1px solid var(--gold);color:#8A6414;}
 
+.meeting-box{border:1.5px solid var(--terracotta);border-radius:16px;background:#fff;padding:20px;box-shadow:var(--shadow);}
+.meeting-time{font-size:24px;font-weight:800;color:var(--terracotta);text-align:center;margin-bottom:14px;}
+.meeting-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed var(--border);gap:10px;}
+.meeting-row:last-child{border-bottom:none;}
+.meeting-row .label{color:var(--text-sub);}
+.meeting-row .val{font-weight:700;color:var(--text-main);text-align:right;}
+
 .flight-card{border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px;}
 .flight-header{background:linear-gradient(120deg,#122A1E,#1F4A36);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:700;}
 .flight-header .code{color:var(--gold);}
@@ -219,9 +226,18 @@ img{max-width:100%;display:block;}
     </div>
   </div>
 
+  <!-- 김해공항 미팅 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">김해공항 미팅 안내</div></div>
+    <div class="meeting-box">
+      <div class="meeting-time">2026.09.17(목) 06:00</div>
+      <div class="meeting-row"><span class="label">장소</span><span class="val">김해국제공항 국제선 3층<br>오른쪽 모두투어 안내판 앞<br>모두투어 미팅테이블</span></div>
+    </div>
+  </div>
+
   <!-- 항공편 정보 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">2</div><div class="section-title">항공편 정보</div></div>
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">항공편 정보</div></div>
 
     <div class="flight-card">
       <div class="flight-header"><span>출발편 · 에어부산</span><span class="code">BX371</span></div>
@@ -266,7 +282,7 @@ img{max-width:100%;display:block;}
 
   <!-- 수하물 안내 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">3</div><div class="section-title">수하물 안내</div></div>
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">수하물 안내</div></div>
     <div class="baggage-grid">
       <div class="baggage-card">
         <div class="icon">🧳</div>
@@ -285,7 +301,7 @@ img{max-width:100%;display:block;}
 
   <!-- 현지 가이드 & 행사정보 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">4</div><div class="section-title">현지 가이드 & 행사 정보</div></div>
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">현지 가이드 & 행사 정보</div></div>
     <div class="guide-box">
       <div class="guide-row"><span class="label">피켓명</span><span class="val">모두투어 이봉국 가이드</span></div>
       <div class="guide-row"><span class="label">가이드명</span><span class="val">이봉국(남)</span></div>
@@ -298,7 +314,7 @@ img{max-width:100%;display:block;}
 
   <!-- 투숙 호텔 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">5</div><div class="section-title">투숙 호텔</div></div>
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">투숙 호텔</div></div>
     <div class="hotel-card">
       <div class="hotel-header"><span>🏨 전 일정</span><span>4박</span></div>
       <div class="hotel-body"><div class="hotel-name">장가계 썬샤인 호텔<br><span style="font-size:14px;font-weight:500;color:var(--text-sub);">(= 양광호텔)</span></div></div>
@@ -307,7 +323,7 @@ img{max-width:100%;display:block;}
 
   <!-- 불포함 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">6</div><div class="section-title">불포함 사항</div></div>
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">불포함 사항</div></div>
     <div class="incl-card">
       <div class="head">✘ 불포함사항</div>
       ◎ 개인 경비 (생수 및 음료수 등)<br>
@@ -317,7 +333,7 @@ img{max-width:100%;display:block;}
 
   <!-- 중국 입국신고서 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">7</div><div class="section-title">중국 입국신고서 안내</div></div>
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">중국 입국신고서 안내</div></div>
     <div class="visa-box">
       <div class="head">📝 입국신고서 작성 안내</div>
       중국 입국신고서는 담당자가 <b>9월 15일(화) 오전에 작성해서 QR코드로 전송</b>드릴 예정입니다. 별도로 미리 작성하지 않으셔도 됩니다.
@@ -326,7 +342,7 @@ img{max-width:100%;display:block;}
 
   <!-- 환전 안내 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">8</div><div class="section-title">환전 안내</div></div>
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">환전 안내</div></div>
     <div class="exchange-box">
       <div class="ex-row"><span>선택관광 경비</span><span style="font-weight:700;">미국달러(USD) 지불 기준</span></div>
       <div class="ex-row"><span>권장 환전 금액</span><span style="font-weight:700;">1인당 $200~$300</span></div>
@@ -339,7 +355,7 @@ img{max-width:100%;display:block;}
 
   <!-- 데이터 로밍 비교 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">9</div><div class="section-title">현지 데이터 통신 옵션 비교</div></div>
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">현지 데이터 통신 옵션 비교</div></div>
     <div class="alert alert-terracotta">
       🚧 중국은 만리방화벽(GFW) 정책으로 <b>카카오톡·구글·인스타그램 등 접속이 제한</b>됩니다. 아래 유심·이심 상품은 <b>VPN 우회 기능이 포함된 여행자용 상품</b>을 기준으로 안내드리니, 구매 시 "카톡 가능/VPN 불필요" 문구가 있는지 꼭 확인해 주세요.
     </div>
@@ -386,7 +402,7 @@ img{max-width:100%;display:block;}
 
   <!-- 날씨 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">10</div><div class="section-title">일자별 날씨 정보</div></div>
+    <div class="section-head"><div class="section-num">11</div><div class="section-title">일자별 날씨 정보</div></div>
     <div class="weather-row">
       <div class="weather-card">
         <div class="date">9/17(목)</div>
@@ -431,7 +447,7 @@ img{max-width:100%;display:block;}
 
   <!-- 준비물 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">11</div><div class="section-title">여행 준비물</div></div>
+    <div class="section-head"><div class="section-num">12</div><div class="section-title">여행 준비물</div></div>
 
     <div class="prep-full" style="margin-bottom:12px;">
       <div class="title">🥢 밑반찬 (강력 추천!)</div>
