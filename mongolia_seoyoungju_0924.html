@@ -79,6 +79,13 @@ img{max-width:100%;display:block;}
 .alert-gold{background:var(--gold-bg);border:1px solid var(--gold);color:#8A5E0E;}
 .alert-red{background:var(--red-bg);border:1px solid var(--red);color:#A32C24;}
 
+.meeting-box{border:1.5px solid var(--ochre);border-radius:16px;background:#fff;padding:20px;box-shadow:var(--shadow);}
+.meeting-time{font-size:24px;font-weight:800;color:var(--ochre-dark);text-align:center;margin-bottom:14px;}
+.meeting-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed var(--border);gap:10px;}
+.meeting-row:last-child{border-bottom:none;}
+.meeting-row .label{color:var(--text-sub);}
+.meeting-row .val{font-weight:700;color:var(--text-main);text-align:right;}
+
 .flight-card{border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px;}
 .flight-header{background:linear-gradient(120deg,#1C1710,#3A2E1C);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:700;}
 .flight-header .code{color:var(--gold);}
@@ -204,9 +211,18 @@ img{max-width:100%;display:block;}
     </div>
   </div>
 
+  <!-- 인천공항 미팅 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">인천공항 미팅 안내</div></div>
+    <div class="meeting-box">
+      <div class="meeting-time">2026.09.24(목) 13:40</div>
+      <div class="meeting-row"><span class="label">장소</span><span class="val">인천국제공항 제1터미널<br>N카운터 14번 출구 앞<br>9~10번 모두투어 테이블</span></div>
+    </div>
+  </div>
+
   <!-- 항공편 정보 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">2</div><div class="section-title">항공편 정보</div></div>
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">항공편 정보</div></div>
 
     <div class="flight-card">
       <div class="flight-header"><span>출발편 · 에어로몽골리아</span><span class="code">M0602</span></div>
@@ -251,7 +267,7 @@ img{max-width:100%;display:block;}
 
   <!-- 수하물 안내 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">3</div><div class="section-title">수하물 안내</div></div>
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">수하물 안내</div></div>
     <div class="baggage-grid">
       <div class="baggage-card">
         <div class="icon">🧳</div>
@@ -268,7 +284,7 @@ img{max-width:100%;display:block;}
 
   <!-- 추후 확인 항목 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">4</div><div class="section-title">추후 안내 예정 항목</div></div>
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">추후 안내 예정 항목</div></div>
     <div class="pending-box">
       <div class="head">📅 여행 출발 2~3일 전 일정표에서 확인 가능</div>
       <ul>
@@ -281,7 +297,7 @@ img{max-width:100%;display:block;}
 
   <!-- 불포함 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">5</div><div class="section-title">불포함 사항</div></div>
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">불포함 사항</div></div>
     <div class="incl-card">
       <div class="head">✘ 불포함사항</div>
       ▣ 1인당 전 일정 <b>$40</b>의 가이드/기사 경비를 현지에서 지불해야 합니다. (성인·아동 동일)
@@ -290,7 +306,7 @@ img{max-width:100%;display:block;}
 
   <!-- 몽골 입국 유의사항 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">6</div><div class="section-title">몽골 입국 시 유의사항</div></div>
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">몽골 입국 시 유의사항</div></div>
     <div class="warn-box" style="margin-bottom:0;">
       <div class="title">🛃 최근 강화된 몽골 입국심사 관련 필수 확인</div>
       <ul>
@@ -303,7 +319,7 @@ img{max-width:100%;display:block;}
 
   <!-- 한국 입국 검역 안내 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">7</div><div class="section-title">한국 입국 검역(Q-CODE) 안내</div></div>
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">한국 입국 검역(Q-CODE) 안내</div></div>
     <div class="quarantine-box">
       <div class="head">🩺 몽골은 "중점검역관리지역" — Q-CODE 제출 필수</div>
       몽골 지역을 방문·체류·경유한 경우 <b>대한민국 입국 시 Q-CODE(건강상태 질문서)를 검역관에게 제출</b>해야 합니다.
@@ -318,7 +334,7 @@ img{max-width:100%;display:block;}
 
   <!-- 환전 안내 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">8</div><div class="section-title">환전 안내</div></div>
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">환전 안내</div></div>
     <div class="exchange-box">
       <div class="ex-row"><span>가이드·기사 경비</span><span style="font-weight:700;">1인 $40 (USD)</span></div>
       <div class="ex-row"><span>현지 화폐</span><span style="font-weight:700;">몽골 투그릭(한국 환전 불가)</span></div>
@@ -330,7 +346,7 @@ img{max-width:100%;display:block;}
 
   <!-- 날씨 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">9</div><div class="section-title">일자별 날씨 정보</div></div>
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">일자별 날씨 정보</div></div>
     <div class="weather-row">
       <div class="weather-card">
         <div class="date">9/24(목)</div>
@@ -368,7 +384,7 @@ img{max-width:100%;display:block;}
 
   <!-- 준비물 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">10</div><div class="section-title">몽골 간단 준비물</div></div>
+    <div class="section-head"><div class="section-num">11</div><div class="section-title">몽골 간단 준비물</div></div>
     <div class="prep-grid">
       <div class="prep-card">
         <div class="icon">🧴</div>
