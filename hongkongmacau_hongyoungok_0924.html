@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>홍콩·마카오 여행 확정서 - 홍영옥님</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+  --ruby:#C6284A;
+  --ruby-dark:#8E1D35;
+  --ruby-bg:#FCEAEE;
+  --gold:#D4A937;
+  --gold-bg:#FBF4E0;
+  --sky-top:#F1E9E6;
+  --sky-bottom:#F8F6F0;
+  --text-main:#221A1C;
+  --text-sub:#5E5254;
+  --text-muted:#948589;
+  --card-bg:#FFFFFF;
+  --border:#EBDDE0;
+  --shadow:0 4px 20px rgba(198,40,74,0.10);
+  --max-w:680px;
+  --red:#C6284A;
+  --red-bg:#FCEAEE;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Pretendard',sans-serif;background:linear-gradient(180deg,var(--sky-top) 0%, var(--sky-bottom) 45%, #FBFAF7 100%);color:var(--text-main);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+
+.top-bar{width:100%;background:rgba(34,26,28,0.92);backdrop-filter:blur(6px);padding:10px 20px;}
+.top-bar-inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.agent-info{color:#FCEAEE;font-size:15px;font-weight:500;}
+.agent-info b{color:#fff;}
+.top-btns{display:flex;gap:8px;}
+.top-btn{font-size:14.5px;font-weight:600;padding:6px 12px;border-radius:20px;background:rgba(255,255,255,0.15);color:#fff;transition:transform .15s ease-out, background .2s;}
+.top-btn:hover{background:rgba(255,255,255,0.28);}
+.top-btn:active{transform:scale(0.97);}
+.top-btn.kakao{background:#FEE500;color:#391B1B;}
+
+.header{width:100%;padding:28px 16px 24px;}
+.header-inner{max-width:var(--max-w);margin:0 auto;text-align:center;position:relative;z-index:1;border-radius:24px;overflow:hidden;padding:48px 24px 40px;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(198,40,74,0.30), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(212,169,55,0.22), transparent 50%),
+    linear-gradient(160deg,#1D1416 0%, #33191F 55%, #451C26 100%);
+  box-shadow:0 12px 32px rgba(29,20,22,0.28);}
+.header-tag{display:inline-block;font-size:14px;font-weight:700;letter-spacing:2.5px;color:var(--gold);border:1px solid rgba(212,169,55,0.5);padding:6px 16px;border-radius:20px;margin-bottom:18px;}
+.header-title{font-size:32px;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-0.5px;text-shadow:0 2px 12px rgba(0,0,0,0.4);}
+.header-subtitle{font-size:16px;color:rgba(255,255,255,0.85);font-weight:500;margin-bottom:28px;letter-spacing:0.5px;}
+.header-names{font-size:22px;font-weight:700;color:#fff;background:rgba(255,255,255,0.1);display:inline-block;padding:10px 24px;border-radius:14px;margin-bottom:22px;}
+.header-cta{display:inline-flex;align-items:center;gap:8px;background:var(--ruby);color:#fff;font-weight:700;font-size:17px;padding:13px 26px;border-radius:12px;box-shadow:0 8px 20px rgba(198,40,74,0.4);transition:transform .2s ease-out, box-shadow .2s;}
+.header-cta:hover{transform:translateY(-2px) scale(1.02);}
+.header-cta:active{transform:scale(0.97);}
+
+.trip-band{width:100%;background:linear-gradient(90deg,var(--gold),#E4C066);}
+.trip-band-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);text-align:center;padding:20px 16px;}
+.trip-item .label{font-size:13px;color:rgba(255,255,255,0.9);font-weight:600;margin-bottom:4px;}
+.trip-item .value{font-size:17px;color:#fff;font-weight:800;}
+
+.container{max-width:var(--max-w);margin:0 auto;padding:36px 20px 60px;}
+.section{margin-bottom:36px;opacity:0;transform:translateY(16px);transition:opacity .5s ease-out, transform .5s ease-out;}
+.section.visible{opacity:1;transform:translateY(0);}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.section-num{width:30px;height:30px;border-radius:50%;background:var(--ruby-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0;}
+.section-title{font-size:20px;font-weight:800;color:var(--text-main);}
+
+.product-link-box{display:flex;justify-content:space-between;align-items:center;background:var(--ruby-bg);border:1px solid var(--ruby);border-radius:14px;padding:16px 18px;font-weight:700;color:var(--ruby-dark);margin-bottom:14px;transition:transform .15s ease-out, background .2s;}
+.product-link-box:hover{background:#F9D9DF;transform:scale(1.01);}
+.product-link-box:active{transform:scale(0.98);}
+.product-link-box span.arrow{font-size:20px;}
+
+.alert{border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.6;margin-top:12px;}
+.alert-ruby{background:var(--ruby-bg);border:1px solid var(--ruby);color:#8E1D35;}
+.alert-gold{background:var(--gold-bg);border:1px solid var(--gold);color:#8A6B14;}
+
+.flight-card{border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px;}
+.flight-header{background:linear-gradient(120deg,#1D1416,#33191F);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:700;}
+.flight-header .code{color:var(--gold);}
+.flight-body{background:#fff;padding:20px 18px;}
+.flight-route{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.flight-route .airport{text-align:center;}
+.flight-route .airport .code{font-size:30px;font-weight:800;color:var(--text-main);}
+.flight-route .airport .city{font-size:14px;color:var(--text-sub);margin-top:2px;}
+.flight-route .mid{flex:1;text-align:center;padding:0 12px;}
+.flight-route .mid .time{font-size:14px;color:var(--text-muted);}
+.flight-route .mid .line{height:2px;background:var(--border);position:relative;margin-top:6px;}
+.flight-route .mid .line::after{content:"✈";position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:16px;}
+.flight-badges{display:flex;flex-wrap:wrap;gap:8px;}
+.badge{font-size:14px;font-weight:600;color:var(--text-sub);background:#FAF5F6;border:1px solid var(--border);padding:5px 10px;border-radius:8px;}
+
+.baggage-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.baggage-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.baggage-card .icon{font-size:24px;margin-bottom:6px;}
+.baggage-card .title{font-size:15px;font-weight:700;color:var(--text-sub);margin-bottom:4px;}
+.baggage-card .amount{font-size:19px;font-weight:800;color:var(--ruby-dark);}
+.baggage-card .desc{font-size:13px;color:var(--text-muted);margin-top:4px;line-height:1.5;}
+
+.guide-box{border:1.5px solid var(--ruby-dark);border-radius:16px;background:var(--ruby-bg);padding:20px;}
+.guide-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed rgba(142,29,53,0.2);gap:10px;}
+.guide-row:last-child{border-bottom:none;}
+.guide-row .label{color:var(--text-sub);}
+.guide-row .val{font-weight:700;color:var(--ruby-dark);text-align:right;}
+
+.hotel-card{border:2px solid var(--ruby);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);}
+.hotel-header{background:linear-gradient(120deg,var(--ruby),#E0537A);color:#fff;padding:10px 18px;font-size:14.5px;font-weight:700;display:flex;justify-content:space-between;align-items:center;}
+.hotel-body{background:#fff;padding:16px 18px;}
+.hotel-name{font-size:19px;font-weight:800;color:var(--text-main);}
+
+.incl-card{border-radius:14px;padding:16px;font-size:15.5px;line-height:1.75;background:var(--gold-bg);border:1px solid var(--gold);}
+.incl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#8A6B14;}
+
+.tour-table-wrap{overflow-x:auto;border-radius:16px;box-shadow:var(--shadow);}
+.tour-table{width:100%;border-collapse:collapse;background:#fff;min-width:640px;}
+.tour-table th{background:linear-gradient(120deg,var(--ruby),#E0537A);color:#fff;padding:12px 8px;font-size:13.5px;font-weight:700;text-align:center;}
+.tour-table td{padding:10px 8px;text-align:center;font-size:13.5px;border-bottom:1px solid var(--border);color:var(--text-sub);}
+.tour-table tr:last-child td{border-bottom:none;}
+.tour-table td.name{text-align:left;font-weight:700;color:var(--ruby-dark);}
+.tour-table td.price{font-weight:800;color:var(--text-main);}
+
+.exchange-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:#fff;box-shadow:var(--shadow);}
+.exchange-box .ex-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed var(--border);}
+.exchange-box .ex-row:last-child{border-bottom:none;}
+.rate-box{margin-top:12px;background:var(--ruby-bg);border-radius:12px;padding:14px 16px;font-size:14.5px;color:#8E1D35;line-height:1.8;}
+.rate-box b{color:#5E1424;}
+
+.weather-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
+.weather-card{flex:0 0 auto;width:106px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 8px;text-align:center;box-shadow:var(--shadow);}
+.weather-card .date{font-size:13.5px;font-weight:700;color:var(--text-sub);margin-bottom:6px;}
+.weather-card .day{font-size:12px;color:var(--text-muted);margin-bottom:6px;}
+.weather-card .icon{font-size:26px;margin-bottom:8px;}
+.weather-card .high{font-size:17px;font-weight:800;color:var(--ruby);}
+.weather-card .low{font-size:14px;color:var(--text-muted);margin-top:2px;}
+
+.prep-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.prep-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.prep-card .icon{font-size:22px;margin-bottom:6px;}
+.prep-card .title{font-weight:700;font-size:15.5px;color:var(--ruby-dark);margin-bottom:6px;}
+.prep-card ul{padding-left:16px;font-size:15px;color:var(--text-sub);line-height:1.75;}
+
+@media (max-width:480px){
+  .container{padding-left:14px;padding-right:14px;}
+  .trip-band-inner{grid-template-columns:repeat(2,1fr);gap:14px;padding:16px 12px;}
+  .baggage-grid,.prep-grid{grid-template-columns:1fr;}
+  .header-title{font-size:26px;}
+  .header-inner{padding:38px 18px 32px;}
+  .flight-badges{gap:6px;}
+  .badge{font-size:12.5px;padding:4px 8px;}
+}
+@media (max-width:400px){
+  .guide-row,.exchange-box .ex-row{flex-direction:column;align-items:flex-start;gap:2px;}
+  .guide-row .val,.exchange-box .ex-row .val{text-align:left;}
+}
+
+.footer{width:100%;background:#1D1416;padding:32px 20px;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;text-align:center;}
+.footer-agent{color:#fff;font-size:17px;font-weight:700;margin-bottom:6px;}
+.footer-sub{color:rgba(255,255,255,0.55);font-size:14.5px;margin-bottom:18px;}
+.footer-btns{display:flex;justify-content:center;gap:10px;}
+.footer-btn{padding:10px 20px;border-radius:12px;font-weight:700;font-size:15.5px;transition:transform .15s ease-out;}
+.footer-btn:active{transform:scale(0.97);}
+.footer-btn.tel{background:var(--ruby);color:#fff;}
+.footer-btn.kakao{background:#FEE500;color:#391B1B;}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="agent-info">담당 <b>이경진 실장</b> · 모두투어 투어콕</div>
+    <div class="top-btns">
+      <a class="top-btn" href="tel:1544-5714">📞 전화상담</a>
+      <a class="top-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡</a>
+    </div>
+  </div>
+</div>
+
+<div class="header">
+  <div class="header-inner">
+    <span class="header-tag">TRAVEL CONFIRMATION</span>
+    <div class="header-title">🌃 홍콩·마카오 여행 확정서</div>
+    <div class="header-subtitle">인천국제공항 출발 · 2박 4일 · HONG KONG·MACAU 2026</div>
+    <div class="header-names">홍영옥님</div><br>
+    <a class="header-cta" href="https://www.modetour.com/package/105158068?MLoc=99&Pnum=105158068&ANO=4547682&sno=C2181215&thru=crs" target="_blank">🔗 여행상품 확인하기</a>
+  </div>
+</div>
+
+<div class="trip-band">
+  <div class="trip-band-inner">
+    <div class="trip-item"><div class="label">출발일</div><div class="value">2026.09.24(목)</div></div>
+    <div class="trip-item"><div class="label">귀국일</div><div class="value">2026.09.27(일)</div></div>
+    <div class="trip-item"><div class="label">일정</div><div class="value">2박 4일</div></div>
+    <div class="trip-item"><div class="label">투어타입</div><div class="value">패키지</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 상품 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">1</div><div class="section-title">상품 안내</div></div>
+    <a class="product-link-box" href="https://www.modetour.com/package/105158068?MLoc=99&Pnum=105158068&ANO=4547682&sno=C2181215&thru=crs" target="_blank">
+      <span>모두투어 홍콩·마카오 패키지 상품 바로가기</span>
+      <span class="arrow">↗</span>
+    </a>
+    <div class="alert alert-ruby">
+      ✔ <b>인천공항 미팅이 없습니다.</b> 개별적으로 이스타항공 카운터에서 티켓팅 후 출발해 주세요.
+    </div>
+  </div>
+
+  <!-- 인천공항 체크인 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">인천공항 체크인 안내</div></div>
+    <div class="alert alert-gold" style="margin-top:0;">
+      본 구간은 <b>공항 미팅이 없습니다.</b> 인천공항 <b>제1여객터미널(T1), 체크인카운터 F22~G13</b>에서 이스타항공(ZE861) 티켓팅을 진행해 주세요. 항공기 출발(20:10) 기준 <b>3시간 전</b> 공항 도착을 권장드립니다.
+    </div>
+  </div>
+
+  <!-- 항공편 정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">항공편 정보</div></div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>출발편 · 이스타항공</span><span class="code">ZE861</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 09.24(목) 20:10</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">HKG</div><div class="city">홍콩 · 09.24(목) 22:45</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 이스타항공</span>
+          <span class="badge">위탁 15kg</span>
+          <span class="badge">기내 10kg</span>
+          <span class="badge">기내식 없음</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>귀국편 · 이스타항공</span><span class="code">ZE862</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">HKG</div><div class="city">홍콩 · 09.27(일) 00:05</div></div>
+          <div class="mid"><div class="time">직항(심야)</div><div class="line"></div></div>
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 09.27(일) 04:55</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 이스타항공</span>
+          <span class="badge">위탁 15kg</span>
+          <span class="badge">기내 10kg</span>
+          <span class="badge">기내식 없음</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 수하물 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">수하물 안내</div></div>
+    <div class="baggage-grid">
+      <div class="baggage-card">
+        <div class="icon">🧳</div>
+        <div class="title">위탁수하물</div>
+        <div class="amount">15kg · 1개</div>
+        <div class="desc">성인/아동 기준, 3면의 합 203cm 이내<br>유아 10kg + 유모차 등 추가 허용</div>
+      </div>
+      <div class="baggage-card">
+        <div class="icon">🎒</div>
+        <div class="title">기내수하물</div>
+        <div class="amount">합 10kg 이내</div>
+        <div class="desc">캐리어 21인치(40×20×55cm) + 개인휴대품(35×15×40cm) 포함</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 현지 가이드 & 행사정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">현지 가이드 & 행사 정보</div></div>
+    <div class="guide-box">
+      <div class="guide-row"><span class="label">홍콩 가이드</span><span class="val">김태중(남)<br>85264629897</span></div>
+      <div class="guide-row"><span class="label">마카오 가이드</span><span class="val">박영준(남)<br>85362803304</span></div>
+      <div class="guide-row"><span class="label">현지 비상연락처</span><span class="val">전송현 실장<br>85265007887</span></div>
+      <div class="guide-row"><span class="label">행사인원</span><span class="val">12명</span></div>
+      <div class="guide-row"><span class="label">행사차량</span><span class="val">28인승</span></div>
+    </div>
+  </div>
+
+  <!-- 투숙 호텔 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">투숙 호텔</div></div>
+    <div class="hotel-card">
+      <div class="hotel-header"><span>🏨 전 일정</span></div>
+      <div class="hotel-body"><div class="hotel-name">리갈 리버사이드</div></div>
+    </div>
+  </div>
+
+  <!-- 불포함 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">불포함 사항</div></div>
+    <div class="incl-card">
+      <div class="head">✘ 불포함사항</div>
+      가이드/기사 경비: <b>$40/인</b> (성인·아동 동일)
+    </div>
+  </div>
+
+  <!-- 선택관광 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">선택관광 안내</div></div>
+    <div class="tour-table-wrap">
+      <table class="tour-table">
+        <tr>
+          <th>선택관광명</th><th>통화</th><th>성인</th><th>아동</th><th>소요<br>시간</th><th>최소<br>인원</th><th>가이드<br>동행</th><th>미참여시<br>대기장소</th>
+        </tr>
+        <tr><td class="name">[MD추천] 홍콩 나이트시티투어</td><td>$</td><td class="price">30</td><td class="price">30</td><td>120분</td><td>6명</td><td>동행</td><td>전용차량 또는 택시(인원 적을 경우)로 호텔이동, 여권으로 개별체크인</td></tr>
+        <tr><td class="name">[MD추천] 홍콩 마담투소</td><td>$</td><td class="price">30</td><td class="price">30</td><td>40분</td><td>6명</td><td>동행</td><td>피크갤러리아 자유시간(가이드 미동행)</td></tr>
+        <tr><td class="name">[MD추천] 마카오 BIG2<br>(마카오타워+윈분수쇼)</td><td>$</td><td class="price">45</td><td class="price">45</td><td>60분</td><td>6명</td><td>동행</td><td>마카오타워 1층 자유시간 / 전용버스 내 대기(가이드 미동행)</td></tr>
+      </table>
+    </div>
+    <div class="alert alert-gold">
+      💡 선택관광은 최소 6명이 모여야 진행됩니다. 관심 있으신 코스가 있으면 현지 가이드님과 상의해 주세요.
+    </div>
+  </div>
+
+  <!-- 환전 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">환전 안내</div></div>
+    <div class="exchange-box">
+      <div class="ex-row"><span>가이드·기사경비 / 선택관광</span><span style="font-weight:700;">미국달러(USD) 지불 기준</span></div>
+      <div class="ex-row"><span>개인경비</span><span style="font-weight:700;">홍콩달러(HKD) 환전 권장</span></div>
+    </div>
+    <div class="alert alert-gold">
+      💵 가이드/기사경비와 선택관광은 <b>미국달러(USD)</b>로 준비해 주시고, 시내 쇼핑·식사 등 <b>개인경비는 홍콩달러(HKD)</b>로 환전하시는 걸 권장드립니다.
+    </div>
+    <div class="rate-box">
+      💱 참고용 환율 정보(변동될 수 있으니 출발 전 다시 확인해 주세요)<br>
+      · 1 홍콩달러(HKD) ≈ 한국돈 175~180원 내외<br>
+      · <b>한국돈 100,000원 ≈ 홍콩달러 555~570HKD</b> 정도<br>
+      · 1 미국달러(USD) ≈ 홍콩달러 7.75~7.85HKD 정도(홍콩은 페그제로 변동폭이 작아요)<br>
+      환전소나 현지 ATM에서 실제 적용 환율은 이보다 다소 차이가 있을 수 있어요.
+    </div>
+  </div>
+
+  <!-- 날씨 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">일자별 날씨 정보</div></div>
+    <div class="weather-row">
+      <div class="weather-card">
+        <div class="date">9/24(목)</div>
+        <div class="day">출국일</div>
+        <div class="icon">⛅</div>
+        <div class="high">31℃</div>
+        <div class="low">27℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">9/25(금)</div>
+        <div class="day">홍콩</div>
+        <div class="icon">🌦️</div>
+        <div class="high">30℃</div>
+        <div class="low">26℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">9/26(토)</div>
+        <div class="day">마카오</div>
+        <div class="icon">⛅</div>
+        <div class="high">30℃</div>
+        <div class="low">26℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">9/27(일)</div>
+        <div class="day">귀국일</div>
+        <div class="icon">⛅</div>
+        <div class="high">30℃</div>
+        <div class="low">26℃</div>
+      </div>
+    </div>
+    <div class="alert alert-gold">
+      ☀️ 9월 하순 홍콩·마카오는 여전히 고온다습한 늦여름 날씨(26~31℃)입니다. 오후 소나기가 잦으니 우산을 챙기시면 좋아요. 위 기온은 평년 평균 참고값이며, 출발 며칠 전 다시 확인해 드릴게요.
+    </div>
+  </div>
+
+  <!-- 준비물 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">11</div><div class="section-title">여행 준비물</div></div>
+    <div class="prep-grid">
+      <div class="prep-card">
+        <div class="icon">👕</div>
+        <div class="title">옷차림</div>
+        <ul>
+          <li>반팔·얇은 옷(고온다습 대비)</li>
+          <li>실내 냉방 대비 얇은 겉옷</li>
+          <li>편한 운동화(도보 관광 多)</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">💵</div>
+        <div class="title">현금 · 결제</div>
+        <ul>
+          <li>가이드경비용 USD($40)</li>
+          <li>개인경비용 홍콩달러(HKD)</li>
+          <li>해외결제 가능 카드</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">☔</div>
+        <div class="title">우천 대비</div>
+        <ul>
+          <li>휴대용 우산 또는 우비</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🎒</div>
+        <div class="title">기타 준비물</div>
+        <ul>
+          <li>여권, 이티켓·바우처 캡처본</li>
+          <li>선크림·모자·선글라스</li>
+          <li>보조배터리</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-agent">담당 이경진 실장</div>
+    <div class="footer-sub">홍영옥님의 즐거운 홍콩·마카오 여행을 응원합니다 🌃</div>
+    <div class="footer-btns">
+      <a class="footer-btn tel" href="tel:1544-5714">📞 1544-5714</a>
+      <a class="footer-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 투어콕 카카오톡 채널</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.1});
+sections.forEach(s=>observer.observe(s));
+</script>
+
+</body>
+</html>
