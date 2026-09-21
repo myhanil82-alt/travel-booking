@@ -111,6 +111,14 @@ img{max-width:100%;display:block;}
 .incl-card{border-radius:14px;padding:16px;font-size:15.5px;line-height:1.75;background:var(--gold-bg);border:1px solid var(--gold);}
 .incl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#8A6B14;}
 
+.tour-table-wrap{overflow-x:auto;border-radius:16px;box-shadow:var(--shadow);}
+.tour-table{width:100%;border-collapse:collapse;background:#fff;min-width:640px;}
+.tour-table th{background:linear-gradient(120deg,var(--ruby),#E0537A);color:#fff;padding:12px 8px;font-size:13.5px;font-weight:700;text-align:center;}
+.tour-table td{padding:10px 8px;text-align:center;font-size:13.5px;border-bottom:1px solid var(--border);color:var(--text-sub);}
+.tour-table tr:last-child td{border-bottom:none;}
+.tour-table td.name{text-align:left;font-weight:700;color:var(--ruby-dark);}
+.tour-table td.price{font-weight:800;color:var(--text-main);}
+
 .exchange-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:#fff;box-shadow:var(--shadow);}
 .exchange-box .ex-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed var(--border);}
 .exchange-box .ex-row:last-child{border-bottom:none;}
@@ -297,9 +305,27 @@ img{max-width:100%;display:block;}
     </div>
   </div>
 
+  <!-- 선택관광 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">선택관광 안내</div></div>
+    <div class="tour-table-wrap">
+      <table class="tour-table">
+        <tr>
+          <th>선택관광명</th><th>통화</th><th>성인</th><th>아동</th><th>소요<br>시간</th><th>최소<br>인원</th><th>가이드<br>동행</th><th>미참여시<br>대기장소</th>
+        </tr>
+        <tr><td class="name">[MD추천] 홍콩 나이트시티투어</td><td>$</td><td class="price">30</td><td class="price">30</td><td>120분</td><td>6명</td><td>동행</td><td>전용차량 또는 택시(인원 적을 경우)로 호텔이동, 여권으로 개별체크인</td></tr>
+        <tr><td class="name">[MD추천] 홍콩 마담투소</td><td>$</td><td class="price">30</td><td class="price">30</td><td>40분</td><td>6명</td><td>동행</td><td>피크갤러리아 자유시간(가이드 미동행)</td></tr>
+        <tr><td class="name">[MD추천] 마카오 BIG2<br>(마카오타워+윈분수쇼)</td><td>$</td><td class="price">45</td><td class="price">45</td><td>60분</td><td>6명</td><td>동행</td><td>마카오타워 1층 자유시간 / 전용버스 내 대기(가이드 미동행)</td></tr>
+      </table>
+    </div>
+    <div class="alert alert-gold">
+      💡 선택관광은 최소 6명이 모여야 진행됩니다. 관심 있으신 코스가 있으면 현지 가이드님과 상의해 주세요.
+    </div>
+  </div>
+
   <!-- 환전 안내 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">8</div><div class="section-title">환전 안내</div></div>
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">환전 안내</div></div>
     <div class="exchange-box">
       <div class="ex-row"><span>가이드·기사경비 / 선택관광</span><span style="font-weight:700;">미국달러(USD) 지불 기준</span></div>
       <div class="ex-row"><span>개인경비</span><span style="font-weight:700;">홍콩달러(HKD) 환전 권장</span></div>
@@ -318,7 +344,7 @@ img{max-width:100%;display:block;}
 
   <!-- 날씨 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">9</div><div class="section-title">일자별 날씨 정보</div></div>
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">일자별 날씨 정보</div></div>
     <div class="weather-row">
       <div class="weather-card">
         <div class="date">9/23(수)</div>
@@ -356,7 +382,7 @@ img{max-width:100%;display:block;}
 
   <!-- 준비물 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">10</div><div class="section-title">여행 준비물</div></div>
+    <div class="section-head"><div class="section-num">11</div><div class="section-title">여행 준비물</div></div>
     <div class="prep-grid">
       <div class="prep-card">
         <div class="icon">👕</div>
