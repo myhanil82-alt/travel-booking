@@ -31,6 +31,14 @@ body{font-family:'Pretendard',sans-serif;background:linear-gradient(180deg,var(-
 a{text-decoration:none;color:inherit;}
 img{max-width:100%;display:block;}
 
+.urgent-banner{width:100%;background:#B02E2E;padding:18px 16px;}
+.urgent-inner{max-width:var(--max-w);margin:0 auto;color:#fff;}
+.urgent-inner .title{font-weight:800;font-size:17px;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.urgent-inner .item{font-size:15.5px;line-height:1.7;margin-bottom:8px;padding-left:4px;}
+.urgent-inner .item:last-child{margin-bottom:0;}
+.urgent-inner .item b{font-weight:900;text-decoration:underline;text-underline-offset:3px;}
+.urgent-inner .passport{font-size:19px;}
+
 .top-bar{width:100%;background:rgba(45,35,20,0.92);backdrop-filter:blur(6px);padding:10px 20px;}
 .top-bar-inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
 .agent-info{color:#FBF1E4;font-size:15px;font-weight:500;}
@@ -107,9 +115,16 @@ img{max-width:100%;display:block;}
 .baggage-card .title{font-size:15px;font-weight:700;color:var(--text-sub);margin-bottom:4px;}
 .baggage-card .amount{font-size:19px;font-weight:800;color:var(--ochre-dark);}
 
-.pending-box{border:1.5px dashed var(--gold);border-radius:16px;background:#fff;box-shadow:var(--shadow);padding:20px;}
-.pending-box .head{font-weight:800;font-size:16px;color:#8A5E0E;margin-bottom:8px;}
-.pending-box ul{padding-left:18px;font-size:15px;color:var(--text-sub);line-height:1.85;}
+.guide-box{border:1.5px solid var(--ochre-dark);border-radius:16px;background:var(--ochre-bg);padding:20px;}
+.guide-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed rgba(143,93,30,0.2);gap:10px;}
+.guide-row:last-child{border-bottom:none;}
+.guide-row .label{color:var(--text-sub);}
+.guide-row .val{font-weight:700;color:var(--ochre-dark);text-align:right;}
+
+.hotel-card{border:2px solid var(--ochre);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:14px;}
+.hotel-header{background:linear-gradient(120deg,var(--ochre),#DDA758);color:#fff;padding:10px 18px;font-size:14.5px;font-weight:700;display:flex;justify-content:space-between;align-items:center;}
+.hotel-body{background:#fff;padding:16px 18px;}
+.hotel-name{font-size:18px;font-weight:800;color:var(--text-main);}
 
 .incl-card{border-radius:14px;padding:16px;font-size:15.5px;line-height:1.75;background:var(--sky-bg);border:1px solid var(--sky);}
 .incl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#1F4E68;}
@@ -122,18 +137,31 @@ img{max-width:100%;display:block;}
 .quarantine-box .head{font-weight:800;font-size:17px;color:#1F4E68;margin-bottom:10px;}
 .quarantine-box a.linkbtn{display:inline-block;margin-top:8px;background:var(--sky);color:#fff;font-weight:700;font-size:14.5px;padding:8px 16px;border-radius:10px;margin-right:8px;}
 
+.tip-box{background:#fff;border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);padding:6px 18px;margin-top:12px;}
+.tip-item{display:flex;gap:10px;padding:12px 0;border-bottom:1px solid var(--border);font-size:14.5px;color:var(--text-sub);line-height:1.6;}
+.tip-item:last-child{border-bottom:none;}
+.tip-item .num{width:22px;height:22px;border-radius:50%;background:var(--ochre);color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+
+.tour-table-wrap{overflow-x:auto;border-radius:16px;box-shadow:var(--shadow);}
+.tour-table{width:100%;border-collapse:collapse;background:#fff;min-width:640px;}
+.tour-table th{background:linear-gradient(120deg,var(--ochre),#DDA758);color:#fff;padding:12px 8px;font-size:13px;font-weight:700;text-align:center;}
+.tour-table td{padding:9px 8px;text-align:center;font-size:13px;border-bottom:1px solid var(--border);color:var(--text-sub);}
+.tour-table tr:last-child td{border-bottom:none;}
+.tour-table td.name{text-align:left;font-weight:700;color:var(--ochre-dark);}
+.tour-table td.price{font-weight:800;color:var(--text-main);}
+
 .exchange-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:#fff;box-shadow:var(--shadow);}
 .exchange-box .ex-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed var(--border);}
 .exchange-box .ex-row:last-child{border-bottom:none;}
 
 .weather-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
 .weather-card{flex:0 0 auto;width:106px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 8px;text-align:center;box-shadow:var(--shadow);}
-.weather-card.est{opacity:0.75;border-style:dashed;}
 .weather-card .date{font-size:13.5px;font-weight:700;color:var(--text-sub);margin-bottom:6px;}
 .weather-card .day{font-size:12px;color:var(--text-muted);margin-bottom:6px;}
 .weather-card .icon{font-size:26px;margin-bottom:8px;}
 .weather-card .high{font-size:17px;font-weight:800;color:var(--ochre);}
 .weather-card .low{font-size:14px;color:var(--text-muted);margin-top:2px;}
+.weather-card .rain{font-size:12px;color:var(--sky);margin-top:4px;}
 
 .prep-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 .prep-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
@@ -151,8 +179,9 @@ img{max-width:100%;display:block;}
   .badge{font-size:12.5px;padding:4px 8px;}
 }
 @media (max-width:400px){
-  .exchange-box .ex-row{flex-direction:column;align-items:flex-start;gap:2px;}
-  .exchange-box .ex-row .val{text-align:left;}
+  .meeting-row,.guide-row,.exchange-box .ex-row{flex-direction:column;align-items:flex-start;gap:2px;}
+  .meeting-row .val,.guide-row .val,.exchange-box .ex-row .val{text-align:left;}
+  .meeting-time{font-size:20px;}
 }
 
 .footer{width:100%;background:#1C1710;padding:32px 20px;}
@@ -167,6 +196,15 @@ img{max-width:100%;display:block;}
 </style>
 </head>
 <body>
+
+<!-- 명절연휴 긴급공지 -->
+<div class="urgent-banner">
+  <div class="urgent-inner">
+    <div class="title">🚨 명절 연휴 기간 필독 안내</div>
+    <div class="item">① 여행 가시는 날짜가 명절 연휴로 많은 고객님들이 붐비는 상황입니다. 공항은 <b>무조건 최소 3시간 전 도착</b>으로 진행해 주세요.</div>
+    <div class="item">② 자택에서 출발 전 반드시 <span class="passport"><b>여권</b></span>!!! 잘 챙기셨는지 확인해 주시고, 혹시라도 신여권 발급하신 분들은 내 가방에 있는 여권이 사용할 수 없는 구여권은 아닌지 반드시 재확인해 주세요!!</div>
+  </div>
+</div>
 
 <div class="top-bar">
   <div class="top-bar-inner">
@@ -215,8 +253,8 @@ img{max-width:100%;display:block;}
   <div class="section">
     <div class="section-head"><div class="section-num">2</div><div class="section-title">인천공항 미팅 안내</div></div>
     <div class="meeting-box">
-      <div class="meeting-time">2026.09.24(목) 13:40</div>
-      <div class="meeting-row"><span class="label">장소</span><span class="val">인천국제공항 제1터미널<br>N카운터 14번 출구 앞<br>9~10번 모두투어 테이블</span></div>
+      <div class="meeting-time">2026.09.24(목) 14:35</div>
+      <div class="meeting-row"><span class="label">장소</span><span class="val">인천국제공항 제1터미널<br>3층 출국장 서편<br>14번 출구 앞(N카운터 옆 창측)<br>여행사카운터 9~10번 테이블 "모두투어"</span></div>
     </div>
   </div>
 
@@ -272,7 +310,7 @@ img{max-width:100%;display:block;}
       <div class="baggage-card">
         <div class="icon">🧳</div>
         <div class="title">위탁수하물</div>
-        <div class="amount">23kg</div>
+        <div class="amount">23kg · 1개</div>
       </div>
       <div class="baggage-card">
         <div class="icon">🎒</div>
@@ -282,22 +320,34 @@ img{max-width:100%;display:block;}
     </div>
   </div>
 
-  <!-- 추후 확인 항목 -->
+  <!-- 현지 가이드 & 행사정보 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">5</div><div class="section-title">추후 안내 예정 항목</div></div>
-    <div class="pending-box">
-      <div class="head">📅 여행 출발 2~3일 전 일정표에서 확인 가능</div>
-      <ul>
-        <li>현지 가이드 정보(성함·연락처)</li>
-        <li>행사인원 · 행사차량</li>
-        <li>투숙호텔</li>
-      </ul>
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">현지 가이드 & 행사 정보</div></div>
+    <div class="guide-box">
+      <div class="guide-row"><span class="label">가이드명</span><span class="val">쵸카(남)</span></div>
+      <div class="guide-row"><span class="label">가이드 연락처</span><span class="val">976-9501-2434</span></div>
+      <div class="guide-row"><span class="label">현지 비상연락처</span><span class="val">976-8811-5825</span></div>
+      <div class="guide-row"><span class="label">행사인원</span><span class="val">10명</span></div>
+      <div class="guide-row"><span class="label">행사차량</span><span class="val">25인승 카운티</span></div>
+    </div>
+  </div>
+
+  <!-- 투숙 호텔 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">투숙 호텔</div></div>
+    <div class="hotel-card">
+      <div class="hotel-header"><span>⛺ 테를지</span><span>2박</span></div>
+      <div class="hotel-body"><div class="hotel-name">테를지 신게르</div></div>
+    </div>
+    <div class="hotel-card" style="margin-bottom:0;">
+      <div class="hotel-header"><span>🏨 울란바타르</span><span>1박</span></div>
+      <div class="hotel-body"><div class="hotel-name">몽골 MS인터네셔날호텔</div></div>
     </div>
   </div>
 
   <!-- 불포함 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">6</div><div class="section-title">불포함 사항</div></div>
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">불포함 사항</div></div>
     <div class="incl-card">
       <div class="head">✘ 불포함사항</div>
       ▣ 1인당 전 일정 <b>$40</b>의 가이드/기사 경비를 현지에서 지불해야 합니다. (성인·아동 동일)
@@ -306,20 +356,20 @@ img{max-width:100%;display:block;}
 
   <!-- 몽골 입국 유의사항 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">7</div><div class="section-title">몽골 입국 시 유의사항</div></div>
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">몽골 입국 시 유의사항</div></div>
     <div class="warn-box" style="margin-bottom:0;">
       <div class="title">🛃 최근 강화된 몽골 입국심사 관련 필수 확인</div>
       <ul>
         <li><b>왕복 항공권 소지</b> 필수</li>
         <li>입국심사 방문 목적 질문 시 반드시 <b>"여행"</b>이라고 답변</li>
-        <li><b>정확한 호텔명 숙지</b> — 투숙호텔은 일정표 확인 후 기억해 주세요</li>
+        <li><b>정확한 호텔명 숙지</b>(테를지 신게르 / 몽골 MS인터네셔날호텔)</li>
       </ul>
     </div>
   </div>
 
   <!-- 한국 입국 검역 안내 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">8</div><div class="section-title">한국 입국 검역(Q-CODE) 안내</div></div>
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">한국 입국 검역(Q-CODE) 안내</div></div>
     <div class="quarantine-box">
       <div class="head">🩺 몽골은 "중점검역관리지역" — Q-CODE 제출 필수</div>
       몽골 지역을 방문·체류·경유한 경우 <b>대한민국 입국 시 Q-CODE(건강상태 질문서)를 검역관에게 제출</b>해야 합니다.
@@ -332,66 +382,120 @@ img{max-width:100%;display:block;}
     </div>
   </div>
 
+  <!-- 현지 여행 유의사항 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">현지 여행 유의사항</div></div>
+    <div class="tip-box">
+      <div class="tip-item"><div class="num">1</div><div>현지행사는 한국어가 가능한 현지인(몽골인) 가이드가 진행합니다.</div></div>
+      <div class="tip-item"><div class="num">2</div><div>몽골은 한국의 중고버스를 수입해 관광버스로 사용합니다. 최대한 깨끗하고 연식이 낮은 차량으로 배정하고 있으니 다소 불편하시더라도 양해 부탁드립니다.</div></div>
+      <div class="tip-item"><div class="num">3</div><div>장거리 이동과 비포장 도로가 많습니다. 포장도로라도 상태가 좋지 않을 수 있으니 <b>차량 탑승 시 안전벨트를 꼭 착용</b>해 주세요.</div></div>
+      <div class="tip-item"><div class="num">4</div><div>현지 식사는 육류가 메인이며 양고기 특유의 향이 거부감을 줄 수 있습니다. 밑반찬이 별도 제공되지 않으니 <b>개인반찬을 준비</b>해 주세요.</div></div>
+      <div class="tip-item"><div class="num">5</div><div>게르캠프에는 다양한 벌레가 있을 수 있습니다. 예민하신 분은 기피제를 준비해 주세요.</div></div>
+      <div class="tip-item"><div class="num">6</div><div>호텔·게르 투숙 시 당일 상황(날씨·전기·보일러 가동 여부)에 따라 냉/온수 사용에 변동이 생길 수 있습니다.</div></div>
+    </div>
+    <div class="alert alert-ochre" style="margin-top:12px;">
+      🏕 몽골은 전체적으로 <b>관광 인프라가 부족한 지역</b>입니다. 다른 지역에 비해 여행시설이 낙후되어 있고 서비스도 부족할 수 있으며, 특히 게르 이용 시 불편함이 있을 수 있습니다. 답답한 도시에서 벗어나 <b>광활한 대자연이 주는 신비함과 아름다움을 즐기고 오겠다는 마음</b>으로 여행을 즐겨주시기 바랍니다.
+    </div>
+  </div>
+
+  <!-- 선택관광 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">11</div><div class="section-title">선택관광 안내</div></div>
+    <div class="tour-table-wrap">
+      <table class="tour-table">
+        <tr>
+          <th>선택관광명</th><th>통화</th><th>성인</th><th>아동</th><th>소요<br>시간</th><th>최소<br>인원</th><th>가이드<br>동행</th><th>미참여시<br>대기장소</th>
+        </tr>
+        <tr><td class="name">노마딕홀스쇼 관람</td><td>$</td><td class="price">40</td><td class="price">40</td><td>60분</td><td>4명</td><td>동행</td><td>게르 캠프 내 자유시간</td></tr>
+        <tr><td class="name">낙타 트레킹<br>(엘승타사르하이)</td><td>$</td><td class="price">30</td><td class="price">30</td><td>30분</td><td>1명</td><td>동행</td><td>게르 캠프 내 자유시간</td></tr>
+        <tr><td class="name">테를지 승마체험</td><td>$</td><td class="price">30</td><td class="price">30</td><td>30분</td><td>1명</td><td>동행안함</td><td>테를지 초원 자유시간</td></tr>
+        <tr><td class="name">몽골 마사지 1시간</td><td>$</td><td class="price">30</td><td class="price">30</td><td>60분</td><td>1명</td><td>동행</td><td>휴게실 휴식 또는 자유시간</td></tr>
+        <tr><td class="name">몽골 전통 공연</td><td>$</td><td class="price">30</td><td class="price">30</td><td>60분</td><td>1명</td><td>동행</td><td>휴게실 휴식 또는 자유시간</td></tr>
+        <tr><td class="name">양꼬치바베큐</td><td>$</td><td class="price">20</td><td class="price">0</td><td>60분</td><td>1명</td><td>동행안함</td><td>-</td></tr>
+        <tr><td class="name">노마딕 체험</td><td>$</td><td class="price">30</td><td class="price">0</td><td>60분</td><td>1명</td><td>동행안함</td><td>-</td></tr>
+        <tr><td class="name">푸르공 은하수 헌팅</td><td>$</td><td class="price">30</td><td class="price">30</td><td>60분</td><td>4명</td><td>동행</td><td>캠프</td></tr>
+        <tr><td class="name">캠프파이어</td><td>$</td><td class="price">10</td><td class="price">10</td><td>60분</td><td>10명</td><td>동행안함</td><td>-</td></tr>
+      </table>
+    </div>
+    <div class="alert alert-gold">
+      💡 대부분의 선택관광은 1~4명이면 진행 가능해서 참여하기 편해요. 관심 있으신 코스가 있으면 현지 가이드님과 상의해 주세요.
+    </div>
+  </div>
+
   <!-- 환전 안내 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">9</div><div class="section-title">환전 안내</div></div>
+    <div class="section-head"><div class="section-num">12</div><div class="section-title">환전 안내</div></div>
     <div class="exchange-box">
       <div class="ex-row"><span>가이드·기사 경비</span><span style="font-weight:700;">1인 $40 (USD)</span></div>
+      <div class="ex-row"><span>선택관광 경비</span><span style="font-weight:700;">미국달러(USD) 지불 기준</span></div>
       <div class="ex-row"><span>현지 화폐</span><span style="font-weight:700;">몽골 투그릭(한국 환전 불가)</span></div>
     </div>
     <div class="alert alert-gold">
-      💵 가이드·기사 경비는 <b>1인당 USD $40</b>로 준비해 주세요. 몽골 화폐 <b>"투그릭"은 한국에서 환전이 불가</b>하니, 개인경비가 필요하시면 준비하신 달러를 현지공항에서 투그릭으로 환전해 사용하시면 됩니다.
+      💵 <b>환전이 필요</b>합니다. 가이드/기사 경비(1인 $40)와 선택관광 경비를 고려해서 <b>미국달러(USD)</b>로 준비해 주세요. 몽골 화폐 <b>"투그릭"은 한국에서 환전이 불가</b>하니, 개인경비용 소액이 필요하시면 준비하신 달러를 <b>현지공항에서 투그릭으로 환전</b>해 사용하시면 됩니다.
     </div>
   </div>
 
   <!-- 날씨 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">10</div><div class="section-title">일자별 날씨 정보</div></div>
+    <div class="section-head"><div class="section-num">13</div><div class="section-title">일자별 날씨 정보</div></div>
     <div class="weather-row">
       <div class="weather-card">
         <div class="date">9/24(목)</div>
         <div class="day">출국일</div>
         <div class="icon">⛅</div>
-        <div class="high">9℃</div>
+        <div class="high">7℃</div>
         <div class="low">2℃</div>
+        <div class="rain">강수 30%</div>
       </div>
-      <div class="weather-card est">
+      <div class="weather-card">
         <div class="date">9/25(금)</div>
         <div class="day">테를지</div>
-        <div class="icon">☀️</div>
-        <div class="high">~13℃</div>
-        <div class="low">~0℃</div>
+        <div class="icon">🌤️</div>
+        <div class="high">10℃</div>
+        <div class="low">2℃</div>
+        <div class="rain">강수 15%</div>
       </div>
-      <div class="weather-card est">
+      <div class="weather-card">
         <div class="date">9/26(토)</div>
         <div class="day">테를지</div>
-        <div class="icon">☀️</div>
-        <div class="high">~14℃</div>
-        <div class="low">~0℃</div>
+        <div class="icon">🌨️</div>
+        <div class="high">10℃</div>
+        <div class="low">0℃</div>
+        <div class="rain">강설 15%</div>
       </div>
-      <div class="weather-card est">
+      <div class="weather-card">
         <div class="date">9/27(일)</div>
         <div class="day">귀국일</div>
-        <div class="icon">⛅</div>
-        <div class="high">~12℃</div>
-        <div class="low">~1℃</div>
+        <div class="icon">🌨️</div>
+        <div class="high">11℃</div>
+        <div class="low">0℃</div>
+        <div class="rain">강설 5%</div>
       </div>
     </div>
-    <div class="alert alert-sky">
-      🐎 9/24는 실제 예보 기준(고9℃/저2℃)이며, 그 이후는 평년 참고값이에요(예보 범위 초과). <b>밤에는 영하권까지 떨어질 수 있어 일교차가 매우 큰 지역</b>이니 레이어드 옷차림이 필수입니다. 9월 하순 몽골은 이미 초겨울 기온이니 방한 대비를 단단히 해주세요. 출발 며칠 전 다시 확인해 드릴게요.
+    <div class="alert alert-red">
+      🚨 실제 예보 기준으로 반영했어요. <b>낮 최고 7~11℃, 밤에는 0℃ 안팎까지 떨어지는 초겨울 날씨</b>이며, <b>9/26~27은 약한 눈 소식</b>도 있습니다. 일교차가 매우 크니 <b>레이어드 옷차림과 방한 대비가 필수</b>예요. 출발 며칠 전 다시 확인해 드릴게요.
     </div>
   </div>
 
   <!-- 준비물 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">11</div><div class="section-title">몽골 간단 준비물</div></div>
+    <div class="section-head"><div class="section-num">14</div><div class="section-title">몽골 준비물</div></div>
     <div class="prep-grid">
       <div class="prep-card">
-        <div class="icon">🧴</div>
-        <div class="title">세면도구 & 의상</div>
+        <div class="icon">🧥</div>
+        <div class="title">방한 의류 (필수)</div>
         <ul>
-          <li>게르 숙박 대비 간단 세면도구</li>
-          <li>날씨에 맞는 의상, 긴바지, 후리스</li>
+          <li>두꺼운 패딩 또는 방한 겉옷</li>
+          <li>기모 내복, 목도리, 장갑, 방한모자</li>
+          <li>여벌 양말, 방한부츠 또는 등산화</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🧴</div>
+        <div class="title">세면도구 & 기타 의상</div>
+        <ul>
+          <li>게르 숙박 시 사용할 간단 세면도구</li>
+          <li>얇은 옷 겹쳐입기용(일교차 대비)</li>
         </ul>
       </div>
       <div class="prep-card">
@@ -399,7 +503,7 @@ img{max-width:100%;display:block;}
         <div class="title">개인 상비약</div>
         <ul>
           <li>타이레놀, 지사제, 장염약, 소화제</li>
-          <li>벌레기피제</li>
+          <li>벌레기피제, 핫팩</li>
         </ul>
       </div>
       <div class="prep-card">
@@ -407,7 +511,7 @@ img{max-width:100%;display:block;}
         <div class="title">음식</div>
         <ul>
           <li>완전 밀봉된 소량의 김치</li>
-          <li>튜브용 고추장, 김, 참치캔</li>
+          <li>튜브용 고추장, 김, 참치캔, 즉석국</li>
         </ul>
       </div>
       <div class="prep-card">
@@ -416,7 +520,14 @@ img{max-width:100%;display:block;}
         <ul>
           <li>핸드크림, 립밤, 선글라스, 선크림, 모자</li>
           <li>물티슈, <b>침낭(추위 대비)</b>, 드라이기</li>
-          <li>미국달러(USD) 현금</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">💵</div>
+        <div class="title">현금 · 결제</div>
+        <ul>
+          <li>가이드경비/선택관광용 USD 현금</li>
+          <li>여권, 멀티어댑터</li>
         </ul>
       </div>
     </div>
