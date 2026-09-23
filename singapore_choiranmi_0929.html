@@ -78,6 +78,14 @@ img{max-width:100%;display:block;}
 .alert-coral{background:var(--coral-bg);border:1px solid var(--coral);color:#B23A3A;}
 .alert-gold{background:var(--gold-bg);border:1px solid var(--gold);color:#8A6B00;}
 
+.counter-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:var(--gold-bg);}
+.step{display:flex;gap:12px;margin-bottom:14px;}
+.step:last-child{margin-bottom:0;}
+.step-num{width:26px;height:26px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0;}
+.step-text{font-size:16px;color:var(--text-main);line-height:1.6;}
+.step-text b{color:#8A6B00;}
+.step-text a{color:#8A6B00;text-decoration:underline;font-weight:700;}
+
 .meeting-box{border:1.5px solid var(--marina);border-radius:16px;background:#fff;padding:20px;box-shadow:var(--shadow);}
 .meeting-time{font-size:24px;font-weight:800;color:var(--marina-dark);text-align:center;margin-bottom:14px;}
 .meeting-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed var(--border);gap:10px;}
@@ -224,9 +232,24 @@ img{max-width:100%;display:block;}
     </div>
   </div>
 
+  <!-- 온라인 체크인 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">온라인 체크인 안내</div></div>
+    <div class="counter-box">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">제주항공 사이트(<a href="https://www.jejuair.net" target="_blank">jejuair.net</a>)에서 <b>여행출발 24시간 전</b> 예약번호(<b>TDVFFQ</b>)로 온라인 체크인을 진행하시면 <b>무료 좌석지정 및 탑승 QR코드</b>를 받으실 수 있습니다.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">온라인 진행이 어려우신 분들은 <b>당일 공항에서</b> 체크인하시면 됩니다.</div>
+      </div>
+    </div>
+  </div>
+
   <!-- 김해공항 미팅 안내 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">2</div><div class="section-title">김해공항 미팅 안내</div></div>
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">김해공항 미팅 안내</div></div>
     <div class="meeting-box">
       <div class="meeting-time">2026.09.29(화) 15:05</div>
       <div class="meeting-row"><span class="label">장소</span><span class="val">김해국제공항 국제선 3층<br>오른쪽 모두투어 안내판 앞<br>모두투어 미팅테이블</span></div>
@@ -235,7 +258,7 @@ img{max-width:100%;display:block;}
 
   <!-- 항공편 정보 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">3</div><div class="section-title">항공편 정보</div></div>
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">항공편 정보</div></div>
 
     <div class="flight-card">
       <div class="flight-header"><span>출발편 · 제주항공</span><span class="code">7C2661</span></div>
@@ -276,7 +299,7 @@ img{max-width:100%;display:block;}
 
   <!-- 수하물 안내 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">4</div><div class="section-title">수하물 안내</div></div>
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">수하물 안내</div></div>
     <div class="baggage-grid">
       <div class="baggage-card">
         <div class="icon">🧳</div>
@@ -295,7 +318,7 @@ img{max-width:100%;display:block;}
 
   <!-- 현지 가이드 & 행사정보 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">5</div><div class="section-title">현지 가이드 & 행사 정보</div></div>
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">현지 가이드 & 행사 정보</div></div>
     <div class="guide-box">
       <div class="guide-row"><span class="label">가이드명</span><span class="val">이동욱 부장(Jacky/남)</span></div>
       <div class="guide-row"><span class="label">가이드 연락처</span><span class="val">+65 9845-2120</span></div>
@@ -307,7 +330,7 @@ img{max-width:100%;display:block;}
 
   <!-- 투숙 호텔 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">6</div><div class="section-title">투숙 호텔</div></div>
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">투숙 호텔</div></div>
     <div class="hotel-card">
       <div class="hotel-header">🏨 전 일정</div>
       <div class="hotel-body"><div class="hotel-name">빌리지 호텔 센토사</div></div>
@@ -316,7 +339,7 @@ img{max-width:100%;display:block;}
 
   <!-- 센토사 빌리지호텔 수영장 공지 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">7</div><div class="section-title">센토사 빌리지호텔 수영장 유지보수 안내</div></div>
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">센토사 빌리지호텔 수영장 유지보수 안내</div></div>
     <div class="pool-box">
       <div class="head">🏊 일부 수영장 이용 불가 안내</div>
       <div class="pool-row"><span>기간</span><span><b>8/14 ~ 11/16(예정)</b></span></div>
@@ -327,7 +350,7 @@ img{max-width:100%;display:block;}
 
   <!-- 불포함 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">8</div><div class="section-title">불포함 사항</div></div>
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">불포함 사항</div></div>
     <div class="incl-card">
       <div class="head">✘ 불포함사항</div>
       - 1인 전일정 <b>US$40</b>(성인·아동 동일) 가이드/기사 경비를 현지에서 지불하셔야 합니다.<br>
@@ -337,7 +360,7 @@ img{max-width:100%;display:block;}
 
   <!-- 선택관광 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">9</div><div class="section-title">선택관광 안내</div></div>
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">선택관광 안내</div></div>
     <div class="tour-table-wrap">
       <table class="tour-table">
         <tr>
@@ -359,7 +382,7 @@ img{max-width:100%;display:block;}
 
   <!-- 환전 안내 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">10</div><div class="section-title">환전 안내</div></div>
+    <div class="section-head"><div class="section-num">11</div><div class="section-title">환전 안내</div></div>
     <div class="exchange-box">
       <div class="ex-row"><span>가이드경비 / 선택관광</span><span style="font-weight:700;">미국달러(USD) 지불 기준</span></div>
       <div class="ex-row"><span>개인경비</span><span style="font-weight:700;">싱가포르달러(SGD) 또는 신용카드</span></div>
@@ -377,7 +400,7 @@ img{max-width:100%;display:block;}
 
   <!-- 날씨 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">11</div><div class="section-title">일자별 날씨 정보</div></div>
+    <div class="section-head"><div class="section-num">12</div><div class="section-title">일자별 날씨 정보</div></div>
     <div class="weather-row">
       <div class="weather-card">
         <div class="date">9/29(화)</div>
@@ -422,7 +445,7 @@ img{max-width:100%;display:block;}
 
   <!-- 준비물 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">12</div><div class="section-title">여행 준비물</div></div>
+    <div class="section-head"><div class="section-num">13</div><div class="section-title">여행 준비물</div></div>
     <div class="prep-grid">
       <div class="prep-card">
         <div class="icon">👕</div>
