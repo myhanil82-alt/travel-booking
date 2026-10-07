@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>괌 여행 확정서 - 손아영님 가족</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+  --emerald:#0F9E8E;
+  --emerald-dark:#0A6E62;
+  --emerald-bg:#E9F8F5;
+  --coral:#FF7A5C;
+  --coral-bg:#FFF1EC;
+  --gold:#FDB022;
+  --gold-bg:#FFF8EC;
+  --sky-top:#E3F5F3;
+  --sky-bottom:#F5FBF8;
+  --text-main:#1E2A2C;
+  --text-sub:#54696A;
+  --text-muted:#8AA1A1;
+  --card-bg:#FFFFFF;
+  --border:#DEEEEA;
+  --shadow:0 4px 20px rgba(15,158,142,0.10);
+  --max-w:680px;
+  --red:#E24C4C;
+  --red-bg:#FEF0F0;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Pretendard',sans-serif;background:linear-gradient(180deg,var(--sky-top) 0%, var(--sky-bottom) 45%, #FAFEFC 100%);color:var(--text-main);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+
+.top-bar{width:100%;background:rgba(10,110,98,0.92);backdrop-filter:blur(6px);padding:10px 20px;}
+.top-bar-inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.agent-info{color:#EAFAF7;font-size:15px;font-weight:500;}
+.agent-info b{color:#fff;}
+.top-btns{display:flex;gap:8px;}
+.top-btn{font-size:14.5px;font-weight:600;padding:6px 12px;border-radius:20px;background:rgba(255,255,255,0.15);color:#fff;transition:transform .15s ease-out, background .2s;}
+.top-btn:hover{background:rgba(255,255,255,0.28);}
+.top-btn:active{transform:scale(0.97);}
+.top-btn.kakao{background:#FEE500;color:#391B1B;}
+
+.header{width:100%;padding:28px 16px 24px;}
+.header-inner{max-width:var(--max-w);margin:0 auto;text-align:center;position:relative;z-index:1;border-radius:24px;overflow:hidden;padding:48px 24px 40px;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(15,158,142,0.32), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(255,122,92,0.18), transparent 50%),
+    linear-gradient(160deg,#04352F 0%, #0A6E62 55%, #0F9E8E 100%);
+  box-shadow:0 12px 32px rgba(4,53,47,0.28);}
+.header-tag{display:inline-block;font-size:14px;font-weight:700;letter-spacing:2.5px;color:var(--gold);border:1px solid rgba(253,176,34,0.5);padding:6px 16px;border-radius:20px;margin-bottom:18px;}
+.header-title{font-size:34px;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-0.5px;text-shadow:0 2px 12px rgba(0,0,0,0.4);}
+.header-subtitle{font-size:16px;color:rgba(255,255,255,0.85);font-weight:500;margin-bottom:28px;letter-spacing:0.5px;}
+.header-names{font-size:22px;font-weight:700;color:#fff;background:rgba(255,255,255,0.1);display:inline-block;padding:10px 24px;border-radius:14px;margin-bottom:22px;}
+.header-cta{display:inline-flex;align-items:center;gap:8px;background:var(--coral);color:#fff;font-weight:700;font-size:17px;padding:13px 26px;border-radius:12px;box-shadow:0 8px 20px rgba(255,122,92,0.4);transition:transform .2s ease-out, box-shadow .2s;}
+.header-cta:hover{transform:translateY(-2px) scale(1.02);}
+.header-cta:active{transform:scale(0.97);}
+
+.trip-band{width:100%;background:linear-gradient(90deg,var(--emerald),#3DBBA9);}
+.trip-band-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);text-align:center;padding:20px 16px;}
+.trip-item .label{font-size:13px;color:rgba(255,255,255,0.85);font-weight:600;margin-bottom:4px;}
+.trip-item .value{font-size:17px;color:#fff;font-weight:800;}
+
+.container{max-width:var(--max-w);margin:0 auto;padding:36px 20px 60px;}
+.section{margin-bottom:36px;opacity:0;transform:translateY(16px);transition:opacity .5s ease-out, transform .5s ease-out;}
+.section.visible{opacity:1;transform:translateY(0);}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.section-num{width:30px;height:30px;border-radius:50%;background:var(--emerald-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0;}
+.section-title{font-size:20px;font-weight:800;color:var(--text-main);}
+
+.product-link-box{display:flex;justify-content:space-between;align-items:center;background:var(--emerald-bg);border:1px solid var(--emerald);border-radius:14px;padding:16px 18px;font-weight:700;color:var(--emerald-dark);margin-bottom:14px;transition:transform .15s ease-out, background .2s;}
+.product-link-box:hover{background:#DBF3EE;transform:scale(1.01);}
+.product-link-box:active{transform:scale(0.98);}
+.product-link-box span.arrow{font-size:20px;}
+
+.alert{border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.6;margin-top:12px;}
+.alert-emerald{background:var(--emerald-bg);border:1px solid var(--emerald);color:#0A6E62;}
+.alert-coral{background:var(--coral-bg);border:1px solid var(--coral);color:#B23F26;}
+.alert-gold{background:var(--gold-bg);border:1px solid var(--gold);color:#8A5E0E;}
+.alert-red{background:var(--red-bg);border:1px solid var(--red);color:#B02E2E;}
+
+.counter-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:var(--gold-bg);}
+.step{display:flex;gap:12px;margin-bottom:14px;}
+.step:last-child{margin-bottom:0;}
+.step-num{width:26px;height:26px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0;}
+.step-text{font-size:16px;color:var(--text-main);line-height:1.6;}
+.step-text b{color:#8A5E0E;}
+.step-text a{color:#8A5E0E;text-decoration:underline;font-weight:700;}
+
+.flight-card{border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px;}
+.flight-header{background:linear-gradient(120deg,#04352F,#0A6E62);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:700;}
+.flight-header .code{color:var(--gold);}
+.flight-body{background:#fff;padding:20px 18px;}
+.flight-route{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.flight-route .airport{text-align:center;}
+.flight-route .airport .code{font-size:30px;font-weight:800;color:var(--text-main);}
+.flight-route .airport .city{font-size:14px;color:var(--text-sub);margin-top:2px;}
+.flight-route .mid{flex:1;text-align:center;padding:0 12px;}
+.flight-route .mid .time{font-size:14px;color:var(--text-muted);}
+.flight-route .mid .line{height:2px;background:var(--border);position:relative;margin-top:6px;}
+.flight-route .mid .line::after{content:"✈";position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:16px;}
+.flight-badges{display:flex;flex-wrap:wrap;gap:8px;}
+.badge{font-size:14px;font-weight:600;color:var(--text-sub);background:#F3FAF8;border:1px solid var(--border);padding:5px 10px;border-radius:8px;}
+
+.baggage-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.baggage-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.baggage-card .icon{font-size:24px;margin-bottom:6px;}
+.baggage-card .title{font-size:15px;font-weight:700;color:var(--text-sub);margin-bottom:4px;}
+.baggage-card .amount{font-size:19px;font-weight:800;color:var(--emerald-dark);}
+.baggage-card .desc{font-size:14px;color:var(--text-muted);margin-top:4px;line-height:1.5;}
+
+.guide-box{border:1.5px solid var(--emerald-dark);border-radius:16px;background:var(--emerald-bg);padding:20px;}
+.guide-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed rgba(10,110,98,0.2);gap:10px;}
+.guide-row:last-child{border-bottom:none;}
+.guide-row .label{color:var(--text-sub);}
+.guide-row .val{font-weight:700;color:var(--emerald-dark);text-align:right;}
+
+.hotel-card{border:2px solid var(--emerald);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);}
+.hotel-header{background:linear-gradient(120deg,var(--emerald),#3DBBA9);color:#fff;padding:10px 18px;font-size:14.5px;font-weight:700;display:flex;justify-content:space-between;align-items:center;}
+.hotel-body{background:#fff;padding:20px 18px;}
+.hotel-name{font-size:20px;font-weight:800;color:var(--text-main);margin-bottom:6px;}
+.hotel-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed var(--border);}
+.hotel-row:last-child{border-bottom:none;}
+.hotel-row .label{color:var(--text-sub);font-weight:500;}
+.hotel-row .val{color:var(--text-main);font-weight:700;text-align:right;}
+
+.incl-card{border-radius:14px;padding:16px;font-size:15.5px;line-height:1.75;background:var(--coral-bg);border:1px solid var(--coral);}
+.incl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#B23F26;}
+
+.visa-box{border:1.5px solid var(--red);border-radius:16px;background:var(--red-bg);padding:20px;}
+.visa-box .head{font-weight:800;font-size:17px;color:#B02E2E;margin-bottom:10px;}
+.visa-box a.linkbtn{display:inline-block;margin-top:10px;background:var(--red);color:#fff;font-weight:700;font-size:15.5px;padding:9px 18px;border-radius:10px;}
+
+.exchange-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:#fff;box-shadow:var(--shadow);}
+.exchange-box .ex-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed var(--border);gap:10px;}
+.exchange-box .ex-row:last-child{border-bottom:none;}
+.exchange-box .ex-row .val{font-weight:700;text-align:right;}
+
+.weather-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
+.weather-card{flex:0 0 auto;width:106px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 8px;text-align:center;box-shadow:var(--shadow);}
+.weather-card .date{font-size:13.5px;font-weight:700;color:var(--text-sub);margin-bottom:6px;}
+.weather-card .day{font-size:12px;color:var(--text-muted);margin-bottom:6px;}
+.weather-card .icon{font-size:26px;margin-bottom:8px;}
+.weather-card .high{font-size:17px;font-weight:800;color:var(--coral);}
+.weather-card .low{font-size:14px;color:var(--text-muted);margin-top:2px;}
+.weather-card .rain{font-size:12px;color:var(--emerald);margin-top:4px;}
+
+.roam-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.roam-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.roam-card .icon{font-size:22px;margin-bottom:6px;}
+.roam-card .title{font-weight:700;font-size:15.5px;color:var(--emerald-dark);margin-bottom:6px;}
+.roam-card .price{font-weight:800;font-size:16px;color:var(--text-main);margin-bottom:4px;}
+.roam-card .desc{font-size:14px;color:var(--text-sub);line-height:1.6;}
+
+.prep-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.prep-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.prep-card .icon{font-size:22px;margin-bottom:6px;}
+.prep-card .title{font-weight:700;font-size:15.5px;color:var(--emerald-dark);margin-bottom:6px;}
+.prep-card ul{padding-left:16px;font-size:15px;color:var(--text-sub);line-height:1.75;}
+
+@media (max-width:480px){
+  .trip-band-inner{grid-template-columns:repeat(2,1fr);gap:14px;}
+  .baggage-grid,.prep-grid,.roam-grid{grid-template-columns:1fr;}
+  .header-title{font-size:28px;}
+}
+
+.footer{width:100%;background:#04352F;padding:32px 20px;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;text-align:center;}
+.footer-agent{color:#fff;font-size:17px;font-weight:700;margin-bottom:6px;}
+.footer-sub{color:rgba(255,255,255,0.55);font-size:14.5px;margin-bottom:18px;}
+.footer-btns{display:flex;justify-content:center;gap:10px;}
+.footer-btn{padding:10px 20px;border-radius:12px;font-weight:700;font-size:15.5px;transition:transform .15s ease-out;}
+.footer-btn:active{transform:scale(0.97);}
+.footer-btn.tel{background:var(--coral);color:#fff;}
+.footer-btn.kakao{background:#FEE500;color:#391B1B;}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="agent-info">담당 <b>이경진 실장</b> · 모두투어 투어콕</div>
+    <div class="top-btns">
+      <a class="top-btn" href="tel:1544-5714">📞 전화상담</a>
+      <a class="top-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡</a>
+    </div>
+  </div>
+</div>
+
+<div class="header">
+  <div class="header-inner">
+    <span class="header-tag">TRAVEL CONFIRMATION</span>
+    <div class="header-title">🏝️ 괌 여행 확정서</div>
+    <div class="header-subtitle">인천국제공항 출발 · 3박 5일 · GUAM 2026</div>
+    <div class="header-names">손아영님 가족</div><br>
+    <a class="header-cta" href="https://www.modetour.com/package/107980412?MLoc=99&Pnum=107980412&ANO=1772510&sno=C2181215&thru=crs" target="_blank">🔗 여행상품 확인하기</a>
+  </div>
+</div>
+
+<div class="trip-band">
+  <div class="trip-band-inner">
+    <div class="trip-item"><div class="label">출발일</div><div class="value">2026.10.08(목)</div></div>
+    <div class="trip-item"><div class="label">귀국일</div><div class="value">2026.10.12(월)</div></div>
+    <div class="trip-item"><div class="label">일정</div><div class="value">3박 5일</div></div>
+    <div class="trip-item"><div class="label">투어타입</div><div class="value">패키지</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 상품 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">1</div><div class="section-title">상품 안내</div></div>
+    <a class="product-link-box" href="https://www.modetour.com/package/107980412?MLoc=99&Pnum=107980412&ANO=1772510&sno=C2181215&thru=crs" target="_blank">
+      <span>모두투어 괌 패키지 상품 바로가기</span>
+      <span class="arrow">↗</span>
+    </a>
+    <div class="alert alert-emerald">
+      ✔ 에어서울 이용 상품입니다.
+    </div>
+  </div>
+
+  <!-- 인천공항 체크인 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">인천공항 체크인 안내</div></div>
+    <div class="counter-box">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">본 항공편은 <b>좌석 미지정</b>이며, <b>온라인 체크인이 불가</b>합니다. <b>출발 당일 인천공항 에어서울 카운터</b>에서 직접 체크인·좌석 배정 및 수하물 위탁을 진행해 주세요.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">항공기 출발(19:25) 기준 <b>2~3시간 전</b> 공항 도착을 권장드립니다. 좌석 미지정 항공편 특성상 조금 더 여유있게 도착하시는 것이 좋습니다.</div>
+      </div>
+    </div>
+    <div class="alert alert-coral">
+      ✈ 저비용항공사(에어서울) 전 노선 공통 — 기내식이 제공되지 않으므로 <b>생수·음료도 제공되지 않습니다.</b> 기내식은 탑승 전 미리 드시거나 면세구역 내에서 구매 후 탑승하시고, 기내에서는 <b>체크카드 사용이 불가</b>하니 신용카드 또는 현금만 준비해 주세요.
+    </div>
+  </div>
+
+  <!-- 항공편 정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">항공편 정보</div></div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>출발편 · 에어서울</span><span class="code">RS101</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 10.08(목) 19:25</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">GUM</div><div class="city">괌 · 10.09(금) 01:00</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 에어서울</span>
+          <span class="badge">위탁 23kg × 2개</span>
+          <span class="badge">기내 10kg</span>
+          <span class="badge">기내식 없음</span>
+          <span class="badge">좌석 미지정</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>귀국편 · 에어서울</span><span class="code">RS102</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">GUM</div><div class="city">괌 · 10.12(월) 02:00</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 10.12(월) 05:50</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 에어서울</span>
+          <span class="badge">위탁 23kg × 2개</span>
+          <span class="badge">기내 10kg</span>
+          <span class="badge">기내식 없음</span>
+          <span class="badge">좌석 미지정</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-gold">
+      ℹ 귀국편은 <b>괌 현지시간 새벽 02:00 출발</b>입니다. 호텔 체크아웃(자정 12시) 이후 공항으로 이동하셔야 하니 일정에 참고해 주세요.
+    </div>
+  </div>
+
+  <!-- 수하물 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">수하물 안내</div></div>
+    <div class="baggage-grid">
+      <div class="baggage-card">
+        <div class="icon">🧳</div>
+        <div class="title">위탁수하물</div>
+        <div class="amount">23kg 이하 × 2개</div>
+        <div class="desc">성인/아동 기준<br>삼변의 합 203cm 이내</div>
+      </div>
+      <div class="baggage-card">
+        <div class="icon">🎒</div>
+        <div class="title">기내수하물</div>
+        <div class="amount">10kg 이하 · 1개</div>
+        <div class="desc">세 변의 합 115cm 이하<br>(가로 40×세로 20×높이 55cm 미만)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 현지 공항 미팅 & 가이드 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">현지 공항 미팅 & 가이드 정보</div></div>
+    <div class="alert alert-emerald">
+      📍 괌 공항 <b>입국장을 나와서 우측에 위치한 모두투어 데스크 앞</b>에서 미팅합니다. <b>녹색 셔츠</b>를 착용한 가이드가 기다리고 계십니다. 입국장을 나와 <b>주차장 방향으로 가시면 미팅이 어려우니</b> 반드시 우측 데스크 쪽으로 이동해 주세요.
+    </div>
+    <div class="guide-box" style="margin-top:14px;">
+      <div class="guide-row"><span class="label">가이드명</span><span class="val">이홍</span></div>
+      <div class="guide-row"><span class="label">가이드 연락처</span><span class="val">1-671-687-7749</span></div>
+      <div class="guide-row"><span class="label">현지 비상연락처</span><span class="val">고진성 팀장<br>1-671-688-8144</span></div>
+      <div class="guide-row"><span class="label">행사인원</span><span class="val">14명</span></div>
+      <div class="guide-row"><span class="label">행사차량</span><span class="val">15인승</span></div>
+    </div>
+    <div class="alert alert-gold" style="margin-top:14px;">
+      ☎ <b>괌 현지 비상연락처</b> — 모두괌 사무실: 001-1-671-647-8882 / 대표 가이드 고진성 팀장: 001-1-671-688-8144
+    </div>
+  </div>
+
+  <!-- 투숙 호텔 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">투숙 호텔</div></div>
+    <div class="hotel-card">
+      <div class="hotel-header"><span>🏨 전 일정</span><span>3박</span></div>
+      <div class="hotel-body">
+        <div class="hotel-name">호시노리조트 리조나레 괌<br><span style="font-size:14px;font-weight:500;color:var(--text-sub);">(구. 온워드 비치 리조트 괌)</span></div>
+        <div class="hotel-row"><span class="label">체크아웃</span><span class="val">마지막날 자정 12:00</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 불포함 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">불포함 사항</div></div>
+    <div class="incl-card">
+      <div class="head">✘ 불포함사항</div>
+      가이드 경비: 성인 <b>$30</b> / 아동 <b>$10</b> (현지 지불)
+    </div>
+  </div>
+
+  <!-- 괌 세관신고서 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">괌 세관신고서 필수 작성</div></div>
+    <div class="visa-box">
+      <div class="head">🚨 괌 전자세관신고서(Guam Mandatory Customs Declaration Form) 작성 필수</div>
+      괌 입국을 위해 전자세관신고서 작성이 <b>의무화</b>되어 있습니다. <b>가족당 1명만 작성</b>하시면 됩니다.
+      <br><br>
+      <a class="linkbtn" href="https://traveller.guamedf.landing.cards/" target="_blank">🔗 세관신고서 작성하기</a>
+      <a class="linkbtn" href="https://drive.google.com/file/d/1gPTKJasJORcibyrfb_buTuTbuxZ8Xr5F/view?usp=drive_link" target="_blank" style="margin-left:8px;background:#fff;color:#B02E2E;border:1px solid var(--red);">📖 작성법 가이드 보기</a>
+    </div>
+  </div>
+
+  <!-- 환전 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">환전 안내</div></div>
+    <div class="exchange-box">
+      <div class="ex-row"><span>가이드 경비</span><span class="val">미국달러(USD) 현지 지불<br>성인 $30 / 아동 $10</span></div>
+      <div class="ex-row"><span>개인경비</span><span class="val">괌은 미국령으로 전 지역 미국달러(USD) 사용</span></div>
+      <div class="ex-row"><span>참고 환율</span><span class="val">1만원 ≈ $7 내외 (환율에 따라 변동)</span></div>
+      <div class="ex-row"><span>결제 팁</span><span class="val">대부분 매장·호텔 카드 결제 가능, 가이드 경비·팁은 현금(USD) 권장</span></div>
+    </div>
+    <div class="alert alert-gold">
+      💵 괌은 미국령이라 <b>달러(USD) 하나로 모든 결제</b>가 가능해 환전이 간단합니다. 가이드 경비(성인 $30/아동 $10)와 매너팁, 간단한 간식비 등을 고려해 <b>여유 있게 소액 달러 현금</b>을 준비해 가시는 것을 권장드립니다. 참고 환율은 변동될 수 있으니 출발 전 다시 확인해 주세요.
+    </div>
+  </div>
+
+  <!-- 날씨 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">일자별 날씨 정보</div></div>
+    <div class="weather-row">
+      <div class="weather-card">
+        <div class="date">10/8(목)</div>
+        <div class="day">출국일</div>
+        <div class="icon">⛅</div>
+        <div class="high">31℃</div>
+        <div class="low">26℃</div>
+        <div class="rain">강수 30%</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">10/9(금)</div>
+        <div class="day">괌</div>
+        <div class="icon">🌦️</div>
+        <div class="high">30℃</div>
+        <div class="low">26℃</div>
+        <div class="rain">강수 40%</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">10/10(토)</div>
+        <div class="day">괌</div>
+        <div class="icon">🌦️</div>
+        <div class="high">30℃</div>
+        <div class="low">26℃</div>
+        <div class="rain">강수 40%</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">10/11(일)</div>
+        <div class="day">괌</div>
+        <div class="icon">⛅</div>
+        <div class="high">30℃</div>
+        <div class="low">26℃</div>
+        <div class="rain">강수 35%</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">10/12(월)</div>
+        <div class="day">귀국일</div>
+        <div class="icon">🌦️</div>
+        <div class="high">30℃</div>
+        <div class="low">26℃</div>
+        <div class="rain">강수 35%</div>
+      </div>
+    </div>
+    <div class="alert alert-gold">
+      ☀️ 10월 괌은 평균 26~31℃로 연중 가장 습한 시기 중 하나이며, 짧고 강한 스콜성 소나기가 자주 내립니다. 위 기온·강수는 평년 참고값이며, 출발 며칠 전 다시 확인해 드릴게요.
+    </div>
+  </div>
+
+  <!-- 데이터 로밍/유심/이심 비교 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">11</div><div class="section-title">데이터 로밍 / 유심 / 이심 비교</div></div>
+    <div class="roam-grid">
+      <div class="roam-card">
+        <div class="icon">📶</div>
+        <div class="title">통신사 로밍</div>
+        <div class="price">1일 약 2만원~</div>
+        <div class="desc">대부분의 한국 통신사 기준, 가장 비싸지만 한국 번호 그대로 사용 가능</div>
+      </div>
+      <div class="roam-card">
+        <div class="icon">📱</div>
+        <div class="title">현지/사전구매 유심</div>
+        <div class="price">1일 약 2,100~3,800원</div>
+        <div class="desc">8일권 기준 1만4천~2만원대. 업체별 가격차가 크므로 비교 후 구매 권장</div>
+      </div>
+      <div class="roam-card">
+        <div class="icon">💳</div>
+        <div class="title">이심(eSIM)</div>
+        <div class="price">로밍 대비 약 30%↓</div>
+        <div class="desc">유심 교체 없이 한국에서 미리 설치 가능, 기간 자유 선택</div>
+      </div>
+      <div class="roam-card">
+        <div class="icon">📡</div>
+        <div class="title">포켓 와이파이</div>
+        <div class="price">업체별 상이</div>
+        <div class="desc">여러 명이 함께 쓸 경우 1인당 비용이 로밍보다 저렴한 경우가 많음</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 준비물 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">12</div><div class="section-title">여행 준비물</div></div>
+    <div class="prep-grid">
+      <div class="prep-card">
+        <div class="icon">📄</div>
+        <div class="title">필수 서류</div>
+        <ul>
+          <li>여권(유효기간 6개월 이상)</li>
+          <li>괌 전자세관신고서 작성 완료 캡처본(가족당 1명)</li>
+          <li>이티켓·바우처 캡처본</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">💵</div>
+        <div class="title">현금 · 결제</div>
+        <ul>
+          <li>가이드 경비용 미국달러 현금(성인$30/아동$10)</li>
+          <li>매너팁·간식비 대비 소액 달러 추가</li>
+          <li>해외결제 가능 카드</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🏊</div>
+        <div class="title">물놀이 준비물</div>
+        <ul>
+          <li>수영복, 래시가드, 비치타월</li>
+          <li>방수팩(휴대폰·여권 보관용)</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🔌</div>
+        <div class="title">전기 · 기타</div>
+        <ul>
+          <li>괌은 미국령 — 전압 110V, Type A/B 플러그(한국과 다름) — 멀티어댑터 필수</li>
+          <li>모자·선글라스·고SPF 자외선차단제</li>
+          <li>상비약(지사제·소화제·멀미약)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-agent">담당 이경진 실장</div>
+    <div class="footer-sub">손아영님 가족의 즐거운 괌 여행을 응원합니다 🏝️</div>
+    <div class="footer-btns">
+      <a class="footer-btn tel" href="tel:1544-5714">📞 1544-5714</a>
+      <a class="footer-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 투어콕 카카오톡 채널</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.1});
+sections.forEach(s=>observer.observe(s));
+</script>
+
+</body>
+</html>
