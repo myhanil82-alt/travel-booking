@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>보라카이 여행 확정서 - 김덕선,김시환님</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+  --forest:#0E9BB5;
+  --forest-dark:#083040;
+  --forest-bg:#EEF9FC;
+  --terracotta:#0E9BB5;
+  --terracotta-bg:#EEF9FC;
+  --gold:#D2A24C;
+  --gold-bg:#FBF4E6;
+  --sky-top:#EFF3EC;
+  --sky-bottom:#F8F6F0;
+  --text-main:#1E2A22;
+  --text-sub:#5C6A5F;
+  --text-muted:#8E9990;
+  --card-bg:#FFFFFF;
+  --border:#E4E9E2;
+  --shadow:0 4px 20px rgba(14,155,181,0.10);
+  --max-w:680px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Pretendard',sans-serif;background:linear-gradient(180deg,var(--sky-top) 0%, var(--sky-bottom) 45%, #FBFAF6 100%);color:var(--text-main);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+
+.top-bar{width:100%;background:rgba(8,48,64,0.92);backdrop-filter:blur(6px);padding:10px 20px;}
+.top-bar-inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.agent-info{color:#EFF7F1;font-size:15px;font-weight:500;}
+.agent-info b{color:#fff;}
+.top-btns{display:flex;gap:8px;}
+.top-btn{font-size:14.5px;font-weight:600;padding:6px 12px;border-radius:20px;background:rgba(255,255,255,0.15);color:#fff;transition:transform .15s ease-out, background .2s;}
+.top-btn:hover{background:rgba(255,255,255,0.28);}
+.top-btn:active{transform:scale(0.97);}
+.top-btn.kakao{background:#FEE500;color:#391B1B;}
+
+.header{width:100%;padding:28px 16px 24px;}
+.header-inner{max-width:var(--max-w);margin:0 auto;text-align:center;position:relative;z-index:1;border-radius:24px;overflow:hidden;padding:48px 24px 40px;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(14,155,181,0.20), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(80,220,240,0.12), transparent 50%),
+    linear-gradient(160deg,#051A22 0%, #083040 55%, #0C4458 100%);
+  box-shadow:0 12px 32px rgba(5,26,34,0.28);}
+.header-tag{display:inline-block;font-size:14px;font-weight:700;letter-spacing:2.5px;color:var(--gold);border:1px solid rgba(210,162,76,0.5);padding:6px 16px;border-radius:20px;margin-bottom:18px;}
+.header-title{font-size:32px;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-0.5px;text-shadow:0 2px 12px rgba(0,0,0,0.4);}
+.header-subtitle{font-size:16px;color:rgba(255,255,255,0.85);font-weight:500;margin-bottom:28px;letter-spacing:0.5px;}
+.header-names{font-size:22px;font-weight:700;color:#fff;background:rgba(255,255,255,0.1);display:inline-block;padding:10px 24px;border-radius:14px;margin-bottom:22px;}
+.header-cta{display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:#fff;font-weight:700;font-size:17px;padding:13px 26px;border-radius:12px;box-shadow:0 8px 20px rgba(14,155,181,0.4);transition:transform .2s ease-out, box-shadow .2s;}
+.header-cta:hover{transform:translateY(-2px) scale(1.02);}
+.header-cta:active{transform:scale(0.97);}
+
+.trip-band{width:100%;background:linear-gradient(90deg,var(--terracotta),#4FC8DD);}
+.trip-band-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);text-align:center;padding:20px 16px;}
+.trip-item .label{font-size:13px;color:rgba(255,255,255,0.85);font-weight:600;margin-bottom:4px;}
+.trip-item .value{font-size:17px;color:#fff;font-weight:800;}
+
+.container{max-width:var(--max-w);margin:0 auto;padding:36px 20px 60px;}
+.section{margin-bottom:36px;opacity:0;transform:translateY(16px);transition:opacity .5s ease-out, transform .5s ease-out;}
+.section.visible{opacity:1;transform:translateY(0);}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.section-num{width:30px;height:30px;border-radius:50%;background:var(--forest-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0;}
+.section-title{font-size:20px;font-weight:800;color:var(--text-main);}
+
+.product-link-box{display:flex;justify-content:space-between;align-items:center;background:var(--forest-bg);border:1px solid var(--forest);border-radius:14px;padding:16px 18px;font-weight:700;color:var(--forest-dark);margin-bottom:14px;transition:transform .15s ease-out, background .2s;}
+.product-link-box:hover{background:#DCF2F7;transform:scale(1.01);}
+.product-link-box:active{transform:scale(0.98);}
+.product-link-box span.arrow{font-size:20px;}
+
+.alert{border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.6;margin-top:12px;}
+.alert-forest{background:var(--forest-bg);border:1px solid var(--forest);color:#083040;}
+.alert-terracotta{background:#FDF1EF;border:1px solid #C1443C;color:#8E2E28;}
+.alert-gold{background:var(--gold-bg);border:1px solid var(--gold);color:#8A6414;}
+
+.meeting-box{border:1.5px solid var(--forest);border-radius:16px;background:var(--forest-bg);padding:20px;}
+.meeting-box .mtime{font-size:22px;font-weight:800;color:var(--forest-dark);margin-bottom:10px;}
+.meeting-box .mrow{display:flex;justify-content:space-between;font-size:15.5px;padding:7px 0;border-bottom:1px dashed rgba(8,48,64,0.15);gap:10px;}
+.meeting-box .mrow:last-child{border-bottom:none;}
+.meeting-box .mrow .label{color:var(--text-sub);}
+.meeting-box .mrow .val{font-weight:700;color:var(--forest-dark);text-align:right;}
+
+.care-box{border:1.5px solid var(--gold);border-radius:16px;background:var(--gold-bg);padding:20px;}
+.care-box .head{font-weight:800;font-size:17px;color:#8A6414;margin-bottom:10px;}
+.care-box ol{padding-left:20px;font-size:15.5px;color:var(--text-main);line-height:1.9;}
+.care-box .note{margin-top:10px;font-size:14px;color:#8A6414;}
+
+.flight-card{border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px;}
+.flight-header{background:linear-gradient(120deg,#051A22,#083040);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:700;}
+.flight-header .code{color:var(--gold);}
+.flight-body{background:#fff;padding:20px 18px;}
+.flight-route{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.flight-route .airport{text-align:center;}
+.flight-route .airport .code{font-size:30px;font-weight:800;color:var(--text-main);}
+.flight-route .airport .city{font-size:14px;color:var(--text-sub);margin-top:2px;}
+.flight-route .mid{flex:1;text-align:center;padding:0 12px;}
+.flight-route .mid .time{font-size:14px;color:var(--text-muted);}
+.flight-route .mid .line{height:2px;background:var(--border);position:relative;margin-top:6px;}
+.flight-route .mid .line::after{content:"✈";position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:16px;}
+.flight-badges{display:flex;flex-wrap:wrap;gap:8px;}
+.badge{font-size:14px;font-weight:600;color:var(--text-sub);background:#F5F8F4;border:1px solid var(--border);padding:5px 10px;border-radius:8px;}
+
+.hotel-card{border:2px solid var(--forest);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:14px;}
+.hotel-header{background:linear-gradient(120deg,var(--forest),#4FC8DD);color:#fff;padding:10px 18px;font-size:14.5px;font-weight:700;display:flex;justify-content:space-between;align-items:center;}
+.hotel-body{background:#fff;padding:16px 18px;}
+.hotel-name{font-size:18px;font-weight:800;color:var(--text-main);}
+
+.incl-card{border-radius:14px;padding:16px;font-size:15.5px;line-height:1.75;background:#FDF1EF;border:1px solid #C1443C;}
+.incl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#8E2E28;}
+.incl-card ul{padding-left:18px;margin-top:6px;}
+
+.visa-box{border:1.5px solid var(--gold);border-radius:16px;background:var(--gold-bg);padding:20px;}
+.visa-box .head{font-weight:800;font-size:17px;color:#8A6414;margin-bottom:10px;}
+.visa-box a.linkbtn{display:inline-block;margin-top:10px;margin-right:8px;background:var(--gold);color:#fff;font-weight:700;font-size:15.5px;padding:9px 18px;border-radius:10px;}
+
+.exchange-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:#fff;box-shadow:var(--shadow);}
+
+.weather-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
+.weather-card{flex:0 0 auto;width:106px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 8px;text-align:center;box-shadow:var(--shadow);}
+.weather-card .date{font-size:13.5px;font-weight:700;color:var(--text-sub);margin-bottom:6px;}
+.weather-card .day{font-size:12px;color:var(--text-muted);margin-bottom:6px;}
+.weather-card .icon{font-size:26px;margin-bottom:8px;}
+.weather-card .high{font-size:17px;font-weight:800;color:var(--forest);}
+.weather-card .low{font-size:14px;color:var(--text-muted);margin-top:2px;}
+
+.prep-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.prep-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.prep-card .icon{font-size:22px;margin-bottom:6px;}
+.prep-card .title{font-weight:700;font-size:15.5px;color:var(--forest-dark);margin-bottom:6px;}
+.prep-card ul{padding-left:16px;font-size:15px;color:var(--text-sub);line-height:1.75;}
+
+@media (max-width:480px){
+  .container{padding-left:14px;padding-right:14px;}
+  .trip-band-inner{grid-template-columns:repeat(2,1fr);gap:14px;padding:16px 12px;}
+  .prep-grid{grid-template-columns:1fr;}
+  .header-title{font-size:24px;}
+  .header-inner{padding:38px 18px 32px;}
+  .flight-badges{gap:6px;}
+  .badge{font-size:12.5px;padding:4px 8px;}
+}
+@media (max-width:400px){
+  .meeting-box .mrow{flex-direction:column;align-items:flex-start;gap:2px;}
+  .meeting-box .mrow .val{text-align:left;}
+}
+
+.footer{width:100%;background:#051A22;padding:32px 20px;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;text-align:center;}
+.footer-agent{color:#fff;font-size:17px;font-weight:700;margin-bottom:6px;}
+.footer-sub{color:rgba(255,255,255,0.55);font-size:14.5px;margin-bottom:18px;}
+.footer-btns{display:flex;justify-content:center;gap:10px;}
+.footer-btn{padding:10px 20px;border-radius:12px;font-weight:700;font-size:15.5px;transition:transform .15s ease-out;}
+.footer-btn:active{transform:scale(0.97);}
+.footer-btn.tel{background:var(--forest);color:#fff;}
+.footer-btn.kakao{background:#FEE500;color:#391B1B;}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="agent-info">담당 <b>이경진 실장</b> · 모두투어 투어콕</div>
+    <div class="top-btns">
+      <a class="top-btn" href="tel:1544-5714">📞 전화상담</a>
+      <a class="top-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡</a>
+    </div>
+  </div>
+</div>
+
+<div class="header">
+  <div class="header-inner">
+    <span class="header-tag">TRAVEL CONFIRMATION</span>
+    <div class="header-title">🏝️ 보라카이 여행 확정서</div>
+    <div class="header-subtitle">인천국제공항 출발 · 3박 4일 · BORACAY 2026</div>
+    <div class="header-names">김덕선 · 김시환님</div><br>
+    <a class="header-cta" href="https://www.modetour.com/package/105379189?MLoc=99&Pnum=105379189&ANO=1772510&sno=C2181215&thru=crs" target="_blank">🔗 여행상품 확인하기</a>
+  </div>
+</div>
+
+<div class="trip-band">
+  <div class="trip-band-inner">
+    <div class="trip-item"><div class="label">출발일</div><div class="value">2026.10.13(화)</div></div>
+    <div class="trip-item"><div class="label">귀국일</div><div class="value">2026.10.16(금)</div></div>
+    <div class="trip-item"><div class="label">일정</div><div class="value">3박 4일</div></div>
+    <div class="trip-item"><div class="label">투어타입</div><div class="value">자유여행</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 상품 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">1</div><div class="section-title">상품 안내</div></div>
+    <a class="product-link-box" href="https://www.modetour.com/package/105379189?MLoc=99&Pnum=105379189&ANO=1772510&sno=C2181215&thru=crs" target="_blank">
+      <span>모두투어 보라카이 자유여행 상품 바로가기</span>
+      <span class="arrow">↗</span>
+    </a>
+    <div class="alert alert-forest">
+      ✔ 트리니티 항공 이용 상품이며, <b>가이드가 동행하지 않는 자유여행</b>입니다. <b>인천공항 미팅이 없으니</b> 개별적으로 체크인 후 출발해 주세요.
+    </div>
+    <div class="alert alert-gold">
+      ⏰ 출발 당일 공항에는 <b>비행기 출발 2~3시간 전까지 반드시 도착</b>해 주세요.
+    </div>
+  </div>
+
+  <!-- 항공편 정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">항공편 정보</div></div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>출발편 · 트리니티 항공</span><span class="code">TW125</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 10.13(화) 08:30</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">KLO</div><div class="city">보라카이(칼리보) · 10.13(화) 12:00</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 트리니티 항공</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>귀국편 · 트리니티 항공</span><span class="code">TW126</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">KLO</div><div class="city">보라카이(칼리보) · 10.16(금) 13:00</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 10.16(금) 18:20</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 트리니티 항공</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 공항~호텔 이동 서비스 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">공항~호텔 이동 서비스 안내</div></div>
+    <div class="meeting-box">
+      <div class="mrow"><span class="label">인천공항 미팅</span><span class="val">없음(개별 출발)</span></div>
+      <div class="mrow"><span class="label">현지공항 이동서비스</span><span class="val">칼리보/보라카이 공항 ↔ 호텔<br>왕복 이동서비스 포함</span></div>
+      <div class="mrow"><span class="label">현지공항 미팅명</span><span class="val">모두투어</span></div>
+    </div>
+    <div class="alert alert-forest">
+      👋 현지공항 도착 후 <b>'모두투어' 미팅명</b>으로 대기 중인 담당자와 만나 호텔까지 이동서비스를 이용하시면 됩니다.
+    </div>
+  </div>
+
+  <!-- 투숙 호텔 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">투숙 호텔</div></div>
+    <div class="hotel-card" style="margin-bottom:0;">
+      <div class="hotel-header"><span>🏨 10/13~10/16</span><span>3박</span></div>
+      <div class="hotel-body"><div class="hotel-name">헤난 팜비치</div></div>
+    </div>
+    <div class="alert alert-gold">
+      💳 체크인 시 <b>데파짓(보증금)</b> 결제가 필요하며, <b>신용카드 / 페소 / 달러만 가능</b>합니다(체크카드 불가).
+    </div>
+    <div class="alert alert-forest">
+      📄 보라카이는 <b>호텔 바우처가 필요하지 않습니다.</b> 체크인 시 현지인 가이드가 체크인을 도와드리며, <b>현지공항 미팅을 원하지 않으실 경우</b> 출발 전 바우처를 미리 요청해서 지참해 주세요.
+    </div>
+  </div>
+
+  <!-- 모두CARE+ 혜택 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">모두CARE+ 혜택 안내</div></div>
+    <div class="care-box">
+      <div class="head">📢 모두CARE+ — 모두투어 단독 프리미엄 자유여행 혜택</div>
+      <ol>
+        <li>예약 후 여행 전/여행 중 <b>1:1 문의</b>(여행 관련 모든 정보)</li>
+        <li><b>투어·스파 등 예약 및 할인 혜택</b> — 현지 식당, 스파, 샵, 투어 예약 및 할인 제공</li>
+        <li><b>헬프 서비스</b> — 문제 발생 시(도난, 병원 등) 24시간 지원</li>
+        <li><b>인천공항 할인쿠폰 증정</b> — 공항 내 식당 할인 혜택</li>
+      </ol>
+      <div class="note">1~3번 혜택은 모두CARE+ 카카오톡 채널 연결 후 이용 가능합니다. 카카오톡에서 채널명 <b>'모두투어 보라카이'</b>로 검색 후 1:1 문의해 주세요.</div>
+    </div>
+  </div>
+
+  <!-- 불포함 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">불포함 사항</div></div>
+    <div class="incl-card">
+      <div class="head">✘ 불포함사항</div>
+      <ul>
+        <li>개인경비, 호텔 벨보이 및 객실 청소원 매너팁</li>
+        <li>식사 시 제공되는 음료 이외의 음료와 주류는 요금을 지불하셔야 합니다</li>
+        <li>현지공항세 <b>900페소</b> 불포함(리턴 시 칼리보 공항에서 보딩패스 발권 후 별도의 현지공항세를 지불하셔야 합니다)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 필리핀 입국 시 면세한도 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">필리핀 입국 시 면세한도 안내</div></div>
+    <div class="visa-box">
+      <div class="head">★ 필리핀 입국 시 면세한도</div>
+      자세한 면세한도 기준은 필리핀 관광부 공식 안내 페이지를 참고해 주세요.
+      <br>
+      <a class="linkbtn" href="https://philippinetourism.co.kr/travel/customs" target="_blank">🔗 필리핀 관광부 면세한도 안내</a>
+    </div>
+  </div>
+
+  <!-- 환전 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">환전 안내</div></div>
+    <div class="exchange-box">
+      💵 호텔 체크인 시 필요한 <b>데파짓(보증금)</b>은 신용카드, 필리핀 페소(PHP), 미국달러(USD) 중 준비해 주시고(체크카드 불가), <b>현지공항세 900페소</b>는 귀국 당일 칼리보 공항에서 현금으로 준비해 주셔야 합니다. 그 외 음료·주류 등 개인경비도 <b>필리핀 페소(PHP)</b> 소액 환전을 권장드리며, 호텔·대형매장에서는 카드 결제도 대부분 가능합니다.
+    </div>
+  </div>
+
+  <!-- 날씨 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">일자별 날씨 정보</div></div>
+    <div class="weather-row">
+      <div class="weather-card">
+        <div class="date">10/13(화)</div>
+        <div class="day">출국일</div>
+        <div class="icon">🌦️</div>
+        <div class="high">31℃</div>
+        <div class="low">25℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">10/14(수)</div>
+        <div class="day">보라카이</div>
+        <div class="icon">⛅</div>
+        <div class="high">30℃</div>
+        <div class="low">25℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">10/15(목)</div>
+        <div class="day">보라카이</div>
+        <div class="icon">🌦️</div>
+        <div class="high">30℃</div>
+        <div class="low">25℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">10/16(금)</div>
+        <div class="day">귀국일</div>
+        <div class="icon">⛅</div>
+        <div class="high">31℃</div>
+        <div class="low">25℃</div>
+      </div>
+    </div>
+    <div class="alert alert-gold">
+      ☀️ 보라카이는 10월에도 평균 25~31℃의 고온다습한 열대기후이며, 짧은 스콜성 소나기가 자주 내립니다. 위 기온은 평년 평균 참고값이며, 출발 며칠 전 다시 확인해 드릴게요.
+    </div>
+  </div>
+
+  <!-- 준비물 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">여행 준비물</div></div>
+    <div class="prep-grid">
+      <div class="prep-card">
+        <div class="icon">👕</div>
+        <div class="title">의류</div>
+        <ul>
+          <li>반팔·통풍 잘 되는 옷(고온다습)</li>
+          <li>우비(스콜성 소나기 대비)</li>
+          <li>수영복, 래쉬가드</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🧴</div>
+        <div class="title">자외선 대비</div>
+        <ul>
+          <li>선크림(SPF 높은 제품), 선글라스</li>
+          <li>모자 또는 양산</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">💵</div>
+        <div class="title">현금 · 결제</div>
+        <ul>
+          <li>호텔 데파짓용 신용카드/페소/달러</li>
+          <li>현지공항세 900페소(현금)</li>
+          <li>개인경비용 필리핀 페소(PHP)</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🎒</div>
+        <div class="title">기타 준비물</div>
+        <ul>
+          <li>여권, 이티켓·바우처 캡처본</li>
+          <li>보조배터리, 멀티 어댑터</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-agent">담당 이경진 실장</div>
+    <div class="footer-sub">김덕선 · 김시환님의 즐거운 보라카이 여행을 응원합니다 🏝️</div>
+    <div class="footer-btns">
+      <a class="footer-btn tel" href="tel:1544-5714">📞 1544-5714</a>
+      <a class="footer-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 투어콕 카카오톡 채널</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.1});
+sections.forEach(s=>observer.observe(s));
+</script>
+
+</body>
+</html>
