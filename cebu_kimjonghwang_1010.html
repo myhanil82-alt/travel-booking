@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>세부 여행 확정서 - 김종황님 일행</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+  --forest:#0E9BB5;
+  --forest-dark:#083040;
+  --forest-bg:#EEF9FC;
+  --terracotta:#0E9BB5;
+  --terracotta-bg:#EEF9FC;
+  --gold:#D2A24C;
+  --gold-bg:#FBF4E6;
+  --sky-top:#EFF3EC;
+  --sky-bottom:#F8F6F0;
+  --text-main:#1E2A22;
+  --text-sub:#5C6A5F;
+  --text-muted:#8E9990;
+  --card-bg:#FFFFFF;
+  --border:#E4E9E2;
+  --shadow:0 4px 20px rgba(14,155,181,0.10);
+  --max-w:680px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Pretendard',sans-serif;background:linear-gradient(180deg,var(--sky-top) 0%, var(--sky-bottom) 45%, #FBFAF6 100%);color:var(--text-main);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+
+.top-bar{width:100%;background:rgba(8,48,64,0.92);backdrop-filter:blur(6px);padding:10px 20px;}
+.top-bar-inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.agent-info{color:#EFF7F1;font-size:15px;font-weight:500;}
+.agent-info b{color:#fff;}
+.top-btns{display:flex;gap:8px;}
+.top-btn{font-size:14.5px;font-weight:600;padding:6px 12px;border-radius:20px;background:rgba(255,255,255,0.15);color:#fff;transition:transform .15s ease-out, background .2s;}
+.top-btn:hover{background:rgba(255,255,255,0.28);}
+.top-btn:active{transform:scale(0.97);}
+.top-btn.kakao{background:#FEE500;color:#391B1B;}
+
+.header{width:100%;padding:28px 16px 24px;}
+.header-inner{max-width:var(--max-w);margin:0 auto;text-align:center;position:relative;z-index:1;border-radius:24px;overflow:hidden;padding:48px 24px 40px;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(14,155,181,0.20), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(80,220,240,0.12), transparent 50%),
+    linear-gradient(160deg,#051A22 0%, #083040 55%, #0C4458 100%);
+  box-shadow:0 12px 32px rgba(5,26,34,0.28);}
+.header-tag{display:inline-block;font-size:14px;font-weight:700;letter-spacing:2.5px;color:var(--gold);border:1px solid rgba(210,162,76,0.5);padding:6px 16px;border-radius:20px;margin-bottom:18px;}
+.header-title{font-size:34px;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-0.5px;text-shadow:0 2px 12px rgba(0,0,0,0.4);}
+.header-subtitle{font-size:16px;color:rgba(255,255,255,0.85);font-weight:500;margin-bottom:28px;letter-spacing:0.5px;}
+.header-names{font-size:22px;font-weight:700;color:#fff;background:rgba(255,255,255,0.1);display:inline-block;padding:10px 24px;border-radius:14px;margin-bottom:22px;}
+.header-cta{display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:#fff;font-weight:700;font-size:17px;padding:13px 26px;border-radius:12px;box-shadow:0 8px 20px rgba(14,155,181,0.4);transition:transform .2s ease-out, box-shadow .2s;}
+.header-cta:hover{transform:translateY(-2px) scale(1.02);}
+.header-cta:active{transform:scale(0.97);}
+
+.trip-band{width:100%;background:linear-gradient(90deg,var(--terracotta),#4FC8DD);}
+.trip-band-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);text-align:center;padding:20px 16px;}
+.trip-item .label{font-size:13px;color:rgba(255,255,255,0.85);font-weight:600;margin-bottom:4px;}
+.trip-item .value{font-size:17px;color:#fff;font-weight:800;}
+
+.container{max-width:var(--max-w);margin:0 auto;padding:36px 20px 60px;}
+.section{margin-bottom:36px;opacity:0;transform:translateY(16px);transition:opacity .5s ease-out, transform .5s ease-out;}
+.section.visible{opacity:1;transform:translateY(0);}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.section-num{width:30px;height:30px;border-radius:50%;background:var(--forest-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0;}
+.section-title{font-size:20px;font-weight:800;color:var(--text-main);}
+
+.product-link-box{display:flex;justify-content:space-between;align-items:center;background:var(--forest-bg);border:1px solid var(--forest);border-radius:14px;padding:16px 18px;font-weight:700;color:var(--forest-dark);margin-bottom:14px;transition:transform .15s ease-out, background .2s;}
+.product-link-box:hover{background:#DCF2F7;transform:scale(1.01);}
+.product-link-box:active{transform:scale(0.98);}
+.product-link-box span.arrow{font-size:20px;}
+
+.alert{border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.6;margin-top:12px;}
+.alert-forest{background:var(--forest-bg);border:1px solid var(--forest);color:#083040;}
+.alert-terracotta{background:#FDF1EF;border:1px solid #C1443C;color:#8E2E28;}
+.alert-gold{background:var(--gold-bg);border:1px solid var(--gold);color:#8A6414;}
+
+.meeting-box{border:1.5px solid var(--forest);border-radius:16px;background:var(--forest-bg);padding:20px;}
+.meeting-box .mtime{font-size:24px;font-weight:800;color:var(--forest-dark);margin-bottom:10px;}
+.meeting-box .mrow{display:flex;justify-content:space-between;font-size:15.5px;padding:7px 0;border-bottom:1px dashed rgba(8,48,64,0.15);gap:10px;}
+.meeting-box .mrow:last-child{border-bottom:none;}
+.meeting-box .mrow .label{color:var(--text-sub);}
+.meeting-box .mrow .val{font-weight:700;color:var(--forest-dark);text-align:right;}
+
+.counter-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:var(--gold-bg);}
+.step{display:flex;gap:12px;margin-bottom:14px;}
+.step:last-child{margin-bottom:0;}
+.step-num{width:26px;height:26px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0;}
+.step-text{font-size:16px;color:var(--text-main);line-height:1.6;}
+.step-text b{color:#8A6414;}
+.step-text a{color:#8A6414;text-decoration:underline;font-weight:700;}
+
+.flight-card{border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px;}
+.flight-header{background:linear-gradient(120deg,#051A22,#083040);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:700;}
+.flight-header .code{color:var(--gold);}
+.flight-body{background:#fff;padding:20px 18px;}
+.flight-route{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.flight-route .airport{text-align:center;}
+.flight-route .airport .code{font-size:30px;font-weight:800;color:var(--text-main);}
+.flight-route .airport .city{font-size:14px;color:var(--text-sub);margin-top:2px;}
+.flight-route .mid{flex:1;text-align:center;padding:0 12px;}
+.flight-route .mid .time{font-size:14px;color:var(--text-muted);}
+.flight-route .mid .line{height:2px;background:var(--border);position:relative;margin-top:6px;}
+.flight-route .mid .line::after{content:"✈";position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:16px;}
+.flight-badges{display:flex;flex-wrap:wrap;gap:8px;}
+.badge{font-size:14px;font-weight:600;color:var(--text-sub);background:#F5F8F4;border:1px solid var(--border);padding:5px 10px;border-radius:8px;}
+
+.baggage-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.baggage-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.baggage-card .icon{font-size:24px;margin-bottom:6px;}
+.baggage-card .title{font-size:15px;font-weight:700;color:var(--text-sub);margin-bottom:4px;}
+.baggage-card .amount{font-size:18px;font-weight:800;color:var(--forest-dark);}
+.baggage-card .desc{font-size:13px;color:var(--text-muted);margin-top:4px;line-height:1.5;}
+
+.guide-box{border:1.5px solid var(--forest-dark);border-radius:16px;background:var(--forest-bg);padding:20px;}
+.guide-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed rgba(8,48,64,0.15);gap:10px;}
+.guide-row:last-child{border-bottom:none;}
+.guide-row .label{color:var(--text-sub);}
+.guide-row .val{font-weight:700;color:var(--forest-dark);text-align:right;}
+
+.incl-card{border-radius:14px;padding:16px;font-size:15.5px;line-height:1.75;background:#FDF1EF;border:1px solid #C1443C;}
+.incl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#8E2E28;}
+.incl-card ul{padding-left:18px;margin-top:6px;}
+
+.exchange-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:#fff;box-shadow:var(--shadow);}
+
+.tour-table-wrap{overflow-x:auto;border-radius:16px;box-shadow:var(--shadow);}
+.tour-table{width:100%;border-collapse:collapse;background:#fff;min-width:640px;}
+.tour-table th{background:linear-gradient(120deg,var(--forest),#4FC8DD);color:#fff;padding:12px 8px;font-size:13px;font-weight:700;text-align:center;}
+.tour-table td{padding:9px 8px;text-align:center;font-size:13px;border-bottom:1px solid var(--border);color:var(--text-sub);}
+.tour-table tr:last-child td{border-bottom:none;}
+.tour-table td.name{text-align:left;font-weight:700;color:var(--forest-dark);}
+.tour-table td.price{font-weight:800;color:var(--text-main);}
+
+.weather-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
+.weather-card{flex:0 0 auto;width:106px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 8px;text-align:center;box-shadow:var(--shadow);}
+.weather-card .date{font-size:13.5px;font-weight:700;color:var(--text-sub);margin-bottom:6px;}
+.weather-card .day{font-size:12px;color:var(--text-muted);margin-bottom:6px;}
+.weather-card .icon{font-size:26px;margin-bottom:8px;}
+.weather-card .high{font-size:17px;font-weight:800;color:var(--forest);}
+.weather-card .low{font-size:14px;color:var(--text-muted);margin-top:2px;}
+
+.roam-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.roam-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.roam-card .icon{font-size:22px;margin-bottom:6px;}
+.roam-card .title{font-weight:700;font-size:15.5px;color:var(--forest-dark);margin-bottom:6px;}
+.roam-card .price{font-weight:800;font-size:16px;color:var(--text-main);margin-bottom:4px;}
+.roam-card .desc{font-size:14px;color:var(--text-sub);line-height:1.6;}
+
+.prep-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.prep-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.prep-card .icon{font-size:22px;margin-bottom:6px;}
+.prep-card .title{font-weight:700;font-size:15.5px;color:var(--forest-dark);margin-bottom:6px;}
+.prep-card ul{padding-left:16px;font-size:15px;color:var(--text-sub);line-height:1.75;}
+.prep-full{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px;box-shadow:var(--shadow);}
+.prep-full .title{font-weight:800;font-size:16.5px;color:var(--forest-dark);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.prep-full ul{padding-left:18px;font-size:15.5px;color:var(--text-sub);line-height:1.9;}
+.prep-full ul li b{color:var(--text-main);}
+
+@media (max-width:480px){
+  .container{padding-left:14px;padding-right:14px;}
+  .trip-band-inner{grid-template-columns:repeat(2,1fr);gap:14px;padding:16px 12px;}
+  .baggage-grid,.prep-grid,.roam-grid{grid-template-columns:1fr;}
+  .header-title{font-size:26px;}
+  .header-inner{padding:38px 18px 32px;}
+  .flight-badges{gap:6px;}
+  .badge{font-size:12.5px;padding:4px 8px;}
+}
+@media (max-width:400px){
+  .guide-row,.meeting-box .mrow{flex-direction:column;align-items:flex-start;gap:2px;}
+  .guide-row .val,.meeting-box .mrow .val{text-align:left;}
+}
+
+.footer{width:100%;background:#051A22;padding:32px 20px;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;text-align:center;}
+.footer-agent{color:#fff;font-size:17px;font-weight:700;margin-bottom:6px;}
+.footer-sub{color:rgba(255,255,255,0.55);font-size:14.5px;margin-bottom:18px;}
+.footer-btns{display:flex;justify-content:center;gap:10px;}
+.footer-btn{padding:10px 20px;border-radius:12px;font-weight:700;font-size:15.5px;transition:transform .15s ease-out;}
+.footer-btn:active{transform:scale(0.97);}
+.footer-btn.tel{background:var(--forest);color:#fff;}
+.footer-btn.kakao{background:#FEE500;color:#391B1B;}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="agent-info">담당 <b>이경진 실장</b> · 모두투어 투어콕</div>
+    <div class="top-btns">
+      <a class="top-btn" href="tel:1544-5714">📞 전화상담</a>
+      <a class="top-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡</a>
+    </div>
+  </div>
+</div>
+
+<div class="header">
+  <div class="header-inner">
+    <span class="header-tag">TRAVEL CONFIRMATION</span>
+    <div class="header-title">세부 여행 확정서</div>
+    <div class="header-subtitle">인천국제공항 출발 · 3박 5일 · CEBU 2026</div>
+    <div class="header-names">김종황님 일행</div><br>
+    <a class="header-cta" href="https://www.modetour.com/package/105492161?MLoc=99&Pnum=105492161&ANO=1772510&sno=C2181215&thru=crs" target="_blank">🔗 여행상품 확인하기</a>
+  </div>
+</div>
+
+<div class="trip-band">
+  <div class="trip-band-inner">
+    <div class="trip-item"><div class="label">출발일</div><div class="value">2026.10.10(토)</div></div>
+    <div class="trip-item"><div class="label">귀국일</div><div class="value">2026.10.14(수)</div></div>
+    <div class="trip-item"><div class="label">일정</div><div class="value">3박 5일</div></div>
+    <div class="trip-item"><div class="label">투어타입</div><div class="value">패키지</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 상품 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">1</div><div class="section-title">상품 안내</div></div>
+    <a class="product-link-box" href="https://www.modetour.com/package/105492161?MLoc=99&Pnum=105492161&ANO=1772510&sno=C2181215&thru=crs" target="_blank">
+      <span>모두투어 세부 상품 바로가기</span>
+      <span class="arrow">↗</span>
+    </a>
+    <div class="alert alert-forest">
+      ✔ 제주항공 이용 상품입니다.
+    </div>
+  </div>
+
+  <!-- 인천공항 미팅 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">인천공항 미팅 안내</div></div>
+    <div class="meeting-box">
+      <div class="mtime">🕓 2026년 10월 10일 17시 55분</div>
+      <div class="mrow"><span class="label">장소</span><span class="val">인천국제공항 1터미널 3층 출국장<br>서편: 14번 출구 앞(N카운터 옆 창측)</span></div>
+      <div class="mrow"><span class="label">미팅 위치</span><span class="val">여행사 카운터 9~10번 테이블<br>모두투어</span></div>
+    </div>
+  </div>
+
+  <!-- 체크인 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">체크인 안내</div></div>
+    <div class="counter-box">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">본 항공편은 <b>좌석 미지정</b>이며, 항공사 예약번호는 <b>VYB8WP</b>입니다. 제주항공 사이트(<a href="https://www.jejuair.net" target="_blank">jejuair.net</a>)에서 <b>출발 24시간 전부터 온라인 체크인</b>을 통해 무료 좌석지정 및 탑승 QR을 받으실 수 있고, 온라인 진행이 어려우신 분은 <b>당일 공항</b>에서 체크인하시면 됩니다.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">위 인천공항 미팅 시간(17:55)에 모두투어 미팅테이블로 와주시면 가이드가 함께 수속을 도와드립니다.</div>
+      </div>
+    </div>
+    <div class="alert alert-terracotta">
+      ✈ 저비용항공사(제주항공) 전 노선 공통 — 기내식이 제공되지 않으므로 <b>생수·음료도 제공되지 않습니다.</b> 기내식은 탑승 전 미리 드시거나 면세구역 내에서 구매 후 탑승하시고, 기내에서는 <b>체크카드 사용이 불가</b>하니 신용카드 또는 현금만 준비해 주세요.
+    </div>
+  </div>
+
+  <!-- 항공편 정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">항공편 정보</div></div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>출발편 · 제주항공</span><span class="code">7C2113</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 10.10(토) 20:55</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">CEB</div><div class="city">세부 · 10.11(일) 00:45</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 제주항공</span>
+          <span class="badge">위탁 15kg</span>
+          <span class="badge">기내 10kg 미만</span>
+          <span class="badge">기내식 없음</span>
+          <span class="badge">좌석 미지정</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>귀국편 · 제주항공</span><span class="code">7C2114</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">CEB</div><div class="city">세부 · 10.14(수) 01:45</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 10.14(수) 07:30</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 제주항공</span>
+          <span class="badge">위탁 15kg</span>
+          <span class="badge">기내 10kg 미만</span>
+          <span class="badge">기내식 없음</span>
+          <span class="badge">좌석 미지정</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 수하물 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">수하물 안내</div></div>
+    <div class="baggage-grid">
+      <div class="baggage-card">
+        <div class="icon">🧳</div>
+        <div class="title">위탁수하물</div>
+        <div class="amount">15kg · 1개</div>
+        <div class="desc">성인/소아 기준, 3면의 합 203cm 이내<br>(유아 무료 수하물 없음)</div>
+      </div>
+      <div class="baggage-card">
+        <div class="icon">🎒</div>
+        <div class="title">기내수하물</div>
+        <div class="amount">총 10kg 미만</div>
+        <div class="desc">캐리어 21inch 이하(40×20×55cm)<br>+ 개인휴대품 1개(35×15×40cm)</div>
+      </div>
+    </div>
+    <div class="alert alert-gold">
+      💡 무료 허용량을 초과하는 추가 수하물은 무게요금이 따로 적용되며, 다른 일행의 짐을 본인 명의로 위탁하는 것은 항공기 보안·안전상 금지되어 있으니 참고해 주세요.
+    </div>
+  </div>
+
+  <!-- 현지 가이드 & 행사정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">현지 가이드 & 행사 정보</div></div>
+    <div class="guide-box">
+      <div class="guide-row"><span class="label">가이드명</span><span class="val">이재완(WAN/남)</span></div>
+      <div class="guide-row"><span class="label">가이드 연락처</span><span class="val">0962-707-7845</span></div>
+      <div class="guide-row"><span class="label">현지 비상연락처</span><span class="val">박상훈 부장(VINCE)<br>0966-820-5088</span></div>
+      <div class="guide-row"><span class="label">행사인원</span><span class="val">12명</span></div>
+      <div class="guide-row"><span class="label">행사차량</span><span class="val">22인승 코스터</span></div>
+    </div>
+  </div>
+
+  <!-- 불포함 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">불포함 사항</div></div>
+    <div class="incl-card">
+      <div class="head">✘ 불포함사항</div>
+      <ul>
+        <li>개인경비, 호텔 벨보이 및 객실 청소원 매너팁</li>
+        <li>식사 시 제공되는 음료 이외의 음료와 주류는 요금을 지불하셔야 합니다</li>
+        <li>현지가이드/기사경비 — 일정 기준 1인당 <b>4일일정 $40 / 5일일정 $50 / 6일일정 $60</b>(성인·아동 동일)을 현지에서 지불해야 합니다. 본 상품(3박 5일)은 <b>5일일정 $50</b> 기준입니다.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 환전 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">환전 안내</div></div>
+    <div class="exchange-box">
+      💵 가이드·기사 경비($50/인)는 <b>미국달러(USD)</b> 지불 기준이니 미리 환전해 주세요. 개인경비(음료·주류, 선택관광, 기념품 등)는 <b>필리핀 페소(PHP)</b> 소액 환전을 권장드리며, 호텔·대형매장에서는 카드 결제도 대부분 가능합니다.
+    </div>
+  </div>
+
+  <!-- 선택관광 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">선택관광 안내</div></div>
+    <div class="tour-table-wrap">
+      <table class="tour-table">
+        <tr>
+          <th>선택관광명</th><th>통화</th><th>성인</th><th>아동</th><th>소요<br>시간</th><th>최소<br>인원</th><th>가이드<br>동행</th><th>미참여시<br>대기장소</th>
+        </tr>
+        <tr><td class="name">야경투어</td><td>$</td><td class="price">60</td><td class="price">50</td><td>120분</td><td>2명</td><td>동행</td><td>리조트 내 자유시간</td></tr>
+        <tr><td class="name">아일랜드 호핑투어(세부)</td><td>$</td><td class="price">60</td><td class="price">60</td><td>240분</td><td>2명</td><td>동행</td><td>리조트 내 자유시간</td></tr>
+        <tr><td class="name">제트스키</td><td>$</td><td class="price">40</td><td class="price">40</td><td>15분</td><td>2명</td><td>동행</td><td>리조트 내 자유시간</td></tr>
+        <tr><td class="name">바나나보트</td><td>$</td><td class="price">20</td><td class="price">20</td><td>15분</td><td>2명</td><td>동행</td><td>리조트 내 자유시간</td></tr>
+        <tr><td class="name">체험다이빙</td><td>$</td><td class="price">100</td><td class="price">100</td><td>60분</td><td>2명</td><td>동행</td><td>리조트 내 자유시간</td></tr>
+        <tr><td class="name">어메이징쇼</td><td>$</td><td class="price">60</td><td class="price">50</td><td>60분</td><td>2명</td><td>동행</td><td>리조트 내 자유시간</td></tr>
+        <tr><td class="name">발마사지(세부)</td><td>$</td><td class="price">15</td><td class="price">15</td><td>30분</td><td>2명</td><td>동행</td><td>리조트 내 자유시간</td></tr>
+        <tr><td class="name">황제마사지</td><td>$</td><td class="price">60</td><td class="price">60</td><td>120분</td><td>2명</td><td>동행</td><td>리조트 내 자유시간</td></tr>
+        <tr><td class="name">황제스파</td><td>$</td><td class="price">120</td><td class="price">120</td><td>120분</td><td>2명</td><td>동행</td><td>리조트 내 자유시간</td></tr>
+        <tr><td class="name">스톤마사지</td><td>$</td><td class="price">70</td><td class="price">70</td><td>120분</td><td>2명</td><td>동행</td><td>리조트 내 자유시간</td></tr>
+        <tr><td class="name">골프(주중)</td><td>$</td><td class="price">170</td><td class="price">0</td><td>240분</td><td>4명</td><td>동행</td><td>리조트 내 자유시간</td></tr>
+        <tr><td class="name">전신 마사지(세부)</td><td>$</td><td class="price">30</td><td class="price">30</td><td>60분</td><td>2명</td><td>동행</td><td>리조트 내 자유시간</td></tr>
+        <tr><td class="name">경비행기</td><td>$</td><td class="price">200</td><td class="price">200</td><td>60분</td><td>4명</td><td>동행</td><td>리조트 내 자유시간</td></tr>
+        <tr><td class="name">골프(주말)</td><td>$</td><td class="price">220</td><td class="price">0</td><td>240분</td><td>4명</td><td>동행</td><td>리조트 내 자유시간</td></tr>
+        <tr><td class="name">보홀투어</td><td>$</td><td class="price">130</td><td class="price">130</td><td>720분</td><td>4명</td><td>동행</td><td>리조트 내 자유시간</td></tr>
+        <tr><td class="name">모알보알 스노클링</td><td>$</td><td class="price">120</td><td class="price">120</td><td>480분</td><td>4명</td><td>동행</td><td>리조트 내 자유시간</td></tr>
+        <tr><td class="name">키즈마사지</td><td>$</td><td class="price">30</td><td class="price">30</td><td>60분</td><td>2명</td><td>동행</td><td>리조트 내 자유시간</td></tr>
+        <tr><td class="name">포시즌 마사지</td><td>$</td><td class="price">90</td><td class="price">90</td><td>140분</td><td>2명</td><td>동행</td><td>리조트 내 자유시간</td></tr>
+        <tr><td class="name">플라센타 마사지</td><td>$</td><td class="price">80</td><td class="price">80</td><td>120분</td><td>2명</td><td>동행</td><td>리조트 내 자유시간</td></tr>
+        <tr><td class="name">헬멧다이빙</td><td>$</td><td class="price">90</td><td class="price">90</td><td>60분</td><td>2명</td><td>동행</td><td>리조트 내 자유시간</td></tr>
+        <tr><td class="name">하이랜드(레아신전)</td><td>$</td><td class="price">50</td><td class="price">50</td><td>240분</td><td>-</td><td>동행</td><td>리조트 내 자유시간</td></tr>
+        <tr><td class="name">(x)워터볼</td><td>$</td><td class="price">25</td><td class="price">25</td><td>10분</td><td>2명</td><td>동행</td><td>리조트 내 자유시간</td></tr>
+        <tr><td class="name">(x)UFO(디스코보트)</td><td>$</td><td class="price">40</td><td class="price">40</td><td>10분</td><td>2명</td><td>동행</td><td>리조트 내 자유시간</td></tr>
+        <tr><td class="name">오슬롭 체험다이빙</td><td>$</td><td class="price">100</td><td class="price">100</td><td>60분</td><td>4명</td><td>동행</td><td>오슬롭 내 대기장소</td></tr>
+        <tr><td class="name">밤부마사지(세부)</td><td>$</td><td class="price">100</td><td class="price">100</td><td>120분</td><td>2명</td><td>동행</td><td>리조트 내 자유시간</td></tr>
+        <tr><td class="name">제트보트</td><td>$</td><td class="price">80</td><td class="price">70</td><td>15분</td><td>2명</td><td>동행</td><td>리조트 내 자유시간</td></tr>
+        <tr><td class="name">(x)씨라이딩</td><td>$</td><td class="price">90</td><td class="price">90</td><td>20분</td><td>2명</td><td>동행</td><td>리조트 내 자유시간</td></tr>
+        <tr><td class="name">스톤&페이셜</td><td>$</td><td class="price">90</td><td class="price">90</td><td>140분</td><td>2명</td><td>동행</td><td>리조트 내 자유시간</td></tr>
+        <tr><td class="name">오슬롭투어</td><td>$</td><td class="price">130</td><td class="price">130</td><td>480분</td><td>4명</td><td>동행</td><td>리조트 내 자유시간</td></tr>
+        <tr><td class="name">정어리 스노클링</td><td>$</td><td class="price">60</td><td class="price">60</td><td>90분</td><td>4명</td><td>동행</td><td>리조트 내 자유시간</td></tr>
+        <tr><td class="name">정어리 스킨스쿠버</td><td>$</td><td class="price">100</td><td class="price">100</td><td>90분</td><td>2명</td><td>동행</td><td>리조트 내 자유시간</td></tr>
+        <tr><td class="name">정어리 프리다이빙</td><td>$</td><td class="price">100</td><td class="price">100</td><td>90분</td><td>2명</td><td>동행</td><td>리조트 내 자유시간</td></tr>
+      </table>
+    </div>
+    <div class="alert alert-gold">
+      💡 관심 있으신 코스가 있으면 현지 가이드님과 상의해 주세요.
+    </div>
+  </div>
+
+  <!-- 날씨 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">일자별 날씨 정보</div></div>
+    <div class="weather-row">
+      <div class="weather-card">
+        <div class="date">10/10(토)</div>
+        <div class="day">출국일</div>
+        <div class="icon">🌦️</div>
+        <div class="high">31℃</div>
+        <div class="low">25℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">10/11(일)</div>
+        <div class="day">세부</div>
+        <div class="icon">⛅</div>
+        <div class="high">31℃</div>
+        <div class="low">25℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">10/12(월)</div>
+        <div class="day">세부</div>
+        <div class="icon">🌦️</div>
+        <div class="high">30℃</div>
+        <div class="low">25℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">10/13(화)</div>
+        <div class="day">세부</div>
+        <div class="icon">⛅</div>
+        <div class="high">31℃</div>
+        <div class="low">25℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">10/14(수)</div>
+        <div class="day">귀국일</div>
+        <div class="icon">🌦️</div>
+        <div class="high">30℃</div>
+        <div class="low">25℃</div>
+      </div>
+    </div>
+    <div class="alert alert-gold">
+      ☀️ 세부는 10월에도 평균 25~31℃의 고온다습한 열대기후이며, 짧은 스콜성 소나기가 자주 내립니다. 위 기온은 평년 평균 참고값이며, 출발 며칠 전 다시 확인해 드릴게요.
+    </div>
+  </div>
+
+  <!-- 데이터 로밍/유심/이심 비교 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">11</div><div class="section-title">데이터 로밍 / 유심 / 이심 비교</div></div>
+    <div class="roam-grid">
+      <div class="roam-card">
+        <div class="icon">📶</div>
+        <div class="title">통신사 로밍</div>
+        <div class="price">1일 약 1~2만원</div>
+        <div class="desc">가장 비싸지만 한국 번호 그대로 사용 가능</div>
+      </div>
+      <div class="roam-card">
+        <div class="icon">📱</div>
+        <div class="title">현지 유심</div>
+        <div class="price">5일권 약 1~2만원대</div>
+        <div class="desc">현지 유심으로 교체 필요하나 데이터 용량 대비 저렴</div>
+      </div>
+      <div class="roam-card">
+        <div class="icon">💳</div>
+        <div class="title">이심(eSIM)</div>
+        <div class="price">5일권 약 1.5~3만원대</div>
+        <div class="desc">유심 교체 없이 한국에서 미리 설치 가능해 편리</div>
+      </div>
+      <div class="roam-card">
+        <div class="icon">📡</div>
+        <div class="title">포켓 와이파이</div>
+        <div class="price">업체별 상이</div>
+        <div class="desc">일행이 함께 쓸 경우 1인당 비용이 로밍보다 저렴한 경우가 많음</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 준비물 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">12</div><div class="section-title">여행 준비물</div></div>
+
+    <div class="prep-full" style="margin-bottom:12px;">
+      <div class="title">🏊 물놀이·액티비티 준비물</div>
+      <ul>
+        <li>스노클링, 체험다이빙, 제트스키, 바나나보트 등 <b>물놀이 선택관광</b>이 다양하니 수영복과 여벌 옷을 꼭 챙겨주세요</li>
+        <li><b>방수팩</b> — 휴대폰, 여권 등 귀중품 보호용</li>
+        <li><b>리프세이프 선크림</b> — 바다·산호 보호를 위해 권장</li>
+        <li><b>아쿠아슈즈</b> — 해변·바위 지형에서 발 보호용</li>
+      </ul>
+    </div>
+
+    <div class="prep-grid">
+      <div class="prep-card">
+        <div class="icon">👕</div>
+        <div class="title">의류</div>
+        <ul>
+          <li>반팔·통풍 잘 되는 옷(고온다습)</li>
+          <li>우비(스콜성 소나기 대비)</li>
+          <li>수영복, 래쉬가드</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🧴</div>
+        <div class="title">자외선 대비</div>
+        <ul>
+          <li>선크림(SPF 높은 제품), 선글라스</li>
+          <li>모자 또는 양산</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">💵</div>
+        <div class="title">현금 · 결제</div>
+        <ul>
+          <li>가이드/기사경비 USD($50/인)</li>
+          <li>음료·주류, 선택관광 대비 개인경비</li>
+          <li>개인경비용 필리핀 페소(PHP)</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🎒</div>
+        <div class="title">기타 준비물</div>
+        <ul>
+          <li>여권</li>
+          <li>멀티 어댑터(필리핀 220V, A/B/C타입)</li>
+          <li>보조배터리</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-agent">담당 이경진 실장</div>
+    <div class="footer-sub">김종황님 일행의 안전하고 즐거운 세부 여행을 응원합니다</div>
+    <div class="footer-btns">
+      <a class="footer-btn tel" href="tel:1544-5714">📞 1544-5714</a>
+      <a class="footer-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 투어콕 카카오톡 채널</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.1});
+sections.forEach(s=>observer.observe(s));
+</script>
+
+</body>
+</html>
