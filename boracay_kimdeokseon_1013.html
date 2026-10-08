@@ -88,6 +88,14 @@ img{max-width:100%;display:block;}
 .care-box ol{padding-left:20px;font-size:15.5px;color:var(--text-main);line-height:1.9;}
 .care-box .note{margin-top:10px;font-size:14px;color:#8A6414;}
 
+.counter-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:var(--gold-bg);}
+.step{display:flex;gap:12px;margin-bottom:14px;}
+.step:last-child{margin-bottom:0;}
+.step-num{width:26px;height:26px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0;}
+.step-text{font-size:16px;color:var(--text-main);line-height:1.6;}
+.step-text b{color:#8A6414;}
+.step-text a{color:#8A6414;text-decoration:underline;font-weight:700;}
+
 .flight-card{border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px;}
 .flight-header{background:linear-gradient(120deg,#051A22,#083040);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:700;}
 .flight-header .code{color:var(--gold);}
@@ -238,9 +246,20 @@ img{max-width:100%;display:block;}
     </div>
   </div>
 
+  <!-- 체크인 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">체크인 안내</div></div>
+    <div class="counter-box">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">항공사 예약번호(PNR)는 <b>D8X3XG</b>입니다. 트리니티 항공 사이트에서 <b>출발 24시간 전부터 온라인 체크인</b>을 통해 무료 좌석지정 및 탑승 QR을 받으실 수 있으며, 온라인 진행이 어려우신 분은 <b>당일 공항</b>에서 체크인하시면 됩니다.</div>
+      </div>
+    </div>
+  </div>
+
   <!-- 공항~호텔 이동 서비스 안내 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">3</div><div class="section-title">공항~호텔 이동 서비스 안내</div></div>
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">공항~호텔 이동 서비스 안내</div></div>
     <div class="meeting-box">
       <div class="mrow"><span class="label">인천공항 미팅</span><span class="val">없음(개별 출발)</span></div>
       <div class="mrow"><span class="label">현지공항 이동서비스</span><span class="val">칼리보/보라카이 공항 ↔ 호텔<br>왕복 이동서비스 포함</span></div>
@@ -253,7 +272,7 @@ img{max-width:100%;display:block;}
 
   <!-- 투숙 호텔 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">4</div><div class="section-title">투숙 호텔</div></div>
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">투숙 호텔</div></div>
     <div class="hotel-card" style="margin-bottom:0;">
       <div class="hotel-header"><span>🏨 10/13~10/16</span><span>3박</span></div>
       <div class="hotel-body"><div class="hotel-name">헤난 팜비치</div></div>
@@ -268,7 +287,7 @@ img{max-width:100%;display:block;}
 
   <!-- 모두CARE+ 혜택 안내 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">5</div><div class="section-title">모두CARE+ 혜택 안내</div></div>
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">모두CARE+ 혜택 안내</div></div>
     <div class="care-box">
       <div class="head">📢 모두CARE+ — 모두투어 단독 프리미엄 자유여행 혜택</div>
       <ol>
@@ -283,7 +302,7 @@ img{max-width:100%;display:block;}
 
   <!-- 불포함 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">6</div><div class="section-title">불포함 사항</div></div>
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">불포함 사항</div></div>
     <div class="incl-card">
       <div class="head">✘ 불포함사항</div>
       <ul>
@@ -296,7 +315,7 @@ img{max-width:100%;display:block;}
 
   <!-- 필리핀 입국 시 면세한도 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">7</div><div class="section-title">필리핀 입국 시 면세한도 안내</div></div>
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">필리핀 입국 시 면세한도 안내</div></div>
     <div class="visa-box">
       <div class="head">★ 필리핀 입국 시 면세한도</div>
       자세한 면세한도 기준은 필리핀 관광부 공식 안내 페이지를 참고해 주세요.
@@ -307,7 +326,7 @@ img{max-width:100%;display:block;}
 
   <!-- 환전 안내 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">8</div><div class="section-title">환전 안내</div></div>
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">환전 안내</div></div>
     <div class="exchange-box">
       💵 호텔 체크인 시 필요한 <b>데파짓(보증금)</b>은 신용카드, 필리핀 페소(PHP), 미국달러(USD) 중 준비해 주시고(체크카드 불가), <b>현지공항세 900페소</b>는 귀국 당일 칼리보 공항에서 현금으로 준비해 주셔야 합니다. 그 외 음료·주류 등 개인경비도 <b>필리핀 페소(PHP)</b> 소액 환전을 권장드리며, 호텔·대형매장에서는 카드 결제도 대부분 가능합니다.
     </div>
@@ -315,7 +334,7 @@ img{max-width:100%;display:block;}
 
   <!-- 날씨 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">9</div><div class="section-title">일자별 날씨 정보</div></div>
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">일자별 날씨 정보</div></div>
     <div class="weather-row">
       <div class="weather-card">
         <div class="date">10/13(화)</div>
@@ -353,7 +372,7 @@ img{max-width:100%;display:block;}
 
   <!-- 준비물 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">10</div><div class="section-title">여행 준비물</div></div>
+    <div class="section-head"><div class="section-num">11</div><div class="section-title">여행 준비물</div></div>
     <div class="prep-grid">
       <div class="prep-card">
         <div class="icon">👕</div>
