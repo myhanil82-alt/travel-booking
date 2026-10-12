@@ -104,7 +104,7 @@
 
 <div class="wrap">
   <h1>🏖️ 투어콕 휴가일지</h1>
-  <div class="sub" id="todayLabel">기준일 2026-07-14</div>
+  <div class="sub" id="todayLabel"></div>
 
   <div class="role-bar">
     <label>승인 관련</label>
@@ -128,11 +128,11 @@
       </div>
       <div>
         <label>시작일</label>
-        <input type="date" id="f-start" value="2026-07-14">
+        <input type="date" id="f-start">
       </div>
       <div>
         <label>종료일</label>
-        <input type="date" id="f-end" value="2026-07-14">
+        <input type="date" id="f-end">
       </div>
       <div>
         <label>사용일수</label>
@@ -179,7 +179,11 @@
 <script>
 // ===== 설정 =====
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz6L_-st5ZOUith1Tzr3FZkn2FTqLd8hC1WyXvGYG-BNtEDAmz2BWuzcZNcd1rO3mW93g/exec';
-const TODAY = '2026-07-14';
+// 접속한 날짜(브라우저 기준) 자동 적용
+function localDateStr(d){
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+const TODAY = localDateStr(new Date());
 const COLORS = ['#1C3557','#E8593A','#C8973A','#3E7A6B','#7B5EA7','#2E86AB'];
 
 const EMPLOYEES = [
@@ -537,18 +541,26 @@ function renderTable(){
   });
 }
 
-const MONTHS = [
-  {y:2026,m:7,label:'2026년 7월'},
-  {y:2026,m:8,label:'2026년 8월'},
-  {y:2026,m:9,label:'2026년 9월'},
-  {y:2026,m:10,label:'2026년 10월'},
-  {y:2026,m:11,label:'2026년 11월'},
-  {y:2026,m:12,label:'2026년 12월'}
-];
+// 2026년 7월부터 접속월 기준 12개월 뒤까지 자동 생성
+const MONTHS = (function(){
+  const list = [];
+  const now = new Date();
+  let y = 2026, m = 7;
+  const endY = now.getFullYear() + 1, endM = now.getMonth() + 1;
+  while(y < endY || (y === endY && m <= endM)){
+    list.push({y, m, label:`${y}년 ${m}월`});
+    m++; if(m > 12){ m = 1; y++; }
+  }
+  return list;
+})();
 
 function fillMonthSelect(){
   const sel = document.getElementById('monthSelect');
   sel.innerHTML = MONTHS.map((mo,i)=>`<option value="${i}">${mo.label}</option>`).join('');
+  // 접속한 달을 기본 선택
+  const now = new Date();
+  const idx = MONTHS.findIndex(mo => mo.y === now.getFullYear() && mo.m === now.getMonth()+1);
+  if(idx >= 0) sel.value = String(idx);
 }
 
 function pad(n){ return String(n).padStart(2,'0'); }
@@ -605,6 +617,8 @@ function renderAll(){
 
 (function init(){
   document.getElementById('todayLabel').textContent = `기준일 ${TODAY}`;
+  document.getElementById('f-start').value = TODAY;
+  document.getElementById('f-end').value = TODAY;
   fillMonthSelect();
   loadData();
 })();
