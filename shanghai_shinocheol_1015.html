@@ -79,6 +79,13 @@ img{max-width:100%;display:block;}
 .alert-gold{background:var(--gold-bg);border:1px solid var(--gold);color:#8A6414;}
 
 .counter-box{border:1.5px solid var(--gold);border-radius:16px;background:#fff;padding:20px;box-shadow:var(--shadow);}
+
+.meeting-box{border:1.5px solid var(--forest);border-radius:16px;background:#fff;padding:20px;box-shadow:var(--shadow);}
+.meeting-time{font-size:24px;font-weight:800;color:var(--forest-dark);text-align:center;margin-bottom:14px;}
+.meeting-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed var(--border);gap:10px;}
+.meeting-row:last-child{border-bottom:none;}
+.meeting-row .label{color:var(--text-sub);}
+.meeting-row .val{font-weight:700;color:var(--text-main);text-align:right;line-height:1.6;}
 .counter-box .step{display:flex;gap:12px;padding:8px 0;}
 .counter-box .step-num{width:24px;height:24px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0;}
 .counter-box .step-text{font-size:15.5px;color:var(--text-main);line-height:1.6;}
@@ -177,8 +184,9 @@ img{max-width:100%;display:block;}
   .badge{font-size:12.5px;padding:4px 8px;}
 }
 @media (max-width:400px){
-  .guide-row,.exchange-box .ex-row{flex-direction:column;align-items:flex-start;gap:2px;}
-  .guide-row .val,.exchange-box .ex-row .val{text-align:left;}
+  .guide-row,.exchange-box .ex-row,.meeting-row{flex-direction:column;align-items:flex-start;gap:2px;}
+  .guide-row .val,.exchange-box .ex-row .val,.meeting-row .val{text-align:left;}
+  .meeting-time{font-size:20px;}
 }
 
 .footer{width:100%;background:#122A1E;padding:32px 20px;}
@@ -233,16 +241,25 @@ img{max-width:100%;display:block;}
       <span class="arrow">↗</span>
     </a>
     <div class="alert alert-forest">
-      ✔ 중국남방항공 이용 상품이며, <b>인천공항 미팅이 없으니</b> 개별적으로 체크인 후 출발해 주세요.
+      ✔ 중국남방항공 이용 상품입니다.
     </div>
     <div class="alert alert-gold">
       ⏰ 출발 당일 공항에는 <b>비행기 출발 2~3시간 전까지 반드시 도착</b>해 주세요.
     </div>
   </div>
 
+  <!-- 인천공항 미팅 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">인천공항 미팅 안내</div></div>
+    <div class="meeting-box">
+      <div class="meeting-time">2026.10.15(목) 18:30</div>
+      <div class="meeting-row"><span class="label">장소</span><span class="val">인천국제공항 제1터미널<br>3층 출국장 동편<br>1번 출구 앞(A카운터 옆 창측)<br>여행사카운터 1~3번 테이블 "모두투어"</span></div>
+    </div>
+  </div>
+
   <!-- 체크인 안내 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">2</div><div class="section-title">체크인 안내</div></div>
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">체크인 안내</div></div>
     <div class="counter-box">
       <div class="step"><div class="step-num">1</div><div class="step-text"><b>인천공항 제1터미널(T1)</b>, 중국남방항공 체크인 카운터 <b>E19~E36</b>에서 수속하시면 됩니다.</div></div>
       <div class="step"><div class="step-num">2</div><div class="step-text">중국남방항공은 <b>온라인 체크인이 가능</b>하며, 출발 <b>24시간 전부터</b> 항공사 홈페이지에서 진행하실 수 있습니다.</div></div>
@@ -252,7 +269,7 @@ img{max-width:100%;display:block;}
 
   <!-- 항공편 정보 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">3</div><div class="section-title">항공편 정보</div></div>
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">항공편 정보</div></div>
 
     <div class="flight-card">
       <div class="flight-header"><span>출발편 · 중국남방항공</span><span class="code">CZ370</span></div>
@@ -297,7 +314,7 @@ img{max-width:100%;display:block;}
 
   <!-- 수하물 안내 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">4</div><div class="section-title">수하물 안내</div></div>
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">수하물 안내</div></div>
     <div class="baggage-grid">
       <div class="baggage-card">
         <div class="icon">🧳</div>
@@ -316,7 +333,7 @@ img{max-width:100%;display:block;}
 
   <!-- 현지 가이드 & 행사정보 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">5</div><div class="section-title">현지 가이드 & 행사 정보</div></div>
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">현지 가이드 & 행사 정보</div></div>
     <div class="guide-box">
       <div class="guide-row"><span class="label">가이드명</span><span class="val">최지영(남) · CUI ZHIYONG</span></div>
       <div class="guide-row"><span class="label">가이드 연락처</span><span class="val">166-2177-2355</span></div>
@@ -329,7 +346,7 @@ img{max-width:100%;display:block;}
 
   <!-- 투숙 호텔 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">6</div><div class="section-title">투숙 호텔</div></div>
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">투숙 호텔</div></div>
     <div class="hotel-card">
       <div class="hotel-header">🏨 전 일정</div>
       <div class="hotel-body"><div class="hotel-name">상해 송강 홀리데이인 호텔<br><span style="font-size:14px;color:var(--text-sub);font-weight:500;">Holiday Inn SHANGHAI SONGJIANG</span></div></div>
@@ -338,7 +355,7 @@ img{max-width:100%;display:block;}
 
   <!-- 불포함 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">7</div><div class="section-title">불포함 사항</div></div>
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">불포함 사항</div></div>
     <div class="incl-card">
       <div class="head">✘ 불포함사항</div>
       ◈ 1인당 전일정 <b>$40</b>/인의 가이드/기사 경비를 현지에서 지불해야 합니다.<br>
@@ -348,7 +365,7 @@ img{max-width:100%;display:block;}
 
   <!-- 중국 입국신고서 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">8</div><div class="section-title">중국 입국신고서 안내</div></div>
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">중국 입국신고서 안내</div></div>
     <div class="visa-box">
       <div class="head">📝 중국 온라인 입국신고서</div>
       <p>중국 입국신고서는 <b>현지 도착 시간 기준으로 72시간 전부터</b> 온라인으로 작성이 가능합니다. 아래 공식 사이트에서 직접 작성하실 수 있고, 작성 방법이 어려우시면 참고 블로그 가이드를 함께 확인해 주세요.</p>
@@ -361,7 +378,7 @@ img{max-width:100%;display:block;}
 
   <!-- 환전 안내 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">9</div><div class="section-title">환전 안내</div></div>
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">환전 안내</div></div>
     <div class="exchange-box">
       <div class="ex-row"><span>가이드·기사 경비</span><span style="font-weight:700;">전일정 $40(USD)/인 · 현지 지불</span></div>
       <div class="ex-row"><span>권장 환전 금액</span><span style="font-weight:700;">1인당 USD $150~200 정도</span></div>
@@ -383,7 +400,7 @@ img{max-width:100%;display:block;}
 
   <!-- 선택관광 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">10</div><div class="section-title">선택관광 안내</div></div>
+    <div class="section-head"><div class="section-num">11</div><div class="section-title">선택관광 안내</div></div>
     <div class="tour-table-wrap">
       <table class="tour-table">
         <tr>
@@ -411,7 +428,7 @@ img{max-width:100%;display:block;}
 
   <!-- 데이터 로밍 비교 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">11</div><div class="section-title">현지 데이터 통신 옵션 비교</div></div>
+    <div class="section-head"><div class="section-num">12</div><div class="section-title">현지 데이터 통신 옵션 비교</div></div>
     <div class="alert alert-terracotta">
       🚧 중국은 만리방화벽(GFW) 정책으로 <b>카카오톡·구글·인스타그램 등 접속이 제한</b>됩니다. 아래 유심·이심 상품은 <b>VPN 우회 기능이 포함된 여행자용 상품</b>을 기준으로 안내드리니, 구매 시 "카톡 가능/VPN 불필요" 문구가 있는지 꼭 확인해 주세요.
     </div>
@@ -458,7 +475,7 @@ img{max-width:100%;display:block;}
 
   <!-- 날씨 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">12</div><div class="section-title">일자별 날씨 정보</div></div>
+    <div class="section-head"><div class="section-num">13</div><div class="section-title">일자별 날씨 정보</div></div>
     <div class="weather-row">
       <div class="weather-card">
         <div class="date">10/15(목)</div>
@@ -496,7 +513,7 @@ img{max-width:100%;display:block;}
 
   <!-- 준비물 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">13</div><div class="section-title">여행 준비물</div></div>
+    <div class="section-head"><div class="section-num">14</div><div class="section-title">여행 준비물</div></div>
 
     <div class="prep-full" style="margin-bottom:12px;">
       <div class="title">🥢 밑반찬 (강력 추천!)</div>
