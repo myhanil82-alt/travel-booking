@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>하와이 여행 확정서 - 송설화,김주민님</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+  --forest:#0B8793;
+  --forest-dark:#072E33;
+  --forest-bg:#EAF7F7;
+  --terracotta:#0B8793;
+  --terracotta-bg:#EAF7F7;
+  --gold:#D99A3C;
+  --gold-bg:#FBF1E2;
+  --sky-top:#EAF4F2;
+  --sky-bottom:#F8F6F0;
+  --text-main:#132426;
+  --text-sub:#5B6E70;
+  --text-muted:#8C9C9D;
+  --card-bg:#FFFFFF;
+  --border:#E1EBEA;
+  --shadow:0 4px 20px rgba(11,135,147,0.10);
+  --max-w:680px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Pretendard',sans-serif;background:linear-gradient(180deg,var(--sky-top) 0%, var(--sky-bottom) 45%, #FBFAF6 100%);color:var(--text-main);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+
+.top-bar{width:100%;background:rgba(7,46,51,0.92);backdrop-filter:blur(6px);padding:10px 20px;}
+.top-bar-inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.agent-info{color:#EAF7F5;font-size:15px;font-weight:500;}
+.agent-info b{color:#fff;}
+.top-btns{display:flex;gap:8px;}
+.top-btn{font-size:14.5px;font-weight:600;padding:6px 12px;border-radius:20px;background:rgba(255,255,255,0.15);color:#fff;transition:transform .15s ease-out, background .2s;}
+.top-btn:hover{background:rgba(255,255,255,0.28);}
+.top-btn:active{transform:scale(0.97);}
+.top-btn.kakao{background:#FEE500;color:#391B1B;}
+
+.header{width:100%;padding:28px 16px 24px;}
+.header-inner{max-width:var(--max-w);margin:0 auto;text-align:center;position:relative;z-index:1;border-radius:24px;overflow:hidden;padding:48px 24px 40px;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(11,135,147,0.22), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(255,140,90,0.14), transparent 50%),
+    linear-gradient(160deg,#03181B 0%, #072E33 55%, #0B4A52 100%);
+  box-shadow:0 12px 32px rgba(3,24,27,0.28);}
+.header-tag{display:inline-block;font-size:14px;font-weight:700;letter-spacing:2.5px;color:var(--gold);border:1px solid rgba(217,154,60,0.5);padding:6px 16px;border-radius:20px;margin-bottom:18px;}
+.header-title{font-size:34px;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-0.5px;text-shadow:0 2px 12px rgba(0,0,0,0.4);}
+.header-subtitle{font-size:16px;color:rgba(255,255,255,0.85);font-weight:500;margin-bottom:28px;letter-spacing:0.5px;}
+.header-names{font-size:22px;font-weight:700;color:#fff;background:rgba(255,255,255,0.1);display:inline-block;padding:10px 24px;border-radius:14px;margin-bottom:22px;}
+.header-cta{display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:#fff;font-weight:700;font-size:17px;padding:13px 26px;border-radius:12px;box-shadow:0 8px 20px rgba(11,135,147,0.4);transition:transform .2s ease-out, box-shadow .2s;}
+.header-cta:hover{transform:translateY(-2px) scale(1.02);}
+.header-cta:active{transform:scale(0.97);}
+
+.trip-band{width:100%;background:linear-gradient(90deg,var(--terracotta),#4FC3C9);}
+.trip-band-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);text-align:center;padding:20px 16px;}
+.trip-item .label{font-size:13px;color:rgba(255,255,255,0.85);font-weight:600;margin-bottom:4px;}
+.trip-item .value{font-size:17px;color:#fff;font-weight:800;}
+
+.container{max-width:var(--max-w);margin:0 auto;padding:36px 20px 60px;}
+.section{margin-bottom:36px;opacity:0;transform:translateY(16px);transition:opacity .5s ease-out, transform .5s ease-out;}
+.section.visible{opacity:1;transform:translateY(0);}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.section-num{width:30px;height:30px;border-radius:50%;background:var(--forest-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0;}
+.section-title{font-size:20px;font-weight:800;color:var(--text-main);}
+
+.product-link-box{display:flex;justify-content:space-between;align-items:center;background:var(--forest-bg);border:1px solid var(--forest);border-radius:14px;padding:16px 18px;font-weight:700;color:var(--forest-dark);margin-bottom:14px;transition:transform .15s ease-out, background .2s;}
+.product-link-box:hover{background:#D9F0F1;transform:scale(1.01);}
+.product-link-box:active{transform:scale(0.98);}
+.product-link-box span.arrow{font-size:20px;}
+
+.alert{border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.7;margin-top:12px;}
+.alert-forest{background:var(--forest-bg);border:1px solid var(--forest);color:#072E33;}
+.alert-terracotta{background:#FFF0EC;border:1px solid #D9703C;color:#8A3A17;}
+.alert-gold{background:var(--gold-bg);border:1px solid var(--gold);color:#8A6414;}
+.alert-navy{background:#F0F3F8;border:1px solid #3A5A8A;color:#1F3457;}
+
+.counter-box{border:1.5px solid var(--gold);border-radius:16px;background:#fff;padding:20px;box-shadow:var(--shadow);}
+.counter-box .step{display:flex;gap:12px;padding:8px 0;}
+.counter-box .step-num{width:24px;height:24px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0;}
+.counter-box .step-text{font-size:15.5px;color:var(--text-main);line-height:1.7;}
+
+.flight-card{border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px;}
+.flight-header{background:linear-gradient(120deg,#03181B,#072E33);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:700;}
+.flight-header .code{color:var(--gold);}
+.flight-body{background:#fff;padding:20px 18px;}
+.flight-route{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.flight-route .airport{text-align:center;}
+.flight-route .airport .code{font-size:30px;font-weight:800;color:var(--text-main);}
+.flight-route .airport .city{font-size:14px;color:var(--text-sub);margin-top:2px;}
+.flight-route .mid{flex:1;text-align:center;padding:0 12px;}
+.flight-route .mid .time{font-size:14px;color:var(--text-muted);}
+.flight-route .mid .line{height:2px;background:var(--border);position:relative;margin-top:6px;}
+.flight-route .mid .line::after{content:"✈";position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:16px;}
+.flight-badges{display:flex;flex-wrap:wrap;gap:8px;}
+.badge{font-size:14px;font-weight:600;color:var(--text-sub);background:#F2F8F7;border:1px solid var(--border);padding:5px 10px;border-radius:8px;}
+
+.baggage-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.baggage-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.baggage-card .icon{font-size:24px;margin-bottom:6px;}
+.baggage-card .title{font-size:15px;font-weight:700;color:var(--text-sub);margin-bottom:4px;}
+.baggage-card .amount{font-size:18px;font-weight:800;color:var(--forest-dark);}
+.baggage-card .desc{font-size:13px;color:var(--text-muted);margin-top:4px;line-height:1.5;}
+
+.guide-box{border:1.5px solid var(--forest-dark);border-radius:16px;background:var(--forest-bg);padding:20px;}
+.guide-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed rgba(7,46,51,0.15);gap:10px;}
+.guide-row:last-child{border-bottom:none;}
+.guide-row .label{color:var(--text-sub);}
+.guide-row .val{font-weight:700;color:var(--forest-dark);text-align:right;}
+
+.hotel-card{border:1.5px solid var(--forest);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:12px;}
+.hotel-card .hh{background:linear-gradient(120deg,var(--forest),#4FC3C9);color:#fff;padding:10px 16px;font-weight:700;font-size:14.5px;}
+.hotel-card .hb{background:#fff;padding:16px 18px;}
+.hotel-card .hname{font-size:19px;font-weight:800;color:var(--forest-dark);margin-bottom:8px;}
+.hotel-card .haddr{font-size:14px;color:var(--text-sub);margin-bottom:8px;line-height:1.6;}
+.hotel-card .hnote{font-size:14.5px;color:var(--text-sub);}
+
+.incl-card{border-radius:14px;padding:16px;font-size:15.5px;line-height:1.8;background:#FFF0EC;border:1px solid #D9703C;}
+.incl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#8A3A17;}
+.incl-card ul{padding-left:18px;margin-top:6px;}
+.incl-card ul li{margin-bottom:6px;}
+
+.visa-box{border:1.5px solid var(--gold);border-radius:16px;background:var(--gold-bg);padding:20px;}
+.visa-box .head{font-weight:800;font-size:17px;color:#8A6414;margin-bottom:10px;}
+.visa-box p{font-size:15.5px;line-height:1.75;color:var(--text-main);margin-bottom:10px;}
+.visa-box .vbtns{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
+.visa-box a.linkbtn{display:inline-block;background:var(--gold);color:#fff;font-weight:700;font-size:14.5px;padding:10px 16px;border-radius:10px;transition:transform .15s ease-out;}
+.visa-box a.linkbtn.alt{background:var(--forest);}
+.visa-box a.linkbtn:active{transform:scale(0.97);}
+
+.exchange-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:#fff;box-shadow:var(--shadow);}
+
+.roam-grid{display:grid;grid-template-columns:1fr;gap:12px;}
+.roam-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px;box-shadow:var(--shadow);}
+.roam-card .rc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.roam-card .rc-title{font-weight:800;font-size:16.5px;color:var(--forest-dark);}
+.roam-card .rc-price{font-weight:800;font-size:15px;color:#D9703C;background:#FFF0EC;padding:4px 10px;border-radius:8px;}
+.roam-card .rc-desc{font-size:14.5px;color:var(--text-sub);line-height:1.7;margin-bottom:8px;}
+.roam-card .rc-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.roam-card .rc-tag{font-size:13px;padding:4px 10px;border-radius:8px;background:var(--forest-bg);color:var(--forest-dark);font-weight:600;}
+.roam-card .rc-tag.con{background:#FFF0EC;color:#A3401F;}
+
+.weather-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
+.weather-card{flex:0 0 auto;width:106px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 8px;text-align:center;box-shadow:var(--shadow);}
+.weather-card .date{font-size:13.5px;font-weight:700;color:var(--text-sub);margin-bottom:6px;}
+.weather-card .day{font-size:12px;color:var(--text-muted);margin-bottom:6px;}
+.weather-card .icon{font-size:26px;margin-bottom:8px;}
+.weather-card .high{font-size:17px;font-weight:800;color:var(--forest);}
+.weather-card .low{font-size:14px;color:var(--text-muted);margin-top:2px;}
+
+.prep-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.prep-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.prep-card .icon{font-size:22px;margin-bottom:6px;}
+.prep-card .title{font-weight:700;font-size:15.5px;color:var(--forest-dark);margin-bottom:6px;}
+.prep-card ul{padding-left:16px;font-size:15px;color:var(--text-sub);line-height:1.8;}
+
+@media (max-width:480px){
+  .container{padding-left:14px;padding-right:14px;}
+  .trip-band-inner{grid-template-columns:repeat(2,1fr);gap:14px;padding:16px 12px;}
+  .baggage-grid,.prep-grid{grid-template-columns:1fr;}
+  .header-title{font-size:26px;}
+  .header-inner{padding:38px 18px 32px;}
+  .flight-badges{gap:6px;}
+  .badge{font-size:12.5px;padding:4px 8px;}
+}
+@media (max-width:400px){
+  .guide-row,.exchange-box .ex-row{flex-direction:column;align-items:flex-start;gap:2px;}
+  .guide-row .val,.exchange-box .ex-row .val{text-align:left;}
+}
+
+.footer{width:100%;background:#03181B;padding:32px 20px;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;text-align:center;}
+.footer-agent{color:#fff;font-size:17px;font-weight:700;margin-bottom:6px;}
+.footer-sub{color:rgba(255,255,255,0.55);font-size:14.5px;margin-bottom:18px;}
+.footer-btns{display:flex;justify-content:center;gap:10px;}
+.footer-btn{padding:10px 20px;border-radius:12px;font-weight:700;font-size:15.5px;transition:transform .15s ease-out;}
+.footer-btn:active{transform:scale(0.97);}
+.footer-btn.tel{background:var(--forest);color:#fff;}
+.footer-btn.kakao{background:#FEE500;color:#391B1B;}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="agent-info">담당 <b>이경진 실장</b> · 모두투어 투어콕</div>
+    <div class="top-btns">
+      <a class="top-btn" href="tel:1544-5714">📞 전화상담</a>
+      <a class="top-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡</a>
+    </div>
+  </div>
+</div>
+
+<div class="header">
+  <div class="header-inner">
+    <span class="header-tag">TRAVEL CONFIRMATION</span>
+    <div class="header-title">하와이 여행 확정서</div>
+    <div class="header-subtitle">인천국제공항 출발 · 5박 6일</div>
+    <div class="header-names">송설화 · 김주민님</div><br>
+    <a class="header-cta" href="https://www.modetour.com/package/103531992?MLoc=99&Pnum=103531992&ANO=4547682&sno=C2181215&thru=crs" target="_blank">🔗 여행상품 확인하기</a>
+  </div>
+</div>
+
+<div class="trip-band">
+  <div class="trip-band-inner">
+    <div class="trip-item"><div class="label">출발일</div><div class="value">2026.10.19(월)</div></div>
+    <div class="trip-item"><div class="label">귀국일</div><div class="value">2026.10.24(토)</div></div>
+    <div class="trip-item"><div class="label">일정</div><div class="value">5박 6일</div></div>
+    <div class="trip-item"><div class="label">투어타입</div><div class="value">패키지</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 상품 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">1</div><div class="section-title">상품 안내</div></div>
+    <a class="product-link-box" href="https://www.modetour.com/package/103531992?MLoc=99&Pnum=103531992&ANO=4547682&sno=C2181215&thru=crs" target="_blank">
+      <span>모두투어 하와이 상품 바로가기</span>
+      <span class="arrow">↗</span>
+    </a>
+    <div class="alert alert-forest">
+      ✔ <b>인천공항 미팅이 없으니</b> 개별적으로 체크인 후 출발해 주세요. 현지 가이드는 호놀룰루 공항 도착 후 만나시게 됩니다.
+    </div>
+    <div class="alert alert-gold">
+      ⏰ 출발 당일 공항에는 <b>비행기 출발 2~3시간 전까지 반드시 도착</b>해 주세요.
+    </div>
+  </div>
+
+  <!-- 항공편 정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">항공편 정보</div></div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>출발편 · 대한항공</span><span class="code">KE053</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 10.19(월) 21:05</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">HNL</div><div class="city">호놀룰루 · 10.19(월) 10:55</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 대한항공</span>
+          <span class="badge">T2 체크인 A·B·C·D</span>
+          <span class="badge">기내식 제공</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>귀국편 · 대한항공</span><span class="code">KE054</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">HNL</div><div class="city">호놀룰루 · 10.23(금) 13:05</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 10.24(토) 17:45</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 대한항공</span>
+          <span class="badge">기내식 제공</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-navy">
+      🕐 출발편은 인천 21:05 출발인데 호놀룰루 도착이 같은 날 10:55로 표시되는 것은 <b>날짜변경선 및 시차(하와이가 한국보다 19시간 느림)</b> 때문이며, 실제 비행시간은 약 9시간입니다. 표에 안내된 시간 그대로 준비하시면 됩니다.
+    </div>
+  </div>
+
+  <!-- 수하물 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">수하물 안내</div></div>
+    <div class="baggage-grid">
+      <div class="baggage-card">
+        <div class="icon">🧳</div>
+        <div class="title">위탁수하물</div>
+        <div class="amount">2개 (개당 23kg)</div>
+        <div class="desc">50lbs 이하, 3변의 합 158cm(62in) 이내</div>
+      </div>
+      <div class="baggage-card">
+        <div class="icon">🎒</div>
+        <div class="title">기내수하물</div>
+        <div class="amount">1개 (12kg)</div>
+        <div class="desc">3변의 합 115cm(45in) 이내 (A 40cm·B 20cm·C 55cm 각 초과 불가)</div>
+      </div>
+    </div>
+    <div class="alert alert-forest" style="margin-top:12px;">
+      ✔ 기내식 제공됩니다. 좌석은 별도 지정 안내가 없어, 체크인 시 카운터에서 확인해 주세요.<br><br>
+      📞 대한항공 고객서비스센터: 1588-2001
+    </div>
+  </div>
+
+  <!-- 체크인 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">체크인 안내</div></div>
+    <div class="counter-box">
+      <div class="step"><div class="step-num">1</div><div class="step-text">인천공항 <b>제2터미널(T2)</b>, 대한항공 체크인 카운터 <b>A·B·C·D</b>에서 체크인하시면 됩니다.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-text">대한항공 사이트에서 <b>출발 48시간 전부터 온라인 체크인</b>도 가능하며, 무료 좌석지정 및 탑승권 발급이 가능합니다.</div></div>
+    </div>
+  </div>
+
+  <!-- 하와이 입국절차 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">하와이 입국 절차 안내</div></div>
+    <div class="counter-box">
+      <div class="step"><div class="step-num">1</div><div class="step-text">비행기에서 내린 후 <b>위키위키버스</b>를 타고 터미널로 이동합니다.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-text">에스컬레이터를 타고 2층으로 내려가 <b>왼쪽 일반심사대</b>에서 입국심사를 받습니다(또는 키오스크 이용).</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-text">1층으로 내려가 수하물을 찾은 후 <b>세관검사</b>를 진행합니다.</div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-text">왼쪽 <b>"GROUP GATE"(단체관광객출구)</b>로 나간 후 가이드를 만나시면 됩니다. 미팅보드에는 <b>손님성함 또는 "모두투어"</b>가 적혀 있습니다.</div></div>
+    </div>
+  </div>
+
+  <!-- 현지 가이드 & 행사정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">현지 가이드 & 행사 정보</div></div>
+    <div class="guide-box">
+      <div class="guide-row"><span class="label">가이드명</span><span class="val">심지니</span></div>
+      <div class="guide-row"><span class="label">가이드 연락처</span><span class="val">808-387-1966</span></div>
+      <div class="guide-row"><span class="label">현지 비상연락처</span><span class="val">808-922-9704</span></div>
+      <div class="guide-row"><span class="label">행사인원</span><span class="val">6명<br>(오아후 섬일주 관광 조인 예정)</span></div>
+      <div class="guide-row"><span class="label">행사차량</span><span class="val">15인승</span></div>
+    </div>
+  </div>
+
+  <!-- 투숙호텔 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">투숙 호텔</div></div>
+    <div class="hotel-card">
+      <div class="hh">🏨 투숙 호텔</div>
+      <div class="hb">
+        <div class="hname">쉐라톤 와이키키<br><span style="font-size:14px;color:var(--text-sub);font-weight:500;">Sheraton Waikiki</span></div>
+        <div class="haddr">컨펌번호: #1316443 (호텔 개별 체크인)</div>
+        <div class="hnote">전 일정 포함</div>
+      </div>
+    </div>
+    <div class="alert alert-gold">
+      💳 체크인 시 호텔 디파짓(보증금)을 위해 <b>신용카드를 꼭 함께 준비</b>해 주세요.
+    </div>
+  </div>
+
+  <!-- 불포함 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">불포함 사항</div></div>
+    <div class="incl-card">
+      <div class="head">✘ 불포함사항</div>
+      <ul>
+        <li>현지가이드/기사경비 — <b>$60/인</b>(현지지불) 및 식사 테이블팁</li>
+        <li>자유일정 시 식사 및 매너팁(식당 테이블팁, 객실팁 등)</li>
+      </ul>
+    </div>
+    <div class="alert alert-navy">
+      ℹ️ 매너팁은 소비자의 자율적 선택 사항으로, 지불 여부에 따른 불이익은 없습니다.
+    </div>
+  </div>
+
+  <!-- 미국 전자여행허가(ESTA) 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">미국 전자여행허가(ESTA) 안내</div></div>
+    <div class="visa-box">
+      <div class="head">📝 ESTA(전자여행허가) 필수</div>
+      <p>미국(하와이 포함) 무비자 입국을 위해서는 출발 전 <b>ESTA(전자여행허가)</b>를 반드시 발급받으셔야 합니다.<br><br>
+      ⏰ 출발 <b>최소 72시간 전</b> 신청을 권장드리며, 유효한 ESTA 없이는 탑승이 거절될 수 있습니다.<br><br>
+      ESTA는 공식 사이트에서만 신청하시고, 유사 사이트의 대행 수수료에 유의해 주세요.</p>
+      <div class="vbtns">
+        <a class="linkbtn" href="https://esta.cbp.dhs.gov/" target="_blank">🔗 ESTA 공식 신청 사이트</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 렌터카 이용시 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">렌터카 이용 시 안내</div></div>
+    <div class="alert alert-gold">
+      🚗 해외에서 렌터카를 이용하실 경우 아래 사항을 꼭 확인해 주세요.<br><br>
+      ① <b>국내 운전면허증 + 국제운전면허증</b>을 함께 지참(기간 확인 필수)<br><br>
+      ② 운전자 본인 명의의 <b>해외결제 가능 신용카드</b> 필요(영문 성함 스펠링이 여권과 동일해야 함)<br><br>
+      ③ 현금, 체크(직불)카드, 동승자 신용카드는 사용이 <b>안 됩니다.</b>
+    </div>
+  </div>
+
+  <!-- 환전 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">11</div><div class="section-title">환전 안내</div></div>
+    <div class="exchange-box">
+      💵 하와이는 미국 달러(USD)를 사용합니다. 현지가이드/기사경비($60/인), 식사 테이블팁, 매너팁 등은 <b>현금(USD)</b>으로 준비하시는 것이 편리합니다.<br><br>
+      현재 환율 기준 대략 <b>한국돈 1만원 ≈ 7 USD</b> 내외입니다(환율은 매일 변동되니 참고용으로만 봐주세요).<br><br>
+      대부분의 상점·레스토랑에서는 해외결제 가능한 신용카드도 무리 없이 사용 가능하니, 개인경비는 카드와 소액 현금을 함께 준비하시길 권장드립니다.
+    </div>
+  </div>
+
+  <!-- 데이터 통신 옵션 비교 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">12</div><div class="section-title">현지 데이터 통신 옵션 비교</div></div>
+    <div class="roam-grid">
+      <div class="roam-card">
+        <div class="rc-head">
+          <div class="rc-title">📶 통신사 로밍</div>
+          <div class="rc-price">1일 약 1만1천~1만3천원</div>
+        </div>
+        <div class="rc-desc">SKT 11,000원·KT 12,100원·LG U+ 13,200원 수준(2026년 기준, 미국은 주요국가 요금제 적용). 기존 번호 그대로 사용, 별도 셋팅이 필요 없습니다.</div>
+        <div class="rc-tags">
+          <span class="rc-tag">셋팅 불필요</span>
+          <span class="rc-tag con">요금 다소 높음</span>
+        </div>
+      </div>
+      <div class="roam-card">
+        <div class="rc-head">
+          <div class="rc-title">📱 현지 유심(USIM)</div>
+          <div class="rc-price">5~6일권 약 2만~3만원</div>
+        </div>
+        <div class="rc-desc">공항·매장에서 구매 후 교체. 요금은 비교적 저렴하지만 한국 번호로 오는 전화·문자 수신이 안 됩니다.</div>
+        <div class="rc-tags">
+          <span class="rc-tag">비교적 저렴</span>
+          <span class="rc-tag con">번호 변경(수신 불가)</span>
+        </div>
+      </div>
+      <div class="roam-card">
+        <div class="rc-head">
+          <div class="rc-title">💳 이심(eSIM)</div>
+          <div class="rc-price">5~6일권 약 2만~3만원</div>
+        </div>
+        <div class="rc-desc">앱으로 QR코드 스캔만 하면 설치 완료. 유심 교체 없이 기존 유심(한국 번호)과 함께 듀얼로 사용 가능합니다.</div>
+        <div class="rc-tags">
+          <span class="rc-tag">한국 번호 유지</span>
+          <span class="rc-tag">셋팅 간편(QR)</span>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-forest" style="margin-top:12px;">
+      💡 가격은 통신사·판매처에 따라 변동될 수 있어 참고용으로 봐주세요.
+    </div>
+  </div>
+
+  <!-- 날씨 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">13</div><div class="section-title">일자별 날씨 정보</div></div>
+    <div class="weather-row">
+      <div class="weather-card">
+        <div class="date">10/19(월)</div>
+        <div class="day">출국일</div>
+        <div class="icon">☀️</div>
+        <div class="high">30℃</div>
+        <div class="low">23℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">10/20(화)</div>
+        <div class="day">오아후</div>
+        <div class="icon">⛅</div>
+        <div class="high">29℃</div>
+        <div class="low">23℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">10/21(수)</div>
+        <div class="day">오아후</div>
+        <div class="icon">☀️</div>
+        <div class="high">29℃</div>
+        <div class="low">23℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">10/22(목)</div>
+        <div class="day">오아후</div>
+        <div class="icon">⛅</div>
+        <div class="high">29℃</div>
+        <div class="low">23℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">10/23(금)</div>
+        <div class="day">오아후</div>
+        <div class="icon">☀️</div>
+        <div class="high">29℃</div>
+        <div class="low">23℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">10/24(토)</div>
+        <div class="day">귀국일</div>
+        <div class="icon">⛅</div>
+        <div class="high">29℃</div>
+        <div class="low">23℃</div>
+      </div>
+    </div>
+    <div class="alert alert-gold">
+      ☀️ 하와이 10월은 고온다습한 여름철 수준의 날씨가 이어지며, 낮 최고 29~30℃ 내외로 안정적입니다.<br><br>
+      비 올 확률은 점차 조금씩 늘어나는 시기지만 대체로 짧은 소나기 수준이니, 우산보다는 가벼운 우비를 챙기시는 것을 권장드립니다.
+    </div>
+  </div>
+
+  <!-- 준비물 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">14</div><div class="section-title">여행 준비물</div></div>
+    <div class="prep-grid">
+      <div class="prep-card">
+        <div class="icon">👕</div>
+        <div class="title">의류</div>
+        <ul>
+          <li>반팔·반바지, 수영복(고온다습)</li>
+          <li>가벼운 우비(소나기 대비)</li>
+          <li>편한 샌들·운동화</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🧴</div>
+        <div class="title">자외선 대비</div>
+        <ul>
+          <li>선크림(SPF 높은 제품), 선글라스</li>
+          <li>모자</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">💵</div>
+        <div class="title">현금 · 결제</div>
+        <ul>
+          <li>가이드/기사경비 USD($60/인)</li>
+          <li>식사 테이블팁·매너팁용 소액 현금</li>
+          <li>해외결제 가능 신용카드(호텔 디파짓 필수)</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🎒</div>
+        <div class="title">기타 준비물</div>
+        <ul>
+          <li>여권 + ESTA 승인 확인</li>
+          <li>국내·국제운전면허증(렌터카 이용 시)</li>
+          <li>멀티 어댑터(미국 120V, A/B타입)</li>
+          <li>보조배터리</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-agent">담당 이경진 실장</div>
+    <div class="footer-sub">송설화 · 김주민님의 안전하고 즐거운 하와이 여행을 응원합니다</div>
+    <div class="footer-btns">
+      <a class="footer-btn tel" href="tel:1544-5714">📞 1544-5714</a>
+      <a class="footer-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 투어콕 카카오톡 채널</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.1});
+sections.forEach(s=>observer.observe(s));
+</script>
+
+</body>
+</html>
