@@ -108,6 +108,17 @@ img{max-width:100%;display:block;}
 .baggage-card .amount{font-size:18px;font-weight:800;color:var(--forest-dark);}
 .baggage-card .desc{font-size:13px;color:var(--text-muted);margin-top:4px;line-height:1.5;}
 
+.guide-box{border:1.5px solid var(--forest-dark);border-radius:16px;background:var(--forest-bg);padding:20px;}
+.guide-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed rgba(31,74,54,0.2);gap:10px;}
+.guide-row:last-child{border-bottom:none;}
+.guide-row .label{color:var(--text-sub);}
+.guide-row .val{font-weight:700;color:var(--forest-dark);text-align:right;}
+
+.hotel-card{border:2px solid var(--forest);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);}
+.hotel-header{background:linear-gradient(120deg,var(--forest),#4E9270);color:#fff;padding:10px 18px;font-size:14.5px;font-weight:700;}
+.hotel-body{background:#fff;padding:16px 18px;}
+.hotel-name{font-size:19px;font-weight:800;color:var(--text-main);}
+
 .incl-card{border-radius:14px;padding:16px;font-size:15.5px;line-height:1.8;background:var(--terracotta-bg);border:1px solid var(--terracotta);}
 .incl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#8E2E28;}
 .incl-card ul{padding-left:18px;margin-top:6px;}
@@ -167,8 +178,8 @@ img{max-width:100%;display:block;}
   .badge{font-size:12.5px;padding:4px 8px;}
 }
 @media (max-width:400px){
-  .exchange-box .ex-row,.meeting-row{flex-direction:column;align-items:flex-start;gap:2px;}
-  .exchange-box .ex-row .val,.meeting-row .val{text-align:left;}
+  .exchange-box .ex-row,.meeting-row,.guide-row{flex-direction:column;align-items:flex-start;gap:2px;}
+  .exchange-box .ex-row .val,.meeting-row .val,.guide-row .val{text-align:left;}
   .meeting-time{font-size:20px;}
 }
 
@@ -296,18 +307,33 @@ img{max-width:100%;display:block;}
     </div>
   </div>
 
-  <!-- 현지 가이드 & 행사정보 / 투숙호텔 -->
+  <!-- 현지 가이드 & 행사정보 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">5</div><div class="section-title">현지 가이드 & 행사 정보 / 투숙호텔</div></div>
-    <div class="alert alert-navy">
-      📋 현지 가이드 및 행사 정보, 투숙 호텔은 <b>여행 출발 2일 전</b> 일정표에서 확인 가능합니다.<br><br>
-      행사정보가 확인되는 대로 <b>중국 입국신고서를 함께 작성해주세요.</b>
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">현지 가이드 & 행사 정보</div></div>
+    <div class="guide-box">
+      <div class="guide-row"><span class="label">가이드명</span><span class="val">이향순(여) · LI XIANG SHUN</span></div>
+      <div class="guide-row"><span class="label">가이드 연락처</span><span class="val">+86-135-0183-7035</span></div>
+      <div class="guide-row"><span class="label">현지 비상연락처</span><span class="val">+86-139-1847-6525</span></div>
+      <div class="guide-row"><span class="label">행사인원</span><span class="val">24명</span></div>
+      <div class="guide-row"><span class="label">행사차량</span><span class="val">37인승 일반차량</span></div>
+    </div>
+    <div class="alert alert-navy" style="margin-top:14px;">
+      📋 행사정보가 확인되어, <b>중국 입국신고서를 함께 작성해주세요.</b>
+    </div>
+  </div>
+
+  <!-- 투숙호텔 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">투숙 호텔</div></div>
+    <div class="hotel-card">
+      <div class="hotel-header">🏨 전 일정</div>
+      <div class="hotel-body"><div class="hotel-name">상해 리갈진펑호텔</div></div>
     </div>
   </div>
 
   <!-- 불포함 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">6</div><div class="section-title">불포함 사항</div></div>
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">불포함 사항</div></div>
     <div class="incl-card">
       <div class="head">✘ 불포함사항</div>
       <ul>
@@ -319,7 +345,7 @@ img{max-width:100%;display:block;}
 
   <!-- 선택관광 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">7</div><div class="section-title">선택관광 안내</div></div>
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">선택관광 안내</div></div>
     <div class="tour-table-wrap">
       <table class="tour-table">
         <tr>
@@ -347,7 +373,7 @@ img{max-width:100%;display:block;}
 
   <!-- 중국 입국신고서 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">8</div><div class="section-title">중국 입국신고서 안내</div></div>
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">중국 입국신고서 안내</div></div>
     <div class="visa-box">
       <div class="head">📝 중국 온라인 입국신고서</div>
       <p>중국 입국신고서는 <b>현지 도착 시간 기준으로 72시간 전부터</b> 온라인으로 작성이 가능합니다.<br><br>
@@ -362,7 +388,7 @@ img{max-width:100%;display:block;}
 
   <!-- 환전 안내 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">9</div><div class="section-title">환전 안내</div></div>
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">환전 안내</div></div>
     <div class="exchange-box">
       <div class="ex-row"><span>달러(USD) 환전</span><span style="font-weight:700;">1인 $150~200 정도 권장</span></div>
       <div class="ex-row"><span>가이드/기사경비</span><span style="font-weight:700;">$40(현지 지불, 별도)</span></div>
@@ -379,7 +405,7 @@ img{max-width:100%;display:block;}
 
   <!-- 데이터 통신 옵션 비교 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">10</div><div class="section-title">현지 데이터 통신 옵션 비교</div></div>
+    <div class="section-head"><div class="section-num">11</div><div class="section-title">현지 데이터 통신 옵션 비교</div></div>
     <div class="alert alert-terracotta">
       🚧 중국은 만리방화벽(GFW) 정책으로 <b>카카오톡·구글·인스타그램 등 접속이 제한</b>됩니다.<br><br>
       아래 유심·이심 상품은 <b>VPN 우회 기능이 포함된 여행자용 상품</b>을 기준으로 안내드리니, 구매 시 "카톡 가능/VPN 불필요" 문구가 있는지 꼭 확인해 주세요.
@@ -427,7 +453,7 @@ img{max-width:100%;display:block;}
 
   <!-- 날씨 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">11</div><div class="section-title">일자별 날씨 정보</div></div>
+    <div class="section-head"><div class="section-num">12</div><div class="section-title">일자별 날씨 정보</div></div>
     <div class="weather-row">
       <div class="weather-card">
         <div class="date">10/17(토)</div>
@@ -466,7 +492,7 @@ img{max-width:100%;display:block;}
 
   <!-- 준비물 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">12</div><div class="section-title">여행 준비물</div></div>
+    <div class="section-head"><div class="section-num">13</div><div class="section-title">여행 준비물</div></div>
 
     <div class="prep-grid">
       <div class="prep-card">
