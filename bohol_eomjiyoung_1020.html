@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>보홀 여행 확정서 - 엄지영님 가족</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+  --forest:#0E9BB5;
+  --forest-dark:#083040;
+  --forest-bg:#EEF9FC;
+  --terracotta:#0E9BB5;
+  --terracotta-bg:#EEF9FC;
+  --gold:#D2A24C;
+  --gold-bg:#FBF4E6;
+  --sky-top:#EFF3EC;
+  --sky-bottom:#F8F6F0;
+  --text-main:#1E2A22;
+  --text-sub:#5C6A5F;
+  --text-muted:#8E9990;
+  --card-bg:#FFFFFF;
+  --border:#E4E9E2;
+  --shadow:0 4px 20px rgba(14,155,181,0.10);
+  --max-w:680px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Pretendard',sans-serif;background:linear-gradient(180deg,var(--sky-top) 0%, var(--sky-bottom) 45%, #FBFAF6 100%);color:var(--text-main);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+
+.top-bar{width:100%;background:rgba(8,48,64,0.92);backdrop-filter:blur(6px);padding:10px 20px;}
+.top-bar-inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.agent-info{color:#EFF7F1;font-size:15px;font-weight:500;}
+.agent-info b{color:#fff;}
+.top-btns{display:flex;gap:8px;}
+.top-btn{font-size:14.5px;font-weight:600;padding:6px 12px;border-radius:20px;background:rgba(255,255,255,0.15);color:#fff;transition:transform .15s ease-out, background .2s;}
+.top-btn:hover{background:rgba(255,255,255,0.28);}
+.top-btn:active{transform:scale(0.97);}
+.top-btn.kakao{background:#FEE500;color:#391B1B;}
+
+.header{width:100%;padding:28px 16px 24px;}
+.header-inner{max-width:var(--max-w);margin:0 auto;text-align:center;position:relative;z-index:1;border-radius:24px;overflow:hidden;padding:48px 24px 40px;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(14,155,181,0.20), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(80,220,240,0.12), transparent 50%),
+    linear-gradient(160deg,#051A22 0%, #083040 55%, #0C4458 100%);
+  box-shadow:0 12px 32px rgba(5,26,34,0.28);}
+.header-tag{display:inline-block;font-size:14px;font-weight:700;letter-spacing:2.5px;color:var(--gold);border:1px solid rgba(210,162,76,0.5);padding:6px 16px;border-radius:20px;margin-bottom:18px;}
+.header-title{font-size:34px;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-0.5px;text-shadow:0 2px 12px rgba(0,0,0,0.4);}
+.header-subtitle{font-size:16px;color:rgba(255,255,255,0.85);font-weight:500;margin-bottom:28px;letter-spacing:0.5px;}
+.header-names{font-size:22px;font-weight:700;color:#fff;background:rgba(255,255,255,0.1);display:inline-block;padding:10px 24px;border-radius:14px;margin-bottom:22px;}
+.header-cta{display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:#fff;font-weight:700;font-size:17px;padding:13px 26px;border-radius:12px;box-shadow:0 8px 20px rgba(14,155,181,0.4);transition:transform .2s ease-out, box-shadow .2s;}
+.header-cta:hover{transform:translateY(-2px) scale(1.02);}
+.header-cta:active{transform:scale(0.97);}
+
+.trip-band{width:100%;background:linear-gradient(90deg,var(--terracotta),#4FC8DD);}
+.trip-band-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);text-align:center;padding:20px 16px;}
+.trip-item .label{font-size:13px;color:rgba(255,255,255,0.85);font-weight:600;margin-bottom:4px;}
+.trip-item .value{font-size:17px;color:#fff;font-weight:800;}
+
+.container{max-width:var(--max-w);margin:0 auto;padding:36px 20px 60px;}
+.section{margin-bottom:36px;opacity:0;transform:translateY(16px);transition:opacity .5s ease-out, transform .5s ease-out;}
+.section.visible{opacity:1;transform:translateY(0);}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.section-num{width:30px;height:30px;border-radius:50%;background:var(--forest-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0;}
+.section-title{font-size:20px;font-weight:800;color:var(--text-main);}
+
+.product-link-box{display:flex;justify-content:space-between;align-items:center;background:var(--forest-bg);border:1px solid var(--forest);border-radius:14px;padding:16px 18px;font-weight:700;color:var(--forest-dark);margin-bottom:14px;transition:transform .15s ease-out, background .2s;}
+.product-link-box:hover{background:#DCF2F7;transform:scale(1.01);}
+.product-link-box:active{transform:scale(0.98);}
+.product-link-box span.arrow{font-size:20px;}
+
+.alert{border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.7;margin-top:12px;}
+.alert-forest{background:var(--forest-bg);border:1px solid var(--forest);color:#083040;}
+.alert-terracotta{background:#FDF1EF;border:1px solid #C1443C;color:#8E2E28;}
+.alert-gold{background:var(--gold-bg);border:1px solid var(--gold);color:#8A6414;}
+.alert-navy{background:#F0F3F8;border:1px solid #3A5A8A;color:#1F3457;}
+
+.counter-box{border:1.5px solid var(--gold);border-radius:16px;background:#fff;padding:20px;box-shadow:var(--shadow);}
+.counter-box .step{display:flex;gap:12px;padding:8px 0;}
+.counter-box .step-num{width:24px;height:24px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0;}
+.counter-box .step-text{font-size:15.5px;color:var(--text-main);line-height:1.7;}
+
+.flight-card{border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px;}
+.flight-header{background:linear-gradient(120deg,#051A22,#083040);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:700;}
+.flight-header .code{color:var(--gold);}
+.flight-body{background:#fff;padding:20px 18px;}
+.flight-route{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.flight-route .airport{text-align:center;}
+.flight-route .airport .code{font-size:30px;font-weight:800;color:var(--text-main);}
+.flight-route .airport .city{font-size:14px;color:var(--text-sub);margin-top:2px;}
+.flight-route .mid{flex:1;text-align:center;padding:0 12px;}
+.flight-route .mid .time{font-size:14px;color:var(--text-muted);}
+.flight-route .mid .line{height:2px;background:var(--border);position:relative;margin-top:6px;}
+.flight-route .mid .line::after{content:"✈";position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:16px;}
+.flight-badges{display:flex;flex-wrap:wrap;gap:8px;}
+.badge{font-size:14px;font-weight:600;color:var(--text-sub);background:#F5F8F4;border:1px solid var(--border);padding:5px 10px;border-radius:8px;}
+
+.guide-box{border:1.5px solid var(--forest-dark);border-radius:16px;background:var(--forest-bg);padding:20px;}
+.guide-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed rgba(8,48,64,0.15);gap:10px;}
+.guide-row:last-child{border-bottom:none;}
+.guide-row .label{color:var(--text-sub);}
+.guide-row .val{font-weight:700;color:var(--forest-dark);text-align:right;}
+
+.hotel-card{border:1.5px solid var(--forest);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:12px;}
+.hotel-card .hh{background:linear-gradient(120deg,var(--forest),#4FC8DD);color:#fff;padding:10px 16px;font-weight:700;font-size:14.5px;}
+.hotel-card .hb{background:#fff;padding:16px 18px;}
+.hotel-card .hname{font-size:19px;font-weight:800;color:var(--forest-dark);margin-bottom:8px;}
+.hotel-card .hnote{font-size:14.5px;color:var(--text-sub);}
+
+.incl-card{border-radius:14px;padding:16px;font-size:15.5px;line-height:1.8;background:#FDF1EF;border:1px solid #C1443C;}
+.incl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#8E2E28;}
+.incl-card ul{padding-left:18px;margin-top:6px;}
+.incl-card ul li{margin-bottom:6px;}
+
+.visa-box{border:1.5px solid var(--gold);border-radius:16px;background:var(--gold-bg);padding:20px;}
+.visa-box .head{font-weight:800;font-size:17px;color:#8A6414;margin-bottom:10px;}
+.visa-box p{font-size:15.5px;line-height:1.75;color:var(--text-main);margin-bottom:10px;}
+.visa-box ol,.visa-box ul{padding-left:20px;font-size:15.5px;line-height:1.85;color:var(--text-main);margin-bottom:10px;}
+.visa-box ol li,.visa-box ul li{margin-bottom:6px;}
+.visa-box .vbtns{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
+.visa-box a.linkbtn{display:inline-block;background:var(--gold);color:#fff;font-weight:700;font-size:14.5px;padding:10px 16px;border-radius:10px;transition:transform .15s ease-out;}
+.visa-box a.linkbtn.alt{background:var(--forest);}
+.visa-box a.linkbtn:active{transform:scale(0.97);}
+
+.exchange-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:#fff;box-shadow:var(--shadow);}
+
+.roam-grid{display:grid;grid-template-columns:1fr;gap:12px;}
+.roam-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px;box-shadow:var(--shadow);}
+.roam-card .rc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.roam-card .rc-title{font-weight:800;font-size:16.5px;color:var(--forest-dark);}
+.roam-card .rc-price{font-weight:800;font-size:15px;color:#C1443C;background:#FDF1EF;padding:4px 10px;border-radius:8px;}
+.roam-card .rc-desc{font-size:14.5px;color:var(--text-sub);line-height:1.7;margin-bottom:8px;}
+.roam-card .rc-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.roam-card .rc-tag{font-size:13px;padding:4px 10px;border-radius:8px;background:var(--forest-bg);color:var(--forest-dark);font-weight:600;}
+.roam-card .rc-tag.con{background:#FDF1EF;color:#A32C24;}
+
+.weather-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
+.weather-card{flex:0 0 auto;width:106px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 8px;text-align:center;box-shadow:var(--shadow);}
+.weather-card .date{font-size:13.5px;font-weight:700;color:var(--text-sub);margin-bottom:6px;}
+.weather-card .day{font-size:12px;color:var(--text-muted);margin-bottom:6px;}
+.weather-card .icon{font-size:26px;margin-bottom:8px;}
+.weather-card .high{font-size:17px;font-weight:800;color:var(--forest);}
+.weather-card .low{font-size:14px;color:var(--text-muted);margin-top:2px;}
+
+.prep-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.prep-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.prep-card .icon{font-size:22px;margin-bottom:6px;}
+.prep-card .title{font-weight:700;font-size:15.5px;color:var(--forest-dark);margin-bottom:6px;}
+.prep-card ul{padding-left:16px;font-size:15px;color:var(--text-sub);line-height:1.8;}
+
+@media (max-width:480px){
+  .container{padding-left:14px;padding-right:14px;}
+  .trip-band-inner{grid-template-columns:repeat(2,1fr);gap:14px;padding:16px 12px;}
+  .prep-grid{grid-template-columns:1fr;}
+  .header-title{font-size:26px;}
+  .header-inner{padding:38px 18px 32px;}
+  .flight-badges{gap:6px;}
+  .badge{font-size:12.5px;padding:4px 8px;}
+}
+@media (max-width:400px){
+  .guide-row{flex-direction:column;align-items:flex-start;gap:2px;}
+  .guide-row .val{text-align:left;}
+}
+
+.footer{width:100%;background:#051A22;padding:32px 20px;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;text-align:center;}
+.footer-agent{color:#fff;font-size:17px;font-weight:700;margin-bottom:6px;}
+.footer-sub{color:rgba(255,255,255,0.55);font-size:14.5px;margin-bottom:18px;}
+.footer-btns{display:flex;justify-content:center;gap:10px;}
+.footer-btn{padding:10px 20px;border-radius:12px;font-weight:700;font-size:15.5px;transition:transform .15s ease-out;}
+.footer-btn:active{transform:scale(0.97);}
+.footer-btn.tel{background:var(--forest);color:#fff;}
+.footer-btn.kakao{background:#FEE500;color:#391B1B;}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="agent-info">담당 <b>이경진 실장</b> · 모두투어 투어콕</div>
+    <div class="top-btns">
+      <a class="top-btn" href="tel:1544-5714">📞 전화상담</a>
+      <a class="top-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡</a>
+    </div>
+  </div>
+</div>
+
+<div class="header">
+  <div class="header-inner">
+    <span class="header-tag">TRAVEL CONFIRMATION</span>
+    <div class="header-title">보홀 여행 확정서</div>
+    <div class="header-subtitle">부산(김해) 국제공항 출발 · 4박 5일</div>
+    <div class="header-names">엄지영님 가족</div><br>
+    <a class="header-cta" href="https://www.modetour.com/package/101819890?MLoc=99&Pnum=101819890&ANO=1772510&sno=C2181215&thru=crs" target="_blank">🔗 여행상품 확인하기</a>
+  </div>
+</div>
+
+<div class="trip-band">
+  <div class="trip-band-inner">
+    <div class="trip-item"><div class="label">출발일</div><div class="value">2026.10.20(화)</div></div>
+    <div class="trip-item"><div class="label">귀국일</div><div class="value">2026.10.24(토)</div></div>
+    <div class="trip-item"><div class="label">일정</div><div class="value">4박 5일</div></div>
+    <div class="trip-item"><div class="label">투어타입</div><div class="value">패키지</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 상품 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">1</div><div class="section-title">상품 안내</div></div>
+    <a class="product-link-box" href="https://www.modetour.com/package/101819890?MLoc=99&Pnum=101819890&ANO=1772510&sno=C2181215&thru=crs" target="_blank">
+      <span>모두투어 보홀 패키지 상품 바로가기</span>
+      <span class="arrow">↗</span>
+    </a>
+    <div class="alert alert-forest">
+      ✔ 제주항공 이용 상품이며, <b>김해공항 미팅이 없으니</b> 개별적으로 체크인 후 출발해 주세요.
+    </div>
+    <div class="alert alert-gold">
+      ⏰ 출발 당일 공항에는 <b>비행기 출발 2~3시간 전까지 반드시 도착</b>해 주세요.
+    </div>
+  </div>
+
+  <!-- 체크인 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">체크인 안내</div></div>
+    <div class="counter-box">
+      <div class="step"><div class="step-num">1</div><div class="step-text">항공사 예약번호(PNR)는 <b>TIB93B</b>입니다.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-text">제주항공 사이트에서 <b>출발 24시간 전부터 온라인 체크인</b>을 통해 무료 좌석지정 및 탑승 QR을 받으실 수 있습니다.</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-text">온라인 진행이 어려우신 분은 당일 김해공항 제주항공 카운터에서 체크인하시면 됩니다.</div></div>
+    </div>
+  </div>
+
+  <!-- 항공편 정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">항공편 정보</div></div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>출발편 · 제주항공</span><span class="code">7C2157</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">PUS</div><div class="city">부산 · 10.20(화) 20:40</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">TAG</div><div class="city">보홀-팡라오 · 10.21(수) 00:30</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 제주항공</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>귀국편 · 제주항공</span><span class="code">7C2158</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">TAG</div><div class="city">보홀-팡라오 · 10.24(토) 01:30</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">PUS</div><div class="city">부산 · 10.24(토) 06:55</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 제주항공</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-terracotta">
+      ⚠ 가는 날은 <b>10/20(화) 밤 20:40 부산 출발, 익일 00:30 보홀 도착</b>이며, 오는 날도 <b>10/24(토) 새벽 01:30 보홀 출발</b>로 둘 다 심야·새벽 비행입니다. 공항 이동 일정을 미리 참고해 주세요.
+    </div>
+    <div class="alert alert-gold" style="margin-top:12px;">
+      🍽 제주항공은 노선에 따라 기내식이 유료이거나 제공되지 않을 수 있습니다. 탑승 전 미리 식사하시거나 면세구역에서 구매 후 탑승하시는 것을 권장드리며, 기내에서는 체크카드 사용이 불가하니 신용카드 또는 현금을 준비해 주세요.
+    </div>
+  </div>
+
+  <!-- 현지 가이드 & 행사정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">현지 가이드 & 행사 정보</div></div>
+    <div class="guide-box">
+      <div class="guide-row"><span class="label">가이드명</span><span class="val">프로(엄해동/남)</span></div>
+      <div class="guide-row"><span class="label">가이드 연락처</span><span class="val">0954-288-8105</span></div>
+      <div class="guide-row"><span class="label">현지 비상연락망</span><span class="val">가빈 소장<br>0915-198-1733</span></div>
+      <div class="guide-row"><span class="label">행사인원</span><span class="val">6명</span></div>
+      <div class="guide-row"><span class="label">행사차량</span><span class="val">12인승 밴</span></div>
+      <div class="guide-row"><span class="label">공항 픽업</span><span class="val">7C2157편(20:40 부산출발 → 00:30 보홀도착) 기준 밴 픽업</span></div>
+    </div>
+  </div>
+
+  <!-- 투숙호텔 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">투숙 호텔</div></div>
+    <div class="hotel-card">
+      <div class="hh">🏨 투숙 호텔</div>
+      <div class="hb">
+        <div class="hname">보홀 솔레아<br><span style="font-size:14px;color:var(--text-sub);font-weight:500;">Bohol Solea</span></div>
+        <div class="hnote">전 일정 포함</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 불포함 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">불포함 사항</div></div>
+    <div class="incl-card">
+      <div class="head">✘ 불포함사항</div>
+      <ul>
+        <li>현지가이드/기사경비 — <b>1인당 5일 $50, 6일 $60</b>(성인·아동 동일)을 현지에서 지불하셔야 합니다</li>
+        <li>개인경비, 호텔 벨보이 및 객실 청소원 매너 TIP</li>
+        <li>식사 시 제공되는 음료 이외의 음료·주류</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 필리핀 eTravel 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">필리핀 전자입국서류(eTravel) 대행 안내</div></div>
+    <div class="visa-box">
+      <div class="head">✅ 필수 전자입국서류 이트래블(eTravel) — 모두투어 대행 서비스 포함</div>
+      <p>필리핀 입국에 필요한 전자입국서류(eTravel)는 <b>모두투어에서 대행 등록</b>해 드립니다. 아래 내용을 확인해 주세요.</p>
+      <p style="font-weight:700;margin-bottom:4px;">1. 필수 정보 입력(오탈자 주의)</p>
+      <ul>
+        <li>정확한 여권 정보 입력 — 여권번호, 영문 성명, 여권 발급일 등을 꼼꼼히 확인해 주세요.</li>
+        <li>정확한 대표자 연락처 기재 — QR코드 수령을 위해 연락 가능한 번호를 정확히 남겨주셔야 합니다.</li>
+      </ul>
+      <p style="font-weight:700;margin-bottom:4px;">2. 등록 및 발송 일정</p>
+      <ul>
+        <li>등록 가능 기간 — 이트래블은 필리핀 정부 지침에 따라 미리 등록할 수 없습니다.</li>
+        <li>발송 시점 — 한국 출발 <b>3일 전 ~ 1일 전</b>까지 순차적으로 등록 및 발송됩니다.</li>
+        <li>모든 서류는 필리핀 정부 공식 사이트를 통해 전자 등록됩니다.</li>
+      </ul>
+      <p style="font-weight:700;margin-bottom:4px;">3. QR코드 수령 및 전달 방법</p>
+      <ul>
+        <li>이트래블 발급 후 입국에 필요한 QR코드는 <b>대표자 한 분</b>에게 일괄 발송됩니다.</li>
+        <li>QR코드를 받으신 대표자분께서는 일행분들께 <b>개별 QR코드를 꼭 직접 전송(공유)</b>해 주셔야 합니다.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 필리핀 여행자통관 정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">필리핀 여행자통관 정보 및 휴대품 주의사항</div></div>
+    <div class="visa-box">
+      <div class="head">🛃 입국 시 여행자 휴대품 관련 주의사항</div>
+      <p>필리핀 입국 시 <b>담배 2보루, 술 2병(1.5L 이하), 면세 한도 10,000페소</b> 이하이며, 위반 시 벌금이 부과됩니다.<br><br>
+      필리핀 외환 반입 규정 및 면세한도가 사전 고지 없이 변경될 수 있으니, 출발 전 공식 안내를 확인해 주세요.<br><br>
+      <b>[수하물표 소지]</b> 필리핀 입국 수속 후 수하물 도난방지를 위해 짐과 수하물표를 각각 대조·검사하므로, 수하물표를 꼭 소지하실 것을 권장합니다.<br><br>
+      <b>[호텔 보증금]</b> 체크인 시 룸당 객실 보증금(리조트별 금액 상이)을 요구할 수 있습니다. 카드 승인 취소에 시일이 걸릴 수 있으니 양해 부탁드립니다.<br><br>
+      <b>[필리핀 금연 정책 강화 안내]</b> 지정 구역에 한정해서만 흡연이 가능하며, 전자담배 사용이 엄격히 제한됩니다. 이를 어길 시 체포, 벌금 부과, 기기 압수 또는 추방될 수 있으니 유의해 주세요.</p>
+      <div class="vbtns">
+        <a class="linkbtn" href="https://philippinetourism.co.kr/travel/customs" target="_blank">🔗 필리핀 외화 반입 규정 및 면세한도(필리핀 관광부)</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 환전 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">환전 안내</div></div>
+    <div class="exchange-box">
+      💵 현지가이드/기사경비(1인당 5일 $50, 6일 $60)는 <b>미국달러(USD)</b> 지불 기준입니다.<br><br>
+      개인경비, 벨보이·객실청소원 매너팁, 추가 음료·주류 비용 등은 <b>현지화폐(필리핀 페소, PHP)</b>로 준비하시는 것을 권장드립니다.<br><br>
+      페소는 공항·호텔 환전소에서도 환전 가능하나, 환율이 다소 불리할 수 있어 한국에서 미리 USD로 환전해 가신 뒤 현지에서 필요한 만큼만 페소로 재환전하시는 방법도 추천드립니다.<br><br>
+      <span style="font-size:14px;color:var(--text-muted);">※ 환율은 변동될 수 있어 참고용으로만 봐주세요.</span>
+    </div>
+  </div>
+
+  <!-- 데이터 통신 옵션 비교 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">현지 데이터 통신 옵션 비교</div></div>
+    <div class="roam-grid">
+      <div class="roam-card">
+        <div class="rc-head">
+          <div class="rc-title">📶 통신사 로밍</div>
+          <div class="rc-price">1일 약 1만~1만2천원</div>
+        </div>
+        <div class="rc-desc">한국 통신사에서 자동으로 신청. 기존 번호 그대로 사용, 별도 셋팅이 필요 없어 가장 간편합니다.</div>
+        <div class="rc-tags">
+          <span class="rc-tag">셋팅 불필요</span>
+          <span class="rc-tag con">요금 다소 높음</span>
+        </div>
+      </div>
+      <div class="roam-card">
+        <div class="rc-head">
+          <div class="rc-title">📱 현지 유심(USIM)</div>
+          <div class="rc-price">5일권 약 1만5천~2만5천원</div>
+        </div>
+        <div class="rc-desc">공항·편의점에서 구매 후 교체. 요금이 저렴하지만, 한국 번호로 오는 전화·문자 수신이 안 됩니다.</div>
+        <div class="rc-tags">
+          <span class="rc-tag">비교적 저렴</span>
+          <span class="rc-tag con">번호 변경(수신 불가)</span>
+        </div>
+      </div>
+      <div class="roam-card">
+        <div class="rc-head">
+          <div class="rc-title">💳 이심(eSIM)</div>
+          <div class="rc-price">5일권 약 1만5천~2만5천원</div>
+        </div>
+        <div class="rc-desc">앱으로 QR코드 스캔만 하면 설치 완료. 유심 교체 없이 기존 유심(한국 번호)과 함께 듀얼로 사용 가능합니다.</div>
+        <div class="rc-tags">
+          <span class="rc-tag">한국 번호 유지</span>
+          <span class="rc-tag">셋팅 간편(QR)</span>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-forest" style="margin-top:12px;">
+      💡 가격은 통신사·판매처에 따라 변동될 수 있어 참고용으로 봐주세요.
+    </div>
+  </div>
+
+  <!-- 날씨 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">11</div><div class="section-title">일자별 날씨 정보</div></div>
+    <div class="weather-row">
+      <div class="weather-card">
+        <div class="date">10/20(화)</div>
+        <div class="day">출국일</div>
+        <div class="icon">🌦️</div>
+        <div class="high">31℃</div>
+        <div class="low">24℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">10/21(수)</div>
+        <div class="day">보홀</div>
+        <div class="icon">⛅</div>
+        <div class="high">31℃</div>
+        <div class="low">25℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">10/22(목)</div>
+        <div class="day">보홀</div>
+        <div class="icon">🌦️</div>
+        <div class="high">30℃</div>
+        <div class="low">24℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">10/23(금)</div>
+        <div class="day">보홀</div>
+        <div class="icon">⛅</div>
+        <div class="high">30℃</div>
+        <div class="low">24℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">10/24(토)</div>
+        <div class="day">귀국일</div>
+        <div class="icon">⛅</div>
+        <div class="high">31℃</div>
+        <div class="low">25℃</div>
+      </div>
+    </div>
+    <div class="alert alert-gold">
+      ☀️ 보홀은 10월에도 고온다습한 열대성 기후가 이어지며, 우기 끝자락이라 짧은 스콜성 소나기가 내릴 수 있습니다.<br><br>
+      우산보다는 우비를 챙기시고, 자외선이 강하니 선크림을 넉넉히 준비해 주세요.
+    </div>
+  </div>
+
+  <!-- 준비물 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">12</div><div class="section-title">여행 준비물</div></div>
+    <div class="prep-grid">
+      <div class="prep-card">
+        <div class="icon">👕</div>
+        <div class="title">의류</div>
+        <ul>
+          <li>반팔·반바지, 수영복(고온다습)</li>
+          <li>가벼운 우비(스콜성 소나기 대비)</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🧴</div>
+        <div class="title">자외선 대비</div>
+        <ul>
+          <li>선크림(SPF 높은 제품), 선글라스</li>
+          <li>모자</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">💵</div>
+        <div class="title">현금 · 결제</div>
+        <ul>
+          <li>가이드/기사경비 USD($50~60/인)</li>
+          <li>벨보이·객실청소원 매너팁용 소액 현금</li>
+          <li>개인경비용 필리핀 페소(PHP)</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🎒</div>
+        <div class="title">기타 준비물</div>
+        <ul>
+          <li>여권, eTravel QR코드(대표자 수신 확인)</li>
+          <li>수하물표(도난방지 대조용 — 꼭 소지)</li>
+          <li>멀티 어댑터(필리핀 220V, A/B/C타입)</li>
+          <li>보조배터리</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-agent">담당 이경진 실장</div>
+    <div class="footer-sub">엄지영님 가족의 안전하고 즐거운 보홀 여행을 응원합니다</div>
+    <div class="footer-btns">
+      <a class="footer-btn tel" href="tel:1544-5714">📞 1544-5714</a>
+      <a class="footer-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 투어콕 카카오톡 채널</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.1});
+sections.forEach(s=>observer.observe(s));
+</script>
+
+</body>
+</html>
