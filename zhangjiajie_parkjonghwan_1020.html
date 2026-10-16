@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>장가계 여행 확정서 - 박종환님 일행</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* Hallmark · macrostructure: Long Document · tone: editorial-utilitarian · anchor hue: forest 155° + terracotta 25°
+ * theme: custom (vibe: "misty sandstone peaks, ink & forest") · paper oklch(98% 0.008 95) · accent oklch(46% 0.07 158)
+ * display: Noto Serif KR · body: Noto Sans KR · axes: light / high-contrast-serif / chromatic-green
+ * pre-emit critique: P5 H5 E4 S5 R5 V4
+ */
+:root{
+  --color-paper: oklch(98% 0.008 95);
+  --color-paper-2: oklch(95.5% 0.012 95);
+  --color-card: oklch(100% 0 0);
+  --color-ink: oklch(22% 0.015 160);
+  --color-ink-2: oklch(42% 0.012 160);
+  --color-ink-3: oklch(58% 0.01 160);
+  --color-rule: oklch(89% 0.012 95);
+  --color-forest: oklch(46% 0.07 158);
+  --color-forest-deep: oklch(27% 0.045 160);
+  --color-forest-wash: oklch(95% 0.02 158);
+  --color-terra: oklch(55% 0.15 28);
+  --color-terra-wash: oklch(96% 0.025 35);
+  --color-gold: oklch(68% 0.11 75);
+  --color-gold-wash: oklch(96.5% 0.03 85);
+  --color-kakao: oklch(90% 0.18 100);
+  --color-kakao-ink: oklch(24% 0.03 60);
+  --color-on-dark: oklch(97% 0.01 95);
+  --color-on-dark-2: oklch(82% 0.03 150);
+  --font-display: "Noto Serif KR", serif;
+  --font-body: "Noto Sans KR", system-ui, sans-serif;
+  --space-2xs: 4px; --space-xs: 8px; --space-sm: 12px; --space-md: 16px;
+  --space-lg: 24px; --space-xl: 32px; --space-2xl: 48px; --space-3xl: 64px;
+  --radius-sm: 6px; --radius-md: 12px;
+  --max-w: 720px;
+  --ease-out: cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:clip}
+body{background:var(--color-paper);color:var(--color-ink);font-family:var(--font-body);font-size:18px;line-height:1.75;word-break:keep-all;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:var(--max-w);margin:0 auto;padding:0 var(--space-lg)}
+strong{font-weight:700}
+.hl{color:var(--color-terra);font-weight:700}
+
+/* top bar */
+.topbar{background:var(--color-forest-deep);color:var(--color-on-dark)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:var(--space-sm);padding-top:var(--space-sm);padding-bottom:var(--space-sm);flex-wrap:wrap}
+.topbar small{font-size:15px;color:var(--color-on-dark-2)}
+.btns{display:flex;gap:var(--space-xs)}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:999px;font-size:15px;font-weight:700;text-decoration:none;white-space:nowrap;transition:transform .15s var(--ease-out)}
+.btn:active{transform:translateY(1px)}
+.btn:focus-visible{outline:3px solid var(--color-gold);outline-offset:2px}
+.btn-tel{background:var(--color-terra);color:var(--color-on-dark)}
+.btn-kakao{background:var(--color-kakao);color:var(--color-kakao-ink)}
+
+/* header */
+header.hero{background:var(--color-forest-deep);color:var(--color-on-dark);padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid oklch(35% 0.045 160)}
+.hero .kicker{font-size:14px;letter-spacing:.18em;color:var(--color-gold);font-weight:700}
+.hero h1{font-family:var(--font-display);font-weight:700;font-size:44px;line-height:1.2;margin:var(--space-sm) 0 var(--space-xs);overflow-wrap:anywhere}
+.hero .sub{color:var(--color-on-dark-2);font-size:17px}
+.hero .names{margin-top:var(--space-lg);font-family:var(--font-display);font-size:26px;font-weight:500}
+.hero .names b{color:var(--color-gold);font-weight:700}
+
+.band{background:var(--color-forest);color:var(--color-on-dark)}
+.band .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.band .cell{padding:var(--space-md) var(--space-xs);text-align:center;border-left:1px solid oklch(55% 0.06 158)}
+.band .cell:first-child{border-left:0}
+.band .lab{font-size:13px;color:var(--color-on-dark-2);letter-spacing:.06em}
+.band .val{font-size:17px;font-weight:700;margin-top:2px}
+
+/* sections */
+main{padding:var(--space-xl) 0 var(--space-2xl)}
+section{padding:var(--space-xl) 0;border-top:1px solid var(--color-rule)}
+section:first-child{border-top:0;padding-top:var(--space-md)}
+.sec-head{display:flex;align-items:baseline;gap:var(--space-sm);margin-bottom:var(--space-lg)}
+.sec-num{font-family:var(--font-display);font-size:16px;color:var(--color-terra);font-weight:700;min-width:28px}
+.sec-head h2{font-family:var(--font-display);font-size:26px;font-weight:700;line-height:1.3}
+p+p{margin-top:var(--space-sm)}
+
+.note{border-left:3px solid var(--color-forest);background:var(--color-forest-wash);padding:var(--space-md) var(--space-lg);border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-size:17px;margin-top:var(--space-md)}
+.note.terra{border-color:var(--color-terra);background:var(--color-terra-wash)}
+.note.gold{border-color:var(--color-gold);background:var(--color-gold-wash)}
+.note p+p{margin-top:var(--space-sm)}
+.note .t{display:block;font-weight:700;margin-bottom:4px}
+
+.card{background:var(--color-card);border:1px solid var(--color-rule);border-radius:var(--radius-md);padding:var(--space-lg)}
+.rows{display:grid;gap:0}
+.row{display:grid;grid-template-columns:150px minmax(0,1fr);gap:var(--space-md);padding:var(--space-sm) 0;border-top:1px solid var(--color-rule)}
+.row:first-child{border-top:0;padding-top:0}
+.row .k{color:var(--color-ink-3);font-size:16px}
+.row .v{font-weight:500}
+.row .v a{color:var(--color-forest);font-weight:700;text-decoration-thickness:1px;text-underline-offset:3px}
+
+.product{display:flex;justify-content:space-between;align-items:center;gap:var(--space-md);text-decoration:none;border:1px solid var(--color-forest);background:var(--color-card);border-radius:var(--radius-md);padding:var(--space-md) var(--space-lg);transition:background .15s var(--ease-out)}
+.product:hover{background:var(--color-forest-wash)}
+.product:focus-visible{outline:3px solid var(--color-gold);outline-offset:2px}
+.product .pt{font-weight:700;font-size:17px}
+.product .ps{font-size:15px;color:var(--color-ink-3)}
+.product .arr{color:var(--color-forest);font-size:22px;flex-shrink:0}
+
+/* flights */
+.flights{display:grid;gap:var(--space-md)}
+.flight{background:var(--color-card);border:1px solid var(--color-rule);border-radius:var(--radius-md);overflow:hidden}
+.flight .fh{display:flex;justify-content:space-between;align-items:center;padding:var(--space-sm) var(--space-lg);background:var(--color-forest-deep);color:var(--color-on-dark);font-size:16px}
+.flight .fh b{color:var(--color-gold);letter-spacing:.04em}
+.flight .route{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:var(--space-sm);padding:var(--space-lg)}
+.flight .ap{font-family:var(--font-display);font-size:34px;font-weight:700;line-height:1}
+.flight .city{font-size:15px;color:var(--color-ink-3);margin-top:6px}
+.flight .tm{font-size:20px;font-weight:700;margin-top:4px}
+.flight .end{text-align:right}
+.flight .mid{text-align:center;color:var(--color-ink-3);font-size:14px}
+.flight .mid i{display:block;width:72px;height:1px;background:var(--color-ink-3);margin:6px auto;font-style:normal}
+.tags{display:flex;flex-wrap:wrap;gap:6px;padding:0 var(--space-lg) var(--space-lg)}
+.tag{font-size:14px;padding:3px 10px;border-radius:999px;border:1px solid var(--color-rule);color:var(--color-ink-2);background:var(--color-paper)}
+.tag.warn{border-color:var(--color-terra);color:var(--color-terra)}
+
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-md)}
+.mini h3{font-size:18px;font-weight:700;margin-bottom:var(--space-xs);font-family:var(--font-body)}
+.mini .big{font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--color-forest);line-height:1.2}
+.mini ul{list-style:none;margin-top:var(--space-xs);font-size:16px;color:var(--color-ink-2)}
+.mini li{padding-left:14px;position:relative}
+.mini li::before{content:"";position:absolute;left:0;top:.75em;width:5px;height:5px;border-radius:50%;background:var(--color-forest)}
+
+.steps{list-style:none;counter-reset:st;display:grid;gap:var(--space-md)}
+.steps li{counter-increment:st;display:grid;grid-template-columns:32px minmax(0,1fr);gap:var(--space-sm)}
+.steps li::before{content:counter(st);width:28px;height:28px;border-radius:50%;background:var(--color-gold);color:var(--color-card);font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+
+.hotel{border:2px solid var(--color-forest);border-radius:var(--radius-md);background:var(--color-card);overflow:hidden}
+.hotel .hh{display:flex;justify-content:space-between;align-items:center;padding:var(--space-sm) var(--space-lg);background:var(--color-forest);color:var(--color-on-dark);font-size:15px}
+.hotel .hh span{background:var(--color-on-dark);color:var(--color-forest);font-weight:700;padding:2px 10px;border-radius:999px}
+.hotel .hb{padding:var(--space-lg)}
+.hotel .hn{font-family:var(--font-display);font-size:26px;font-weight:700;line-height:1.3}
+.hotel .he{color:var(--color-ink-3);font-size:16px;margin-bottom:var(--space-md)}
+
+/* entry card */
+.entry{border:2px solid var(--color-terra);border-radius:var(--radius-md);padding:var(--space-lg);background:var(--color-card)}
+.entry h3{font-size:19px;margin-bottom:var(--space-sm)}
+.fields{margin-top:var(--space-md);border:1px solid var(--color-rule);border-radius:var(--radius-sm);overflow:hidden}
+.field{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);border-top:1px solid var(--color-rule)}
+.field:first-child{border-top:0}
+.field div{padding:var(--space-sm) var(--space-md)}
+.field .fk{background:var(--color-paper-2);font-size:16px;color:var(--color-ink-2)}
+.field .fv{font-family:ui-monospace,Menlo,monospace;font-weight:700;font-size:17px;letter-spacing:.02em;overflow-wrap:anywhere}
+.links{display:grid;gap:var(--space-xs);margin-top:var(--space-md)}
+.lbtn{display:flex;justify-content:space-between;align-items:center;gap:var(--space-sm);padding:var(--space-sm) var(--space-md);border-radius:var(--radius-sm);text-decoration:none;font-weight:700;font-size:16px;border:1px solid var(--color-forest);color:var(--color-forest);background:var(--color-card)}
+.lbtn.primary{background:var(--color-forest);color:var(--color-on-dark)}
+.lbtn:hover{background:var(--color-forest-wash)}
+.lbtn.primary:hover{background:var(--color-forest-deep)}
+.lbtn:focus-visible{outline:3px solid var(--color-gold);outline-offset:2px}
+
+/* exchange */
+.exch{border:1px solid var(--color-gold);border-radius:var(--radius-md);background:var(--color-card);padding:var(--space-lg)}
+.rate{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-sm);margin-bottom:var(--space-lg)}
+.rate div{background:var(--color-gold-wash);border-radius:var(--radius-sm);padding:var(--space-sm);text-align:center}
+.rate .rl{font-size:14px;color:var(--color-ink-3)}
+.rate .rv{font-weight:700;font-size:18px}
+.exch p{font-size:17px}
+.exch p+p{margin-top:var(--space-md)}
+
+/* options */
+.opts{display:grid;gap:0;border:1px solid var(--color-rule);border-radius:var(--radius-md);background:var(--color-card);overflow:hidden}
+.opt{display:grid;grid-template-columns:minmax(0,1.6fr) 70px 70px minmax(0,1.5fr);gap:var(--space-sm);padding:var(--space-sm) var(--space-md);border-top:1px solid var(--color-rule);font-size:16px;align-items:center}
+.opt:first-child{border-top:0;background:var(--color-paper-2);font-size:14px;color:var(--color-ink-3);font-weight:700}
+.opt .on{font-weight:700}
+.opt .op{color:var(--color-terra);font-weight:700}
+.opt .og{font-size:14px;color:var(--color-ink-3)}
+.opt .og b{display:inline-block;font-size:13px;padding:1px 8px;border-radius:999px;margin-right:6px;background:var(--color-forest-wash);color:var(--color-forest)}
+.opt .og b.no{background:var(--color-paper-2);color:var(--color-ink-3)}
+
+/* data */
+.plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-sm)}
+.plan{border:1px solid var(--color-rule);border-radius:var(--radius-md);padding:var(--space-md);background:var(--color-card)}
+.plan h3{font-size:17px}
+.plan .pp{color:var(--color-forest);font-weight:700;font-size:16px;margin:4px 0 var(--space-xs)}
+.plan p{font-size:15px;color:var(--color-ink-2);line-height:1.65}
+
+/* weather */
+.days{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--space-sm)}
+.day{background:var(--color-card);border:1px solid var(--color-rule);border-radius:var(--radius-md);padding:var(--space-md) var(--space-xs);text-align:center}
+.day .d{font-weight:700;font-size:16px}
+.day .w{font-size:14px;color:var(--color-ink-3)}
+.day .hi{font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--color-terra);margin-top:var(--space-xs)}
+.day .lo{font-size:16px;color:var(--color-forest);font-weight:700}
+
+footer{background:var(--color-forest-deep);color:var(--color-on-dark);padding:var(--space-2xl) 0;text-align:center}
+footer .who{font-size:15px;color:var(--color-on-dark-2)}
+footer .msg{font-family:var(--font-display);font-size:22px;margin:var(--space-xs) 0 var(--space-lg)}
+footer .btns{justify-content:center}
+footer .btn{font-size:17px;padding:12px 22px}
+
+@media (max-width:600px){
+  .opt{grid-template-columns:minmax(0,1fr) auto;row-gap:2px}
+  .opt:first-child{display:none}
+  .opt .on{grid-column:1/2}
+  .opt .op{grid-column:2/3;text-align:right}
+  .opt .ot{grid-column:1/3;font-size:14px;color:var(--color-ink-3)}
+  .opt .og{grid-column:1/3}
+  .plans{grid-template-columns:minmax(0,1fr)}
+  .days{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:480px){
+  body{font-size:17px}
+  .wrap{padding:0 var(--space-md)}
+  .hero h1{font-size:34px}
+  .hero .names{font-size:22px}
+  .band .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .band .cell:nth-child(3){border-left:0}
+  .band .cell:nth-child(n+3){border-top:1px solid oklch(55% 0.06 158)}
+  .grid2,.rate{grid-template-columns:minmax(0,1fr)}
+  .sec-head h2{font-size:22px}
+  .flight .ap{font-size:28px}
+  .flight .mid i{width:40px}
+  .card,.entry,.exch,.hotel .hb{padding:var(--space-md)}
+  .topbar small{display:none}
+  .topbar .wrap{justify-content:center}
+}
+@media (max-width:400px){
+  .row{grid-template-columns:minmax(0,1fr);gap:2px}
+  .field{grid-template-columns:minmax(0,1fr)}
+  .field .fk{padding-bottom:4px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap">
+  <small>담당 이경진 실장 · 모두투어 투어콕</small>
+  <div class="btns">
+    <a class="btn btn-tel" href="tel:1544-5714">전화상담</a>
+    <a class="btn btn-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank" rel="noopener">카카오톡 상담</a>
+  </div>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <div class="kicker">TRAVEL CONFIRMATION</div>
+  <h1>장가계 여행 확정서</h1>
+  <div class="sub">부산(김해)국제공항 출발 · 원가계·천문산 3박 4일 · ZHANGJIAJIE 2026</div>
+  <div class="names"><b>박종환</b>님 일행</div>
+</div></header>
+
+<div class="band"><div class="wrap">
+  <div class="cell"><div class="lab">출발일</div><div class="val">10.20(화)</div></div>
+  <div class="cell"><div class="lab">귀국일</div><div class="val">10.23(금)</div></div>
+  <div class="cell"><div class="lab">일정</div><div class="val">3박 4일</div></div>
+  <div class="cell"><div class="lab">투어타입</div><div class="val">패키지</div></div>
+</div></div>
+
+<main><div class="wrap">
+
+<section>
+  <div class="sec-head"><span class="sec-num">01</span><h2>상품 안내</h2></div>
+  <a class="product" href="https://www.modetour.com/package/104727542?MLoc=99&Pnum=104727542&ANO=4547682&sno=C2181215&thru=crs" target="_blank" rel="noopener">
+    <div><div class="pt">[품격/노쇼핑] 장가계 원가계+천문산 4일</div><div class="ps">인기5성급 · 보봉호 · 발맛사지 · 모두투어 상품 바로가기</div></div>
+    <span class="arr" aria-hidden="true">→</span>
+  </a>
+  <div class="note terra">
+    <span class="t">김해공항 미팅이 없습니다</span>
+    출발 당일 김해국제공항에 <strong>비행기 출발 2~3시간 전까지 반드시 도착</strong>하셔서 개별적으로 에어부산 카운터에서 티켓팅 후 출발해 주세요.
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">02</span><h2>김해공항 체크인 안내</h2></div>
+  <ol class="steps">
+    <li><div>출발 시간(<strong>09:00</strong>) 기준 <span class="hl">06:00~07:00 사이</span>에 김해국제공항 국제선 청사에 도착해 주세요.</div></li>
+    <li><div><strong>에어부산 체크인 카운터</strong>에서 여권을 제시하고 티켓팅·좌석 배정·수하물 위탁을 진행합니다. 본 항공편은 <strong>좌석 미지정</strong>으로, 출발 당일 공항에서 좌석이 배정됩니다.</div></li>
+    <li><div>장가계(DYG) 공항 도착 후 입국장에서 <strong>“모두투어 안희철 가이드”</strong> 피켓을 든 현지 가이드와 미팅합니다.</div></li>
+  </ol>
+  <div class="note terra">
+    <span class="t">에어부산은 기내식이 제공되지 않습니다</span>
+    <p>생수·음료도 제공되지 않으니, 식사는 탑승 전 미리 드시거나 면세구역 내에서 구매 후 탑승해 주세요.</p>
+    <p>기내에서는 <strong>체크카드 사용이 불가</strong>하니 신용카드 또는 현금만 준비해 주세요.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">03</span><h2>항공편 정보</h2></div>
+  <div class="flights">
+    <div class="flight">
+      <div class="fh"><span>가는 날 · 에어부산</span><b>BX371</b></div>
+      <div class="route">
+        <div><div class="ap">PUS</div><div class="city">부산(김해)</div><div class="tm">10.20(화) 09:00</div></div>
+        <div class="mid">직항<i></i>약 3시간 20분</div>
+        <div class="end"><div class="ap">DYG</div><div class="city">장가계</div><div class="tm">10.20(화) 11:20</div></div>
+      </div>
+      <div class="tags"><span class="tag">위탁 15kg</span><span class="tag">기내 10kg</span><span class="tag warn">기내식 없음</span><span class="tag">좌석 미지정</span></div>
+    </div>
+    <div class="flight">
+      <div class="fh"><span>오는 날 · 에어부산</span><b>BX372</b></div>
+      <div class="route">
+        <div><div class="ap">DYG</div><div class="city">장가계</div><div class="tm">10.23(금) 12:20</div></div>
+        <div class="mid">직항<i></i>약 3시간 15분</div>
+        <div class="end"><div class="ap">PUS</div><div class="city">부산(김해)</div><div class="tm">10.23(금) 16:35</div></div>
+      </div>
+      <div class="tags"><span class="tag">위탁 15kg</span><span class="tag">기내 10kg</span><span class="tag warn">기내식 없음</span><span class="tag">좌석 미지정</span></div>
+    </div>
+  </div>
+  <div class="note">시간은 모두 현지 시간 기준이며, 중국은 한국보다 <strong>1시간 느립니다.</strong></div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">04</span><h2>수하물 안내</h2></div>
+  <div class="grid2">
+    <div class="card mini">
+      <h3>무료 위탁수하물</h3>
+      <div class="big">15kg</div>
+      <ul><li>그룹 성인·어린이 동일</li><li>초과 시 공항에서 추가 요금 발생</li></ul>
+    </div>
+    <div class="card mini">
+      <h3>허용 기내수하물</h3>
+      <div class="big">1개 · 10kg</div>
+      <ul><li>세 변(가로·세로·높이) 합 115cm 이하</li><li>각 면 최대 폭 40cm · 길이 55cm · 높이 20cm</li></ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">05</span><h2>현지 가이드 &amp; 행사 정보</h2></div>
+  <div class="card rows">
+    <div class="row"><div class="k">가이드</div><div class="v">안희철 (남)</div></div>
+    <div class="row"><div class="k">가이드 연락처</div><div class="v"><a href="tel:+8617873905337">178-7390-5337</a></div></div>
+    <div class="row"><div class="k">현지 비상연락처</div><div class="v"><a href="tel:+8615755932301">157-5593-2301</a></div></div>
+    <div class="row"><div class="k">미팅 피켓</div><div class="v">모두투어 안희철 가이드</div></div>
+    <div class="row"><div class="k">행사인원</div><div class="v">8명</div></div>
+    <div class="row"><div class="k">차량</div><div class="v">22인승 리무진</div></div>
+    <div class="row"><div class="k">출발 편수</div><div class="v">BX371 09:00 → 11:20</div></div>
+    <div class="row"><div class="k">리턴 편수</div><div class="v">BX372 12:20 → 16:35</div></div>
+  </div>
+  <div class="note">한국에서 중국 휴대폰으로 거실 때는 앞에 <strong>+86</strong>을 붙여 주세요. 위 번호를 누르면 바로 연결됩니다.</div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">06</span><h2>투숙 호텔</h2></div>
+  <div class="hotel">
+    <div class="hh">전 일정 투숙<span>3박 포함</span></div>
+    <div class="hb">
+      <div class="hn">장가계 대성산수 호텔</div>
+      <div class="he">DaCheng Shanshui Hotel</div>
+      <div class="rows">
+        <div class="row"><div class="k">투숙 기간</div><div class="v">10.20(화) ~ 10.23(금) · 3박</div></div>
+        <div class="row"><div class="k">위치</div><div class="v">장가계(DYG)</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">07</span><h2>불포함 사항</h2></div>
+  <div class="card rows">
+    <div class="row"><div class="k">기사/가이드 경비</div><div class="v">1인 <span class="hl">USD $40</span> (성인·아동 동일) · 미국달러로 현지에서 가이드에게 지불</div></div>
+    <div class="row"><div class="k">선택관광</div><div class="v">희망 시에만 진행 · <strong>미국달러(USD)</strong> 지불</div></div>
+    <div class="row"><div class="k">개인 경비</div><div class="v">생수·음료·간식 등</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">08</span><h2>중국 입국신고서 안내</h2></div>
+  <div class="entry">
+    <h3>입국카드 작성 시 아래 내용대로 영문 표기해 주세요</h3>
+    <p>기내 또는 공항에서 종이 입국카드를 작성하실 때는 견본을 참고하시고, 아래 항목을 그대로 옮겨 적으시면 됩니다.</p>
+    <div class="fields">
+      <div class="field"><div class="fk">중국 도착 도시</div><div class="fv">HUNAN → ZHANGJIAJIE</div></div>
+      <div class="field"><div class="fk">호텔 이름</div><div class="fv">DaCheng Shanshui Hotel</div></div>
+      <div class="field"><div class="fk">도시</div><div class="fv">DYG</div></div>
+      <div class="field"><div class="fk">초청기관 / 여행사 이름</div><div class="fv">AN XIZHE</div></div>
+      <div class="field"><div class="fk">주소 및 연락처</div><div class="fv">178-7390-5337</div></div>
+    </div>
+    <div class="note gold">
+      <span class="t">온라인으로 미리 작성하시면 더 빠릅니다</span>
+      <p>중국 입국신고서는 <strong>현지 도착시간 기준 72시간 전부터</strong> 온라인으로 작성할 수 있습니다.</p>
+      <p>이번 일정 기준으로는 <strong>10월 17일(토) 오전 11:20(현지시간) 이후</strong>부터 작성 가능합니다.</p>
+    </div>
+    <div class="links">
+      <a class="lbtn primary" href="https://s.nia.gov.cn/ArrivalCardFillingPC/entry-registation-home" target="_blank" rel="noopener">중국 입국신고서 공식 작성 사이트<span aria-hidden="true">→</span></a>
+      <a class="lbtn" href="https://drive.google.com/file/d/12zQRfjs0hfAIiNZ6SEJ7NhnRAErKdA5O/view" target="_blank" rel="noopener">작성방법 (PC버전)<span aria-hidden="true">→</span></a>
+      <a class="lbtn" href="https://drive.google.com/file/d/1sA8In-L1gvyyVqS5RfQ2pOm3xWi4YgBy/view" target="_blank" rel="noopener">작성방법 (모바일)<span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">09</span><h2>환전 안내</h2></div>
+  <div class="exch">
+    <div class="rate">
+      <div><div class="rl">1 USD</div><div class="rv">약 1,350원</div></div>
+      <div><div class="rl">1 위안(CNY)</div><div class="rv">약 200원</div></div>
+      <div><div class="rl">한국돈 1만원</div><div class="rv">약 50위안</div></div>
+    </div>
+    <p><strong>기사/가이드 경비 및 선택관광은 미국달러(USD) 지불 기준</strong>으로, <span class="hl">1인 $300 정도 환전</span>을 권장합니다.<br>
+    (기사/가이드 경비 $40 ≈ 약 54,000원 / $300 ≈ 약 40만원)</p>
+    <p>마사지 받고 내는 매너팁은 <strong>한국돈 천원짜리</strong>로 주시면 됩니다.</p>
+    <p>중국돈은 <strong>아주 소액만</strong> 환전하시는 것을 권장합니다(길거리 음료나 간식 구매 등 대비용).</p>
+    <p>길거리·식당에서 파는 음료수, 생수, 과일 등을 구매하실 때는 <strong>알리페이 또는 중국돈</strong>으로 결제 가능합니다.</p>
+    <p>중국돈을 한국에서 준비해 가실 때는 <strong>10위안짜리</strong>로 환전해서 사용하시길 권장합니다.<br>
+    음료 및 과일 등은 보통 10위안(약 2,000원), 15위안(약 3,000원), 25위안(약 5,000원)이 대부분입니다.</p>
+    <div class="note">환율은 2026년 10월 16일 기준 대략적인 참고값이며, 환전 시점에 따라 달라질 수 있습니다.</div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">10</span><h2>선택관광 안내</h2></div>
+  <p>상품 기본 일정에 포함된 관광은 별도 비용이 없으며, 아래는 <strong>희망하시는 분에 한해 현지에서 추가</strong>하는 선택관광입니다. 비용은 성인·아동 동일, <strong>미국달러(USD)</strong> 기준입니다. 최소 인원 제한은 없습니다.</p>
+  <div class="opts" style="margin-top:var(--space-md)">
+    <div class="opt"><div>선택관광</div><div>비용</div><div class="ot">소요</div><div class="og">가이드 동행 · 미참여 시</div></div>
+    <div class="opt"><div class="on">발마사지</div><div class="op">$30</div><div class="ot">60분</div><div class="og"><b class="no">동행안함</b>빈 룸 또는 홀에서 휴식</div></div>
+    <div class="opt"><div class="on">전신마사지</div><div class="op">$40</div><div class="ot">60분</div><div class="og"><b class="no">동행안함</b>빈 룸 또는 홀에서 휴식</div></div>
+    <div class="opt"><div class="on">발+전신마사지</div><div class="op">$50</div><div class="ot">90분</div><div class="og"><b class="no">동행안함</b>빈 룸 또는 홀에서 휴식</div></div>
+    <div class="opt"><div class="on">십리화랑</div><div class="op">$20</div><div class="ot">40분</div><div class="og"><b>동행</b>모든 손님 동의 시 진행</div></div>
+    <div class="opt"><div class="on">천문산사+귀곡잔도</div><div class="op">$30</div><div class="ot">90분</div><div class="og"><b>동행</b>천문산 정상 휴게소에서 휴식</div></div>
+    <div class="opt"><div class="on">천문산 동선</div><div class="op">$30</div><div class="ot">90분</div><div class="og"><b>동행</b>천문산 정상 휴게소에서 휴식</div></div>
+    <div class="opt"><div class="on">유리잔도</div><div class="op">$10</div><div class="ot">20분</div><div class="og"><b>동행</b>귀곡잔도 다른 길로 관광</div></div>
+    <div class="opt"><div class="on">황석채</div><div class="op">$50</div><div class="ot">90분</div><div class="og"><b>동행</b>호텔로 이동 후 휴식</div></div>
+    <div class="opt"><div class="on">양가계</div><div class="op">$30</div><div class="ot">120분</div><div class="og"><b>동행</b>모든 손님 동의 시 진행</div></div>
+    <div class="opt"><div class="on">보봉호</div><div class="op">$30</div><div class="ot">90분</div><div class="og"><b>동행</b>호텔 휴식 또는 주변 자유시간</div></div>
+    <div class="opt"><div class="on">보봉호 VIP</div><div class="op">$40</div><div class="ot">90분</div><div class="og"><b>동행</b>호텔 휴식 또는 주변 자유시간</div></div>
+    <div class="opt"><div class="on">황룡동굴</div><div class="op">$40</div><div class="ot">120분</div><div class="og"><b>동행</b>주차장 입구 휴게소에서 휴식</div></div>
+    <div class="opt"><div class="on">황룡동굴 VIP</div><div class="op">$50</div><div class="ot">120분</div><div class="og"><b>동행</b>주차장 입구 휴게소에서 휴식</div></div>
+    <div class="opt"><div class="on">유리다리+대협곡</div><div class="op">$100</div><div class="ot">180분</div><div class="og"><b>동행</b>호텔로 이동 후 휴식</div></div>
+    <div class="opt"><div class="on">공중전원</div><div class="op">$40</div><div class="ot">40분</div><div class="og"><b>동행</b>주차장 휴게소 휴식(녹차 제공)</div></div>
+    <div class="opt"><div class="on">부용진</div><div class="op">$100</div><div class="ot">120분</div><div class="og"><b>동행</b>모든 손님 동의 시 진행</div></div>
+    <div class="opt"><div class="on">칠성산</div><div class="op">$70</div><div class="ot">120분</div><div class="og"><b>동행</b>모든 손님 동의 시 진행</div></div>
+    <div class="opt"><div class="on">72기루</div><div class="op">$20</div><div class="ot">60분</div><div class="og"><b>동행</b>72기루 외부 야경 감상</div></div>
+    <div class="opt"><div class="on">천문호선쇼</div><div class="op">$60</div><div class="ot">90분</div><div class="og"><b class="no">동행안함</b>호텔로 이동 후 휴식</div></div>
+    <div class="opt"><div class="on">매력상서쇼</div><div class="op">$60</div><div class="ot">90분</div><div class="og"><b class="no">동행안함</b>호텔로 이동 후 휴식</div></div>
+    <div class="opt"><div class="on">매력상서쇼 VIP</div><div class="op">$70</div><div class="ot">90분</div><div class="og"><b class="no">동행안함</b>호텔로 이동 후 휴식</div></div>
+    <div class="opt"><div class="on">장가계 송성가무쇼</div><div class="op">$60</div><div class="ot">60분</div><div class="og"><b class="no">동행안함</b>호텔로 이동 후 휴식</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">11</span><h2>현지 데이터 통신</h2></div>
+  <div class="note terra" style="margin-top:0;margin-bottom:var(--space-md)">
+    <p>중국은 정책상 <strong>카카오톡·구글·인스타그램 등 접속이 제한</strong>됩니다.</p>
+    <p>유심·이심은 반드시 <strong>“카톡 가능 / VPN 불필요(우회)”</strong> 문구가 있는 여행자용 상품으로 구매해 주세요.</p>
+  </div>
+  <div class="plans">
+    <div class="plan"><h3>통신사 로밍</h3><div class="pp">1일 약 1만~1.5만원</div><p>신청만 하면 번호 그대로 사용. 별도 설정 없이 카톡 사용 가능해 가장 간편하지만 요금은 높은 편입니다.</p></div>
+    <div class="plan"><h3>여행자 유심</h3><div class="pp">4~5일 약 1만~1.6만원</div><p>도착 후 유심 교체. 가장 저렴하지만 교체 중에는 한국 번호로 전화·문자 수신이 안 됩니다.</p></div>
+    <div class="plan"><h3>이심(eSIM)</h3><div class="pp">4~5일 약 1.5만~2.2만원</div><p>QR 스캔으로 설치. 한국 번호를 유지하면서 데이터만 현지망으로 사용합니다. 지원 기종인지 먼저 확인해 주세요.</p></div>
+  </div>
+  <div class="note">가격은 2026년 10월 기준 대략적인 시세이며, 판매처·시기에 따라 달라질 수 있습니다.</div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">12</span><h2>일자별 날씨</h2></div>
+  <div class="days">
+    <div class="day"><div class="d">10.20(화)</div><div class="w">도착일 · 맑고 구름</div><div class="hi">22℃</div><div class="lo">14℃</div></div>
+    <div class="day"><div class="d">10.21(수)</div><div class="w">장가계 · 구름</div><div class="hi">21℃</div><div class="lo">13℃</div></div>
+    <div class="day"><div class="d">10.22(목)</div><div class="w">장가계 · 안개 잦음</div><div class="hi">20℃</div><div class="lo">13℃</div></div>
+    <div class="day"><div class="d">10.23(금)</div><div class="w">귀국일 · 맑고 구름</div><div class="hi">21℃</div><div class="lo">13℃</div></div>
+  </div>
+  <div class="note">
+    <p>10월 하순 장가계 시내 평년 기온(낮 20~22℃, 아침저녁 13~14℃) 기준 참고값입니다.</p>
+    <p>천문산·원가계 등 산 정상부는 시내보다 <strong>5℃ 이상 낮고 바람·안개가 잦으니</strong> 경량 패딩이나 바람막이를 꼭 챙겨 주세요.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">13</span><h2>여행 준비물</h2></div>
+  <div class="grid2">
+    <div class="card mini"><h3>옷차림</h3><ul><li>얇은 긴팔 + 경량 패딩·바람막이</li><li>편한 운동화·등산화(계단 많음)</li><li>우산 또는 우비(안개·소나기 대비)</li></ul></div>
+    <div class="card mini"><h3>현지 필수품</h3><ul><li>화장실용 휴대 휴지·물티슈</li><li>마른반찬, 튜브형 고추장</li><li>등산스틱, 파스류</li></ul></div>
+    <div class="card mini"><h3>결제 · 앱</h3><ul><li>미국달러(USD) 1인 $300 내외</li><li>마사지 매너팁용 천원권</li><li>알리페이 앱 설치·카드 등록</li></ul></div>
+    <div class="card mini"><h3>기타</h3><ul><li>여권(유효기간 6개월 이상)</li><li>입국신고서 작성 완료 캡처본</li><li>멀티 어댑터(220V, A/C타입), 보조배터리</li></ul></div>
+  </div>
+</section>
+
+</div></main>
+
+<footer><div class="wrap">
+  <div class="who">담당 이경진 실장 · 모두투어 투어콕</div>
+  <div class="msg">박종환님 일행의 즐거운 장가계 여행을 응원합니다</div>
+  <div class="btns">
+    <a class="btn btn-tel" href="tel:1544-5714">1544-5714</a>
+    <a class="btn btn-kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank" rel="noopener">카카오톡 상담</a>
+  </div>
+</div></footer>
+
+</body>
+</html>
