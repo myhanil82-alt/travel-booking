@@ -4,12 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>장가계 여행 확정서 - 박종환님 일행</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@500;700&display=swap" rel="stylesheet">
 <style>
 /* Hallmark · macrostructure: Long Document · tone: editorial-utilitarian · anchor hue: forest 155° + terracotta 25°
  * theme: custom (vibe: "misty sandstone peaks, ink & forest") · paper oklch(98% 0.008 95) · accent oklch(46% 0.07 158)
- * display: Noto Serif KR · body: Noto Sans KR · axes: light / high-contrast-serif / chromatic-green
+ * display: Malgun Gothic · body: Malgun Gothic · axes: light / high-contrast-serif / chromatic-green
  * pre-emit critique: P5 H5 E4 S5 R5 V4
  */
 :root{
@@ -31,8 +29,8 @@
   --color-kakao-ink: oklch(24% 0.03 60);
   --color-on-dark: oklch(97% 0.01 95);
   --color-on-dark-2: oklch(82% 0.03 150);
-  --font-display: "Noto Serif KR", serif;
-  --font-body: "Noto Sans KR", system-ui, sans-serif;
+  --font-display: "Malgun Gothic", "맑은 고딕", "Apple SD Gothic Neo", sans-serif;
+  --font-body: "Malgun Gothic", "맑은 고딕", "Apple SD Gothic Neo", sans-serif;
   --space-2xs: 4px; --space-xs: 8px; --space-sm: 12px; --space-md: 16px;
   --space-lg: 24px; --space-xl: 32px; --space-2xl: 48px; --space-3xl: 64px;
   --radius-sm: 6px; --radius-md: 12px;
@@ -145,7 +143,7 @@ p+p{margin-top:var(--space-sm)}
 .field:first-child{border-top:0}
 .field div{padding:var(--space-sm) var(--space-md)}
 .field .fk{background:var(--color-paper-2);font-size:16px;color:var(--color-ink-2)}
-.field .fv{font-family:ui-monospace,Menlo,monospace;font-weight:700;font-size:17px;letter-spacing:.02em;overflow-wrap:anywhere}
+.field .fv{font-family:var(--font-body);font-weight:700;font-size:17px;letter-spacing:.02em;overflow-wrap:anywhere}
 .links{display:grid;gap:var(--space-xs);margin-top:var(--space-md)}
 .lbtn{display:flex;justify-content:space-between;align-items:center;gap:var(--space-sm);padding:var(--space-sm) var(--space-md);border-radius:var(--radius-sm);text-decoration:none;font-weight:700;font-size:16px;border:1px solid var(--color-forest);color:var(--color-forest);background:var(--color-card)}
 .lbtn.primary{background:var(--color-forest);color:var(--color-on-dark)}
