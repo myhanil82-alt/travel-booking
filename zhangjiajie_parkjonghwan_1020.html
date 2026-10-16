@@ -4,10 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>장가계 여행 확정서 - 박종환님 일행</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
 <style>
 /* Hallmark · macrostructure: Long Document · tone: editorial-utilitarian · anchor hue: forest 155° + terracotta 25°
  * theme: custom (vibe: "misty sandstone peaks, ink & forest") · paper oklch(98% 0.008 95) · accent oklch(46% 0.07 158)
- * display: Malgun Gothic · body: Malgun Gothic · axes: light / high-contrast-serif / chromatic-green
+ * display: Jua · body: NanumSquareRound · axes: light / high-contrast-serif / chromatic-green
  * pre-emit critique: P5 H5 E4 S5 R5 V4
  */
 :root{
@@ -29,8 +32,8 @@
   --color-kakao-ink: oklch(24% 0.03 60);
   --color-on-dark: oklch(97% 0.01 95);
   --color-on-dark-2: oklch(82% 0.03 150);
-  --font-display: "Malgun Gothic", "맑은 고딕", "Apple SD Gothic Neo", sans-serif;
-  --font-body: "Malgun Gothic", "맑은 고딕", "Apple SD Gothic Neo", sans-serif;
+  --font-display: "Jua", "NanumSquareRound", sans-serif;
+  --font-body: "NanumSquareRound", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
   --space-2xs: 4px; --space-xs: 8px; --space-sm: 12px; --space-md: 16px;
   --space-lg: 24px; --space-xl: 32px; --space-2xl: 48px; --space-3xl: 64px;
   --radius-sm: 6px; --radius-md: 12px;
@@ -223,6 +226,10 @@ footer .btn{font-size:17px;padding:12px 22px}
   .field .fk{padding-bottom:4px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+/* rounded font tuning */
+.hero h1,.hero .names,.sec-head h2,.sec-num,.flight .ap,.hotel .hn,.mini .big,.day .hi,footer .msg{font-weight:400}
+.hero .names b{font-weight:400}
+@media (min-width:481px){.hero h1{font-size:48px}.sec-head h2{font-size:28px}}
 </style>
 </head>
 <body>
