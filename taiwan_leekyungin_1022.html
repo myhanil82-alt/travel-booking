@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>대만 여행 확정서 - 이경인,조연심님</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+  --forest:#2F6B4F;
+  --forest-dark:#1F4A36;
+  --forest-bg:#EEF6F0;
+  --terracotta:#C1443C;
+  --terracotta-bg:#FDF1EF;
+  --gold:#D2A24C;
+  --gold-bg:#FBF4E6;
+  --sky-top:#EFF3EC;
+  --sky-bottom:#F8F6F0;
+  --text-main:#1E2A22;
+  --text-sub:#5C6A5F;
+  --text-muted:#8E9990;
+  --card-bg:#FFFFFF;
+  --border:#E4E9E2;
+  --shadow:0 4px 20px rgba(47,107,79,0.10);
+  --max-w:680px;
+  --red:#C1443C;
+  --red-bg:#FDF1EF;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Pretendard',sans-serif;background:linear-gradient(180deg,var(--sky-top) 0%, var(--sky-bottom) 45%, #FBFAF6 100%);color:var(--text-main);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+
+.top-bar{width:100%;background:rgba(31,74,54,0.92);backdrop-filter:blur(6px);padding:10px 20px;}
+.top-bar-inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.agent-info{color:#EFF7F1;font-size:15px;font-weight:500;}
+.agent-info b{color:#fff;}
+.top-btns{display:flex;gap:8px;}
+.top-btn{font-size:14.5px;font-weight:600;padding:6px 12px;border-radius:20px;background:rgba(255,255,255,0.15);color:#fff;transition:transform .15s ease-out, background .2s;}
+.top-btn:hover{background:rgba(255,255,255,0.28);}
+.top-btn:active{transform:scale(0.97);}
+.top-btn.kakao{background:#FEE500;color:#391B1B;}
+
+.header{width:100%;padding:28px 16px 24px;}
+.header-inner{max-width:var(--max-w);margin:0 auto;text-align:center;position:relative;z-index:1;border-radius:24px;overflow:hidden;padding:48px 24px 40px;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(47,107,79,0.32), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(193,68,60,0.18), transparent 50%),
+    linear-gradient(160deg,#122A1E 0%, #1F4A36 55%, #275A42 100%);
+  box-shadow:0 12px 32px rgba(18,42,30,0.28);}
+.header-tag{display:inline-block;font-size:14px;font-weight:700;letter-spacing:2.5px;color:var(--gold);border:1px solid rgba(210,162,76,0.5);padding:6px 16px;border-radius:20px;margin-bottom:18px;}
+.header-title{font-size:34px;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-0.5px;text-shadow:0 2px 12px rgba(0,0,0,0.4);}
+.header-subtitle{font-size:16px;color:rgba(255,255,255,0.85);font-weight:500;margin-bottom:28px;letter-spacing:0.5px;}
+.header-names{font-size:22px;font-weight:700;color:#fff;background:rgba(255,255,255,0.1);display:inline-block;padding:10px 24px;border-radius:14px;margin-bottom:22px;}
+.header-cta{display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:#fff;font-weight:700;font-size:17px;padding:13px 26px;border-radius:12px;box-shadow:0 8px 20px rgba(47,107,79,0.4);transition:transform .2s ease-out, box-shadow .2s;}
+.header-cta:hover{transform:translateY(-2px) scale(1.02);}
+.header-cta:active{transform:scale(0.97);}
+
+.trip-band{width:100%;background:linear-gradient(90deg,var(--terracotta),#D97267);}
+.trip-band-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);text-align:center;padding:20px 16px;}
+.trip-item .label{font-size:13px;color:rgba(255,255,255,0.85);font-weight:600;margin-bottom:4px;}
+.trip-item .value{font-size:17px;color:#fff;font-weight:800;}
+
+.container{max-width:var(--max-w);margin:0 auto;padding:36px 20px 60px;}
+.section{margin-bottom:36px;opacity:0;transform:translateY(16px);transition:opacity .5s ease-out, transform .5s ease-out;}
+.section.visible{opacity:1;transform:translateY(0);}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.section-num{width:30px;height:30px;border-radius:50%;background:var(--forest-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0;}
+.section-title{font-size:20px;font-weight:800;color:var(--text-main);}
+
+.product-link-box{display:flex;justify-content:space-between;align-items:center;background:var(--forest-bg);border:1px solid var(--forest);border-radius:14px;padding:16px 18px;font-weight:700;color:var(--forest-dark);margin-bottom:14px;transition:transform .15s ease-out, background .2s;}
+.product-link-box:hover{background:#E1F0E6;transform:scale(1.01);}
+.product-link-box:active{transform:scale(0.98);}
+.product-link-box span.arrow{font-size:20px;}
+
+.alert{border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.7;margin-top:12px;}
+.alert-forest{background:var(--forest-bg);border:1px solid var(--forest);color:#1F4A36;}
+.alert-terracotta{background:var(--terracotta-bg);border:1px solid var(--terracotta);color:#8E2E28;}
+.alert-gold{background:var(--gold-bg);border:1px solid var(--gold);color:#8A6414;}
+.alert-navy{background:#F0F3F8;border:1px solid #3A5A8A;color:#1F3457;}
+
+.counter-box{border:1.5px solid var(--gold);border-radius:16px;background:#fff;padding:20px;box-shadow:var(--shadow);}
+.counter-box .step{display:flex;gap:12px;padding:8px 0;}
+.counter-box .step-num{width:24px;height:24px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0;}
+.counter-box .step-text{font-size:15.5px;color:var(--text-main);line-height:1.7;}
+
+.flight-card{border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px;}
+.flight-header{background:linear-gradient(120deg,#122A1E,#1F4A36);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:700;}
+.flight-header .code{color:var(--gold);}
+.flight-body{background:#fff;padding:20px 18px;}
+.flight-route{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.flight-route .airport{text-align:center;}
+.flight-route .airport .code{font-size:30px;font-weight:800;color:var(--text-main);}
+.flight-route .airport .city{font-size:14px;color:var(--text-sub);margin-top:2px;}
+.flight-route .mid{flex:1;text-align:center;padding:0 12px;}
+.flight-route .mid .time{font-size:14px;color:var(--text-muted);}
+.flight-route .mid .line{height:2px;background:var(--border);position:relative;margin-top:6px;}
+.flight-route .mid .line::after{content:"✈";position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:16px;}
+.flight-badges{display:flex;flex-wrap:wrap;gap:8px;}
+.badge{font-size:14px;font-weight:600;color:var(--text-sub);background:#F5F8F4;border:1px solid var(--border);padding:5px 10px;border-radius:8px;}
+
+.guide-box{border:1.5px solid var(--forest-dark);border-radius:16px;background:var(--forest-bg);padding:20px;}
+.guide-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed rgba(31,74,54,0.2);gap:10px;}
+.guide-row:last-child{border-bottom:none;}
+.guide-row .label{color:var(--text-sub);}
+.guide-row .val{font-weight:700;color:var(--forest-dark);text-align:right;}
+
+.hotel-card{border:2px solid var(--forest);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);}
+.hotel-header{background:linear-gradient(120deg,var(--forest),#4E9270);color:#fff;padding:10px 18px;font-size:14.5px;font-weight:700;}
+.hotel-body{background:#fff;padding:16px 18px;}
+.hotel-name{font-size:19px;font-weight:800;color:var(--text-main);}
+
+.incl-card{border-radius:14px;padding:16px;font-size:15.5px;line-height:1.8;background:var(--terracotta-bg);border:1px solid var(--terracotta);}
+.incl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#8E2E28;}
+.incl-card ul{padding-left:18px;margin-top:6px;}
+.incl-card ul li{margin-bottom:6px;}
+
+.visa-box{border:1.5px solid var(--gold);border-radius:16px;background:var(--gold-bg);padding:20px;}
+.visa-box .head{font-weight:800;font-size:17px;color:#8A6414;margin-bottom:10px;}
+.visa-box p{font-size:15.5px;line-height:1.75;color:var(--text-main);margin-bottom:10px;}
+.visa-box .vbtns{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
+.visa-box a.linkbtn{display:inline-block;background:var(--gold);color:#fff;font-weight:700;font-size:14.5px;padding:10px 16px;border-radius:10px;transition:transform .15s ease-out;}
+.visa-box a.linkbtn.alt{background:var(--forest);}
+.visa-box a.linkbtn:active{transform:scale(0.97);}
+
+.exchange-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:#fff;box-shadow:var(--shadow);}
+
+.tour-table-wrap{overflow-x:auto;border-radius:16px;box-shadow:var(--shadow);}
+.tour-table{width:100%;border-collapse:collapse;background:#fff;min-width:640px;}
+.tour-table th{background:linear-gradient(120deg,var(--forest),#4E9270);color:#fff;padding:12px 8px;font-size:13px;font-weight:700;text-align:center;}
+.tour-table td{padding:9px 8px;text-align:center;font-size:13px;border-bottom:1px solid var(--border);color:var(--text-sub);}
+.tour-table tr:last-child td{border-bottom:none;}
+.tour-table td.name{text-align:left;font-weight:700;color:var(--forest-dark);}
+.tour-table td.price{font-weight:800;color:var(--text-main);}
+
+.roam-grid{display:grid;grid-template-columns:1fr;gap:12px;}
+.roam-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px;box-shadow:var(--shadow);}
+.roam-card .rc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.roam-card .rc-title{font-weight:800;font-size:16.5px;color:var(--forest-dark);}
+.roam-card .rc-price{font-weight:800;font-size:15px;color:var(--terracotta);background:var(--terracotta-bg);padding:4px 10px;border-radius:8px;}
+.roam-card .rc-desc{font-size:14.5px;color:var(--text-sub);line-height:1.7;margin-bottom:8px;}
+.roam-card .rc-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.roam-card .rc-tag{font-size:13px;padding:4px 10px;border-radius:8px;background:var(--forest-bg);color:var(--forest-dark);font-weight:600;}
+.roam-card .rc-tag.con{background:var(--red-bg);color:#A32C24;}
+
+.weather-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
+.weather-card{flex:0 0 auto;width:106px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 8px;text-align:center;box-shadow:var(--shadow);}
+.weather-card .date{font-size:13.5px;font-weight:700;color:var(--text-sub);margin-bottom:6px;}
+.weather-card .day{font-size:12px;color:var(--text-muted);margin-bottom:6px;}
+.weather-card .icon{font-size:26px;margin-bottom:8px;}
+.weather-card .high{font-size:17px;font-weight:800;color:var(--terracotta);}
+.weather-card .low{font-size:14px;color:var(--text-muted);margin-top:2px;}
+
+.prep-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.prep-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.prep-card .icon{font-size:22px;margin-bottom:6px;}
+.prep-card .title{font-weight:700;font-size:15.5px;color:var(--forest-dark);margin-bottom:6px;}
+.prep-card ul{padding-left:16px;font-size:15px;color:var(--text-sub);line-height:1.8;}
+
+@media (max-width:480px){
+  .container{padding-left:14px;padding-right:14px;}
+  .trip-band-inner{grid-template-columns:repeat(2,1fr);gap:14px;padding:16px 12px;}
+  .prep-grid{grid-template-columns:1fr;}
+  .header-title{font-size:26px;}
+  .header-inner{padding:38px 18px 32px;}
+  .flight-badges{gap:6px;}
+  .badge{font-size:12.5px;padding:4px 8px;}
+}
+@media (max-width:400px){
+  .guide-row{flex-direction:column;align-items:flex-start;gap:2px;}
+  .guide-row .val{text-align:left;}
+}
+
+.footer{width:100%;background:#122A1E;padding:32px 20px;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;text-align:center;}
+.footer-agent{color:#fff;font-size:17px;font-weight:700;margin-bottom:6px;}
+.footer-sub{color:rgba(255,255,255,0.55);font-size:14.5px;margin-bottom:18px;}
+.footer-btns{display:flex;justify-content:center;gap:10px;}
+.footer-btn{padding:10px 20px;border-radius:12px;font-weight:700;font-size:15.5px;transition:transform .15s ease-out;}
+.footer-btn:active{transform:scale(0.97);}
+.footer-btn.tel{background:var(--terracotta);color:#fff;}
+.footer-btn.kakao{background:#FEE500;color:#391B1B;}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="agent-info">담당 <b>이경진 실장</b> · 모두투어 투어콕</div>
+    <div class="top-btns">
+      <a class="top-btn" href="tel:1544-5714">📞 전화상담</a>
+      <a class="top-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡</a>
+    </div>
+  </div>
+</div>
+
+<div class="header">
+  <div class="header-inner">
+    <span class="header-tag">TRAVEL CONFIRMATION</span>
+    <div class="header-title">대만 여행 확정서</div>
+    <div class="header-subtitle">인천국제공항 출발 · 3박 4일</div>
+    <div class="header-names">이경인,조연심님</div><br>
+    <a class="header-cta" href="https://www.modetour.com/package/111984263?MLoc=99&Pnum=111984263&ANO=1772510&sno=C2181215&thru=crs" target="_blank">🔗 여행상품 확인하기</a>
+  </div>
+</div>
+
+<div class="trip-band">
+  <div class="trip-band-inner">
+    <div class="trip-item"><div class="label">출발일</div><div class="value">2026.10.22(목)</div></div>
+    <div class="trip-item"><div class="label">귀국일</div><div class="value">2026.10.25(일)</div></div>
+    <div class="trip-item"><div class="label">일정</div><div class="value">3박 4일</div></div>
+    <div class="trip-item"><div class="label">투어타입</div><div class="value">패키지</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 상품 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">1</div><div class="section-title">상품 안내</div></div>
+    <a class="product-link-box" href="https://www.modetour.com/package/111984263?MLoc=99&Pnum=111984263&ANO=1772510&sno=C2181215&thru=crs" target="_blank">
+      <span>모두투어 대만 패키지 상품 바로가기</span>
+      <span class="arrow">↗</span>
+    </a>
+    <div class="alert alert-forest">
+      ✔ <b>인천공항 미팅이 없으니</b> 개별적으로 체크인 후 출발해 주세요.
+    </div>
+    <div class="alert alert-gold">
+      ⏰ 출발 당일 공항에는 <b>비행기 출발 2~3시간 전까지 반드시 도착</b>해 주세요.
+    </div>
+  </div>
+
+  <!-- 체크인 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">체크인 안내</div></div>
+    <div class="counter-box">
+      <div class="step"><div class="step-num">1</div><div class="step-text">항공사 예약번호(PNR)는 <b>FJU5XR</b>입니다.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-text">인천공항 <b>제1여객터미널(T1)</b>, 제주항공 체크인 카운터 <b>L13~L36</b>에서 체크인하시면 됩니다.</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-text">제주항공 사이트에서 <b>출발 24시간 전부터 온라인 체크인</b>을 통해 무료 좌석지정 및 탑승 QR을 받으실 수 있습니다. 온라인 진행이 어려우신 분은 당일 공항 카운터에서 체크인하시면 됩니다.</div></div>
+    </div>
+    <div class="alert alert-gold" style="margin-top:14px;">
+      🍽 제주항공은 <b>기내식이 제공되지 않습니다.</b> 탑승 전 미리 식사하시거나 면세구역에서 구매 후 탑승하시는 것을 권장드리며, 기내에서 간식·음료 구매 시 체크카드 사용이 불가하니 신용카드 또는 현금을 준비해 주세요.
+    </div>
+  </div>
+
+  <!-- 항공편 정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">항공편 정보</div></div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>출발편 · 제주항공</span><span class="code">7C6101</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 10.22(목) 09:05</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">TPE</div><div class="city">타이베이-타오위안 · 10.22(목) 10:55</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 제주항공</span>
+          <span class="badge">T1 · L13-L36</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>귀국편 · 제주항공</span><span class="code">7C6102</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">TPE</div><div class="city">타이베이-타오위안 · 10.25(일) 13:35</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 10.25(일) 17:00</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 제주항공</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 현지 가이드 & 행사정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">현지 가이드 & 행사 정보</div></div>
+    <div class="guide-box">
+      <div class="guide-row"><span class="label">가이드명</span><span class="val">유화선(여)</span></div>
+      <div class="guide-row"><span class="label">가이드 연락처</span><span class="val">0966-157-056</span></div>
+      <div class="guide-row"><span class="label">현지 비상연락처</span><span class="val">곽신형 실장<br>+886-961-361-634<br>+886-2-2581-6692</span></div>
+      <div class="guide-row"><span class="label">행사인원</span><span class="val">17명</span></div>
+      <div class="guide-row"><span class="label">행사차량</span><span class="val">45인승</span></div>
+      <div class="guide-row"><span class="label">조인코드</span><span class="val">ADP9037CM4P0G0(6)<br>ADP9037CM4P0IM(2)<br>ADP903OZM5(7)<br>ADE903OZMC(2)<br>공동행사 총 17명</span></div>
+    </div>
+  </div>
+
+  <!-- 투숙호텔 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">투숙 호텔</div></div>
+    <div class="hotel-card">
+      <div class="hotel-header">🏨 투숙 호텔</div>
+      <div class="hotel-body">
+        <div class="hotel-name">추도 프라자 호텔<br><span style="font-size:14px;color:var(--text-sub);font-weight:500;">CHUTO PLAZA HOTEL</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 불포함 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">불포함 사항</div></div>
+    <div class="incl-card">
+      <div class="head">✘ 불포함사항</div>
+      <ul>
+        <li>현지가이드/기사경비 — 1인 전 일정 <b>US$40</b>(성인·아동 동일)을 현지에서 지불하셔야 합니다</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 선택관광 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">선택관광 안내</div></div>
+    <div class="tour-table-wrap">
+      <table class="tour-table">
+        <tr>
+          <th>선택관광명</th><th>통화</th><th>성인</th><th>아동</th><th>소요<br>시간</th><th>최소<br>인원</th><th>가이드<br>동행</th><th>미참여시<br>대기장소</th>
+        </tr>
+        <tr><td class="name">발마사지(30분)</td><td>$</td><td class="price">30</td><td class="price">30</td><td>30분</td><td>0명</td><td>동행</td><td>마사지샵 부근 거리산책 및 자유시간</td></tr>
+        <tr><td class="name">발마사지(60분)</td><td>$</td><td class="price">60</td><td class="price">60</td><td>60분</td><td>0명</td><td>동행</td><td>마사지샵 부근 거리산책 및 자유시간</td></tr>
+        <tr><td class="name">전신마사지(60분)</td><td>$</td><td class="price">60</td><td class="price">60</td><td>60분</td><td>0명</td><td>동행</td><td>마사지샵 부근 거리산책 및 자유시간</td></tr>
+        <tr><td class="name">단수이강 야경 유람선</td><td>$</td><td class="price">30</td><td class="price">30</td><td>60분</td><td>0명</td><td>동행</td><td>디화제(迪化街) 거리산책 및 자유시간</td></tr>
+      </table>
+    </div>
+    <div class="alert alert-gold">
+      💡 관심 있으신 코스가 있으면 현지 가이드님과 상의해 주세요.
+    </div>
+  </div>
+
+  <!-- 대만 입국신고서 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">대만 입국신고서 안내</div></div>
+    <div class="visa-box">
+      <div class="head">📝 대만 온라인 입국신고서(TWAC)</div>
+      <p>대만 온라인 입국신고서(TWAC, Taiwan Arrival Card)는 <b>입국 7일 전부터</b> 온라인으로 작성이 가능합니다.<br><br>
+      입국신고서 작성 시 <b>기재주소</b>는 투숙 호텔인 "추도 프라자 호텔(CHUTO PLAZA HOTEL)"로 적어주시면 됩니다.<br><br>
+      작성 완료 후 발급되는 QR코드는 입국 심사 시 제시하시면 됩니다.</p>
+      <div class="vbtns">
+        <a class="linkbtn" href="https://twac.immigration.gov.tw/" target="_blank">🔗 대만 입국신고서(TWAC) 공식 사이트</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 환전 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">환전 안내</div></div>
+    <div class="exchange-box">
+      💵 현지가이드/기사경비(1인 전 일정 US$40) 및 선택관광 비용은 모두 <b>미국달러(USD)</b> 지불 기준입니다.<br><br>
+      개인경비, 매너팁, 간식·음료 구매 등은 <b>현지화폐(대만달러, NTD)</b>로 준비하시는 것을 권장드립니다.<br><br>
+      대만달러는 현지 공항·시내 환전소에서도 환전 가능하나, 한국에서 미리 소액 환전해 가시는 것도 편리합니다.<br><br>
+      <span style="font-size:14px;color:var(--text-muted);">※ 환율은 변동될 수 있어 참고용으로만 봐주세요.</span>
+    </div>
+  </div>
+
+  <!-- 데이터 통신 옵션 비교 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">현지 데이터 통신 옵션 비교</div></div>
+    <div class="roam-grid">
+      <div class="roam-card">
+        <div class="rc-head">
+          <div class="rc-title">📶 통신사 로밍</div>
+          <div class="rc-price">1일 약 9천~1만1천원</div>
+        </div>
+        <div class="rc-desc">한국 통신사에서 자동으로 신청. 기존 번호 그대로 사용, 별도 셋팅이 필요 없어 가장 간편합니다.</div>
+        <div class="rc-tags">
+          <span class="rc-tag">셋팅 불필요</span>
+          <span class="rc-tag con">요금 다소 높음</span>
+        </div>
+      </div>
+      <div class="roam-card">
+        <div class="rc-head">
+          <div class="rc-title">📱 현지 유심(USIM)</div>
+          <div class="rc-price">4일권 약 1만~1만5천원</div>
+        </div>
+        <div class="rc-desc">공항·편의점에서 구매 후 교체. 요금이 저렴하지만, 한국 번호로 오는 전화·문자 수신이 안 됩니다.</div>
+        <div class="rc-tags">
+          <span class="rc-tag">비교적 저렴</span>
+          <span class="rc-tag con">번호 변경(수신 불가)</span>
+        </div>
+      </div>
+      <div class="roam-card">
+        <div class="rc-head">
+          <div class="rc-title">💳 이심(eSIM)</div>
+          <div class="rc-price">4일권 약 1만2천~1만8천원</div>
+        </div>
+        <div class="rc-desc">앱으로 QR코드 스캔만 하면 설치 완료. 유심 교체 없이 기존 유심(한국 번호)과 함께 듀얼로 사용 가능합니다.</div>
+        <div class="rc-tags">
+          <span class="rc-tag">한국 번호 유지</span>
+          <span class="rc-tag">셋팅 간편(QR)</span>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-forest" style="margin-top:12px;">
+      💡 가격은 통신사·판매처에 따라 변동될 수 있어 참고용으로 봐주세요.
+    </div>
+  </div>
+
+  <!-- 날씨 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">11</div><div class="section-title">일자별 날씨 정보</div></div>
+    <div class="weather-row">
+      <div class="weather-card">
+        <div class="date">10/22(목)</div>
+        <div class="day">출국일</div>
+        <div class="icon">⛅</div>
+        <div class="high">27℃</div>
+        <div class="low">22℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">10/23(금)</div>
+        <div class="day">타이베이</div>
+        <div class="icon">🌦️</div>
+        <div class="high">26℃</div>
+        <div class="low">21℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">10/24(토)</div>
+        <div class="day">타이베이</div>
+        <div class="icon">⛅</div>
+        <div class="high">26℃</div>
+        <div class="low">21℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">10/25(일)</div>
+        <div class="day">귀국일</div>
+        <div class="icon">☀️</div>
+        <div class="high">27℃</div>
+        <div class="low">22℃</div>
+      </div>
+    </div>
+    <div class="alert alert-gold">
+      🌤️ 10월 말 대만은 아직 반팔로 다닐 수 있는 선선한 초가을 날씨이지만, 저녁에는 쌀쌀할 수 있고 갑작스러운 소나기가 내릴 수 있습니다.<br><br>
+      가벼운 겉옷과 우산(또는 우비)을 함께 챙겨주세요.
+    </div>
+  </div>
+
+  <!-- 준비물 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">12</div><div class="section-title">여행 준비물</div></div>
+    <div class="prep-grid">
+      <div class="prep-card">
+        <div class="icon">👕</div>
+        <div class="title">의류</div>
+        <ul>
+          <li>반팔·긴팔 혼합(일교차 대비)</li>
+          <li>가벼운 겉옷, 우산 또는 우비</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🥾</div>
+        <div class="title">신발 · 이동</div>
+        <ul>
+          <li>편한 운동화(야시장·도보 관광 多)</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">💵</div>
+        <div class="title">현금 · 결제</div>
+        <ul>
+          <li>가이드/기사경비·선택관광 USD</li>
+          <li>개인경비용 대만달러(NTD)</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🎒</div>
+        <div class="title">기타 준비물</div>
+        <ul>
+          <li>여권(유효기간 확인), 입국신고서 QR</li>
+          <li>보조배터리, 개인 상비약</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-agent">담당 이경진 실장</div>
+    <div class="footer-sub">이경인,조연심님의 안전하고 즐거운 대만 여행을 응원합니다</div>
+    <div class="footer-btns">
+      <a class="footer-btn tel" href="tel:1544-5714">📞 1544-5714</a>
+      <a class="footer-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 투어콕 카카오톡 채널</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.1});
+sections.forEach(s=>observer.observe(s));
+</script>
+
+</body>
+</html>
