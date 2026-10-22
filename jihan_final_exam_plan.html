@@ -54,6 +54,17 @@ li.sci::before{border-color:var(--sci)}
 .sci-box ol{margin:0;padding-left:18px}
 .sci-box li{display:list-item;padding:2px 0}
 .sci-box li::before{display:none}
+.tall th,.tall td{height:34px}
+.goalin td.blank{height:52px}
+.blank-box{border:1px solid #b9cdf5;background:var(--acc-bg);border-radius:8px;padding:10px 12px;margin-top:12px}
+.blank-box h2{margin:0 0 6px;color:var(--acc)}
+.blank-box ol{margin:0;padding-left:18px}
+.blank-box li,.sci-box li{display:list-item;padding:2px 0}
+.blank-box li::before{display:none}
+.blank-box .red{color:#d6336c;font-weight:700}
+.blank-box .tip{margin:6px 0 0;color:var(--sub);font-size:12px}
+.sci-box{margin-top:10px}
+.sci-steps{margin:0}
 .exam{text-align:center;font-weight:900;font-size:16px;background:var(--ink);color:#fff;border-radius:8px;padding:10px;margin-top:10px}
 .note{color:var(--sub);font-size:11.5px;margin-top:10px}
 @media (max-width:600px){
@@ -67,15 +78,20 @@ li.sci::before{border-color:var(--sci)}
   body{background:#fff;font-size:12px}
   .page{padding:0;max-width:none}
   .pb{break-before:page}
-  .week{margin-bottom:7px}
+  .week{margin-bottom:5px}
   ul{padding:5px 12px}
-  li{padding:1px 0}
+  li{padding:0}
+  h2.pb{margin-top:0}
   .week-h{padding:4px 12px}
   .sci-box{padding:8px 12px}
   .exam{padding:7px;margin-top:7px}
   .goal th,.goal td{padding:2px 4px;line-height:1.3}
   .goal small{font-size:10px}
-  .goal td.blank{height:24px}
+  .tall th,.tall td{height:27px}
+  .goalin td.blank{height:44px}
+  .blank-box{margin-top:8px;padding:8px 12px}
+  .sci-box{padding:6px 12px;margin-top:4px}
+  .sci-box h2{margin-bottom:3px}
   h2{margin:10px 0 5px;font-size:14px}
   .talk{padding:5px 10px;margin-top:5px}
   .talk p{margin:1px 0}
@@ -114,7 +130,7 @@ li.sci::before{border-color:var(--sci)}
 </div>
 
 <h2>② 2학기 중간고사 – 평균과 비교</h2>
-<table class="goal gap">
+<table class="goal gap tall">
   <tr><th>과목</th><th>점수</th><th>반 평균</th><th>차이</th></tr>
   <tr><th>영어</th><td>67</td><td>72.9</td><td>−6</td></tr>
   <tr><th>수학</th><td>59</td><td>70.2</td><td>−11</td></tr>
@@ -125,7 +141,7 @@ li.sci::before{border-color:var(--sci)}
 <p class="gapnote">네 과목은 평균보다 6~15점 낮다. <b>과학만 혼자 −50점</b> → 실력 문제가 아니라 그 시험에서 무슨 일이 있었던 것.</p>
 
 <h2>③ 기말 목표 점수 (내가 직접 쓴다)</h2>
-<table class="goal">
+<table class="goal tall goalin">
   <tr><th>과목</th><th>국어</th><th>역사</th><th>수학</th><th class="sci">과학</th><th>영어</th></tr>
   <tr><th>기말 목표</th><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
 </table>
@@ -137,7 +153,19 @@ li.sci::before{border-color:var(--sci)}
   <div class="rule"><b>틀린 문제는 다시</b><span>2~3일 뒤에 한 번 더 풀기.</span></div>
 </div>
 
-<h2>⑤ 주간 체크리스트</h2>
+<div class="blank-box">
+  <h2>백지 테스트 하는 법 (한 단원 20~30분)</h2>
+  <ol>
+    <li><b>5분 훑기</b> — 교과서·학습지에서 그 단원을 한 번 읽는다.</li>
+    <li><b>덮고 쓰기</b> — 빈 종이에 단원 제목을 쓰고, 기억나는 개념·용어·과정·그림을 전부 쓴다. 문장 아니어도 된다.</li>
+    <li><b>비교하기</b> — 교과서를 펴고 빠진 것을 <span class="red">빨간 펜</span>으로 채운다.</li>
+    <li><b>빨간 부분만 다시</b> — 다음 날 빨간 부분만 다시 써본다. 빨간 게 거의 없어지면 그 단원은 끝.</li>
+  </ol>
+  <p class="tip">예) 과학 '소화' → 소화 기관 순서, 효소 이름과 하는 일, 흡수되는 곳. 역사 → 사건 순서, 인물, 원인과 결과.</p>
+</div>
+
+
+<h2 class="pb">⑤ 주간 체크리스트</h2>
 
 <div class="week">
   <div class="week-h"><b>1주차 · 10/23 ~ 11/1 <span class="tag">진단</span></b><span>범위 발표 전</span></div>
@@ -150,7 +178,7 @@ li.sci::before{border-color:var(--sci)}
   </ul>
 </div>
 
-<div class="week pb">
+<div class="week">
   <div class="week-h"><b>2주차 · 11/2 ~ 11/8 <span class="tag">습관</span></b><span>범위 발표 전</span></div>
   <ul>
     <li>매일 그날 배운 것 정리 (월·화·수·목·금)</li>
@@ -207,18 +235,15 @@ li.sci::before{border-color:var(--sci)}
   </ul>
 </div>
 
+
+
 <div class="sci-box">
   <h2>과학 서술형 = 20점 (다른 과목의 2배)</h2>
-  <ol>
-    <li>교과서를 덮고 개념을 <b>내 말로 3줄</b> 써본다.</li>
-    <li>교과서랑 비교해서 빠진 <b>핵심 용어</b>에 밑줄 친다.</li>
-    <li>다음 날 다시 써서 그 용어가 들어갔는지 확인한다.</li>
-  </ol>
+  <p class="sci-steps">① 교과서를 덮고 개념을 <b>내 말로 3줄</b> 쓴다 → ② 교과서와 비교해 빠진 <b>핵심 용어</b>에 밑줄 → ③ 다음 날 다시 써서 그 용어가 들어갔는지 확인</p>
 </div>
 
 <div class="exam">12월 8일(화) 기말고사</div>
 
-<p class="note">백지 테스트: 교과서를 덮고 그 단원 내용을 빈 종이에 아는 만큼 써보는 것. 못 쓰는 부분이 곧 모르는 부분이다.</p>
 
 </div>
 </body>
