@@ -31,6 +31,9 @@ table{width:100%;border-collapse:collapse}
 .cmp td.sci{font-size:15px}
 .talk{border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin-top:8px}
 .talk p{margin:3px 0}
+.gap tr.sci-row td,.gap tr.sci-row th{background:var(--sci-bg)}
+.gapnote{margin:6px 0 0}
+.gapnote b{color:var(--sci)}
 .talk b{color:var(--acc)}
 .rules{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .rule{border:1px solid var(--line);border-radius:8px;padding:8px 10px}
@@ -70,6 +73,16 @@ li.sci::before{border-color:var(--sci)}
   .week-h{padding:4px 12px}
   .sci-box{padding:8px 12px}
   .exam{padding:7px;margin-top:7px}
+  .goal th,.goal td{padding:2px 4px;line-height:1.3}
+  .goal small{font-size:10px}
+  .goal td.blank{height:24px}
+  h2{margin:10px 0 5px;font-size:14px}
+  .talk{padding:5px 10px;margin-top:5px}
+  .talk p{margin:1px 0}
+  .motto{margin-bottom:8px;padding:6px 10px}
+  header{margin-bottom:8px}
+  .rule{padding:5px 8px}
+  .rules{break-inside:avoid}
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 </style>
@@ -100,20 +113,31 @@ li.sci::before{border-color:var(--sci)}
   <p><b>과학은 이번 학기 E(60점 미만)를 막는 게 목표.</b> 중간 22점이라 남은 수행평가를 다 받고 기말 70점 이상이 필요하다.</p>
 </div>
 
-<h2>② 기말 목표 점수 (내가 직접 쓴다)</h2>
+<h2>② 2학기 중간고사 – 평균과 비교</h2>
+<table class="goal gap">
+  <tr><th>과목</th><th>점수</th><th>반 평균</th><th>차이</th></tr>
+  <tr><th>영어</th><td>67</td><td>72.9</td><td>−6</td></tr>
+  <tr><th>수학</th><td>59</td><td>70.2</td><td>−11</td></tr>
+  <tr><th>국어</th><td>61</td><td>72.6</td><td>−12</td></tr>
+  <tr><th>역사</th><td>57</td><td>71.5</td><td>−15</td></tr>
+  <tr class="sci-row"><th class="sci">과학</th><td class="sci">22</td><td>72.2</td><td class="sci">−50</td></tr>
+</table>
+<p class="gapnote">네 과목은 평균보다 6~15점 낮다. <b>과학만 혼자 −50점</b> → 실력 문제가 아니라 그 시험에서 무슨 일이 있었던 것.</p>
+
+<h2>③ 기말 목표 점수 (내가 직접 쓴다)</h2>
 <table class="goal">
   <tr><th>과목</th><th>국어</th><th>역사</th><th>수학</th><th class="sci">과학</th><th>영어</th></tr>
   <tr><th>기말 목표</th><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
 </table>
 
-<h2>③ 매일 규칙</h2>
+<h2>④ 매일 규칙</h2>
 <div class="rules">
   <div class="rule"><b>그날 배운 것 정리</b><span>학교 다녀와서 30분. 과학 먼저.</span></div>
   <div class="rule"><b>학습지 챙기기</b><span>국어·역사·영어는 학습지가 시험 범위.</span></div>
   <div class="rule"><b>틀린 문제는 다시</b><span>2~3일 뒤에 한 번 더 풀기.</span></div>
 </div>
 
-<h2>④ 주간 체크리스트</h2>
+<h2>⑤ 주간 체크리스트</h2>
 
 <div class="week">
   <div class="week-h"><b>1주차 · 10/23 ~ 11/1 <span class="tag">진단</span></b><span>범위 발표 전</span></div>
@@ -121,7 +145,7 @@ li.sci::before{border-color:var(--sci)}
     <li class="sci"><b>과학 남은 수행평가 일정 확인 → 하나도 빠짐없이 만점 목표로 제출</b></li>
     <li class="sci">과학 중간고사 시험지 다시 풀기 → 맞힌 것 / 다시 해도 모르는 것 표시</li>
     <li class="sci">과학 서술형 2문제 답 다시 써보기 (몇 점짜리였는지 확인)</li>
-    <li>위 ② 기말 목표 점수 표 채우기</li>
+    <li>위 ③ 기말 목표 점수 표 채우기</li>
     <li>매일 그날 배운 것 정리 (월·화·수·목·금)</li>
   </ul>
 </div>
