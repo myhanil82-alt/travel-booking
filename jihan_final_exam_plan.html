@@ -26,6 +26,12 @@ table{width:100%;border-collapse:collapse}
 .goal th{background:var(--paper);font-weight:700}
 .goal .sci{color:var(--sci);font-weight:900}
 .goal td.blank{height:30px}
+.goal small{color:var(--sub);font-weight:400;font-size:11px}
+.cmp tr.sci-row td,.cmp tr.sci-row th{background:var(--sci-bg)}
+.cmp td.sci{font-size:15px}
+.talk{border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin-top:8px}
+.talk p{margin:3px 0}
+.talk b{color:var(--acc)}
 .rules{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .rule{border:1px solid var(--line);border-radius:8px;padding:8px 10px}
 .rule b{display:block;font-size:13px;margin-bottom:2px}
@@ -58,6 +64,12 @@ li.sci::before{border-color:var(--sci)}
   body{background:#fff;font-size:12px}
   .page{padding:0;max-width:none}
   .pb{break-before:page}
+  .week{margin-bottom:7px}
+  ul{padding:5px 12px}
+  li{padding:1px 0}
+  .week-h{padding:4px 12px}
+  .sci-box{padding:8px 12px}
+  .exam{padding:7px;margin-top:7px}
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 </style>
@@ -72,34 +84,49 @@ li.sci::before{border-color:var(--sci)}
 
 <p class="motto">시험대비만 해도 돼. <b>대신 제대로.</b> 지금 배우는 건 전부 기말 범위다.</p>
 
-<h2>① 목표 점수 (내가 직접 쓴다)</h2>
+<h2>① 1학기 지필 vs 2학기 중간</h2>
+<table class="goal cmp">
+  <tr><th>과목</th><th>1학기 1차</th><th>1학기 2차</th><th>1학기 최종<br><small>(평균)</small></th><th>2학기 중간<br><small>(평균)</small></th></tr>
+  <tr><th>국어</th><td>75</td><td>88</td><td>85.9 B<br><small>(80.7)</small></td><td>61<br><small>(72.6)</small></td></tr>
+  <tr><th>역사</th><td>46</td><td>71</td><td>72.1 C<br><small>(78.3)</small></td><td>57<br><small>(71.5)</small></td></tr>
+  <tr><th>수학</th><td>73</td><td>53</td><td>74.8 C<br><small>(75.2)</small></td><td>59<br><small>(70.2)</small></td></tr>
+  <tr class="sci-row"><th class="sci">과학</th><td>74</td><td>73</td><td>71.1 C<br><small>(76.2)</small></td><td class="sci">22<br><small>(72.2)</small></td></tr>
+  <tr><th>영어</th><td>73</td><td>89</td><td>79.5 B<br><small>(79.6)</small></td><td>67<br><small>(72.9)</small></td></tr>
+</table>
+<div class="talk">
+  <p><b>1학기엔 평균 근처였다.</b> 국어는 평균보다 높았고, 수학·영어는 평균과 같았다.</p>
+  <p><b>과학 74점 받던 실력이다.</b> 22점은 실력이 아니라 이번 시험에서 무슨 일이 있었던 거다.</p>
+  <p><b>기말에 올라온 적이 있다.</b> 1학기에 국어 75→88, 역사 46→71, 영어 73→89. 이번에도 할 수 있다.</p>
+  <p><b>과학은 이번 학기 E(60점 미만)를 막는 게 목표.</b> 중간 22점이라 남은 수행평가를 다 받고 기말 70점 이상이 필요하다.</p>
+</div>
+
+<h2>② 기말 목표 점수 (내가 직접 쓴다)</h2>
 <table class="goal">
   <tr><th>과목</th><th>국어</th><th>역사</th><th>수학</th><th class="sci">과학</th><th>영어</th></tr>
-  <tr><th>중간 점수</th><td>61</td><td>57</td><td>59</td><td class="sci">22</td><td>67</td></tr>
-  <tr><th>반 평균</th><td>72.6</td><td>71.5</td><td>70.2</td><td>72.2</td><td>72.9</td></tr>
   <tr><th>기말 목표</th><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
 </table>
 
-<h2>② 매일 규칙</h2>
+<h2>③ 매일 규칙</h2>
 <div class="rules">
   <div class="rule"><b>그날 배운 것 정리</b><span>학교 다녀와서 30분. 과학 먼저.</span></div>
   <div class="rule"><b>학습지 챙기기</b><span>국어·역사·영어는 학습지가 시험 범위.</span></div>
   <div class="rule"><b>틀린 문제는 다시</b><span>2~3일 뒤에 한 번 더 풀기.</span></div>
 </div>
 
-<h2>③ 주간 체크리스트</h2>
+<h2>④ 주간 체크리스트</h2>
 
 <div class="week">
   <div class="week-h"><b>1주차 · 10/23 ~ 11/1 <span class="tag">진단</span></b><span>범위 발표 전</span></div>
   <ul>
+    <li class="sci"><b>과학 남은 수행평가 일정 확인 → 하나도 빠짐없이 만점 목표로 제출</b></li>
     <li class="sci">과학 중간고사 시험지 다시 풀기 → 맞힌 것 / 다시 해도 모르는 것 표시</li>
     <li class="sci">과학 서술형 2문제 답 다시 써보기 (몇 점짜리였는지 확인)</li>
-    <li>위 ① 목표 점수 표 채우기</li>
+    <li>위 ② 기말 목표 점수 표 채우기</li>
     <li>매일 그날 배운 것 정리 (월·화·수·목·금)</li>
   </ul>
 </div>
 
-<div class="week">
+<div class="week pb">
   <div class="week-h"><b>2주차 · 11/2 ~ 11/8 <span class="tag">습관</span></b><span>범위 발표 전</span></div>
   <ul>
     <li>매일 그날 배운 것 정리 (월·화·수·목·금)</li>
@@ -119,7 +146,7 @@ li.sci::before{border-color:var(--sci)}
   </ul>
 </div>
 
-<div class="week pb">
+<div class="week">
   <div class="week-h"><b>4주차 · 11/16 ~ 11/22 <span class="tag">개념</span></b><span>시험 3주 전</span></div>
   <ul>
     <li>국어·영어 학습지 다시 읽고 백지 테스트</li>
