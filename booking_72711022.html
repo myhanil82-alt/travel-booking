@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>모두투어 예약확인서 - 72711022</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green-deep:#1a5c2a;--green-mid:#2d8a45;--green-bright:#3aaf58;
+    --green-light:#e8f7ed;--green-pale:#f2fbf4;--border:#b8dfc0;
+    --text-dark:#1a2e1e;--text-mid:#3a5c3e;--text-light:#6b8c70;
+    --red:#e53e3e;--blue:#0077cc;--gold:#d4a12a;
+    --ocean:#0e7490;--ocean-bg:#ecfeff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans KR',sans-serif;background:linear-gradient(160deg,#d4edda 0%,#e8f5e9 50%,#f1f8e9 100%);color:var(--text-dark);min-height:100vh;padding:24px 16px;font-size:16px;line-height:1.65;}
+  .wrap{max-width:720px;margin:0 auto;}
+  a{color:inherit;text-decoration:none;}
+
+  .header{background:linear-gradient(135deg,var(--green-deep),var(--green-mid) 55%,var(--green-bright));border-radius:16px 16px 0 0;padding:26px 30px 20px;color:#fff;position:relative;overflow:hidden;}
+  .header::before{content:'';position:absolute;top:-50px;right:-40px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,0.08);}
+  .h-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;position:relative;z-index:1;}
+  .brand{display:flex;align-items:center;gap:11px;}
+  .brand-logo{width:46px;height:46px;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;color:var(--green-deep);}
+  .brand h1{font-size:16px;font-weight:700;}
+  .brand p{font-size:12.5px;color:rgba(255,255,255,0.8);margin-top:2px;}
+  .badge{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.35);border-radius:9px;padding:8px 15px;text-align:right;}
+  .badge .l{font-size:11px;color:rgba(255,255,255,0.75);letter-spacing:1px;}
+  .badge .v{font-size:19px;font-weight:800;letter-spacing:0.5px;}
+  .h-title{text-align:center;padding:12px 0 2px;position:relative;z-index:1;}
+  .h-title h2{font-size:25px;font-weight:800;letter-spacing:3px;}
+  .h-title .sub{font-size:12.5px;color:rgba(255,255,255,0.7);margin-top:5px;}
+
+  .alert{background:#fff3f3;border-top:3px solid var(--red);padding:13px 30px;display:flex;gap:9px;font-size:14.5px;color:#7b2020;line-height:1.6;}
+  .alert strong{color:var(--red);}
+
+  .body{background:#fff;}
+  .sec{padding:22px 30px;border-bottom:1px solid #edf7ef;}
+  .sec:last-child{border-bottom:none;}
+  .sec-h{display:flex;align-items:center;gap:9px;margin-bottom:15px;}
+  .sec-ico{width:30px;height:30px;border-radius:8px;background:var(--green-light);display:flex;align-items:center;justify-content:center;font-size:15px;}
+  .sec-t{font-size:15px;font-weight:700;color:var(--green-deep);letter-spacing:0.3px;}
+
+  .prod-card{background:var(--green-light);border:2px solid var(--green-bright);border-radius:12px;padding:16px 18px;}
+  .prod-card .pl{font-size:12px;color:var(--text-light);font-weight:600;margin-bottom:4px;}
+  .prod-card .pn{font-size:15px;font-weight:700;line-height:1.5;margin-bottom:8px;}
+  .prod-card a{font-size:13px;font-weight:600;color:var(--green-mid);word-break:break-all;}
+  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;}
+  .info-c{background:var(--green-pale);border:1px solid var(--border);border-radius:10px;padding:12px 15px;}
+  .info-c .l{font-size:11px;font-weight:600;color:var(--text-light);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:3px;}
+  .info-c .v{font-size:15px;font-weight:700;}
+
+  table.flight{width:100%;border-collapse:collapse;border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+  table.flight th{background:var(--green-deep);color:#fff;padding:11px 15px;text-align:left;font-size:14px;font-weight:600;width:33%;}
+  table.flight td{padding:12px 15px;border-bottom:1px solid #edf7ef;font-size:15px;font-weight:500;}
+  table.flight tr:last-child td{border-bottom:none;}
+  table.flight tr:nth-child(even) td{background:var(--green-pale);}
+  .tag-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px;}
+  .tag{background:#eef7e0;border:1px solid #c5e89a;border-radius:18px;padding:5px 13px;font-size:13px;font-weight:600;color:var(--green-deep);}
+  .notice{border-radius:10px;padding:12px 15px;font-size:14px;line-height:1.7;margin-top:11px;display:flex;gap:8px;}
+  .notice.y{background:#fffbeb;border-left:3px solid var(--gold);color:#78350f;}
+  .notice.b{background:var(--ocean-bg);border-left:3px solid var(--ocean);color:#0c4a5a;}
+  .notice.g{background:var(--green-pale);border-left:3px solid var(--green-bright);color:var(--text-mid);}
+  .notice.r{background:#fff5f5;border-left:3px solid var(--red);color:#742a2a;}
+
+  /* 가족별 요금 */
+  .fam{border:1.5px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:14px;box-shadow:0 2px 10px rgba(47,107,79,0.06);}
+  .fam-h{background:linear-gradient(120deg,var(--green-mid),var(--green-bright));color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;}
+  .fam-h .fn{font-size:16px;font-weight:800;}
+  .fam-h .fc{font-size:12.5px;background:rgba(255,255,255,0.2);border-radius:14px;padding:3px 11px;font-weight:600;}
+  .fam-b{padding:15px 18px;background:#fff;}
+  .members{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:13px;}
+  .m-chip{background:var(--green-light);border:1px solid var(--border);border-radius:16px;padding:4px 12px;font-size:13.5px;font-weight:600;color:var(--green-deep);}
+  .price-line{display:flex;justify-content:space-between;align-items:center;font-size:14.5px;padding:6px 0;color:var(--text-mid);border-bottom:1px dashed #dfeee3;}
+  .price-line .amt{font-weight:600;color:var(--text-dark);}
+  .fam-total{display:flex;justify-content:space-between;align-items:center;margin-top:11px;padding-top:12px;border-top:2px solid var(--green-light);}
+  .fam-total .l{font-size:14px;font-weight:700;color:var(--text-mid);}
+  .fam-total .v{font-size:22px;font-weight:800;color:var(--green-deep);}
+
+  .grand{background:linear-gradient(135deg,var(--green-deep),var(--green-mid));border-radius:14px;padding:18px 22px;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:4px;}
+  .grand .gl{font-size:14.5px;color:rgba(255,255,255,0.85);font-weight:600;}
+  .grand .gl b{color:#fff;font-size:15px;}
+  .grand .gv{font-size:27px;font-weight:800;}
+
+  .pay-due{background:#fff5f5;border:1.5px solid #feb2b2;border-radius:12px;padding:15px 18px;text-align:center;margin-bottom:14px;}
+  .pay-due .pdl{font-size:13px;color:var(--red);font-weight:700;margin-bottom:4px;}
+  .pay-due .pdv{font-size:19px;font-weight:800;color:var(--red);}
+  .pay-due .pds{font-size:13px;color:#8a2a2a;margin-top:5px;}
+  .pm{background:var(--green-pale);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-bottom:11px;}
+  .pm .pmt{font-size:15px;font-weight:700;color:var(--green-deep);margin-bottom:7px;display:flex;align-items:center;gap:7px;}
+  .pm .pmb{font-size:14.5px;color:var(--text-mid);line-height:1.8;}
+  .acct{font-size:16px;font-weight:700;color:var(--green-deep);background:#fff;border:1px solid var(--border);border-radius:8px;padding:9px 15px;display:inline-block;margin-top:4px;letter-spacing:0.3px;}
+  .steps{padding-left:20px;margin-top:4px;}
+  .steps li{font-size:14.5px;color:var(--text-mid);padding:3px 0;line-height:1.7;}
+
+  table.cancel{width:100%;border-collapse:collapse;font-size:14.5px;border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+  table.cancel th{background:var(--green-deep);color:#fff;padding:10px 15px;text-align:left;font-weight:600;}
+  table.cancel td{padding:10px 15px;border-bottom:1px solid #edf7ef;color:var(--text-mid);}
+  table.cancel tr:last-child td{border-bottom:none;}
+  table.cancel tr:nth-child(even) td{background:var(--green-pale);}
+  table.cancel .pct{font-weight:700;color:var(--red);text-align:right;}
+
+  .passport{background:var(--green-pale);border:1px solid var(--border);border-radius:10px;padding:16px 18px;}
+  .passport .pt{font-size:14.5px;font-weight:700;color:var(--green-deep);margin-bottom:6px;}
+  .passport a.btn{display:inline-block;margin-top:9px;background:var(--green-mid);color:#fff;font-weight:700;font-size:14.5px;padding:9px 18px;border-radius:9px;}
+  .step-rows{background:var(--green-pale);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+  .srow{display:flex;gap:12px;align-items:flex-start;padding:11px 16px;border-bottom:1px solid #edf7ef;font-size:14px;color:var(--text-mid);}
+  .srow:last-child{border-bottom:none;}
+  .srow .n{width:22px;height:22px;border-radius:50%;background:var(--green-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:1px;}
+
+  .footer{background:linear-gradient(135deg,var(--green-deep),#0d3318);border-radius:0 0 16px 16px;padding:24px 30px;color:#fff;}
+  .f-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:14px;}
+  .f-grid .l{font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
+  .f-grid .v{font-size:15px;font-weight:700;}
+  .f-grid a.kk{display:inline-flex;align-items:center;gap:5px;background:#FEE500;color:#3A1D1D;border-radius:8px;padding:6px 13px;font-size:13px;font-weight:800;}
+  .hours{background:rgba(255,255,255,0.08);border-radius:8px;padding:11px 15px;font-size:13px;color:rgba(255,255,255,0.7);text-align:center;line-height:1.8;}
+
+  @media(max-width:560px){
+    body{padding:16px 10px;}
+    .header,.alert,.sec,.footer{padding-left:18px;padding-right:18px;}
+    .info-grid{grid-template-columns:1fr;}
+    .f-grid{grid-template-columns:1fr;text-align:center;}
+    .h-title h2{font-size:21px;letter-spacing:2px;}
+    .grand .gv{font-size:23px;}
+    table.flight th{width:38%;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 헤더 -->
+  <div class="header">
+    <div class="h-top">
+      <div class="brand">
+        <div class="brand-logo">M</div>
+        <div><h1>🌐 MODETOUR</h1><p>담당 김영아 과장 · ☎ 1544-5714</p></div>
+      </div>
+      <div class="badge"><div class="l">예약번호</div><div class="v">72711022</div></div>
+    </div>
+    <div class="h-title">
+      <h2>모두투어 여행 예약확인서</h2>
+      <div class="sub">괌 PIC · 특별약관 적용상품</div>
+    </div>
+  </div>
+
+  <!-- 알림 -->
+  <div class="alert">
+    <span>⚠️</span>
+    <span>인터넷상에서 예약·결제 취소 및 변경은 <strong>불가</strong>합니다. 취소·변경 또는 여행자정보 변경이 필요하시면 <strong>반드시 예약담당자에게 연락</strong>해 주세요.</span>
+  </div>
+
+  <div class="body">
+
+    <!-- 예약 정보 -->
+    <div class="sec">
+      <div class="sec-h"><div class="sec-ico">📋</div><div class="sec-t">예약 정보</div></div>
+      <div class="prod-card">
+        <div class="pl">예약 상품</div>
+        <div class="pn">[저녁출발/에어텔] 괌 PIC 로얄디럭스룸(오션뷰) 3박5일 &lt;전일정 호텔식(골드패스)/레이트체크아웃&gt;</div>
+        <a href="https://www.modetour.com/package/113514267?MLoc=99&Pnum=113514267&ANO=1772510&sno=C2181215&thru=crs" target="_blank">🔗 www.modetour.com (← 클릭 후 상품 일정 확인)</a>
+      </div>
+      <div class="info-grid">
+        <div class="info-c"><div class="l">여행 기간</div><div class="v">2026.11.11(수) ~ 11.15(일)</div></div>
+        <div class="info-c"><div class="l">일정</div><div class="v">3박 5일 · 총 12명</div></div>
+      </div>
+    </div>
+
+    <!-- 항공 -->
+    <div class="sec">
+      <div class="sec-h"><div class="sec-ico">✈️</div><div class="sec-t">여행 일정 및 항공 (진에어)</div></div>
+      <table class="flight">
+        <tr><th>가는 날 (LJ907)</th><td>인천 11.11(수) 21:50 → 괌 11.12(목) 03:05</td></tr>
+        <tr><th>오는 날 (LJ908)</th><td>괌 11.15(일) 04:15 → 인천 11.15(일) 08:05</td></tr>
+      </table>
+      <div class="tag-row">
+        <span class="tag">✈ 진에어</span>
+        <span class="tag">위탁 1인 2개 · 각 23kg</span>
+        <span class="tag">기내 1인 1개 · 12kg</span>
+        <span class="tag">기내식 없음</span>
+      </div>
+      <div class="notice b">
+        <span>🪑</span>
+        <div><strong>좌석 지정 안내</strong><br>사전 좌석지정은 불가하며 <strong>출발 당일 공항에서만</strong> 좌석지정이 가능합니다. 다만 항공권 발권 후 <strong>발권 알림톡</strong>을 받으신 뒤에는 사전 좌석지정이 가능하나 <strong>유료</strong>입니다.</div>
+      </div>
+      <div class="notice y">
+        <span>🍱</span>
+        <div><strong>기내식 미제공</strong> — 기내식이 제공되지 않으니 탑승 전 미리 드시거나 면세구역에서 구매 후 탑승해 주세요.</div>
+      </div>
+    </div>
+
+    <!-- 가족별 요금 -->
+    <div class="sec">
+      <div class="sec-h"><div class="sec-ico">💰</div><div class="sec-t">가족별 상품 요금</div></div>
+
+      <div class="fam">
+        <div class="fam-h"><span class="fn">👨‍👩‍👧‍👦 강민호님 가족</span><span class="fc">4명</span></div>
+        <div class="fam-b">
+          <div class="members"><span class="m-chip">강민호</span><span class="m-chip">진현미</span><span class="m-chip">강석진</span><span class="m-chip">강희수</span></div>
+          <div class="price-line"><span>성인 1,199,900원 × 4명</span><span class="amt">4,799,600원</span></div>
+          <div class="fam-total"><span class="l">가족 합계</span><span class="v">4,799,600원</span></div>
+        </div>
+      </div>
+
+      <div class="fam">
+        <div class="fam-h"><span class="fn">👨‍👩‍👧‍👦 이정철님 가족</span><span class="fc">4명</span></div>
+        <div class="fam-b">
+          <div class="members"><span class="m-chip">이정철</span><span class="m-chip">최은정</span><span class="m-chip">이서윤</span><span class="m-chip">이서인</span></div>
+          <div class="price-line"><span>성인 1,199,900원 × 4명</span><span class="amt">4,799,600원</span></div>
+          <div class="fam-total"><span class="l">가족 합계</span><span class="v">4,799,600원</span></div>
+        </div>
+      </div>
+
+      <div class="fam">
+        <div class="fam-h"><span class="fn">👨‍👩‍👧‍👦 구본형님 가족</span><span class="fc">4명</span></div>
+        <div class="fam-b">
+          <div class="members"><span class="m-chip">구본형</span><span class="m-chip">강가은</span><span class="m-chip">구준모</span><span class="m-chip">구현모</span></div>
+          <div class="price-line"><span>성인 1,199,900원 × 2명</span><span class="amt">2,399,800원</span></div>
+          <div class="price-line"><span>아동 540,900원 × 2명</span><span class="amt">1,081,800원</span></div>
+          <div class="fam-total"><span class="l">가족 합계</span><span class="v">3,481,600원</span></div>
+        </div>
+      </div>
+
+      <div class="grand">
+        <div class="gl">총 결제금액 <b>(3가족 · 12명)</b></div>
+        <div class="gv">13,080,800원</div>
+      </div>
+    </div>
+
+    <!-- 결제 안내 -->
+    <div class="sec">
+      <div class="sec-h"><div class="sec-ico">💳</div><div class="sec-t">결제 안내</div></div>
+      <div class="pay-due">
+        <div class="pdl">⏳ 전액 완납 기한</div>
+        <div class="pdv">2026.10.27(화) 오전 10시까지</div>
+        <div class="pds">출발일이 한 달 이내인 상품으로, 예약금 절차 없이 <strong>전액 완납 결제</strong>로 진행됩니다.</div>
+      </div>
+      <div class="pm">
+        <div class="pmt">🏦 현금 결제</div>
+        <div class="pmb">
+          아래 계좌로 입금해 주세요.<br>
+          <span class="acct">562173-93-198582 / 신한은행 / (주)모두투어네트워크</span><br>
+          <span style="font-size:13px;color:var(--red);font-weight:600;">★ 현금영수증이 필요하시면 담당자에게 요청해 주세요 ★</span>
+        </div>
+      </div>
+      <div class="pm">
+        <div class="pmt">💳 카드 결제</div>
+        <div class="pmb">
+          <ol class="steps">
+            <li><strong>www.modetour.com</strong> 로그인 후 결제 (비회원은 <strong>비회원예약확인</strong>으로 결제)</li>
+            <li><strong>1544-5714</strong>로 전화 주셔서 카드 정보를 불러주시면 결제 진행</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <!-- 취소료 규정 -->
+    <div class="sec">
+      <div class="sec-h"><div class="sec-ico">🚫</div><div class="sec-t">취소료 규정 (특별약관)</div></div>
+      <table class="cancel">
+        <thead><tr><th>취소 통보 시점</th><th style="text-align:right;">환불 / 배상 기준</th></tr></thead>
+        <tbody>
+          <tr><td>출발 <strong>10~19일 전</strong></td><td class="pct">여행경비의 15% 배상</td></tr>
+          <tr><td>출발 <strong>8~9일 전</strong></td><td class="pct">여행경비의 20% 배상</td></tr>
+          <tr><td>출발 <strong>1~7일 전</strong></td><td class="pct">여행경비의 30% 배상</td></tr>
+          <tr><td>출발 <strong>당일</strong></td><td class="pct">여행경비의 50% 배상</td></tr>
+        </tbody>
+      </table>
+      <div class="notice r" style="margin-top:12px;">
+        <span>✈️</span>
+        <div><strong>항공권 취소 수수료</strong> — 본 상품은 <strong>10/27 항공권 발권 이후</strong> 취소 시, 상기 취소료 외에 항공권 취소 수수료 <strong>1인 15만원</strong>이 추가로 발생됩니다.</div>
+      </div>
+      <div class="notice y">
+        <span>🏨</span>
+        <div><strong>객실 취소료 안내</strong> — 예약 시즌에 따라 호텔 예약 확정 후 취소 시, 해당 호텔의 별도 취소 규정에 따른 취소 수수료가 당사 여행약관상 위약금보다 큰 경우 그 차액만큼 객실 취소료가 추가 부과될 수 있습니다.</div>
+      </div>
+      <div class="notice g">
+        <span>ℹ️</span>
+        <div>해당 국가 입국 불허 또는 항공사 비운항으로 여행 불가 시, 여행자·여행사 간 상호 면책이 적용됩니다.</div>
+      </div>
+    </div>
+
+    <!-- 여권 등록 -->
+    <div class="sec">
+      <div class="sec-h"><div class="sec-ico">🛂</div><div class="sec-t">여권 등록 안내</div></div>
+      <div class="passport">
+        <div class="pt">📅 등록 기한: 2026.10.27(화) 오전 10시까지</div>
+        소중한 여행을 위해 고객님의 여권 정보 등록이 필요합니다. 아래 링크를 통해 편리하게 등록해 주세요.<br>
+        <a class="btn" href="https://www.modetour.com/58H4" target="_blank">🔗 여권 등록 바로가기</a>
+      </div>
+    </div>
+
+    <!-- 불포함 -->
+    <div class="sec">
+      <div class="sec-h"><div class="sec-ico">📌</div><div class="sec-t">불포함 사항</div></div>
+      <div class="notice y" style="margin-top:0;">
+        <span>✘</span>
+        <div>
+          · 각종 선택관광 비용 및 개인 경비<br>
+          · 일정표에 기재되지 않은 일정 및 식사<br>
+          · 식사 시 제공되는 음료 이외의 음료와 주류
+        </div>
+      </div>
+    </div>
+
+    <!-- 취소 접수 안내 -->
+    <div class="sec">
+      <div class="sec-h"><div class="sec-ico">📝</div><div class="sec-t">취소 접수 안내</div></div>
+      <div class="step-rows">
+        <div class="srow"><div class="n">1</div><span>취소는 <strong>업무시간 내 접수</strong> 시 확인 및 적용이 가능합니다.</span></div>
+        <div class="srow"><div class="n">2</div><span>취소 수수료 발생일은 <strong>영업일 기준</strong>으로 산정됩니다. (주말·공휴일 제외)</span></div>
+        <div class="srow"><div class="n">3</div><span>업무시간 외 접수는 <strong>다음 영업일</strong> 접수로 간주됩니다.</span></div>
+        <div class="srow"><div class="n">4</div><span>업무시간: 월–금 09:00~18:00 (주말·공휴일 제외) · 토/일/월 출발 상품은 금요일 업무 종료 이후 취소 시 당일 취소로 간주됩니다.</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 푸터 -->
+  <div class="footer">
+    <div class="f-grid">
+      <div><div class="l">담당자</div><div class="v">김영아 과장</div></div>
+      <div><div class="l">연락처</div><div class="v">📞 1544-5714</div></div>
+      <div><div class="l">카카오 상담</div><a class="kk" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카톡 상담</a></div>
+    </div>
+    <div class="hours"><strong style="color:rgba(255,255,255,0.9);">업무시간</strong> 평일 09:00 ~ 18:00 · 점심 12:00 ~ 13:00 · 토·일·공휴일 휴무</div>
+  </div>
+
+</div>
+</body>
+</html>
