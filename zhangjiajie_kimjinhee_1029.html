@@ -121,6 +121,24 @@ img{max-width:100%;display:block;}
 .incl-card ul{padding-left:18px;margin-top:6px;}
 .incl-card ul li{margin-bottom:6px;}
 
+.visa-box{border:1.5px solid var(--gold);border-radius:16px;background:var(--gold-bg);padding:20px;}
+.visa-box .head{font-weight:800;font-size:17px;color:#8A6414;margin-bottom:10px;}
+.visa-box p{font-size:15.5px;line-height:1.75;color:var(--text-main);margin-bottom:10px;}
+.visa-cta{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:linear-gradient(120deg,#E8C06A,var(--gold));color:#5A3D00;font-weight:800;font-size:17px;padding:17px;border-radius:14px;margin:16px 0;box-shadow:0 8px 22px rgba(210,162,76,0.5);transition:transform .15s ease-out, box-shadow .2s;border:2px solid #B8863A;}
+.visa-cta:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(210,162,76,0.6);}
+.visa-cta:active{transform:scale(0.97);}
+.visa-cta .arrow{font-size:19px;}
+.visa-divider{display:flex;align-items:center;gap:10px;margin:16px 0 12px;}
+.visa-divider .line{flex:1;height:1px;background:rgba(138,100,20,0.25);}
+.visa-divider .txt{font-size:13px;font-weight:700;color:#8A6414;white-space:nowrap;}
+.visa-manual-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.visa-manual-card{display:block;background:#fff;border:2px solid var(--forest);border-radius:14px;padding:16px 10px;text-align:center;box-shadow:var(--shadow);transition:transform .15s ease-out, background .2s;}
+.visa-manual-card:hover{background:var(--forest-bg);}
+.visa-manual-card:active{transform:scale(0.96);}
+.visa-manual-card .vm-icon{font-size:28px;margin-bottom:6px;}
+.visa-manual-card .vm-label{font-weight:800;font-size:15.5px;color:var(--forest-dark);}
+.visa-manual-card .vm-sub{font-size:12.5px;color:var(--text-sub);margin-top:3px;}
+
 .exchange-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:#fff;box-shadow:var(--shadow);}
 .exchange-box .ex-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed var(--border);}
 .exchange-box .ex-row:last-child{border-bottom:none;}
@@ -309,10 +327,24 @@ img{max-width:100%;display:block;}
       <div class="head">★ 중국 온라인 입국신고서 작성 의무</div>
       <p>중국 온라인 입국신고서는 <b>필수 작성 사항</b>이며, <b>현지(장가계) 도착시간 기준으로 72시간 전부터</b> 작성이 가능합니다.<br><br>
       작성 완료 후 발급되는 QR코드(또는 접수 확인 화면)를 미리 캡처·저장해 두셨다가, 중국 입국 심사 시 제시해 주시면 됩니다.</p>
-      <div class="vbtns">
-        <a class="linkbtn" href="https://s.nia.gov.cn/ArrivalCardFillingPC/entry-registation-home" target="_blank">🔗 중국 입국신고서 공식 사이트</a>
-        <a class="linkbtn alt" href="https://drive.google.com/file/d/12zQRfjs0hfAIiNZ6SEJ7NhnRAErKdA5O/view" target="_blank">📄 작성법 안내(PC)</a>
-        <a class="linkbtn alt" href="https://drive.google.com/file/d/1sA8In-L1gvyyVqS5RfQ2pOm3xWi4YgBy/view" target="_blank">📱 작성법 안내(모바일)</a>
+
+      <a class="visa-cta" href="https://s.nia.gov.cn/ArrivalCardFillingPC/entry-registation-home" target="_blank">
+        🔗 중국 입국신고서 공식 사이트 바로가기 <span class="arrow">→</span>
+      </a>
+
+      <div class="visa-divider"><div class="line"></div><div class="txt">작성이 어려우신가요? 아래 가이드를 참고하세요</div><div class="line"></div></div>
+
+      <div class="visa-manual-grid">
+        <a class="visa-manual-card" href="https://drive.google.com/file/d/12zQRfjs0hfAIiNZ6SEJ7NhnRAErKdA5O/view" target="_blank">
+          <div class="vm-icon">📄</div>
+          <div class="vm-label">PC 작성법</div>
+          <div class="vm-sub">화면 캡처로 보는 단계별 가이드</div>
+        </a>
+        <a class="visa-manual-card" href="https://drive.google.com/file/d/1sA8In-L1gvyyVqS5RfQ2pOm3xWi4YgBy/view" target="_blank">
+          <div class="vm-icon">📱</div>
+          <div class="vm-label">모바일 작성법</div>
+          <div class="vm-sub">화면 캡처로 보는 단계별 가이드</div>
+        </a>
       </div>
     </div>
   </div>
