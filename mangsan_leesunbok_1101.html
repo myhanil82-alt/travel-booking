@@ -73,6 +73,17 @@ img{max-width:100%;display:block;}
 .product-link-box:active{transform:scale(0.98);}
 .product-link-box span.arrow{font-size:20px;}
 
+.nono-banner{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.nono-item{background:var(--forest-dark);color:#fff;border-radius:12px;padding:16px 10px;text-align:center;}
+.nono-item .t{font-size:19px;font-weight:800;color:var(--gold);}
+.nono-item .d{font-size:13px;opacity:.9;margin-top:4px;}
+
+.guide-box{border:1.5px solid var(--forest-dark);border-radius:16px;background:var(--forest-bg);padding:20px;}
+.guide-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed rgba(31,74,54,0.2);gap:10px;}
+.guide-row:last-child{border-bottom:none;}
+.guide-row .label{color:var(--text-sub);}
+.guide-row .val{font-weight:700;color:var(--forest-dark);text-align:right;}
+
 .alert{border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.7;margin-top:12px;}
 .alert-forest{background:var(--forest-bg);border:1px solid var(--forest);color:#1F4A36;}
 .alert-terracotta{background:var(--terracotta-bg);border:1px solid var(--terracotta);color:#8E2E28;}
@@ -196,7 +207,7 @@ img{max-width:100%;display:block;}
     <span class="header-tag">TRAVEL CONFIRMATION</span>
     <div class="header-title">망산 여행 확정서</div>
     <div class="header-subtitle">인천국제공항 출발 · 4박 5일</div>
-    <div class="header-names">이순복님 일행</div><br>
+    <div class="header-names">이순복님 · 김도형님<br>주경훈님 · 이순덕님</div><br>
     <a class="header-cta" href="https://www.modetour.com/package/111127193?MLoc=99&Pnum=111127193&ANO=1772510&sno=C2181215&thru=crs" target="_blank">🔗 여행상품 확인하기</a>
   </div>
 </div>
@@ -219,11 +230,15 @@ img{max-width:100%;display:block;}
       <span>모두투어 망산 패키지 상품 바로가기</span>
       <span class="arrow">↗</span>
     </a>
-    <div class="alert alert-forest">
+    <div class="nono-banner">
+      <div class="nono-item"><div class="t">NO TIP</div><div class="d">가이드/기사 경비 없음</div></div>
+      <div class="nono-item"><div class="t">NO OPTION</div><div class="d">쇼핑·선택관광 없음</div></div>
+    </div>
+    <div class="alert alert-forest" style="margin-top:12px;">
       🎉 <b>노쇼핑·노옵션·노팁 상품</b>입니다. 별도의 쇼핑 강매, 선택관광 강요, 가이드·기사 팁 요구가 없는 상품이니 안심하고 즐거운 여행 되세요.
     </div>
-    <div class="alert alert-gold" style="margin-top:12px;">
-      ♨️ <b>힐링 온천체험</b>이 포함된 일정입니다. 수영복을 필수로 지참해 주세요(래쉬가드도 가능합니다).
+    <div class="alert alert-gold">
+      ♨️ <b>힐링 온천체험</b>이 포함된 일정입니다(3일차, 망산 삼림온천 호텔). 수영복을 필수로 지참해 주세요(래쉬가드도 가능합니다).
     </div>
   </div>
 
@@ -231,13 +246,17 @@ img{max-width:100%;display:block;}
   <div class="section">
     <div class="section-head"><div class="section-num">2</div><div class="section-title">인천공항 미팅 안내</div></div>
     <div class="meeting-box">
-      <div class="meeting-time">2026.11.01(일) 새벽 06:00</div>
+      <div class="meeting-time">2026.11.01(일) 새벽 05:50</div>
       <div class="meeting-row"><span class="label">장소</span><span class="val">인천국제공항 제2여객터미널(T2)<br>3층 출국장 1번 출구 앞(A카운터 옆)</span></div>
       <div class="meeting-row"><span class="label">미팅 테이블</span><span class="val">"모두투어" 미팅테이블(1번~2번)</span></div>
     </div>
     <div class="alert alert-gold">
-      ⏰ 미팅 시간(06:00)은 항공기 출발(09:00)의 약 3시간 전입니다. 이른 새벽 미팅이니 시간에 늦지 않도록 여유 있게 도착해 주세요.<br><br>
-      <b>여행출발 48시간 전</b> 각자 휴대폰 카카오톡으로 대한항공 탑승 QR이 전송될 예정입니다.
+      ⏰ 미팅 시간(05:50)은 항공기 출발(09:00)의 약 3시간 전입니다. 이른 새벽 미팅이니 시간에 늦지 않도록 여유 있게 도착해 주세요.<br><br>
+      ✈️ <b>대한항공 탑승권(QR)은 내일 오전 10시경 카카오톡으로 전송</b>될 예정입니다. 전송받으신 QR이 곧 탑승권이므로, 캡처하거나 사진으로 휴대폰에 꼭 저장해 두세요.
+    </div>
+    <div class="alert alert-forest">
+      🧳 출발 당일에는 대한항공 <b>"셀프 백드롭" 카운터</b>로 가셔서 기계에서 직접 짐 수속을 진행해 주시면 됩니다.<br><br>
+      탑승 QR은 총 <b>4번</b> 제시하시게 됩니다 — ① 보안검색대 통과 시, ② 면세점에서 면세품 구매 시, ③ 탑승구 앞, ④ 비행기 탑승 직전. 꼭 미리 저장해 두세요.
     </div>
   </div>
 
@@ -292,8 +311,11 @@ img{max-width:100%;display:block;}
   <!-- 현지 가이드 & 행사정보 -->
   <div class="section">
     <div class="section-head"><div class="section-num">4</div><div class="section-title">현지 가이드 & 행사 정보</div></div>
-    <div class="alert alert-forest">
-      📋 행사정보는 여행출발 <b>2일 전 여행상품 일정표</b>에서 확인 가능합니다. 확정되는 대로 확정서에도 반영해 드리겠습니다.
+    <div class="guide-box">
+      <div class="guide-row"><span class="label">가이드명</span><span class="val">문룡일(남)<br>WEN-LONGYI</span></div>
+      <div class="guide-row"><span class="label">가이드 연락처</span><span class="val">132-4433-1234</span></div>
+      <div class="guide-row"><span class="label">현지 비상연락처</span><span class="val">156-4330-7733</span></div>
+      <div class="guide-row"><span class="label">행사인원</span><span class="val">12명</span></div>
     </div>
   </div>
 
@@ -335,17 +357,14 @@ img{max-width:100%;display:block;}
     </div>
   </div>
 
-  <!-- 중국 입국신고서 안내 -->
+  <!-- 한국 입국 시 검역신고서 안내 -->
   <div class="section">
-    <div class="section-head"><div class="section-num">7</div><div class="section-title">중국 입국신고서(온라인) 안내</div></div>
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">귀국(한국 입국) 시 검역신고서 안내</div></div>
     <div class="visa-box">
-      <div class="head">✅ 모두투어 대행 작성 — 별도로 작성하지 않으셔도 됩니다</div>
-      <p>중국 온라인 입국신고서는 <b>모두투어 담당자가 대신 작성</b>해 드립니다.<br><br>
-      <b>10/30(금) 오전 11시 이후</b> 일행 세 분에 대한 입국신고서 작성을 완료하여, 입국 시 제시하실 <b>QR코드를 카카오톡으로 전송</b>해 드릴 예정입니다.<br><br>
-      전송받으신 QR코드를 미리 캡처 또는 저장해 두셨다가, 중국(광저우) 입국 심사 시 제시해 주시면 됩니다.</p>
-      <div class="vbtns">
-        <a class="linkbtn" href="https://s.nia.gov.cn/ArrivalCardFillingPC/entry-registation-home" target="_blank">🔗 중국 입국신고서 공식 사이트(참고용)</a>
-      </div>
+      <div class="head">📝 기내에서 서류를 나눠드립니다 — 볼펜을 꼭 챙겨주세요</div>
+      <p>중국 여행을 마치고 <b>인천으로 입국하실 때 검역신고서 작성</b>이 필요합니다.<br><br>
+      해당 서류는 <b>귀국편 KE868 기내에서 승무원이 나눠드릴 예정</b>이니, 비행 중 작성해 주시면 됩니다.<br><br>
+      서류 작성을 위해 반드시 <b>볼펜을 미리 준비</b>해 주세요(기내 비치 펜이 부족할 수 있습니다).</p>
     </div>
   </div>
 
@@ -353,10 +372,11 @@ img{max-width:100%;display:block;}
   <div class="section">
     <div class="section-head"><div class="section-num">8</div><div class="section-title">환전 안내</div></div>
     <div class="exchange-box">
-      🎉 노쇼핑·노옵션·노팁 상품으로, 기사/가이드 경비 및 선택관광 비용을 위한 별도 환전은 필요하지 않습니다.<br><br>
-      🙏 마사지 받고 내는 매너팁은 한국돈 천원짜리로 주시면 됩니다.<br><br>
-      💴 중국돈은 길거리 음료나 간식 구매 등 대비용으로 아주 소액만 환전하시는 것을 권장합니다. 길거리·식당에서 파는 음료수, 생수, 과일 등은 알리페이 또는 중국돈으로 결제 가능합니다.<br><br>
-      💱 중국돈을 한국에서 준비해 가실 때는 10위안짜리로 환전해서 사용하시길 권장합니다. 음료 및 과일 등은 보통 10위안, 15위안, 25위안이 대부분입니다.<br><br>
+      🎉 노쇼핑·노옵션·노팁 상품으로, 중국돈 환전이 굳이 필요하지는 않습니다.<br><br>
+      🎁 다만 현지에서 <b>기념품 등을 구매하실 경우</b>를 대비해서, <b>두 분 내외 기준으로 한국돈 5만원 정도만</b> 중국돈으로 환전해 가시는 것을 권장드립니다.<br><br>
+      💴 중국은 <b>자국화폐(현금) 사용을 거의 하지 않는 추세</b>라, 중국돈을 내시더라도 잔돈을 거슬러 받기 어려울 수 있습니다. 가급적 물건 가격에 맞춰서 구매하시는 것을 권장합니다.<br><br>
+      💳 <b>알리페이(Alipay)</b> 사용이 가능하시다면 가장 우수한 결제 수단입니다. 출국 전 앱 설치 및 해외카드 연동을 미리 해두시면 편리합니다.<br><br>
+      🙏 매너팁 등은 <b>한국돈 천원짜리 지폐</b>로 지불하시면 됩니다.<br><br>
       <span style="font-size:14px;color:var(--text-muted);">※ 환율은 변동될 수 있어 참고용으로만 봐주세요.</span>
     </div>
   </div>
@@ -458,7 +478,7 @@ img{max-width:100%;display:block;}
         <div class="title">의류</div>
         <ul>
           <li>반팔·긴팔 혼합(일교차 대비)</li>
-          <li>가벼운 겉옷</li>
+          <li>가벼운 겉옷(아침·저녁용)</li>
         </ul>
       </div>
       <div class="prep-card">
@@ -471,17 +491,36 @@ img{max-width:100%;display:block;}
       </div>
       <div class="prep-card">
         <div class="icon">💵</div>
-        <div class="title">현금 · 팁</div>
+        <div class="title">현금 · 결제수단</div>
         <ul>
-          <li>매너팁·개인경비용 소액 위안화</li>
+          <li>소액 위안화(기념품용, 2인 기준 5만원 정도)</li>
+          <li>매너팁용 한국돈 천원권 여러 장</li>
+          <li>알리페이 앱 설치 및 해외카드 연동</li>
         </ul>
       </div>
       <div class="prep-card">
-        <div class="icon">🎒</div>
-        <div class="title">기타 준비물</div>
+        <div class="icon">📝</div>
+        <div class="title">서류 · 필기구</div>
         <ul>
-          <li>여권, 탑승 QR·입국신고서 QR(카톡 수신 확인)</li>
-          <li>보조배터리, 개인 상비약</li>
+          <li>여권(유효기간 확인)</li>
+          <li>탑승 QR(카톡 수신 확인, 캡처 저장)</li>
+          <li><b>볼펜</b>(귀국편 기내 검역신고서 작성용)</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🔌</div>
+        <div class="title">전자기기</div>
+        <ul>
+          <li>멀티 어댑터(중국 220V, A/C타입)</li>
+          <li>보조배터리</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🧴</div>
+        <div class="title">개인 위생 · 상비약</div>
+        <ul>
+          <li>개인 세면용품, 물티슈</li>
+          <li>상비약(소화제, 지사제 등)</li>
         </ul>
       </div>
     </div>
@@ -492,7 +531,7 @@ img{max-width:100%;display:block;}
 <div class="footer">
   <div class="footer-inner">
     <div class="footer-agent">담당 이경진 실장</div>
-    <div class="footer-sub">이순복님 일행의 안전하고 즐거운 망산 여행을 응원합니다</div>
+    <div class="footer-sub">이순복님 외 일행의 안전하고 즐거운 망산·광저우 여행을 응원합니다</div>
     <div class="footer-btns">
       <a class="footer-btn tel" href="tel:1544-5714">📞 1544-5714</a>
       <a class="footer-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 투어콕 카카오톡 채널</a>
