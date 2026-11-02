@@ -125,6 +125,15 @@ img{max-width:100%;display:block;}
 .visa-cta:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(210,162,76,0.6);}
 .visa-cta:active{transform:scale(0.97);}
 .visa-cta .arrow{font-size:19px;}
+.visa-divider{display:flex;align-items:center;gap:10px;margin:16px 0 12px;}
+.visa-divider .line{flex:1;height:1px;background:rgba(138,100,20,0.25);}
+.visa-divider .txt{font-size:13px;font-weight:700;color:#8A6414;white-space:nowrap;}
+.visa-manual-card{display:block;background:#fff;border:2px solid var(--forest);border-radius:14px;padding:16px 10px;text-align:center;box-shadow:var(--shadow);transition:transform .15s ease-out, background .2s;}
+.visa-manual-card:hover{background:var(--forest-bg);}
+.visa-manual-card:active{transform:scale(0.96);}
+.visa-manual-card .vm-icon{font-size:28px;margin-bottom:6px;}
+.visa-manual-card .vm-label{font-weight:800;font-size:15.5px;color:var(--forest-dark);}
+.visa-manual-card .vm-sub{font-size:12.5px;color:var(--text-sub);margin-top:3px;}
 
 .exchange-box{border:1.5px solid var(--gold);border-radius:16px;padding:20px;background:#fff;box-shadow:var(--shadow);}
 
@@ -304,7 +313,7 @@ img{max-width:100%;display:block;}
   <div class="section">
     <div class="section-head"><div class="section-num">5</div><div class="section-title">현지 가이드·행사정보 및 투숙호텔</div></div>
     <div class="alert alert-forest">
-      📋 현지 가이드·행사정보와 투숙호텔은 <b>여행출발 2일 전 여행상품 일정표</b>에서 확인 가능합니다. 확정되는 대로 확정서에도 반영해 드리겠습니다.
+      📋 현지 가이드·행사정보와 투숙호텔은 <b>금일 오후 16시 이후 여행상품 일정표</b>에서 확인 가능합니다. 확정되는 대로 확정서에도 반영해 드리겠습니다.
     </div>
   </div>
 
@@ -329,6 +338,14 @@ img{max-width:100%;display:block;}
       작성 완료 후 발급되는 QR코드는 입국 심사 시 제시하시면 됩니다. 투숙 호텔 및 기재주소는 확정되는 대로 다시 안내드리겠습니다.</p>
       <a class="visa-cta" href="https://twac.immigration.gov.tw/" target="_blank">
         🔗 대만 입국신고서(TWAC) 공식 사이트 바로가기 <span class="arrow">→</span>
+      </a>
+
+      <div class="visa-divider"><div class="line"></div><div class="txt">작성이 어려우신가요? 아래 가이드를 참고하세요</div><div class="line"></div></div>
+
+      <a class="visa-manual-card" href="https://www.modetour.com/promotion/1272" target="_blank">
+        <div class="vm-icon">📘</div>
+        <div class="vm-label">TWAC 작성 가이드</div>
+        <div class="vm-sub">모두투어 기획전 — 대만 온라인 입국신고서 작성법</div>
       </a>
     </div>
   </div>
