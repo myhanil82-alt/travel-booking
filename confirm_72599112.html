@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>가고시마 골프 여행 확정서 - 박대식님 일행</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+  --forest:#7A3B5E;--forest-dark:#2D1B2E;--forest-bg:#FBF0F4;
+  --terracotta:#D4547A;--terracotta-bg:#FFF0F4;
+  --gold:#D2A24C;--gold-bg:#FBF4E6;
+  --sky-top:#F7F0F3;--sky-bottom:#F8F6F0;
+  --text-main:#241A22;--text-sub:#5C6A5F;--text-muted:#8E9990;
+  --card-bg:#FFFFFF;--border:#EBE2E7;--shadow:0 4px 20px rgba(122,59,94,0.10);--max-w:680px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Pretendard',sans-serif;background:linear-gradient(180deg,var(--sky-top) 0%, var(--sky-bottom) 45%, #FBFAF6 100%);color:var(--text-main);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+.top-bar{width:100%;background:rgba(45,27,46,0.92);backdrop-filter:blur(6px);padding:10px 20px;}
+.top-bar-inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.agent-info{color:#EFF7F1;font-size:15px;font-weight:500;}
+.agent-info b{color:#fff;}
+.top-btns{display:flex;gap:8px;}
+.top-btn{font-size:14.5px;font-weight:600;padding:6px 12px;border-radius:20px;background:rgba(255,255,255,0.15);color:#fff;transition:transform .15s ease-out, background .2s;}
+.top-btn:hover{background:rgba(255,255,255,0.28);}
+.top-btn:active{transform:scale(0.97);}
+.top-btn.kakao{background:#FEE500;color:#391B1B;}
+.header{width:100%;padding:28px 16px 24px;}
+.header-inner{max-width:var(--max-w);margin:0 auto;text-align:center;position:relative;z-index:1;border-radius:24px;overflow:hidden;padding:48px 24px 40px;
+  background:radial-gradient(circle at 25% 20%, rgba(122,59,94,0.32), transparent 55%),radial-gradient(circle at 80% 80%, rgba(212,84,122,0.18), transparent 50%),linear-gradient(160deg,#2D1B2E 0%, #2D1B2E 55%, #4A2C4D 100%);
+  box-shadow:0 12px 32px rgba(45,27,46,0.28);}
+.header-tag{display:inline-block;font-size:14px;font-weight:700;letter-spacing:2.5px;color:var(--gold);border:1px solid rgba(210,162,76,0.5);padding:6px 16px;border-radius:20px;margin-bottom:18px;}
+.header-title{font-size:34px;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-0.5px;text-shadow:0 2px 12px rgba(0,0,0,0.4);}
+.header-subtitle{font-size:16px;color:rgba(255,255,255,0.85);font-weight:500;margin-bottom:28px;letter-spacing:0.5px;}
+.header-names{font-size:22px;font-weight:700;color:#fff;background:rgba(255,255,255,0.1);display:inline-block;padding:10px 24px;border-radius:14px;margin-bottom:22px;}
+.header-cta{display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:#fff;font-weight:700;font-size:17px;padding:13px 26px;border-radius:12px;box-shadow:0 8px 20px rgba(122,59,94,0.4);transition:transform .2s ease-out, box-shadow .2s;}
+.header-cta:hover{transform:translateY(-2px) scale(1.02);}
+.header-cta:active{transform:scale(0.97);}
+.trip-band{width:100%;background:linear-gradient(90deg,var(--terracotta),#E58AA5);}
+.trip-band-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);text-align:center;padding:20px 16px;}
+.trip-item .label{font-size:13px;color:rgba(255,255,255,0.85);font-weight:600;margin-bottom:4px;}
+.trip-item .value{font-size:17px;color:#fff;font-weight:800;}
+.container{max-width:var(--max-w);margin:0 auto;padding:36px 20px 60px;}
+.section{margin-bottom:36px;}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.section-num{width:30px;height:30px;border-radius:50%;background:var(--forest-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0;}
+.section-title{font-size:20px;font-weight:800;color:var(--text-main);}
+.product-link-box{display:flex;justify-content:space-between;align-items:center;background:var(--forest-bg);border:1px solid var(--forest);border-radius:14px;padding:16px 18px;font-weight:700;color:var(--forest-dark);margin-bottom:14px;}
+.product-link-box span.arrow{font-size:20px;}
+.alert{border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.6;margin-top:12px;}
+.alert-forest{background:var(--forest-bg);border:1px solid var(--forest);color:#2D1B2E;}
+.alert-terracotta{background:var(--terracotta-bg);border:1px solid var(--terracotta);color:#9B2C52;}
+.alert-gold{background:var(--gold-bg);border:1px solid var(--gold);color:#8A6414;}
+.alert-mint{background:#EAF6F5;border:1px solid #3AA8A0;color:#1E5C57;}
+.todo{background:#FFF8E1;border:1.5px dashed #E0A800;color:#8A6414;border-radius:12px;padding:14px 16px;font-size:15.5px;line-height:1.6;margin-top:12px;font-weight:600;}
+.meeting-box{border:1.5px solid var(--terracotta);border-radius:16px;background:var(--terracotta-bg);padding:22px;text-align:center;}
+.meeting-box .time{font-size:30px;font-weight:800;color:var(--terracotta);margin-bottom:14px;}
+.meeting-row{display:flex;justify-content:space-between;font-size:16px;padding:9px 0;border-bottom:1px dashed rgba(212,84,122,0.25);text-align:left;gap:10px;}
+.meeting-row:last-child{border-bottom:none;}
+.meeting-row .label{color:var(--text-sub);flex-shrink:0;}
+.meeting-row .val{font-weight:700;color:#9B2C52;text-align:right;}
+.flight-card{border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px;}
+.flight-header{background:linear-gradient(120deg,#2D1B2E,#2D1B2E);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:700;}
+.flight-header .code{color:var(--gold);}
+.flight-body{background:#fff;padding:20px 18px;}
+.flight-route{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.flight-route .airport{text-align:center;}
+.flight-route .airport .code{font-size:30px;font-weight:800;color:var(--text-main);}
+.flight-route .airport .city{font-size:14px;color:var(--text-sub);margin-top:2px;}
+.flight-route .mid{flex:1;text-align:center;padding:0 12px;}
+.flight-route .mid .time{font-size:14px;color:var(--text-muted);}
+.flight-route .mid .line{height:2px;background:var(--border);position:relative;margin-top:6px;}
+.flight-route .mid .line::after{content:"✈";position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:16px;}
+.flight-badges{display:flex;flex-wrap:wrap;gap:8px;}
+.badge{font-size:14px;font-weight:600;color:var(--text-sub);background:#FAF5F8;border:1px solid var(--border);padding:5px 10px;border-radius:8px;}
+.baggage-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.baggage-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.baggage-card .icon{font-size:24px;margin-bottom:6px;}
+.baggage-card .title{font-size:15px;font-weight:700;color:var(--text-sub);margin-bottom:4px;}
+.baggage-card .amount{font-size:18px;font-weight:800;color:var(--forest-dark);}
+.guide-box{border:1.5px solid var(--forest-dark);border-radius:16px;background:var(--forest-bg);padding:20px;}
+.guide-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed rgba(45,27,46,0.2);gap:10px;}
+.guide-row:last-child{border-bottom:none;}
+.guide-row .label{color:var(--text-sub);}
+.guide-row .val{font-weight:700;color:var(--forest-dark);text-align:right;}
+.incl-card{border-radius:14px;padding:16px;font-size:15.5px;line-height:1.75;background:var(--terracotta-bg);border:1px solid var(--terracotta);}
+.incl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#9B2C52;}
+.visa-box{border:1.5px solid var(--gold);border-radius:16px;background:var(--gold-bg);padding:20px;}
+.visa-box .head{font-weight:800;font-size:17px;color:#8A6414;margin-bottom:10px;}
+.visa-box a.linkbtn{display:inline-block;margin-top:10px;background:var(--gold);color:#fff;font-weight:700;font-size:15.5px;padding:9px 18px;border-radius:10px;}
+.hotel-card{border:1.5px solid var(--forest);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:12px;}
+.hotel-card .hh{background:linear-gradient(120deg,var(--forest),#A8658A);color:#fff;padding:10px 16px;font-weight:700;font-size:14.5px;}
+.hotel-card .hb{background:#fff;padding:16px 18px;}
+.hotel-card .hname{font-size:19px;font-weight:800;color:var(--forest-dark);margin-bottom:8px;}
+.hotel-card .hnote{font-size:14.5px;color:var(--text-sub);}
+.data-table{width:100%;border-collapse:collapse;border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);background:#fff;}
+.data-table th{background:var(--forest-dark);color:#fff;font-size:14.5px;font-weight:700;padding:11px 10px;text-align:left;}
+.data-table td{font-size:14.5px;padding:11px 10px;border-bottom:1px solid var(--border);color:var(--text-sub);vertical-align:top;}
+.data-table tr:last-child td{border-bottom:none;}
+.data-table td b{color:var(--forest-dark);}
+.weather-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
+.weather-card{flex:0 0 auto;width:106px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 8px;text-align:center;box-shadow:var(--shadow);}
+.weather-card .date{font-size:13.5px;font-weight:700;color:var(--text-sub);margin-bottom:6px;}
+.weather-card .day{font-size:12px;color:var(--text-muted);margin-bottom:6px;}
+.weather-card .icon{font-size:26px;margin-bottom:8px;}
+.weather-card .high{font-size:17px;font-weight:800;color:var(--terracotta);}
+.weather-card .low{font-size:14px;color:var(--text-muted);margin-top:2px;}
+.prep-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.prep-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.prep-card .icon{font-size:22px;margin-bottom:6px;}
+.prep-card .title{font-weight:700;font-size:15.5px;color:var(--forest-dark);margin-bottom:6px;}
+.prep-card ul{padding-left:16px;font-size:15px;color:var(--text-sub);line-height:1.75;}
+.prep-full{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px;box-shadow:var(--shadow);}
+.prep-full .title{font-weight:800;font-size:16.5px;color:var(--forest-dark);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.prep-full ul{padding-left:18px;font-size:15.5px;color:var(--text-sub);line-height:1.9;}
+.prep-full ul li b{color:var(--text-main);}
+@media (max-width:480px){
+  .container{padding-left:14px;padding-right:14px;}
+  .trip-band-inner{grid-template-columns:repeat(2,1fr);gap:14px;padding:16px 12px;}
+  .baggage-grid,.prep-grid{grid-template-columns:1fr;}
+  .header-title{font-size:26px;}
+  .header-inner{padding:38px 18px 32px;}
+  .flight-badges{gap:6px;}
+  .badge{font-size:12.5px;padding:4px 8px;}
+  .meeting-box .time{font-size:24px;}
+  .data-table th,.data-table td{font-size:13px;padding:9px 7px;}
+}
+@media (max-width:400px){
+  .guide-row,.meeting-row{flex-direction:column;align-items:flex-start;gap:2px;}
+  .guide-row .val,.meeting-row .val{text-align:left;}
+}
+.footer{width:100%;background:#2D1B2E;padding:32px 20px;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;text-align:center;}
+.footer-agent{color:#fff;font-size:17px;font-weight:700;margin-bottom:6px;}
+.footer-sub{color:rgba(255,255,255,0.55);font-size:14.5px;margin-bottom:18px;}
+.footer-btns{display:flex;justify-content:center;gap:10px;}
+.footer-btn{padding:10px 20px;border-radius:12px;font-weight:700;font-size:15.5px;}
+.footer-btn.tel{background:var(--terracotta);color:#fff;}
+.footer-btn.kakao{background:#FEE500;color:#391B1B;}
+
+.small{font-size:14px;color:var(--text-muted);margin-top:8px;}
+.alert a{text-decoration:underline;font-weight:700;}
+</style></head><body>
+<div class="top-bar"><div class="top-bar-inner"><div class="agent-info">담당 <b>이경진 실장</b> · 모두투어 투어콕</div><div class="top-btns"><a class="top-btn" href="tel:1544-5714">📞 전화상담</a><a class="top-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡</a></div></div></div>
+<div class="header"><div class="header-inner"><span class="header-tag">TRAVEL CONFIRMATION</span><div class="header-title">가고시마 골프 여행 확정서</div><div class="header-subtitle">인천국제공항 출발 · 3박 4일 · KAGOSHIMA GOLF 2026</div><div class="header-names">박대식님 일행 (4분)</div><br><a class="header-cta" href="https://www.modetour.com/package/111484461?MLoc=99&Pnum=111484461&ANO=1772510&sno=C2181215&thru=crs" target="_blank">🔗 여행상품 확인하기</a></div></div>
+<div class="trip-band"><div class="trip-band-inner"><div class="trip-item"><div class="label">출발일</div><div class="value">2026.11.09(월)</div></div><div class="trip-item"><div class="label">귀국일</div><div class="value">2026.11.12(목)</div></div><div class="trip-item"><div class="label">일정</div><div class="value">3박 4일</div></div><div class="trip-item"><div class="label">투어타입</div><div class="value">골프 패키지</div></div></div></div>
+<div class="container">
+<div class="section"><div class="section-head"><div class="section-num">1</div><div class="section-title">상품 안내</div></div><a class="product-link-box" href="https://www.modetour.com/package/111484461?MLoc=99&Pnum=111484461&ANO=1772510&sno=C2181215&thru=crs" target="_blank"><span>[골프텔/케도인호텔/54홀]가고시마 골프 4일 &lt;케도인CC/온천♨/2인출발가능&gt;</span><span class="arrow">↗</span></a><div class="alert alert-forest">⛳ 케도인 호텔(골프텔) 투숙, 케도인CC 54홀 골프 상품입니다. 가이드 동행이 아닌 <b>현지 기사 미팅</b>으로 진행됩니다.</div></div>
+<div class="section"><div class="section-head"><div class="section-num">2</div><div class="section-title">항공편 정보</div></div><div class="flight-card"><div class="flight-header"><span>출발편 · 이스타항공</span><span class="code">ZE651</span></div><div class="flight-body"><div class="flight-route"><div class="airport"><div class="code">ICN</div><div class="city">인천 T1 · 11.09(월) 15:35</div></div><div class="mid"><div class="time">직항</div><div class="line"></div></div><div class="airport"><div class="code">KOJ</div><div class="city">가고시마 · 11.09(월) 17:15</div></div></div><div class="flight-badges"><span class="badge">✈ 이스타항공</span><span class="badge">인천공항 1터미널</span><span class="badge">위탁 15kg</span><span class="badge">기내 10kg</span><span class="badge">기내식 없음</span><span class="badge">좌석 미지정</span></div></div></div><div class="flight-card"><div class="flight-header"><span>귀국편 · 이스타항공</span><span class="code">ZE652</span></div><div class="flight-body"><div class="flight-route"><div class="airport"><div class="code">KOJ</div><div class="city">가고시마 · 11.12(목) 18:10</div></div><div class="mid"><div class="time">직항</div><div class="line"></div></div><div class="airport"><div class="code">ICN</div><div class="city">인천 · 11.12(목) 19:50</div></div></div><div class="flight-badges"><span class="badge">✈ 이스타항공</span><span class="badge">인천공항 1터미널</span><span class="badge">위탁 15kg</span><span class="badge">기내 10kg</span><span class="badge">기내식 없음</span></div></div></div><div class="alert alert-terracotta">🍱 <b>기내식이 제공되지 않는 항공편</b>입니다. 필요하신 분은 탑승 전 미리 드시거나 준비해 주세요.</div></div>
+<div class="section"><div class="section-head"><div class="section-num">3</div><div class="section-title">수하물 안내</div></div><div class="baggage-grid"><div class="baggage-card"><div class="icon">🧳</div><div class="title">무료 위탁수하물</div><div class="amount">1인 1개 · 15kg</div></div><div class="baggage-card"><div class="icon">🎒</div><div class="title">기내수하물</div><div class="amount">1인 10kg</div></div></div><div class="alert alert-gold">⛳ 골프백의 무게·포함 여부는 항공사 규정을 따릅니다. 15kg을 초과하는 경우 추가 요금이 생길 수 있으니 궁금하신 점은 담당자에게 문의해 주세요.</div></div>
+<div class="section"><div class="section-head"><div class="section-num">4</div><div class="section-title">항공 이용 · 체크인 안내</div></div><div class="alert alert-mint">✅ 항공사 예약번호: <b style="font-size:20px">A4BL3P</b></div><div class="alert alert-forest">🪑 이스타항공은 항공사 홈페이지/앱에서 <b>출발 24시간 전부터</b> 무료 좌석 지정 및 온라인 체크인이 가능합니다.</div><div class="alert alert-gold">🧾 <b>온라인 체크인을 못하신 경우</b>, 출발 당일 인천공항 1터미널 이스타항공 카운터에서 티켓팅(발권)하실 수 있습니다.</div></div>
+<div class="section"><div class="section-head"><div class="section-num">5</div><div class="section-title">골프 일정 · TEE OFF TIME</div></div><div class="guide-box"><div class="guide-row"><span class="label">1일차 (11/09 월)</span><span class="val">일본인 기사가 <b>"고객님 성함"</b>이 적힌 팻말을 들고 미팅 → 리조트 이동</span></div><div class="guide-row"><span class="label">2일차 (11/10 화)</span><span class="val">TEE OFF <b>08:27</b></span></div><div class="guide-row"><span class="label">3일차 (11/11 수)</span><span class="val">TEE OFF <b>08:27</b></span></div><div class="guide-row"><span class="label">4일차 (11/12 목)</span><span class="val">TEE OFF <b>08:06</b></span></div></div><div class="alert alert-gold">🧳 라운딩 후 <b>개인 짐이 차량에 모두 실렸는지</b> 꼭 확인해 주세요.</div></div>
+<div class="section"><div class="section-head"><div class="section-num">6</div><div class="section-title">투숙 호텔 · 입국서류 등록 정보</div></div><div class="hotel-card"><div class="hh">🏨 3박 · 가고시마(사쓰마센다이)</div><div class="hb"><div class="hname">케도인 호텔 (KEDOUIN RESORT)</div><div class="hnote">객실 구성: 2인1실 × 2방 (더블베드 1개 또는 싱글베드 2개 중 랜덤 배정)</div></div></div><div class="visa-box"><div class="head">🛂 Visit Japan Web 입국 서류 등록 시 숙박지 정보</div><div class="guide-row"><span class="label">호텔명</span><span class="val">KEDOUIN RESORT</span></div><div class="guide-row"><span class="label">우편번호</span><span class="val">895-1501</span></div><div class="guide-row"><span class="label">주소</span><span class="val">3600 Kedoincho Shimode, Satsumasendai, Kagoshima</span></div><div class="guide-row"><span class="label">전화번호</span><span class="val">81-0996-55-1700</span></div></div></div>
+<div class="section"><div class="section-head"><div class="section-num">7</div><div class="section-title">비상연락처</div></div><div class="guide-box"><div class="guide-row"><span class="label">비상연락처</span><span class="val">+82-70-8854-5904</span></div></div></div>
+<div class="section"><div class="section-head"><div class="section-num">8</div><div class="section-title">불포함 사항</div></div><div class="incl-card"><div class="head">✘ 불포함사항</div>■ 클럽하우스 중식 (약 1,500엔 상당)<br>※ 다양한 메뉴와 가격이 상이하므로 출발 전 중식을 포함하실 수 없습니다. 현지에서 개별 지불해 주세요.</div></div>
+<div class="section"><div class="section-head"><div class="section-num">9</div><div class="section-title">일본 입국 · 반입 금제품 안내</div></div><div class="visa-box"><div class="head">📝 일본 입국 · 세관 신고서는 Visit Japan Web으로 미리 작성</div>
+입국 심사와 세관 신고를 온라인(QR)으로 미리 등록해 두시면 현지 입국 절차가 훨씬 빠릅니다.<br>
+<a class="linkbtn" href="https://vjw-lp.digital.go.jp/ko/" target="_blank">🔗 Visit Japan Web 바로가기</a></div>
+<div class="alert alert-terracotta">🚫 <b>일본 반입 금제품 안내</b><br>
+• 마약류·향정신성의약품(일부 감기약·수면제·진통제 성분 포함 — 복용 중인 약은 처방전/영문 설명서 지참)<br>
+• 총기류·모조 총기, 위조·모조 상표품, 유해 도서·영상물 등<br>
+• 육류 및 육가공품(육포·햄·소시지·컵라면 속 고기 건더기 포함)과 과일·채소·식물류는 검역 대상으로 반입이 제한됩니다.<br>
+• 면세 범위 예: 주류 3병(760ml 기준), 해외 반입 물품 합계 20만 엔 이하(그 외 규정은 세관 안내 확인)</div></div>
+<div class="section"><div class="section-head"><div class="section-num">10</div><div class="section-title">환전 안내</div></div><div class="alert alert-gold">💴 개인 경비는 <b>엔화(JPY)로 환전</b>하시거나 트래블월렛 등 해외결제 가능한 카드를 이용하시면 됩니다.<br><br>
+💱 참고 환율: 한국수출입은행 10월 8일 고시 기준 <b>100엔 ≈ 847원</b> (오늘 환율이 아니며 매일 변동되니 환전 시점에 꼭 확인하세요).<br>
+&nbsp;&nbsp;• <b>1만원 ≈ 약 1,180엔</b><br>
+&nbsp;&nbsp;• 1,000엔 ≈ 약 8,500원 · 10,000엔 ≈ 약 84,700원<br>
+<span class="small">※ 은행·환전소별 우대율과 수수료에 따라 실제 금액은 달라집니다.</span><br>🍽 클럽하우스 중식 약 1,500엔 ≈ 약 12,700원<span class="small"> (현금/카드 가능 여부는 클럽하우스에서 확인)</span></div></div>
+<div class="section"><div class="section-head"><div class="section-num">11</div><div class="section-title">현지 데이터 통신 옵션 비교</div></div><table class="data-table">
+<tr><th>구분</th><th>특징</th><th>참고 요금</th></tr>
+<tr><td><b>로밍</b><br>(통신 3사)</td><td>내 번호 그대로, 설정 없이 바로 사용 · 가장 간편</td><td>일 정액 약 <b>8,800~9,900원</b>(1GB급)<br>무제한형 약 <b>14,300~15,400원/일</b></td></tr>
+<tr><td><b>유심</b><br>(USIM)</td><td>유심 교체 필요 · 여행 중 내 번호 문자/통화 수신 제한</td><td>구매처·용량·기간별로 다름<br>(출발 전 구매처에서 확인)</td></tr>
+<tr><td><b>이심</b><br>(eSIM)</td><td>QR 설치로 유심 교체 없이 번호 유지 · 기기 이심 지원 여부 확인 필요</td><td>업체별 약 <b>1만원대</b> 후반 이하부터<br>(일본 5GB·7일 약 14,900원 사례)</td></tr>
+</table>
+<div class="alert alert-gold">📶 통신사별·업체별 요금이 달라 <b>참고값</b>입니다. 3~4일 짧은 여행은 요금제에 따라 로밍과 이심의 차이가 크지 않을 수 있으니 출발 전 통신사 공식 사이트/구매처에서 최종 확인해 주세요.</div></div>
+<div class="section"><div class="section-head"><div class="section-num">12</div><div class="section-title">일자별 날씨 정보</div></div><div class="weather-row"><div class="weather-card"><div class="date">11/09(월)</div><div class="day">출국일 · 가고시마</div><div class="icon">⛅</div><div class="high">22℃</div><div class="low">11℃</div><div class="day" style="margin-top:6px">약간 흐림</div></div><div class="weather-card"><div class="date">11/10(화)</div><div class="day">가고시마</div><div class="icon">☀️</div><div class="high">21℃</div><div class="low">9℃</div><div class="day" style="margin-top:6px">맑음</div></div><div class="weather-card"><div class="date">11/11(수)</div><div class="day">가고시마</div><div class="icon">☀️</div><div class="high">22℃</div><div class="low">10℃</div><div class="day" style="margin-top:6px">맑음</div></div><div class="weather-card"><div class="date">11/12(목)</div><div class="day">귀국일</div><div class="icon">⛅</div><div class="high">23℃</div><div class="low">9℃</div><div class="day" style="margin-top:6px">약간 흐림</div></div></div><div class="alert alert-gold">☁️ 가고시마시 기준 AccuWeather 예보(11/4 조회)입니다. 사쓰마센다이 골프장은 아침·저녁 체감이 더 낮을 수 있고, 예보는 변동될 수 있으니 출발 전 다시 확인해 주세요.</div></div>
+<div class="section"><div class="section-head"><div class="section-num">13</div><div class="section-title">여행 준비물</div></div><div class="prep-grid"><div class="prep-card"><div class="icon">⛳</div><div class="title">골프</div><ul><li>골프화·장갑·볼·티</li><li>얇은 바람막이/조끼(이른 아침 쌀쌀)</li><li>우산 또는 우비</li></ul></div><div class="prep-card"><div class="icon">♨️</div><div class="title">온천</div><ul><li>개인 세면도구</li><li>문신이 있는 경우 시설 이용 제한 가능</li></ul></div><div class="prep-card"><div class="icon">💴</div><div class="title">현금</div><ul><li>클럽하우스 중식 등 소액 엔화</li><li>카드 사용 가능 여부는 현지 확인</li></ul></div><div class="prep-card"><div class="icon">🎒</div><div class="title">기타</div><ul><li>여권, Visit Japan Web QR 캡처</li><li>멀티 어댑터(일본 100V, A/B형)</li><li>보조배터리</li></ul></div></div></div>
+</div>
+<div class="footer"><div class="footer-inner"><div class="footer-agent">담당 이경진 실장</div><div class="footer-sub">박대식님 일행의 안전하고 즐거운 가고시마 골프 여행을 응원합니다</div><div class="footer-btns"><a class="footer-btn tel" href="tel:1544-5714">📞 1544-5714</a><a class="footer-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 투어콕 카카오톡 채널</a></div></div></div>
+</body></html>
