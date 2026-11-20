@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>발리 여행 확정서 - 김헌주,이정화님</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+  --teal:#0E9BB5;
+  --teal-dark:#083040;
+  --teal-bg:#E5F5F7;
+  --coral:#FF8A65;
+  --coral-bg:#FFF1EB;
+  --gold:#FDB022;
+  --gold-bg:#FFF8EC;
+  --sky-top:#E3F4F6;
+  --sky-bottom:#F4FAF9;
+  --text-main:#132A32;
+  --text-sub:#4D6B73;
+  --text-muted:#86A1A7;
+  --card-bg:#FFFFFF;
+  --border:#D7ECEF;
+  --shadow:0 4px 20px rgba(14,155,181,0.10);
+  --max-w:680px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Pretendard',sans-serif;background:linear-gradient(180deg,var(--sky-top) 0%, var(--sky-bottom) 45%, #FAFEFD 100%);color:var(--text-main);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+
+.top-bar{width:100%;background:rgba(8,48,64,0.92);backdrop-filter:blur(6px);padding:10px 20px;}
+.top-bar-inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.agent-info{color:#E5F5F7;font-size:15px;font-weight:500;}
+.agent-info b{color:#fff;}
+.top-btns{display:flex;gap:8px;}
+.top-btn{font-size:14.5px;font-weight:600;padding:6px 12px;border-radius:20px;background:rgba(255,255,255,0.15);color:#fff;transition:transform .15s ease-out, background .2s;}
+.top-btn:hover{background:rgba(255,255,255,0.28);}
+.top-btn:active{transform:scale(0.97);}
+.top-btn.kakao{background:#FEE500;color:#391B1B;}
+
+.header{width:100%;padding:28px 16px 24px;}
+.header-inner{max-width:var(--max-w);margin:0 auto;text-align:center;position:relative;z-index:1;border-radius:24px;overflow:hidden;padding:48px 24px 40px;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(14,155,181,0.32), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(255,138,101,0.20), transparent 50%),
+    linear-gradient(160deg,#051A22 0%, #083040 55%, #0C4458 100%);
+  box-shadow:0 12px 32px rgba(5,26,34,0.28);}
+.header-tag{display:inline-block;font-size:14px;font-weight:700;letter-spacing:2.5px;color:var(--gold);border:1px solid rgba(253,176,34,0.5);padding:6px 16px;border-radius:20px;margin-bottom:18px;}
+.header-title{font-size:30px;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-0.5px;text-shadow:0 2px 12px rgba(0,0,0,0.4);}
+.header-subtitle{font-size:16px;color:rgba(255,255,255,0.85);font-weight:500;margin-bottom:28px;letter-spacing:0.5px;}
+.header-names{font-size:22px;font-weight:700;color:#fff;background:rgba(255,255,255,0.1);display:inline-block;padding:10px 24px;border-radius:14px;margin-bottom:22px;}
+.header-cta{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;font-weight:700;font-size:17px;padding:13px 26px;border-radius:12px;box-shadow:0 8px 20px rgba(14,155,181,0.4);transition:transform .2s ease-out, box-shadow .2s;}
+.header-cta:hover{transform:translateY(-2px) scale(1.02);}
+.header-cta:active{transform:scale(0.97);}
+
+.trip-band{width:100%;background:linear-gradient(90deg,var(--coral),#FFAD8E);}
+.trip-band-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);text-align:center;padding:20px 16px;}
+.trip-item .label{font-size:13px;color:rgba(255,255,255,0.9);font-weight:600;margin-bottom:4px;}
+.trip-item .value{font-size:16px;color:#fff;font-weight:800;}
+
+.container{max-width:var(--max-w);margin:0 auto;padding:36px 20px 60px;}
+.section{margin-bottom:36px;opacity:0;transform:translateY(16px);transition:opacity .5s ease-out, transform .5s ease-out;}
+.section.visible{opacity:1;transform:translateY(0);}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.section-num{width:30px;height:30px;border-radius:50%;background:var(--teal-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0;}
+.section-title{font-size:20px;font-weight:800;color:var(--text-main);}
+
+.product-link-box{display:flex;justify-content:space-between;align-items:center;background:var(--teal-bg);border:1px solid var(--teal);border-radius:14px;padding:16px 18px;font-weight:700;color:var(--teal-dark);margin-bottom:14px;transition:transform .15s ease-out, background .2s;}
+.product-link-box:hover{background:#D7EEF1;transform:scale(1.01);}
+.product-link-box:active{transform:scale(0.98);}
+.product-link-box span.arrow{font-size:20px;}
+
+.alert{border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.7;margin-top:12px;}
+.alert-teal{background:var(--teal-bg);border:1px solid var(--teal);color:#0A5C6B;}
+.alert-coral{background:var(--coral-bg);border:1px solid var(--coral);color:#B2502A;}
+.alert-gold{background:var(--gold-bg);border:1px solid var(--gold);color:#8A5E0E;}
+
+.meeting-box{border:1.5px solid var(--coral);border-radius:16px;background:var(--coral-bg);padding:22px;text-align:center;}
+.meeting-box .time{font-size:26px;font-weight:800;color:var(--coral);margin-bottom:14px;}
+.meeting-row{display:flex;justify-content:space-between;font-size:16px;padding:9px 0;border-bottom:1px dashed rgba(178,69,42,0.2);text-align:left;gap:10px;}
+.meeting-row:last-child{border-bottom:none;}
+.meeting-row .label{color:var(--text-sub);flex-shrink:0;}
+.meeting-row .val{font-weight:700;color:#B2502A;text-align:right;}
+
+.flight-card{border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px;}
+.flight-header{background:linear-gradient(120deg,#051A22,#083040);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:700;}
+.flight-header .code{color:var(--gold);}
+.flight-body{background:#fff;padding:20px 18px;}
+.flight-route{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.flight-route .airport{text-align:center;}
+.flight-route .airport .code{font-size:28px;font-weight:800;color:var(--text-main);}
+.flight-route .airport .city{font-size:14px;color:var(--text-sub);margin-top:2px;}
+.flight-route .mid{flex:1;text-align:center;padding:0 12px;}
+.flight-route .mid .time{font-size:14px;color:var(--text-muted);}
+.flight-route .mid .line{height:2px;background:var(--border);position:relative;margin-top:6px;}
+.flight-route .mid .line::after{content:"✈";position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:16px;}
+.flight-badges{display:flex;flex-wrap:wrap;gap:8px;}
+.badge{font-size:14px;font-weight:600;color:var(--text-sub);background:#F1FAFB;border:1px solid var(--border);padding:5px 10px;border-radius:8px;}
+
+.baggage-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.baggage-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.baggage-card .icon{font-size:24px;margin-bottom:6px;}
+.baggage-card .title{font-size:15px;font-weight:700;color:var(--text-sub);margin-bottom:4px;}
+.baggage-card .amount{font-size:18px;font-weight:800;color:var(--teal-dark);}
+.baggage-card .desc{font-size:13px;color:var(--text-muted);margin-top:4px;line-height:1.5;}
+
+.guide-box{border:1.5px solid var(--teal-dark);border-radius:16px;background:var(--teal-bg);padding:20px;}
+.guide-row{display:flex;justify-content:space-between;font-size:16px;padding:8px 0;border-bottom:1px dashed rgba(8,48,64,0.2);gap:10px;}
+.guide-row:last-child{border-bottom:none;}
+.guide-row .label{color:var(--text-sub);flex-shrink:0;}
+.guide-row .val{font-weight:700;color:var(--teal-dark);text-align:right;}
+
+.hotel-card{border:2px solid var(--teal);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:0;}
+.hotel-header{background:linear-gradient(120deg,var(--teal),#13B2CB);color:#fff;padding:10px 18px;font-size:14.5px;font-weight:700;display:flex;justify-content:space-between;align-items:center;}
+.hotel-body{background:#fff;padding:16px 18px;}
+.hotel-name{font-size:19px;font-weight:800;color:var(--text-main);}
+.hotel-note{font-size:14.5px;color:var(--text-sub);margin-top:6px;}
+
+.incl-card{border-radius:14px;padding:16px;font-size:15.5px;line-height:1.75;background:var(--coral-bg);border:1px solid var(--coral);margin-bottom:12px;}
+.incl-card .head{font-weight:800;margin-bottom:8px;font-size:16px;color:#B2502A;}
+.fee-item{background:#fff;border:1px solid var(--coral);border-radius:12px;padding:14px 16px;margin-bottom:12px;}
+.fee-item:last-child{margin-bottom:0;}
+.fee-item .fee-title{font-weight:800;font-size:16px;color:#B2502A;margin-bottom:6px;}
+.fee-item .fee-amount{font-weight:800;font-size:17px;color:var(--teal-dark);margin-bottom:8px;}
+.fee-item ul{padding-left:18px;font-size:14.5px;color:var(--text-sub);line-height:1.8;}
+.fee-item a{color:var(--teal-dark);font-weight:700;text-decoration:underline;}
+
+.proxy-promo{border:2px solid var(--gold);border-radius:18px;background:linear-gradient(135deg,#FFF8EC,#FFEFD2);padding:20px;box-shadow:0 8px 22px rgba(253,176,34,0.25);}
+.proxy-promo .ptitle{font-size:17px;font-weight:800;color:#8A5E0E;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.proxy-promo .pprice{font-size:24px;font-weight:800;color:#B2502A;margin:8px 0;}
+.proxy-promo .pnote{font-size:14.5px;color:var(--text-sub);line-height:1.75;}
+.proxy-promo .pnote b{color:var(--text-main);}
+
+.weather-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
+.weather-card{flex:0 0 auto;width:106px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 8px;text-align:center;box-shadow:var(--shadow);}
+.weather-card .date{font-size:13.5px;font-weight:700;color:var(--text-sub);margin-bottom:6px;}
+.weather-card .day{font-size:12px;color:var(--text-muted);margin-bottom:6px;}
+.weather-card .icon{font-size:26px;margin-bottom:8px;}
+.weather-card .high{font-size:17px;font-weight:800;color:var(--coral);}
+.weather-card .low{font-size:14px;color:var(--text-muted);margin-top:2px;}
+
+.prep-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.prep-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+.prep-card .icon{font-size:22px;margin-bottom:6px;}
+.prep-card .title{font-weight:700;font-size:15.5px;color:var(--teal-dark);margin-bottom:6px;}
+.prep-card ul{padding-left:16px;font-size:15px;color:var(--text-sub);line-height:1.75;}
+.prep-full{grid-column:1/-1;}
+
+@media (max-width:480px){
+  .container{padding-left:14px;padding-right:14px;}
+  .trip-band-inner{grid-template-columns:repeat(2,1fr);gap:14px;padding:16px 12px;}
+  .baggage-grid,.prep-grid{grid-template-columns:1fr;}
+  .header-title{font-size:23px;}
+  .header-inner{padding:38px 18px 32px;}
+  .flight-badges{gap:6px;}
+  .badge{font-size:12.5px;padding:4px 8px;}
+  .meeting-box .time{font-size:20px;}
+}
+@media (max-width:400px){
+  .guide-row{flex-direction:column;align-items:flex-start;gap:2px;}
+  .guide-row .val{text-align:left;}
+  .meeting-row{flex-direction:column;align-items:flex-start;gap:2px;}
+  .meeting-row .val{text-align:left;}
+}
+
+.footer{width:100%;background:#051A22;padding:32px 20px;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;text-align:center;}
+.footer-agent{color:#fff;font-size:17px;font-weight:700;margin-bottom:6px;}
+.footer-sub{color:rgba(255,255,255,0.55);font-size:14.5px;margin-bottom:18px;}
+.footer-btns{display:flex;justify-content:center;gap:10px;}
+.footer-btn{padding:10px 20px;border-radius:12px;font-weight:700;font-size:15.5px;transition:transform .15s ease-out;}
+.footer-btn:active{transform:scale(0.97);}
+.footer-btn.tel{background:var(--coral);color:#fff;}
+.footer-btn.kakao{background:#FEE500;color:#391B1B;}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="agent-info">담당 <b>이경진 실장</b> · 모두투어 투어콕</div>
+    <div class="top-btns">
+      <a class="top-btn" href="tel:1544-5714">📞 전화상담</a>
+      <a class="top-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 카카오톡</a>
+    </div>
+  </div>
+</div>
+
+<div class="header">
+  <div class="header-inner">
+    <span class="header-tag">TRAVEL CONFIRMATION</span>
+    <div class="header-title">🌺 발리 여행 확정서</div>
+    <div class="header-subtitle">인천국제공항 출발 · 4박 6일</div>
+    <div class="header-names">김헌주,이정화님</div><br>
+    <a class="header-cta" href="https://www.modetour.com/package/108265323?MLoc=99&Pnum=108265323&ANO=4547682&sno=C2181215&thru=crs" target="_blank">🔗 여행상품 확인하기</a>
+  </div>
+</div>
+
+<div class="trip-band">
+  <div class="trip-band-inner">
+    <div class="trip-item"><div class="label">출발일</div><div class="value">2026.11.27(금)</div></div>
+    <div class="trip-item"><div class="label">귀국일</div><div class="value">2026.12.02(수)</div></div>
+    <div class="trip-item"><div class="label">일정</div><div class="value">4박 6일</div></div>
+    <div class="trip-item"><div class="label">투어타입</div><div class="value">패키지(조인)</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 상품 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">1</div><div class="section-title">상품 안내</div></div>
+    <a class="product-link-box" href="https://www.modetour.com/package/108265323?MLoc=99&Pnum=108265323&ANO=4547682&sno=C2181215&thru=crs" target="_blank">
+      <span>모두투어 발리 패키지 상품 바로가기</span>
+      <span class="arrow">↗</span>
+    </a>
+    <div class="alert alert-teal">
+      ✔ 가루다 인도네시아 항공 이용 상품입니다. 인천국제공항을 통해 발리(덴파사)로 입·출국하는 일정입니다.
+    </div>
+    <div class="alert alert-gold">
+      ✈️ 본 항공편은 <b>코드쉐어편으로, 실제 탑승은 대한항공 항공기</b>로 진행됩니다.
+    </div>
+  </div>
+
+  <!-- 인천공항 미팅 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><div class="section-title">인천공항 미팅 안내</div></div>
+    <div class="meeting-box">
+      <div class="time">2026.11.27(금) 14:50</div>
+      <div class="meeting-row"><span class="label">장소</span><span class="val">인천국제공항 제2터미널(T2)<br>3층 출국장<br>1번 출구 앞(A카운터 옆)</span></div>
+      <div class="meeting-row"><span class="label">미팅처</span><span class="val">모두투어 미팅테이블<br>(테이블번호 1~2번)</span></div>
+    </div>
+  </div>
+
+  <!-- 체크인 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">3</div><div class="section-title">체크인 안내</div></div>
+    <div class="alert alert-gold">
+      🎫 본 항공편은 <b>좌석 사전 지정이 되지 않으며, 출발 당일 공항에서 좌석이 지정</b>됩니다. 미팅시간에 늦지 않게 도착해 주세요.
+    </div>
+  </div>
+
+  <!-- 항공편 정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">4</div><div class="section-title">항공편 정보</div></div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>출발편 · 가루다 인도네시아(대한항공 코드쉐어)</span><span class="code">GA9827</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 11.27(금) 17:50</div></div>
+          <div class="mid"><div class="time">직항</div><div class="line"></div></div>
+          <div class="airport"><div class="code">DPS</div><div class="city">발리(덴파사) · 11.27(금) 23:55</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 대한항공 운항</span>
+          <span class="badge">위탁 23kg</span>
+          <span class="badge">기내 10kg</span>
+          <span class="badge">기내식 제공</span>
+          <span class="badge">좌석 미지정</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-header"><span>귀국편 · 가루다 인도네시아(대한항공 코드쉐어)</span><span class="code">GA9828</span></div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="airport"><div class="code">DPS</div><div class="city">발리(덴파사) · 12.02(수) 01:10</div></div>
+          <div class="mid"><div class="time">직항(심야)</div><div class="line"></div></div>
+          <div class="airport"><div class="code">ICN</div><div class="city">인천 · 12.02(수) 09:25</div></div>
+        </div>
+        <div class="flight-badges">
+          <span class="badge">✈ 대한항공 운항</span>
+          <span class="badge">위탁 23kg</span>
+          <span class="badge">기내 10kg</span>
+          <span class="badge">기내식 제공</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 수하물 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">5</div><div class="section-title">수하물 안내</div></div>
+    <div class="baggage-grid">
+      <div class="baggage-card">
+        <div class="icon">🧳</div>
+        <div class="title">위탁수하물</div>
+        <div class="amount">23kg · 1개</div>
+        <div class="desc">1인 기준</div>
+      </div>
+      <div class="baggage-card">
+        <div class="icon">🎒</div>
+        <div class="title">기내수하물</div>
+        <div class="amount">10kg · 1개</div>
+        <div class="desc">1인 기준</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 현지 가이드 & 행사정보 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">6</div><div class="section-title">현지 가이드 & 행사 정보</div></div>
+    <div class="guide-box">
+      <div class="guide-row"><span class="label">가이드명</span><span class="val">수아르다나(Suardana, 남)</span></div>
+      <div class="guide-row"><span class="label">가이드 연락처</span><span class="val">+62-813-3746-8888</span></div>
+      <div class="guide-row"><span class="label">현지 비상연락처</span><span class="val">장기석 소장<br>+62-811-3800-0566<br>카톡ID: assa0258</span></div>
+      <div class="guide-row"><span class="label">차량</span><span class="val">APV 아반자급(6인승)</span></div>
+      <div class="guide-row"><span class="label">행사인원</span><span class="val">총 2명(성인 2명)<br>조인행사 총 2명</span></div>
+    </div>
+    <div class="alert alert-teal">
+      🗺 선택하신 일정 — <b>2일차 서부투어 / 3일차 남부투어</b>로 가이드가 진행해 드릴 예정입니다.
+    </div>
+  </div>
+
+  <!-- 투숙 호텔 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">7</div><div class="section-title">투숙 호텔</div></div>
+    <div class="hotel-card">
+      <div class="hotel-header"><span>🏨 발리(레기안)</span><span>4박</span></div>
+      <div class="hotel-body">
+        <div class="hotel-name">더 스톤즈 레기안</div>
+        <div class="hotel-note">디럭스룸 · 트윈</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 불포함 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">8</div><div class="section-title">불포함 사항</div></div>
+
+    <div class="fee-item">
+      <div class="fee-title">① 도착비자(VOA) + 도착카드</div>
+      <div class="fee-amount">50만 루피아(IDR) · 약 USD 38/인</div>
+      <ul>
+        <li>현지 공항에서 직접 지불하거나, <a href="https://allindonesia.imigrasi.go.id/" target="_blank">전자비자 공식 사이트</a>에서 사전 발급 가능</li>
+        <li>입국 3일 전부터 작성 가능</li>
+        <li>발급받은 QR코드는 캡처 또는 저장해 두었다가 세관 통과 시 제시해 주세요</li>
+      </ul>
+    </div>
+
+    <div class="fee-item">
+      <div class="fee-title">② 발리 관광세</div>
+      <div class="fee-amount">15만 루피아(IDR) · 약 USD 10/인</div>
+      <ul>
+        <li><a href="https://lovebali.baliprov.go.id/" target="_blank">공식 사이트</a> 접속 후 사전 납부</li>
+        <li>이메일로 받은 QR코드는 공항에서 반드시 제시해야 합니다</li>
+        <li>사전 미납 시 공항에서 직접 지불해야 하며, 대기 시간이 길어질 수 있습니다</li>
+      </ul>
+    </div>
+
+    <div class="fee-item" style="margin-bottom:0;">
+      <div class="fee-title">③ 불포함 식사 및 매너팁</div>
+      <ul>
+        <li>일정표상 '불포함'으로 표기된 식사 및 개인 선택 팁</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 대행서비스 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">9</div><div class="section-title">도착비자·관광세 대행 신청 안내</div></div>
+    <div class="proxy-promo">
+      <div class="ptitle">⭐ 도착비자 진행이 어려우신 경우 — 유료 대행서비스</div>
+      <div class="pprice">75,000원 / 1인</div>
+      <div class="pnote">
+        <b>①도착비자(VOA) + ②관광세 + ③도착카드</b>를 모두투어가 대신 신청해 드립니다.<br><br>
+        📌 담당 대리점(이경진 실장) 및 상담원에게 <b>사전 신청이 필수</b>이며, <b>출발 1일 전까지</b> 신청해 주셔야 합니다.<br>
+        대행을 원하시면 미리 말씀해 주세요!
+      </div>
+    </div>
+  </div>
+
+  <!-- 환전 안내 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">10</div><div class="section-title">환전 안내</div></div>
+    <div class="alert alert-gold">
+      💵 현지에서 <b>의무로 지불하셔야 하는 비용은 없습니다.</b> 개인경비는 <b>현지화폐(루피아, IDR)</b> 사용을 권장드립니다.<br><br>
+      🧧 매너팁을 위해 <b>미국달러 $1짜리 10장 정도</b> 환전하시는 것을 권장드립니다.
+    </div>
+  </div>
+
+  <!-- 날씨 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">11</div><div class="section-title">일자별 날씨 정보</div></div>
+    <div class="weather-row">
+      <div class="weather-card">
+        <div class="date">11/28(토)</div>
+        <div class="day">발리</div>
+        <div class="icon">🌦️</div>
+        <div class="high">31℃</div>
+        <div class="low">25℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">11/29(일)</div>
+        <div class="day">발리(서부)</div>
+        <div class="icon">⛅</div>
+        <div class="high">31℃</div>
+        <div class="low">25℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">11/30(월)</div>
+        <div class="day">발리(남부)</div>
+        <div class="icon">🌤️</div>
+        <div class="high">31℃</div>
+        <div class="low">25℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">12/01(화)</div>
+        <div class="day">발리</div>
+        <div class="icon">🌦️</div>
+        <div class="high">30℃</div>
+        <div class="low">24℃</div>
+      </div>
+      <div class="weather-card">
+        <div class="date">12/02(수)</div>
+        <div class="day">귀국일</div>
+        <div class="icon">⛅</div>
+        <div class="high">30℃</div>
+        <div class="low">24℃</div>
+      </div>
+    </div>
+    <div class="alert alert-gold">
+      ☀️ 11월 말~12월 초 발리는 우기로 접어들어 고온다습하며 오후에 스콜성 소나기가 잦습니다. 위 기온은 평년 평균 참고값입니다.
+    </div>
+  </div>
+
+  <!-- 준비물 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">12</div><div class="section-title">여행 준비물</div></div>
+    <div class="prep-grid">
+      <div class="prep-card">
+        <div class="icon">👕</div>
+        <div class="title">옷차림</div>
+        <ul>
+          <li>반팔·반바지 등 통기성 좋은 옷</li>
+          <li>사원 방문 시 어깨·무릎 가리는 복장 또는 스카프 지참</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">☔</div>
+        <div class="title">우천 대비</div>
+        <ul>
+          <li>휴대용 우산 또는 우비(스콜 대비)</li>
+          <li>방수팩(휴대폰·귀중품 보호용)</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🧴</div>
+        <div class="title">자외선 대비</div>
+        <ul>
+          <li>챙이 넓은 모자, 선글라스</li>
+          <li>SPF50 이상 선크림</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">👟</div>
+        <div class="title">신발</div>
+        <ul>
+          <li>편한 샌들 또는 운동화</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">💵</div>
+        <div class="title">현금 · 결제</div>
+        <ul>
+          <li>매너팁용 미국달러 $1권 10장</li>
+          <li>개인경비용 현지화폐(IDR)</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <div class="icon">🎒</div>
+        <div class="title">기타 준비물</div>
+        <ul>
+          <li>여권(유효기간 6개월 이상 권장), 바우처 캡처본</li>
+          <li>도착비자·관광세 QR코드 캡처본(사전 발급 시)</li>
+          <li>보조배터리, 개인 상비약, 모기퇴치제</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-agent">담당 이경진 실장</div>
+    <div class="footer-sub">김헌주,이정화님의 즐거운 발리 여행을 응원합니다 🌺</div>
+    <div class="footer-btns">
+      <a class="footer-btn tel" href="tel:1544-5714">📞 1544-5714</a>
+      <a class="footer-btn kakao" href="http://pf.kakao.com/_xhxfxlKd/chat" target="_blank">💬 투어콕 카카오톡 채널</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.1});
+sections.forEach(s=>observer.observe(s));
+</script>
+
+</body>
+</html>
